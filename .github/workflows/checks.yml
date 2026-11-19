@@ -1,0 +1,35 @@
+# The gate: every pull request, and every change to main, is checked against tests/SPEC.md.
+# A pull request whose checks fail is not merged. publish.yml runs these same checks before anything goes live.
+# V1 (screenshots against a baseline) is skipped here because screenshots depend on the machine that takes them;
+# working sessions run it (see tests/SPEC.md, V1).
+name: checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_call:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install what the checks need
+        run: bash tests/setup.sh | tail -n 1 | sed 's/^export //' | tr ' ' '\n' >> "$GITHUB_ENV"
+      - name: Check the site against tests/SPEC.md
+        run: python3 tests/check_site.py --skip V1
+      - name: Keep the report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: check-report
+          path: tests/report.md

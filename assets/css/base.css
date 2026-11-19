@@ -1,0 +1,257 @@
+/* joestanley.org: the one stylesheet every page uses. The PM Syllabus adds pm.css on its own pages.
+   The look was locked on 18 November 2026 (spec V1, V2): changing it means changing it here, with the owner's
+   approval and a new visual baseline.
+
+   One ink on white, with a strict order of weight.
+   1. Focus. Orange type means "this is the page": the page title, and the name on the front door.
+      Nothing else is set in orange text.
+   2. Take away. Yellow highlighter on the one thing to do and the question to carry.
+   3. Structure. Section headings in near-black Libre Franklin; space, not lines, separates sections.
+   4. Reading. Newsreader text, near-black.
+   5. Support. Labels, times and notes in small, muted Public Sans. No filled boxes.
+   Orange also works as a pen: the drawn step circles, the ring round the photo, the mark under the section you are
+   in, and a link you point at. Links at rest are near-black words over a thin grey underline, so "go here" never
+   competes with "this is the page". The margin holds the owner's notes, in a hand.
+   Every size, weight, line spacing and gap comes from the scales below (spec T4 to T8). */
+
+@font-face { font-family: "Newsreader"; src: url("/fonts/newsreader-roman.woff2") format("woff2"); font-weight: 200 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/newsreader-italic.woff2") format("woff2"); font-weight: 200 800; font-style: italic; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("/fonts/public-sans-roman.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Public Sans"; src: url("/fonts/public-sans-italic.woff2") format("woff2"); font-weight: 100 900; font-style: italic; font-display: swap; }
+@font-face { font-family: "Shantell Sans"; src: url("/fonts/shantell-sans.woff2") format("woff2"); font-weight: 300 800; font-style: normal; font-display: swap; }
+@font-face { font-family: "Libre Franklin"; src: url("/fonts/libre-franklin-roman.woff2") format("woff2"); font-weight: 100 900; font-style: normal; font-display: swap; }
+
+:root {
+  --paper: #ffffff; --ink: #1c1b1a; --muted: #5c5955; --rule: #e6e3dd; --tint: #f5f3ef;
+  --panel: var(--tint);   /* behind the dice game and a card's picture */
+  --orange: #c84b00;      /* burnt orange: a redhead's wink */
+  --link-line: #8f8a84;   /* link underlines at rest: grey, 3.4:1 on white (spec C5) */
+  --mark: #ffe45c;
+  --mark-ink: #1b1f27;
+  --mark-soft: #fff4bd;
+
+  /* Faces. Reading text in Newsreader, drawn by Production Type for long reading on screens, with optical sizes so
+     each size gets the right cut. Titles and headings in Libre Franklin. Labels, notes and controls in Public Sans. */
+  --text: "Newsreader", Georgia, "Times New Roman", serif;
+  --head: "Libre Franklin", "Public Sans", sans-serif;
+  --ui: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --h1-track: -0.03em; --h2-track: -0.012em;
+  /* Where Libre Franklin's capitals centre in a line box, as an offset from its middle, in ems (rule R6). Its metrics
+     give about -0.01; Chrome rounds text to whole pixels as it paints, which lifts it slightly, so the value is
+     calibrated against R6's measurements on screen and in the PDF. Recheck when the hand-drawn marks change. */
+  --head-cap-k: -0.04;
+
+  /* Type scale (T4). Five sizes, each named for its job. Next sizes differ by at least 1.2 times, so each reads
+     as a different size. Set in rem, so they follow the reader's own text-size setting (T7). */
+  --fs-small: 0.9375rem;                      /* 15px: labels, times, notes, controls */
+  --fs-body: 1.1875rem;                       /* 19px on phones, 20px wide: reading text, headings below section level */
+  --fs-head: clamp(1.5rem, 4.4vw, 1.75rem);   /* 24 to 28px: section headings, and the question under a title */
+  --fs-title: clamp(2.5rem, 9vw, 3.6rem);     /* 40 to 57.6px: page titles */
+  --fs-door: clamp(2.5rem, 12.5vw, 7rem);     /* the name on the front door, the largest thing on the site */
+
+  /* Weights (T5): four, the same job in every face. */
+  --w-title: 800;     /* page titles and the site name */
+  --w-head: 700;      /* headings */
+  --w-strong: 600;    /* bold words, citations, labels that lead */
+  --w-regular: 400;
+
+  /* Line spacing (T6). Text is 1.5 or more at every size. */
+  --lh-tight: 1;      /* titles */
+  --lh-head: 1.2;     /* headings, and the question under a title */
+  --lh-text: 1.5;     /* everything else */
+
+  /* Spacing scale (T8): eight steps on one unit. Print keeps the steps on a smaller unit. */
+  --sp-unit: 1rem;
+  --sp-1: calc(var(--sp-unit) * 0.25);   /* 4px */
+  --sp-2: calc(var(--sp-unit) * 0.5);    /* 8px */
+  --sp-3: calc(var(--sp-unit) * 0.75);   /* 12px */
+  --sp-4: var(--sp-unit);                /* 16px */
+  --sp-5: calc(var(--sp-unit) * 1.5);    /* 24px */
+  --sp-6: calc(var(--sp-unit) * 2);      /* 32px */
+  --sp-7: calc(var(--sp-unit) * 3);      /* 48px */
+  --sp-8: calc(var(--sp-unit) * 4);      /* 64px */
+
+  --hl-cap: 0.45em;   /* the width of each drawn end of the highlighter */
+
+  --pad: 1.25rem;
+  --measure: 36rem;
+  --margin: 15rem;
+  --gutter: 2.75rem;
+  --frame: calc(var(--measure) + var(--gutter) + var(--margin));
+  color-scheme: light dark;
+}
+@media (min-width: 64rem) { :root { --fs-body: 1.25rem; } }
+@media screen and (prefers-color-scheme: dark) {
+  :root { --paper: #151413; --ink: #ebe8e3; --muted: #aaa6a0; --rule: #2e2b28; --tint: #1f1d1b; --orange: #f07c3a; --link-line: #77726c; --mark-ink: #15171b; --mark-soft: #3b3518; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  overflow-x: clip;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-text);
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
+  overflow-wrap: break-word;   /* a long word breaks rather than running off a narrow screen at a large text size */
+}
+/* Blocks start with no space of their own; the rules below give each one a step from the scale. */
+p, ul, ol, dl, dd, figure, blockquote, fieldset, legend { margin: 0; }
+img, svg { max-width: 100%; }
+/* Links: near-black words over a thin grey underline, a quiet cue while reading (spec C5). Pointing at a link turns
+   it orange; keyboard focus turns its underline orange too, beside the focus ring. Glossary terms are dotted.
+   Links keep their underline in print: in the PDF they are something to tap. */
+a { color: var(--ink); text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+a:hover { color: var(--orange); text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
+a:focus-visible { text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
+a.term { text-decoration-style: dotted; text-decoration-thickness: 1.5px; }
+:focus-visible { outline: 3px solid var(--orange); outline-offset: 3px; border-radius: 2px; }
+strong, b { font-weight: var(--w-strong); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+/* Struck-out text: most screen readers do not say a word is struck out, and a joke or a correction can turn on it.
+   These hidden words say so (spec A10). */
+del::before, del::after, s::before, s::after { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+del::before, s::before { content: " (crossed out: "; }
+del::after, s::after { content: ") "; }
+.print-only { display: none; }
+.skip { position: absolute; left: -999rem; top: 0; background: var(--ink); color: var(--paper); padding: var(--sp-2) var(--sp-3); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
+.skip:focus { left: var(--sp-2); top: var(--sp-2); z-index: 10; }
+
+/* The frame: one width for header, page and footer, so every left edge lines up. */
+.frame { width: 100%; max-width: calc(var(--frame) + 2 * var(--pad)); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+
+/* Header: the name in Franklin, large enough to sign the page; no rule under it. The section you are in
+   is marked with a thick orange line, the one bold mark in the header. */
+.masthead-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--sp-2) var(--sp-5); padding-top: var(--sp-4); padding-bottom: 0; }
+.site-name { font: var(--w-title) var(--fs-body)/var(--lh-head) var(--head); color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
+.site-nav { display: flex; flex-wrap: wrap; gap: 0 var(--sp-5); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.site-nav a { color: var(--muted); text-decoration: none; padding: var(--sp-2) 0; border-bottom: 3px solid transparent; }  /* about 40px tall, comfortable to tap */
+.site-nav a:hover { color: var(--ink); }
+.site-nav a[aria-current] { color: var(--ink); font-weight: var(--w-strong); border-bottom-color: var(--orange); }
+
+/* Footer: quiet, no rule; space does the separating. */
+.site-foot { margin-top: var(--sp-8); }
+.site-foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--sp-2) var(--sp-5); padding-top: var(--sp-5); padding-bottom: var(--sp-7); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.site-foot p { max-width: var(--measure); }
+.foot-links { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); padding: 0; list-style: none; }
+.foot-links a { color: var(--muted); }
+
+/* Page heads on white. The title is the focus. */
+.band { padding: var(--sp-6) 0 0; }
+.band a { color: inherit; }
+.band .kicker, .band .hint, .band .meta, .band .note, .band .one-thing-label, .band .pilot { color: var(--muted); }
+.band + .frame { padding-top: var(--sp-6); }
+.band h1 { color: var(--orange); }
+
+/* Page and headings: titles, section headings, and headings below them at the size of the text. */
+h1, h2, h3, h4 { font-family: var(--head); color: var(--ink); text-wrap: balance; }
+h1 { margin: 0; font-size: var(--fs-title); font-weight: var(--w-title); line-height: var(--lh-tight); letter-spacing: var(--h1-track); }
+h2 { margin: var(--sp-7) 0 var(--sp-3); font-size: var(--fs-head); font-weight: var(--w-head); line-height: var(--lh-head); letter-spacing: var(--h2-track); }
+h3, h4 { margin: 0; font-size: var(--fs-body); font-weight: var(--w-head); line-height: var(--lh-head); }
+.kicker { margin: 0 0 var(--sp-2); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.kicker a, .meta-line a { color: inherit; }
+.tag { font: inherit; font-weight: var(--w-strong); }
+.lede { margin: var(--sp-4) 0 0; font-size: var(--fs-head); line-height: var(--lh-head); }
+.hint { margin: 0 0 var(--sp-3); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+
+/* Prose */
+.prose > :first-child { margin-top: 0; }
+.prose p, .prose ul, .prose ol, .prose blockquote { margin: 0 0 var(--sp-4); }
+.prose ul, .prose ol { padding-left: 1.3rem; }
+.prose li { margin: var(--sp-2) 0; }
+.prose li::marker { color: var(--muted); font-family: var(--ui); }
+.prose hr { border: 0; border-top: 1px solid var(--rule); margin: var(--sp-6) 0; }
+.prose blockquote { padding-left: var(--sp-4); border-left: 3px solid var(--rule); font-style: italic; }
+.prose h3, .prose h4 { margin: var(--sp-6) 0 var(--sp-2); }
+.prose h2 + p, .prose h3 + p { margin-top: 0; }
+
+/* Highlighter: a stroke on the words themselves, not a box around them, drawn with a felt pen's slanted ends.
+   A hand never draws the same stroke twice: there are three strokes, chosen by where the line sits in the syllabus,
+   so neighbouring highlights differ (spec H1). Every letter sits wholly on the yellow (C6). */
+mark {
+  color: var(--mark-ink);
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0.3,19.6 C1.3,13.2 2.1,7.2 3.5,0.9 C5.6,0.6 7.8,0.8 10,0.7 L10,19.5 C6.8,19.3 3.4,19.8 0.3,19.6 Z%22/%3E%3C/svg%3E") left center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.8 C2.6,0.7 5.4,0.6 9.8,0.4 C8.7,6.8 7.5,13 6.5,19.3 C4.4,19.5 2.2,19.4 0,19.3 Z%22/%3E%3C/svg%3E") right center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.9 C40,0.4 80,1.1 120,0.5 C150,0.1 178,0.5 200,0.8 L200,19.3 C166,19.8 126,18.9 86,19.5 C52,19.9 26,19.3 0,19.5 Z%22/%3E%3C/svg%3E") center / calc(100% - 2 * var(--hl-cap) + 2px) 100% no-repeat;
+  padding: 0.04em 0.22em 0.08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+mark.hl-v2 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0.6,19.4 C1.4,13.6 2.6,6.6 4.3,0.7 C6.2,0.5 8.2,0.6 10,0.6 L10,19.6 C6.6,19.6 3.6,19.5 0.6,19.4 Z%22/%3E%3C/svg%3E") left center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.6 C3,0.5 6.2,0.6 9.6,0.8 C8.9,7 8.1,13.4 7.1,19.6 C4.6,19.7 2.3,19.6 0,19.5 Z%22/%3E%3C/svg%3E") right center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.6 C30,1.2 64,0.3 104,0.9 C140,1.3 172,0.4 200,0.6 L200,19.5 C170,19.1 136,19.8 100,19.3 C62,18.9 30,19.7 0,19.6 Z%22/%3E%3C/svg%3E") center / calc(100% - 2 * var(--hl-cap) + 2px) 100% no-repeat; }
+mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0.1,19.5 C1,12.8 1.6,7.8 2.8,1.1 C5.2,0.8 7.6,0.7 10,0.8 L10,19.4 C6.8,19.6 3.4,19.5 0.1,19.5 Z%22/%3E%3C/svg%3E") left center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.5 C2.4,0.4 5.6,0.3 9.9,0.6 C9.1,6.4 8,12.8 6,19.5 C4,19.6 2,19.5 0,19.4 Z%22/%3E%3C/svg%3E") right center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.8 C26,0.3 58,1 92,0.6 C130,0.2 168,1.1 200,0.5 L200,19.4 C160,19.2 120,19.8 80,19.4 C50,19.1 24,19.7 0,19.4 Z%22/%3E%3C/svg%3E") center / calc(100% - 2 * var(--hl-cap) + 2px) 100% no-repeat; }
+/* A highlighted line hangs its stroke into the gutter by the stroke's own padding, so the words line up with the text
+   edge on every line, as unhighlighted text does. */
+.hl-line { display: block; margin-inline: -0.22em; }
+
+/* Margin notes: the owner's own notes beside the text (spec M1 to M4). On a phone and in print a note sits under
+   its part's heading, in small type, with a grey line at its left so it reads as an aside; on a wide screen it moves
+   to the margin, in the owner's hand. */
+.note { display: block; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
+.note b, .note strong { color: var(--ink); font-weight: var(--w-strong); }
+
+/* Home: the front door. Plain white, on the same left edge as every other page. The name is the largest thing on
+   the site, in orange; the photo is ringed in orange. */
+.door { display: flex; align-items: center; min-height: calc(100svh - 4.2rem); padding: var(--sp-7) 0 var(--sp-8); background: var(--paper); color: var(--ink); text-align: left; }
+.door-inner { width: 100%; max-width: calc(var(--frame) + 2 * var(--pad)); margin: 0 auto; padding: 0 var(--pad); }
+.door-photo { width: 7.5rem; height: 7.5rem; border-radius: 50%; outline: 0.3rem solid var(--orange); outline-offset: 0.35rem; }
+.door h1 { margin-top: var(--sp-5); font-family: var(--head); font-size: var(--fs-door); font-weight: var(--w-title); color: var(--orange); letter-spacing: -0.035em; }
+.door-sub { margin: var(--sp-2) 0 0; font-size: var(--fs-head); line-height: var(--lh-head); font-style: italic; }
+.door-text { margin: var(--sp-5) auto 0 0; max-width: 32rem; }
+.door-links { display: flex; justify-content: flex-start; flex-wrap: wrap; gap: var(--sp-1); margin: var(--sp-5) 0 0 -0.6rem; padding: 0; list-style: none; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
+.door a { color: inherit; }
+/* Icon links: 44px targets, ink by default, orange on hover and focus. */
+.door-links a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; color: var(--ink); text-decoration: none; }
+.door-links a:hover { color: var(--orange); }
+.door-links svg { width: 1.45rem; height: 1.45rem; }
+/* Narrow screens: the photo sits above the name, so its ring lines up with the text's left edge rather than hanging past it. */
+@media (max-width: 63.99rem) { .door-photo { margin-left: calc(0.3rem + 0.35rem); } }
+
+/* Section index */
+.entries { list-style: none; margin: 0; padding: 0; }
+.entries li { padding: var(--sp-4) 0; border-top: 1px solid var(--rule); }
+.entries p { margin: var(--sp-1) 0 0; color: var(--muted); }
+.empty { color: var(--muted); }
+
+/* The reading column keeps a comfortable line length at every width (spec T2): on tablets it stops at the measure
+   rather than running the full width; on wide screens the margin beside it holds the notes. */
+.reading { max-width: var(--measure); }
+@media (min-width: 64rem) {
+  .reading { max-width: none; }
+  :root { --pad: 2.5rem; }
+  .band { padding-top: var(--sp-7); }
+  .reading { padding-right: calc(var(--margin) + var(--gutter)); }
+  /* The margin holds the owner's own notes, and nothing else, in a hand: Shantell Sans is drawn from Shantell
+     Martin's handwriting but built for reading. */
+  .reading .note {
+    float: right; clear: right;
+    padding-left: 0; border-left: 0;
+    width: var(--margin);
+    margin: var(--sp-1) calc(-1 * (var(--margin) + var(--gutter))) var(--sp-4) 0;
+    font-family: "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; color: var(--ink);
+  }
+  /* The front door: the photo sits in the margin column, beside the name; narrow screens keep it above. */
+  .door-inner { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gutter); align-items: center; }
+  .door-photo { grid-column: 2; grid-row: 1 / span 4; width: 13rem; height: 13rem; justify-self: start; }
+  .door h1, .door-sub, .door-text, .door-links { grid-column: 1; }
+  .door h1 { margin-top: 0; }
+}
+
+/* Links ease to orange, in CSS alone. With reduced motion requested the change is instant (spec D5). */
+a, .recall summary::after, .why > summary { transition: color 180ms ease-out, text-decoration-color 180ms ease-out, text-decoration-thickness 180ms ease-out; }
+@media (prefers-reduced-motion: reduce) { a, .recall summary::after, .why > summary { transition: none; } }
+
+/* Print: the same steps on a smaller unit and a paper scale of four sizes. Always light. */
+@media print {
+  :root {
+    --fs-small: 8.6pt; --fs-body: 10.4pt; --fs-head: 13pt; --fs-title: 28pt;
+    --sp-unit: 7pt;
+  }
+  .masthead, .site-foot, .skip { display: none !important; }
+  .frame { padding: 0; max-width: none; }
+  .reading { max-width: none; }
+  .band { padding: 0; }
+  .band + .frame { padding-top: 0; }
+  mark { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

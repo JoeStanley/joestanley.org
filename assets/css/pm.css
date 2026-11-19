@@ -1,0 +1,291 @@
+/* PM Syllabus. Components on top of base.css. Same colors, same scales, same margin, the same locked look.
+   Modules are told apart by number and title. Yellow keeps its one job. */
+
+/* Sections of a unit: even spacing, whatever comes first inside them. */
+.unit-body > section { margin-top: var(--sp-7); }
+.unit-body > section:first-child { margin-top: 0; }
+.unit-body > section > h2:first-child { margin-top: 0; }
+
+/* Unit heading */
+.unit-head .question { margin: var(--sp-4) 0 0; font-style: italic; font-size: var(--fs-head); line-height: var(--lh-head); text-wrap: balance; }
+.unit-head .meta { margin: var(--sp-3) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.one-thing { margin: var(--sp-5) 0 0; }
+.one-thing-label, .carry-label { display: block; margin-bottom: var(--sp-1); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.pilot { margin-top: var(--sp-2); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+
+/* Glossary pop-ups. A term in the text is a link like any other (spec C3). */
+.gloss { max-width: min(24rem, calc(100vw - 2rem)); border: 1px solid var(--ink); border-radius: 0.4rem; padding: var(--sp-4) var(--sp-5); background: var(--paper); color: var(--ink); font: var(--w-regular) var(--fs-body)/var(--lh-text) var(--text); }
+/* A unit title takes focus when picked in the single document; it is not a control, so it shows no ring. */
+.unit h1[tabindex="-1"]:focus { outline: none; }
+.gloss::backdrop { background: rgba(10, 12, 16, 0.35); }
+.gloss p { margin: 0 0 var(--sp-3); }
+.gloss-term { font-weight: var(--w-strong); }
+.gloss-term span { font-weight: var(--w-regular); color: var(--muted); }
+
+/* Buttons */
+.btn { font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); padding: var(--sp-3) var(--sp-4); border: 1.5px solid var(--ink); border-radius: 0.35rem; background: transparent; color: var(--ink); cursor: pointer; }
+.btn:disabled, .btn[aria-disabled="true"] { opacity: 0.55; cursor: default; }
+.btn.quiet { background: transparent; color: var(--ink); border: 1px solid var(--muted); padding: var(--sp-2) var(--sp-4); }
+.btn:hover { border-color: var(--orange); }
+
+/* Recall questions: the answer stays folded until asked for. */
+.recall { padding: var(--sp-3) 0; }
+.recall summary { list-style: none; cursor: pointer; }
+.recall summary::-webkit-details-marker { display: none; }
+.recall summary::after { content: "Show answer"; display: block; width: fit-content; margin-top: var(--sp-1); padding: var(--sp-1) 0; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+.recall[open] summary::after { content: "Hide answer"; }
+.recall .answer { margin-top: var(--sp-3); padding: var(--sp-3) var(--sp-4); background: var(--mark-soft); }
+
+/* Every source carries its time under its title, then what to look for, then why to trust it and what
+   only it gives you, in small type. The margin is kept for the owner's notes. */
+.source-note { margin: var(--sp-1) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+/* Why this source: a source's reasons, folded until asked for (spec S4). The same move as "Show answer";
+   the drawn chevron turns to say open or closed, and is not read aloud. */
+.why > summary { display: block; width: fit-content; padding: var(--sp-1) 0; cursor: pointer; list-style: none; font-weight: var(--w-strong); color: var(--ink); text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+.recall summary:hover::after, .why > summary:hover { text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
+.why > summary::-webkit-details-marker { display: none; }
+.why > summary::after { content: ""; display: inline-block; width: 0.4em; height: 0.4em; margin-left: 0.5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.2em) rotate(45deg); }
+.why[open] > summary::after { transform: translateY(0.05em) rotate(-135deg); }
+.why .notes { margin-top: var(--sp-1); padding-left: var(--sp-3); border-left: 2px solid var(--rule); }
+@supports selector(:has(a)) { .source-note:not(:has(dl)) { display: none; } }
+.meta-line { margin: var(--sp-1) 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+
+/* The short path: numbered steps the reader can tick off. */
+.progress { margin: 0 0 var(--sp-4); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.steps { list-style: none; margin: 0; padding: 0; --tick: 2rem; --title-size: var(--fs-body); }
+/* A step is two columns: its circle, then its body. The circle is in the flow, not positioned, so it travels with its
+   step when the PDF moves a step to a new page. The step's top padding holds the ring's ink, which rises above the
+   title's line: without it, a page break can leave a sliver of the ring on the page before (R6). */
+.step { display: grid; grid-template-columns: var(--tick) minmax(0, 1fr); column-gap: var(--sp-4); align-items: start; padding: var(--sp-3) 0 var(--sp-5); }
+/* A step's margin note follows the step's text, under it, at the text's width (on a wide screen it moves to the margin). */
+.step > .note { grid-column: 2; }
+.step-body { grid-column: 2; }
+/* Each step's circle is centred on the middle of its title's capitals (spec R6). In a line box of height L ems, those
+   capitals centre L/2 + k ems below its top, where k is a constant of the heading face; base.css sets
+   --head-cap-k with the face, so the circle follows any change to the title's size or line spacing. */
+.tick { position: relative; grid-column: 1; margin-top: calc((var(--lh-head) / 2 + var(--head-cap-k, 0)) * var(--title-size) - var(--tick) / 2); width: var(--tick); height: var(--tick); cursor: pointer; }
+.tick input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+/* The step mark (layouts/partials/pm/step-mark.html): a drawn ring a little larger than the tick box, so the ring's ink
+   runs just past it as the hand-drawn circle did. The number scales with the ring: 19.2 units of the 40-unit frame. */
+.tick-mark { display: block; width: calc(var(--tick) + 0.4rem); height: calc(var(--tick) + 0.4rem); max-width: none; margin: -0.2rem; overflow: visible; }
+.tick-ring { fill: none; stroke: var(--orange); stroke-width: 3.2; stroke-linecap: round; }
+.tick-num { font: 700 19.2px var(--ui); font-variant-numeric: tabular-nums; text-anchor: middle; fill: var(--ink); }
+.tick-blob { fill: var(--orange); }
+.tick-check { fill: none; stroke: var(--paper); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
+.tick-blob, .tick-check, .tick input:checked + .tick-mark .tick-ring, .tick input:checked + .tick-mark .tick-num { display: none; }
+.tick input:checked + .tick-mark .tick-blob, .tick input:checked + .tick-mark .tick-check { display: inline; }
+.tick input:focus-visible + .tick-mark { outline: 3px solid var(--orange); outline-offset: calc(3px - 0.2rem); }
+/* A list of links to open: each link is a full tap row, about 44px tall on screen. */
+.step-links { list-style: none; margin: 0; padding: 0; }
+.step-links a { display: inline-block; padding: var(--sp-2) 0; }
+.look { margin: var(--sp-2) 0 0; }
+.notes { margin: 0; display: grid; gap: var(--sp-1); }
+.notes dt { display: inline; font-weight: var(--w-strong); color: var(--ink); }
+.notes dt::after { content: ". "; }
+.notes dd { display: inline; }
+
+
+/* The dice game */
+.game { margin-left: calc(var(--pad) * -1); margin-right: calc(var(--pad) * -1); padding: var(--sp-5) var(--pad); background: var(--panel); }
+.game > h2:first-child { margin-top: 0; }
+.game p { margin: 0 0 var(--sp-3); }
+.game h3 { margin: var(--sp-5) 0 var(--sp-2); }
+.game:not(.is-live) .game-live { display: none; }
+.game.is-live .example { display: none; }
+.game.is-live .takeaway[hidden] { display: none; }
+.guess { margin: var(--sp-4) 0; padding: 0; border: 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.guess legend { padding: 0; margin-bottom: var(--sp-2); font-weight: var(--w-strong); }
+.guess label { display: block; padding: var(--sp-1) 0; cursor: pointer; }
+.guess input { width: 1.1rem; height: 1.1rem; margin: 0 var(--sp-2) 0 0; accent-color: var(--orange); vertical-align: -0.12em; }
+.board { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--sp-2); align-items: end; min-height: 11.5rem; margin-top: var(--sp-4); padding: var(--sp-2) var(--sp-1); background: var(--paper); border-radius: 0.4rem; }
+.st { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; gap: var(--sp-1); min-width: 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); text-align: center; }
+.pile-n { min-height: 1lh; font-weight: var(--w-strong); }
+.pile { width: 62%; max-width: 2.6rem; height: 0; background: var(--mark); border: 1px solid var(--ink); border-bottom-width: 0; border-radius: 0.15rem 0.15rem 0 0; transition: height 0.14s ease-out; }
+.pile:not(.has) { visibility: hidden; }
+.die { display: grid; place-items: center; width: min(2.3rem, 100%); aspect-ratio: 1; border: 1px solid var(--ink); border-radius: 0.3rem; background: var(--paper); font-weight: var(--w-strong); font-size: var(--fs-body); line-height: var(--lh-text); }
+.st-name { display: grid; place-items: center; width: min(1.6rem, 100%); aspect-ratio: 1; border-radius: 50%; background: var(--ink); color: var(--paper); font-weight: var(--w-strong); font-variant-numeric: tabular-nums; }
+.st-range { color: var(--muted); }
+.st.is-changed .st-range { color: var(--mark-ink); background: var(--mark); padding: 0 0.3em; border-radius: 0.15rem; }
+.board-key { margin: var(--sp-2) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.tally { display: grid; grid-template-columns: 1fr 1fr; gap: 0 var(--sp-4); margin: var(--sp-3) 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.tally b { font-weight: var(--w-strong); font-variant-numeric: tabular-nums; }
+.controls { margin: var(--sp-2) 0 var(--sp-3); }
+.result { min-height: 1lh; }
+.result:empty { display: none; }
+.setups { margin-top: var(--sp-5); padding-top: var(--sp-4); border-top: 1px solid var(--rule); }
+.setups-label { font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
+.setup-list { margin: var(--sp-2) 0 var(--sp-3); padding: 0; list-style: none; counter-reset: setup; display: grid; gap: var(--sp-2); }
+.setup-list li { counter-increment: setup; }
+.setup { width: 100%; text-align: left; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); padding: var(--sp-3) var(--sp-3); border: 1px solid var(--muted); border-radius: 0.35rem; background: var(--paper); color: var(--ink); cursor: pointer; }
+.setup::before { content: counter(setup) ". "; content: counter(setup) ". " / ""; font-weight: var(--w-strong); }
+.setup:hover { border-color: var(--ink); }
+.setup[aria-pressed="true"] { border-color: var(--ink); box-shadow: inset 0 -3px 0 var(--orange); font-weight: var(--w-strong); }
+.setup-note { font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.takeaway { margin-top: var(--sp-5); padding: var(--sp-4); background: var(--mark-soft); }
+.game .takeaway h3 { margin-top: 0; }
+.takeaway ol { margin: 0 0 var(--sp-3); padding-left: 1.25rem; }
+.takeaway li { margin: var(--sp-1) 0; }
+.takeaway li::marker { font-family: var(--ui); font-weight: var(--w-strong); }
+.game .credit { margin: 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.example table { width: 100%; border-collapse: collapse; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); margin: var(--sp-2) 0 var(--sp-3); font-variant-numeric: tabular-nums; }
+.example th, .example td { padding: var(--sp-1) var(--sp-1); border-bottom: 1px solid var(--rule); text-align: right; }
+.example th:first-child { text-align: left; font-weight: var(--w-strong); }
+.example thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
+
+/* Go deeper: folded until asked for. */
+.deeper summary { list-style: none; cursor: pointer; padding: 0 0 var(--sp-4); }
+.deeper summary::-webkit-details-marker { display: none; }
+.deeper summary h2 { display: inline; margin: 0; }
+.deeper summary::after { content: "Open"; content: "Open" / ""; float: right; margin-top: var(--sp-1); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--orange); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.deeper details[open] summary::after { content: "Close"; content: "Close" / ""; }
+.deeper-hint { display: block; margin-top: var(--sp-1); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.deeper-list { list-style: none; margin: 0; padding: 0; }
+.deeper-list > li { padding: var(--sp-4) 0; border-top: 1px solid var(--rule); }
+.deeper-list > li::after { content: ""; display: block; clear: both; }
+.deeper cite { font-style: italic; }
+.deeper-note { margin: var(--sp-2) 0 0; }
+
+/* Concept cards */
+.plate { margin: 0; padding: var(--sp-4); background: var(--panel); }
+.plate::after { content: ""; display: block; clear: both; }
+/* A picture's caption sits under it at every width; in print, beside it. */
+.plate-caption { margin: var(--sp-3) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
+.fig { display: block; width: 100%; max-width: 30rem; height: auto; margin: 0 auto; font-family: var(--ui); }
+.fig-pipe { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+/* Figures mark the key moment in the highlighter yellow, the meaning it has in the text. It is always labeled in
+   the picture, so the yellow is never the only cue. */
+.fig-mark { fill: var(--mark); }
+@media screen and (prefers-color-scheme: dark) { .fig-mark { fill: #a08a2a; } }
+.fig-ink { fill: var(--ink); }
+.fig-label { font-weight: 700; font-size: 11.5px; fill: var(--ink); }
+.fig-note { font-weight: 400; font-size: 11px; fill: var(--muted); }
+.fig-line { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; fill: none; }
+.fig-return { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
+.fig-arrow { fill: var(--muted); }
+.fig-stops circle { fill: var(--ink); stroke: var(--tint); stroke-width: 3; }
+.fig-num { font-weight: 700; font-size: 16px; font-variant-numeric: tabular-nums; fill: var(--paper); }
+.fig-axis { stroke: var(--ink); stroke-width: 1.5; fill: none; stroke-linecap: round; }
+.fig-number { stroke: var(--ink); stroke-width: 4; fill: none; stroke-linecap: round; }
+.fig-wanted { stroke: var(--muted); stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 1 7; }
+.fig-label-line { fill: var(--ink); }
+.card-body { margin-top: var(--sp-6); }
+.card-body h2 { margin-top: var(--sp-6); }
+.carry { margin: var(--sp-6) 0 0; font-style: italic; text-wrap: balance; }
+.carry-label { font-style: normal; }
+.card-deeper h2 { margin-top: var(--sp-6); }
+/* A source to go deeper on reads as a citation, not a heading: the text face, bold, at the size of the text. */
+.card-deeper h3, .deeper-list h3 { font-family: var(--text); font-weight: var(--w-strong); letter-spacing: 0; }
+.card-deeper::after { content: ""; display: block; clear: both; }
+
+/* Start page: the eight modules, spaced, not ruled; numerals are light, in the muted ink. */
+.modules { list-style: none; margin: var(--sp-4) 0 0; padding: 0; }
+.mod { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0 var(--sp-2); padding: 0 0 var(--sp-5); }
+.mod-num { font: var(--w-regular) var(--fs-body)/var(--lh-head) var(--ui); color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.mod-question { margin: var(--sp-1) 0 0; font-style: italic; }
+.mod-status { margin: var(--sp-1) 0 0; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.mod.is-pending .mod-num, .mod.is-pending h3, .mod.is-pending .mod-question { color: var(--muted); }
+.mod.is-done .mod-status { color: var(--ink); }
+
+/* Glossary page */
+.gloss-list { margin: var(--sp-4) 0 0; }
+.gloss-list > div { padding: var(--sp-4) 0; border-top: 1px solid var(--rule); }
+.gloss-list dt { font-weight: var(--w-strong); }
+.gloss-list dt span { font-weight: var(--w-regular); color: var(--muted); }
+.gloss-list dd { margin: var(--sp-1) 0 0; }
+
+/* Single-document preview: one unit at a time. */
+.pm-all.js .unit:not(.is-current) { display: none; }
+
+@media (min-width: 46rem) {
+  .tally { grid-template-columns: repeat(4, auto); justify-content: start; gap: 0 var(--sp-5); }
+  .setup-list { grid-template-columns: 1fr 1fr; }
+  .game { margin-left: 0; margin-right: 0; padding: var(--sp-5); border-radius: 0.4rem; }
+}
+@media (min-width: 64rem) {
+  .plate { padding: var(--sp-5); }
+  /* A step's or a source's note comes after its description in the text (so on a phone the title stays with its time),
+     but in the margin it sits level with the title, and takes no room in the column. */
+  /* Where :has() is missing, such a note stays in the column, under its step, as on a phone. */
+  .reading .step > .note, .reading .deeper-list > li > .note { float: none; width: auto; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); grid-column: 2; }
+  @supports selector(:has(a)) {
+    .step:has(> .note), .deeper-list > li:has(> .note) { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
+    .step:has(> .note) { grid-template-columns: var(--tick) minmax(0, 1fr) calc(var(--margin) + var(--gutter) - var(--sp-4)); }
+    /* A step or source with a note starts below any note still running down the margin from above, so notes never meet. */
+    .step:has(> .note), .deeper-list > li:has(> .note) { clear: right; }
+    .deeper-list > li:has(> .note) { display: grid; grid-template-columns: minmax(0, 1fr) var(--margin); column-gap: var(--gutter); }
+    .deeper-list > li:has(> .note) > * { grid-column: 1; }
+    .reading .step > .note, .reading .deeper-list > li > .note { grid-row: 1 / span 8; align-self: start; margin: 0; padding-left: 0; border-left: 0; }
+    .reading .step > .note { grid-column: 3; margin-left: calc(var(--gutter) - var(--sp-4)); }
+    .reading .deeper-list > li > .note { grid-column: 2; }
+  }
+  /* A note inside a panel reaches past the panel's padding to the same margin as every other note. */
+  .reading .plate > .note, .reading .game .note { margin-right: calc(-1 * (var(--margin) + var(--gutter) + var(--sp-5))); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pile { transition: none; }
+}
+
+/* Print: the PDF is made from this. One unit starts a new page; a card fits on one page. Always light.
+   Sizes and space come from the print values of the scales in base.css; only layout differs here. */
+@page { size: Letter; margin: 0.65in 0.8in 0.75in; }
+@media print {
+  .gloss, .game-live, .progress, .tick input { display: none !important; }
+  .print-only { display: block; }
+  .screen-only { display: none !important; }
+  .reading { padding-right: 0; }
+  .unit { max-width: none; display: block !important; break-before: page; }
+  .unit:first-child { break-before: auto; }
+  .unit-head { margin-bottom: var(--sp-4); }
+  h2, h3 { break-after: avoid; }
+  .carry, .takeaway, .tick-mark, .st-name, .plate, .game, .answer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  .recall, .check { break-inside: avoid; }
+  .recall summary::after, .recall .answer { display: none; }
+  .last-time, .check { counter-reset: q; }
+  .recall summary::before { counter-increment: q; content: counter(q) ". "; font-family: var(--ui); font-weight: var(--w-strong); }
+
+  .steps { --tick: 16pt; }
+  .step { break-inside: avoid; }
+  .step-links a { padding: 0; }
+  .step-links li { margin: var(--sp-1) 0; }
+
+  .game { break-inside: avoid; }
+  .game .example { display: block !important; }
+  .game .takeaway { display: block !important; }
+
+  .deeper summary::after { display: none; }
+  .deeper details::details-content { content-visibility: visible !important; display: block !important; }
+  .deeper-list > li { break-inside: avoid; }
+
+  /* Source reasons: a module lists them at the back (.sources-back); a card prints its one source's at its foot. */
+  .module .source-note { display: none; }
+  .why > summary { display: none; }
+  .why::details-content { content-visibility: visible !important; display: block !important; }
+  .card .why .notes { margin-top: 0; border-left-width: 1.5pt; }
+  .sources-back { margin-top: var(--sp-4); padding-top: 0; border-top: 0; }
+  .sources-back .notes { margin: 0; }
+  .sources-back .answers-label { font-family: var(--text); }  /* a source's title reads as a citation, as on the full path */
+
+  .answers { margin-top: var(--sp-6); padding-top: var(--sp-1); border-top: 1pt solid var(--rule); font-size: var(--fs-small); color: var(--muted); break-inside: avoid; }
+  .answers h2 { font-size: var(--fs-body); margin: var(--sp-2) 0 var(--sp-1); }
+  .answers-label { margin: var(--sp-2) 0 0; font-family: var(--ui); font-weight: var(--w-strong); }
+  .answers ol { padding-left: 13pt; }
+
+  /* A card is one page: picture beside its caption, the rest in two columns. */
+  .card .plate { margin: var(--sp-3) 0 0; padding: var(--sp-3) 14pt; display: grid; grid-template-columns: 2.85in 1fr; column-gap: 20pt; align-items: center; }
+  .card .plate .fig { grid-column: 1; grid-row: 1; }
+  .card .plate .plate-caption { grid-column: 2; grid-row: 1; margin: 0; font-size: var(--fs-body); }
+  .card .plate > .note { grid-column: 1 / -1; grid-row: 2; margin: var(--sp-2) 0 0; }
+  .card-body { columns: 2; column-gap: 22pt; margin-top: var(--sp-4); }
+  .card-body h2 { margin-top: var(--sp-4); }
+  .card-body ul, .card-body ol { padding-left: 13pt; }
+  .card-body li, .card-body p { break-inside: avoid; }
+  .carry { margin: var(--sp-4) 0 0; break-inside: avoid; }
+  .card-deeper { break-inside: avoid; }
+  .card-deeper h2 { margin-top: var(--sp-4); }
+
+  .modules { margin-top: var(--sp-2); columns: 2; column-gap: 26pt; }
+  .mod { break-inside: avoid; grid-template-columns: 20pt minmax(0, 1fr); }
+  .gloss-list > div { break-inside: avoid; }
+}

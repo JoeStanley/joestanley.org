@@ -1,0 +1,11 @@
+{{- /* A source's reasons as a short list. Used folded under the source, and at the back of a module in print. */ -}}
+{{- $p := .p -}}{{- $s := .s -}}
+<dl class="notes">
+  {{- with $s.trust }}
+  <div><dt>Why trust it</dt><dd>{{ . | $p.RenderString }}</dd></div>
+  {{- end }}
+  {{- with $s.only }}
+  <div><dt>What only it gives you</dt><dd>{{ . | $p.RenderString }}</dd></div>
+  {{- end }}
+</dl>
+{{- /**/ -}}

@@ -1,0 +1,18 @@
+# Margin notes for PM Syllabus.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen a note shows in your hand in the margin beside its part. On a phone and in print it sits
+# under the part's heading. Markdown works: *italic*, **bold**, [a link](https://example.org).
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# The opening paragraphs
+intro: ""
+
+# How it works
+how-it-works: ""
+
+# The eight modules
+the-eight-modules: ""

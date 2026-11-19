@@ -1,0 +1,40 @@
+# Numbers shown beside the dice game.
+# Rules: five stations in a line. Each round, each station in turn rolls its die and passes on that many items,
+# or all it has if that is fewer. Station 1 never runs out. The last station's output is finished work.
+# "average" is the mean finished count over 400,000 simulated runs of 20 rounds (tools-pm/dice-game-averages.js).
+# "promise" is 20 rounds times the slowest station's average roll.
+setups:
+  equal:
+    label: All equal
+    note: Every station rolls 1 to 6.
+    dice: [[1, 6], [1, 6], [1, 6], [1, 6], [1, 6]]
+    promise: 70
+    average: 51.7
+    after: Nobody did anything wrong. A low roll starves everyone further down the line, and a high roll later cannot make it up, because there is nothing waiting to pass on.
+  slow3:
+    label: Station 3 is slower
+    note: Station 3 now rolls 1 to 4. The others still roll 1 to 6.
+    dice: [[1, 6], [1, 6], [1, 4], [1, 6], [1, 6]]
+    promise: 50
+    average: 45.4
+    after: Look at the pile in front of station 3. A pile that keeps growing in front of one step is how you find a constraint.
+  fast1:
+    label: Speed up station 1
+    note: Station 3 still rolls 1 to 4. Station 1 gets faster and rolls 3 to 8.
+    dice: [[3, 8], [1, 6], [1, 4], [1, 6], [1, 6]]
+    promise: 50
+    average: 46.5
+    after: One lucky run can mislead, so compare the averages. A faster station 1 adds about one finished item (46.5 against 45.4) and more than doubles the work left waiting.
+  fast3:
+    label: Speed up station 3 instead
+    note: Station 1 is back to 1 to 6. Station 3 gets the help and rolls 3 to 8.
+    dice: [[1, 6], [1, 6], [3, 8], [1, 6], [1, 6]]
+    promise: 70
+    average: 54.4
+    after: Compare the averages again. This setup finishes 54.4, against 45.4 with a slow station 3. Help at the constraint is the help that reaches the customer.
+# One recorded run of the "equal" setup, used for the printed worked example.
+example:
+  rolled: [72, 66, 66, 74, 82]
+  passed: [72, 62, 54, 54, 54]
+  waiting: [0, 10, 8, 0, 0]
+  finished: 54

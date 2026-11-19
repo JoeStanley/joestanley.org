@@ -1,0 +1,54 @@
+{{- /* Every page on the site starts here. One header, one footer, one stylesheet.
+       The PM Syllabus adds its glossary pop-ups and its script. */ -}}
+{{- $all := eq .Layout "all" -}}
+{{- $pm := eq .Section "pm" -}}
+{{- /* One look, locked 18 November 2026 (spec V2): base.css on every page, pm.css added on the syllabus. */ -}}
+{{- $css := slice (resources.Get "css/base.css") -}}
+{{- if $pm }}{{ $css = $css | append (resources.Get "css/pm.css") }}{{ end -}}
+{{- $css = $css | resources.Concat (cond $pm "css/site-pm.css" "css/site.css") | minify -}}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ if and $pm (not (eq . .FirstSection)) }}{{ .FirstSection.Title }} | {{ end }}{{ site.Title }}{{ end }}</title>
+{{ with .Description | default (cond $pm .FirstSection.Params.description site.Params.description) }}<meta name="description" content="{{ . }}">{{ end }}
+{{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+{{- if $all }}
+<meta name="robots" content="noindex">
+{{- /* The PDF printed from this page takes its title, subject and keywords from here (spec P6). */}}
+{{- with .Params.pdf }}
+<meta name="pdf:title" content="{{ .title }}">
+<meta name="pdf:subject" content="{{ .subject }}">
+<meta name="keywords" content="{{ delimit .keywords ", " }}">
+{{- end }}
+<meta name="pdf:rights" content="{{ site.Copyright }}, {{ site.Params.license.name }}">
+<meta name="pdf:rights-url" content="{{ site.Params.license.url }}">
+<style>{{ $css.Content | safeCSS }}</style>
+{{- else }}
+{{- range (slice "newsreader-roman" "public-sans-roman") }}
+<link rel="preload" href="{{ printf "/fonts/%s.woff2" . | relURL }}" as="font" type="font/woff2" crossorigin>
+{{- end }}
+{{ with $css | fingerprint }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
+{{- end }}
+</head>
+{{- $cls := slice }}{{ if .IsHome }}{{ $cls = $cls | append "is-home" }}{{ end }}{{ if $pm }}{{ $cls = $cls | append "pm" }}{{ end }}{{ if $all }}{{ $cls = $cls | append "pm-all" }}{{ end }}
+<body{{ with delimit $cls " " }} class="{{ . }}"{{ end }}>
+<a class="skip" href="#main">Skip to content</a>
+{{ partial "header.html" . }}
+<main id="main">
+{{ block "main" . }}{{ end }}
+</main>
+{{ if not .IsHome }}{{ partial "footer.html" . }}{{ end }}
+{{- if $pm }}
+{{ partial "pm/glossary-dialogs.html" . }}
+{{- $js := resources.Get "js/pm.js" | minify }}
+{{- if $all }}
+<script>{{ $js.Content | safeJS }}</script>
+{{- else }}
+{{ with $js | fingerprint }}<script src="{{ .RelPermalink }}" defer></script>{{ end }}
+{{- end }}
+{{- end }}
+</body>
+</html>

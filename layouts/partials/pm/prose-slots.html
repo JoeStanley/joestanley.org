@@ -1,0 +1,9 @@
+{{- /* Marks each section heading in a unit's prose as a margin-note slot, named by the heading's id, and puts the
+       owner's note for it right after the heading (spec M4). Call with p, unit and html; returns the html. */ -}}
+{{- $html := string .html -}}
+{{- range findRESubmatch `<h2 id="([^"]+)">((?s).*?)</h2>` $html -}}
+  {{- $id := index . 1 -}}
+  {{- $note := partial "pm/margin.html" (dict "p" $.p "unit" $.unit "slot" $id) -}}
+  {{- $html = replace $html (index . 0) (printf `<h2 id="%s" data-slot="%s">%s</h2>%s` $id $id (index . 2) $note) -}}
+{{- end -}}
+{{- return $html -}}

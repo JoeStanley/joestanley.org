@@ -1,0 +1,16 @@
+# Shared glossary. One entry per term, defined once for the whole syllabus.
+# Use a term in any unit with: {{< pm/term "constraint" >}} or {{< pm/term "constraint" "constraints" >}}
+# Add a term only when a unit uses it.
+constraint:
+  term: Constraint
+  also: bottleneck
+  text: The one part of a system that limits what the whole system can deliver.
+wip:
+  term: Work in progress
+  also: WIP
+  text: Work that has been started and not finished. A long queue of it in front of one step is the usual sign of a constraint.
+okr:
+  term: OKRs
+  show: OKRs
+  also: objectives and key results
+  text: A goal-setting format many teams use. Each objective is paired with a few measurable key results.

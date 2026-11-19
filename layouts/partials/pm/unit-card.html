@@ -1,0 +1,43 @@
+{{- /* A concept card: one picture, four short sections, one question to carry, one place to go deeper. */ -}}
+{{- $p := .p -}}{{- $all := .all -}}
+{{- $key := $p.File.ContentBaseName -}}
+{{- $m := index (where site.Data.pm.modules "id" $p.Params.module) 0 -}}
+{{- $modPage := "" -}}
+{{- with $m.page }}{{ $modPage = site.GetPage (printf "/pm/%s" .) }}{{ end -}}
+<article class="unit card" id="{{ $key }}" data-unit="{{ $key }}" data-module="{{ $p.Params.module }}">
+  <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
+    <p class="kicker"><span class="tag">Concept card</span> for Module {{ $m.num }}, {{ with $modPage }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ .Title }}</a>{{ else }}{{ $m.title }}{{ end }}</p>
+    <h1>{{ $p.Title | markdownify }}</h1>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
+  </div></div></header>
+  <div class="frame"><div class="unit-body reading">
+
+  {{ with $p.Params.figure }}
+  <figure class="plate" data-slot="picture">
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "picture") }}
+    {{ (resources.Get (printf "figures/%s.svg" .)).Content | safeHTML }}
+    {{ with $p.Params.figure_caption }}<figcaption class="plate-caption">{{ . }}</figcaption>{{ end }}
+  </figure>
+  {{ end }}
+
+  <div class="card-body prose">{{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" $p.Content) | safeHTML }}</div>
+
+  {{ with $p.Params.question }}
+  {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "question") }}
+  <p class="carry" data-slot="question"><span class="carry-label">One question to carry<span class="sr">:</span></span> <span class="hl-line"><mark class="hl-v{{ add 1 (mod (add (int $m.num) (div $p.Weight 10)) 3) }}">{{ . }}</mark></span></p>
+  {{ end }}
+
+  {{ with $p.Params.deeper }}
+  <section class="card-deeper" data-slot="go-deeper">
+    <h2>Go deeper</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "go-deeper") }}
+    <h3><a href="{{ .url }}">{{ .title | markdownify }}</a>{{ with .by }}, {{ . }}{{ end }}</h3>
+    <p class="meta-line">{{ .where }}</p>
+    {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "look") }}
+    <div class="source-note">
+      {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "side") }}
+    </div>
+  </section>
+  {{ end }}
+</div></div>
+</article>

@@ -1,0 +1,15 @@
+{{- /* In the single document, the header lists the units instead of the site sections. */ -}}
+{{- $home := .FirstSection -}}
+<nav class="site-nav unit-nav" aria-label="Units">
+  <a href="#start">Start</a>
+  {{- range site.Data.pm.modules }}
+    {{- with .page }}{{ with site.GetPage (printf "/pm/%s" .) }}
+    {{- $m := . }}
+  <a href="#{{ .File.ContentBaseName }}">{{ .Title | markdownify }}</a>
+    {{- range where (where $home.RegularPagesRecursive "Layout" "card") "Params.module" $m.Params.module }}
+  <a href="#{{ .File.ContentBaseName }}">{{ .Title | markdownify }}</a>
+    {{- end }}
+    {{- end }}{{ end }}
+  {{- end }}
+  <a href="#glossary">Glossary</a>
+</nav>

@@ -1,0 +1,8 @@
+{
+  "name": "joestanley-site-checks",
+  "private": true,
+  "description": "Test dependencies for tests/check_site.py. axe-core is under the Mozilla Public License 2.0.",
+  "devDependencies": {
+    "axe-core": "4.14.1"
+  }
+}

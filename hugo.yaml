@@ -1,0 +1,60 @@
+baseURL: 'https://joestanley.org/'
+languageCode: en-us
+title: Joe Stanley
+# Shown at the foot of every page but the front door, and on every page of the PDF (spec L1).
+copyright: "© 2026 Joe Stanley"
+disableKinds: [taxonomy, term]
+
+params:
+  author: Joe Stanley
+  description: "Waffles, Wordplay, and Worker's Rights. RVA."
+  subtitle: versatile, like the potato.
+  photo: /img/profile.png
+  photo_alt: Joe drinking coffee in a diner.
+  # The syllabus's text and figures are shared under this license (spec L1; LICENSE-content.md says what it covers).
+  license:
+    name: CC BY 4.0
+    url: "https://creativecommons.org/licenses/by/4.0/"
+  links:
+    - name: Email
+      icon: email
+      url: "mailto:mail@joestanley.org"
+    - name: Bluesky
+      icon: bluesky
+      url: "https://bsky.app/profile/joestanley.org"
+    - name: LinkedIn
+      icon: linkedin
+      url: "https://www.linkedin.com/in/josephstanley/"
+
+# The four sections. "blurb" is the line under each one on the home page.
+menu:
+  main:
+    - identifier: readme
+      name: ReadMe
+      url: /page/readme/
+      weight: 10
+      params:
+        blurb: Who I am, and the work I have done.
+    - identifier: pm
+      name: PM Syllabus
+      url: /pm/
+      weight: 20
+      params:
+        blurb: Eight questions for early-career product managers, with free reading for each.
+    - identifier: writing
+      name: Writing
+      url: /writing/
+      weight: 30
+      params:
+        blurb: Essays and notes. Nothing here yet.
+    - identifier: games
+      name: Games
+      url: /games/
+      weight: 40
+      params:
+        blurb: The tabletop roleplaying games I design. Nothing here yet.
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: false

@@ -1,0 +1,12 @@
+{{- /* A glossary term in running text. First argument: the key in data/pm/glossary.yaml.
+       Optional second argument: the words to show, when they differ from the term itself.
+       The term is a link to its glossary entry, so it works without script; with script and dialog
+       support, tapping it opens the definition in place. Like every link it is marked by its underline alone
+       (spec C3). The margin is kept for the owner's notes, so a term writes no note of its own. */ -}}
+{{- $key := .Get 0 -}}
+{{- $g := index site.Data.pm.glossary $key -}}
+{{- if not $g }}{{ errorf "pm/term: no glossary entry %q (used in %s)" $key .Page.File.Path }}{{ end -}}
+{{- $text := .Get 1 | default ($g.show | default (lower $g.term)) -}}
+{{- $gl := site.GetPage "/pm/glossary" -}}
+<a class="term" href="{{ with $gl }}{{ .RelPermalink }}{{ end }}#g-{{ $key }}" data-term="{{ $key }}">{{ $text }}</a>
+{{- /**/ -}}

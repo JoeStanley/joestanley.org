@@ -1,0 +1,19 @@
+{{- /* The shared glossary, listed in full. */ -}}
+{{- $p := .p -}}
+<article class="unit glossary" id="glossary" data-unit="glossary">
+  <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
+    <h1>{{ $p.Title }}</h1>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" "glossary" "slot" "top") }}
+  </div></div></header>
+  <div class="frame"><div class="unit-body reading">
+  <div class="prose">{{ with $p.Params.screen_line }}{{ replace $p.Content "</p>" (printf " <span class=\"screen-only\">%s</span></p>" .) 1 | safeHTML }}{{ else }}{{ $p.Content }}{{ end }}</div>
+  <dl class="gloss-list">
+    {{- range $key, $g := site.Data.pm.glossary }}
+    <div id="g-{{ $key }}" data-slot="{{ $key }}">
+      <dt>{{ $g.term }}{{ with $g.also }} <span>({{ . }})</span>{{ end }}</dt>
+      <dd>{{ partial "pm/margin.html" (dict "p" $p "unit" "glossary" "slot" $key) }}{{ $g.text | markdownify }}</dd>
+    </div>
+    {{- end }}
+  </dl>
+</div></div>
+</article>

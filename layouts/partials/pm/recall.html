@@ -1,0 +1,5 @@
+{{- /* One recall question. The answer stays folded until the reader asks for it. */ -}}
+<details class="recall">
+  <summary>{{ .q | .p.RenderString }}</summary>
+  <div class="answer">{{ .a | .p.RenderString }}</div>
+</details>

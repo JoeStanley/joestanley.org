@@ -1,0 +1,40 @@
+{{- /* Start Here: the short introduction and the eight modules in order. */ -}}
+{{- $p := .p -}}{{- $all := .all -}}
+<article class="unit start" id="start" data-unit="start">
+  <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
+    <h1>{{ $p.Title }}</h1>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "top") }}
+    {{ with $p.Params.pilot_note }}<p class="pilot">{{ . }}</p>{{ end }}
+  </div></div></header>
+  <div class="frame"><div class="unit-body reading">
+
+  <div class="prose" data-slot="intro">
+    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "intro") }}
+    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" "start" "html" $p.Content) | safeHTML }}
+  </div>
+
+  <section class="modules-wrap" data-slot="the-eight-modules">
+    <h2>The eight modules</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-eight-modules") }}
+    <p class="hint">In order. Each one is a question.</p>
+    <ol class="modules">
+      {{- range site.Data.pm.modules }}
+      {{- $m := . }}
+      {{- $page := "" }}
+      {{- with .page }}{{ $page = site.GetPage (printf "/pm/%s" .) }}{{ end }}
+      {{- $ids := slice }}
+      {{- with $page }}{{ range .Params.steps }}{{ $ids = $ids | append .id }}{{ end }}{{ end }}
+      <li class="mod{{ if not $page }} is-pending{{ end }}"
+          {{- with $page }} data-map-unit="{{ .File.ContentBaseName }}" data-map-steps="{{ len $ids }}" data-map-ids="{{ delimit $ids " " }}"{{ end }}>
+        <span class="mod-num" aria-hidden="true">{{ .num }}</span>
+        <div class="mod-body">
+          <h3><span class="sr">Module {{ .num }}: </span>{{ with $page }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ $m.title }}</a>{{ else }}{{ $m.title }}{{ end }}</h3>
+          <p class="mod-question">{{ .question }}</p>
+          <p class="mod-status">{{ with $page }}<span data-map-status>Ready</span>{{ else }}Not rebuilt yet{{ end }}</p>
+        </div>
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+</div></div>
+</article>

@@ -1,0 +1,45 @@
+# Margin notes for Module 2, Find the Constraint.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen a note shows in your hand in the margin beside its part. On a phone and in print it sits
+# under the part's heading. Markdown works: *italic*, **bold**, [a link](https://example.org).
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters: ""
+
+# The short path
+short-path: ""
+
+# Short path, step 1: Play the dice game
+step-dice: ""
+
+# Short path, step 2: Tiago Forte, “Theory of Constraints 101”
+step-forte: ""
+
+# Short path, step 3: The Five Focusing Steps
+step-card-steps: ""
+
+# Short path, step 4: Goodhart’s Law
+step-card-goodhart: ""
+
+# The dice game
+dice-game: ""
+
+# Do
+do: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: The Goal, Eliyahu Goldratt and Jeff Cox
+deeper-the-goal: ""
