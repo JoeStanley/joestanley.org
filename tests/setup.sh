@@ -20,6 +20,17 @@ python3 -m pip install --quiet --break-system-packages \
 
 # WebKit and Firefox for rule R8. Chrome itself is used as installed (google-chrome, or CHROME).
 if [ "$(id -u)" = 0 ] || sudo -n true 2>/dev/null; then
+  # On GitHub's machines apt reads from a mirror that is at times slow or out of reach. Fetch what the browsers and
+  # the print rules need first, with a time limit and archive.ubuntu.com to fall back on (tests/apt-fallback.sh), so
+  # the installs below find their packages already fetched. Elsewhere apt is left as it is.
+  . "$(dirname "$0")/apt-fallback.sh"
+  if names_azure; then
+    WANT=$(python3 -m playwright install-deps --dry-run webkit firefox 2>/dev/null \
+      | grep -o -- '--no-install-recommends [^"]*' | sed 's/--no-install-recommends //' | tr '\n' ' ' || true)
+    command -v pdftotext >/dev/null || WANT="$WANT poppler-utils"
+    # shellcheck disable=SC2086  # a list of package names, split on purpose
+    apt_fetch $WANT
+  fi
   python3 -m playwright install --with-deps webkit firefox
 else
   python3 -m playwright install webkit firefox
