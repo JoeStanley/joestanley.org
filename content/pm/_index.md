@@ -2,7 +2,7 @@
 title: PM Syllabus
 description: A self-directed syllabus for early-career product managers. Eight questions, free reading, about 90 minutes each.
 outputs: ["HTML"]
-pilot_note: "Pilot draft. Only Module 2 has been rebuilt so far."
+pilot_note: "Pilot draft. Modules 1 and 2 have been rebuilt so far."
 ---
 
 > You don't become a good ~~Communist~~ *Product Manager* by going to meetings or memorizing the [Manifesto](http://agilemanifesto.org). You do it on the streets. You do it with your fists. The rest is bullshit and you know it.

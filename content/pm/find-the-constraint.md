@@ -6,11 +6,10 @@ question: Where is the work actually stuck, and are we measuring the right thing
 one_thing: Play the dice game below, then count where work is waiting in your own team.
 game: dice
 do_minutes: 35
-last_time_note: In this pilot, See the System is not rebuilt yet, so treat these two as a sample.
 
 last_time:
-  - q: In Donella Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a budget or a target, or changing the system's goal?
-    a: The goal. Meadows puts numbers last of her twelve, because they rarely change how a system behaves. The goal sits third from the top.
+  - q: In Donella Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a price or a standard, or changing the system's goal?
+    a: The goal. Meadows ranks numbers lowest of her twelve, because they rarely change how a system behaves. The goal sits third from the top.
   - q: Richard Cook says a major failure never has one root cause. Why not?
     a: It takes several small faults lining up, each of which looked harmless alone. Naming one cause says more about the need to blame than about how the failure happened.
 
