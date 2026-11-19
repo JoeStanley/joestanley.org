@@ -1790,6 +1790,9 @@ def report():
     lines += ["", "## Notes", ""] + [f"- **{k}** {m}" for k, ms in NOTE.items() for m in ms]
     open(os.path.join(TESTS, "report.md"), "w").write("\n".join(lines) + "\n")
     print("\n".join(lines[:len(rules) + 4]))
+    # The failures go to the log as well as the report, so a failed run on GitHub can be read without its artifact.
+    if FAIL:
+        print("\n".join(lines[len(rules) + 4:lines.index("## Notes")]))
     print(f"\n{failed} rule(s) failing. Details in tests/report.md")
     return failed
 
