@@ -1,0 +1,80 @@
+{{- /* The bottleneck dice game. The rules and numbers live in data/pm/dicegame.yaml.
+       Without JavaScript, and in print, the reader gets the rules, one recorded run and the takeaway. */ -}}
+{{- $d := site.Data.pm.dicegame -}}
+{{- $first := $d.setups.equal -}}
+<section class="game" id="dice-game" data-game data-slot="dice-game">
+  <h2>The dice game</h2>
+  {{- partial "pm/margin.html" (dict "p" .p "unit" .unit "slot" "dice-game") }}
+  <p>Five people pass work down a line, left to right. Each round, everyone rolls a die in turn and passes on that many items, or everything they have if that is fewer. The first person never runs out.</p>
+  <p>A die averages 3.5, so over 20 rounds the averages promise 70 finished items.</p>
+
+  <div class="game-live">
+    <fieldset class="guess">
+      <legend>Before you play, guess. How many will the line finish in 20 rounds?</legend>
+      <label><input type="radio" name="dice-guess" value="more than 70"> More than 70</label>
+      <label><input type="radio" name="dice-guess" value="about 70"> About 70</label>
+      <label><input type="radio" name="dice-guess" value="clearly fewer than 70"> Clearly fewer than 70</label>
+    </fieldset>
+
+    {{- /* The board and its key are hidden from screen readers; the result after each run says where work waited. */}}
+    <div class="board" aria-hidden="true">
+      {{- range seq 5 }}
+      <div class="st">
+        <span class="pile-n"></span>
+        <span class="pile"></span>
+        <span class="die"></span>
+        <span class="st-name">{{ . }}</span>
+        <span class="st-range"></span>
+      </div>
+      {{- end }}
+    </div>
+    <p class="board-key" aria-hidden="true">Yellow bars are items waiting in front of a station. The square is its last roll.</p>
+
+    <p class="tally" aria-live="off">
+      <span>Round <b data-round>0</b> of 20<span class="sr">.</span></span>
+      <span>Finished <b data-finished>0</b><span class="sr">.</span></span>
+      <span>Waiting <b data-waiting>0</b><span class="sr">.</span></span>
+      <span>Averages promise <b data-promise>{{ $first.promise }}</b><span class="sr">.</span></span>
+    </p>
+
+    <div class="controls">
+      <button type="button" class="btn" data-play>Play 20 rounds</button>
+    </div>
+    <p class="result" data-result role="status"></p>
+
+    <div class="setups">
+      <p class="setups-label">Then change the line, one move at a time, and play again.</p>
+      <ol class="setup-list">
+        {{- range $i, $k := slice "equal" "slow3" "fast1" "fast3" }}
+        {{- $s := index $d.setups $k }}
+        <li><button type="button" class="setup" data-setup="{{ $k }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $s.label }}</button></li>
+        {{- end }}
+      </ol>
+      <p class="setup-note" data-setup-note aria-live="polite">{{ $first.note }}</p>
+    </div>
+    <script type="application/json" data-game-setups>{{ $d.setups | jsonify | safeJS }}</script>
+  </div>
+
+  <div class="example">
+    <h3>One recorded run, all stations equal</h3>
+    <table>
+      <thead><tr><th scope="col">Station</th>{{ range seq 5 }}<th scope="col">{{ . }}</th>{{ end }}</tr></thead>
+      <tbody>
+        <tr><th scope="row">Total of its rolls</th>{{ range $d.example.rolled }}<td>{{ . }}</td>{{ end }}</tr>
+        <tr><th scope="row">Actually passed on</th>{{ range $d.example.passed }}<td>{{ . }}</td>{{ end }}</tr>
+        <tr><th scope="row">Waiting in front of it at the end</th>{{ range $d.example.waiting }}<td>{{ . }}</td>{{ end }}</tr>
+      </tbody>
+    </table>
+    <p>The line finished {{ $d.example.finished }} of the 70 the averages promised. Stations 4 and 5 rolled well above average, and it did not help: they had nothing extra to pass on. Simulated 400,000 times, this line finishes {{ $first.average }} on average.</p>
+  </div>
+
+  <div class="takeaway" data-takeaway>
+    <h3>What to take away</h3>
+    <ol>
+      <li>Equal capacity does not deliver the average, because each step can only pass on what has reached it.</li>
+      <li>The pile shows you where the constraint is.</li>
+      <li>Speed added anywhere else becomes a queue, not output.</li>
+    </ol>
+    <p class="credit">The game comes from the Boy Scout hike in <cite>The Goal</cite>, which is on the full path below.</p>
+  </div>
+</section>

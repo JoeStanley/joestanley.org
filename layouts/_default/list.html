@@ -1,0 +1,19 @@
+{{ define "main" }}
+<article class="page">
+  <header class="band page-band">
+    <div class="frame"><div class="page-head reading"><h1>{{ .Title }}</h1></div></div>
+  </header>
+  <div class="frame"><div class="reading">
+    <div class="prose">{{ .Content }}</div>
+    {{ with .RegularPages }}
+    <ul class="entries">
+      {{- range . }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }}<p>{{ . }}</p>{{ end }}</li>
+      {{- end }}
+    </ul>
+    {{ else }}
+    <p class="empty">Nothing here yet. In the meantime, the <a href="{{ "/pm/" | relURL }}">PM Syllabus</a> and the <a href="{{ "/page/readme/" | relURL }}">ReadMe</a> are ready to read.</p>
+    {{ end }}
+  </div></div>
+</article>
+{{ end }}

@@ -1,0 +1,11 @@
+{{- /* Site footer: whose it is and where to find me. The syllabus adds its pilot note and its license (spec L1). */ -}}
+<footer class="site-foot">
+  <div class="frame site-foot-row">
+    <p>{{ site.Copyright }}, Richmond, Virginia.{{ if eq .Section "pm" }}{{ with .FirstSection.Params.pilot_note }} {{ . }}{{ end }}{{ with site.Params.license }} The syllabus's words and figures are yours to share and adapt, with credit, under <a href="{{ .url }}" rel="license">{{ .name }}</a>.{{ end }}{{ end }}</p>
+    <ul class="foot-links">
+      {{- range site.Params.links }}
+      <li><a href="{{ .url }}">{{ .name }}</a></li>
+      {{- end }}
+    </ul>
+  </div>
+</footer>

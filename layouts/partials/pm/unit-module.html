@@ -1,0 +1,146 @@
+{{- /* A module page. Structure comes from the page's front matter, so every module has the same shape:
+       question, last time, why, short path, (game), do, check, go deeper.
+       Elements with class "note" sit in the margin on wide screens and in the flow elsewhere. */ -}}
+{{- $p := .p -}}{{- $all := .all -}}
+{{- $key := $p.File.ContentBaseName -}}
+{{- $m := index (where site.Data.pm.modules "id" $p.Params.module) 0 -}}
+{{- $prev := false -}}
+{{- range site.Data.pm.modules }}{{ if eq (int .num) (sub (int $m.num) 1) }}{{ $prev = . }}{{ end }}{{ end -}}
+{{- $parts := split $p.RawContent "[//]: # (short-path)" -}}
+{{- $readMin := 0 -}}
+{{- range $p.Params.steps }}{{ $readMin = add $readMin .minutes }}{{ end -}}
+{{- $doMin := $p.Params.do_minutes | default 0 -}}
+<article class="unit module" id="{{ $key }}" data-unit="{{ $key }}">
+  <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
+    <p class="kicker"><span class="tag">Module {{ $m.num }}</span></p>
+    <h1>{{ $p.Title | markdownify }}</h1>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
+    <p class="question">{{ $p.Params.question }}</p>
+    <p class="meta">About {{ add $readMin $doMin }} minutes: {{ $readMin }} reading and playing, {{ $doMin }} doing.</p>
+    {{ with $p.Params.one_thing }}<p class="one-thing"><span class="one-thing-label">If you only do one thing<span class="sr">:</span></span> <span class="hl-line"><mark class="hl-v{{ add 1 (mod (int $m.num) 3) }}">{{ . | $p.RenderString }}</mark></span></p>{{ end }}
+  </div></div></header>
+  <div class="frame"><div class="unit-body reading">
+
+  {{ with $p.Params.last_time }}
+  <section class="last-time" data-slot="last-time">
+    <h2>Last time</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "last-time") }}
+    <p class="hint">Two questions on {{ with $prev }}{{ .title }}{{ else }}the module before{{ end }}. Answer in your head, then check.{{ with $p.Params.last_time_note }} {{ . }}{{ end }}</p>
+    {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}
+  </section>
+  {{ end }}
+
+  <section class="why prose">
+    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" ($p.RenderString (dict "display" "block") (index $parts 0))) | safeHTML }}
+  </section>
+
+  <section class="path" data-slot="short-path">
+    <h2>The short path</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "short-path") }}
+    <p class="progress" data-progress hidden></p>
+    <ol class="steps">
+      {{- range $i, $step := $p.Params.steps }}
+      {{- $s := $step }}
+      {{- $card := "" }}
+      {{- with .card }}{{ $card = site.GetPage (printf "/pm/%s" .) }}{{ end }}
+      <li class="step" data-step="{{ $key }}:{{ .id }}" data-slot="step-{{ .id }}">
+        <label class="tick"><input type="checkbox">{{ partial "pm/step-mark.html" (add $i 1) }}<span class="sr">Mark done: {{ with $card }}{{ .Title }}{{ else }}{{ $s.title }}{{ end }}</span></label>
+        <div class="step-body">
+          {{- if $card }}
+          <h3><a href="{{ partial "pm/href.html" (dict "p" $card "all" $all) }}">{{ $card.Title | markdownify }}</a></h3>
+          {{- else if eq .kind "play" }}
+          <h3><a href="#dice-game">{{ .title }}</a></h3>
+          {{- else }}
+          <h3>{{ .title | $p.RenderString }}</h3>
+          {{- end }}
+          <p class="meta-line">{{ .minutes }} minutes. {{ if $card }}One page.{{ else }}{{ .where }}{{ end }}</p>
+          {{- with .links }}
+          <ul class="step-links">
+            {{- range . }}
+            <li><a href="{{ .url }}">{{ .text }}</a></li>
+            {{- end }}
+          </ul>
+          {{- end }}
+          {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "look") }}
+          <div class="source-note">
+            {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "side") }}
+          </div>
+        </div>
+        {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" (printf "step-%s" .id)) }}
+      </li>
+      {{- end }}
+    </ol>
+  </section>
+
+  {{ if eq $p.Params.game "dice" }}{{ partial "pm/dicegame.html" (dict "p" $p "unit" $key) }}{{ end }}
+
+  {{ if gt (len $parts) 1 }}
+  <section class="do prose">
+    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" ($p.RenderString (dict "display" "block") (index $parts 1))) | safeHTML }}
+  </section>
+  {{ end }}
+
+  {{ with $p.Params.check }}
+  <section class="check" data-slot="check">
+    <h2>Check yourself</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "check") }}
+    <p class="hint">Answer in your head, then check.</p>
+    {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}
+  </section>
+  {{ end }}
+
+  {{ with $p.Params.deeper }}
+  <section class="deeper" data-slot="go-deeper">
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "go-deeper") }}
+    <details>
+      <summary><h2>Go deeper: the full path</h2><span class="deeper-hint">Optional, and not counted in the time above.</span></summary>
+      <ul class="deeper-list">
+        {{- range . }}
+        {{- $slot := printf "deeper-%s" (urlize (lower .title)) }}
+        <li data-slot="{{ $slot }}">
+          <h3>{{ with .url }}<a href="{{ . }}">{{ end }}<cite>{{ .title }}</cite>{{ with .url }}</a>{{ end }}{{ with .by }}, {{ . }}{{ end }}</h3>
+          <p class="meta-line">{{ .where }}</p>
+          {{ with .note }}<p class="deeper-note">{{ . | $p.RenderString }}</p>{{ end }}
+          {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "look") }}
+          <div class="source-note">
+            {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "side") }}
+          </div>
+          {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" $slot) }}
+        </li>
+        {{- end }}
+      </ul>
+    </details>
+  </section>
+  {{ end }}
+
+  {{- /* Print only. On screen it is not displayed, so screen readers skip it there; in print it must stay readable, so it reaches the tagged PDF (spec P4). */}}
+  <section class="answers print-only">
+    <h2>Answers</h2>
+    {{ with $p.Params.last_time }}
+    <p class="answers-label">Last time</p>
+    <ol>{{ range . }}<li>{{ .a | $p.RenderString }}</li>{{ end }}</ol>
+    {{ end }}
+    {{ with $p.Params.check }}
+    <p class="answers-label">Check yourself</p>
+    <ol>{{ range . }}<li>{{ .a | $p.RenderString }}</li>{{ end }}</ol>
+    {{ end }}
+  </section>
+
+  {{- /* Print only: on screen each source's reasons fold under it; in print they gather here, at the back (spec S4). */}}
+  <section class="answers sources-back print-only">
+    <h2>Why these sources</h2>
+    {{- range $p.Params.steps }}
+    {{- if or .trust .only }}
+    <p class="answers-label">{{ .title | $p.RenderString }}</p>
+    {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "plain") }}
+    {{- end }}
+    {{- end }}
+    {{- range $p.Params.deeper }}
+    {{- if or .trust .only }}
+    <p class="answers-label"><cite>{{ .title }}</cite>{{ with .by }}, {{ . }}{{ end }}</p>
+    {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "plain") }}
+    {{- end }}
+    {{- end }}
+  </section>
+</div></div>
+</article>

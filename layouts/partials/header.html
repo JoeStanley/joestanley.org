@@ -1,0 +1,17 @@
+{{- /* Site header: the name, then the four sections. The section you are in is marked. */ -}}
+{{- $page := . -}}
+{{- $here := "" -}}
+{{- with .Section }}{{ $here = . }}{{ end -}}
+{{- if eq .RelPermalink "/page/readme/" }}{{ $here = "readme" }}{{ end -}}
+<header class="masthead">
+  <div class="frame masthead-row">
+    <a class="site-name" href="{{ "/" | relURL }}"{{ if .IsHome }} aria-current="page"{{ end }}>{{ site.Title }}</a>
+    {{ if eq .Layout "all" }}{{ partial "pm/all-nav.html" . }}{{ else }}
+    <nav class="site-nav" aria-label="Sections">
+      {{- range site.Menus.main }}
+      <a href="{{ .URL | relURL }}"{{ if eq .Identifier $here }} aria-current="{{ if eq $page.RelPermalink .URL }}page{{ else }}true{{ end }}"{{ end }}>{{ .Name }}</a>
+      {{- end }}
+    </nav>
+    {{ end }}
+  </div>
+</header>

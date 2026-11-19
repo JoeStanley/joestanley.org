@@ -1,0 +1,10 @@
+{{- /* The owner's margin note for one part of a unit (spec M1 to M4). Notes live in data/pm/margin/<unit>.yaml,
+       one slot per part, in reading order; an empty slot prints nothing. The part itself carries data-slot,
+       so the checks and tools-pm/margin-slots.py can list every slot. Call with p (the page), unit and slot.
+       Wide screens: in the owner's hand, in the margin beside the part. Phones and print: under the part's
+       heading, in the typeset face, with a pen line at its left. */ -}}
+{{- $notes := dict -}}
+{{- with site.Data.pm.margin }}{{ with index . $.unit }}{{ $notes = . }}{{ end }}{{ end -}}
+{{- with index $notes .slot -}}
+<aside class="note" data-note="{{ $.slot }}"><span class="sr">Note: </span>{{ . | $.p.RenderString }}</aside>
+{{- end -}}

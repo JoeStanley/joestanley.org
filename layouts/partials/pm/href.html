@@ -1,0 +1,7 @@
+{{- /* Link to another unit. On the separate pages this is the page address;
+       in the single document it is an in-page anchor. */ -}}
+{{- $href := .p.RelPermalink -}}
+{{- if .all -}}
+  {{- $href = printf "#%s" (cond (eq .p .p.FirstSection) "start" .p.File.ContentBaseName) -}}
+{{- end -}}
+{{- return $href -}}

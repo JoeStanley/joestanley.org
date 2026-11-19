@@ -1,0 +1,11 @@
+{{ define "main" }}
+<article class="page">
+  <header class="band page-band">
+    <div class="frame"><div class="page-head reading">
+      <h1>{{ .Title }}</h1>
+      {{ with .Params.lede }}<p class="lede">{{ . }}</p>{{ end }}
+    </div></div>
+  </header>
+  <div class="frame"><div class="reading prose">{{ .Content }}</div></div>
+</article>
+{{ end }}

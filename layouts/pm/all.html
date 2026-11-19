@@ -1,0 +1,22 @@
+{{- /* The whole syllabus in one document: the PDF is printed from it, and it is the single-file preview.
+       It stands on its own (spec P5): a glossary term links to its entry further down this document, not to the
+       glossary page, so the PDF jumps within itself. Unit links do the same through partials/pm/href.html. */ -}}
+{{ define "main" }}
+{{- $home := .FirstSection -}}
+{{- $gl := site.GetPage "/pm/glossary" -}}
+{{- $from := printf "href=\"%s#g-" $gl.RelPermalink -}}
+{{- $units := slice (partial "pm/unit-start.html" (dict "p" $home "all" true)) -}}
+{{- range site.Data.pm.modules }}
+  {{- with .page }}{{ with site.GetPage (printf "/pm/%s" .) }}
+    {{- $m := . }}
+    {{- $units = $units | append (partial "pm/unit-module.html" (dict "p" . "all" true)) }}
+    {{- range where (where $home.RegularPagesRecursive "Layout" "card") "Params.module" $m.Params.module }}
+    {{- $units = $units | append (partial "pm/unit-card.html" (dict "p" . "all" true)) }}
+    {{- end }}
+  {{- end }}{{ end }}
+{{- end }}
+{{- with $gl }}{{ $units = $units | append (partial "pm/unit-glossary.html" (dict "p" . "all" true)) }}{{ end }}
+{{- range $units }}
+{{ replace (string .) $from "href=\"#g-" | safeHTML }}
+{{- end }}
+{{ end }}

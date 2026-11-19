@@ -1,0 +1,11 @@
+{{- /* One dialog per glossary term, written once per page. A glossary term in the text opens its dialog.
+       The dialog is modal: it is named by the term, the definition is its description, focus stays inside
+       until it closes, and closing returns focus to the term. Without dialog support the term is a plain
+       link to the glossary entry. */ -}}
+{{- range $key, $g := site.Data.pm.glossary }}
+<dialog class="gloss" id="term-{{ $key }}" aria-labelledby="term-{{ $key }}-name" aria-describedby="term-{{ $key }}-text">
+  <p class="gloss-term" id="term-{{ $key }}-name">{{ $g.term }}{{ with $g.also }} <span>({{ . }})</span>{{ end }}</p>
+  <p id="term-{{ $key }}-text">{{ $g.text | markdownify }}</p>
+  <form method="dialog"><button class="btn quiet">Close</button></form>
+</dialog>
+{{- end }}

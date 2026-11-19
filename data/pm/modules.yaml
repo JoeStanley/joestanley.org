@@ -1,0 +1,43 @@
+# The eight modules, in reading order. One entry per stop on the map.
+# "page" is the content file under content/pm/ once the module is rebuilt.
+- id: own-your-role
+  num: 0
+  title: Own Your Role
+  question: How do you grow your role beyond what you were handed, and bring what you already know to bear on it?
+  color: "#7A4CC2"
+- id: see-the-system
+  num: 1
+  title: See the System
+  question: What is the system here, and why does it behave this way?
+  color: "#1B6FB8"
+- id: find-the-constraint
+  num: 2
+  title: Find the Constraint
+  question: Where is the work actually stuck, and are we measuring the right thing?
+  color: "#D43D2A"
+  page: find-the-constraint
+- id: mind-the-seams
+  num: 3
+  title: Mind the Seams
+  question: How does the way we are organized shape what we build, and who decides?
+  color: "#0F8A5F"
+- id: design-for-change
+  num: 4
+  title: Design for Change
+  question: What will change, how fast, and what should be easy to change?
+  color: "#B97A00"
+- id: know-your-materials
+  num: 5
+  title: Know Your Materials
+  question: What do engineers mean by complexity and quality, and where do data systems get hard?
+  color: "#7C5A3A"
+- id: decide-and-set-direction
+  num: 6
+  title: Decide and Set Direction
+  question: Which decisions matter, what are the trade-offs, and what are we choosing not to do?
+  color: "#C22F7A"
+- id: notice-and-communicate
+  num: 7
+  title: Notice and Communicate
+  question: How do we find out we are wrong, and how do we tell it so others can decide?
+  color: "#0B8793"
