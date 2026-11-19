@@ -152,11 +152,16 @@
 .plate-caption { margin: var(--sp-3) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
 .fig { display: block; width: 100%; max-width: 30rem; height: auto; margin: 0 auto; font-family: var(--ui); }
 .fig-pipe { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
+/* Pictures may use colors of their own where the subject calls for one (spec C7). Each is named here, with a value
+   for dark screens, so the family can be read in one place: soft, and no louder than the highlighter. */
+:root { --fig-water: #a6c8e0; }
+@media screen and (prefers-color-scheme: dark) { :root { --fig-water: #33607f; } }
 /* Figures mark the key moment in the highlighter yellow, the meaning it has in the text. It is always labeled in
    the picture, so the yellow is never the only cue. */
 .fig-mark { fill: var(--mark); }
 @media screen and (prefers-color-scheme: dark) { .fig-mark { fill: #a08a2a; } }
 .fig-ink { fill: var(--ink); }
+.fig-water { fill: var(--fig-water); }
 .fig-label { font-weight: 700; font-size: 11.5px; fill: var(--ink); }
 .fig-note { font-weight: 400; font-size: 11px; fill: var(--muted); }
 .fig-line { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; fill: none; }

@@ -10,6 +10,7 @@
   title: See the System
   question: What is the system here, and why does it behave this way?
   color: "#1B6FB8"
+  page: see-the-system
 - id: find-the-constraint
   num: 2
   title: Find the Constraint

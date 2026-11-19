@@ -23,8 +23,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
+      - name: Test the package-mirror fallback that setup relies on
+        run: bash tests/test_apt_fallback.sh
       - name: Install what the checks need
-        run: bash tests/setup.sh | tail -n 1 | sed 's/^export //' | tr ' ' '\n' >> "$GITHUB_ENV"
+        # setup.sh ends by printing the HUGO and CHROME lines. With pipefail, a setup that fails stops the run here
+        # and shows why, where before its last line of output was read as those settings.
+        run: |
+          set -o pipefail
+          bash tests/setup.sh | tee "$RUNNER_TEMP/setup.out"
+          tail -n 1 "$RUNNER_TEMP/setup.out" | sed 's/^export //' | tr ' ' '\n' >> "$GITHUB_ENV"
       - name: Check the site against tests/SPEC.md
         run: python3 tests/check_site.py --skip V1
       - name: Keep the report

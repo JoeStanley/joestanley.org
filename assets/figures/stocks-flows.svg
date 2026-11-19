@@ -1,0 +1,31 @@
+<svg class="fig" viewBox="0 0 360 236" role="img" aria-labelledby="fig-stock-title fig-stock-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-stock-title">A bathtub with a tap and a drain, and an arrow from the water level back to the tap.</title>
+  <desc id="fig-stock-desc">Water runs from a tap into a tub, which is the inflow. The water standing in the tub is the stock. Water leaves through a drain, which is the outflow. A dotted arrow runs from the water level back to the tap. It is feedback: it carries information, not water, and the level changes the flow.</desc>
+
+  <!-- the tub and the water in it -->
+  <path class="fig-pipe" d="M96,98 L104,98 L104,180 Q104,190 114,190 L262,190 Q272,190 272,180 L272,98 L280,98"/>
+  <path class="fig-water" d="M105,130 C132,126 160,133 188,129 C216,125 244,132 271,129 L271,180 Q271,189 262,189 L114,189 Q105,189 105,180 Z"/>
+  <path class="fig-axis" d="M105,130 C132,126 160,133 188,129 C216,125 244,132 271,129"/>
+
+  <!-- the tap and the drain -->
+  <path class="fig-line" d="M22,58 L120,58 Q132,58 132,70 L132,76"/>
+  <path class="fig-line" d="M84,58 L84,44 M73,44 L95,44"/>
+  <path class="fig-line" d="M236,191 L236,198"/>
+  <g class="fig-ink">
+    <circle cx="132" cy="89" r="4"/><circle cx="132" cy="103" r="4"/><circle cx="132" cy="117" r="4"/>
+    <circle cx="236" cy="209" r="4"/><circle cx="236" cy="223" r="4"/>
+  </g>
+
+  <!-- feedback: from the level back to the tap -->
+  <path class="fig-return" d="M279,128 C338,122 346,30 250,20 C190,14 126,12 97,32.5"/>
+  <path class="fig-arrow" d="M88,39 L100.4,37.5 L93.4,27.7 Z"/>
+
+  <text class="fig-label" x="22" y="78">Inflow</text>
+  <text class="fig-note" x="22" y="92">fills it</text>
+  <text class="fig-label" x="88" y="150" text-anchor="end">Stock</text>
+  <text class="fig-note" x="88" y="164" text-anchor="end">the level</text>
+  <text class="fig-label" x="250" y="213">Outflow</text>
+  <text class="fig-note" x="250" y="227">drains it</text>
+  <text class="fig-label" x="214" y="54" text-anchor="middle">Feedback</text>
+  <text class="fig-note" x="214" y="68" text-anchor="middle">information, not water</text>
+</svg>

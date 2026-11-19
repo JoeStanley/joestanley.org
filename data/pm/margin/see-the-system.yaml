@@ -1,0 +1,42 @@
+# Margin notes for Module 1, See the System.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen a note shows in your hand in the margin beside its part. On a phone and in print it sits
+# under the part's heading. Markdown works for **bold** and [a link](https://example.org).
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters: ""
+
+# The short path
+short-path: ""
+
+# Short path, step 1: Stocks, Flows and Feedback
+step-card-stocks: ""
+
+# Short path, step 2: Donella Meadows, “Leverage Points”, first half
+step-meadows-1: ""
+
+# Short path, step 3: Donella Meadows, “Leverage Points”, second half
+step-meadows-2: ""
+
+# Short path, step 4: Richard Cook, “How Complex Systems Fail”
+step-cook: ""
+
+# Do
+do: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: Thinking in Systems, Donella Meadows, edited by Diana Wright
+deeper-thinking-in-systems: ""
