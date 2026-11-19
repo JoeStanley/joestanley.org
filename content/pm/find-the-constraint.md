@@ -23,7 +23,7 @@ steps:
   - id: forte
     kind: read
     title: Tiago Forte, "Theory of Constraints 101"
-    minutes: 15
+    minutes: 13
     where: Three short posts. Free at fortelabs.com.
     links:
       - text: "101: Applying the Principles of Flow to Knowledge Work"
@@ -38,12 +38,12 @@ steps:
   - id: card-steps
     kind: card
     card: cards/five-focusing-steps
-    minutes: 5
+    minutes: 2
     look: The order. Steps 2 and 3 cost little, and they come before any spending.
   - id: card-goodhart
     kind: card
     card: cards/goodharts-law
-    minutes: 5
+    minutes: 2
     look: What a target on one step does to that step's number, and to the whole flow.
 
 check:

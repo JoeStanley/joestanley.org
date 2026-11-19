@@ -4,6 +4,7 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 ## 19 November 2026
 
+- Module 1, See the System, looks good.
 - Before the site goes live, the only thing that should wait for him is a merge that is costly to undo or irreversible.
 - The color lock is lifted for the pictures: holding them to the site's few colors may be too constraining. A picture's colors must stay consistent with the family.
 - The Five Focusing Steps picture keeps "Repeat" for step 5 and loses its dotted arrow back to step 1: the arrow was confusing and redundant, and "Repeat" is sufficient.
