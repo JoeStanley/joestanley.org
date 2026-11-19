@@ -4,7 +4,7 @@ layout: card
 module: find-the-constraint
 weight: 10
 figure: five-steps
-figure_caption: Work piles up in front of the narrowest point. The five steps deal with that point first, then start again.
+figure_caption: Work piles up in front of the narrowest point. The five steps deal with that point first, then repeat.
 question: If this step did twice as much tomorrow, would customers get anything sooner?
 deeper:
   title: The Five Focusing Steps
@@ -23,7 +23,7 @@ Every system has one part that limits what the whole can deliver: its {{< pm/ter
 2. **Exploit** it: get the most from it as it is.
 3. **Subordinate** everything else to that decision.
 4. **Elevate** it: invest to raise its capacity.
-5. **Start again** once the constraint has moved, and do not let old habits become the new constraint.
+5. **Repeat** from step 1 once the constraint has moved, and do not let old habits become the new constraint.
 
 ## Why a PM cares
 
