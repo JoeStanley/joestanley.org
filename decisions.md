@@ -4,6 +4,7 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 ## 19 November 2026
 
+- The color lock is lifted for the pictures: holding them to the site's few colors may be too constraining. A picture's colors must stay consistent with the family.
 - The water in the Stocks, Flows and Feedback picture is not yellow: yellow liquid in a bathroom reads as urine.
 
 ## 18 November 2026

@@ -292,6 +292,26 @@ def check_static():
         if re.search(r"site\.Params\.(look|direction|marks)\b", open(path, encoding="utf-8").read()):
             fail("V2", f"{os.path.relpath(path, ROOT)} reads a look, direction or hand setting")
 
+    # C7: picture colors are named in pm.css, each with a value for dark screens, and no picture file sets a color itself
+    checked("C7")
+    pm_css = re.sub(r"/\*.*?\*/", "", open(os.path.join(css_dir, "pm.css"), encoding="utf-8").read(), flags=re.S)
+    fig_dark = set()
+    for m in re.finditer(r"@media[^{]*prefers-color-scheme:\s*dark[^{]*\{\s*:root\s*\{([^}]*)\}", pm_css):
+        fig_dark.update(re.findall(r"(--fig-[\w-]+)\s*:", m.group(1)))
+    fig_light = set()
+    for m in re.finditer(r":root\s*\{([^}]*)\}", re.sub(r"@media[^{]*\{(?:[^{}]*\{[^}]*\})*[^}]*\}", "", pm_css)):
+        fig_light.update(re.findall(r"(--fig-[\w-]+)\s*:", m.group(1)))
+    for tok in sorted(set(re.findall(r"var\((--fig-[\w-]+)\)", pm_css)) | fig_light | fig_dark):
+        if tok not in fig_light:
+            fail("C7", f"pm.css uses {tok} but does not name its value")
+        if tok not in fig_dark:
+            fail("C7", f"pm.css gives {tok} no value for dark screens")
+    for path in sorted(glob.glob(os.path.join(ROOT, "assets", "figures", "*.svg"))):
+        svg = open(path, encoding="utf-8").read()
+        own = re.findall(r"\s(?:fill|stroke|style|color|stop-color)\s*=", svg) + re.findall(r"#[0-9a-fA-F]{3,8}\b|\brgba?\(|\bhsla?\(", re.sub(r"<(title|desc)\b.*?</\1>", "", svg, flags=re.S))
+        if own:
+            fail("C7", f"{os.path.relpath(path, ROOT)} sets a color itself ({own[0].strip()}); name it in pm.css and use a class")
+
     # T3: no em dashes
     for pattern in ["content/**/*", "layouts/**/*", "assets/**/*.css", "assets/**/*.js", "data/**/*", "hugo.yaml", "tests/SPEC.md", "README*.md"]:
         for path in glob.glob(os.path.join(ROOT, pattern), recursive=True):
