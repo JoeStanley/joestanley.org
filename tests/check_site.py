@@ -768,6 +768,12 @@ def circle_checks(ctx, base):
             if media == "print":
                 pg.emulate_media(media="print", color_scheme=scheme); pg.add_style_tag(content=pad_print)
             pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(200)
+            if sel == ".st-name":
+                # A station's number is text in a drawn disc. A browser puts text on whole pixels, so how the number sits
+                # depends on where the page above happens to end: one more line of small text moves the disc half a pixel.
+                # Measure with the discs on the pixel grid, so the rule judges the design and not the page's length (spec R6).
+                pg.evaluate("""(s) => { const f = (document.querySelector(s).getBoundingClientRect().top + scrollY) % 1;
+                    if (f) document.querySelector('main').style.paddingTop = (1 - f) + 'px'; }""", sel)
             rects = pg.evaluate("(s) => [...document.querySelectorAll(s)].map(e => { const r = e.getBoundingClientRect(); return [r.left + scrollX, r.top + scrollY, r.width, r.height]; })", sel)
             for i, (x, y, w, h) in enumerate(rects, start=1):
                 where = f"{media} {scheme} {path} {sel} {i}"
