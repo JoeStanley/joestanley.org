@@ -1,6 +1,6 @@
-<svg class="fig" viewBox="0 0 360 240" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-five-title">A pipe with a narrow neck, and the five focusing steps as a loop.</title>
-  <desc id="fig-five-desc">Work items crowd in front of the narrow part of a pipe, which is the constraint, and only a few get through. Below, five numbered steps run left to right: identify, exploit, subordinate, elevate, repeat. An arrow returns from step five to step one.</desc>
+<svg class="fig" viewBox="0 0 360 194" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-five-title">A pipe with a narrow neck, and the five focusing steps in a row.</title>
+  <desc id="fig-five-desc">Work items crowd in front of the narrow part of a pipe, which is the constraint, and only a few get through. Below, five numbered steps run left to right: identify, exploit, subordinate, elevate, repeat.</desc>
 
   <!-- the pipe -->
   <rect class="fig-mark" x="168" y="34" width="34" height="56"/>
@@ -19,8 +19,6 @@
 
   <!-- the five steps -->
   <path class="fig-line" d="M36,148 L324,148"/>
-  <path class="fig-return" d="M324,192 C324,224 36,224 36,192"/>
-  <path class="fig-arrow" d="M30,200 L36,189 L42,200 Z"/>
   <g class="fig-stops">
     <circle cx="36" cy="148" r="14"/><circle cx="108" cy="148" r="14"/><circle cx="180" cy="148" r="14"/><circle cx="252" cy="148" r="14"/><circle cx="324" cy="148" r="14"/>
   </g>
@@ -30,5 +28,4 @@
   <g class="fig-label" text-anchor="middle">
     <text x="36" y="181">Identify</text><text x="108" y="181">Exploit</text><text x="180" y="181">Subordinate</text><text x="252" y="181">Elevate</text><text x="324" y="181">Repeat</text>
   </g>
-  <text class="fig-note" x="180" y="235" text-anchor="middle">then back to step 1</text>
 </svg>

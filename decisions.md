@@ -2,6 +2,10 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 19 November 2026
+
+- The Five Focusing Steps picture keeps "Repeat" for step 5 and loses its dotted arrow back to step 1: the arrow was confusing and redundant, and "Repeat" is sufficient.
+
 ## 18 November 2026
 
 - The look is locked as round 9 drew it: one orange ink on white; Newsreader for reading, Libre Franklin for titles and headings, Public Sans for labels, Shantell Sans for his margin notes; the blended highlighter and the felt-pen step circles. A change to it needs his approval and a new V1 baseline.
