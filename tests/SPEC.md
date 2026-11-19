@@ -84,7 +84,7 @@ The look was locked on 18 November 2026, from round 9: one orange ink on white, 
 
 ## Print
 
-- **P1 auto.** The pilot prints on 7 Letter pages: Start, three module pages, one page per concept card, and the glossary.
+- **P1 auto.** Each unit prints on its own Letter pages and keeps to its share: Start on one page, a module on no more than three, a concept card on one, and the glossary on one. What is rebuilt so far (Start, Modules 1 and 2, their three cards and the glossary) prints on 11 pages; the whole syllabus aims at about 50.
 - **P2 auto.** Each concept card starts on a new page and fits on one page.
 - **P3 auto.** Print is always light, has no header or footer, and shows every answer.
 - **P4 auto.** The PDF that `tools-pm/make-pdf.py` makes is tagged for screen readers: headings, lists and tables are marked, the language is declared, every figure has a text alternative, nothing that prints is hidden from assistive technology, so every printed word reaches the tags, and it is bookmarked as P6 sets out. P1, P2, P5 and P6 check this same file.

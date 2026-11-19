@@ -2,7 +2,7 @@
 title: PM Syllabus
 description: A self-directed syllabus for early-career product managers. Eight questions, free reading, about 90 minutes each.
 outputs: ["HTML"]
-pilot_note: "Pilot draft. Only Module 2 has been rebuilt so far."
+pilot_note: "Pilot draft. Modules 1 and 2 have been rebuilt so far."
 ---
 
 This syllabus is for you to work through on your own, at your own pace. Nobody runs it for you and nobody checks your work. It complements what you learn on the job. It gives you the principles behind the work, drawn mostly from other fields, so you can reason about situations nobody has shown you yet.

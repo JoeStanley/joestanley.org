@@ -19,10 +19,16 @@ from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TESTS = os.path.join(ROOT, "tests")
-PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/", "/pm/find-the-constraint/",
-         "/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/", "/pm/glossary/", "/pm/all/"]
+# The rebuilt modules, each with its concept cards, in reading order. Add a module here when it is rebuilt.
+MODULES = [("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
+           ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"])]
+UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
+PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
-PILOT_PAGES = 7
+# P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
+# Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
+UNIT_SHARE = {"start": 1, "module": 3, "card": 1, "glossary": 1}
+PRINT_PAGES = 11
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -141,7 +147,7 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
             hidden: !!n.closest('[aria-hidden="true"]'), lead: (n.firstElementChild && n.firstElementChild.matches('.sr')) ? n.firstElementChild.textContent : '',
             after: prev ? prev.tagName : 'FIRST', before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : ''}; }); }"""
 
-NOTE_PAGES = ["/pm/", "/pm/find-the-constraint/", "/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/", "/pm/glossary/"]
+NOTE_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/"]
 
 
 def margin_checks(ctx, fix_base, axe_src):
@@ -718,15 +724,15 @@ def circle_checks(ctx, base):
     S = 4
     pad_print = "@media print { body { padding-left: 24px !important; } }"  # the page margin, so the ring is not cut off
     # Short-path step circles: numeral, centring, and line-up with the step's title
-    for media, w, scheme in (("screen", 390, "light"), ("screen", 1280, "light"), ("screen", 1280, "dark"), ("print", 662, "light")):
+    for module, (media, w, scheme) in [(m, v) for m, _ in MODULES for v in (("screen", 390, "light"), ("screen", 1280, "light"), ("screen", 1280, "dark"), ("print", 662, "light"))]:
         c = ctx(viewport={"width": w, "height": 900}, device_scale_factor=S, color_scheme=scheme); pg = c.new_page()
-        pg.goto(base + "/pm/find-the-constraint/")
+        pg.goto(base + module)
         if media == "print":
             pg.emulate_media(media="print", color_scheme=scheme); pg.add_style_tag(content=pad_print)
         pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(200)
         paper = _lum(tuple(int(v) for v in re.findall(r"\d+", pg.evaluate("getComputedStyle(document.body).backgroundColor"))[:3])) if media == "screen" else 255
         for bx in pg.evaluate(JS_STEP_BOXES):
-            where = f"{media} {w}px {scheme}, step '{bx['name']}'"
+            where = f"{module} {media} {w}px {scheme}, step '{bx['name']}'"
             mx, my, mw, mh = bx["m"]; tx, ty, tw, th = bx["t"]; pad = 6
             x0, y0 = mx - pad, min(my, ty) - pad
             im = _shot(pg, x0, y0, (tx + tw) - x0 + 2, max(my + mh, ty + th) - y0 + pad, S); px = im.load()
@@ -1038,7 +1044,7 @@ def sources_checks(ctx, base):
     checked("S4")
     for w in (390, 1280):
         c = ctx(viewport={"width": w, "height": 900}); pg = c.new_page()
-        for path in ("/pm/find-the-constraint/", "/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"):
+        for path in UNIT_PAGES:
             pg.goto(base + path)
             r = pg.evaluate(JS_SOURCES)
             if r["loose"]:
@@ -1184,6 +1190,42 @@ def _expected_outline(out_dir):
         tree.append((u["label"], u["probe"], kids))
     orphans = [c["label"] for c in units if c["kind"] == "card" and not any(m["id"] == c["module"] and m["kind"] == "module" for m in units)]
     return tree, orphans
+
+
+def unit_page_checks(pdf_path, n_pages):
+    """P1: each unit starts on a page of its own and prints on no more pages than its share.
+    Where each unit starts is read from the PDF's bookmarks, which P6 checks against the document."""
+    import pikepdf
+    with pikepdf.open(pdf_path) as pdf:
+        page_index = {p.objgen: i for i, p in enumerate(pdf.pages)}
+        names = {str(k).lstrip("/"): v for k, v in pdf.Root.Dests.items()} if "/Dests" in pdf.Root else {}
+
+        def first_page(item):
+            d = item.destination if item.destination is not None else (item.action.get("/D") if item.action is not None else None)
+            if isinstance(d, (pikepdf.Name, pikepdf.String)):
+                d = names.get(str(d).lstrip("/"))
+            if isinstance(d, pikepdf.Dictionary) and "/D" in d:
+                d = d.D
+            try:
+                return page_index.get(d[0].objgen)
+            except Exception:
+                return None
+
+        units = []
+        with pdf.open_outline() as ol:
+            for top in ol.root:
+                kind = "start" if top.title.startswith("Start:") else "module" if top.title.startswith("Module ") else "glossary"
+                units.append((first_page(top), kind, top.title))
+                units += [(first_page(k), "card", k.title) for k in top.children if k.title.startswith("Card: ")]
+    if any(pg is None for pg, _, _ in units):
+        fail("P1", "a unit's bookmark does not land on a page, so its pages cannot be counted"); return
+    units.sort(key=lambda u: u[0])
+    for (pg, kind, title), nxt in zip(units, units[1:] + [(n_pages, "", "")]):
+        n = nxt[0] - pg
+        if n < 1:
+            fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
+        elif n > UNIT_SHARE[kind]:
+            fail("P1", f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}")
 
 
 def pdf_link_meta_checks(pdf_path, out_dir):
@@ -1334,19 +1376,20 @@ def variant_checks(ctx, base):
     """H1: the marks come in variants, and neighbours differ."""
     checked("H1")
     c = ctx(viewport={"width": 1280, "height": 900}); pg = c.new_page()
-    pg.goto(base + "/pm/find-the-constraint/")
-    rings = pg.evaluate("() => [...document.querySelectorAll('.steps .tick-ring')].map(r => r.getAttribute('d'))")
-    if len(set(rings)) < min(3, len(rings)):
-        fail("H1", f"the short path's {len(rings)} circles use {len(set(rings))} drawings, expected {min(3, len(rings))}")
-    for i, (a, b) in enumerate(zip(rings, rings[1:])):
-        if a == b:
-            fail("H1", f"steps {i + 1} and {i + 2} share one circle")
-    strokes = []
-    for path, sel in (("/pm/find-the-constraint/", ".one-thing mark"), ("/pm/cards/five-focusing-steps/", ".carry mark"), ("/pm/cards/goodharts-law/", ".carry mark")):
-        pg.goto(base + path)
-        strokes.append(pg.evaluate("s => getComputedStyle(document.querySelector(s)).backgroundImage", sel))
-    if len(set(strokes)) < 2:
-        fail("H1", "every highlighted line in the module and its cards uses one stroke")
+    for module, cards in MODULES:
+        pg.goto(base + module)
+        rings = pg.evaluate("() => [...document.querySelectorAll('.steps .tick-ring')].map(r => r.getAttribute('d'))")
+        if len(set(rings)) < min(3, len(rings)):
+            fail("H1", f"{module}: the short path's {len(rings)} circles use {len(set(rings))} drawings, expected {min(3, len(rings))}")
+        for i, (a, b) in enumerate(zip(rings, rings[1:])):
+            if a == b:
+                fail("H1", f"{module}: steps {i + 1} and {i + 2} share one circle")
+        strokes = []
+        for path, sel in [(module, ".one-thing mark")] + [(c_, ".carry mark") for c_ in cards]:
+            pg.goto(base + path)
+            strokes.append(pg.evaluate("s => getComputedStyle(document.querySelector(s)).backgroundImage", sel))
+        if len(set(strokes)) < 2:
+            fail("H1", f"{module}: every highlighted line in the module and its cards uses one stroke")
     variants = pg.evaluate("""() => { const m = document.querySelector('.carry mark'); const out = new Set();
       for (const v of ['hl-v1', 'hl-v2', 'hl-v3']) { m.className = v; out.add(getComputedStyle(m).backgroundImage); } return out.size; }""")
     if variants < 3:
@@ -1669,8 +1712,12 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
 
         pages = subprocess.run(["pdftotext", "-layout", pdf, "-"], capture_output=True, text=True).stdout.split("\f")
         pages = [p for p in pages if p.strip()]
-        if len(pages) != PILOT_PAGES:
-            fail("P1", f"pilot prints on {len(pages)} pages, expected {PILOT_PAGES}")
+        if len(pages) != PRINT_PAGES:
+            fail("P1", f"the syllabus prints on {len(pages)} pages, expected {PRINT_PAGES}")
+        try:
+            unit_page_checks(pdf, len(pages))
+        except Exception as e:  # a broken PDF must fail its rule, not stop the suite
+            fail("P1", f"PDF check could not finish: {str(e).splitlines()[0][:160]}")
         for i, text in enumerate(pages):
             if "Concept card for" in text and "Go deeper" not in text:
                 fail("P2", f"the concept card on PDF page {i + 1} runs onto the next page")
