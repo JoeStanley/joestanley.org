@@ -1,14 +1,24 @@
 # joestanley.org: standing instructions
 
-Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title is On Product Judgment), Writing and Games. Built with Hugo 0.141.0 extended and a small theme kept in this repo. Joe owns it; Claude does the work in Claude Code sessions. Joe's decisions are in `decisions.md`, newest first. Read it, and `tests/SPEC.md`, before changing anything.
+Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title is On Product Judgment), Writing and Games. Built with Hugo 0.141.0 extended and a small theme kept in this repo. Joe owns it; Claude does the work in Claude Code sessions. Joe's decisions are in `decisions.md`, newest first. What comes next, and where the work stands, is in `PLAN.md`. Read both, and `tests/SPEC.md`, before changing anything. A session needs nothing from Joe to start: what he has to say is already on the Decisions page, in the working doc or in his first message.
 
 ## Start of every session
 
 1. `bash tests/setup.sh`, then export the `HUGO` and `CHROME` values it prints on its last line.
-2. Read `decisions.md` and `tests/SPEC.md`. Before you touch the syllabus's words, read `VOICE.md` too.
-3. Work on a branch named `claude/<short-topic>`, from an up-to-date `main`.
-4. If the work is on the syllabus, read the working doc first (see "The working doc" below). Joe's comments and edits there are the brief.
-5. Look at the open pull requests from earlier sessions. If one has a failed check, fix it on its own branch before new work, and turn auto-merge back on if it is off.
+2. Read `decisions.md`, `PLAN.md` and `tests/SPEC.md`. Before you touch the syllabus's words, read `VOICE.md` too.
+3. Gather what Joe has left since the last session: his answers on the Decisions page (cards whose `status` is `answered`), his comments and edits in the working doc (see "The working doc" below), and the cards listed in `PLAN.md` under "To put to Joe".
+4. Look at the open pull requests from earlier sessions. If one has a failed check, fix it on its own branch before new work, and turn auto-merge back on if it is off.
+5. Take the job. If Joe's first message names one, that is the job. Otherwise take the first job in `PLAN.md` that is ready and that no open pull request already covers. Answers he has left are carried in first, whatever the job.
+6. Work on a branch named `claude/<short-topic>`, from an up-to-date `main`.
+
+## End of every session
+
+1. Record each answer from the Decisions page in `decisions.md`, then mark its card recorded (see "Decisions" below).
+2. Put every decision you need from Joe on the Decisions page as a card, not in chat and not in the doc.
+3. Bring `PLAN.md` up to date: "Where it stands", what this session did to its job, new jobs where they belong, and his input not yet carried out.
+4. Put changed tabs back in the working doc and answer his comments ("The working doc", steps 3 to 5).
+5. One pull request, by auto-merge, then stop ("Pull requests and merging").
+6. The last message: a line or two on what changed, then what waits on Joe, each with its link. Nothing else.
 
 ## How a change is made
 
@@ -25,7 +35,7 @@ Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title 
 ## Pull requests and merging
 
 - One pull request per piece of work, into `main`. The title says what changes for a reader.
-- **Merge your own pull request into `main` by auto-merge, then stop** (Joe's decision, 20 November 2026). Open the pull request, turn on auto-merge with a merge commit, and end the turn without watching it. GitHub merges it once the `checks` workflow passes, so nothing wakes the session again. A session left waiting is woken by every CI event and re-reads its whole context each time. If a check fails, the next session fixes it (step 5 above).
+- **Merge your own pull request into `main` by auto-merge, then stop** (Joe's decision, 20 November 2026). Open the pull request, turn on auto-merge with a merge commit, and end the turn without watching it. GitHub merges it once the `checks` workflow passes, so nothing wakes the session again. A session left waiting is woken by every CI event and re-reads its whole context each time. If a check fails, the next session fixes it ("Start of every session", step 4).
 - **If GitHub refuses auto-merge** (the setting is off, or `checks` is not a required check), watch the pull request instead and merge it once every check has passed. Ask GitHub twice for the merge state: it reads `unknown` for a few seconds after a push. Stop watching the moment it merges.
 - **Before the site goes live, only a merge that is costly to undo or irreversible waits for Joe** (his decision, 19 November 2026). A change to the look or to his own words that he asked for, or has seen in the session, merges like any other: lead the description with what he would want to know, show him the result, and merge.
 - **Leave for Joe**, with a title starting `For Joe:` and a description that leads with the decision he is asked to make:
@@ -54,13 +64,29 @@ Joe reviews the syllabus in one Claude Docs document, "On Product Judgment: Work
 4. **Record it.** `python3 tools-pm/source-doc.py public --record "Start=12" "2 Find the Constraint=40"`, with each written tab's new revision. Commit the lock with the change. X3 fails until you do, so no change to the syllabus's words merges without reaching the doc.
 5. **Answer every comment** in its own thread, in a line or two: what changed, or why nothing did. Leave his threads for him to resolve.
 
-The Notes tabs at the end of the doc are working notes kept in the doc alone. They can describe Joe's own work, so they never go in the repository.
+The Notes tabs at the end of the doc are history, frozen on 20 November 2026: read them, but add nothing there. New working notes (research write-ups, reviews, anything that mentions Joe's own work) go in `notes/` in the private repository `JoeStanley/pm-sources`, never in this one. Attach it with `add_repo`.
 
-Research needs the web. This environment's network allows only a short list of hosts, so a session cannot open most sources. Say so plainly when it stops you, mark what you could not open with "To check:", and tell Joe which hosts you needed. Do not pass off a search result or a memory as a source you opened.
+Research needs the web. The Joestanley.org environment has full web access (Joe, 20 November 2026). When a site still refuses, say so plainly, mark what you could not open with "To check:", and name the site in `PLAN.md`. Do not pass off a search result or a memory as a source you opened.
+
+## Decisions
+
+Joe decides on one private page, the Decisions page: https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq. Its source is `tools/decisions-page.html`; to change the page, publish that file with the Artifact tool and the page's address as `url`. The cards are documents in its database, collection `decisions`, read and written with the `ArtifactData` tool.
+
+- **A card** is one question he can answer in a minute. Its id is `YYYY-MM-DD-short-name`, and its fields are `question`; `context`, a few plain sentences; `options`, three or four `{label, detail}` with your pick first; `why`, the reason for your pick; `blocks`, what waits on it, if anything; `links`, `{label, url}` to the tab, pull request or file he may want to read; `asked`, the date as `YYYY-MM-DD`; `order`, a number for cards asked the same day; and `status`, `open`.
+- **His answer** arrives as `status: answered` with `answer: {choice, label, strength, note, at}`. `choice` is the option's index, or -1 for something else, which his note explains. `strength` is `agree` or `accept`, as below. Record it in `decisions.md`, then update the card with `status: recorded` and `recorded`, the date and where it went. A card he answered with something else may need a new card; never guess.
+- **When he is in the session,** ask with picks there instead, and record his answers the same way.
+- **If a session cannot write to the page,** it lists the card in `PLAN.md` under "To put to Joe", and the next session that can moves it to the page.
+
+## The daily run
+
+A scheduled task, "joestanley.org daily run", starts a fresh session every day at 02:43 UTC. Its first message begins "Daily run", and a session whose first message begins so is a run. A run works like any session, with three differences: it asks Joe nothing, and puts what it needs from him on the Decisions page; it takes only a job that waits on nothing; and if no job is ready and no answer waits to be recorded, it stops with no branch and no pull request. It merges by auto-merge like any session. Joe pauses or changes it in his list of scheduled tasks on claude.ai.
+
+- **Another session first.** Before it takes a job, a run checks that nobody else is at work: if any branch but `main` was pushed in the last hour, it stops, and the next run tries again.
+- **Without the working doc.** A run that cannot reach the working doc (the scheduled task needs the Claude Docs connector) takes only a job that changes none of the syllabus's words, and says so in `PLAN.md`.
 
 ## Working with Joe
 
-- Ask him structured questions with picks as you go, with your recommendation first and its reason; he would rather answer questions than review long drafts.
+- Put each decision to him as a card on the Decisions page, or with picks when he is in the session: your recommendation first, with its reason. He would rather answer questions than review long drafts.
 - Lead with the decision, keep the rest brief. When you call something better, say why.
 - He reviews in Markdown or in an editable doc where he can comment; he does not need Word.
 - When he says "agree" he supports it; "accept" means he has no strong view. Record his decisions in `decisions.md`, one dated line each, in his terms, and nothing he did not decide.

@@ -6,6 +6,14 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his comments in the working doc, and what he asked of the session that day.
 
+- The work on the syllabus moves fully into Claude Code, and the Cowork project is retired for it ("agreed and done").
+- Decisions that need him wait on a Decisions page, one card each, with the options and the session's pick first, answered by a tap. The working doc's Notes tabs were not the right place to decide, and would not scale.
+- A session starts itself once a day, takes the next job in `PLAN.md` that does not wait on him, and merges by auto-merge.
+- Sessions on this project get full web access.
+- Working notes (research write-ups, reviews, anything that mentions his own work) go in the private pm-sources repository. The Notes tabs stay in the doc as history.
+- The site's menu label "PM Syllabus" changes: the name is too clinical. He is open to alternatives, since a menu label and a title differ.
+- Module 0 leaves out "no matter how ambitious": it was a sharpened statement, to make an idea by contrast, and it has served.
+- The idea from *Mozart in the Jungle*, that the best work is done with passion and a personal voice and that technical perfection alone is soulless, goes somewhere in the syllabus. It matters for a product manager's judgment.
 - Never cite Substack, because it platforms white supremacists.
 - The Agency and Coherence card rests on Jabe Bloom's requisite variety and requisite coherence and on Alicia Juarrero's constraints that enable, cited directly rather than through the deck.
 - Eight new concept cards come from the full read of the deck, each citing the original work: coupling is about a change (Design for Change), how complex systems fail (Change Safely), architecting across the interfaces (Mind the Seams), concepts (Map the Domain), double-loop learning (Notice When You Are Wrong), Consequence Scanning (Answer for What You Build), Chesterton's fence (Decide and Set Direction) and the integrator burden (Own Your Role).
