@@ -53,7 +53,6 @@ From his comments of 20 November in the working doc. Each is answered in its thr
 
 When nothing above is ready, take one of these:
 
-- **Close what's done in the doc.** A session Joe opens goes through every open comment thread on every tab, from before 20 November too, and resolves each one whose ask the repository already holds. The rest get a line on where they stand.
 - *Run.* **Mesmir's voice guide.** Attach JoeStanley/mesmir, read the voice guide its Head of Brand keeps, and put to Joe as a card what, if anything, should carry over into `VOICE.md`. `VOICE.md` was written from his direction without it.
 
 ## Preparing a rebuild
