@@ -6,9 +6,9 @@ Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title 
 
 1. `bash tests/setup.sh`, then export the `HUGO` and `CHROME` values it prints on its last line.
 2. Read `decisions.md`, `PLAN.md` and `tests/SPEC.md`. Before you touch the syllabus's words, read `VOICE.md` too.
-3. Gather what Joe has left since the last session: his answers on the Decisions page (cards whose `status` is `answered`), his comments and edits in the working doc (see "The working doc" below), and the cards listed in `PLAN.md` under "To put to Joe".
+3. Gather what Joe has left since the last session: his answers on the Decisions page (cards whose `status` is `answered`), his comments and edits in the working doc (see "The working doc" below), and the cards listed in `PLAN.md` under "To put to Joe". A session Joe opens also posts what waits in `PLAN.md` under "To post in the doc".
 4. Look at the open pull requests from earlier sessions. If one has a failed check, fix it on its own branch before new work, and turn auto-merge back on if it is off.
-5. Take the job. If Joe's first message names one, that is the job. Otherwise take the first job in `PLAN.md` that is ready and that no open pull request already covers. Answers he has left are carried in first, whatever the job.
+5. Take the job. If Joe's first message names one, that is the job. Otherwise take the first job in `PLAN.md` that is ready and that no open pull request already covers, preferring one not marked *Run*, since a run cannot do it. Answers he has left are carried in first, whatever the job.
 6. Work on a branch named `claude/<short-topic>`, from an up-to-date `main`.
 
 ## End of every session
@@ -81,8 +81,9 @@ Joe decides on one private page, the Decisions page: https://claude.ai/artifact/
 
 A scheduled task, "joestanley.org daily run", starts a fresh session every day at 02:43 UTC. Its first message begins "Daily run", and a session whose first message begins so is a run. A run works like any session, with three differences: it asks Joe nothing, and puts what it needs from him on the Decisions page; it takes only a job that waits on nothing; and if no job is ready and no answer waits to be recorded, it stops with no branch and no pull request. It merges by auto-merge like any session. Joe pauses or changes it in his list of scheduled tasks on claude.ai.
 
+- **Its branch.** A run works on the branch its session names, in place of `claude/<short-topic>`, and restarts it from `main` once its last pull request has merged.
 - **Another session first.** Before it takes a job, a run checks that nobody else is at work: if any branch but `main` was pushed in the last hour, it stops, and the next run tries again.
-- **Without the working doc.** A run that cannot reach the working doc (the scheduled task needs the Claude Docs connector) takes only a job that changes none of the syllabus's words, and says so in `PLAN.md`.
+- **No working doc.** A scheduled task cannot carry the Claude Docs connector, so a run never sees the working doc. It takes only jobs marked *Run* in `PLAN.md`, which change none of the syllabus's words, and X3 must pass on its pull request, which proves no tab changed. It skips the doc in step 3 of the start and step 4 of the end: what it would say in a thread goes in `PLAN.md` under "To post in the doc". Joe chose this on 20 November 2026, so that no run works against an edit he made in the doc.
 
 ## Working with Joe
 

@@ -13,7 +13,8 @@ What comes next for joestanley.org and On Product Judgment, and where the work s
 | A session keeps notes | `notes/` in JoeStanley/pm-sources (private) | Research write-ups, reviews, anything that mentions Joe's own work. |
 
 - **Starting a session.** The daily run starts one every day at 02:43 UTC. When Joe opens one himself, his first message can always be the same: "Take the next job." The session finds everything else here and in `CLAUDE.md`.
-- **Which job.** The first job below that is ready and that no open pull request already covers. A job that waits on Joe is skipped until his answer is in.
+- **Runs and the doc.** A run cannot reach the working doc, so it takes only jobs marked *Run*, which change none of the syllabus's words. Everything else waits for a session Joe opens, which sees his newest edits (Joe, 20 November).
+- **Which job.** The first job below that is ready and that no open pull request already covers: for a run, the first marked *Run*; for a session Joe opens, the first not marked *Run*, if one is ready, since a run cannot do it. A job that waits on Joe is skipped until his answer is in.
 - **Ending a session.** `CLAUDE.md`, "End of every session": record his answers, put new questions on the Decisions page, update this page, sync the doc, one pull request by auto-merge.
 
 ## Where it stands, 20 November 2026
@@ -31,30 +32,49 @@ From his comments of 20 November in the working doc. Each is answered in its thr
 | --- | --- | --- |
 | The list of modules on the Start page, at "6 Think With Engineers", feels like a hodgepodge: review it and the related modules cold. | Start tab | 1 |
 | Put the decisions about the shape of the whole to him as picks. | Notes, Recommendation | 1 |
-| The idea from *Mozart in the Jungle*: the best work comes from passion and a personal voice, and technical perfection alone is soulless. It goes somewhere in the syllabus. | Module 0 tab | 1, then 3 |
-| The menu label "PM Syllabus" is too clinical. | Notes, Open items | Card on the Decisions page, then 2 |
+| The idea from *Mozart in the Jungle*: the best work comes from passion and a personal voice, and technical perfection alone is soulless. It goes somewhere in the syllabus. | Module 0 tab | 1, then 6 |
+| The menu label "PM Syllabus" is too clinical. | Notes, Open items | Card on the Decisions page, then 3 |
 
 ## Jobs, in order
 
-1. **The shape of the whole, put to Joe.** Waits on: nothing.
-   - First a cold read, by a reader who did not write them, of the Start page's list of modules and of Modules 3 to 7, the ones around Think With Engineers. Then answer Joe's "hodgepodge" comment in its thread with what it found.
-   - Then cards on the Decisions page: the map (twelve modules, their order and titles, after the cold read); the cut between Notice When You Are Wrong and Bring People With You; where Agency and Coherence lives (a card in Mind the Seams today); where the *Mozart in the Jungle* idea goes; the order of the work (cut all the copy down first, or rebuild module by module and cut each as it is built); and which cards stay, or that this waits for the page count from job 4.
-   - Done when: the cards are on the page and the comment is answered.
-2. **Carry his answers in.** Waits on: his answers to job 1's cards and to the menu card, each part as it lands. `data/pm/modules.yaml`, the Start page, the drafts, and the menu label in `hugo.yaml`. Done when: every answered card is recorded and done.
-3. **Rebuild Module 0, Own Your Role,** in the pilot's pattern: sources opened and checked, 90 minutes, three printed pages, its draft deleted. Waits on: job 1's answers on the map and on the *Mozart in the Jungle* idea.
-4. **Rebuild Module 5, Change Safely,** then measure what the whole would print at, and put the page target to Joe as a card: raise the target, or cut. Waits on: job 1's answer on the order of the work.
-5. **Cut to the target** Joe picks, across what is built and drafted. Waits on: job 4's card.
-6. **Rebuild the rest** in reading order, two modules to a round: 3, 4, 6, 7, 8, 9, 10, 11. Each round lands in the working doc for Joe to read once. Waits on: job 5.
-7. **Go live.** A `For Joe:` pull request into `live`, and a card asking Joe what should wait for him once the site is live (`CLAUDE.md`). Waits on: Joe, since publishing is his.
+1. *Run.* **The shape of the whole, put to Joe.** Waits on: nothing.
+   - First a cold read, by a reader who did not write them, of the Start page's list of modules (`content/pm/_index.md` and `data/pm/modules.yaml`) and of Modules 3 to 7, the ones around Think With Engineers. Write it up in pm-sources `notes/`, and put the answer to Joe's "hodgepodge" comment under "To post in the doc" below.
+   - Then cards on the Decisions page: the map (twelve modules, their order and titles, after the cold read); the cut between Notice When You Are Wrong and Bring People With You; where Agency and Coherence lives (a card in Mind the Seams today); where the *Mozart in the Jungle* idea goes; the order of the work (cut all the copy down first, or rebuild module by module and cut each as it is built); and which cards stay, or that this waits for the page count from job 6.
+   - Done when: the cards are on the page and the answer to his comment waits to be posted.
+2. **Carry his answers in.** Waits on: his answers to job 1's cards, each part as it lands. `data/pm/modules.yaml`, the Start page and the drafts. Done when: every answered card is recorded and done.
+3. *Run.* **The menu label.** Waits on: his answer to the menu card. Change it in `hugo.yaml`, which no tab of the doc holds; record a new V1 baseline, for content alone.
+4. *Run.* **Prepare Module 0's rebuild.** Waits on: nothing. See "Preparing a rebuild" below.
+5. *Run.* **Prepare Module 5's rebuild.** Waits on: nothing.
+6. **Rebuild Module 0, Own Your Role,** from its prep note, in the pilot's pattern: 90 minutes, three printed pages, its draft deleted. Waits on: job 1's answers on the map and on the *Mozart in the Jungle* idea, and job 4.
+7. **Rebuild Module 5, Change Safely,** from its prep note, then measure what the whole would print at, and put the page target to Joe as a card: raise the target, or cut. Waits on: job 1's answer on the order of the work, and job 5.
+8. **Cut to the target** Joe picks, across what is built and drafted. Waits on: job 7's card.
+9. *Run.* **Prepare the rest,** one module to a run, in reading order: 3, 4, 6, 7, 8, 9, 10, 11. Waits on: nothing.
+10. **Rebuild the rest,** two modules to a round, each from its prep note. Each round lands in the working doc for Joe to read once. Waits on: job 8, and each module's prep.
+11. **Go live.** A `For Joe:` pull request into `live`, and a card asking Joe what should wait for him once the site is live (`CLAUDE.md`). Waits on: Joe, since publishing is his.
 
 When nothing above is ready, take one of these:
 
-- **Mesmir's voice guide.** Attach JoeStanley/mesmir, read the voice guide its Head of Brand keeps, and put to Joe as a card what, if anything, should carry over into `VOICE.md`. `VOICE.md` was written from his direction without it.
+- *Run.* **Mesmir's voice guide.** Attach JoeStanley/mesmir, read the voice guide its Head of Brand keeps, and put to Joe as a card what, if anything, should carry over into `VOICE.md`. `VOICE.md` was written from his direction without it.
+
+## Preparing a rebuild
+
+Done by a run, so the session that rebuilds a module starts from checked facts. It writes `notes/YYYY-MM-DD-module-N-prep.md` in pm-sources and changes nothing in this repository but this page.
+
+- Open and check every source the draft cites: the address works, it says what the draft says it says, it is free if it is on the short path, and its "Why trust it" holds. Name what you could not open.
+- Settle each flag for the module in pm-sources `notes/2026-11-20-readers-flags.md`, from the sources.
+- For a module that leans on the deck, use `citation-map.md` and `finds.md` in pm-sources, and name the original work to cite in place of each deck page.
+- Propose the cut to 90 minutes and three printed pages: what stays on the short path, what moves to the full path, which cards stay.
+- Anything that needs Joe goes on the Decisions page as a card.
 
 ## For each rebuild
 
-- Read the module's draft, its sources and its tab's comments. Read, too, what the readers flagged for that module in the doc's frozen Notes tab "Open items, 20 November", and the research tab that goes with it, if any: the concept champion (Module 0), agency and cohesion (Module 3), value created, value captured (Module 9).
-- For a module that leans on the deck, attach pm-sources and use `citation-map.md` and `finds.md`.
+- Work from the module's prep note. Read the draft, its tab's comments and his edits there. Read, too, the research tab in the doc's frozen Notes that goes with it, if any: the concept champion (Module 0), agency and cohesion (Module 3), value created, value captured (Module 9).
+
+## To post in the doc
+
+What a run would have said in the working doc, for the next session Joe opens to post and then delete here.
+
+- None.
 
 ## To put to Joe
 
