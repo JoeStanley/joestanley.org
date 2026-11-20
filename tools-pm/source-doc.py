@@ -276,7 +276,7 @@ def about_tab(mods, synced):
         "Comment on any line, or edit it. A Claude Code session carries your comments and edits into the repository, then puts the result back here, so the two stay the same. The checks in the repository fail if a tab falls out of step.",
         "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
         + "\n".join(rows) + "\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
-        "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes kept in this doc alone. They are not part of the syllabus and are not in the repository.",
+        "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes from before 20 November 2026, kept as history. Decisions for you now wait on the [Decisions page](https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq), and what comes next is in `PLAN.md` in the repository.",
     ])
 
 
