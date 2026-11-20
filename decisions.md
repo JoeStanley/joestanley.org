@@ -4,8 +4,15 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 ## 20 November 2026
 
-From his comments in the working doc, and what he asked of the session that day.
+From his comments in the working doc, his answers on the Decisions page, and what he asked of the session that day.
 
+- How many concept cards a module keeps is still open. He asked whether one page per module could hold several cards, and whether that would cost too much value per concept: he would rather have few things, excellent, than one thing overdone or several things underdone (the Decisions page, card `cards`).
+- The next step is one winnowing of all the drafts, then the rebuilds, module by module, once the new content from this round of discussion is resolved (agree, on the Decisions page).
+- The *Mozart in the Jungle* idea goes in Own Your Role, as why the vision has to be the product manager's own: in "Why this matters" and the Curious and Opinionated card, beside his two failure modes, described and credited, with no first person (agree, on the Decisions page).
+- Notice When You Are Wrong ends at finding out. The SCR and Fractal Storytelling cards, the Gopen and Swan reading and the "one story at three sizes" exercise move to Bring People With You, and its two three-sizes exercises become one (agree, on the Decisions page).
+- Who decides lives in Decide and Set Direction. The Agency and Coherence card moves there, the RACI card is cut, and RACI's one idea worth keeping (one named decider, and input isn't a veto) becomes a line there. Mind the Seams' question drops "and who decides?" (agree, on the Decisions page).
+- Think With Engineers is cut and its parts spread: its data half to Map the Domain, which moves up to follow Mind the Seams; complexity to Design for Change; quality targets and its card to Change Safely; deleting data to Answer for What You Build. Each technical module closes with questions to bring to engineers (agree, on the Decisions page).
+- A new module takes Think With Engineers' place: the limits of data in decision-making. It guards against overindexing on qualitative anecdotes, and against giving quantitative data undue weight because it looks more official and robust. A great product manager is data-informed, not data-driven. It draws on public policy, statistics and social work. He asked to be told if it doesn't justify a module of its own.
 - The line edit on the Start page's quote keeps no extra space around the scratched-out "Communist", and "Product Manager" rises slightly to the right, as a right-handed writer's quick line edit does.
 - `VOICE.md` takes what fits for this context from the voice guide he keeps for Mesmir.
 - The work on the syllabus moves fully into Claude Code, and the Cowork project is retired for it ("agreed and done").

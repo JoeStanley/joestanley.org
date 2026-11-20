@@ -8,6 +8,8 @@ Engineers can't design a data system until they know what it will be asked. Each
 
 Two more choices follow. It's tempting to leave them to engineering, but both are partly yours. How fresh does each answer have to be, since fresher costs more? And where do the lines fall between parts of the business, since a word like "customer" rarely means one thing everywhere? This module gives you the vocabulary to take part in those decisions, and to ask whether a fashionable pattern is earning its cost.
 
+Data also gets copied. Reports, the data warehouse, a cache (a fast local copy) and other teams' systems each keep their own version, built from the system of record, the system that holds the authoritative copy. Every copy is a promise to keep it in step. When a screen is stale, two reports disagree or a deletion gets missed, there's usually a copy behind it.
+
 Two terms keep coming up. Domain-driven design (DDD) is a way of building software around the language and parts of the business. A batch job processes data in scheduled chunks, overnight for example, where streaming processes it as it arrives.
 
 ## The short path
@@ -95,11 +97,12 @@ Two terms keep coming up. Domain-driven design (DDD) is a way of building softwa
 
 **Write the access patterns for one feature (20 minutes).** Pick a feature on your product, such as a rate limit that caps how many requests one API key can make in a minute. Make a table with five rows, one for each question its data has to answer. Use these columns: the question, who asks (a customer, support, operations, finance, a report), how often, how fast the answer has to come, how fresh it has to be, and operational or analytical. Short phrases are enough. Then, outside the 20 minutes, take the table to your tech lead and ask: "Which of these does our design answer well, and which would be expensive?"
 
-**Optional: find where one piece of data lives (10 minutes).** Pick one item your product holds, such as a traveler's saved passport number. List the system of record first, then every copy you know of (reports, the warehouse, other teams, vendors), each with who depends on it. Mark the places where you're not sure. Then note which copies you'd miss if that person asked you to erase the item.
+**Optional: find where one piece of data lives (10 minutes).** Pick one item your product holds, such as a traveler's saved passport number. List the system of record first, then every copy you know of (reports, the warehouse, other teams, vendors), each with who depends on it. Mark the places where you're not sure. Then ask yourself two things. Which copies would you miss if that person asked you to erase the item? And does each copy need it at all? Take the list to a tech lead or data engineer and count how many copies they add.
 
 ## Questions to bring to engineers
 
 - Which of these questions need an answer in under a second, and which can wait for tomorrow's overnight batch run?
+- How long after a change does each copy of this data catch up?
 - When data shows up late, does it count in the period it happened or the period we saw it?
 - Is this part core, supporting or generic, and does the way we're building it match?
 - Does "user" or "order" mean the same thing on both sides of this boundary?
@@ -126,11 +129,13 @@ Your team wants to build its own identity and login system. What question does d
 
 Optional, and not counted in the time above.
 
-- **Designing Data-Intensive Applications, second edition, Martin Kleppmann and Chris Riccomini (2026)** A book from O'Reilly. Borrow it or buy it. Read chapter 1, "Trade-Offs in Data Systems Architecture," especially "Operational Versus Analytical Systems" and "Systems of Record and Derived Data." Then chapter 11, "Batch Processing," and chapter 12, "Stream Processing." **Why trust it:** It's published by O'Reilly, and the 2026 second edition adds Chris Riccomini as co-author. **What you'll get:** The whole picture of where data lives and how it moves, from the people who build such systems.
+- **Designing Data-Intensive Applications, second edition, Martin Kleppmann and Chris Riccomini (2026)** A book from O'Reilly. Borrow it or buy it. Read chapter 1, "Trade-Offs in Data Systems Architecture," especially "Operational Versus Analytical Systems," "Systems of Record and Derived Data" and "Data Systems, Law, and Society." Then chapter 11, "Batch Processing," and chapter 12, "Stream Processing." **Why trust it:** It's published by O'Reilly, and the 2026 second edition adds Chris Riccomini as co-author. **What you'll get:** The whole picture of where data lives and how it moves, from the people who build such systems.
 - **Learning Domain-Driven Design, Vlad Khononov (2021)** A book from O'Reilly. Part I covers strategic design, starting with chapter 1, "Analyzing Business Domains." **Why trust it:** It's published by O'Reilly, and chapter 1 covers core, supporting and generic subdomains. **What you'll get:** A fuller account of how to tell core, supporting and generic subdomains apart.
 - **"Introducing EventStorming," Alberto Brandolini (2013)** Free on his blog. **Why trust it:** It's Brandolini's own blog post describing the workshop. **What you'll get:** A way to map a business process with domain experts and engineers together, using sticky notes on a wall. The post is from 2013, and the format has changed a good deal since.
 - **"The world beyond batch: Streaming 102," Tyler Akidau (2016)** Free at oreilly.com/radar. **Why trust it:** It's the second part of the same two-part series, with examples from Google's Dataflow. **What you'll get:** How systems cope with data that arrives late and out of order, which is the hard part of event time.
 - **Domain-Driven Design, Eric Evans (2003)** The original book. **Why trust it:** It's the 2003 book that the Evans Reference above summarizes. **What you'll get:** The reasoning behind the pattern summaries.
+
+*To check: the part on copies of data came from Think With Engineers when it was cut on 20 November 2026. Its reading on consistency between copies (Ruth Malan's workshop notes, pp. 256 and 257, quoting Michael Feathers and Vlad Khononov) wasn't carried here, and neither was its context diagram (p. 346). If the rebuild needs them, open Khononov's own words first.*
 
 # Access Patterns
 

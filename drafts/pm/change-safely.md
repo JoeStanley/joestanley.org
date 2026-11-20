@@ -1,10 +1,12 @@
-About 83 minutes: 53 reading, 30 doing.
+About 103 minutes: 58 reading, 45 doing (a 20-minute exercise and two optional ones).
 
 **If you only do one thing:** Write a one-page rollout plan for your next change, and include how you'd switch it off.
 
 ## Why this matters
 
 The Design for Change module asks what should be easy to change. This one asks how to make those changes safely. When a failure would be expensive, as it is on a payments service or a hospital scheduling system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. The research points the other way: DORA, a research program run by Google Cloud, finds that speed and stability aren't trade-offs, and its top performers do well on both.
+
+First, though, know how good it has to be. "Fast and reliable" gives engineers nothing they can build or check. A quality written as a test does: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." Engineers call that a quality attribute scenario. It names what triggers the event, under which conditions, which part of the system responds and how the response is measured. Notice that it says 99 in 100, not the average. An average hides the customers who wait, so when someone quotes you one, ask for the 99th percentile.
 
 Six ideas make that possible. Separate putting a change into production (deploying) from turning it on for customers (releasing). Release first to a small group of customers, called a cohort. Agree up front how much unreliability you'll accept: that's an error budget, and it's built on a service level objective (SLO), a reliability target such as "available 99.9 percent of the time". Watch the guardrail metrics, the measures that must not get worse. Bring your security people in while the design can still move. And when a situation is complex, meaning you can't work out the answer ahead of time, run small experiments that are safe to fail, where a bad result does little harm.
 
@@ -56,6 +58,11 @@ Six ideas make that possible. Separate putting a change into production (deployi
    Concept card. 5 minutes.
 
    **Look for:** The difference between the measure you're hoping to move and the ones that must not get worse.
+7. **Models That Are Sometimes Wrong**
+
+   Concept card. 5 minutes.
+
+   **Look for:** How you'd find out that a model choosing for your customers had quietly gone wrong, and who'd see it first.
 
 ## Do
 
@@ -71,6 +78,16 @@ Six ideas make that possible. Separate putting a change into production (deployi
 When you're done, book 20 minutes with a security engineer (not counted in the time above) and go through line 6 together. Ask: "What would you most want to catch before this goes live?"
 
 **Optional: probe a complex problem (10 minutes).** Name one situation on your product where nobody can say ahead of time what will work, such as how drivers on a delivery app will react to a new rule for batching orders. Design one small experiment that's safe to fail: what you'd try, on whom, and what result would make you stop.
+
+**Optional: write one quality as a test (15 minutes).** Pick a quality your users would notice if it slipped, such as how quickly a video starts playing on a Friday evening. Write it in four parts: what triggers it, under which conditions, which part of the system responds, and how you'd measure the response, with a number. Then ask your tech lead: "Do we measure this today, and what would it take to meet it?"
+
+## Questions to bring to engineers
+
+- Do we measure this quality today, and what's the 99th percentile, not the average?
+- Who agreed our reliability target, and what happens to releases when the error budget runs out?
+- How fast can we switch this change off, and who can do it without a new deployment?
+- What do you fix by hand that this change could break?
+- If this model were quietly wrong next month, what would tell us?
 
 ## Check yourself
 
@@ -94,7 +111,10 @@ Optional, and not counted in the time above.
 
 - **"A Leader's Framework for Decision Making," David Snowden and Mary Boone (2007)** Harvard Business Review, November 2007. **Why trust it:** The article sets out the Cynefin framework for judging how to act in complex situations. **What you'll get:** A way to tell a complex situation, where small experiments that can safely fail are the right move, from one where analysis or good practice will do.
 - **Trustworthy Online Controlled Experiments, Ron Kohavi, Diane Tang and Ya Xu (2020)** **Why trust it:** It's a published book from Cambridge University Press (2020), and its subtitle calls it a practical guide to A/B testing. **What you'll get:** The full treatment of metrics for experiments, including how to combine them into one overall evaluation criterion.
+- **Designing Data-Intensive Applications, second edition, Martin Kleppmann and Chris Riccomini (2026)** A book from O'Reilly. Borrow it or buy it. Read chapter 2, "Defining Nonfunctional Requirements": skim the opening case study, then read "Describing Performance", "Reliability and Fault Tolerance" and "Maintainability". With the first edition (2017), read chapter 1 instead. **Why trust it:** It's published by O'Reilly, and the second edition adds Riccomini as co-author. **What you'll get:** Why engineers describe speed with percentiles, not averages, and what reliability means to the people who build for it.
 - **Error budget policy, Google SRE Workbook (Appendix B)** Free at sre.google. **Why trust it:** It's an example policy from Google's SRE Workbook, laid out as a template. **What you'll get:** A worked example of what a team agrees to do once the budget is spent, and what the exceptions are.
+
+*To check: the quality attribute scenario came here from Think With Engineers when it was cut on 20 November 2026. That module taught it from Ruth Malan's workshop notes (pp. 418 to 424, with the story of TWA's specification for an airliner, and p. 481 on the service level an interface promises). The idea itself comes from software architecture work at Carnegie Mellon's Software Engineering Institute (Bass, Clements and Kazman, Software Architecture in Practice). Open that, or a free report from the institute, before the rebuild cites it.*
 
 # Error Budgets
 
@@ -207,3 +227,57 @@ Eighteen points on one web page, about ten minutes. Free at how.complexsystems.f
 **What you'll get:** All eighteen points, each with its reasoning. For this module, start with 4, 5 and 14 to 18.
 
 *To check: nothing open. The quotes were checked on 20 November 2026 against the page and the original PDF it links (Revision D, 00.04.21).*
+
+# Models That Are Sometimes Wrong
+
+*Picture: A model chooses, the customer responds, and the response becomes the data the model learns from next. The loop closes without anyone deciding it should.*
+
+## The idea
+
+A model or rule that picks which listings a marketplace shows a shopper first will sometimes pick badly. That's built in: it predicts from past patterns, and the future differs. It's tempting to demand a model that's never wrong, but there isn't one. Your job is to know how often it's wrong, who's affected, and how you'll find out.
+
+Four practices make that knowable:
+
+1. **Evaluate before launch** on data the model never saw, either held back on purpose or from an earlier period. Score a model on its own training data (the past examples it learned from) and its errors stay hidden.
+2. **Test in production** with champion and challenger. In a typical setup, the current approach (the champion) keeps most of the traffic and a new one (the challenger) gets a small share, so a bad result stays contained.
+3. **Watch for feedback loops.** A feedback loop is when a model's outputs change the data it later learns from. The listing shown first gets the clicks, and the clicks keep it first.
+4. **Budget for upkeep.** Sculley and nine co-authors argue that machine learning's quick early gains come with large, ongoing maintenance costs.
+
+## Why a PM cares
+
+- **A good launch score is not a guarantee.** Evaluation on past data tells you how the model would have done. Only live monitoring tells you how it's doing now.
+- **Loops bend your data.** If the model only learns from the listings it chose to show, it never finds out how the rest would have done. Sculley et al. name randomization as one remedy: sometimes picking the first listing at random, so the data also shows how the other options would have done.
+- **Changes ripple.** Sculley et al. call this "changing anything changes everything". The parts of a model are entangled, so when you tweak one, the others shift.
+- **Hidden users of a score.** Other systems may be reading a model's scores without anyone having declared it, so a change can break something you didn't know was there.
+- **Regulators have a name for this.** In US banking, SR 11-7 defines model risk as the potential for adverse consequences from decisions based on incorrect or misused model outputs. It expects independent validation, comparison with actual outcomes, and ongoing monitoring.
+
+## How to spot it
+
+- A launch review shows one accuracy number and no test on separate data.
+- A challenger test has no stop rule, or it takes a large share of customers at once.
+- Nobody can say which systems read the model's scores.
+- Results drift slowly, though nobody has touched the model.
+
+## What it does not say
+
+SR 11-7 is US banking guidance, from the Federal Reserve and the Office of the Comptroller of the Currency (OCC, a US bank regulator) in 2011. It applies to the banking organizations those agencies supervise, in proportion to their size and complexity and how much they use models. It may not apply to your industry, so ask whoever handles legal and risk questions where you work which model rules cover you. One more caution: champion and challenger testing isn't free of harm. A challenger is still a live decision about real customers.
+
+**One question to carry:** If this model were quietly wrong next month, what would tell us, and who would see it first?
+
+## Go deeper
+
+**[Hidden Technical Debt in Machine Learning Systems](https://proceedings.neurips.cc/paper_files/paper/2015/file/86df7dcfd896fcaf2674f757a2463eba-Paper.pdf), D. Sculley and nine co-authors (2015)**
+
+A conference paper from NeurIPS. Free at proceedings.neurips.cc.
+
+**Why trust it:** It's a conference paper, presented at NeurIPS (a machine learning conference) in 2015, and all ten authors were at Google when it was published. The tools it mentions are dated, so skim past them.
+
+**What you'll get:** Names for risks you can ask your engineers about: feedback loops, entanglement (changes spreading through linked parts), undeclared consumers (unlisted systems that use a model's output) and changes in the outside world.
+
+**[SR 11-7: Guidance on Model Risk Management](https://www.federalreserve.gov/supervisionreg/srletters/sr1107.htm), Federal Reserve and Office of the Comptroller of the Currency (2011)**
+
+A regulatory letter. Free at federalreserve.gov.
+
+**Why trust it:** It's the primary text, issued by US banking regulators. Bear in mind that it's written for banks.
+
+**What you'll get:** The regulator's own wording on validation, outcomes analysis and monitoring.

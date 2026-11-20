@@ -124,6 +124,13 @@ Optional, and not counted in the time above.
   **Why trust it:** It's a chapter in the book *Designing in Ethics* (Cambridge University Press, 2017), edited by Jeroen van den Hoven, Seumas Miller and Thomas Pogge.
 
   **What you'll get:** A clear argument that you stay responsible as an individual inside a large organization, and a case for naming who's responsible for the structure.
+- **[Right to erasure](https://ico.org.uk/for-organisations/uk-gdpr-guidance-and-resources/individual-rights/individual-rights/right-to-erasure/), UK Information Commissioner's Office**
+
+  Guidance, about 15 minutes. Free at ico.org.uk. Read "At a glance" and the checklists, then the answers to "Do we have to tell other organisations about the erasure of personal data?" and "Do we have to erase personal data from backup systems?"
+
+  **Why trust it:** It's the UK data protection regulator's own guidance on the UK GDPR, so it's written for organizations under UK law. Ask your lawyers which rules apply to you.
+
+  **What you'll get:** What a request to erase someone's data asks of a product in practice: a one-month clock, the organizations you shared the data with, and the backups. Every copy is a place the request has to reach.
 - **Moral Disengagement in the Perpetration of Inhumanities, Albert Bandura (1999)**
 
   A journal article. Free at core.ac.uk/download/76471013.pdf.
@@ -257,6 +264,7 @@ Bruce Schneier calls stored personal data a toxic asset: easy to keep, hard to p
 - Event tracking gets added to every click, and a dashboard no one acts on stays alive.
 - A cookie banner where accept is one tap and decline takes several steps.
 - Data stays long after its purpose has ended, because nobody owns deleting it.
+- Someone asks to have their data erased, and nobody can list every place it was copied.
 
 ## What it does not say
 

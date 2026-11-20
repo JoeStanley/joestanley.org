@@ -4,6 +4,10 @@ You'll start every PM role by taking it as described. That's the right start, an
 
 Two versions of this job look like the real thing and aren't. In the first, you run the project: dates, status, who's blocked. In the second, you run the room: you gather what everyone wants and write down the average. Both are useful work, and you'll do plenty of each. But a PM who only coordinates, or only facilitates, has left the main job undone. That job is to hold the product's concept, what it's for and where it's going, say it out loud, and work back from it to what must be true to get there. Extrapolating from where you are gets you the next step, which would have happened without you. The destination is yours to name. If you don't name it, usually nobody does.
 
+It has to be yours for a second reason. In the TV series *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the conductor Rodrigo De Souza wants more from his orchestra than the right notes. The best work, in the show's telling, comes from passion and a voice of its own, and technical perfection alone is soulless. Products work the same way. One built only from the schedule, or only from the average of what everyone asked for, can be right in every detail and still have nothing to say.
+
+*To check: the series, its years and the character were checked on Wikipedia on 20 November 2026. Nobody has watched the scene the idea comes from. Find the episode and check this description against it before the rebuild.*
+
 ## Short path (about two and a quarter hours of reading, plus about an hour and a quarter for the exercises)
 
 For deck pages, read only the parts named. If a term is new to you, it's defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 6.
@@ -108,6 +112,7 @@ Acting takes opinions, and there are four moves for using one: sharpen it, hold 
 
 ## Why a PM should care
 
+- **Have a view worth using.** The four moves assume you've got an opinion. A PM who only collects what everyone else wants ships the average: correct, and lifeless, like the technically perfect playing the conductor in *Mozart in the Jungle* won't settle for (see "Why this matters").
 - **Sharpen it to reach the truth faster.** A specific view gives people something to push against, so stronger views surface sooner. Paul Saffo's mantra, "strong opinions, weakly held," means you let intuition carry you to a conclusion, then go hunting for evidence against it.
 - **Hold it back so you don't bias the group.** State your view first and it pulls the group's thinking toward it. Tversky and Kahneman called the effect anchoring (1974).
 - **Hold it loosely when the task or the relationship needs it.** You'll work with these people again. Axelrod showed that when players meet repeatedly, cooperating pays better than winning each round (*The Evolution of Cooperation*, 1984).
