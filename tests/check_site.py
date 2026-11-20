@@ -1468,7 +1468,15 @@ def _sections(md, names):
 
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7")
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9")
+    # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
+    for base in ("content", "drafts", "data"):
+        for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
+            for f in sorted(files):
+                if f.endswith((".md", ".yaml", ".yml", ".json")):
+                    path = os.path.join(dirpath, f)
+                    if "substack" in open(path, encoding="utf-8").read().lower():
+                        fail("S9", f"{os.path.relpath(path, ROOT)} cites Substack, which the owner never cites")
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
     # X1: one source for every unit
     drafts = {os.path.splitext(f)[0] for f in os.listdir(os.path.join(ROOT, "drafts", "pm")) if f.endswith(".md")} if os.path.isdir(os.path.join(ROOT, "drafts", "pm")) else set()
@@ -2042,11 +2050,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7"):
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7"):
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
     srv = Server(out_dir)

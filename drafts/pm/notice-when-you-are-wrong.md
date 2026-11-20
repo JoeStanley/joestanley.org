@@ -143,3 +143,42 @@ Could a colleague outside your team hear the one-sentence version of your main i
 - Deck p. 398 ("Repairing Blindspots") and pp. 488 and 489 (design labs versus design briefs, and three questions a brief should answer).
 
 > Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+
+# Double-Loop Learning
+
+## The idea
+
+Chris Argyris called organizational learning "a process of detecting and correcting error." Single-loop learning corrects the error and keeps the goal, like a thermostat switching the heat on when the room gets cold. Double-loop learning questions the goal itself, and the norms and assumptions behind it. A double-loop thermostat would ask, "Why am I set at 68 degrees?"
+
+His 1977 *Harvard Business Review* article tells of Product X, which lost more than $100 million. At least five people knew it was in trouble six years before it was dropped, but their memos were softened and cut on the way up. Argyris called the cause "norms embedded within norms": don't confront policies top management is excited about, and don't openly confront the rule that tells you so.
+
+## Why a PM cares
+
+- **Most of your feedback loops are single loop.** Retros, experiments and incident reviews tune the method and leave the goal alone. A claims team that keeps cutting days off insurance payouts may never ask whether speed is what claimants wanted. You're often the one placed to ask.
+- **Bad news waits for a fix.** The people closest to Product X knew "bad news would not be well received at the upper levels if it was not accompanied by suggestions for positive action." If engineers and support tell you first, that's where the softening starts.
+- **Successful people learn worst from failure.** Argyris found that when professionals' "single-loop learning strategies go wrong, they become defensive, screen out criticism, and put the 'blame' on anyone and everyone but themselves." Most of us do it. When a launch misses, check whether every reason you list sits outside your team.
+- **Use his other tools.** The left-hand column and the ladder of inference, earlier in this module, help you find the assumption under a goal.
+
+## How to spot it
+
+- Every retro ends with a tweak to the process. None has asked "should we be doing this at all?"
+- On a telecom network rollout, every slip brings a plan to speed up the crews, and nobody asks whether the coverage target still fits.
+- The real reason a project is struggling gets said in the corridor after the meeting.
+
+## What it does not say
+
+It does not say single-loop learning is bad: Argyris argued that the capacity for double loop "does not inhibit single loop learning; indeed, it usually helps it." It doesn't mean reopening the goal every week. And an off-site where everyone levels with each other won't fix it for long. Of such workshops he wrote, "After a month or so back at home, the spirit seems to wane."
+
+**One question to carry:** Which assumption behind your team's goal hasn't been questioned since it was set, and who would tell you if it were wrong?
+
+## Go deeper
+
+**[Teaching Smart People How to Learn](https://hbr.org/1991/05/teaching-smart-people-how-to-learn), Chris Argyris (1991)**
+
+A *Harvard Business Review* article, about 30 minutes. Paywalled at hbr.org.
+
+**Why trust it:** Argyris coined the terms. The article draws on his 15 years of studying management consultants: field cases from one profession, not controlled experiments.
+
+**What you'll get:** A team meeting that goes wrong line by line, then rewritten so you can hear what questioning your own reasoning sounds like.
+
+*To check: both articles are paywalled (the 1977 one is at hbr.org/1977/09/double-loop-learning-in-organizations). Their full text was readable in the page source on 20 November 2026, and the quotations were copied from it. Confirm them against the printed articles, and decide whether a card should point behind a paywall.*

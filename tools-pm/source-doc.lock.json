@@ -5,10 +5,10 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "223136a9adece00fd600c6a8b6859f5528ba28d085ad46e07e995ee1cac2f159",
+   "sha256": "31384560609e203614d954aec13bc0a7cc4b6143a6a44cb048549aa8a6ea3a5e",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 2
+   "rev": 10
   },
   {
    "name": "Start",
@@ -21,10 +21,10 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "ca05b6936006f22447f39c3f2a2e5ca9dc7eaef3c4f3edd0c282395c375980e1",
+   "sha256": "de27c4f90d1e82237d93eb646be1161705e7f71b7c646116c30a9c3a27ec94a1",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 3
+   "rev": 4
   },
   {
    "name": "1 See the System",
@@ -45,26 +45,26 @@
   {
    "name": "3 Mind the Seams",
    "file": "3-mind-the-seams.md",
-   "sha256": "5c2835f2f8faf84a1e24ce253dc7ebb6ea844599f8f8ca8af504054e1a7460de",
+   "sha256": "ec8c123a62e38ea9fc9f44f5215c7c9eeba5296ab0a56f4627bdfccc6f3f7142",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 5
+   "rev": 9
   },
   {
    "name": "4 Design for Change",
    "file": "4-design-for-change.md",
-   "sha256": "27c453d605e1657af5d82c5eda5a7d5e18d89d0040e19308545dd74074a074b2",
+   "sha256": "01111779530eb3d4d87bac0d3a80529bf9c0afa69d443cf030ffd0a0260a3d1b",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 3
+   "rev": 4
   },
   {
    "name": "5 Change Safely",
    "file": "5-change-safely.md",
-   "sha256": "734020098ec1e915f7a79b9d9c785d3be5f6422da5cce48c0e9afbdfa44b8cfe",
+   "sha256": "6768ecafd15219fbb6536768fa52c3c9f4f1399f4298c6ddbfabbd045b27db3f",
    "doc_tab": "9317d9d1-2129",
    "doc_node": "a29f117c-7f2e",
-   "rev": 5
+   "rev": 6
   },
   {
    "name": "6 Think With Engineers",
@@ -77,34 +77,34 @@
   {
    "name": "7 Map the Domain",
    "file": "7-map-the-domain.md",
-   "sha256": "f418a1077cecdd17f1f2ea2ca4d25f5d572efe8c33f5b5621a8204b470369d50",
+   "sha256": "093e1072c06258e3ccc0e89aa39b2093080751bc8f20977b9cb8d69b552492af",
    "doc_tab": "b3d1938f-b26d",
    "doc_node": "57f2abde-0b8e",
-   "rev": 7
+   "rev": 8
   },
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "f5a8dea89b189d50a09014489992342db8852067e9e02035e806f2f741acda93",
+   "sha256": "f577c5b619f3634eaf1b6f91dc19b0bc6881b5aba758aafac19af4f48d19b467",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 4
+   "rev": 5
   },
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "a2a43b38d74c67da15f806b72c6852115c0a97d2c7d58dcc34a182ad05af8f19",
+   "sha256": "52bf897176c023ad116595e05758b69b53eb85b36d85ad3478c6531cd4c924ee",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 4
+   "rev": 8
   },
   {
    "name": "10 Notice When You Are Wrong",
    "file": "10-notice-when-you-are-wrong.md",
-   "sha256": "92bc28845d65ad4e3412b944b8d82f1ba8668e709d456dcf77acfd64dc62a093",
+   "sha256": "2d66873fd135dcaad19cd0aa4a034e4b11d8f25547b631af2e9b1a10debab2b0",
    "doc_tab": "73278a69-a68a",
    "doc_node": "0e614323-8b2d",
-   "rev": 5
+   "rev": 6
   },
   {
    "name": "11 Bring People With You",

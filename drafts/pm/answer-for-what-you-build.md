@@ -35,18 +35,18 @@ This module covers four things: who gains and who pays, your share of the respon
    **Why trust it:** Bain & Company published it in August 2006. It's a consultancy arguing for its own measure, the Net Promoter Score (NPS, a customer survey score of how likely people are to recommend you), so read it as a case for a method.
 
    **What you'll get:** An argument you can make in business terms, not only ethical ones, against profit that costs you the customer relationship.
-4. **Federal Trade Commission, complaint against Amazon over Prime (2023)**
+4. **Cory Doctorow, "Tiktok's enshittification" (2023)**
 
-   20 minutes. Free at ftc.gov. Read the summary at the front, the section on the cancellation flow Amazon named "Iliad", and the section on what its own staff knew. Skip the rest.
-   - [FTC v. Amazon.com, amended complaint](https://www.ftc.gov/system/files/ftc_gov/pdf/2023-09-20-067-AmendedComplaint%28redacted%29.pdf)
+   20 minutes. Free at pluralistic.net.
+   - [Pluralistic: Tiktok's enshittification](https://pluralistic.net/2023/01/21/potemkin-ai/)
 
-   **Look for:** The moments when someone inside the company proposed a clearer sign-up or a shorter way out, and what happened to the proposal. Ask who gained from each "no".
+   **Look for:** The three stages of what he calls enshittification (his crude word for a platform getting worse): good to users first, then shifting value to business customers, then taking it for itself. Also how lock-in, which makes leaving costly, lets a company shift value away from users.
 
-   **Why trust it:** A complaint is one side's case, not a finding, and Amazon denied it. It's built on the company's own documents, though, and in September 2025 Amazon paid $2.5 billion to settle, without admitting wrongdoing.
+   **Why trust it:** It's an opinion essay posted on 21 January 2023, in which Doctorow describes the pattern he calls enshittification. It's an argument, not research.
 
-   **What you'll get:** A worked case of capture without creation, inside a product people like, told through the product decisions that produced it.
+   **What you'll get:** A vivid account of how a product slides from serving users to extracting from them.
 
-   *To check: this source replaced an essay on 20 November 2026, and the session that chose it couldn't open ftc.gov. The link, the parts to read and the 20 minutes come from search results, not from the page. Open it and set them before this module is rebuilt.*
+   *To check: this essay came back on 20 November 2026, at Joe's request, in place of the FTC's complaint over Amazon Prime, with the wording the working doc had before. This session couldn't open pluralistic.net, so check the link, the date and the three stages against the essay.*
 5. **Many Hands**
 
    Concept card. 5 minutes.
@@ -172,9 +172,9 @@ A healthy product captures part of what it creates. The trouble starts when capt
 
 ## Why a PM cares
 
-- **A closed exit is capture, not creation.** The US Federal Trade Commission (FTC) said in its complaint that Amazon's own name for the way out of Prime was Iliad, after Homer's epic of a long war, and that the flow sent people who wanted to cancel through page after page of offers. Anyone who stayed because leaving was that hard didn't stay because the product got better.
+- **Lock-in is capture, not creation.** Lock-in means leaving costs too much. Cory Doctorow describes people who stayed on Facebook because enough of their friends were there, and readers tied to Amazon by locked ebooks. They stayed because leaving cost too much, not because the product got better.
 - **Fees for friction take value the customer never got.** The FTC's 2022 staff report on dark patterns (interface designs that trick or trap people) describes cancellation that took six to nine screens in one alleged case. If your revenue depends on a hard exit, you're charging for a problem you built.
-- **It tends to cost the business later.** Fred Reichheld and Rob Markey of the consultancy Bain call "profits earned at the expense of customer relationships" bad profits, and argue against them in business terms.
+- **It tends to cost the business later.** Fred Reichheld and Rob Markey of the consultancy Bain call "profits earned at the expense of customer relationships" bad profits, and argue against them in business terms. Doctorow's version: serve users, then squeeze them, then squeeze the businesses that depend on you.
 - **In a game, the cheap capture is the streak.** A reward streak that resets when a player misses a day will lift your daily active count. A player who logs in only to keep it alive gives you their attention and gets nothing they came for. Whether your own mechanics do this is something you can test, for example by looking at how short those sessions are.
 
 ## How to spot it
@@ -275,3 +275,43 @@ An opinion essay. Free at schneier.com.
 **Why trust it:** CNN first published it on 1 March 2016. It argues a position, and it backs that with examples of breaches in 2015.
 
 **What you'll get:** A short case for deleting data, with the reasons organizations keep it and what he proposes instead.
+
+# Consequence Scanning
+
+## The idea
+
+Consequence Scanning is a short team conversation, before a feature is built, about everything it could cause. Sam Brown created it at Doteveryone, a responsible technology think tank, around three questions: "What are the intended and unintended consequences of this product or feature?" "What are the positive consequences we want to focus on?" "What are the consequences we want to mitigate?"
+
+Run it in a planning meeting you already hold, in about 30 minutes. Everyone writes consequences alone for five minutes, one to a note. Read them out and group them, then pick the positives to protect and the harms to mitigate. Don't close until each mitigation has an owner and a ticket. (The steps are this syllabus's, not Doteveryone's.)
+
+## Why a PM cares
+
+- **The unintended consequences land on people who aren't in the room.** Picture a city council moving parking permit renewals online only. Shorter queues are intended. Locking out residents who don't have a smartphone isn't. You can make the room look for them.
+- **Ask the misuse question out loud.** Nat Pryce asks: "could people misuse this feature to harass/attack/abuse/defraud our users?" A mobile carrier's family location sharing helps a parent see that a teenager got home. It also lets a controlling partner track someone who doesn't know it's on, and no test will catch that.
+- **Scale changes the answer.** One of the method's prompts asks, "What could this mean if everyone in the world were doing it?" A rule that's harmless for a hundred people acts like a policy for a million.
+- **It turns worry into owners.** Naming who owns each harm is the Many Hands card's advice, built into a meeting you'd hold anyway.
+
+## How to spot it
+
+- Launch reviews ask whether it works and whether it's on time, never who it could hurt.
+- Every risk in the plan is a risk to the team: a late date, a missed target.
+- An insurance claims model flags claims as suspicious, and nobody has asked what happens to an honest claimant it flags.
+- You first hear about a harm from support, a journalist or a regulator.
+
+## What it does not say
+
+It won't show you every consequence. Some appear only after launch, so scan again once it's live. It isn't a sign-off: a scan that ends with "no concerns" every time has stopped looking. It doesn't rank harms by how bad they are; Microsoft's Harms Modeling, on this module's full path, does that. And it doesn't decide for you. Whoever owns the product still makes the call.
+
+**One question to carry:** Who will this feature affect who'll never be in our planning meeting, and what would they ask us to change?
+
+## Go deeper
+
+**[Consequence Scanning](https://doteveryone.org.uk/project/consequence-scanning/), Doteveryone**
+
+The method's own page. Free at doteveryone.org.uk.
+
+**Why trust it:** It's from the method's designers, so it describes a tool rather than testing one: practitioners' guidance, not evidence that it works.
+
+**What you'll get:** The method as its authors meant it to run, with prompts that push a team past the obvious.
+
+*To check: doteveryone.org.uk is blocked here, so nobody has opened it. The three questions, the "everyone in the world" prompt (credited to TechTransformed) and Pryce's question come from the deck (pp. 86, 494 and 295), which names no work for Pryce. Check the page's year and length, whether its own steps (perhaps sorting what a team can act on, influence or only monitor) should replace this card's, and Sam Brown's credit, taken from this module's short path.*

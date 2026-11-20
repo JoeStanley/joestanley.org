@@ -185,13 +185,16 @@ A long article. Free at martinfowler.com.
 
 Work that many people do at once needs two things that pull against each other. People need room to decide, or the work is slow and nobody much wants to do it. And the pieces need to fit, or the product doesn't work as one thing.
 
-The way through is to be strict about a few things and loose about the rest. Be strict about the purpose, and about the few decisions that need a view of the whole. Leave how each team gets there to the team. Ruth Malan and Dana Bredemeyer, writing for software architects, give the test for the strict list: the only good reason to take a decision away from the people doing the work is a benefit to the whole "that the organization could not otherwise achieve" (2002).
+Jabe Bloom, in a talk to software designers, names both halves (2020). Requisite variety, after the cybernetician Ross Ashby, says a team needs as many different views as the world it faces. Requisite coherence says it also needs "just enough common concepts to make progress", and "not maximally but minimally". Bloom also separates autonomy, "the ability to choose which action to take", from agency, which adds being "able to observe the results of those actions in the system one acts within". Freedom isn't enough on its own. People also need to see what their choices did.
+
+The philosopher Alicia Juarrero shows the way through. We think of constraints as limits, and some are. But constraints "also create alternatives": the rules of syntax are what let a sentence mean anything at all. A few shared rules, well chosen, let many people act on their own and still add up to one thing. So be strict about a few things and loose about the rest. Be strict about the purpose, and about the few decisions that need a view of the whole. Leave how each team gets there to the team. Ruth Malan and Dana Bredemeyer, writing for software architects, give the test for the strict list: the only good reason to take a decision away from the people doing the work is a benefit to the whole "that the organization could not otherwise achieve" (2002).
 
 Other fields landed in the same place. Marine Corps doctrine seeks unity "not principally through imposed control, but through harmonious initiative" inside guidance from above (MCDP 1, *Warfighting*, 1997). The team researcher Richard Hackman tells leaders to be "insistent and unapologetic" about the ends, and just as insistent about leaving the means alone (*Leading Teams*, 2002).
 
 ## Why a PM should care
 
-- **You often write the strict list, whether or not you call it that.** What a term means, which flows have to match, what "done" includes.
+- **You often write the strict list, whether or not you call it that.** What a term means, which flows have to match, what "done" includes. Write each rule as something that makes work possible: one agreed meaning of "booking" lets the search, payments and support teams on a travel site build on their own without meeting about it.
+- **Freedom without feedback isn't agency.** A team that ships a change and never sees what it did to customers has autonomy and nothing to steer by. Get it the numbers, the support tickets and the user sessions for its own change.
 - **Room to decide is part of why the work is worth doing.** In a survey of 658 employees across 62 jobs, freedom over how the work gets done went with higher motivation (Hackman and Oldham, 1976). Take it away and you lose effort you can't buy back with process.
 - **A team can feel great and still be out of step.** In a study of 45 new-product teams, the ones that kept to themselves rated their own work highly, and management rated them poorly (Ancona and Caldwell, 1992). A team that's tight inside doesn't always fit with the teams around it.
 - **Customers feel the gaps.** Two teams, two meanings of "account", two settings pages.
@@ -219,6 +222,45 @@ Does this decision need a view of the whole? If it doesn't, whose is it?
 - Ancona and Caldwell, "Bridging the Boundary: External Activity and Performance in Organizational Teams" (Administrative Science Quarterly, 1992). The field study of 45 product teams, in five high-technology companies in the 1980s. The journal charges for it.
 - Ryan and Deci, ["Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being"](https://selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf) (American Psychologist, 2000). Free on the authors' site. A review of their own theory, drawn mostly from schools, families and health care.
 - Kniberg and Ivarsson, ["Scaling Agile @ Spotify"](https://blog.crisp.se/wp-content/uploads/2012/11/SpotifyScaling.pdf) (2012), 11 minutes. Free. A company describing itself.
-- Ruth Malan's free slide notes, ["System Design and Software Architecture"](https://www.ruthmalan.com/systems/2025SystemDesignOverview.pdf) (December 2025 edition), pp. 46 to 57, on coherence, alignment and autonomy. This card's idea comes from there.
+- Jabe Bloom, talk to the Virtual DDD meetup (16 January 2020), on requisite variety and requisite coherence. A practitioner's talk, not a study.
+- Alicia Juarrero, ["Complexity is not Complication"](https://www.youtube.com/watch?v=WmtjQZCIsqY) (Deliberate Complexity conference, 2022), a talk, free on YouTube; and her book *Context Changes Everything: How Constraints Create Coherence*, chapter 3. She's a philosopher of complex systems, and the book is her own theory, argued, not measured.
 
-*To check: the sources on this card were opened and its quotations checked on 20 November 2026, with these gaps. MCDP 1 was read on an archive.org copy, and Hackman, Hackman and Oldham, Ancona and Caldwell, and Guzzo and Dickson on university course copies. Lawrence and Lorsch's 1967 study of differentiation and integration is the classic research on this tension, and nobody has opened it yet.*
+*To check: the sources on this card were opened and its quotations checked on 20 November 2026, with these gaps. MCDP 1 was read on an archive.org copy, and Hackman, Hackman and Oldham, Ancona and Caldwell, and Guzzo and Dickson on university course copies. Lawrence and Lorsch's 1967 study of differentiation and integration is the classic research on this tension, and nobody has opened it yet. Bloom's and Juarrero's words were added on 20 November 2026 from where Ruth Malan's workshop notes quote them (pp. 51 to 53 and 73 to 76), and nobody has opened their own talks or book: find Bloom's talk and its date, check his two definitions (the notes give no source for them), and check Juarrero's quote and its source, which the notes give as "Causality as Constraint".*
+
+# Architect Across the Interfaces
+
+## The idea
+
+"It is inadequate to architect up to the boundaries or interfaces of a system; one must architect across them." That's Robert Spinrad, a computer designer who later directed Xerox PARC, as reported by Mark Maier and Eberhardt Rechtin. Rechtin gave both halves of the reason: "The greatest leverage in system architecting is at the interfaces." And: "The greatest dangers are also at the interfaces."
+
+Every team can do its own part well and the product can still fail, because the trouble sits between the parts. In Russell Ackoff's version, the best part of each kind, taken from every car, won't make the best car.
+
+## Why a PM cares
+
+- **Teams own their parts. Someone has to own what's between them.** At an insurer, intake and payout can each work perfectly while a claim sits stuck, because the two read "approved" differently. You're often the one person whose work spans both sides, so that join is part of your job.
+- **Ask what could come across.** Rechtin's question: "What is the worst thing that other elements could do to you across the interface?" For a marketplace's search, it might be a seller sending a million price changes in an hour, or a feed that quietly stops. Ask it in design reviews.
+- **A clear interface lets both sides move.** When what each side promises is written down, each team can change its own part without asking the other. Maier and Rechtin: "Make a system evolvable by paying attention to the interfaces."
+
+## How to spot it
+
+- Every team hits its target and customers still see the gap. On an analytics product, ingestion meets its throughput target, dashboards load fast, and the numbers are a day old.
+- Nobody can show you what one side of an interface promises the other: what it sends, how fast, and what happens when it fails.
+- Something breaks across a link nobody drew, like a nightly file another team quietly reads. Rechtin's warning: "Be prepared for reality to surface a few interfaces of its own."
+
+## What it does not say
+
+It doesn't say you design the interfaces, or that a central architect should take them from the teams. Whoever designs one has to look across it, at the whole. Nor does every seam need watching. Rechtin also advises drawing boundaries so that "local activity is high speed and global activity is slow change", and then most seams stay quiet.
+
+**One question to carry:** Which interface in your product has no owner, and what's the worst thing that could come across it?
+
+## Go deeper
+
+**The Art of Systems Architecting, Mark W. Maier and Eberhardt Rechtin (1997)**
+
+A textbook, revised in later editions. It isn't free.
+
+**Why trust it:** Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecture program at the University of Southern California. The heuristics distill that experience. They weren't tested in studies.
+
+**What you'll get:** These heuristics with the reasoning around them, and many more on where to draw a system's boundaries.
+
+*To check: nobody has opened the book; the deck's link to it (sdincose.org, blocked here) doesn't match its title. Every quotation is from the deck (pp. 439, 465, 466, 478): check each against Maier and Rechtin or Rechtin's Systems Architecting (1991), with the edition. Ackoff's car is the deck's retelling (pp. 22, 472) of his talk "If Russ Ackoff had given a TED Talk". The backgrounds and the 1997 date are from Wikipedia, opened.*
