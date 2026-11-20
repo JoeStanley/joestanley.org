@@ -6,6 +6,10 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his comments in the working doc, his answers on the Decisions page, and what he asked of the session that day.
 
+- The full path is the cheapest ask of a student. The short path and the concept cards are where the constraints matter most, and where the value per minute should be highest (in the session, during the winnowing proposal).
+- A module's full path prints outside its three pages: the three pages hold the module, and its full path follows and may run onto one more page (chosen in the session).
+- The winnowing cuts five cards as proposed: Architect Across the Interfaces, Concepts, Models That Are Sometimes Wrong, Chesterton's Fence and Fractal Storytelling. Each idea keeps a line, a step, a question or a source in its module (chosen in the session).
+- In Own Your Role, Curious and Opinionated, the card with the *Mozart in the Jungle* idea, is the primary card, with The Concept Champion as its secondary support (in the session).
 - How many concept cards a module keeps is still open. He asked whether one page per module could hold several cards, and whether that would cost too much value per concept: he would rather have few things, excellent, than one thing overdone or several things underdone (the Decisions page, card `cards`).
 - The next step is one winnowing of all the drafts, then the rebuilds, module by module, once the new content from this round of discussion is resolved (agree, on the Decisions page).
 - The *Mozart in the Jungle* idea goes in Own Your Role, as why the vision has to be the product manager's own: in "Why this matters" and the Curious and Opinionated card, beside his two failure modes, described and credited, with no first person (agree, on the Decisions page).
