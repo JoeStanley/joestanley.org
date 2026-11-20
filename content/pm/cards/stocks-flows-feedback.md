@@ -29,7 +29,7 @@ A **balancing** loop pulls a stock toward a goal, as a thermostat does. A **rein
 ## How to spot it
 
 - A number that rises or falls steadily is a stock with unequal flows.
-- A number that swings above and below its target is a balancing loop that reacts late.
+- A number that swings above and below its target is a balancing loop that reacts late, like server capacity that lurches between too much and too little.
 - A number that grows faster and faster is a reinforcing loop.
 
 ## What it does not say

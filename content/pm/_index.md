@@ -19,8 +19,8 @@ Instead, it's a set of lessons intended to strengthen your *product judgment*, s
 
 ## How it works
 
-- **Twelve modules, one question each.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work.
-- **The short path is free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
+- **Twelve lessons, each a module built on one question.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work.
+- **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
 - **Every source says why to trust it** and what you'll get from it, so you can decide what's worth your time.
-- **Concept cards are one page each.** Keep them near your work.
+- **Each idea worth keeping gets a concept card, one page long.** Keep them near your work.
 - **On the site, your progress stays in your browser.** Nothing is sent anywhere.

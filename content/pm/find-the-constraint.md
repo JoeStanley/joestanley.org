@@ -65,7 +65,7 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, the usual fix is to ask every step to go faster and to have each one report its own numbers. It rarely works. Your job is to find the one place where work waits longest, the {{< pm/term "constraint" >}}, because speeding up anywhere else won't speed up the whole. Knowing where a push will count is a large part of judgment. The idea is Eliyahu Goldratt's, and he called it the theory of constraints.
+When delivery is slow, the usual fix is to ask every step to go faster and to have each one report its own numbers. It rarely works. Your job is to find the one place where work waits longest, the {{< pm/term "constraint" >}}, because speeding up anywhere else won't speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints. Knowing where a push will count is a large part of judgment.
 
 [//]: # (short-path)
 

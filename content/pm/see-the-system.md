@@ -5,7 +5,7 @@ module: see-the-system
 question: What is the system here, and why does it behave this way?
 one_thing: Read the card, then draw one thing that piles up in your own work as a bathtub.
 do_minutes: 30
-last_time_note: Own Your Role isn't rebuilt yet, so treat these two as a sample.
+last_time_note: Own Your Role isn't rebuilt yet, so take these two as a preview of it.
 
 last_time:
   - q: You start a new role and you're handed a narrow scope. What do the best PMs do with it?
@@ -36,7 +36,7 @@ steps:
     minutes: 16
     where: The same essay, from the meter story to the end.
     look: Why the houses with the meter in the front hall used less electricity. Then her last section, on why the highest leverage is the hardest to use.
-    trust: Her politics show in the examples. Don't let that settle it either way. Judge the reasoning on its own.
+    trust: Her politics show in the examples. Judge the reasoning on its own, whichever way that pulls you.
     only: Why information, rules and goals outrank numbers.
   - id: cook
     kind: read
@@ -51,7 +51,7 @@ steps:
     only: A better question after a failure. Not "who caused this?" but "what had to line up?"
 
 check:
-  - q: Your team closes more requests each month than last year, yet the backlog keeps growing. What does that tell you?
+  - q: A clinic sees more patients each month than it did last year, yet its waiting list keeps growing. What does that tell you?
     a: More is still coming in than going out. A stock rises whenever its inflow is larger than its outflow.
   - q: Why does Meadows rank putting an electricity meter where people can see it above changing a number?
     a: It adds a feedback loop that wasn't there. People see what they use as they use it. A new number leaves the same people acting on the same information.
@@ -75,6 +75,6 @@ When something keeps going wrong, the first move is usually to find who caused i
 
 ## Do
 
-**Draw one stock (20 minutes).** Pick one thing that piles up in your team's work: open requests, defects, support tickets nobody has answered. Draw it as a bathtub, with what flows in and what flows out. Three months of counts from your ticket tool will do, and estimates are fine if that's all you have. Note who sees the level, and how late they see it. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve, near the top of her essay. Was it aimed at a number, or at something higher up?
+**Draw one stock (20 minutes).** Pick one thing that piles up in your team's work: open defects, customers waiting to be onboarded, orders held for review. Draw it as a bathtub, with what flows in and what flows out. Three months of counts from your ticket tool will do, and estimates are fine if that's all you have. Note who sees the level, and how late they see it. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve, near the top of her essay. Was it aimed at a number, or at something higher up?
 
 **Reread one failure (10 minutes).** Take a missed date or a failed release on your team that got pinned on one cause. List three other things that had to be true for it to happen.

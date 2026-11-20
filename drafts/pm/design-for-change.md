@@ -1,6 +1,6 @@
 ## Why this matters
 
-Most PM questions are about what to build next. This module is about time: which parts of your product will change, how often, and what each change will cost. A lot of the pain of change comes from fast-changing parts tied to slow-changing ones. Once you can see which is which, you'll estimate more honestly, sequence work better, and have a case for the engineering work that makes likely changes cheap.
+Most PM questions are about what to build next. Ask about time as well: which parts of your product will change, how often, and what each change will cost. A lot of the pain of change comes from fast-changing parts tied to slow-changing ones. Once you can see which is which, you'll estimate more honestly, sequence work better, and have a case for the engineering work that makes likely changes cheap.
 
 ## Short path (about two hours of reading and viewing, plus an hour for the exercises)
 
@@ -46,8 +46,8 @@ The deck is a 514-page set of workshop slide notes written for software architec
 - **Slippage beats a tight fit.** Binding fast layers into slow ones looks efficient when a building is new, and it blocks change later (chapter 2). Watch for the software version: a business rule buried inside a core system, like a cancellation policy written into an airline's booking engine.
 - **Wrong pace, either way.** Brand's essay gives historical cases of a layer forced to another layer's speed. Sometimes a fast layer pushes a slow one, and sometimes a slow schedule is imposed on a fast one. He argues that both end badly.
 - **Keep together what changes together.** The deck turns Brand's observation into a design rule and pairs it with Parnas: draw boundaries around the decisions likely to change (p. 329). Engineers can apply it only as well as they know what's likely to change, and often you're the one who knows.
-- **Significance is cost of change.** A decision matters architecturally if it would be costly to reverse, or if it makes other changes cheaper (p. 28). That's your test for which decisions deserve slow, careful attention and which you can make quickly.
-- **Every forecast is partly wrong.** Brand's own line is "All buildings are predictions. All predictions are wrong." Chapter 11 doesn't answer with a better forecast. It answers with scenarios, loose fit and options.
+- **A decision is significant if it's costly to undo.** A decision matters architecturally if it would be costly to reverse, or if it makes other changes cheaper (p. 28). That's your test for which decisions deserve slow, careful attention and which you can make quickly.
+- **Every forecast is partly wrong.** Brand's own line is "All buildings are predictions. All predictions are wrong." Chapter 11 gives up on a better forecast and plans with scenarios, loose fit and options.
 
 ## Apply it to your own work
 

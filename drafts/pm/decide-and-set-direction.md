@@ -1,6 +1,6 @@
 ## Why this matters
 
-A roadmap is a set of decisions, and on most teams many get made by default: by adding, by deferring, or by never deciding. This module helps you make them on purpose. That means telling which decisions deserve care, weighing what each option gains and costs, and saying what you're choosing not to do. It comes late because it draws on the earlier modules, from seeing the system to knowing what's costly to change.
+A roadmap is a set of decisions, and on most teams many get made by default: by adding, by deferring, or by never deciding. Make them on purpose. That means telling which decisions deserve care, weighing what each option gains and costs, and saying what you're choosing not to do. It comes late because it draws on the earlier modules, from seeing the system to knowing what's costly to change.
 
 ## Short path (about two hours of reading, plus an hour for the exercises)
 
@@ -68,7 +68,7 @@ Strategy is what you choose to give up, and why. Michael Porter's "What Is Strat
 ## Why a PM should care
 
 - **What you leave off a roadmap is part of the plan.** In Porter's words, "the essence of strategy is choosing what not to do", and a clear choice tells staff how to make daily calls. A written not-doing list does that for your team. Without one, the roadmap becomes a jumbled list of objectives (Rumelt, deck p. 153).
-- **Straddling is expensive.** Porter's case is Continental Lite, which copied parts of Southwest's low-cost model while staying a full-service airline, and lost hundreds of millions of dollars. The product version is one analytics tool for analysts who want every control and executives who want one chart. It serves each half well.
+- **Straddling is expensive.** Porter's case is Continental Lite, which copied parts of Southwest's low-cost model while staying a full-service airline, and lost hundreds of millions of dollars. The product version is one analytics tool for analysts who want every control and executives who want one chart. It serves neither group well.
 - **Growth is the usual pressure.** Porter singles out the wish to grow as the most damaging force on a strategy. Each added segment or feature looks cheap alone, but together they erase the position.
 - **A no protects the work you must do.** On a developer platform you can't skip security fixes, promised uptime or announced migrations, and every discretionary yes competes with them. A yes written into a public API or a customer contract is a one-way door, a decision you can't easily undo (deck p. 111), so the cheapest no comes before the commitment.
 
@@ -100,7 +100,7 @@ What's your team choosing not to do this quarter, and could you give the reason 
 
 ## The idea
 
-The last responsible moment is the point where not deciding takes away an important option: a path you could still take, but don't have to. Mary and Tom Poppendieck made it a tool in *Lean Software Development: An Agile Toolkit* (2003), and they note that the Lean Construction Institute coined the term. In cost terms: hold off while waiting is cheaper than deciding wrong, keep your options open in the meantime, and decide before the cost of waiting overtakes the cost of deciding.
+The last responsible moment is the point where not deciding takes away an important option: a path you could still take, but don't have to. Mary and Tom Poppendieck made it a tool in *Lean Software Development: An Agile Toolkit* (2003), and they note that the Lean Construction Institute coined the term. In cost terms: wait as long as waiting costs less than deciding wrong, keep your options open in the meantime, and decide before the cost of waiting overtakes the cost of deciding.
 
 ## Why a PM should care
 

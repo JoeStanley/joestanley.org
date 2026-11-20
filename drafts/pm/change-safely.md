@@ -106,7 +106,7 @@ No service is perfectly reliable, and chasing 100 percent costs more than custom
 
 - **The target is a product decision.** How much unreliability customers will put up with depends on what they expect, whether the service ties to revenue, and what competitors offer. Engineers can't settle that alone.
 - **It ends arguments about opinion.** Product teams are often judged on how fast they ship, and reliability engineers on reliability. (Google calls them site reliability engineers, or SREs; your company may say operations or platform engineers.) So the two disagree about how much testing to do and how often to release. A shared number settles it with data.
-- **It makes risk appetite concrete.** "Low risk appetite" turns into a figure you can spend. A 99.9 percent target over 30 days leaves about 43 minutes of failure (simple arithmetic: 0.1 percent of 43,200 minutes).
+- **It puts a number on caution.** "We can't afford failures" turns into a figure you can spend. A 99.9 percent target over 30 days leaves about 43 minutes of failure (simple arithmetic: 0.1 percent of 43,200 minutes).
 - **It lets you innovate on purpose.** Google's chapter notes that a team can choose to loosen an SLO, which frees up room to innovate.
 
 ## How to spot it

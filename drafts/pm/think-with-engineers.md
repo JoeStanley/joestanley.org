@@ -1,6 +1,6 @@
 ## Why this matters
 
-Engineers mean something precise by complexity, quality and consistency (see "Terms you will meet"), and a request that sounds small can strain all three. Once you know what they mean, you can write a quality need someone can test, and you'll see early where data makes a change slow or risky.
+Ask for "fast and reliable" and you've given engineers nothing they can build or check. They mean something precise by complexity, quality and consistency (see "Terms you will meet"), and a request that sounds small can strain all three. Once you know what they mean, you can write a quality need someone can test, and you'll see early where data makes a change slow or risky.
 
 ## Short path (about two hours of reading, plus an hour for the exercises)
 
@@ -55,9 +55,9 @@ The deck isn't a book. It's a 514-page set of workshop slide notes written for s
 
 Each time below covers your own first pass. The conversation with a colleague comes on top.
 
-1. State one quality as a testable scenario, in about 20 minutes. Pick a quality your users would notice if it slipped, such as how quickly a video starts playing on a Friday evening. Write it in the parts shown on p. 424. Question to bring to your tech lead: "Do we measure this today, and what would it take to meet it?"
+1. State one quality as a testable scenario, in about 20 minutes. Pick a quality your users would notice if it slipped, such as how quickly a video starts playing on a Friday evening. Write it in the parts shown on p. 424. Then ask your tech lead: "Do we measure this today, and what would it take to meet it?"
 2. Find where one piece of data lives, in about 30 minutes. Pick one data item your product creates or uses, such as a patient's phone number or a driver's home address. Sketch a context diagram as on p. 346: your system as one box, surrounded by the people and systems that send or receive this item. Mark the system of record, then every copy you know of: reports, the data warehouse, other teams' systems, vendors. Next to each copy, note who depends on it, as the "Notes" on p. 481 suggest. Now ask yourself two things. If the person it belongs to asked you to erase it, which copies would you miss? And does each copy need it at all (data minimization)? Question to bring to a tech lead or data engineer: "How long after a change does each copy catch up?"
-3. Name the complexity you're paying for, in about 15 minutes. Think of a recent change that took far longer than its size suggested. Which of the three symptoms of complexity showed up? Questions to bring to your tech lead: "Where in our system is this symptom worst?" and "What would a small strategic investment there cost, and what would it save?"
+3. Name the complexity you're paying for, in about 15 minutes. Think of a recent change that took far longer than its size suggested. Which of the three symptoms of complexity showed up? Then ask your tech lead: "Where in our system is this symptom worst?" and "What would a small strategic investment there cost, and what would it save?"
 
 ## Check your own thinking
 

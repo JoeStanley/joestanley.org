@@ -2,7 +2,7 @@
 
 Much of the friction you fight as a PM (dependencies, handoffs, work waiting on another team, decisions that stall) looks like people being slow. It usually isn't. More often it comes from where the boundaries sit between teams, and how teams work across them. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
-## Short path (about two hours of reading, plus about an hour for the exercises)
+## Short path (about two and a quarter hours of reading, plus about an hour for the exercises)
 
 The deck is a 514-page set of workshop slide notes written for software architects, not a book, so don't read it like one. Read only the pages named here, and only the parts named. You'll find unfamiliar terms defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 2.
 
@@ -13,6 +13,8 @@ The deck is a 514-page set of workshop slide notes written for software architec
 5. The **RACI** concept card (10 minutes).
 6. Deck p. 319 (5 minutes). Read the quote about keeping an org chart, a diagram of how work actually flows, and a diagram of what the company does. Skip the rest.
 7. Conway's original paper, "How Do Committees Invent?" (1968), about 20 minutes. It's four pages, free at melconway.com.
+8. The **Agency and Coherence** concept card (10 minutes).
+9. Ruth Malan and Dana Bredemeyer, ["Less is More with Minimalist Architecture"](https://www.bredemeyer.com/pdf_files/MinimalistArchitecture.PDF) (2002), 6 minutes. Three pages, free on the authors' site. It's an opinion column with no data, written for software architects, so read "architect" as whoever sets the rules that cross teams. Read it for the one reason they accept for taking a decision away from a team.
 
 ## Full path
 
@@ -40,7 +42,7 @@ The deck is a 514-page set of workshop slide notes written for software architec
 - **You can design for it, within limits.** The inverse Conway maneuver reshapes teams on purpose to get the system you want. Find the limits before you count on it: with a tech lead, work out which parts of your system could change fast enough to follow a new team design, and which would hold the old shape.
 - **Cognitive load is a design limit.** Ask what your own team carries that it can't understand well.
 - **Interaction is a choice, and usually a temporary one.** Each mode fits a different moment. Notice what it costs when collaboration quietly becomes the permanent default: every change needs a meeting.
-- **Coherence, not maximal alignment.** Teams need just enough common ground to work together, such as shared terms and a shared definition of done. That doesn't mean forcing every team onto one plan. Deck pp. 52 to 53 make this case in denser language.
+- **Enough common ground, and no more.** Teams need just enough common ground to work together, such as shared terms and a shared definition of done. That doesn't mean forcing every team onto one plan. Deck pp. 52 to 53 make this case in denser language.
 - **Decision rights are part of the design.** Compare the advice process with how decisions actually get made around you.
 
 ## Apply it to your own work
@@ -77,7 +79,7 @@ Organizations that design systems end up with designs that mirror their own comm
 
 ## What it does not say
 
-It's a strong tendency, not a law of physics. Researchers who reviewed 142 studies found that an organization's structure usually does mirror the structure of what it builds, especially inside a single company. But not always: open, collaborative projects (mostly software) often broke the pattern, and digital coordination tools helped them do it (Colfer and Baldwin, 2016). So treat it as a force to design with, not a fate.
+It's a strong tendency, not a law of physics. Researchers who reviewed 142 studies found that an organization's structure usually does mirror the structure of what it builds, especially inside a single company. But not always: open, collaborative projects (mostly software) often broke the pattern, and digital coordination tools helped them do it (Colfer and Baldwin, 2016).
 
 ## One question to carry into your work
 
@@ -143,7 +145,7 @@ For the last decision that stalled in your area, who was the one accountable per
 
 ## The idea
 
-Evan Bottcher defines a digital platform as "a foundation of self-service APIs, tools, services, knowledge and support," arranged as an internal product. "Self-service" means a team can use it on its own, without filing a request. The teams that use it are its customers, and they deliver features faster, with less coordination.
+Evan Bottcher defines a digital platform as "a foundation of self-service APIs, tools, services, knowledge and support," arranged as an internal product. "Self-service" means a team can use it on its own, without filing a request. The teams that use it are its customers, and the aim is that they deliver features faster, with less coordination.
 
 His central point is that a platform has to be compelling to use. It can't stand on a mandate alone, meaning a rule that says "you must use it." Using it should be easier than building and running your own.
 
@@ -152,7 +154,7 @@ His central point is that a platform has to be compelling to use. It can't stand
 - **Your customers are other teams, and your platform is only worth what they get from it.** A team that can't get a new service into production without waiting on you will find another way, or wait.
 - **Self-service removes the queue.** Bottcher cites a colleague's study at an Australian telecommunications company, where tasks that had to wait for another team were 10 to 12 times slower in elapsed time (the clock time from start to finish). Put a ticket queue in front of your platform and it can become the constraint for everyone downstream (see the card The Five Focusing Steps, on finding the one step that limits the whole flow).
 - **A platform is more than software.** Documentation counts, and so do a quick first success, support, templates and a community. Bottcher lists a quick, cheap on-ramp (an easy way to get started) as part of what makes a platform compelling.
-- **Start from proven needs.** Bottcher's advice is to build what several application teams already need, not what you guess they'll need. He also wants a long-lived team that builds and runs the platform.
+- **Start from proven needs.** Build what several application teams already need, not what you guess they'll need. He also wants a long-lived team that builds and runs the platform.
 
 ## How to spot it
 
@@ -176,3 +178,47 @@ A long article. Free at martinfowler.com.
 **Why trust it:** Bottcher describes himself as an experienced technical leader with over two decades in the field, and the article presents a model developed at Thoughtworks, a technology consultancy. It's one practitioner's view, not research, so weigh it that way.
 
 **What you'll get:** A concrete list of what makes a platform compelling, plus the Netflix "paved road" idea (a central set of tools): teams may choose another way, but they carry the full cost of maintaining it.
+
+# Agency and Coherence
+
+## The idea
+
+Work that many people do at once needs two things that pull against each other. People need room to decide, or the work is slow and nobody much wants to do it. And the pieces need to fit, or the product doesn't work as one thing.
+
+The way through is to be strict about a few things and loose about the rest. Be strict about the purpose, and about the few decisions that need a view of the whole. Leave how each team gets there to the team. Ruth Malan and Dana Bredemeyer, writing for software architects, give the test for the strict list: the only good reason to take a decision away from the people doing the work is a benefit to the whole "that the organization could not otherwise achieve" (2002).
+
+Other fields landed in the same place. Marine Corps doctrine seeks unity "not principally through imposed control, but through harmonious initiative" inside guidance from above (MCDP 1, *Warfighting*, 1997). The team researcher Richard Hackman tells leaders to be "insistent and unapologetic" about the ends, and just as insistent about leaving the means alone (*Leading Teams*, 2002).
+
+## Why a PM should care
+
+- **You often write the strict list, whether or not you call it that.** What a term means, which flows have to match, what "done" includes.
+- **Room to decide is part of why the work is worth doing.** In a survey of 658 employees across 62 jobs, freedom over how the work gets done went with higher motivation (Hackman and Oldham, 1976). Take it away and you lose effort you can't buy back with process.
+- **A team can feel great and still be out of step.** In a study of 45 new-product teams, the ones that kept to themselves rated their own work highly, and management rated them poorly (Ancona and Caldwell, 1992). A team that's tight inside doesn't always fit with the teams around it.
+- **Customers feel the gaps.** Two teams, two meanings of "account", two settings pages.
+- **Every rule you add weakens the others.** Malan and Bredemeyer warn that each added decision "can potentially dilute the impact of all the other decisions". Keep the list short.
+
+## How to spot it at work
+
+- Too little agency: teams ask permission for small changes, work waits on a review that adds nothing, and people can tell you what they were told to build but not why.
+- Too little coherence: every team's piece works and the whole doesn't. The same thing gets built twice. Meetings to "align" multiply.
+- A team says it's doing well, and its neighbors disagree.
+- There's a shared rule, and nobody can give the reason for it.
+
+## What it does not say
+
+It does not say more autonomy is always better. A review of the research found "substantial variance" in what autonomous work groups did for productivity and attitudes (Guzzo and Dickson, 1996). It doesn't say everyone has to agree, or build the same way: the aim is enough common ground to work together, and no more. It doesn't say autonomy means being left alone. In the motivation research, autonomy is "the feeling of volition that can accompany any act" (Ryan and Deci, 2000), so a shared rule you understand and accept can leave it intact. And it isn't a recipe. The best-known picture of "aligned autonomy" is Spotify's account of itself, which its authors called "only a snapshot of our current way of working" (Kniberg and Ivarsson, 2012).
+
+## One question to carry into your work
+
+Does this decision need a view of the whole? If it doesn't, whose is it?
+
+## Go deeper
+
+- U.S. Marine Corps, MCDP 1, *Warfighting* (1997), the sections "Philosophy of command", "Mission tactics" and "Commander's intent", about 8 minutes. A public manual. It's doctrine: how an organization means to work, not a study of how every unit does.
+- Stephen Bungay, ["How to Make the Most of Your Company's Strategy"](https://hbr.org/2011/01/how-to-make-the-most-of-your-companys-strategy) (Harvard Business Review, 2011), and his book *The Art of Action* (2011): align on intent, leave the actions free. A consultant's model, with no outcome data. The site limits how many articles you can read free.
+- Ancona and Caldwell, "Bridging the Boundary: External Activity and Performance in Organizational Teams" (Administrative Science Quarterly, 1992). The field study of 45 product teams, in five high-technology companies in the 1980s. The journal charges for it.
+- Ryan and Deci, ["Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being"](https://selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf) (American Psychologist, 2000). Free on the authors' site. A review of their own theory, drawn mostly from schools, families and health care.
+- Kniberg and Ivarsson, ["Scaling Agile @ Spotify"](https://blog.crisp.se/wp-content/uploads/2012/11/SpotifyScaling.pdf) (2012), 11 minutes. Free. A company describing itself.
+- Ruth Malan's free slide notes, ["System Design and Software Architecture"](https://www.ruthmalan.com/systems/2025SystemDesignOverview.pdf) (December 2025 edition), pp. 46 to 57, on coherence, alignment and autonomy. This card's idea comes from there.
+
+*To check: the sources on this card were opened and its quotations checked on 20 November 2026, with these gaps. MCDP 1 was read on an archive.org copy, and Hackman, Hackman and Oldham, Ancona and Caldwell, and Guzzo and Dickson on university course copies. Lawrence and Lorsch's 1967 study of differentiation and integration is the classic research on this tension, and nobody has opened it yet.*

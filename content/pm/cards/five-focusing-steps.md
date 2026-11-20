@@ -21,15 +21,15 @@ Every system has one part that limits what the whole can deliver: its {{< pm/ter
 
 1. **Identify** the constraint.
 2. **Exploit** it: get the most from it as it is.
-3. **Subordinate** everything else to that decision.
+3. **Subordinate** every other step to it.
 4. **Elevate** it: invest to raise its capacity.
 5. **Repeat** from step 1 once the constraint has moved, and don't let old habits become the new constraint.
 
 ## Why a PM cares
 
-- **Effort anywhere else is wasted.** Speed up a step that isn't the constraint and all you build is a longer queue in front of the one that is.
-- **The order saves money.** Steps 2 and 3 cost little. Step 4 costs budget, so it comes last. If you ask for more people first, you've skipped the cheaper steps.
-- **The constraint may be a rule, not a team.** An approval board that meets monthly, or a sign-off only one person can give, limits delivery as surely as a short-staffed team. It's often easier to change, too.
+- **Effort anywhere else buys little.** Speed up any other step and you mostly build a longer queue in front of the constraint.
+- **The order saves money.** Steps 2 and 3 cost little. Step 4 costs budget, so it comes last. Ask for more people first and you've skipped the cheaper steps.
+- **The constraint may be a rule.** An approval board that meets monthly, or a sign-off only one person can give, limits delivery as surely as a short-staffed team. It's often easier to change, too.
 
 ## How to spot it
 

@@ -146,13 +146,13 @@ Two splits help. Operational questions keep the live service running, and analyt
 
 - **The questions are product knowledge.** On a clinic booking product, you know what patients, the front desk and the clinic manager will ask, and how soon.
 - **Freshness is a decision with a price.** Martin Fowler notes that many reports work well with yesterday's data, and he's skeptical of the value of near-real-time analytics. Before you ask for "real time," ask what decision the answer feeds.
-- **Late data forces a choice.** Event time is when something happened, and processing time is when the system saw it. A sensor reading taken on Friday can arrive on Monday (an illustration, not from a source), and someone has to decide which day it counts for.
+- **Late data forces a choice.** Event time is when something happened, and processing time is when the system saw it. Say a sensor reading taken on Friday arrives on Monday. Someone has to decide which day it counts for.
 
 ## How to spot it
 
 - A request says "real time" or "up to date" but doesn't say for whom, or for which decision.
 - Two screens or reports show different numbers for the same thing, because they're reading copies of different ages.
-- A question is quick to answer from one direction and slow from the other. Finding everything one viewer watched may be fast, while finding every viewer who watched one particular episode may be slow. (This is an illustration, not from a source.)
+- A question is quick to answer from one direction and slow from the other. Finding everything one viewer watched may be fast, while finding every viewer who watched one particular episode may be slow.
 
 ## What it does not say
 
