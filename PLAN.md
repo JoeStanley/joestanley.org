@@ -17,28 +17,31 @@ What comes next for joestanley.org and On Product Judgment, and where the work s
 - **Which job.** The first job below that is ready and that no open pull request already covers: for a run, the first marked *Run*; for a session Joe opens, the first not marked *Run*, if one is ready, since a run cannot do it. A job that waits on Joe is skipped until his answer is in.
 - **Ending a session.** `CLAUDE.md`, "End of every session": record his answers, put new questions on the Decisions page, update this page, sync the doc, one pull request by auto-merge.
 
-## Where it stands, 20 November 2026, evening
+## Where it stands, 20 November 2026, night
 
 - **Built and on the site's `main`:** Start; Module 1, See the System; Module 2, Find the Constraint (the pilot); their three cards; the glossary. They print on 12 pages.
 - **Drafts:** the other ten modules, one file each in `drafts/pm/`. `data/pm/modules.yaml` says where each stands. Five are in the old format and still lean on Ruth Malan's deck; five are first drafts in the pilot format that run long on purpose.
 - **The map is twelve modules again,** from Joe's answers of 20 November. Think With Engineers is cut and its parts spread across Modules 4 to 6 and 9. Map the Domain moved up to Module 4, so Design for Change is now 5 and Change Safely 6. The new Module 7, Weigh the Evidence, is on the limits of data in decisions, and has a first draft. Who decides moved from Mind the Seams to Decide and Set Direction, and Notice When You Are Wrong now ends at finding out.
 - **The live site** is still the old one. The move to the new site waits until more modules are rebuilt (Joe, 18 November).
-- **Waiting on Joe:** two cards on the Decisions page, asked 20 November: how many cards a module keeps (`cards-per-module`, his question on the old `cards` card), and the new module's title (`module-7-title`). And his read of Weigh the Evidence in the doc.
+- **The winnowing is proposed,** draft by draft, in pm-sources `notes/2026-11-20-winnowing-proposal.md`. Joe ruled on it in the session: the full path is the cheapest ask and prints outside the three pages, five cards are cut, and Own Your Role's first card is Curious and Opinionated, with The Concept Champion second.
+- **Waiting on Joe:** two cards on the Decisions page, asked 20 November: how many cards a module keeps (`cards-per-module`), which he answers after reading the proposal's part 3, and the new module's title (`module-7-title`). And his read of Weigh the Evidence in the doc.
 - **The way of working** moved fully into Claude Code on 20 November. The Cowork project is retired, the deck is in pm-sources, the environment has full web access, and a daily run takes the next ready job.
 
 ### Joe's input not yet carried out
 
-None. His comments of 20 November in the working doc are carried out and answered in their threads.
+- His direction that the full path prints outside a module's three pages changes spec P1 and its check. That waits for the first rebuild whose full path needs the fourth page (job 7).
+
+His comments of 20 November in the working doc are carried out and answered in their threads.
 
 ## Jobs, in order
 
 1. **The shape of the whole, put to Joe.** Done on 20 November: a cold read (pm-sources `notes/2026-11-20-cold-read-modules-3-to-7.md`) and six cards.
 2. **Carry his answers in.** Done on 20 November: the map, who decides, the split of Modules 10 and 11, the *Mozart in the Jungle* idea and the order of the work are in the drafts and `data/pm/modules.yaml`, and Weigh the Evidence has a first draft from sources opened that day (pm-sources `notes/2026-11-20-weigh-the-evidence-sources.md`). His question on the card count went back to him as a card.
 3. **The menu label.** Done on 20 November: the menu says "Product Judgment".
-4. *Run.* **Propose the winnowing.** One note in pm-sources, `notes/YYYY-MM-DD-winnowing-proposal.md`, that proposes for every draft the cut to about 90 minutes and three printed pages: what stays on the short path, what moves to the full path, and which cards stay, for one card a module and for two. It changes no words here. Waits on: nothing. A run may take it in parts, a few modules to a run, in reading order.
-5. **Winnow all the drafts,** in one pass, from job 4's note and the card count Joe picks, so he reads the whole syllabus at its real size once, in the doc. Joe chose this order on 20 November: winnow first, then rebuild, once the new content from this round is resolved. Waits on: job 4, his answer to `cards-per-module`, and his read of Weigh the Evidence.
+4. **Propose the winnowing.** Done on 20 November: pm-sources `notes/2026-11-20-winnowing-proposal.md`, every draft's cut for one card a module and for two, with the overlaps between modules settled. Joe's rulings on it are in its part 2 and in `decisions.md`.
+5. **Winnow all the drafts,** in one pass, from job 4's note and the card count Joe picks, so he reads the whole syllabus at its real size once, in the doc. Each draft comes out in the pilot's parts, cut as its part of the note says; where a module's part and the note's part 3 disagree, part 3 holds. Joe chose this order on 20 November: winnow first, then rebuild, once the new content from this round is resolved. Waits on: his answer to `cards-per-module`, and his read of Weigh the Evidence.
 6. *Run.* **Prepare each rebuild,** one module to a run, in reading order: 0, 3, 4, 5, 6, 7, 8, 9, 10, 11. See "Preparing a rebuild" below. Waits on: job 5, so no source is checked that the winnowing cuts.
-7. **Rebuild the modules,** two to a round, each from its prep note, in the pilot's pattern, each draft deleted as its module is built. Each round lands in the doc for Joe to read once. Waits on: job 5, and each module's prep.
+7. **Rebuild the modules,** two to a round, each from its prep note, in the pilot's pattern, each draft deleted as its module is built. Each round lands in the doc for Joe to read once. The first rebuild whose full path runs past the module's three pages changes spec P1 and its check, with a mutation: the module through Check yourself on three pages, and with its full path on four at most (Joe, 20 November). Waits on: job 5, and each module's prep.
 8. **Go live.** A `For Joe:` pull request into `live`, and a card asking Joe what should wait for him once the site is live (`CLAUDE.md`). Waits on: Joe, since publishing is his.
 
 When nothing above is ready, nothing else waits.
