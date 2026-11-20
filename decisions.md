@@ -6,6 +6,7 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his comments in the working doc, and what he asked of the session that day.
 
+- Sessions merge their own pull requests by GitHub auto-merge and stop, instead of watching the checks. If a check fails, the next session fixes it.
 - The syllabus is titled On Product Judgment, and that theme carries through its language: every module is a side of how a product manager builds an inner sense of judgment, from lived experience, the industry's practice and the situation in front of them.
 - The Start page goes from its title straight into the quote. Its introduction is his own. "Start here", the line under the list of modules and "What this syllabus does not cover" are cut, and "The route" becomes "The lessons".
 - In the quote, "Communist" is scratched out by hand and "Product Manager" is written over it in the handwritten font, like a line edit on a printed page.
