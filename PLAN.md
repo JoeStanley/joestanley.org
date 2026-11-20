@@ -33,7 +33,6 @@ From his comments of 20 November in the working doc. Each is answered in its thr
 | The list of modules on the Start page, at "6 Think With Engineers", feels like a hodgepodge: review it and the related modules cold. | Start tab | 1 |
 | Put the decisions about the shape of the whole to him as picks. | Notes, Recommendation | 1 |
 | The idea from *Mozart in the Jungle*: the best work comes from passion and a personal voice, and technical perfection alone is soulless. It goes somewhere in the syllabus. | Module 0 tab | 1, then 6 |
-| The menu label "PM Syllabus" is too clinical. | Notes, Open items | Card on the Decisions page, then 3 |
 
 ## Jobs, in order
 
@@ -42,7 +41,7 @@ From his comments of 20 November in the working doc. Each is answered in its thr
    - Then cards on the Decisions page: the map (twelve modules, their order and titles, after the cold read); the cut between Notice When You Are Wrong and Bring People With You; where Agency and Coherence lives (a card in Mind the Seams today); where the *Mozart in the Jungle* idea goes; the order of the work (cut all the copy down first, or rebuild module by module and cut each as it is built); and which cards stay, or that this waits for the page count from job 6.
    - Done when: the cards are on the page and the answer to his comment waits to be posted.
 2. **Carry his answers in.** Waits on: his answers to job 1's cards, each part as it lands. `data/pm/modules.yaml`, the Start page and the drafts. Done when: every answered card is recorded and done.
-3. *Run.* **The menu label.** Waits on: his answer to the menu card. Change it in `hugo.yaml`, which no tab of the doc holds; record a new V1 baseline, for content alone.
+3. **The menu label.** Done on 20 November: the menu says "Product Judgment".
 4. *Run.* **Prepare Module 0's rebuild.** Waits on: nothing. See "Preparing a rebuild" below.
 5. *Run.* **Prepare Module 5's rebuild.** Waits on: nothing.
 6. **Rebuild Module 0, Own Your Role,** from its prep note, in the pilot's pattern: 90 minutes, three printed pages, its draft deleted. Waits on: job 1's answers on the map and on the *Mozart in the Jungle* idea, and job 4.
