@@ -1,0 +1,7 @@
+{{- /* A line edit in the owner's hand (spec H2). First argument: the word as printed, which is scratched out.
+       Second argument: what the owner wrote in its place, which sits above it in his hand.
+       The new words come first in the source, so a screen reader says them and then the crossed-out word, and
+       the eye meets them in the same order, top to bottom (spec A6, A10). The scratch has three strokes, picked
+       by where the edit sits on the page. For the owner's own corrections only, used sparingly. */ -}}
+<span class="edit"><ins>{{ .Get 1 }}</ins> <del class="scratch-v{{ add 1 (mod .Ordinal 3) }}">{{ .Get 0 }}</del></span>
+{{- /**/ -}}

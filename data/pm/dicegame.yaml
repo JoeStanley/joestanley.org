@@ -10,7 +10,7 @@ setups:
     dice: [[1, 6], [1, 6], [1, 6], [1, 6], [1, 6]]
     promise: 70
     average: 51.7
-    after: Nobody did anything wrong. A low roll starves everyone further down the line, and a high roll later cannot make it up, because there is nothing waiting to pass on.
+    after: Nobody did anything wrong. A low roll starves everyone further down the line, and a high roll later can't make it up, because there's nothing waiting to pass on.
   slow3:
     label: Station 3 is slower
     note: Station 3 now rolls 1 to 4. The others still roll 1 to 6.
