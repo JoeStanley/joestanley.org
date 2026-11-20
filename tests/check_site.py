@@ -27,8 +27,8 @@ PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
-UNIT_SHARE = {"start": 1, "module": 3, "card": 1, "glossary": 1}
-PRINT_PAGES = 11
+UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 1}
+PRINT_PAGES = 12
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -313,7 +313,7 @@ def check_static():
             fail("C7", f"{os.path.relpath(path, ROOT)} sets a color itself ({own[0].strip()}); name it in pm.css and use a class")
 
     # T3: no em dashes
-    for pattern in ["content/**/*", "layouts/**/*", "assets/**/*.css", "assets/**/*.js", "data/**/*", "hugo.yaml", "tests/SPEC.md", "README*.md"]:
+    for pattern in ["content/**/*", "drafts/**/*", "layouts/**/*", "assets/**/*.css", "assets/**/*.js", "data/**/*", "hugo.yaml", "tests/SPEC.md", "README*.md", "VOICE.md"]:
         for path in glob.glob(os.path.join(ROOT, pattern), recursive=True):
             if os.path.isfile(path):
                 try:
@@ -1423,6 +1423,202 @@ def variant_checks(ctx, base):
     c.close()
 
 
+# ---------- the working source: one source per unit, mirrored in the doc (X1 to X3), and its voice (E1 to E3, S5) ----------
+def _source_doc():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("source_doc", os.path.join(ROOT, "tools-pm", "source-doc.py"))
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    return mod
+
+
+CONTRACTIONS = [  # (the full form, where a speaker could contract it; the contraction)
+    (r"\bdo not\b", r"\bdon't\b"), (r"\bdoes not\b", r"\bdoesn't\b"), (r"\bdid not\b", r"\bdidn't\b"),
+    (r"\bis not\b", r"\bisn't\b"), (r"\bare not\b", r"\baren't\b"), (r"\bwas not\b", r"\bwasn't\b"), (r"\bwere not\b", r"\bweren't\b"),
+    (r"\bcannot\b|\bcan not\b", r"\bcan't\b"), (r"\bwill not\b", r"\bwon't\b"), (r"\bwould not\b", r"\bwouldn't\b"),
+    (r"\bshould not\b", r"\bshouldn't\b"), (r"\bcould not\b", r"\bcouldn't\b"), (r"\bhave not\b", r"\bhaven't\b"), (r"\bhas not\b", r"\bhasn't\b"),
+    (r"\bit is\b(?! (?:not|n't))(?=\s+[a-z])", r"\bit's\b"), (r"\bthat is\b(?=\s+[a-z])", r"\bthat's\b"), (r"\bthere is\b(?=\s+[a-z])", r"\bthere's\b"),
+    (r"\bwhat is\b(?=\s+[a-z])", r"\bwhat's\b"), (r"\bhere is\b(?=\s+[a-z])", r"\bhere's\b"),
+    (r"\byou are\b(?=\s+[a-z])", r"\byou're\b"), (r"\byou will\b(?=\s+[a-z])", r"\byou'll\b"), (r"\bthey are\b(?=\s+[a-z])", r"\bthey're\b"),
+    (r"\bwe are\b(?=\s+[a-z])", r"\bwe're\b"), (r"\bit will\b(?=\s+[a-z])", r"\bit'll\b")]
+
+
+def _own_words(md):
+    """A tab's own running text: no headings, no quotations, no titles of works, no links, no table rows."""
+    lines = [l for l in md.split("\n") if not re.match(r"\s*(#|>|\|)", l)]
+    s = "\n".join(lines)
+    s = re.sub(r"\[([^\]]*)\]\([^)]*\)", " ", s)          # links: the words are a title
+    s = re.sub(r'"[^"\n]*"', " ", s)                       # quotations, and titles in quotation marks
+    s = re.sub(r"(?<!\*)\*(?!\*)[^*\n]+\*(?!\*)", " ", s)  # italics: titles of works, status lines
+    return s.replace("**", "")
+
+
+def _sections(md, names):
+    """The text under each heading whose name is in names, up to the next heading."""
+    out, cur = [], None
+    for l in md.split("\n"):
+        h = re.match(r"#{1,4} (.*)", l)
+        if h:
+            cur = [] if h.group(1).strip() in names else None
+            if cur is not None:
+                out.append(cur)
+        elif cur is not None:
+            cur.append(l)
+    return ["\n".join(x) for x in out]
+
+
+def source_checks(out_dir):
+    from bs4 import BeautifulSoup
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    # X1: one source for every unit
+    drafts = {os.path.splitext(f)[0] for f in os.listdir(os.path.join(ROOT, "drafts", "pm")) if f.endswith(".md")} if os.path.isdir(os.path.join(ROOT, "drafts", "pm")) else set()
+    used = set()
+    for m in mods:
+        where = f"Module {m['num']}, {m['title']}"
+        page = m.get("page") and os.path.exists(os.path.join(ROOT, "content", "pm", m["page"] + ".md"))
+        draft = m.get("draft") and m["draft"] in drafts
+        if m.get("page") and not page:
+            fail("X1", f"{where}: the map names the page {m['page']}, and content/pm/{m['page']}.md is not there")
+        if m.get("draft") and not draft:
+            fail("X1", f"{where}: the map names the draft {m['draft']}, and drafts/pm/{m['draft']}.md is not there")
+        if page and draft:
+            fail("X1", f"{where} is both built and a draft: delete drafts/pm/{m['draft']}.md once the module is rebuilt")
+        if not m.get("page") and not m.get("draft"):
+            fail("X1", f"{where} has neither a page nor a draft")
+        if m.get("draft") and not m.get("state"):
+            fail("X1", f"{where}: a draft says where it stands, in its state line on the map")
+        used.add(m.get("draft"))
+    for d in sorted(drafts - used):
+        fail("X1", f"drafts/pm/{d}.md belongs to no module on the map")
+    if FAIL.get("X1"):
+        return
+    sd = _source_doc()
+    lock_path = os.path.join(ROOT, "tools-pm", "source-doc.lock.json")
+    lock_all = json.load(open(lock_path, encoding="utf-8")) if os.path.exists(lock_path) else {}
+    try:
+        tabs = sd.tabs(out_dir, lock_all.get("synced") or None)
+    except Exception as e:
+        for r in ("X2", "X3"):
+            fail(r, f"tools-pm/source-doc.py could not make the tabs: {str(e).splitlines()[0][:160]}")
+        return
+    by_name = dict(tabs)
+    # X2: a built unit's tab holds every word a reader meets on its page
+    soup = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
+    norm = lambda s: " ".join(re.findall(r"[a-z0-9']+", s.translate(sd.QUOTES).lower()))
+    tab_of = {"start": "Start", "glossary": "Glossary"}
+    for m in mods:
+        if m.get("page"):
+            tab_of[m["page"]] = f"{m['num']} {m['title']}"
+    for art in soup.select("main article.unit"):
+        unit = art["data-unit"]
+        name = tab_of.get(unit) or next((tab_of[m["page"]] for m in mods if m.get("page") and m["id"] == art.get("data-module")), None)
+        if not name or name not in by_name:
+            fail("X2", f"the unit {unit} has no tab"); continue
+        have = norm(by_name[name])
+        for junk in art.select("svg, script, style, .sr, .print-only, .board, .board-key, .tally, .progress, .result, .setup-note, details.why > summary, [hidden]"):
+            junk.extract()
+        missing = []
+        for node in art.find_all(string=True):
+            want = norm(str(node))
+            if len(want.split()) >= 2 and want not in have:
+                missing.append(str(node).strip()[:60])
+        for w in missing[:4]:
+            fail("X2", f"{name}: the page says \"{w}\" and the tab does not")
+        if len(missing) > 4:
+            fail("X2", f"{name}: and {len(missing) - 4} more passages are on the page and not in the tab")
+    # X3: the doc is in step with the repository
+    lock = {t_["name"]: t_ for t_ in lock_all.get("tabs", [])}
+    if not lock:
+        fail("X3", "tools-pm/source-doc.lock.json is missing or empty: sync the working doc, then run source-doc.py --record")
+    for name, text in tabs:
+        if name not in lock:
+            fail("X3", f"the tab {name} has never been put in the working doc")
+        elif lock[name].get("sha256") != sd.sha(text):
+            fail("X3", f"the tab {name} has changed since it was last put in the working doc: sync the doc, then run source-doc.py --record")
+    for name in lock:
+        if name not in by_name:
+            fail("X3", f"the record lists a tab the repository no longer makes: {name}")
+    # S5, E1 to E3: every unit, built or draft, as its tab shows it
+    built_tabs = {f"{m['num']} {m['title']}" for m in mods if m.get("page")}
+    retired = [l.strip().lower() for l in open(os.path.join(TESTS, "retired-settings.txt"), encoding="utf-8") if l.strip() and not l.startswith("#")]
+    for name, text in tabs:
+        if name == "About":
+            continue
+        low = text.lower()
+        for phrase in retired:
+            if phrase in low:
+                fail("S5", f"{name}: an example is set in a retired setting (\"{phrase}\")")
+        if (name in ("Start", "Glossary") or name in built_tabs) and "to check:" in low:
+            fail("S7", f"{name} is built and still carries a \"To check:\" line")
+        if name in ("Start", "Glossary"):
+            continue
+        for sec in _sections(text, {"Why this matters", "Why a PM cares", "Why a PM should care"}):
+            if not re.search(r"\byou(r|'re|'ll|'ve|'d)?\b", sec, re.I):
+                fail("E1", f"{name}: a section that should speak to the reader never says \"you\": {sec.strip()[:50]}")
+        own = _own_words(text)
+        full = sum(len(re.findall(a, own, re.I)) for a, b in CONTRACTIONS)
+        short = sum(len(re.findall(b, own, re.I)) for a, b in CONTRACTIONS)
+        if full + short >= 8 and short / (full + short) < 0.6:
+            fail("E2", f"{name}: {short} of {full + short} places a contraction could go use one ({short / (full + short):.0%}, needs 60%)")
+        # "I" the pronoun is followed by a verb; "Part I", "section I," and RACI's "I" are not
+        m_ = re.search(r"(?<![\w'])(?:(?<!Part )(?<!Section )(?<!section )(?<!Chapter )(?<!chapter )(?<!Phase )I(?= [a-z])|I'm|I've|I'd|I'll|my|me|mine|myself)(?![\w'])", own)
+        if m_:
+            ctx_ = own[max(0, m_.start() - 30):m_.end() + 30].replace("\n", " ")
+            fail("E3", f"{name}: first person outside a quotation: \"...{ctx_}...\"")
+
+
+JS_EDIT = """() => [...document.querySelectorAll('.edit')].map(e => { const ins = e.querySelector('ins'), del = e.querySelector('del');
+  const a = ins.getBoundingClientRect(), b = del.getBoundingClientRect(), cs = getComputedStyle(ins), ds = getComputedStyle(del);
+  const range = document.createRange(), others = [];
+  const w = document.createTreeWalker(e.closest('p, li, blockquote, div'), NodeFilter.SHOW_TEXT); let n;
+  while ((n = w.nextNode())) { if (e.contains(n) || !n.textContent.trim()) continue; range.selectNodeContents(n); for (const r of range.getClientRects()) others.push([r.left, r.top, r.right, r.bottom]); }
+  return {ins: [a.left, a.top, a.right, a.bottom], del: [b.left, b.top, b.right, b.bottom], face: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim().toLowerCase(),
+    stroke: ds.backgroundImage, line: ds.textDecorationLine, order: !!(ins.compareDocumentPosition(del) & Node.DOCUMENT_POSITION_FOLLOWING), old: del.textContent.trim(), others, W: document.documentElement.clientWidth}; })"""
+
+
+def edit_checks(ctx, base):
+    """H2: a line edit in the owner's hand. The new words sit above the old word, in his hand, clear of the lines
+    around it and of the screen's edge; the old word carries a drawn stroke; the new words come first in the source."""
+    checked("H2")
+    seen = 0
+    strokes = set()
+    for w, scheme in ((320, "light"), (390, "light"), (390, "dark"), (1280, "light"), (1280, "dark")):
+        c = ctx(viewport={"width": w, "height": 900}, color_scheme=scheme); pg = c.new_page()
+        for path in ["/pm/", "/pm/all/"]:
+            pg.goto(base + path); pg.evaluate("document.fonts.ready")
+            for e in pg.evaluate(JS_EDIT):
+                seen += 1; where = f"{path} at {w} {scheme}, \"{e['old']}\""
+                il, it, ir, ib = e["ins"]; dl, dt, dr, db = e["del"]
+                if ib > dt + 2:
+                    fail("H2", f"{where}: the new words do not sit above the old word")
+                if abs((il + ir) / 2 - (dl + dr) / 2) > 6:
+                    fail("H2", f"{where}: the new words are not centered on the old word")
+                if e["face"] != "shantell sans":
+                    fail("H2", f"{where}: the new words are set in {e['face']}, not in the owner's hand")
+                if "url(" not in e["stroke"] and "line-through" not in e["line"]:
+                    fail("H2", f"{where}: the old word is not scratched out")
+                if not e["order"]:
+                    fail("H2", f"{where}: the old word comes before the new words in the source")
+                if il < -1 or ir > e["W"] + 1:
+                    fail("H2", f"{where}: the new words run past the edge of the screen")
+                if any(l < ir - 1 and r > il + 1 and t_ < ib - 2 and b > it + 2 for l, t_, r, b in e["others"]):
+                    fail("H2", f"{where}: the new words touch the text around them")
+                strokes.add((scheme, e["stroke"]))
+        if w == 1280:   # three strokes, and each takes the page's ink
+            pg.goto(base + "/pm/")
+            got = pg.evaluate("""() => { const d = document.querySelector('.edit del'); if (!d) return []; const out = [];
+              for (const v of ['scratch-v1', 'scratch-v2', 'scratch-v3']) { d.className = v; out.push(getComputedStyle(d).backgroundImage); } return out; }""")
+            if len(set(got)) < 3:
+                fail("H2", f"{scheme}: the scratch has {len(set(got))} strokes, expected 3")
+            strokes.update((scheme, g) for g in got)
+        c.close()
+    if not seen:
+        fail("H2", "no line edit was found on the Start page")
+    light = {s for sc, s in strokes if sc == "light"}; dark = {s for sc, s in strokes if sc == "dark"}
+    if light & dark:
+        fail("H2", "the scratch is drawn in one ink for light and dark screens")
+
+
 def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
     axe_path = os.path.join(TESTS, "node_modules", "axe-core", "axe.min.js")
     axe_src = open(axe_path).read() if os.path.exists(axe_path) else None
@@ -1613,6 +1809,11 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                 variant_checks(ctx, base)
             except Exception as e:  # a broken page must fail its rule, not stop the suite
                 fail("H1", f"check could not finish: {str(e).splitlines()[0][:160]}")
+        if run_for("H2"):
+            try:
+                edit_checks(ctx, base)
+            except Exception as e:  # a broken page must fail its rule, not stop the suite
+                fail("H2", f"check could not finish: {str(e).splitlines()[0][:160]}")
         if run_for("C6"):
             try:
                 highlighter_checks(ctx, base)
@@ -1841,6 +2042,12 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7"):
+        try:
+            source_checks(out_dir)
+        except Exception as e:  # a broken tool must fail its rules, not stop the suite
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
     srv = Server(out_dir)
     fix = Server(fix_out) if fix_out else None

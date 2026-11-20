@@ -55,6 +55,9 @@ These files replace the PaperMod theme with a small theme kept in the site repo,
 | `content/page/readme.md` | Your ReadMe, with its headings moved from level 3 to level 2. Words unchanged. |
 | `tools-pm/make-pdf.py` | Not part of the site. Prints `/pm/all/` to PDF and finishes it: links, bookmarks, tags, metadata. |
 | `tools-pm/margin-slots.py` | Not part of the site. Keeps the margin-note slots in `data/pm/margin/` in step with the units. |
+| `tools-pm/source-doc.py`, `tools-pm/source-doc.lock.json` | Not part of the site. Makes the working doc's tabs from the repository, and records what was last put in the doc (spec X1 to X3). |
+| `drafts/pm/` | The modules not yet rebuilt for the site, one file each with its cards. Not part of the site. |
+| `VOICE.md` | How the syllabus is written: a mentor talking to a mentee (spec E1 to E4). |
 | `data/pm/margin/` | Your margin notes, one file per unit, one slot per part. |
 
 ## Build and check

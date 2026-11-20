@@ -1,12 +1,13 @@
 # joestanley.org: standing instructions
 
-Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus, Writing and Games. Built with Hugo 0.141.0 extended and a small theme kept in this repo. Joe owns it; Claude does the work in Claude Code sessions. Joe's decisions are in `decisions.md`, newest first. Read it, and `tests/SPEC.md`, before changing anything.
+Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title is On Product Judgment), Writing and Games. Built with Hugo 0.141.0 extended and a small theme kept in this repo. Joe owns it; Claude does the work in Claude Code sessions. Joe's decisions are in `decisions.md`, newest first. Read it, and `tests/SPEC.md`, before changing anything.
 
 ## Start of every session
 
 1. `bash tests/setup.sh`, then export the `HUGO` and `CHROME` values it prints on its last line.
-2. Read `decisions.md` and `tests/SPEC.md`.
+2. Read `decisions.md` and `tests/SPEC.md`. Before you touch the syllabus's words, read `VOICE.md` too.
 3. Work on a branch named `claude/<short-topic>`, from an up-to-date `main`.
+4. If the work is on the syllabus, read the working doc first (see "The working doc" below). Joe's comments and edits there are the brief.
 
 ## How a change is made
 
@@ -14,10 +15,11 @@ Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus, Writing an
 - **Check before every push:** `python3 tests/check_site.py`. When a check changes, also run `bash tests/mutations.sh` and add a mutation that proves the new check catches what it is for.
 - **V1 (screenshots) runs here, not on GitHub.** A change to content alone may record a new baseline with `--update-baseline` in the same pull request, and says so. A change to the look needs Joe's word first: describe it to him before you make it. If V1 fails on an unchanged look because this environment renders differently, record the baseline again from `main` before your change, in its own commit, and say so.
 - **The look is locked** (`tests/SPEC.md`, V2): two stylesheets, `base.css` and `pm.css`; no switches for alternative looks, directions or hands. To propose a change, describe it to Joe first. Pictures may use colors of their own, as long as they stay in the family (C7).
-- **Words:** American English. No em dashes anywhere (T3). Plain, short sentences; Joe's own wording is a direction, not a quotation, so edit it where it reads as management-speak.
+- **Words:** American English. No em dashes anywhere (T3). Plain, short sentences; Joe's own wording is a direction, not a quotation, so edit it where it reads as management-speak. The syllabus has a voice of its own, a mentor talking to a mentee: `VOICE.md` says how, and rules E1 to E4 hold it. Only Joe says "I": never write an experience or an opinion for him.
+- **Examples** come from across complex technical product work, and none describes Joe's own employer, team or platform (S5, S6). This repository is public. Nothing about his work goes in it.
 - **Licensing** (`LICENSE`, `LICENSE-content.md`, spec L1): new code is MIT; new syllabus text and figures are CC BY 4.0; anything else Joe writes is all rights reserved unless he says otherwise. Quote other authors briefly and credit them; their words stay theirs.
 - **Margin notes are Joe's.** Never write, edit or delete what is between the quotes in `data/pm/margin/*.yaml`. After a unit changes, run `python3 tools-pm/margin-slots.py public` (after a build) to keep the slots in step; it keeps every note.
-- **PDF:** `python3 tools-pm/make-pdf.py public out.pdf "PM Syllabus, pilot draft, <date>"` after `$HUGO`. Render and look at every page before handing a PDF to Joe.
+- **PDF:** `python3 tools-pm/make-pdf.py public out.pdf "On Product Judgment, pilot draft, <date>"` after `$HUGO`. Render and look at every page before handing a PDF to Joe.
 
 ## Pull requests and merging
 
@@ -32,10 +34,26 @@ Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus, Writing an
 
 ## The syllabus
 
+- Twelve modules, listed in `data/pm/modules.yaml`. Each is either built (a page under `content/pm/`) or a draft (one file under `drafts/pm/`, the module with its cards), never both (X1). A draft is not on the site. When you rebuild a module, delete its draft in the same change.
 - Module 2, Find the Constraint, is the pilot: rebuild the other modules in its pattern (`content/pm/find-the-constraint.md`, its cards in `content/pm/cards/`, `data/pm/`).
+- Open and check every source before a module is rebuilt. In a draft, mark what nobody has opened yet with a line that starts "To check:". No built unit may carry one (S7).
 - The short path uses only freely available sources; books go on the full path. Every recommended source says why to trust it and what only it gives the reader (S2).
-- The whole syllabus aims at about 50 printed pages and should read as manageable, not overwhelming.
+- The whole syllabus aimed at about 50 printed pages and should read as manageable, not overwhelming. With twelve modules the drafts run past that; Joe settles the page target after a pilot (19 November 2026).
 - Pilot first: build one piece, get Joe's reaction, then replicate. Ask Joe before a format becomes fixed.
+
+## The working doc
+
+Joe reviews the syllabus in one Claude Docs document, "On Product Judgment: Working Source": https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ. It has a tab for each unit. The repository is the source and the doc mirrors it (X1 to X3). Keep it that way:
+
+1. **Read the doc first.** `tools-pm/source-doc.lock.json` holds each tab's ids and the revision it had when it was last written. List the comments on each tab, and read each tab with `sinceRev` set to that revision: what comes back is what Joe changed. His comments and edits are the brief.
+2. **Carry them into the repository**, spec first, like any change. Never edit the doc in place of the repository.
+3. **Put the result back.** After `$HUGO`, run `python3 tools-pm/source-doc.py public out/`. It writes each tab as Markdown and says which have changed. Replace the contents of each changed tab in the doc with its file. Rename a tab when its module is renamed.
+4. **Record it.** `python3 tools-pm/source-doc.py public --record "Start=12" "2 Find the Constraint=40"`, with each written tab's new revision. Commit the lock with the change. X3 fails until you do, so no change to the syllabus's words merges without reaching the doc.
+5. **Answer every comment** in its own thread, in a line or two: what changed, or why nothing did. Leave his threads for him to resolve.
+
+The Notes tabs at the end of the doc are working notes kept in the doc alone. They can describe Joe's own work, so they never go in the repository.
+
+Research needs the web. This environment's network allows only a short list of hosts, so a session cannot open most sources. Say so plainly when it stops you, mark what you could not open with "To check:", and tell Joe which hosts you needed. Do not pass off a search result or a memory as a source you opened.
 
 ## Working with Joe
 
