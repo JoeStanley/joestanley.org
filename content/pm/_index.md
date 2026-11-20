@@ -9,7 +9,7 @@ pilot_note: "Pilot draft. Modules 1 and 2 have been rebuilt so far."
 >
 > [Gregor Anghel](https://en.wikipedia.org/wiki/Comrade_Detective)
 
-In my experience, good product managers bounced around career-wise before finding their way to the job. Everything prior felt almost-right, and that restlessness resulted in a wide array of experiences they could bring to bear, becoming whatever the moment needed to get the job done. But the best product managers went back and coupled that praxis with theory.
+I love [Comrade Detective](https://en.wikipedia.org/wiki/Comrade_Detective), and find much truth in Detective Anghel's quote. In my experience, good product managers bounced around career-wise before finding their way to the job. Everything prior felt almost-right, and that restlessness resulted in a wide array of experiences they could bring to bear, becoming whatever the moment needed to get the job done. But the truly best product managers I've worked with went on to couple that praxis with theory.
 
 This isn't a substitute for the experience. You'll get that in time.
 

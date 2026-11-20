@@ -12,7 +12,7 @@ What comes next for joestanley.org and On Product Judgment, and where the work s
 | A session works | This repository | The words, the rules, this plan, his decisions. |
 | A session keeps notes | `notes/` in JoeStanley/pm-sources (private) | Research write-ups, reviews, anything that mentions Joe's own work. |
 
-- **Starting a session.** The daily run starts one every day at 02:43 UTC. When Joe opens one himself, his first message can always be the same: "Take the next job." The session finds everything else here and in `CLAUDE.md`.
+- **Starting a session.** The daily run starts one every day at 02:43 UTC. When Joe opens one himself, his first message can always be the same: "Take the next job. Apply my suggestions and resolve what's done." The second sentence is what lets a session accept his suggestions and resolve his threads in the doc. The session finds everything else here and in `CLAUDE.md`.
 - **Runs and the doc.** A run cannot reach the working doc, so it takes only jobs marked *Run*, which change none of the syllabus's words. Everything else waits for a session Joe opens, which sees his newest edits (Joe, 20 November).
 - **Which job.** The first job below that is ready and that no open pull request already covers: for a run, the first marked *Run*; for a session Joe opens, the first not marked *Run*, if one is ready, since a run cannot do it. A job that waits on Joe is skipped until his answer is in.
 - **Ending a session.** `CLAUDE.md`, "End of every session": record his answers, put new questions on the Decisions page, update this page, sync the doc, one pull request by auto-merge.

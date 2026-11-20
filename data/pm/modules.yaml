@@ -12,7 +12,7 @@
 - id: see-the-system
   num: 1
   title: See the System
-  question: What is the system here, and why does it behave this way?
+  question: What's the system here, and why does it behave this way?
   page: see-the-system
 - id: find-the-constraint
   num: 2
@@ -22,7 +22,7 @@
 - id: mind-the-seams
   num: 3
   title: Mind the Seams
-  question: How does the way we are organized shape what we build, and who decides?
+  question: How does the way we're organized shape what we build, and who decides?
   draft: mind-the-seams
   state: Draft of 17 November 2026, in the old format, with a card added on 19 November and another on 20 November. It still leans on the deck. The card Architect Across the Interfaces was added on 20 November, from the full read of the deck.
 - id: design-for-change

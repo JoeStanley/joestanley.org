@@ -13,6 +13,8 @@ From his comments in the working doc, and what he asked of the session that day.
 - Sessions on this project get full web access.
 - Working notes (research write-ups, reviews, anything that mentions his own work) go in the private pm-sources repository. The Notes tabs stay in the doc as history.
 - The site's menu label "PM Syllabus" changes: the name is too clinical. He is open to alternatives, since a menu label and a title differ.
+- Sessions apply his suggestions in the working doc, and ask where his intent is unclear: in the session if he is there, otherwise as a comment. Once the repository holds the change, they accept the suggestion and resolve the comment. This happens in the rhythm of the other edits: every session he opens carries them in first, in the same pull request as its job, with no separate passes.
+- The Start page's introduction opens with "I love Comrade Detective, and find much truth in Detective Anghel's quote." as a sentence of its own.
 - The menu calls the syllabus "Product Judgment" (agree, on the Decisions page).
 - On a phone the menu keeps all four sections on one line: the space between its items shrinks to the footer's gap. He weighed putting every section but ReadMe behind a menu button, and chose this.
 - Module 0 leaves out "no matter how ambitious": it was a sharpened statement, to make an idea by contrast, and it has served.
