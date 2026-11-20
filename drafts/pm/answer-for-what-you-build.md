@@ -35,18 +35,18 @@ This module covers four things: who gains and who pays, your share of the respon
    **Why trust it:** Bain & Company published it in August 2006. It's a consultancy arguing for its own measure, the Net Promoter Score (NPS, a customer survey score of how likely people are to recommend you), so read it as a case for a method.
 
    **What you'll get:** An argument you can make in business terms, not only ethical ones, against profit that costs you the customer relationship.
-4. **Federal Trade Commission, complaint against Amazon over Prime (2023)**
+4. **Cory Doctorow, "Tiktok's enshittification" (2023)**
 
-   20 minutes. Free at ftc.gov. Read the summary at the front, the section on the cancellation flow Amazon named "Iliad", and the section on what its own staff knew. Skip the rest.
-   - [FTC v. Amazon.com, amended complaint](https://www.ftc.gov/system/files/ftc_gov/pdf/2023-09-20-067-AmendedComplaint%28redacted%29.pdf)
+   20 minutes. Free at pluralistic.net.
+   - [Pluralistic: Tiktok's enshittification](https://pluralistic.net/2023/01/21/potemkin-ai/)
 
-   **Look for:** The moments when someone inside the company proposed a clearer sign-up or a shorter way out, and what happened to the proposal. Ask who gained from each "no".
+   **Look for:** The three stages of what he calls enshittification (his crude word for a platform getting worse): good to users first, then shifting value to business customers, then taking it for itself. Also how lock-in, which makes leaving costly, lets a company shift value away from users.
 
-   **Why trust it:** A complaint is one side's case, not a finding, and Amazon denied it. It's built on the company's own documents, though, and in September 2025 Amazon paid $2.5 billion to settle, without admitting wrongdoing.
+   **Why trust it:** It's an opinion essay posted on 21 January 2023, in which Doctorow describes the pattern he calls enshittification. It's an argument, not research.
 
-   **What you'll get:** A worked case of capture without creation, inside a product people like, told through the product decisions that produced it.
+   **What you'll get:** A vivid account of how a product slides from serving users to extracting from them.
 
-   *To check: this source replaced an essay on 20 November 2026, and the session that chose it couldn't open ftc.gov. The link, the parts to read and the 20 minutes come from search results, not from the page. Open it and set them before this module is rebuilt.*
+   *To check: this essay came back on 20 November 2026, at Joe's request, in place of the FTC's complaint over Amazon Prime, with the wording the working doc had before. This session couldn't open pluralistic.net, so check the link, the date and the three stages against the essay.*
 5. **Many Hands**
 
    Concept card. 5 minutes.
@@ -172,9 +172,9 @@ A healthy product captures part of what it creates. The trouble starts when capt
 
 ## Why a PM cares
 
-- **A closed exit is capture, not creation.** The US Federal Trade Commission (FTC) said in its complaint that Amazon's own name for the way out of Prime was Iliad, after Homer's epic of a long war, and that the flow sent people who wanted to cancel through page after page of offers. Anyone who stayed because leaving was that hard didn't stay because the product got better.
+- **Lock-in is capture, not creation.** Lock-in means leaving costs too much. Cory Doctorow describes people who stayed on Facebook because enough of their friends were there, and readers tied to Amazon by locked ebooks. They stayed because leaving cost too much, not because the product got better.
 - **Fees for friction take value the customer never got.** The FTC's 2022 staff report on dark patterns (interface designs that trick or trap people) describes cancellation that took six to nine screens in one alleged case. If your revenue depends on a hard exit, you're charging for a problem you built.
-- **It tends to cost the business later.** Fred Reichheld and Rob Markey of the consultancy Bain call "profits earned at the expense of customer relationships" bad profits, and argue against them in business terms.
+- **It tends to cost the business later.** Fred Reichheld and Rob Markey of the consultancy Bain call "profits earned at the expense of customer relationships" bad profits, and argue against them in business terms. Doctorow's version: serve users, then squeeze them, then squeeze the businesses that depend on you.
 - **In a game, the cheap capture is the streak.** A reward streak that resets when a player misses a day will lift your daily active count. A player who logs in only to keep it alive gives you their attention and gets nothing they came for. Whether your own mechanics do this is something you can test, for example by looking at how short those sessions are.
 
 ## How to spot it
