@@ -13,6 +13,7 @@ From his comments in the working doc, and what he asked of the session that day.
 - Sessions on this project get full web access.
 - Working notes (research write-ups, reviews, anything that mentions his own work) go in the private pm-sources repository. The Notes tabs stay in the doc as history.
 - The site's menu label "PM Syllabus" changes: the name is too clinical. He is open to alternatives, since a menu label and a title differ.
+- The menu calls the syllabus "Product Judgment" (agree, on the Decisions page).
 - Module 0 leaves out "no matter how ambitious": it was a sharpened statement, to make an idea by contrast, and it has served.
 - The idea from *Mozart in the Jungle*, that the best work is done with passion and a personal voice and that technical perfection alone is soulless, goes somewhere in the syllabus. It matters for a product manager's judgment.
 - Never cite Substack, because it platforms white supremacists.

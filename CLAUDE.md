@@ -1,6 +1,6 @@
 # joestanley.org: standing instructions
 
-Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title is On Product Judgment), Writing and Games. Built with Hugo 0.141.0 extended and a small theme kept in this repo. Joe owns it; Claude does the work in Claude Code sessions. Joe's decisions are in `decisions.md`, newest first. What comes next, and where the work stands, is in `PLAN.md`. Read both, and `tests/SPEC.md`, before changing anything. A session needs nothing from Joe to start: what he has to say is already on the Decisions page, in the working doc or in his first message.
+Joe Stanley's personal site: a front door, a ReadMe, the syllabus On Product Judgment (Product Judgment in the menu), Writing and Games. Built with Hugo 0.141.0 extended and a small theme kept in this repo. Joe owns it; Claude does the work in Claude Code sessions. Joe's decisions are in `decisions.md`, newest first. What comes next, and where the work stands, is in `PLAN.md`. Read both, and `tests/SPEC.md`, before changing anything. A session needs nothing from Joe to start: what he has to say is already on the Decisions page, in the working doc or in his first message.
 
 ## Start of every session
 

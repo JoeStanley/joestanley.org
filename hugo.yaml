@@ -36,7 +36,7 @@ menu:
       params:
         blurb: Who I am, and the work I have done.
     - identifier: pm
-      name: PM Syllabus
+      name: Product Judgment
       url: /pm/
       weight: 20
       params:
