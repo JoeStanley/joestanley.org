@@ -22,6 +22,7 @@ What comes next for joestanley.org and On Product Judgment, and where the work s
 - **Built and on the site's `main`:** Start; Module 1, See the System; Module 2, Find the Constraint (the pilot); their three cards; the glossary. They print on 12 pages.
 - **Drafts:** the other ten modules, with 32 cards between them, one file each in `drafts/pm/`. `data/pm/modules.yaml` says where each stands. Six are in the old format and still lean on Ruth Malan's deck; four are first drafts in the pilot format that run long on purpose.
 - **The live site** is still the old one. The move to the new site waits until more modules are rebuilt (Joe, 18 November).
+- **The shape of the whole** waits on Joe: six cards on the Decisions page since 20 November (the map, who decides, the split of Modules 10 and 11, the *Mozart in the Jungle* idea, the order of the work, and how many cards each module keeps). The cold read behind them is in pm-sources `notes/2026-11-20-cold-read-modules-3-to-7.md`.
 - **The way of working** moved fully into Claude Code on 20 November. The Cowork project is retired, the deck is in pm-sources, the environment has full web access, and a daily run takes the next ready job.
 
 ### Joe's input not yet carried out
@@ -30,17 +31,13 @@ From his comments of 20 November in the working doc. Each is answered in its thr
 
 | His comment | Where | Job |
 | --- | --- | --- |
-| The list of modules on the Start page, at "6 Think With Engineers", feels like a hodgepodge: review it and the related modules cold. | Start tab | 1 |
-| Put the decisions about the shape of the whole to him as picks. | Notes, Recommendation | 1 |
-| The idea from *Mozart in the Jungle*: the best work comes from passion and a personal voice, and technical perfection alone is soulless. It goes somewhere in the syllabus. | Module 0 tab | 1, then 6 |
+| The list of modules on the Start page, at "6 Think With Engineers", feels like a hodgepodge. The cold read agrees; what to do about it is the card "the map". | Start tab | 2, on his answer |
+| The idea from *Mozart in the Jungle*: the best work comes from passion and a personal voice, and technical perfection alone is soulless. Where it goes is the card "mozart". | Module 0 tab | 2, then 6 |
 
 ## Jobs, in order
 
-1. *Run.* **The shape of the whole, put to Joe.** Waits on: nothing.
-   - First a cold read, by a reader who did not write them, of the Start page's list of modules (`content/pm/_index.md` and `data/pm/modules.yaml`) and of Modules 3 to 7, the ones around Think With Engineers. Write it up in pm-sources `notes/`, and put the answer to Joe's "hodgepodge" comment under "To post in the doc" below.
-   - Then cards on the Decisions page: the map (twelve modules, their order and titles, after the cold read); the cut between Notice When You Are Wrong and Bring People With You; where Agency and Coherence lives (a card in Mind the Seams today); where the *Mozart in the Jungle* idea goes; the order of the work (cut all the copy down first, or rebuild module by module and cut each as it is built); and which cards stay, or that this waits for the page count from job 6.
-   - Done when: the cards are on the page and the answer to his comment waits to be posted.
-2. **Carry his answers in.** Waits on: his answers to job 1's cards, each part as it lands. `data/pm/modules.yaml`, the Start page and the drafts. Done when: every answered card is recorded and done.
+1. **The shape of the whole, put to Joe.** Done on 20 November: a cold read of the list and of Modules 3 to 7 (pm-sources `notes/2026-11-20-cold-read-modules-3-to-7.md`), its answer in his Start-tab thread, and six cards on the Decisions page, asked 20 November: `the-map`, `who-decides`, `wrong-and-people`, `mozart`, `order-of-work` and `cards`.
+2. **Carry his answers in.** Waits on: his answers to job 1's cards, each part as it lands. `data/pm/modules.yaml`, the Start page and the drafts. If he picks the winnowing first (`order-of-work`), put it here as the next job and reorder jobs 6 to 10 to follow it. Done when: every answered card is recorded and done.
 3. **The menu label.** Done on 20 November: the menu says "Product Judgment".
 4. *Run.* **Prepare Module 0's rebuild.** Waits on: nothing. See "Preparing a rebuild" below.
 5. *Run.* **Prepare Module 5's rebuild.** Waits on: nothing.
@@ -51,9 +48,7 @@ From his comments of 20 November in the working doc. Each is answered in its thr
 10. **Rebuild the rest,** two modules to a round, each from its prep note. Each round lands in the working doc for Joe to read once. Waits on: job 8, and each module's prep.
 11. **Go live.** A `For Joe:` pull request into `live`, and a card asking Joe what should wait for him once the site is live (`CLAUDE.md`). Waits on: Joe, since publishing is his.
 
-When nothing above is ready, take one of these:
-
-- *Run.* **Mesmir's voice guide.** Attach JoeStanley/mesmir, read the voice guide its Head of Brand keeps, and put to Joe as a card what, if anything, should carry over into `VOICE.md`. `VOICE.md` was written from his direction without it.
+When nothing above is ready, nothing else waits. (Mesmir's voice guide was folded into `VOICE.md` on 20 November, as his comment on the Start tab asked.)
 
 ## Preparing a rebuild
 
