@@ -13,10 +13,10 @@
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "6014027c2996abb856618b4aa603b32e22328eb2d42b59211d9d187efdc0c332",
+   "sha256": "ea74fa1bca47198532aa3fdf9f0aba576ddacdb02cf7d039511630344139cd81",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 8
+   "rev": 132
   },
   {
    "name": "0 Own Your Role",
@@ -29,10 +29,10 @@
   {
    "name": "1 See the System",
    "file": "1-see-the-system.md",
-   "sha256": "32b09e8a8418a83e40c06471e0dbe1fe7ac34ea5d7f9cab119e19d4ddb51bc5e",
+   "sha256": "1c809cf4b38b0bcb193c4129a4daeaf114764d2e8750eb338b527eea3cb482ef",
    "doc_tab": "82ecdb77-b286",
    "doc_node": "75410f3d-2ea1",
-   "rev": 5
+   "rev": 6
   },
   {
    "name": "2 Find the Constraint",
@@ -45,10 +45,10 @@
   {
    "name": "3 Mind the Seams",
    "file": "3-mind-the-seams.md",
-   "sha256": "6295864bd52591cd1b3131dce82849a000faa48afce24aa2a29c6099a78f4a30",
+   "sha256": "2dea3fd475e533c68bdc4bc9aa243d7052eab770a48e5efd66453d4589ab4f8a",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 12
+   "rev": 13
   },
   {
    "name": "4 Design for Change",

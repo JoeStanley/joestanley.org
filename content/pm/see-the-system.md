@@ -2,7 +2,7 @@
 title: See the System
 layout: module
 module: see-the-system
-question: What is the system here, and why does it behave this way?
+question: What's the system here, and why does it behave this way?
 one_thing: Read the card, then draw one thing that piles up in your own work as a bathtub.
 do_minutes: 30
 last_time_note: Own Your Role isn't rebuilt yet, so take these two as a preview of it.
