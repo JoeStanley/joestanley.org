@@ -170,4 +170,4 @@ Chapter 4, "The Drift from Domesticity", pages 29 and 30 of a 1946 reprint, abou
 
 **What you'll get:** The passage in his own words, including the part retellings often drop: the reasons that let a fence go.
 
-*To check: the Chesterton quotations were read in the linked scan's machine-read text, so check them against its page images. The Weinberg and Kerr lines are copied from deck p. 376, which names no work for either; nobody has opened their originals.*
+*To check: the Chesterton quotations were read in the linked scan's machine-read text, so check them against its page images. archive.org serves those from storage servers this environment can't reach, so they couldn't be opened on 20 November 2026. The Weinberg and Kerr lines are copied from deck p. 376, which names no work for either; nobody has opened their originals, and a search found none for Kerr. A search result says Weinberg credited his line to the economist Kenneth Boulding; if that holds, cite Boulding (S8).*
