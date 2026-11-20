@@ -916,7 +916,8 @@ JS_SPILL = """() => { const out = []; const W = document.documentElement.clientW
     let box = el; while (box.parentElement && getComputedStyle(box).display === 'inline') box = box.parentElement;
     const b = box.getBoundingClientRect(); const label = box.tagName.toLowerCase() + (box.classList.length ? '.' + [...box.classList].join('.') : '');
     const sample = n.textContent.trim().slice(0, 30);
-    if (rects.some(t => t.right > b.right + 1.5 || t.left < b.left - 1.5 || t.bottom > b.bottom + vt || t.top < b.top - vt)) { out.push(label + ' spills out of its box: ' + sample); continue; }
+    // a line edit's new words reach out over the next word by design (H2 holds them to the screen and clear of other text)
+    if (!box.matches('.edit ins') && rects.some(t => t.right > b.right + 1.5 || t.left < b.left - 1.5 || t.bottom > b.bottom + vt || t.top < b.top - vt)) { out.push(label + ' spills out of its box: ' + sample); continue; }
     if (rects.some(t => t.right > W + 1 || t.left < -1)) { out.push(label + ' runs past the edge of the screen: ' + sample); continue; }
     for (let a = el.parentElement; a && a !== document.body; a = a.parentElement) {
       const s = getComputedStyle(a); if (s.overflowX === 'visible' && s.overflowY === 'visible') continue;
@@ -1576,12 +1577,22 @@ def source_checks(out_dir):
 
 
 JS_EDIT = """() => [...document.querySelectorAll('.edit')].map(e => { const ins = e.querySelector('ins'), del = e.querySelector('del');
-  const a = ins.getBoundingClientRect(), b = del.getBoundingClientRect(), cs = getComputedStyle(ins), ds = getComputedStyle(del);
+  const rg = document.createRange(); rg.selectNodeContents(ins);
+  const a = rg.getBoundingClientRect(), b = del.getBoundingClientRect(), cs = getComputedStyle(ins), ds = getComputedStyle(del);
+  const block = e.closest('p, li, dd, td, blockquote'), bs = getComputedStyle(block), br = block.getBoundingClientRect();
   const range = document.createRange(), others = [];
   const w = document.createTreeWalker(e.closest('p, li, blockquote, div'), NodeFilter.SHOW_TEXT); let n;
   while ((n = w.nextNode())) { if (e.contains(n) || !n.textContent.trim()) continue; range.selectNodeContents(n); for (const r of range.getClientRects()) others.push([r.left, r.top, r.right, r.bottom]); }
+  const m = new DOMMatrixReadOnly(cs.transform === 'none' ? undefined : cs.transform);
+  const glyph = (node, last) => { if (!node || node.nodeType !== 3) return null; const t = node.textContent, i = last ? t.trimEnd().length - 1 : t.length - t.trimStart().length;
+    if (i < 0 || i >= t.length) return null; const r = document.createRange(); r.setStart(node, i); r.setEnd(node, i + 1); const g = r.getBoundingClientRect();
+    return Math.abs(g.bottom - b.bottom) < b.height / 2 ? g : null; };
+  const pv = glyph(e.previousSibling, true), nx = glyph(e.nextSibling, false);
   return {ins: [a.left, a.top, a.right, a.bottom], del: [b.left, b.top, b.right, b.bottom], face: cs.fontFamily.split(',')[0].replace(/["']/g, '').trim().toLowerCase(),
-    stroke: ds.backgroundImage, line: ds.textDecorationLine, order: !!(ins.compareDocumentPosition(del) & Node.DOCUMENT_POSITION_FOLLOWING), old: del.textContent.trim(), others, W: document.documentElement.clientWidth}; })"""
+    stroke: ds.backgroundImage, line: ds.textDecorationLine, order: !!(ins.compareDocumentPosition(del) & Node.DOCUMENT_POSITION_FOLLOWING), old: del.textContent.trim(), others,
+    W: document.documentElement.clientWidth, end: br.right - parseFloat(bs.paddingRight) - parseFloat(bs.borderRightWidth),
+    em: parseFloat(cs.fontSize), wordEm: parseFloat(ds.fontSize), angle: Math.atan2(m.b, m.a) * 180 / Math.PI,
+    gaps: [pv ? b.left - pv.right : null, nx ? nx.left - b.right : null]}; })"""
 
 
 def edit_checks(ctx, base):
@@ -1590,17 +1601,23 @@ def edit_checks(ctx, base):
     checked("H2")
     seen = 0
     strokes = set()
-    for w, scheme in ((320, "light"), (390, "light"), (390, "dark"), (1280, "light"), (1280, "dark")):
+    for w, scheme in ((320, "light"), (340, "light"), (390, "light"), (390, "dark"), (1280, "light"), (1280, "dark")):
         c = ctx(viewport={"width": w, "height": 900}, color_scheme=scheme); pg = c.new_page()
         for path in ["/pm/", "/pm/all/"]:
-            pg.goto(base + path); pg.evaluate("document.fonts.ready")
+            pg.goto(base + path); pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(100)
             for e in pg.evaluate(JS_EDIT):
                 seen += 1; where = f"{path} at {w} {scheme}, \"{e['old']}\""
                 il, it, ir, ib = e["ins"]; dl, dt, dr, db = e["del"]
                 if ib > dt + 2:
                     fail("H2", f"{where}: the new words do not sit above the old word")
-                if abs((il + ir) / 2 - (dl + dr) / 2) > 6:
-                    fail("H2", f"{where}: the new words are not centered on the old word")
+                if min(ir, dr) - max(il, dl) < min(ir - il, dr - dl) / 2:
+                    fail("H2", f"{where}: the new words are not written over the old word")
+                if ir < e["end"] - 1 and not (dl - 0.6 * e["em"] <= il <= dl + 1):
+                    fail("H2", f"{where}: the new words do not start just before the old word ({il - dl:+.0f}px)")
+                if ir > e["end"] + 1:
+                    fail("H2", f"{where}: the new words run past the end of the line ({ir - e['end']:.0f}px)")
+                if not -6.5 <= e["angle"] <= -2.5:
+                    fail("H2", f"{where}: the new words rise {-e['angle']:.1f} degrees to the right, not 3 to 6")
                 if e["face"] != "shantell sans":
                     fail("H2", f"{where}: the new words are set in {e['face']}, not in the owner's hand")
                 if "url(" not in e["stroke"] and "line-through" not in e["line"]:
@@ -1611,6 +1628,10 @@ def edit_checks(ctx, base):
                     fail("H2", f"{where}: the new words run past the edge of the screen")
                 if any(l < ir - 1 and r > il + 1 and t_ < ib - 2 and b > it + 2 for l, t_, r, b in e["others"]):
                     fail("H2", f"{where}: the new words touch the text around them")
+                # the old word keeps an ordinary space beside it: from its scratch to the next letter on its line, either side
+                for g in (g for g in e["gaps"] if g is not None):
+                    if g > 0.5 * e["wordEm"]:
+                        fail("H2", f"{where}: the old word has {g:.0f}px beside it, more than an ordinary space")
                 strokes.add((scheme, e["stroke"]))
         if w == 1280:   # three strokes, and each takes the page's ink
             pg.goto(base + "/pm/")

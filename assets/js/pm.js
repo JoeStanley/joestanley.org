@@ -2,7 +2,8 @@
    Everything here is an extra: the pages read fine with JavaScript off.
    1. Progress: ticks on the short path, saved in this browser only.
    2. Single-document view: show one unit at a time (used by the preview and the print page).
-   3. The dice game. */
+   3. The dice game.
+   4. A line edit stays on its line. */
 (function () {
   "use strict";
   var doc = document, body = doc.body;
@@ -91,6 +92,29 @@
     };
     window.addEventListener("hashchange", function () { show(true); });
     show(false);
+  }
+
+  /* ---- 4. a line edit stays on its line (spec H2) ----
+     The new words start where the pen starts, just before the old word, and run to the right. Where the old word ends
+     a line, they would run past it, so they shift left to end with the line, as a writer's hand would. In print the
+     CSS sets them back where they start. */
+  var edits = all(".edit ins");
+  function fitEdits() {
+    edits.forEach(function (ins) {
+      ins.style.translate = "";
+      var block = ins.parentNode.closest("p, li, dd, td, blockquote") || body, cs = getComputedStyle(block);
+      var r = doc.createRange(); r.selectNodeContents(ins);
+      var over = r.getBoundingClientRect().right - (block.getBoundingClientRect().right - parseFloat(cs.paddingRight) - parseFloat(cs.borderRightWidth));
+      if (over > 0) ins.style.translate = (-Math.ceil(over)) + "px 0";
+    });
+  }
+  if (edits.length) {
+    var fitting = false;
+    var refit = function () { if (fitting) return; fitting = true; requestAnimationFrame(function () { fitting = false; fitEdits(); }); };
+    fitEdits();
+    if (doc.fonts && doc.fonts.ready) doc.fonts.ready.then(fitEdits);
+    window.addEventListener("resize", refit);
+    window.addEventListener("hashchange", refit);
   }
 
   /* ---- 3. the dice game ---- */
