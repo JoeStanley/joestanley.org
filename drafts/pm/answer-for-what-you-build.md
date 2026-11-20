@@ -45,8 +45,6 @@ This module covers four things: who gains and who pays, your share of the respon
    **Why trust it:** It's an opinion essay posted on 21 January 2023, in which Doctorow describes the pattern he calls enshittification. It's an argument, not research.
 
    **What you'll get:** A vivid account of how a product slides from serving users to extracting from them.
-
-   *To check: this essay came back on 20 November 2026, at Joe's request, in place of the FTC's complaint over Amazon Prime, with the wording the working doc had before. This session couldn't open pluralistic.net, so check the link, the date and the three stages against the essay.*
 5. **Many Hands**
 
    Concept card. 5 minutes.
@@ -280,9 +278,9 @@ An opinion essay. Free at schneier.com.
 
 ## The idea
 
-Consequence Scanning is a short team conversation, before a feature is built, about everything it could cause. Sam Brown created it at Doteveryone, a responsible technology think tank, around three questions: "What are the intended and unintended consequences of this product or feature?" "What are the positive consequences we want to focus on?" "What are the consequences we want to mitigate?"
+Consequence Scanning is a short team conversation, before a feature is built, about everything it could cause. Doteveryone, a responsible technology think tank, built it around three questions, and its manual (2019) is credited to Sam Brown, who ran the program: "What are the intended and unintended consequences of this product or feature?" "What are the positive consequences we want to focus on?" "What are the consequences we want to mitigate?"
 
-Run it in a planning meeting you already hold, in about 30 minutes. Everyone writes consequences alone for five minutes, one to a note. Read them out and group them, then pick the positives to protect and the harms to mitigate. Don't close until each mitigation has an owner and a ticket. (The steps are this syllabus's, not Doteveryone's.)
+Run it when a product starts, in roadmap planning and as you shape a feature, in 45 minutes to an hour. Everyone writes consequences alone first, so the most senior voice doesn't set the list. Post them, group them, and take a second quiet round. Then sort them into what the team can act on, what it can only influence and what it can only monitor, and spend most of the time there. Mark which are positive and which to mitigate. Don't close until each one you can act on has an owner and a place in the backlog.
 
 ## Why a PM cares
 
@@ -306,12 +304,12 @@ It won't show you every consequence. Some appear only after launch, so scan agai
 
 ## Go deeper
 
-**[Consequence Scanning](https://doteveryone.org.uk/project/consequence-scanning/), Doteveryone**
+**[Consequence Scanning](https://www.adalovelaceinstitute.org/resource/doteveryone-consequence-scanning/), Doteveryone (2019)**
 
-The method's own page. Free at doteveryone.org.uk.
+The method's own page, with its manual and prompt cards, about 20 minutes. Free at adalovelaceinstitute.org, which keeps Doteveryone's work since the think tank closed in 2020.
 
 **Why trust it:** It's from the method's designers, so it describes a tool rather than testing one: practitioners' guidance, not evidence that it works.
 
 **What you'll get:** The method as its authors meant it to run, with prompts that push a team past the obvious.
 
-*To check: doteveryone.org.uk is blocked here, so nobody has opened it. The three questions, the "everyone in the world" prompt (credited to TechTransformed) and Pryce's question come from the deck (pp. 86, 494 and 295), which names no work for Pryce. Check the page's year and length, whether its own steps (perhaps sorting what a team can act on, influence or only monitor) should replace this card's, and Sam Brown's credit, taken from this module's short path.*
+*To check: the method's page and its manual (Version 1, April 2019) were opened on 20 November 2026, and the three questions, the steps, the timing, the "everyone in the world" prompt and Sam Brown's credit were checked against them. Still open: Pryce's question comes from deck p. 295, which names no work for him, and a search found no original.*

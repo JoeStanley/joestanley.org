@@ -21,10 +21,10 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "de27c4f90d1e82237d93eb646be1161705e7f71b7c646116c30a9c3a27ec94a1",
+   "sha256": "e0e703bebb3489b9386abc5ba8b2e4454030717150098b009be341ef5cf2a6d1",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 4
+   "rev": 7
   },
   {
    "name": "1 See the System",
@@ -45,18 +45,18 @@
   {
    "name": "3 Mind the Seams",
    "file": "3-mind-the-seams.md",
-   "sha256": "ec8c123a62e38ea9fc9f44f5215c7c9eeba5296ab0a56f4627bdfccc6f3f7142",
+   "sha256": "6295864bd52591cd1b3131dce82849a000faa48afce24aa2a29c6099a78f4a30",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 9
+   "rev": 12
   },
   {
    "name": "4 Design for Change",
    "file": "4-design-for-change.md",
-   "sha256": "01111779530eb3d4d87bac0d3a80529bf9c0afa69d443cf030ffd0a0260a3d1b",
+   "sha256": "993f268a99203d6f61ea86daf9a855217ed2acbfbe28a7d270999363e4512fa9",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 4
+   "rev": 7
   },
   {
    "name": "5 Change Safely",
@@ -77,26 +77,26 @@
   {
    "name": "7 Map the Domain",
    "file": "7-map-the-domain.md",
-   "sha256": "093e1072c06258e3ccc0e89aa39b2093080751bc8f20977b9cb8d69b552492af",
+   "sha256": "f50bef4cae223adc08a84c9eb62fa7150c4aad97b8aef219853757a6cb06ac97",
    "doc_tab": "b3d1938f-b26d",
    "doc_node": "57f2abde-0b8e",
-   "rev": 8
+   "rev": 11
   },
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "f577c5b619f3634eaf1b6f91dc19b0bc6881b5aba758aafac19af4f48d19b467",
+   "sha256": "415204a04055c042b0fa590f0ef1aaadc60bdc06bb56c5d5078274e399c9e76e",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 5
+   "rev": 6
   },
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "52bf897176c023ad116595e05758b69b53eb85b36d85ad3478c6531cd4c924ee",
+   "sha256": "44da12de335db81412ec126ab2928f9e5c8b087313a3dcf34d75d51de1816541",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 8
+   "rev": 15
   },
   {
    "name": "10 Notice When You Are Wrong",

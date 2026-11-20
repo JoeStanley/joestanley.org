@@ -231,7 +231,7 @@ Can you finish "we're building this in order to ...", and would your team finish
 
 ## The idea
 
-Some of the work that makes a team succeed never shows up on a roadmap: noticing that two teams are about to build the same thing, getting the right people talking, chasing the dependency nobody owns. Tanya Reilly, a software engineer, calls it glue work. Her case (2019) is that it's real and needed, that it's often invisible, and that doing mostly glue before anyone recognizes it can hold your career back.
+Some of the work that makes a team succeed never shows up on a roadmap: noticing that two teams are about to build the same thing, getting the right people talking, chasing the dependency nobody owns. Tanya Reilly, a software engineer, calls it glue work. Her case (2019) is that it's real technical leadership, that it often isn't the work people get promoted for, and that doing a lot of it too early can hold a career back.
 
 Researchers call people who work across a team's edge boundary spanners, and the outward work counts. In Ancona and Caldwell's study of 45 new-product teams (1992), which the Agency and Coherence card also cites, the ones that kept to themselves rated their own work highly, and management rated them poorly.
 
@@ -256,7 +256,7 @@ It doesn't say stop: someone has to connect teams. It doesn't say all the glue i
 
 ## Go deeper
 
-**[Being Glue](https://noidea.dog/glue), Tanya Reilly (2019)**
+**[Being Glue](https://www.noidea.dog/glue), Tanya Reilly (2019)**
 
 A conference talk and its written version. Free at noidea.dog.
 
@@ -264,4 +264,4 @@ A conference talk and its written version. Free at noidea.dog.
 
 **What you'll get:** How glue work goes unrecognized at promotion time, and what to do about it, for yourself and for people you manage.
 
-*To check: noidea.dog is blocked here, so nobody has opened Being Glue: check the summary, year, format and Reilly's role. Ancona and Caldwell (Administrative Science Quarterly, 1992) is reported as the Agency and Coherence card has it, not reopened. Tushman, "Special Boundary Roles in the Innovation Process" (Administrative Science Quarterly, 1977), is the classic study of these roles, and nobody has opened it.*
+*To check: Being Glue was opened on 20 November 2026, and the summary, year, format and Reilly's role were checked against it. Still open: Ancona and Caldwell (Administrative Science Quarterly, 1992) is reported as the Agency and Coherence card has it, not reopened. Tushman, "Special Boundary Roles in the Innovation Process" (Administrative Science Quarterly, 1977), is the classic study of these roles, and nobody has opened it.*

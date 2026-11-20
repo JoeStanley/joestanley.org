@@ -128,12 +128,12 @@ It doesn't say coupling is bad. Parts that work together are coupled for somethi
 
 ## Go deeper
 
-**"Uncoupling", Michael Nygard**
+**[Uncoupling](https://www.youtube.com/watch?v=EirOknZJvYc), Michael Nygard (2018)**
 
-A conference talk on YouTube. Year and length still to check.
+His keynote at the SATURN 2018 conference, about an hour. Free on YouTube. He gave talks of the same name at other conferences, too.
 
 **Why trust it:** Nygard is a software architect and the author of the book *Release It!*. It's one practitioner's talk, not research.
 
 **What you'll get:** The five kinds from the person who drew them up, so you can judge which ones your teams are paying for.
 
-*To check: nobody has opened a source for this card; YouTube was blocked here. Beck's definition (deck p. 366) and Nygard's kinds (p. 364) are quoted from the deck's copies of their slides: check them against the talks, and find URLs, years and lengths. O'Reilly's table (pp. 406, 457) cites youtube.com/watch?v=0wcUG2EV-7E, untitled. Beck's book Tidy First? (2023) may suit the full path.*
+*To check: nobody has watched a source for this card. YouTube's search listing, read on 20 November 2026, gives the talks' titles, years and lengths: Beck's "The Beauty of Maintenance" is at youtube.com/watch?v=3gib0hKYjB0 (DDD Europe 2020, 56 minutes), and Nygard's "Uncoupling" was the SATURN 2018 keynote (57 minutes), also given at DevOpsDays DFW and JDD 2019. YouTube answers automated requests for a video with a bot check, so neither could be watched. Beck's definition (deck p. 366) and Nygard's kinds (p. 364) are quoted from the deck's copies of their slides: check them against the talks, and check that the SATURN version has Nygard's five kinds. O'Reilly's table (pp. 406, 457) is from his talk "An Introduction to Residuality Theory" (NDC Oslo 2023, youtube.com/watch?v=0wcUG2EV-7E), also unwatched. Beck's book Tidy First? (2023) may suit the full path.*
