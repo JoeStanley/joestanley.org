@@ -1653,9 +1653,9 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                         fail(rule, f"{path} scrolls sideways at {w}x{h} ({sw}px)")
                 c.close()
 
-        if run_for("C1", "C2", "C3", "C5", "W2", "W3", "M1", "M2", "M3", "R3", "R4", "R5", "A1", "A3", "T1", "T2", "V1"):
+        if run_for("C1", "C2", "C3", "C5", "W2", "W3", "M1", "M2", "M3", "R3", "R4", "R5", "R9", "A1", "A3", "T1", "T2", "V1"):
             # Colour roles, weight, margin, targets, focus, axe: light and dark, phone and desktop
-            checked("C1", "C2", "C3", "C5", "W2", "W3", "M1", "M2", "M3", "R3", "R4", "R5", "A1", "A2", "A3", "T1", "T2")
+            checked("C1", "C2", "C3", "C5", "W2", "W3", "M1", "M2", "M3", "R3", "R4", "R5", "R9", "A1", "A2", "A3", "T1", "T2")
             for scheme in ("light", "dark"):
                 for w in (390, 1280):
                     c = ctx(viewport={"width": w, "height": 900}, color_scheme=scheme, device_scale_factor=1); pg = c.new_page()
@@ -1714,6 +1714,10 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                                 fail("R4", f"{where}: photo is not beside the name")
                             if w < 1024 and not (i[3] <= h_[1] + 1):
                                 fail("R4", f"{where}: photo is not above the name")
+                        # R9: the menu on one line at phone width
+                        tops = pg.evaluate("() => [...document.querySelectorAll('.site-nav[aria-label=Sections] a')].map(a => Math.round(a.getBoundingClientRect().top))")
+                        if tops and max(tops) - min(tops) > 2:
+                            fail("R9", f"{where}: the menu takes more than one line")
                         # R5
                         small_targets = pg.evaluate("""() => [...document.querySelectorAll('button, input, summary, .door-links a, .site-nav a, .tick')].filter(e => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); if (!r.width || s.display === 'none') return false; if (e.matches('input') && e.closest('.tick')) return false; if (e.matches('button.term, a.term')) return false; const t = (e.matches('input') && e.closest('label')) ? e.closest('label').getBoundingClientRect() : r; const min = e.matches('.door-links a') ? 44 : 24; return t.width < min - 0.5 || t.height < min - 0.5; }).map(e => e.tagName + '.' + e.className + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height))""")
                         for s in small_targets:
