@@ -1,0 +1,17 @@
+# Settings retired from the syllabus's examples (spec S5). One phrase per line; matched without regard to case.
+# The owner asked on 20 November 2026 for examples that had come to lean on one kind of product to be stripped
+# and varied. A phrase here must not return in a built unit or a draft. Sources that are cited are not examples:
+# a documented case stays, whatever its setting.
+next best message
+next-best-message
+next best action
+contact platform
+decisioning platform
+contact frequency
+contact-frequency
+call handling time
+marketing consent
+consent capture
+in a regulated business
+in a regulated enterprise
+customers in difficulty
