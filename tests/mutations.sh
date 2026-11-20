@@ -58,6 +58,7 @@ run_bg "the Start page runs onto a third page" P1 "for i in \$(seq 60); do print
 run_bg "the hand-written correction dropped into the line" H2 "sed -i 's/^\.edit ins { display: block;/.edit ins { display: inline;/' assets/css/base.css"
 run_bg "the scratch drawn in one ink for light and dark" H2 "sed -i '/^  :root { --scratch-1:/d' assets/css/base.css"
 run_bg "a retired setting back in an example" S5 "sed -i 's/a tweak to checkout/a change to a contact frequency rule/' content/pm/find-the-constraint.md"
+run_bg "a source linked from Substack" S9 "printf '\n- [A newsletter post](https://example.substack.com/p/a-post), 5 minutes.\n' >> drafts/pm/change-safely.md"
 run_bg "an unchecked source on a built page" S7 "printf '\n*To check: nobody has opened this source yet.*\n' >> content/pm/see-the-system.md"
 run_bg "a module that stops talking to the reader" E1 "sed -i 's/Your job is to find the one place/The task is to find the one place/' content/pm/find-the-constraint.md"
 run_bg "a module with its contractions spelled out" E2 "sed -i 's/\([Dd]\)on\x27t/\1o not/g; s/isn\x27t/is not/g; s/\([Ii]\)t\x27s/\1t is/g; s/doesn\x27t/does not/g; s/didn\x27t/did not/g; s/won\x27t/will not/g; s/can\x27t/cannot/g; s/you\x27re/you are/g; s/there\x27s/there is/g' content/pm/find-the-constraint.md content/pm/cards/five-focusing-steps.md content/pm/cards/goodharts-law.md layouts/partials/pm/dicegame.html data/pm/dicegame.yaml"
