@@ -1,0 +1,126 @@
+{
+ "doc": "https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ",
+ "synced": "20 November 2026",
+ "tabs": [
+  {
+   "name": "About",
+   "file": "about.md",
+   "sha256": "223136a9adece00fd600c6a8b6859f5528ba28d085ad46e07e995ee1cac2f159",
+   "doc_tab": "52ba3afa-33df",
+   "doc_node": "5c3722f2-411b",
+   "rev": 2
+  },
+  {
+   "name": "Start",
+   "file": "start.md",
+   "sha256": "6014027c2996abb856618b4aa603b32e22328eb2d42b59211d9d187efdc0c332",
+   "doc_tab": "93d76462-d6e3",
+   "doc_node": "d8917504-66e5",
+   "rev": 8
+  },
+  {
+   "name": "0 Own Your Role",
+   "file": "0-own-your-role.md",
+   "sha256": "ca05b6936006f22447f39c3f2a2e5ca9dc7eaef3c4f3edd0c282395c375980e1",
+   "doc_tab": "3f4c7860-02a9",
+   "doc_node": "902db076-43ba",
+   "rev": 3
+  },
+  {
+   "name": "1 See the System",
+   "file": "1-see-the-system.md",
+   "sha256": "32b09e8a8418a83e40c06471e0dbe1fe7ac34ea5d7f9cab119e19d4ddb51bc5e",
+   "doc_tab": "82ecdb77-b286",
+   "doc_node": "75410f3d-2ea1",
+   "rev": 5
+  },
+  {
+   "name": "2 Find the Constraint",
+   "file": "2-find-the-constraint.md",
+   "sha256": "bb1d17263e5fe647fa5534e65d51d75501a19af2adf0593a77ccd059c5043f18",
+   "doc_tab": "2a162ad5-e7b3",
+   "doc_node": "8b268877-78f7",
+   "rev": 14
+  },
+  {
+   "name": "3 Mind the Seams",
+   "file": "3-mind-the-seams.md",
+   "sha256": "5c2835f2f8faf84a1e24ce253dc7ebb6ea844599f8f8ca8af504054e1a7460de",
+   "doc_tab": "6c310fdc-d2b3",
+   "doc_node": "fa220045-fce2",
+   "rev": 5
+  },
+  {
+   "name": "4 Design for Change",
+   "file": "4-design-for-change.md",
+   "sha256": "27c453d605e1657af5d82c5eda5a7d5e18d89d0040e19308545dd74074a074b2",
+   "doc_tab": "44b87ab3-6013",
+   "doc_node": "9f43767b-ca8d",
+   "rev": 3
+  },
+  {
+   "name": "5 Change Safely",
+   "file": "5-change-safely.md",
+   "sha256": "734020098ec1e915f7a79b9d9c785d3be5f6422da5cce48c0e9afbdfa44b8cfe",
+   "doc_tab": "9317d9d1-2129",
+   "doc_node": "a29f117c-7f2e",
+   "rev": 5
+  },
+  {
+   "name": "6 Think With Engineers",
+   "file": "6-think-with-engineers.md",
+   "sha256": "b95344d5e9264962f6a7591217ae5a5ab54190e4bc9155051e2be60ddb22486e",
+   "doc_tab": "2cf80565-2815",
+   "doc_node": "17e3a736-635f",
+   "rev": 6
+  },
+  {
+   "name": "7 Map the Domain",
+   "file": "7-map-the-domain.md",
+   "sha256": "f418a1077cecdd17f1f2ea2ca4d25f5d572efe8c33f5b5621a8204b470369d50",
+   "doc_tab": "b3d1938f-b26d",
+   "doc_node": "57f2abde-0b8e",
+   "rev": 7
+  },
+  {
+   "name": "8 Decide and Set Direction",
+   "file": "8-decide-and-set-direction.md",
+   "sha256": "f5a8dea89b189d50a09014489992342db8852067e9e02035e806f2f741acda93",
+   "doc_tab": "6b4b2d5a-04f4",
+   "doc_node": "3d32b854-eca3",
+   "rev": 4
+  },
+  {
+   "name": "9 Answer for What You Build",
+   "file": "9-answer-for-what-you-build.md",
+   "sha256": "a2a43b38d74c67da15f806b72c6852115c0a97d2c7d58dcc34a182ad05af8f19",
+   "doc_tab": "51620bc6-cff0",
+   "doc_node": "c90f54a8-2faf",
+   "rev": 4
+  },
+  {
+   "name": "10 Notice When You Are Wrong",
+   "file": "10-notice-when-you-are-wrong.md",
+   "sha256": "92bc28845d65ad4e3412b944b8d82f1ba8668e709d456dcf77acfd64dc62a093",
+   "doc_tab": "73278a69-a68a",
+   "doc_node": "0e614323-8b2d",
+   "rev": 5
+  },
+  {
+   "name": "11 Bring People With You",
+   "file": "11-bring-people-with-you.md",
+   "sha256": "20aef5fc79aafa2e4c1a383af6c4ffc0aebd3976220bff26148a9b30b6a48abd",
+   "doc_tab": "8bbdca60-921f",
+   "doc_node": "2f658fd4-20e8",
+   "rev": 9
+  },
+  {
+   "name": "Glossary",
+   "file": "glossary.md",
+   "sha256": "65f2da4ab6c0dc4b38405bd6da4049ecf5daa163d90be19503f521c91b357671",
+   "doc_tab": "da54defd-09ca",
+   "doc_node": "aa868378-161d",
+   "rev": 2
+  }
+ ]
+}

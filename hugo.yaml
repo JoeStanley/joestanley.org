@@ -40,7 +40,7 @@ menu:
       url: /pm/
       weight: 20
       params:
-        blurb: Eight questions for early-career product managers, with free reading for each.
+        blurb: Twelve questions for early-career product managers, with free reading for each.
     - identifier: writing
       name: Writing
       url: /writing/

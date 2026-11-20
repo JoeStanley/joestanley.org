@@ -182,7 +182,7 @@
 .card-deeper h3, .deeper-list h3 { font-family: var(--text); font-weight: var(--w-strong); letter-spacing: 0; }
 .card-deeper::after { content: ""; display: block; clear: both; }
 
-/* Start page: the eight modules, spaced, not ruled; numerals are light, in the muted ink. */
+/* Start page: the modules, spaced, not ruled; numerals are light, in the muted ink. */
 .modules { list-style: none; margin: var(--sp-4) 0 0; padding: 0; }
 .mod { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0 var(--sp-2); padding: 0 0 var(--sp-5); }
 .mod-num { font: var(--w-regular) var(--fs-body)/var(--lh-head) var(--ui); color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }

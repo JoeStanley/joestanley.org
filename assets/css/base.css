@@ -72,6 +72,8 @@
   --sp-8: calc(var(--sp-unit) * 4);      /* 64px */
 
   --hl-cap: 0.45em;   /* the width of each drawn end of the highlighter */
+  /* The pen that scratches out a word in a line edit (spec H2): three strokes, in the page's ink. */
+  --scratch-1: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 16%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22none%22 stroke=%22%231c1b1a%22 stroke-width=%221.25%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-opacity=%220.88%22 d=%22M1.6,9.7 C15,8.7 38,7.7 58.2,6.5 C42,8.5 20,10 3.2,11.7 C22,10.7 42,9.8 57,9.4%22/%3E%3C/svg%3E"); --scratch-2: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 16%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22none%22 stroke=%22%231c1b1a%22 stroke-width=%221.25%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-opacity=%220.88%22 d=%22M2.4,7.4 C18,8.2 40,8.7 57.6,9.9 C38,9.5 18,9.5 1.7,11 C20,11.3 40,10.6 58.4,11.9%22/%3E%3C/svg%3E"); --scratch-3: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 16%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22none%22 stroke=%22%231c1b1a%22 stroke-width=%221.25%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-opacity=%220.88%22 d=%22M2.8,11 C20,9.3 40,8.5 57.2,7 C40,9.5 22,10.3 2,12.2 C24,11.5 44,10.3 58.6,10.7%22/%3E%3C/svg%3E");
 
   --pad: 1.25rem;
   --measure: 36rem;
@@ -83,6 +85,7 @@
 @media (min-width: 64rem) { :root { --fs-body: 1.25rem; } }
 @media screen and (prefers-color-scheme: dark) {
   :root { --paper: #151413; --ink: #ebe8e3; --muted: #aaa6a0; --rule: #2e2b28; --tint: #1f1d1b; --orange: #f07c3a; --link-line: #77726c; --mark-ink: #15171b; --mark-soft: #3b3518; }
+  :root { --scratch-1: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 16%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22none%22 stroke=%22%23ebe8e3%22 stroke-width=%221.25%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-opacity=%220.88%22 d=%22M1.6,9.7 C15,8.7 38,7.7 58.2,6.5 C42,8.5 20,10 3.2,11.7 C22,10.7 42,9.8 57,9.4%22/%3E%3C/svg%3E"); --scratch-2: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 16%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22none%22 stroke=%22%23ebe8e3%22 stroke-width=%221.25%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-opacity=%220.88%22 d=%22M2.4,7.4 C18,8.2 40,8.7 57.6,9.9 C38,9.5 18,9.5 1.7,11 C20,11.3 40,10.6 58.4,11.9%22/%3E%3C/svg%3E"); --scratch-3: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 60 16%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22none%22 stroke=%22%23ebe8e3%22 stroke-width=%221.25%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-opacity=%220.88%22 d=%22M2.8,11 C20,9.3 40,8.5 57.2,7 C40,9.5 22,10.3 2,12.2 C24,11.5 44,10.3 58.6,10.7%22/%3E%3C/svg%3E"); }
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -181,6 +184,17 @@ mark {
 }
 mark.hl-v2 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0.6,19.4 C1.4,13.6 2.6,6.6 4.3,0.7 C6.2,0.5 8.2,0.6 10,0.6 L10,19.6 C6.6,19.6 3.6,19.5 0.6,19.4 Z%22/%3E%3C/svg%3E") left center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.6 C3,0.5 6.2,0.6 9.6,0.8 C8.9,7 8.1,13.4 7.1,19.6 C4.6,19.7 2.3,19.6 0,19.5 Z%22/%3E%3C/svg%3E") right center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.6 C30,1.2 64,0.3 104,0.9 C140,1.3 172,0.4 200,0.6 L200,19.5 C170,19.1 136,19.8 100,19.3 C62,18.9 30,19.7 0,19.6 Z%22/%3E%3C/svg%3E") center / calc(100% - 2 * var(--hl-cap) + 2px) 100% no-repeat; }
 mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0.1,19.5 C1,12.8 1.6,7.8 2.8,1.1 C5.2,0.8 7.6,0.7 10,0.8 L10,19.4 C6.8,19.6 3.4,19.5 0.1,19.5 Z%22/%3E%3C/svg%3E") left center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 10 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.5 C2.4,0.4 5.6,0.3 9.9,0.6 C9.1,6.4 8,12.8 6,19.5 C4,19.6 2,19.5 0,19.4 Z%22/%3E%3C/svg%3E") right center / var(--hl-cap) 100% no-repeat, url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 20%22 preserveAspectRatio=%22none%22%3E%3Cpath fill=%22%23ffe45c%22 d=%22M0,0.8 C26,0.3 58,1 92,0.6 C130,0.2 168,1.1 200,0.5 L200,19.4 C160,19.2 120,19.8 80,19.4 C50,19.1 24,19.7 0,19.4 Z%22/%3E%3C/svg%3E") center / calc(100% - 2 * var(--hl-cap) + 2px) 100% no-repeat; }
+/* A line edit in the owner's hand (spec H2). The old word stays in its line, scratched out with a pen and still
+   readable. The new words sit above it in his hand, as a correction written on a printed page. The box is as wide
+   as the wider of the two, less a little so the gap beside the old word stays small, and sits on the old word's
+   baseline, because that is its last line. Where a background cannot show, a plain line strikes the old word. */
+.edit { display: inline-block; max-width: 100%; text-align: center; vertical-align: baseline; }
+.edit ins { display: block; margin: 0 -0.5em; font: normal var(--w-regular) var(--fs-small)/var(--lh-tight) "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; color: var(--ink); text-decoration: none; transform: rotate(-2deg); }
+.edit del { padding: 0 0.12em; text-decoration: none; background: var(--scratch-1) center / 100% 100% no-repeat; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.edit del.scratch-v2 { background-image: var(--scratch-2); }
+.edit del.scratch-v3 { background-image: var(--scratch-3); }
+@media (forced-colors: active) { .edit del { text-decoration: line-through; background: none; } }
+
 /* A highlighted line hangs its stroke into the gutter by the stroke's own padding, so the words line up with the text
    edge on every line, as unhighlighted text does. */
 .hl-line { display: block; margin-inline: -0.22em; }

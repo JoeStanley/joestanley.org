@@ -2,6 +2,22 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 20 November 2026
+
+From his comments in the working doc, and what he asked of the session that day.
+
+- The syllabus is titled On Product Judgment, and that theme carries through its language: every module is a side of how a product manager builds an inner sense of judgment, from lived experience, the industry's practice and the situation in front of them.
+- The Start page goes from its title straight into the quote. Its introduction is his own. "Start here", the line under the list of modules and "What this syllabus does not cover" are cut, and "The route" becomes "The lessons".
+- In the quote, "Communist" is scratched out by hand and "Product Manager" is written over it in the handwritten font, like a line edit on a printed page.
+- "What only it gives you" reads clumsy. It is replaced with something more streamlined.
+- The curriculum was a degree too calm and reserved. It should feel a little more casual, like a mentor giving advice to a mentee over coffee, fitted to a structured program, with a human amount of contractions. The Start page's sharper tone does not run through the rest.
+- The examples had come to lean on his own current work, team and platform. Strip those and vary the examples across complex technical product management.
+- "Know Your Materials" is not a good title: it can be read as calling engineers tools or materials, not partners.
+- Own Your Role calls out two failure modes: product management is not project management, and a product manager facilitates but is not a facilitator. In both, the product manager is not cultivating and sharing a vision. It gets research backing from adjacent fields, and some of it may sit better in other modules.
+- The tension between agency and cohesion, from the references in Ruth Malan's deck, comes into the syllabus, from the underlying sources and outside research.
+- Answer for What You Build needs a better example than the "enshittification" essay: the term is overused and puts many readers off.
+- After each round the working doc mirrors the repository, so he is revising the actual language.
+
 ## 19 November 2026
 
 - Module 1, See the System, looks good.
@@ -9,6 +25,14 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 - The color lock is lifted for the pictures: holding them to the site's few colors may be too constraining. A picture's colors must stay consistent with the family.
 - The Five Focusing Steps picture keeps "Repeat" for step 5 and loses its dotted arrow back to step 1: the arrow was confusing and redundant, and "Repeat" is sufficient.
 - The water in the Stocks, Flows and Feedback picture is not yellow: yellow liquid in a bathroom reads as urine.
+- Recorded on 20 November from the working doc's review of content gaps, where he agreed them on the 19th:
+  - A new module, Change Safely, comes right after Design for Change: how to change things quickly when mistakes are expensive.
+  - Three new cards: Platform as a Product in Mind the Seams, Models That Are Sometimes Wrong in the engineering module, and Data as a Product in Map the Domain.
+  - A new module on ethics, Answer for What You Build, comes after Decide and Set Direction: who benefits and who is harmed, culpability when you feel like a cog, value created against value captured, and privacy and data collection. His addition.
+  - Map the Domain becomes a module of its own, and Notice and Communicate splits into Notice When You Are Wrong and Bring People With You. That makes twelve modules.
+  - The page target is decided after a pilot: build one new unit, measure it, then choose between raising the target and cutting elsewhere.
+  - Customer discovery, analytics and regulatory domain knowledge stay out, unless he says otherwise.
+  - Draft all the new modules and cards in full first, then edit down to the page target.
 
 ## 18 November 2026
 

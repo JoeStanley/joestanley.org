@@ -1,0 +1,73 @@
+# The syllabus's voice
+
+How On Product Judgment should sound. Read this before you write or revise any unit. The rules a check can hold are in `tests/SPEC.md` (E1 to E4); this page is the reasoning and the examples behind them.
+
+It covers the syllabus only. The front door, the ReadMe and Writing are Joe's own voice and are his to write. So are the margin notes.
+
+## Who is talking
+
+A mentor a few years ahead of you, across a table, with coffee. They have done the job and read the research, they like you, and they would rather you think than agree. They are not selling anything and they are not grading you.
+
+Joe asked for this on 20 November 2026: the modules were "a degree too calm and reserved", and should feel "a little more casual, like a mentor conveying advice to a mentee in a coffee conversation", fitted to a structured program.
+
+## Three volumes of one voice
+
+- **The Start page is Joe at full volume.** First person, a point of view, a quote with a swear word in it. He writes it.
+- **A module is the same person, one notch down, now teaching.** Warm and direct, organized, never in a hurry. This is where most of the words are.
+- **A card is a half notch below that.** You keep it by your desk, so it is compact. It still sounds spoken.
+
+The glossary is plain definitions. A reader should be able to go from the Start page into Module 1 without feeling that someone else took over.
+
+## The rules
+
+1. **Talk to "you".** Every module speaks to the reader directly.
+2. **No "I" outside the Start page and the margin notes.** A mentor says "I", but only Joe can say what Joe has seen. Never invent an experience, an anecdote or an opinion for him. Where the text needs a view, state it plainly and let it stand.
+3. **Use contractions the way a person talking does.** It's, don't, you'll, isn't, can't, won't, doesn't, that's, there's, you're, what's, here's. Most of the time, not every time: keep the full form where you would stress it out loud ("It does not say measures are bad"). Skip the ones that look odd in print (would've, it'd, there're, mustn't). Never touch a quotation or a title.
+4. **Point first, then the reason.** Commit to the advice: do this, start here, skip that. Then say why, and say when it does not apply.
+5. **Name the usual mistake, and be kind about it.** "Most teams do this. It feels right." A mentee who hears that the mistake is normal keeps listening.
+6. **Be concrete.** Every idea gets an example from real product work, and the examples come from different kinds of products (spec S5).
+7. **Be straight about evidence.** Say when something is a study, a case, a practitioner's view or a hunch. "Why trust it" stays candid, including about a source's limits.
+8. **Vary the sentences.** Mostly short. Let one run when the thought needs it. Three short sentences in a row read as a drumbeat.
+9. **Keep the size.** The voice changes the words, not the length. A module still prints on three pages and a card on one (spec P1).
+
+## What it is not
+
+- Not chatty. No jokes for their own sake, no exclamation marks, no "let's dive in", no "here's the thing".
+- Not breezy about difficulty. Leave out "simply", "just" and "obviously" when they wave a hard thing away.
+- Not management-speak. No "leverage" as a verb, "stakeholder alignment", "drive outcomes", "best-in-class".
+- Not the habits of machine prose: the "not X, but Y" turn used by reflex, lists of three by reflex, a one-line moral closing every paragraph, a trailing "-ing" phrase tacked onto a sentence, an abstract noun where a verb would do.
+- Not preachy about judgment. The syllabus is about product judgment, and each module is one side of it. Say so where it helps, at most once in a module. The word is not a refrain.
+
+Carried over from the standing rules: American English, no em dashes (spec T3), plain and short.
+
+## Before and after
+
+Module 1, "Why this matters":
+
+> **Before.** When something keeps going wrong, the usual response is to find who caused it. This module asks you to look at the structure instead: what builds up, what fills and drains it, and what holds it in place.
+>
+> **After.** When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place.
+
+A card bullet:
+
+> **Before.** Big stocks move slowly. A backlog built over a year does not clear in a sprint.
+>
+> **After.** Big stocks move slowly. A backlog that took a year to build won't clear in a sprint, and promising that it will is how you lose a quarter.
+
+A source's reasons:
+
+> **Before.** Why trust it: Forte runs a productivity training firm. This is a practitioner's retelling of Goldratt, not the original.
+>
+> **After.** Why trust it: Forte runs a productivity training firm, so this is a practitioner retelling Goldratt, not Goldratt. You can check it against the novel on the full path.
+
+Too far:
+
+> So here's the thing about backlogs: they're sneaky! Let's dig in.
+
+## Examples
+
+Draw examples from across complex technical product work, and move between settings within a unit: payments and checkout, delivery routing, hospital scheduling, developer platforms and APIs, marketplaces, streaming, industrial sensors, travel booking, education software, analytics tools, games, telecom, insurance claims, public digital services. No unit leans on one setting, and none describes Joe's own employer, team or platform. He asked for this on 20 November 2026.
+
+## How to revise a unit
+
+Write a sentence again from what it says. Do not swap a word for its neighbor. A voice pass moves no fact, name, number, date, link or quotation, and adds none. Someone who did not write the pass reads it afterwards, as a whole, for whether it sounds like one person.

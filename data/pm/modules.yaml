@@ -1,44 +1,75 @@
-# The eight modules, in reading order. One entry per stop on the map.
-# "page" is the content file under content/pm/ once the module is rebuilt.
+# The twelve modules, in reading order. One entry per stop on the map (spec X1).
+# A module is either built or a draft, never both:
+#   page:  the content file under content/pm/, once the module is rebuilt for the site.
+#   draft: the file under drafts/pm/ that holds the module and its cards until then. "state" says where it stands.
+# The working doc's tabs are made from this list (tools-pm/source-doc.py).
 - id: own-your-role
   num: 0
   title: Own Your Role
   question: How do you grow your role beyond what you were handed, and bring what you already know to bear on it?
-  color: "#7A4CC2"
+  draft: own-your-role
+  state: Draft of 17 November 2026, in the old format, with a card, two readings and an exercise added on 20 November. It still leans on the deck.
 - id: see-the-system
   num: 1
   title: See the System
   question: What is the system here, and why does it behave this way?
-  color: "#1B6FB8"
   page: see-the-system
 - id: find-the-constraint
   num: 2
   title: Find the Constraint
   question: Where is the work actually stuck, and are we measuring the right thing?
-  color: "#D43D2A"
   page: find-the-constraint
 - id: mind-the-seams
   num: 3
   title: Mind the Seams
   question: How does the way we are organized shape what we build, and who decides?
-  color: "#0F8A5F"
+  draft: mind-the-seams
+  state: Draft of 17 November 2026, in the old format, with a card added on 19 November and another on 20 November. It still leans on the deck.
 - id: design-for-change
   num: 4
   title: Design for Change
   question: What will change, how fast, and what should be easy to change?
-  color: "#B97A00"
-- id: know-your-materials
+  draft: design-for-change
+  state: Draft of 17 November 2026, in the old format. It still leans on the deck.
+- id: change-safely
   num: 5
-  title: Know Your Materials
-  question: What do engineers mean by complexity and quality, and where do data systems get hard?
-  color: "#7C5A3A"
-- id: decide-and-set-direction
+  title: Change Safely
+  question: How do we change things quickly when mistakes are expensive?
+  draft: change-safely
+  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down.
+- id: think-with-engineers
   num: 6
+  title: Think With Engineers
+  question: What do engineers mean by complexity and quality, and where do data systems get hard?
+  draft: think-with-engineers
+  state: Draft of 17 November 2026, in the old format, with a card added on 19 November. It still leans on the deck. Renamed from Know Your Materials on 20 November.
+- id: map-the-domain
+  num: 7
+  title: Map the Domain
+  question: What questions must the system answer, how fast and how fresh, and where should its boundaries fall?
+  draft: map-the-domain
+  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down.
+- id: decide-and-set-direction
+  num: 8
   title: Decide and Set Direction
   question: Which decisions matter, what are the trade-offs, and what are we choosing not to do?
-  color: "#C22F7A"
-- id: notice-and-communicate
-  num: 7
-  title: Notice and Communicate
-  question: How do we find out we are wrong, and how do we tell it so others can decide?
-  color: "#0B8793"
+  draft: decide-and-set-direction
+  state: Draft of 17 November 2026, in the old format. It still leans on the deck.
+- id: answer-for-what-you-build
+  num: 9
+  title: Answer for What You Build
+  question: Who benefits and who is harmed by what we build, and what is our share of the responsibility?
+  draft: answer-for-what-you-build
+  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down.
+- id: notice-when-you-are-wrong
+  num: 10
+  title: Notice When You Are Wrong
+  question: How do we find out we are wrong?
+  draft: notice-when-you-are-wrong
+  state: Draft of 17 November 2026, in the old format, written as Notice and Communicate. Its communication half and its two cards move to Bring People With You, and that cut is not made yet. It still leans on the deck.
+- id: bring-people-with-you
+  num: 11
+  title: Bring People With You
+  question: How do you earn the trust of the people who decide and depend on you, and keep it when there is nothing to report?
+  draft: bring-people-with-you
+  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down.

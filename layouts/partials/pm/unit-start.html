@@ -1,10 +1,9 @@
-{{- /* Start Here: the short introduction and the eight modules in order. */ -}}
+{{- /* Start: the title, straight into the opening quote and the introduction, then the modules in order. */ -}}
 {{- $p := .p -}}{{- $all := .all -}}
 <article class="unit start" id="start" data-unit="start">
   <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
     <h1>{{ $p.Title }}</h1>
     {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "top") }}
-    {{ with $p.Params.pilot_note }}<p class="pilot">{{ . }}</p>{{ end }}
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
 
@@ -13,10 +12,9 @@
     {{ partial "pm/prose-slots.html" (dict "p" $p "unit" "start" "html" $p.Content) | safeHTML }}
   </div>
 
-  <section class="modules-wrap" data-slot="the-eight-modules">
-    <h2>The eight modules</h2>
-    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-eight-modules") }}
-    <p class="hint">In order. Each one is a question.</p>
+  <section class="modules-wrap" data-slot="the-lessons">
+    <h2>The lessons</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-lessons") }}
     <ol class="modules">
       {{- range site.Data.pm.modules }}
       {{- $m := . }}

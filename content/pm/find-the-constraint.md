@@ -18,7 +18,7 @@ steps:
     kind: play
     title: Play the dice game
     minutes: 10
-    where: It is on this page, just below this list.
+    where: It's on this page, just below this list.
     look: The line finishes less than its averages promise, and work piles up in the middle.
   - id: forte
     kind: read
@@ -33,7 +33,7 @@ steps:
       - text: "108: Identifying the Constraint"
         url: https://fortelabs.com/blog/theory-of-constraints-108-optimizing-the-constraint/
     look: Post 102 shows why keeping everyone busy makes delivery slower. Post 108 shows why a rule or a policy can be the most damaging constraint, and the easiest to change.
-    trust: Forte runs a productivity training firm. This is a practitioner's retelling of Goldratt, not the original, and you can check it against the novel on the full path.
+    trust: Forte runs a productivity training firm, so this is a practitioner retelling Goldratt, not Goldratt. You can check it against the novel on the full path.
     only: It carries the idea from the factory floor into knowledge work, a few minutes at a time.
   - id: card-steps
     kind: card
@@ -48,8 +48,8 @@ steps:
 
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
-    a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing is waiting. Bad luck is passed on and good luck is not.
-  - q: You speed up a step that is not the constraint. What happens to delivery?
+    a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
+  - q: You speed up a step that isn't the constraint. What happens to delivery?
     a: Almost nothing. The extra work joins the queue in front of the constraint.
   - q: Your team hits its target for reviews completed per day, yet releases are no faster. Give two explanations from this module.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
@@ -65,12 +65,12 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, the usual response is to ask every step to go faster and to report each step's own numbers. This module asks you to find the one place where work waits longest, the {{< pm/term "constraint" >}}, because speeding up anywhere else does not speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints.
+When delivery is slow, the usual fix is to ask every step to go faster and to have each one report its own numbers. It rarely works. Your job is to find the one place where work waits longest, the {{< pm/term "constraint" >}}, because speeding up anywhere else won't speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints. Knowing where a push will count is a large part of judgment.
 
 [//]: # (short-path)
 
 ## Do
 
-**Map one flow (25 minutes).** Pick one kind of change your team delivers again and again, such as a change to a form, a letter or a screen. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Then ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
+**Map one flow (25 minutes).** Pick one kind of change your team ships again and again: a pricing update, a new report, a tweak to checkout. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Then ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
 
 **Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed up the whole flow or only that step.

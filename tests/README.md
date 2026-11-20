@@ -14,6 +14,10 @@ Rules A5 to A12 and P4 came from the round 7 accessibility review. Round 8 added
 
 `setup.sh` fetches system packages through `apt-fallback.sh`. GitHub's machines read from a package mirror that is at times slow or out of reach, so each fetch gets a time limit and falls back to `archive.ubuntu.com`. `test_apt_fallback.sh` proves it on a fake apt, and GitHub's checks run that test before setup. A working session's apt is left as it is.
 
+## The working source (X1 to X3) and the voice (E1 to E3, S5, S7)
+
+`tools-pm/source-doc.py` makes the working doc's tabs from the repository: a built unit from its built page, a draft from its file in `drafts/pm/`. The checks read those same tabs. X1 holds one source for every module on the map. X2 compares each built page's words with its tab. X3 compares each tab with `tools-pm/source-doc.lock.json`, the record of what was last put in the doc, and fails until the doc is synced and the record updated. E1 to E3 hold the voice (`VOICE.md`), S5 keeps the settings in `retired-settings.txt` out of the examples, and S7 keeps a "To check:" line out of a built unit.
+
 ## Rules for changes
 
 - Change `SPEC.md` first, then the site, then the check. A change that makes a check fail is not done.
