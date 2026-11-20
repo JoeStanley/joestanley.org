@@ -226,3 +226,41 @@ Does this decision need a view of the whole? If it doesn't, whose is it?
 - Alicia Juarrero, ["Complexity is not Complication"](https://www.youtube.com/watch?v=WmtjQZCIsqY) (Deliberate Complexity conference, 2022), a talk, free on YouTube; and her book *Context Changes Everything: How Constraints Create Coherence*, chapter 3. She's a philosopher of complex systems, and the book is her own theory, argued, not measured.
 
 *To check: the sources on this card were opened and its quotations checked on 20 November 2026, with these gaps. MCDP 1 was read on an archive.org copy, and Hackman, Hackman and Oldham, Ancona and Caldwell, and Guzzo and Dickson on university course copies. Lawrence and Lorsch's 1967 study of differentiation and integration is the classic research on this tension, and nobody has opened it yet. Bloom's and Juarrero's words were added on 20 November 2026 from where Ruth Malan's workshop notes quote them (pp. 51 to 53 and 73 to 76), and nobody has opened their own talks or book: find Bloom's talk and its date, check his two definitions (the notes give no source for them), and check Juarrero's quote and its source, which the notes give as "Causality as Constraint".*
+
+# Architect Across the Interfaces
+
+## The idea
+
+"It is inadequate to architect up to the boundaries or interfaces of a system; one must architect across them." That's Robert Spinrad, a computer designer who later directed Xerox PARC, as reported by Mark Maier and Eberhardt Rechtin. Rechtin gave both halves of the reason: "The greatest leverage in system architecting is at the interfaces." And: "The greatest dangers are also at the interfaces."
+
+Every team can do its own part well and the product can still fail, because the trouble sits between the parts. In Russell Ackoff's version, the best part of each kind, taken from every car, won't make the best car.
+
+## Why a PM cares
+
+- **Teams own their parts. Someone has to own what's between them.** At an insurer, intake and payout can each work perfectly while a claim sits stuck, because the two read "approved" differently. You're often the one person whose work spans both sides, so that join is part of your job.
+- **Ask what could come across.** Rechtin's question: "What is the worst thing that other elements could do to you across the interface?" For a marketplace's search, it might be a seller sending a million price changes in an hour, or a feed that quietly stops. Ask it in design reviews.
+- **A clear interface lets both sides move.** When what each side promises is written down, each team can change its own part without asking the other. Maier and Rechtin: "Make a system evolvable by paying attention to the interfaces."
+
+## How to spot it
+
+- Every team hits its target and customers still see the gap. On an analytics product, ingestion meets its throughput target, dashboards load fast, and the numbers are a day old.
+- Nobody can show you what one side of an interface promises the other: what it sends, how fast, and what happens when it fails.
+- Something breaks across a link nobody drew, like a nightly file another team quietly reads. Rechtin's warning: "Be prepared for reality to surface a few interfaces of its own."
+
+## What it does not say
+
+It doesn't say you design the interfaces, or that a central architect should take them from the teams. Whoever designs one has to look across it, at the whole. Nor does every seam need watching. Rechtin also advises drawing boundaries so that "local activity is high speed and global activity is slow change", and then most seams stay quiet.
+
+**One question to carry:** Which interface in your product has no owner, and what's the worst thing that could come across it?
+
+## Go deeper
+
+**The Art of Systems Architecting, Mark W. Maier and Eberhardt Rechtin (1997)**
+
+A textbook, revised in later editions. It isn't free.
+
+**Why trust it:** Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecture program at the University of Southern California. The heuristics distill that experience. They weren't tested in studies.
+
+**What you'll get:** These heuristics with the reasoning around them, and many more on where to draw a system's boundaries.
+
+*To check: nobody has opened the book; the deck's link to it (sdincose.org, blocked here) doesn't match its title. Every quotation is from the deck (pp. 439, 465, 466, 478): check each against Maier and Rechtin or Rechtin's Systems Architecting (1991), with the edition. Ackoff's car is the deck's retelling (pp. 22, 472) of his talk "If Russ Ackoff had given a TED Talk". The backgrounds and the 1997 date are from Wikipedia, opened.*

@@ -132,3 +132,42 @@ What's the biggest decision your team hasn't made yet, and on what date does wai
 - Module 4, Design for Change: deck p. 28 on cost of change, and *How Buildings Learn*, chapter 11, "The Scenario-buffered Building", on keeping options open.
 
 > Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+
+# Chesterton's Fence
+
+## The idea
+
+G. K. Chesterton pictured a reformer who finds a fence across a road and says, "I don't see the use of this; let us clear it away." The wiser reformer answers, "If you don't see the use of it, I certainly won't let you clear it away. Go away and think." Someone put it there for a reason. Until you know the reason, you can't judge it.
+
+Two later lines say why. Systems "are the way they are, because they got that way" (Gerald Weinberg), so history explains them. They're also that way "because they fit that way" (Jessica Kerr), so an odd part may be holding something else up. Before you cut, ask two things. Why was it put here, and what leans on it now?
+
+## Why a PM cares
+
+- **You'll be asked to cut things all the time.** A feature few people use, an approval that slows every release, a legacy system nobody wants to own. From where you sit, each looks like pure cost.
+- **Rules outlive the people who wrote them.** A delivery routing system keeps vans off one street every weekday afternoon, and nobody remembers why. There may be a school on it.
+- **What breaks is usually somewhere else.** An insurer drops the second review on claims filed in a policy's first month, and a quarter later fraud losses climb in another team's report.
+- **Asking is cheap.** Ten minutes with whoever added the step, or a search of old tickets and decision records, costs far less than an outage, and the people who built the fence are likelier to help take it down.
+
+## How to spot it
+
+- A cut is argued as "nobody uses this", and nobody has asked who added it.
+- A cleanup ships, and a week later a team you didn't consult reports something broken.
+- A step survives every review because nobody dares touch it, and nobody can say what it's for.
+
+## What it does not say
+
+It doesn't say the fence stays. Once you know how it arose, Chesterton says, you may find its purposes "were bad purposes, or that they have since become bad purposes, or that they are purposes which are no longer served." A factory's sensor alert threshold may have been set for a model the plant replaced years ago. Nor does asking become a reason never to change anything. Limit the search: if nobody finds the reason in a few days and the cut is easy to undo, a small trial you watch closely will tell you.
+
+**One question to carry:** Before you cut it, can you say why it was put there and what leans on it now?
+
+## Go deeper
+
+**[The Thing](https://archive.org/details/in.ernet.dli.2015.475818), G. K. Chesterton (1929)**
+
+Chapter 4, "The Drift from Domesticity", pages 29 and 30 of a 1946 reprint, about five minutes. Free at archive.org.
+
+**Why trust it:** Chesterton was an English essayist, and this is an argument by analogy in a book defending his Catholic faith: common sense, not evidence. The chapter then turns to the family, so stop after the fence.
+
+**What you'll get:** The passage in his own words, including the part retellings often drop: the reasons that let a fence go.
+
+*To check: the Chesterton quotations were read in the linked scan's machine-read text, so check them against its page images. The Weinberg and Kerr lines are copied from deck p. 376, which names no work for either; nobody has opened their originals.*

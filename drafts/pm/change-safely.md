@@ -167,3 +167,43 @@ A book from Cambridge University Press; the link is to its chapter on metrics.
 **Why trust it:** It's a published book from Cambridge University Press (2020), and its subtitle calls it a practical guide to A/B testing.
 
 **What you'll get:** How to choose and combine experiment metrics.
+
+# How Complex Systems Fail
+
+## The idea
+
+Richard Cook, a physician who studied accidents, set out eighteen short points on how hazardous systems fail. Two matter most when you're about to change one. Complex systems always carry flaws, each too small to do harm alone, so they run "as broken systems", kept going by redundancy and by people. And "Change introduces new forms of failure." A fix for frequent, small failures can open a path to rare, large ones.
+
+So safety isn't a part you can add. Cook calls it "an emergent property of systems", and people create it from moment to moment. (The See the System module covers his points on root cause and hindsight.)
+
+## Why a PM cares
+
+- **A new sign-off isn't new safety.** The usual fix after an incident is one more approval before release, and it feels careful. Cook warns that remedies added after an accident "usually increase the coupling and complexity of the system", which hides more flaws and makes the next accident harder to catch.
+- **Your change is the next risk.** Say a telecom network adds automatic failover to end its short outages. Now one fault in the failover can take down a whole region. Cook notes that failures like this are hard to see beforehand, since everyone's watching what the change will fix.
+- **The people running it are part of the safety.** Before you ship, ask the on-call team what they work around by hand. On a streaming service, that might be restarting a struggling cache every few days, and your change could quietly break it.
+- **Small, early exposure helps.** Cook's last point is that "Failure free operations require experience with failure." A release to a small cohort, with a fast switch-off, lets the people running it find the edge while the stakes are low.
+
+## How to spot it
+
+- Every incident adds an approval step, and none is ever taken away.
+- Safety is pinned on one part: "QA signs it off", or "the tests will catch that".
+- The on-call team keeps a list of things they fix by hand, and nobody outside the team has seen it.
+- A rollout plan lists what the change will fix and says nothing about new ways it could fail.
+
+## What it does not say
+
+It does not say you should drop every check. Cook's target is the "end-of-the-chain" remedy, a block on whatever seemed to cause the last accident, which does little because that exact accident is already unlikely to happen again. He never mentions software or sign-offs, so applying his points to releases is this card's step, not his.
+
+**One question to carry:** What new way to fail does this change open, and who'll be there when it happens?
+
+## Go deeper
+
+**[How Complex Systems Fail](https://how.complexsystems.fail/), Richard I. Cook (1998, revised 2000)**
+
+Eighteen points on one web page, about ten minutes. Free at how.complexsystems.fail.
+
+**Why trust it:** Cook was a physician and safety researcher at the University of Chicago when he wrote it. It's a short treatise, not a study: it lists the research behind it without presenting the evidence.
+
+**What you'll get:** All eighteen points, each with its reasoning. For this module, start with 4, 5 and 14 to 18.
+
+*To check: nothing open. The quotes were checked on 20 November 2026 against the page and the original PDF it links (Revision D, 00.04.21).*

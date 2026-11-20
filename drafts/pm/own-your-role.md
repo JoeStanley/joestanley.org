@@ -226,3 +226,42 @@ Can you finish "we're building this in order to ...", and would your team finish
 - Amory Lovins, ["Energy Strategy: The Road Not Taken?"](https://rmi.org/app/uploads/2017/04/Energy-Strategy-The-Road-Not-Taken-Reprint-from-Foreign-Affairs-1976.pdf) (Foreign Affairs, 1976). A free reprint at rmi.org. An advocate's essay on energy policy, long, and better for the one idea than as a reading.
 
 *To check: the sources on this card were opened and its quotations checked on 20 November 2026, with two gaps. MCDP 1 was read on an archive.org copy, so check its wording against the official manual. Stasser and Titus was read on a university's course copy.*
+
+# Glue Work
+
+## The idea
+
+Some of the work that makes a team succeed never shows up on a roadmap: noticing that two teams are about to build the same thing, getting the right people talking, chasing the dependency nobody owns. Tanya Reilly, a software engineer, calls it glue work. Her case (2019) is that it's real and needed, that it's often invisible, and that doing mostly glue before anyone recognizes it can hold your career back.
+
+Researchers call people who work across a team's edge boundary spanners, and the outward work counts. In Ancona and Caldwell's study of 45 new-product teams (1992), which the Agency and Coherence card also cites, the ones that kept to themselves rated their own work highly, and management rated them poorly.
+
+## Why a PM cares
+
+- **A lot of your job is glue, so it's easy to do nothing else.** Connecting teams fills every gap in a week. The Concept Champion card says where that drifts: plenty of coordination, and nobody holding what the product is for.
+- **Keep doing the job you're measured on.** Role-Making grows your role by filling gaps nobody owns. If your own work slips while you fill them, people judge you by what slipped, and the next problem you raise carries less weight.
+- **Make it visible, and choose it.** Glue nobody sees can't be credited or handed on. Write down what you connected and what it unblocked, keep the glue that serves the product, and hand the rest back to its owner.
+- **Seeing the system isn't steering it.** On a streaming service you may be the only one who sees that a launch in a new country waits on the player team, rights and billing at once. That view doesn't let you move their dates. It lets you show the people who can.
+
+## How to spot it
+
+- Your week is full, your own work is late, and nobody could say what filled it.
+- When you're out for a week, two teams stop talking.
+- You see a problem across three teams clearly, and you're frustrated that nobody acts on it.
+
+## What it does not say
+
+It doesn't say stop: someone has to connect teams. It doesn't say all the glue is yours: some belongs to a manager or an engineering lead, and quietly doing it for them can hide a gap. And Reilly speaks mainly to engineers, who are judged on technical work. For you, more of the glue is the job, so the bigger risk is that it crowds out holding the concept.
+
+**One question to carry:** What glue are you doing that nobody can see, and what's it costing the job you were hired to do?
+
+## Go deeper
+
+**[Being Glue](https://noidea.dog/glue), Tanya Reilly (2019)**
+
+A conference talk and its written version. Free at noidea.dog.
+
+**Why trust it:** A senior engineer's talk from experience, not a study. Read the career advice with your own role in mind.
+
+**What you'll get:** How glue work goes unrecognized at promotion time, and what to do about it, for yourself and for people you manage.
+
+*To check: noidea.dog is blocked here, so nobody has opened Being Glue: check the summary, year, format and Reilly's role. Ancona and Caldwell (Administrative Science Quarterly, 1992) is reported as the Agency and Coherence card has it, not reopened. Tushman, "Special Boundary Roles in the Innovation Process" (Administrative Science Quarterly, 1977), is the classic study of these roles, and nobody has opened it.*

@@ -246,3 +246,50 @@ A long article. Free at martinfowler.com. Read the section "Data as a product."
 **Why trust it:** Dehghani wrote it and Martin Fowler's site published it. It argues for the approach, so read it as a case being made.
 
 **What you'll get:** The owner's role, and how quality is measured, in her own words.
+
+# Concepts
+
+## The idea
+
+A concept is one of the ideas you have to understand to use a piece of software: a paragraph in a word processor, or one user following another on a social network. Daniel Jackson, a computer scientist at MIT, defines it as "a structure that is invented to give a coherent account of the immediate consequences of actions in a complex system." Take styles in a word processor: you could format a document without them, but a style explains why one change reformats many paragraphs.
+
+Concepts are hard to change once they're built in. In *Software Abstractions* (2006), Jackson warns: "No amount of refactoring, bar starting again from scratch, can rescue a system built on flawed concepts." (Refactoring means restructuring code without changing what it does.)
+
+## Why a PM cares
+
+- **Choosing the concepts users see is product work.** Each one is something your users have to learn, and the code gets built around it. Settle which ones they see, and how each behaves, with your engineers before the build starts.
+- **A missing concept shows up as odd behavior.** Mathias Verraes and Rebecca Wirfs-Brock describe engineers who silenced alarms during incidents so they could focus, which also hid the alerts the system kept logging. The team invented a new concept, the alert condition, separate from the alarm, which can still be turned off.
+- **Workarounds point to the gap.** Say an assignment on a learning platform has one due date. A teacher who gives one student two extra days has to move it for the whole class. The missing concept is the extension.
+
+## How to spot it
+
+- Support keeps explaining behavior that's working exactly as designed.
+- One word covers two things that behave differently, the way "alarm" covered both the noise and the condition behind it.
+- Users coin a word for something the product has no name for.
+- A simple request has an ugly side effect. If the only way to stop service to a lost phone is to cancel the line, the customer loses the number too.
+
+## What it does not say
+
+A concept isn't a bounded context: that's about where a word's meaning holds, and a concept is a piece of behavior users have to learn. Nor are more concepts better: each is one more thing to learn, so add one when it explains behavior people already trip over. And Jackson's refactoring warning covers the abstractions in the code as much as the ones on screen.
+
+**One question to carry:** What do users have to understand to use this, and what do they keep needing that has no name yet?
+
+## Go deeper
+
+**[Design and Reality](https://verraes.net/2021/09/design-and-reality/), Mathias Verraes and Rebecca Wirfs-Brock (2021)**
+
+An essay. Free at verraes.net.
+
+**Why trust it:** Wirfs-Brock is a software engineer and consultant known for responsibility-driven design, an approach to object design. It's two practitioners writing up one case, not research.
+
+**What you'll get:** The whole alarm story, and how a team found a concept nobody had named.
+
+**[The Essence of Software](https://essenceofsoftware.com/), Daniel Jackson (2021)**
+
+A book from Princeton University Press. Borrow it or buy it.
+
+**Why trust it:** Jackson is a professor of computer science at MIT. The book argues for his own theory; it isn't an independent test of it.
+
+**What you'll get:** His full account of concepts, which this card only samples.
+
+*To check: nobody has opened the essay (verraes.net is blocked here), the book or its site. Both quotes come from the deck (pp. 303 and 325): check the definition against Jackson's paper "Towards a Theory of Conceptual Design for Software", the refactoring line against Software Abstractions, and the alarm story against the essay, with its year and who Verraes is. Jackson's MIT post, Wirfs-Brock's background and the book's details come from Wikipedia only.*

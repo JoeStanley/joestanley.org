@@ -99,3 +99,41 @@ Which layer does this change really live in, and what slower layer does it rest 
 - Deck p. 169 (Brand's layer diagrams) and p. 329 (Parnas, and the rule "keep things that change together, together").
 
 > Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+
+# Coupling Is About a Change
+
+## The idea
+
+"Are these two parts coupled?" has no useful answer until you name the change. Kent Beck's definition, from his talk "The Beauty of Maintenance" (2020): two parts are coupled "with respect to a particular change" if changing one means changing the other. A phone company's plan catalog and billing system can be independent when a price changes, and welded together when a new kind of charge arrives, like data shared across a family.
+
+Michael Nygard sorts coupling into five kinds. Operational: one can't run without the other. Development: "changes in producer and consumer must be co-ordinated". Semantic: they change together because they share a concept. Functional: they share a responsibility. Incidental: they "change together for no good reason".
+
+## Why a PM cares
+
+- **Development coupling is the kind on your roadmap.** Each change two teams must coordinate costs meetings, a joint release and waiting. Name it when you plan and you can schedule it. Leave it unnamed and you'll meet it in week six.
+- **You often know which changes are coming.** When an engineer says two systems are tightly coupled, ask for which change, and name the one you expect, such as next year's eligibility rules on a public benefits service. It's Parnas's information hiding, from this module's terms, seen from your side: engineers can only hide the decisions they know will move.
+- **You can map it on one page.** Barry O'Reilly lists likely stressors against components and marks each component a stressor hits. For an electric car charging network, his stressors include a new car model and an expired card. Where one stressor marks several components, they're coupled for that change. You bring the business stressors.
+
+## How to spot it
+
+- A small change needs two teams to release on the same day, plus a call to agree on the order.
+- The release history shows the same two services changing together, again and again. Engineers call it change coupling.
+- Two services talk only through a tidy API, yet both break when a streaming service redefines an active subscriber. That's semantic coupling, and the API doesn't remove it.
+
+## What it does not say
+
+It doesn't say coupling is bad. Parts that work together are coupled for something: a routing service that isn't coupled to its map data won't route anyone. Decoupling has a price in parts and interfaces to run, so pay it where the likely changes are. And Nygard's kinds are a practitioner's vocabulary, not a tested classification. One pair of parts can show several.
+
+**One question to carry:** For the change you most expect next year, which teams would have to ship together?
+
+## Go deeper
+
+**"Uncoupling", Michael Nygard**
+
+A conference talk on YouTube. Year and length still to check.
+
+**Why trust it:** Nygard is a software architect and the author of the book *Release It!*. It's one practitioner's talk, not research.
+
+**What you'll get:** The five kinds from the person who drew them up, so you can judge which ones your teams are paying for.
+
+*To check: nobody has opened a source for this card; YouTube was blocked here. Beck's definition (deck p. 366) and Nygard's kinds (p. 364) are quoted from the deck's copies of their slides: check them against the talks, and find URLs, years and lengths. O'Reilly's table (pp. 406, 457) cites youtube.com/watch?v=0wcUG2EV-7E, untitled. Beck's book Tidy First? (2023) may suit the full path.*
