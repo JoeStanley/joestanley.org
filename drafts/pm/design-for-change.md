@@ -2,7 +2,9 @@
 
 Most PM questions are about what to build next. Ask about time as well: which parts of your product will change, how often, and what each change will cost. A lot of the pain of change comes from fast-changing parts tied to slow-changing ones. Once you can see which is which, you'll estimate more honestly, sequence work better, and have a case for the engineering work that makes likely changes cheap.
 
-## Short path (about two hours of reading and viewing, plus an hour for the exercises)
+Engineers have a precise word for what makes a change costly: complexity, meaning anything in a system's structure that makes it hard to understand and change. Learn what they mean by it, and you can name why a small request took a month without blaming anyone.
+
+## Short path (about two and a half hours of reading and viewing, plus an hour for the exercises)
 
 The deck is a 514-page set of workshop slide notes written for software architects, not a book. You don't need most of it: read only the pages named here, and only the parts named. Terms you don't know are defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 4.
 
@@ -12,7 +14,8 @@ The deck is a 514-page set of workshop slide notes written for software architec
 4. Deck p. 169 (5 minutes). Look at the two layer diagrams on the slide, then read the quoted summary under the heading "Stewart Brand's Pace Layers", beneath the slide. Skip the rest.
 5. Deck p. 28 (5 minutes). Read the paragraph headed "Cost of Change" beneath the slide, and the short note near the bottom that begins "In this sense, we're seeking to reduce the cost of change". Skip the rest.
 6. Deck p. 329 (10 minutes). Read the quote on the slide from software pioneer David Parnas, and the "Resilient Abstractions" notes beneath it. Skip the two quotes on the right.
-7. *How Buildings Learn*, chapter 11, "The Scenario-buffered Building", the whole chapter (about 30 minutes). It's about designing for several possible futures instead of betting on one forecast.
+7. *A Philosophy of Software Design* (Ousterhout, second edition, 2021), chapter 2, "The Nature of Complexity" (about 20 minutes), and chapter 3, "Working Code Isn't Enough" (about 15 minutes), on tactical and strategic programming. If you can't get the book this week, watch Ousterhout's [talk at Google](https://www.youtube.com/watch?v=bmSAYlu0NcY) (2018, free on YouTube) instead (62 minutes instead of 35).
+8. *How Buildings Learn*, chapter 11, "The Scenario-buffered Building", the whole chapter (about 30 minutes). It's about designing for several possible futures instead of betting on one forecast.
 
 ## Full path
 
@@ -21,6 +24,7 @@ The deck is a 514-page set of workshop slide notes written for software architec
 - Deck pp. 27, 29 and 30 (architecture as the decisions that are costly to change; modularity as a container for change; software researcher Meir Lehman's law that a system in use must keep changing) and pp. 65 to 67 (evolutionary design: complex systems that work grow from simpler ones that worked, and problem and solution are worked out together).
 - For the engineering view: Foote and Yoder, ["Big Ball of Mud"](https://www.laputan.org/mud/) (1997), the "Shearing Layers" section. It's the same idea in software, with layers running from data (fastest) to programming languages (slowest). Free at laputan.org.
 - For the engineering view: Parnas, "On the Criteria To Be Used in Decomposing Systems into Modules" (*Communications of the ACM*, 1972). Six pages. The argument is in his comparison of two ways to split the same program, so you can skim the technical detail.
+- For the engineering view: *A Philosophy of Software Design*, chapter 11, "Design it Twice" (about 15 minutes), on sketching more than one design before you choose, and chapter 21, "Decide What Matters" (about 15 minutes).
 - For the engineering view: deck pp. 313 to 335, on modularity, coupling, cohesion and abstraction. Start with pp. 317, 318, 330 and 331, and skim the rest.
 - Optional, for organizations: Beane and Leonardi, "Pace Layering as a Metaphor for Organizing in the Age of Intelligent Technologies" (*Journal of Management Studies*, 2025). It applies the idea to how organizations adapt to fast-changing technology.
 
@@ -37,6 +41,12 @@ The deck is a 514-page set of workshop slide notes written for software architec
 - **Information hiding:** Parnas's rule that each part keeps one likely-to-change decision to itself, behind an interface that doesn't reveal it.
 - **Abstraction:** an idea reduced to what matters for the job, with the detail hidden behind it.
 - **System of record:** the system that holds the official copy of some data, such as the orders in a marketplace.
+- **Complexity (Ousterhout's sense):** anything in a system's structure that makes it hard to understand and change.
+- **The three symptoms of complexity:** Ousterhout's names for how complexity shows up.
+  - **Change amplification:** a simple change needs edits in many places.
+  - **Cognitive load:** how much a developer must know to make a change safely.
+  - **Unknown unknowns:** it isn't clear what must change until something breaks.
+- **Tactical and strategic programming:** tactical work gets the current feature working fast; strategic work also invests in a design that makes later changes easier.
 - **Evolutionary design:** growing a system in steps as you learn, rather than fixing the whole design up front.
 - **Scenario planning:** imagining several plausible futures and choosing a design that holds up in all of them (Brand, chapter 11).
 
@@ -47,13 +57,23 @@ The deck is a 514-page set of workshop slide notes written for software architec
 - **Wrong pace, either way.** Brand's essay gives historical cases of a layer forced to another layer's speed. Sometimes a fast layer pushes a slow one, and sometimes a slow schedule is imposed on a fast one. He argues that both end badly.
 - **Keep together what changes together.** The deck turns Brand's observation into a design rule and pairs it with Parnas: draw boundaries around the decisions likely to change (p. 329). Engineers can apply it only as well as they know what's likely to change, and often you're the one who knows.
 - **A decision is significant if it's costly to undo.** A decision matters architecturally if it would be costly to reverse, or if it makes other changes cheaper (p. 28). That's your test for which decisions deserve slow, careful attention and which you can make quickly.
+- **Name the symptom, not the culprit.** Ousterhout's three symptoms let you say why a change was slow without pointing at anyone. Change amplification is coupling seen from the change's side, which is the Coupling Is About a Change card's subject.
+- **Strategic work is the case you can make.** Chapter 3 contrasts getting the current feature working fast with investing a little in a design that makes later changes easier. You're often the one who can say which later changes are likely, so you can say where that investment pays.
 - **Every forecast is partly wrong.** Brand's own line is "All buildings are predictions. All predictions are wrong." Chapter 11 gives up on a better forecast and plans with scenarios, loose fit and options.
 
 ## Apply it to your own work
 
 1. List your product's layers in about 30 minutes. Take one product or user journey you own and list its parts from fastest-changing to slowest. For example: wording and content; screens and flows; business rules and settings; APIs and integrations; the data model; core systems of record; the contracts, standards and laws it has to meet. Next to each, note how often it actually changed in the last year. A first pass from your own knowledge is fine. Then ask a tech lead to check it against release history (the release notes or change log for each system). You might open with "Which of these is hardest to change, and why?" Don't skip that conversation, because it's part of the exercise. Where is a part moving at the wrong pace for its layer?
-2. In about 15 minutes, pick a recent request that took far longer than its size suggested. Memory will do if there are no records. Which layers did it touch, and could anyone see the slowest of them when the work was estimated?
+2. In about 20 minutes, pick a recent request that took far longer than its size suggested. Memory will do if there are no records. Which layers did it touch, and could anyone see the slowest of them when the work was estimated? Which of the three symptoms of complexity showed up?
 3. In about 15 minutes, walk a likely change across your system, as the deck suggests on p. 329. Name one change you expect in the next year, such as a second currency at checkout, a new sensor model in the field or a partner asking to build on your API. Start from what you know, then ask a tech lead, and open with "If we did this, which parts would have to change?" If the answer is most of them, what boundary would have contained it?
+
+## Questions to bring to engineers
+
+- Which of these layers is hardest to change, and why?
+- If we made this change, which parts would have to change with it?
+- Where in our system is change amplification worst?
+- What would a small strategic investment there cost, and what would it save?
+- For the change we most expect next year, which teams would have to ship together?
 
 ## Check your own thinking
 

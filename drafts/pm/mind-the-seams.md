@@ -2,26 +2,22 @@
 
 Much of the friction you fight as a PM (dependencies, handoffs, work waiting on another team, decisions that stall) looks like people being slow. It usually isn't. More often it comes from where the boundaries sit between teams, and how teams work across them. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
-## Short path (about two and a quarter hours of reading, plus about an hour for the exercises)
+## Short path (about an hour and three quarters of reading, plus about 45 minutes for the exercises)
 
 The deck is a 514-page set of workshop slide notes written for software architects, not a book, so don't read it like one. Read only the pages named here, and only the parts named. You'll find unfamiliar terms defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 2.
 
 1. The **Conway's Law** concept card (10 minutes).
 2. *Team Topologies* (Skelton and Pais), the chapters "Conway's Law and Why It Matters" and "Team-First Thinking" (about an hour). Either edition will do; the 2025 second edition adds new case studies.
 3. Deck p. 314 (10 minutes). Read the Conway quote, the paraphrase under it, and the sentence about managers deciding on teams. Skip the rest.
-4. Deck p. 500 (5 minutes). Read "The Rule" and "The Qualifier" at the top. Skip the rest.
-5. The **RACI** concept card (10 minutes).
-6. Deck p. 319 (5 minutes). Read the quote about keeping an org chart, a diagram of how work actually flows, and a diagram of what the company does. Skip the rest.
-7. Conway's original paper, "How Do Committees Invent?" (1968), about 20 minutes. It's four pages, free at melconway.com.
-8. The **Agency and Coherence** concept card (10 minutes).
-9. Ruth Malan and Dana Bredemeyer, ["Less is More with Minimalist Architecture"](https://www.bredemeyer.com/pdf_files/MinimalistArchitecture.PDF) (2002), 6 minutes. Three pages, free on the authors' site. It's an opinion column with no data, written for software architects, so read "architect" as whoever sets the rules that cross teams. Read it for the one reason they accept for taking a decision away from a team.
+4. Deck p. 319 (5 minutes). Read the quote about keeping an org chart, a diagram of how work actually flows, and a diagram of what the company does. Skip the rest.
+5. Conway's original paper, "How Do Committees Invent?" (1968), about 20 minutes. It's four pages, free at melconway.com.
 
 ## Full path
 
 - The rest of *Team Topologies*, especially the four team types, the three interaction modes, and evolving team structures through organizational sensing.
 - *An Elegant Puzzle* (Larson), chapter 2, "Organizations": sizing teams, the states a team moves through, and the case against top-down global optimization. The rest of the book is a reference, so dip into it when you need it.
 - For the force running the other way: Henderson and Clark, "Architectural Innovation" (1990), the classic study; Sosa, Eppinger and Rowles, "The Misalignment of Product Architecture and Organizational Structure in Complex Product Development" (2004), on how a product's design interfaces map onto who talks to whom; and Allan Kelly's short essay "Conway's Law v. Software Architecture", a practitioner's account of long-lived systems shaping teams.
-- Deck pp. 52 to 61 (coherence, alignment, and how technology and the people who build and use it shape each other), pp. 462 to 463 (platforms run as internal products) and pp. 498 to 508 (who makes system decisions, advice forums, consensus and stewardship).
+- Deck pp. 52 to 61 (coherence, alignment, and how technology and the people who build and use it shape each other), and pp. 462 to 463 (platforms run as internal products).
 - Optional, if you want the evidence: Colfer and Baldwin, "The Mirroring Hypothesis: Theory, Evidence, and Exceptions" (2016).
 
 ## Terms you will meet
@@ -32,8 +28,6 @@ The deck is a 514-page set of workshop slide notes written for software architec
   - **X-as-a-Service:** one team uses what another provides with little conversation, such as calling a well-documented internal API.
   - **Facilitating:** one team helps another learn or get unstuck, such as a testing specialist helping a team adopt automated tests.
 - **Inverse Conway maneuver:** shaping teams and how they communicate on purpose, to get the system you want.
-- **Advice process:** anyone may make a decision, after asking the people it affects and the people with relevant expertise (deck p. 500).
-- **Responsible and accountable** (from RACI): responsible people do the work; the one accountable person owns the outcome and makes the final call. See the RACI card.
 
 ## What to look for
 
@@ -42,14 +36,20 @@ The deck is a 514-page set of workshop slide notes written for software architec
 - **You can design for it, within limits.** The inverse Conway maneuver reshapes teams on purpose to get the system you want. Find the limits before you count on it: with a tech lead, work out which parts of your system could change fast enough to follow a new team design, and which would hold the old shape.
 - **Cognitive load is a design limit.** Ask what your own team carries that it can't understand well.
 - **Interaction is a choice, and usually a temporary one.** Each mode fits a different moment. Notice what it costs when collaboration quietly becomes the permanent default: every change needs a meeting.
-- **Enough common ground, and no more.** Teams need just enough common ground to work together, such as shared terms and a shared definition of done. That doesn't mean forcing every team onto one plan. Deck pp. 52 to 53 make this case in denser language.
-- **Decision rights are part of the design.** Compare the advice process with how decisions actually get made around you.
+- **Enough common ground, and no more.** Teams need just enough common ground to work together, such as shared terms and a shared definition of done. That doesn't mean forcing every team onto one plan. Deck pp. 52 to 53 make this case in denser language, and the Agency and Coherence card, in Module 8, Decide and Set Direction, takes it further.
 
 ## Apply it to your own work
 
 1. Give yourself about 30 minutes to sketch two pictures of your area, boxes and lines only. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. A first pass from what you already know is fine for the second picture. Then ask a tech lead to correct it, and open with "Which of these parts is hardest to change, and why?" Now lay the two side by side. Where do the boundaries line up, and where do they cut across each other? Check the mismatches against the symptoms on the Conway's Law card. Which of them couldn't move even if you wanted them to, because the system there is costly to change?
 2. Take about 15 minutes and pick one dependency on another team that keeps coming back. Which interaction mode is it in today, and which should it be in? What would it take to move it?
-3. Take about 15 minutes to think back to a decision from the last quarter that stalled. Who had to be consulted, who could say no, and was any of that written down?
+
+## Questions to bring to engineers
+
+- Which parts of our system are hardest to change, and do our team boundaries follow them?
+- If we moved this boundary between teams, which parts of the system could follow it within a quarter, and which would hold the old shape?
+- Which dependency on another team costs us most, and how should we work with that team?
+- What does each side of this interface promise the other, and what happens when it fails?
+- What's the worst thing that could come across this interface?
 
 ## Check your own thinking
 
@@ -95,50 +95,6 @@ Where does a boundary between teams in your area cut through something a custome
 
 > Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
 
-# RACI
-
-## The idea
-
-RACI is a grid that says who does what on a task or decision. Each person gets one letter per row. **Responsible:** does the work. **Accountable:** owns the outcome, signs off and has the final say. **Consulted:** gives input before sign-off. **Informed:** is told the result. The A may also do the work, so one person can be both A and R. When that happens, write A. Here's a grid for a hospital scheduling product.
-
-| Decision | PM | Eng lead | Clinical lead | Director |
-| --- | --- | --- | --- | --- |
-| Choose a vendor | R | C | C | A |
-| Change patient prep instructions | R | I | A | I |
-| Plan the release | A | C | I | I |
-
-## Why a PM should care
-
-- **It names one decider.** [Mind Tools](https://www.mindtools.com/agn584l/the-raci-matrix) says each task needs exactly one accountable person, and [CIO.com](https://www.cio.com/article/287088/project-management-what-is-raci-and-how-does-it-improve-clarity.html) warns that two invite slow, contentious decisions.
-- **It separates input from authority.** Consulted people shape the decision but don't own it, so a good opinion doesn't turn into a veto.
-- **It can unstick a stalled decision.** Write the decision as one line and list the people involved. Agree who's the A, then ask who is truly C and move the rest to I. One practitioner on CIO.com reports that agreeing roles nearly always restarts a stuck project.
-- **It protects required sign-offs.** When someone's approval is mandatory, you can't move them to I. That's the clinical lead on patient instructions in the grid above, or the accessibility lead on a public digital service. Show them as the A for their part of the decision, or list the sign-off beside the A.
-
-## How to spot it at work
-
-- A meeting ends with "let's align offline" and nobody can say who will make the call.
-- Two leaders each believe the final say is theirs, or each believes it's the other's.
-- Every review has the same long invite list, and the decision waits for the slowest reply.
-- Someone who was never asked objects after the work is done.
-
-## What it does not say
-
-RACI records roles. It does not tell people how to decide. It fails in three familiar ways: everyone is made C, which CIO.com says slows the project; accountability is split between two people; or the grid turns into paperwork. So save it for decisions that are stuck or that cross teams. Atlassian's [DACI play](https://www.atlassian.com/team-playbook/plays/daci) uses Driver (the person who runs the process and gets a decision made), Approver (the one person who decides), Contributors (a voice, not a vote) and Informed, and it suits big cross-team decisions. The advice process (deck p. 500) has no assigned decider: anyone may decide after seeking advice from those affected and from experts, and they don't have to follow the advice. It matters to you because it spreads decisions out without losing track of who decides. RACI names the decider in advance. The advice process does not.
-
-## One question to carry into your work
-
-For the last decision that stalled in your area, who was the one accountable person, and would they have named themselves?
-
-## Go deeper
-
-- Mind Tools, ["The RACI Matrix"](https://www.mindtools.com/agn584l/the-raci-matrix), about 10 minutes. Free at mindtools.com.
-- ["The RACI matrix: Your blueprint for project success"](https://www.cio.com/article/287088/project-management-what-is-raci-and-how-does-it-improve-clarity.html), CIO.com, about 10 minutes. Free at cio.com.
-- Atlassian Team Playbook, ["DACI Decision Making Framework in action"](https://www.atlassian.com/team-playbook/plays/daci), about 10 minutes. Free at atlassian.com.
-- Andrew Harmel-Law, ["Scaling the Practice of Architecture, Conversationally"](https://martinfowler.com/articles/scaling-architecture-conversationally.html) (2021), about 30 minutes. Free at martinfowler.com.
-- Deck p. 500, "The Rule" and "The Qualifier" (5 minutes).
-
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
-
 # Platform as a Product
 
 *Picture: A platform team sits between many delivery teams and the plumbing they all need. Each team can use the platform, or build its own.*
@@ -178,54 +134,6 @@ A long article. Free at martinfowler.com.
 **Why trust it:** Bottcher describes himself as an experienced technical leader with over two decades in the field, and the article presents a model developed at Thoughtworks, a technology consultancy. It's one practitioner's view, not research, so weigh it that way.
 
 **What you'll get:** A concrete list of what makes a platform compelling, plus the Netflix "paved road" idea (a central set of tools): teams may choose another way, but they carry the full cost of maintaining it.
-
-# Agency and Coherence
-
-## The idea
-
-Work that many people do at once needs two things that pull against each other. People need room to decide, or the work is slow and nobody much wants to do it. And the pieces need to fit, or the product doesn't work as one thing.
-
-Jabe Bloom, in a talk to software designers, names both halves (2020). Requisite variety, after the cybernetician Ross Ashby, says a team needs as many different views as the world it faces. Requisite coherence says it also needs "just enough common concepts to make progress", and "not maximally but minimally". Bloom also separates autonomy, "the ability to choose which action to take", from agency, which adds being "able to observe the results of those actions in the system one acts within". Freedom isn't enough on its own. People also need to see what their choices did.
-
-The philosopher Alicia Juarrero shows the way through. We think of constraints as limits, and some are. But constraints "also create alternatives": the rules of syntax are what let a sentence mean anything at all. A few shared rules, well chosen, let many people act on their own and still add up to one thing. So be strict about a few things and loose about the rest. Be strict about the purpose, and about the few decisions that need a view of the whole. Leave how each team gets there to the team. Ruth Malan and Dana Bredemeyer, writing for software architects, give the test for the strict list: the only good reason to take a decision away from the people doing the work is a benefit to the whole "that the organization could not otherwise achieve" (2002).
-
-Other fields landed in the same place. Marine Corps doctrine seeks unity "not principally through imposed control, but through harmonious initiative" inside guidance from above (MCDP 1, *Warfighting*, 1997). The team researcher Richard Hackman tells leaders to be "insistent and unapologetic" about the ends, and just as insistent about leaving the means alone (*Leading Teams*, 2002).
-
-## Why a PM should care
-
-- **You often write the strict list, whether or not you call it that.** What a term means, which flows have to match, what "done" includes. Write each rule as something that makes work possible: one agreed meaning of "booking" lets the search, payments and support teams on a travel site build on their own without meeting about it.
-- **Freedom without feedback isn't agency.** A team that ships a change and never sees what it did to customers has autonomy and nothing to steer by. Get it the numbers, the support tickets and the user sessions for its own change.
-- **Room to decide is part of why the work is worth doing.** In a survey of 658 employees across 62 jobs, freedom over how the work gets done went with higher motivation (Hackman and Oldham, 1976). Take it away and you lose effort you can't buy back with process.
-- **A team can feel great and still be out of step.** In a study of 45 new-product teams, the ones that kept to themselves rated their own work highly, and management rated them poorly (Ancona and Caldwell, 1992). A team that's tight inside doesn't always fit with the teams around it.
-- **Customers feel the gaps.** Two teams, two meanings of "account", two settings pages.
-- **Every rule you add weakens the others.** Malan and Bredemeyer warn that each added decision "can potentially dilute the impact of all the other decisions". Keep the list short.
-
-## How to spot it at work
-
-- Too little agency: teams ask permission for small changes, work waits on a review that adds nothing, and people can tell you what they were told to build but not why.
-- Too little coherence: every team's piece works and the whole doesn't. The same thing gets built twice. Meetings to "align" multiply.
-- A team says it's doing well, and its neighbors disagree.
-- There's a shared rule, and nobody can give the reason for it.
-
-## What it does not say
-
-It does not say more autonomy is always better. A review of the research found "substantial variance" in what autonomous work groups did for productivity and attitudes (Guzzo and Dickson, 1996). It doesn't say everyone has to agree, or build the same way: the aim is enough common ground to work together, and no more. It doesn't say autonomy means being left alone. In the motivation research, autonomy is "the feeling of volition that can accompany any act" (Ryan and Deci, 2000), so a shared rule you understand and accept can leave it intact. And it isn't a recipe. The best-known picture of "aligned autonomy" is Spotify's account of itself, which its authors called "only a snapshot of our current way of working" (Kniberg and Ivarsson, 2012).
-
-## One question to carry into your work
-
-Does this decision need a view of the whole? If it doesn't, whose is it?
-
-## Go deeper
-
-- U.S. Marine Corps, MCDP 1, *Warfighting* (1997), the sections "Philosophy of command", "Mission tactics" and "Commander's intent", about 8 minutes. A public manual. It's doctrine: how an organization means to work, not a study of how every unit does.
-- Stephen Bungay, ["How to Make the Most of Your Company's Strategy"](https://hbr.org/2011/01/how-to-make-the-most-of-your-companys-strategy) (Harvard Business Review, 2011), and his book *The Art of Action* (2011): align on intent, leave the actions free. A consultant's model, with no outcome data. The site limits how many articles you can read free.
-- Ancona and Caldwell, "Bridging the Boundary: External Activity and Performance in Organizational Teams" (Administrative Science Quarterly, 1992). The field study of 45 product teams, in five high-technology companies in the 1980s. The journal charges for it.
-- Ryan and Deci, ["Self-Determination Theory and the Facilitation of Intrinsic Motivation, Social Development, and Well-Being"](https://selfdeterminationtheory.org/SDT/documents/2000_RyanDeci_SDT.pdf) (American Psychologist, 2000). Free on the authors' site. A review of their own theory, drawn mostly from schools, families and health care.
-- Kniberg and Ivarsson, ["Scaling Agile @ Spotify"](https://blog.crisp.se/wp-content/uploads/2012/11/SpotifyScaling.pdf) (2012), 11 minutes. Free. A company describing itself.
-- Jabe Bloom, talk to the Virtual DDD meetup (16 January 2020), on requisite variety and requisite coherence. A practitioner's talk, not a study.
-- Alicia Juarrero, ["Complexity is not Complication"](https://www.youtube.com/watch?v=WmtjQZCIsqY) (Deliberate Complexity conference, 2022), a talk, free on YouTube; and her book *Context Changes Everything: How Constraints Create Coherence*, chapter 3. She's a philosopher of complex systems, and the book is her own theory, argued, not measured.
-
-*To check: the sources on this card were opened and its quotations checked on 20 November 2026, with these gaps. MCDP 1 was read on an archive.org copy, and Hackman, Hackman and Oldham, Ancona and Caldwell, and Guzzo and Dickson on university course copies. Lawrence and Lorsch's 1967 study of differentiation and integration is the classic research on this tension, and nobody has opened it yet. Bloom's and Juarrero's words were added on 20 November 2026 from where Ruth Malan's workshop notes quote them (pp. 51 to 53 and 73 to 76), and nobody has opened their own talks or book: find Bloom's talk and its date, check his two definitions (the notes give no source for them), and check Juarrero's quote and its source, which the notes give as "Causality as Constraint". Her talk's link was confirmed on 20 November 2026 from YouTube's listing (Deliberate Complexity Conference 2022), but the talk couldn't be watched here. Her book is open access from MIT Press, on hosts this environment doesn't allow yet.*
 
 # Architect Across the Interfaces
 

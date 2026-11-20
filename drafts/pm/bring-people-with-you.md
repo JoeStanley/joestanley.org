@@ -1,4 +1,4 @@
-About 91 minutes: 51 reading, 40 doing.
+About 106 minutes: 51 reading, 55 doing (a 30-minute exercise and a 25-minute optional one).
 
 **If you only do one thing:** This week, send a short update on a fixed day to someone who depends on your work, and put one item in it that isn't green (not on track: amber or red in the traffic-light colors many teams use for status).
 
@@ -6,7 +6,7 @@ About 91 minutes: 51 reading, 40 doing.
 
 People who decide about your work, or rely on it, can't see inside your team. They have the last thing you told them and their own guesses. Going quiet between milestones feels harmless, but that's when the guesses fill the space. If a hospital has planned its clinics around your scheduling release, the guesses tend to be worried ones.
 
-You build trust by being clear when it counts and predictable when it doesn't. This module covers both: how to open a message so the reader knows what you need, and how to decide which kind of update each person gets. The update-type frame (the Two Kinds of Update card) is the syllabus's own. It comes from practice, not from published research.
+This module picks up where Notice When You Are Wrong leaves off: once you've found something, you have to say it so the people who decide can act. You build trust by being clear when it counts and predictable when it doesn't. This module covers both: how to open a message so the reader knows what you need, and how to decide which kind of update each person gets. The update-type frame (the Two Kinds of Update card) is the syllabus's own. It comes from practice, not from published research.
 
 ## The short path
 
@@ -73,7 +73,7 @@ You build trust by being clear when it counts and predictable when it doesn't. T
 
 **Map your audience and send the first update (30 minutes).** List everyone who decides about your work or depends on it. The easy ones to forget sit outside your team: legal, support, partner teams. Place each person on a power-interest grid (10 minutes). Then, for each person the grid says to manage closely or keep satisfied, choose an update type (8 minutes): time-anchored (sent on a fixed day), outcome-anchored (sent when something lands) or both, and note the day or the trigger. Last, write your first time-anchored update and send it to your most senior reader (12 minutes). If you'd need your manager's approval to send to that person, get it first, or pick the most senior person you already update. Keep it to a few lines: what moved, what's stuck, what you need. Make sure one item isn't green, such as a sensor-data feed that's been late twice, or a checkout change still waiting on a security review. Your output is the grid with an update type beside each name, and the sent update.
 
-**Optional: three sizes (10 minutes).** Take your not-green item and write it as one sentence. Then write it as one SCR paragraph, under 100 words, where the resolution is your ask. Now reread the paragraph with Gopen and Swan in mind: does each sentence end on what's new? Your output is the one sentence, the paragraph, and a rewrite of any sentence that ends on something old.
+**Optional: one story at three sizes (25 minutes).** Take your not-green item, or the top risk from a premortem (Notice When You Are Wrong), and turn it into a clear ask of your manager, such as a decision, a person or some time. Write it as one sentence (3 minutes). Then write it as one SCR paragraph, under 100 words, where the resolution is your ask (7 minutes). Then write a one-page memo: the problem, two or three approaches, your recommendation and the open questions (12 minutes). List each approach's consequences before you call any of them a pro or a con. Last, reread the memo's opening paragraph with Gopen and Swan in mind: does each sentence start with something the reader knows and end on what's new? (3 minutes). Your output is the sentence, the paragraph and the page. Send the page to your manager and ask what's missing.
 
 ## Check yourself
 
@@ -96,6 +96,7 @@ Your update lists only wins. Which part of the trust equation does it put at ris
 Optional, and not counted in the time above.
 
 - **Gopen and Swan, the rest of the article.** About 19 minutes. Free at human.libretexts.org. From "The Topic Position" to the end: that section, then logical gaps, locating the action and the writing process. **Why trust it:** It's the same article from the same journal, so the same limits apply. **What you'll get:** Further reader-expectation rules, and the case that fixing structure exposes gaps in your thinking.
+- **Bryan Garner, *Legal Writing in Plain English*, third edition (University of Chicago Press, 2023).** A book, 336 pages, about $26 in paperback. Read Part One and sections 21 to 23. Allow about 6 hours, exercises included. **Why trust it:** It's a writing textbook from a university press, now in its third edition. It's written for lawyers, so read past the legal examples. **What you'll get:** Practice at plain, direct sentences, for when you want drills rather than more advice.
 - **"Understanding the Trust Equation," Trusted Advisor Associates.** About 3 minutes. Free at trustedadvisor.com. **Why trust it:** It comes from the firm of Charles Green, a co-author of the book, so read it as an advocate's account of its own model. **What you'll get:** The model's own definitions of each part.
 - **Leigh Buchanan, "How Patagonia's roving CEO stays in the loop" (*Inc.*, 2013).** About 4 minutes. Free at inc.com. **Why trust it:** It's business press describing a practice that founder Yvon Chouinard used. **What you'll get:** A routine report that took staff about 15 minutes to write and managers about 5 to read.
 - **John Gabarro and John Kotter, "Managing Your Boss" (*Harvard Business Review*, 1980, reprinted 2005).** You may need a library login or a purchase. **Why trust it:** It's a long-standing HBR article. **What you'll get:** The case that you and your boss depend on each other, so understanding them is part of your job.
@@ -186,3 +187,84 @@ The abstract is free at researchportalplus.anu.edu.au. The full text isn't on th
 **Why trust it:** It's a journal article in *Human Resource Management* (the abstract page lists the journal and year). It rests on interviews with management and public relations staff, so what you get is what those staff reported.
 
 **What you'll get:** A contrast between a successful and an unsuccessful change communication effort, with rumor as the sign of the failure.
+
+# SCR (Situation, Complication, Resolution)
+
+## The idea
+
+SCR opens a message so the reader knows right away why it matters and what you want. The situation is what the reader already knows and accepts; the complication is what changed or went wrong; the resolution is what you recommend or ask for. The pattern is Barbara Minto's, developed in The Pyramid Principle while she edited consultants' reports at McKinsey.
+
+Example, for a team that owns a school gradebook:
+
+- **S:** Our gradebook syncs class rosters from each district's records system every night.
+- **C:** Our largest district moves to a new records system in August, and our integration vendor can't ship a connector before school starts.
+- **R:** Approve a weekly manual roster import for one term, so teachers have their classes on day one while the vendor builds the connector.
+
+## Why a PM should care
+
+- **Decision makers read the top.** Minto's rule is to give the summarizing idea before the ideas it summarizes. A reader who agrees can stop there, and one who doubts knows what to test in the rest.
+- **The situation buys agreement.** Start from something the reader already accepts and you're on the same side before you ask for anything. Keep it short and uncontroversial.
+- **The complication is the case for change.** Without one, the reader has no reason to act. Tell it as a short story: what changed, and why the current course won't work anymore.
+- **It shows you what you do not know.** If you can't write the complication in one sentence, you may not understand the problem yet, and it's better to find that out at your desk than in the meeting. If the resolution doesn't answer the complication, the argument doesn't hold.
+- **It works at every size.** The same three moves open an email, a status update, a note raising a risk or the first slide of a deck.
+
+## How to spot it at work
+
+- Updates open with background and get to the ask in the last paragraph, or never.
+- A decision meeting spends its first 20 minutes agreeing on what the problem is.
+- Slides are titled with topics, such as "Q3 metrics", instead of what the reader should conclude.
+- Replies ask "so what do you need from me?"
+
+## What it does not say
+
+SCR shapes the opening, not the whole document. In Minto's pyramid the supporting points still sit beneath the main point, each group summed up by the point above it. It isn't a way to soften bad news either, because the honest complication often is the bad news. When you don't have a recommendation yet, the resolution can be the question you need help with, stated plainly. And it isn't only a consulting habit: writing teachers Joseph Williams and Joseph Bizup open the same way, with shared context, then a problem (a condition and its cost), then the main point.
+
+## One question to carry into your work
+
+For the decision you most need from someone this month, what's the complication, in one sentence they'd agree with?
+
+## Go deeper
+
+- Barbara Minto, *The Minto Pyramid Principle: Logic in Writing, Thinking and Problem Solving*, the source.
+- Will Larson, ["Notes on The Pyramid Principle"](https://lethain.com/pyramid-principle/) (2018), a short summary by an engineering leader, including the steps of an introduction. Free at lethain.com.
+- Joseph Williams and Joseph Bizup, *Style: Lessons in Clarity and Grace*, twelfth edition, lesson 7, "Motivation", on opening with a problem the reader cares about.
+
+# Fractal Storytelling
+
+## The idea
+
+Fractal storytelling means telling the same story at several sizes, each one complete at its own size. This syllabus uses five: one sentence, an elevator pitch, a one-page memo, a 20-minute deck and an hour-long deep dive. Each carries the whole arc, from situation to complication to resolution. Only the depth of detail changes, the way a fractal repeats its shape at every zoom level. The name and the sizes are this syllabus's own framing, drawn from practice and not from a published method. A related habit is bottom line up front: the main point goes first, as in the US Army's standard.
+
+Example, for a developer platform team pausing a redesign.
+
+- **One sentence:** "Pause the API usage dashboard redesign for six weeks, because the pricing team hasn't yet settled what the new plans will charge for."
+- **Elevator version:** "The dashboard redesign is on track for May. The pricing team may change what we charge for, and building before they decide risks rework. I recommend pausing six weeks for their answer, and I need your help getting it on their calendar."
+
+## Why a PM should care
+
+- **Each audience has a different attention budget.** An executive may give you one sentence in a corridor, and an engineer may give you an hour. Each should get the whole story, not the opening of the long one.
+- **Each size tests the others.** If you can't say it in one sentence, your deck may be a tour of facts. If the sentence can't grow into an hour, it may be a slogan.
+- **Retelling shows you what you missed.** The deck notes that unfolding a design's story for one audience, then another, pulls you toward their point of view, and their questions bring hidden assumptions into view (p. 398).
+- **Consistent sizes build trust.** When the corridor version and the memo agree, people can act on the short one without waiting for the long one.
+
+## How to spot it at work
+
+- The "executive summary" turns out to be the long document's opening paragraph, so a reader who stops there misses the conclusion.
+- Someone asks for the short version, and the answer takes five minutes.
+- The memo and the deck for the same decision recommend slightly different things.
+- People learn about a decision only from the hour-long review.
+
+## What it does not say
+
+It doesn't mean "cut the long version down". An editor can trim a news story from the bottom because the inverted pyramid has already ordered it by importance. A decision story cut short usually loses its resolution, so write each size fresh around the same arc. It does not say every story needs all five sizes: a small decision may need only the sentence and the page. And shorter isn't easier. The one-sentence version is often the hardest to write, and the long versions are where the evidence and the doubts belong.
+
+## One question to carry into your work
+
+Could a colleague outside your team hear the one-sentence version of your main initiative once and repeat it accurately?
+
+## Go deeper
+
+- US Army Regulation 25-50, *Preparing and Managing Correspondence*, the section in chapter 1 on the Army writing standard.
+- Deck p. 398 ("Repairing Blindspots") and pp. 488 and 489 (design labs versus design briefs, and three questions a brief should answer).
+
+> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
