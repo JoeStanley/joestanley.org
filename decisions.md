@@ -6,6 +6,8 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his comments in the working doc, and what he asked of the session that day.
 
+- The line edit on the Start page's quote keeps no extra space around the scratched-out "Communist", and "Product Manager" rises slightly to the right, as a right-handed writer's quick line edit does.
+- `VOICE.md` takes what fits for this context from the voice guide he keeps for Mesmir.
 - The work on the syllabus moves fully into Claude Code, and the Cowork project is retired for it ("agreed and done").
 - Decisions that need him wait on a Decisions page, one card each, with the options and the session's pick first, answered by a tap. The working doc's Notes tabs were not the right place to decide, and would not scale.
 - A session starts itself once a day, takes the next job in `PLAN.md` that does not wait on him, and merges by auto-merge.
