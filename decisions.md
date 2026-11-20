@@ -9,6 +9,7 @@ From his comments in the working doc, and what he asked of the session that day.
 - The work on the syllabus moves fully into Claude Code, and the Cowork project is retired for it ("agreed and done").
 - Decisions that need him wait on a Decisions page, one card each, with the options and the session's pick first, answered by a tap. The working doc's Notes tabs were not the right place to decide, and would not scale.
 - A session starts itself once a day, takes the next job in `PLAN.md` that does not wait on him, and merges by auto-merge.
+- A daily run cannot reach the working doc, so runs do only work that changes none of the syllabus's words: checking sources, research notes, cold reads and cards. Word changes wait for a session he opens, which sees his newest edits, so that no run works against one.
 - Sessions on this project get full web access.
 - Working notes (research write-ups, reviews, anything that mentions his own work) go in the private pm-sources repository. The Notes tabs stay in the doc as history.
 - The site's menu label "PM Syllabus" changes: the name is too clinical. He is open to alternatives, since a menu label and a title differ.
