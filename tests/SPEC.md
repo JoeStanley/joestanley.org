@@ -102,6 +102,7 @@ The look was locked on 18 November 2026, from round 9: one orange ink on white, 
 - **S5 auto.** No example is set in a retired setting. The owner found the examples leaning on his own work and asked on 20 November 2026 for them to be stripped; the settings retired then are listed in `tests/retired-settings.txt`, and none returns in a built unit or a draft.
 - **S6 review.** Examples range across kinds of complex technical products (`VOICE.md` lists some). No unit leans on one setting, and none describes the owner's own employer, team or platform.
 - **S7 auto.** Nothing unchecked reaches the site. In a draft, a source or a claim that nobody has yet opened and checked carries a line that starts "To check:" and says what is open. No built unit carries one: the checking is done before a module is rebuilt.
+- **S8 review.** Cite where an idea starts. Where a deck, a talk or a collection quotes or sums up someone else's work, a unit cites that work directly, opened and checked (S7), not the collection. Ruth Malan's workshop notes, which the older drafts cite as "deck p.", are cited only for an insight that is her own and that the notes clearly attribute to her (the owner's decision of 20 November 2026). The drafts that still lean on the deck move to this as they are rebuilt.
 
 ## Voice
 

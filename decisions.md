@@ -6,6 +6,10 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his comments in the working doc, and what he asked of the session that day.
 
+- The Agency and Coherence card rests on Jabe Bloom's requisite variety and requisite coherence and on Alicia Juarrero's constraints that enable, cited directly rather than through the deck.
+- Eight new concept cards come from the full read of the deck, each citing the original work: coupling is about a change (Design for Change), how complex systems fail (Change Safely), architecting across the interfaces (Mind the Seams), concepts (Map the Domain), double-loop learning (Notice When You Are Wrong), Consequence Scanning (Answer for What You Build), Chesterton's fence (Decide and Set Direction) and the integrator burden (Own Your Role).
+- Ruth Malan's deck is kept in a private repository, not in this public one, and gets a full read against the twelve modules as they stand now, for material the earlier survey, done before the modules were defined, may have missed.
+- Most of the deck is references to other people's work and insights, and the syllabus cites those directly. It cites Ruth Malan's material only for an insight that is uniquely hers and clearly attributed to her.
 - Sessions merge their own pull requests by GitHub auto-merge and stop, instead of watching the checks. If a check fails, the next session fixes it.
 - The syllabus is titled On Product Judgment, and that theme carries through its language: every module is a side of how a product manager builds an inner sense of judgment, from lived experience, the industry's practice and the situation in front of them.
 - The Start page goes from its title straight into the quote. Its introduction is his own. "Start here", the line under the list of modules and "What this syllabus does not cover" are cut, and "The route" becomes "The lessons".
