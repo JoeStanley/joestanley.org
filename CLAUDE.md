@@ -8,6 +8,7 @@ Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title 
 2. Read `decisions.md` and `tests/SPEC.md`. Before you touch the syllabus's words, read `VOICE.md` too.
 3. Work on a branch named `claude/<short-topic>`, from an up-to-date `main`.
 4. If the work is on the syllabus, read the working doc first (see "The working doc" below). Joe's comments and edits there are the brief.
+5. Look at the open pull requests from earlier sessions. If one has a failed check, fix it on its own branch before new work, and turn auto-merge back on if it is off.
 
 ## How a change is made
 
@@ -24,7 +25,8 @@ Joe Stanley's personal site: a front door, a ReadMe, the PM Syllabus (its title 
 ## Pull requests and merging
 
 - One pull request per piece of work, into `main`. The title says what changes for a reader.
-- **Merge your own pull request into `main`** once every check on GitHub has passed (the `checks` workflow). Ask GitHub twice for the merge state: it reads `unknown` for a few seconds after a push.
+- **Merge your own pull request into `main` by auto-merge, then stop** (Joe's decision, 20 November 2026). Open the pull request, turn on auto-merge with a merge commit, and end the turn without watching it. GitHub merges it once the `checks` workflow passes, so nothing wakes the session again. A session left waiting is woken by every CI event and re-reads its whole context each time. If a check fails, the next session fixes it (step 5 above).
+- **If GitHub refuses auto-merge** (the setting is off, or `checks` is not a required check), watch the pull request instead and merge it once every check has passed. Ask GitHub twice for the merge state: it reads `unknown` for a few seconds after a push. Stop watching the moment it merges.
 - **Before the site goes live, only a merge that is costly to undo or irreversible waits for Joe** (his decision, 19 November 2026). A change to the look or to his own words that he asked for, or has seen in the session, merges like any other: lead the description with what he would want to know, show him the result, and merge.
 - **Leave for Joe**, with a title starting `For Joe:` and a description that leads with the decision he is asked to make:
   1. Publishing: any pull request into `live`. Nothing reaches joestanley.org except through `live`, and only `publish.yml` deploys it, after the same checks pass.
