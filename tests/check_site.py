@@ -1443,6 +1443,10 @@ CONTRACTIONS = [  # (the full form, where a speaker could contract it; the contr
     (r"\bwe are\b(?=\s+[a-z])", r"\bwe're\b"), (r"\bit will\b(?=\s+[a-z])", r"\bit'll\b")]
 
 
+# S10: an entry that opens with one of these media is a story (fiction, or a story told on screen or stage)
+STORY = re.compile(r"(?:An? )?(?:novel|novella|short story|graphic novel|comic|(?:TV |television |streaming )?series(?! of)|film|documentary|play)\b", re.I)
+
+
 def _own_words(md):
     """A tab's own running text: no headings, no quotations, no titles of works, no links, no table rows."""
     lines = [l for l in md.split("\n") if not re.match(r"\s*(#|>|\|)", l)]
@@ -1469,7 +1473,7 @@ def _sections(md, names):
 
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9")
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -1564,6 +1568,15 @@ def source_checks(out_dir):
         for sec in _sections(text, {"Why this matters", "Why a PM cares", "Why a PM should care"}):
             if not re.search(r"\byou(r|'re|'ll|'ve|'d)?\b", sec, re.I):
                 fail("E1", f"{name}: a section that should speak to the reader never says \"you\": {sec.strip()[:50]}")
+        # S10: a full path carries one story at most, its entry opening with its medium
+        for sec in _sections(text, {"Go deeper: the full path"}):
+            stories = []
+            for entry in re.split(r"\n(?=- \*\*)", sec):
+                m_ = re.match(r"- \*\*(.+?)\*\*(?!\*)\s*(.*)", entry, re.S)
+                if m_ and STORY.match(m_.group(2)):
+                    stories.append(re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50])
+            if len(stories) > 1:
+                fail("S10", f"{name}: the full path carries {len(stories)} stories, and one is the most: {'; '.join(stories)}")
         own = _own_words(text)
         full = sum(len(re.findall(a, own, re.I)) for a, b in CONTRACTIONS)
         short = sum(len(re.findall(b, own, re.I)) for a, b in CONTRACTIONS)
@@ -2075,11 +2088,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9"):
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9"):
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
     srv = Server(out_dir)

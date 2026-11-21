@@ -1,4 +1,4 @@
-About 67 minutes: 32 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+About 65 minutes: 30 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
 
 **If you only do one thing:** Finish "We're building this in order to ..." for your product, then ask two teammates to finish it without seeing yours.
 
@@ -6,9 +6,11 @@ About 67 minutes: 32 reading, 35 doing (a 25-minute exercise and a 10-minute opt
 
 You'll start every PM role by taking it as described. Once you see the system around you, grow it toward value nobody assigned.
 
-Two versions of the job look real and aren't. In one, you run the project: dates, status, who's blocked. In the other, you run the room, averaging what everyone wants. You'll do plenty of both, but the job is to hold the product's concept, what it's for and where it's going, and work back from it. If you don't name the destination, usually nobody does.
+Two versions of the job look real and aren't. In one, you run the project: dates, status, who's blocked. In the other, you run the room, averaging what everyone wants. You'll do plenty of both, but the job is to shape the product's concept, what it's for and where it's going, spread it until the team can say it too, and work back from it. If you don't name the destination, usually nobody does.
 
-It has to be yours, too, because a product can be right in every detail and still say nothing. In *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the conductor Rodrigo De Souza wants more than the right notes. In the show's telling, the best work has passion and a voice of its own, and technical perfection alone is soulless.
+It has to be yours, too, because a product can be right in every detail and still say nothing. In the second episode of *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the orchestra's president is sure the new oboist plays flawlessly. "No, she doesn't play flawlessly," says the conductor, Rodrigo De Souza. "She plays with blood, and that's what matters." For four seasons he asks it of everyone: play with the blood. People respond to the person in the work, in a product as in a concert.
+
+Use that voice with care. When a view makes no sense to you, Gary Klein's advice is to get curious about why someone thinks it. Give yours after the room has spoken, so you hear their views and not echoes of yours. And trust a hunch only when two signals line up: you've made this kind of call often, and you soon learned whether you were right (Kahneman and Klein, 2010).
 
 ## The short path
 
@@ -35,11 +37,6 @@ It has to be yours, too, because a product can be right in every detail and stil
    **Why trust it:** Meadows, the systems scientist you'll meet in Module 1, talks from her own practice. There's no data, and her subject is sustainability, not products.
 
    **What you'll get:** The one reading here on forming a vision and keeping it open to correction.
-4. **Curious and Opinionated**
-
-   Concept card. 2 minutes.
-
-   **Look for:** When to keep your view back, and the three yeses a hunch needs before you trust it.
 
 ## Do
 
@@ -53,7 +50,7 @@ Answer in your head, then check.
 
 Which two versions of the job look real and aren't, and what do both leave undone?
 
-**Answer:** Running the project and running the room. Neither holds the concept.
+**Answer:** Running the project and running the room. Neither shapes the concept or spreads it.
 
 Brooks let 150 implementers write the specifications to save the schedule. What did it cost?
 
@@ -67,18 +64,19 @@ What does Meadows judge a vision by, and what does she do with hers?
 
 Optional, and not counted in the time above.
 
-- **The Reflective Practitioner, Donald Schön (Basic Books, 1983)** A book. **Why trust it:** Schön studied professionals at work, case by case. It's an argument built on those cases, not on experiments. **What you'll get:** How people handle what their training didn't cover, the other half of this module's question: bringing what you already know to something new.
+- **The Reflective Practitioner, Donald Schön (Basic Books, 1983)** A book. **Why trust it:** Schön studied professionals at work, case by case. It's an argument built on those cases, not on experiments. **What you'll get:** How people handle what their training didn't cover, by bringing what they already know to a case that's new.
 - **"Crafting a Job: Revisioning Employees as Active Crafters of Their Work," Amy Wrzesniewski and Jane Dutton (*Academy of Management Review*, 2001)** A journal article. **Why trust it:** Peer-reviewed, and the paper that named job crafting. **What you'll get:** Three levers for reshaping a job yourself: your tasks, your working relationships, and how you understand the work's purpose. Notice which one you use least.
-- **"Transfer of Learning," David Perkins and Gavriel Salomon (*International Encyclopedia of Education*, 1992)** An encyclopedia entry, about 30 minutes, and fine to skim. Free at openlab.citytech.cuny.edu. **Why trust it:** Two learning researchers summing up their field. **What you'll get:** Low-road transfer, a habit a familiar situation sets off, against high-road transfer, deliberately pulling out the general idea and looking for where else it fits.
-- **"Improve Curriculum, Assessment, and Instruction Using the Understanding by Design Framework," Grant Wiggins and Jay McTighe (ASCD)** A white paper, about 20 minutes. Free at jaymctighe.com. **Why trust it:** The authors explain their own method to teachers, so expect them to champion it. **What you'll get:** Backward design, test-first's cousin in teaching: name the result, decide what evidence will show it, then plan.
+- **"Transfer of Learning," David Perkins and Gavriel Salomon (*International Encyclopedia of Education*, 1992)** An encyclopedia entry, about 20 minutes, and fine to skim. Free at openlab.citytech.cuny.edu. **Why trust it:** Two learning researchers summing up their field. **What you'll get:** Low-road transfer, a habit a familiar situation sets off, against high-road transfer, deliberately pulling out the general idea and looking for where else it fits.
+- **"Improve Curriculum, Assessment, and Instruction Using the Understanding by Design Framework," Jay McTighe and Grant Wiggins (ASCD, 2014)** A white paper, about 20 minutes. Free at jaymctighe.com. **Why trust it:** The authors explain their own method to teachers, so expect them to champion it. **What you'll get:** Backward design, test-first's cousin in teaching: name the result, decide what evidence will show it, then plan.
+- ***Mozart in the Jungle*, developed by Roman Coppola, Jason Schwartzman, Alex Timbers and Paul Weitz (Amazon Prime Video, 2014 to 2018)** A TV series, 40 half-hour episodes over four seasons. Start with season 1. Rodrigo explains where "the blood" comes from at the end of season 3, and in season 4, episode 6, a robot conducts flawlessly and the music still needs the orchestra. **Why trust it:** It's fiction, and a comedy, so take its orchestra with a grain of salt. It was inspired by the oboist Blair Tindall's memoir of playing in New York, and it won the 2016 Golden Globe for best comedy series. **What you'll get:** What mastering a craft asks of people who are already good: an oboist with feeling and not yet control, and a conductor who wants both, from everyone.
 - **"Being Glue," Tanya Reilly (2019)** A talk and its written version, about 20 minutes. Free at [noidea.dog](https://www.noidea.dog/glue). **Why trust it:** A senior engineer's talk, drawn from experience and aimed mainly at engineers. **What you'll get:** Why the work that holds a team together goes unrecognized, and what to do about it. For a PM, more of the glue is the job, so the bigger risk is that it crowds out the concept.
 
-*To check: the series, its years and the character in Mozart in the Jungle were checked on Wikipedia on 20 November 2026, but nobody has watched the scene the idea comes from. Find the episode and check the description against it. Nobody has opened Schön, Wrzesniewski and Dutton, Perkins and Salomon or the ASCD paper in this round, so check each one's reasons, and find the ASCD paper's year. Graen and Scandura (1987), cited in the optional exercise for role-taking and role-making, came from the old draft, and nobody has opened it.*
+*To check: Graen and Scandura (1987), cited in the optional exercise for role-taking and role-making, came from the old draft, and nobody has opened it. It's paywalled. Open it, or Graen and Uhl-Bien (1995), which restates the model, or rewrite the line without it.*
 
 ## For the glossary
 
 - **Role-taking and role-making:** Role-taking is doing a new role as handed, and role-making is working out with your manager what it becomes.
-- **Lightweight and heavyweight product manager:** From a study of car development: a lightweight coordinates the work, and a heavyweight also holds the product's concept and answers for it.
+- **Lightweight and heavyweight product manager:** From a study of car development: a lightweight coordinates the work, and a heavyweight also champions the product's concept and answers for it.
 - **Conceptual integrity:** Fred Brooks's name for a product that reflects one set of design ideas, so its parts belong together.
 - **Glue work:** Tanya Reilly's name for the work that holds a team together and rarely shows on a roadmap.
 
@@ -88,15 +86,15 @@ Optional, and not counted in the time above.
 
 ## The idea
 
-A product hangs together when someone holds its concept. Kim Clark and colleagues studied 29 car projects in the 1980s. Most had a lightweight manager, who coordinates "but has little influence over the content of the project". The few with a heavyweight, "not only a coordinator but a concept champion", used far fewer engineering hours. Fred Brooks calls the result conceptual integrity.
+A product hangs together when someone champions its concept. Kim Clark and colleagues studied 29 car projects in the 1980s. Most had a lightweight manager, who coordinates "but has little influence over the content of the project". The few with a heavyweight, "not only a coordinator but a concept champion", used far fewer engineering hours. Fred Brooks calls the result conceptual integrity.
 
-Hold the concept as a destination and work back from it: what would have to be true to get there?
+Set the concept as a destination, keep it current as engineers and customers teach you, and work back from it: what would have to be true to get there?
 
 ## Why a PM cares
 
 - **Product management isn't project management.** A project can be on time, on budget and to spec, and still be the wrong product.
-- **You facilitate, and you aren't a facilitator.** A facilitator stays out of the content, and you can't. Groups seeking consensus picked the best option 18 percent of the time when the key facts were spread among members, and 83 percent when all had them (Stasser and Titus, 1985).
-- **The concept needs a voice of its own.** The conductor in *Mozart in the Jungle* wants more than the right notes, and so should you.
+- **You facilitate, and you aren't a facilitator.** A facilitator stays out of the content, and you can't. Four-person groups choosing a candidate picked the best one 18 percent of the time when the facts in its favor were spread among them, and 83 percent when everyone had them (Stasser and Titus, 1985).
+- **The concept needs a voice of its own.** People respond to the person in the work, and a product is creative work too. Tolstoy saw art as joining people "together in the same feelings", and strongest when it's individual and sincere. In *Mozart in the Jungle*, that's playing with the blood.
 
 ## How to spot it
 
@@ -119,46 +117,3 @@ Read pages 751 to 756, about 8 minutes. Free at brookings.edu.
 **Why trust it:** A field study, but small and from one industry: 4 of the 29 projects were heavyweight, most of them Japanese.
 
 **What you'll get:** Where the term comes from, with both kinds of manager side by side.
-
-*To check: nobody has watched the Mozart in the Jungle scene, so check the line against the episode. Stasser and Titus was read on a university's course copy, so check its figures against the journal.*
-
-# Curious and Opinionated
-
-*Picture: At a table, one person holds a card face down while the others speak.*
-
-## The idea
-
-The job is to find out what's true, then act on it. Finding out takes curiosity: it's how you learn what nobody told you, like the spreadsheet a customer keeps open beside your product. Acting takes a view of your own, and judgment about when to use it.
-
-## Why a PM cares
-
-- **Have a view of your own.** Collect only what everyone wants and you ship the average. The conductor in *Mozart in the Jungle* won't settle for technically perfect playing: the best work has a voice of its own.
-- **Hold it back so you don't anchor the room.** A number people see first pulls their estimates toward it, which Tversky and Kahneman called anchoring (1974). They tested people alone, but your opening view can pull a room too.
-- **Trust a hunch only once it's earned it.** Kahneman and Klein agree that skilled intuition grows only where patterns repeat and feedback comes fast, and that feeling sure proves nothing. Look for three yeses:
-  - Have you made this kind of call often?
-  - Did you soon learn whether you were right?
-  - Is it the same kind of call, not a neighbor? Expertise is patchy.
-
-## How to spot it
-
-- You speak first in a workshop, and every idea after is a variation on yours.
-- A debate circles because nobody, you included, has put a proposal down.
-- The dashboard says the new lesson flow works, teachers say it doesn't, and nobody asks why.
-
-## What it does not say
-
-Trusting a hunch isn't ignoring data: ask what the data measures, then check the hunch against it.
-
-**One question to carry:** What do you think here, and would the room be better off hearing it first or last?
-
-## Go deeper
-
-**[Strategic decisions: When can you trust your gut?](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut), Daniel Kahneman and Gary Klein (2010)**
-
-An interview in *McKinsey Quarterly*, about 15 minutes. Free at mckinsey.com.
-
-**Why trust it:** Two researchers who long disagreed about intuition say where they agree.
-
-**What you'll get:** When an expert's gut deserves trust, from both sides of the argument.
-
-*To check: nobody has opened the interview (it returned an error twice on 20 November), so check the three yeses and what the card says of Kahneman and Klein against it. Nobody has watched the Mozart in the Jungle scene. Tversky and Kahneman (1974) is as the old draft had it, not reopened.*
