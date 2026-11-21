@@ -5,26 +5,26 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "862beeafdc60a8475fd733dba290ffa38f33370df6dd12957445ad05efaeb7d7",
+   "sha256": "21f7e8b26fdcdf59eddd394e3b271183be097e84e68077a4bc32df6253c2aff0",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 13
+   "rev": 17
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "8a59be09186a411bebac2fceb3281ff6d1d03bbcddd69021f1044e905b68dd50",
+   "sha256": "e12718037a3d86eeca35db4a84e9ebd60743d5fa9b1b746377393780bbe699ed",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 191
+   "rev": 192
   },
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "e0d1cf693c9a6f45f74d5876efc82fb9f48d5a343ddb0c08fdf8f73d22327d3a",
+   "sha256": "092c2b3734d75ddb8b2fba2ce0330d7a0e39206e66d77ef79b5ff66324bb169a",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 9
+   "rev": 24
   },
   {
    "name": "1 See the System",
@@ -61,10 +61,10 @@
   {
    "name": "5 Design for Change",
    "file": "5-design-for-change.md",
-   "sha256": "033846c460b219fb488b6f3503f2904eccf82b5b11bf1675bd81ef79cfcf3b33",
+   "sha256": "e1207e1dfa9fdf122411a2faa2568eba6a55eaca3f65a9c8210c743b4a280fd9",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 15
+   "rev": 16
   },
   {
    "name": "6 Change Safely",
@@ -77,10 +77,10 @@
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "d6d831055e8dc9ae0e2e519441eb4c23c8a31f96faff5e82ff801db806a4fe19",
+   "sha256": "6a2a08e7db547f87183facbf91cdd0f85917d23ea48c00c37d8de77dc19d9bea",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 8
+   "rev": 9
   },
   {
    "name": "8 Decide and Set Direction",
@@ -109,10 +109,10 @@
   {
    "name": "11 Bring People With You",
    "file": "11-bring-people-with-you.md",
-   "sha256": "e42ae77627798fdcd3ea131e7721f00338d6bed8b2b3a83734ab50fef11cd1af",
+   "sha256": "3e5f64bfe1cff7a7c805822729022e11e5649bcea13b149439cc5641910556c8",
    "doc_tab": "8bbdca60-921f",
    "doc_node": "2f658fd4-20e8",
-   "rev": 13
+   "rev": 14
   },
   {
    "name": "Glossary",
