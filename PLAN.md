@@ -41,6 +41,7 @@ What comes next for joestanley.org and On Product Judgment, and where the work s
 - His card picks for Weigh the Evidence and Bring People With You, and Argyris kept as Double-Loop Learning's source behind its paywall: each at its module's rebuild ("For each rebuild").
 - His cuts to the full paths (`decisions.md`, 21 November), each at its module's rebuild, where it fits S12; the module's prep says which.
 - Chesterton's fence as a line in Decide and Set Direction's "Why this matters": at its rebuild.
+- John Boyd's OODA loop in Decide and Set Direction (`decisions.md`, 21 November, the round 2 session): a short passage in "Why this matters" on orientation and tempo, beside commander's intent. Its point for a PM is orientation, the mental model that decides what you see and do, not looping faster, and a shared orientation is what lets a team act on intent. Module 8's prep opens Boyd's own briefings ("The Essence of Winning and Losing", "Patterns of Conflict"), checks how far MCDP 1, *Warfighting*, already on the card, draws on him, and weighs a book on Boyd for the full path, which needs recutting anyway, since MCDP 1's sections take about 10 minutes (S12). The full path's card to Joe includes it.
 
 ## Jobs, in order
 
