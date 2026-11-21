@@ -31,7 +31,7 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 2}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
-PRINT_PAGES = 26
+PRINT_PAGES = 27
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -1667,8 +1667,8 @@ STORY = re.compile(r"(?:An? |A pair of |Two )?(?:classic )?(?:novel|novella|shor
 # S12: a book's entry opens "A book" or "A textbook"; a time under about 30 minutes marks something short.
 BOOK = re.compile(r"An? (?:book|textbook)\b", re.I)
 SHORT = re.compile(r"\b(?:a few|a couple of|(?:about |some |under )?(\d+)) minutes?\b", re.I)
-# S12: built before the rule, these may hold fewer than two books until the owner picks theirs (PLAN.md, job 8)
-S12_PENDING = {"1 See the System", "2 Find the Constraint"}
+# S12: a built module that may hold fewer than two books for now. Empty since Modules 1 and 2 took theirs (job 8).
+S12_PENDING = set()
 # S12: on a built full path every entry opens with what it is; these kinds ask for 30 minutes or more
 LONG_KIND = re.compile(r"An? (?:book|textbook|(?:journal |law review |long )?article|(?:conference |research |long )?paper|(?:staff )?report)\b", re.I)
 # S13: no unit tells the reader to borrow or buy; no built full path gives a page count or a running time

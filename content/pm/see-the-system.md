@@ -64,6 +64,12 @@ deeper:
     note: "Read chapters 1, 4 and 5: \"The Basics\", \"Why Systems Surprise Us\" and \"System Traps and Opportunities\"."
     trust: It's Meadows's own primer on her field, from the lead author of The Limits to Growth. Diana Wright edited it from her draft after her death.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
+  - title: The Field Guide to Understanding 'Human Error'
+    by: Sidney Dekker
+    where: A book.
+    note: "Read chapter 1, \"Two Views of 'Human Error'\", and chapter 5, \"Understanding Your Accident Model\"."
+    trust: Dekker is a safety scientist who also flew airliners, writing for people who investigate failures. It's a practitioner's guide built on safety research, not a study of its own.
+    only: Cook's point at book length, with a way to work. Chapter 1 sets the view that blames a bad apple against the view that treats error as a sign of trouble in the system, and chapter 5 shows how the model of accidents you carry decides what you'll find.
   - title: Chernobyl
     by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
     where: A TV series.

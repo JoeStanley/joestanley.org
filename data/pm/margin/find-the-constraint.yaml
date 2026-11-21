@@ -48,5 +48,11 @@ check: ""
 # Go deeper: the full path
 go-deeper: ""
 
+# Full path: The Principles of Product Development Flow, Donald Reinertsen
+deeper-the-principles-of-product-development-flow: ""
+
+# Full path: Accelerate: The Science of Lean Software and DevOps, Nicole Forsgren, Jez Humble and Gene Kim
+deeper-accelerate-the-science-of-lean-software-and-devops: ""
+
 # Full path: The Goal, Eliyahu Goldratt and Jeff Cox
 deeper-the-goal: ""

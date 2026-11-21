@@ -3,12 +3,12 @@ title: Find the Constraint
 layout: module
 module: find-the-constraint
 question: Where is the work actually stuck, and are we measuring the right thing?
-one_thing: Play the dice game below, then count where work is waiting in your own team.
+one_thing: Play the dice game below, then count where your team's work waits.
 game: dice
 do_minutes: 35
 
 last_time:
-  - q: In Donella Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a price or a standard, or changing the system's goal?
+  - q: In Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a price, or changing the goal?
     a: The goal. Meadows ranks numbers lowest of her twelve, because they rarely change how a system behaves. The goal sits third from the top.
   - q: Richard Cook says a major failure never has one root cause. Why not?
     a: It takes several small faults lining up, each of which looked harmless alone. Naming one cause says more about the need to blame than about how the failure happened.
@@ -55,6 +55,19 @@ check:
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
 
 deeper:
+  - title: The Principles of Product Development Flow
+    by: Donald Reinertsen
+    where: A book.
+    note: "Read chapter 3, \"Managing Queues\", and chapter 4, \"Exploiting Variability\"."
+    trust: A consultant's argument, set out as numbered principles drawn from queueing theory and economics, not a study. He argues with Goldratt in places, which is worth seeing.
+    only: Why queues are a cost hidden in plain sight in product work, and why stamping out variability, the lesson most people take from factories, can cost more than it saves.
+  - title: "Accelerate: The Science of Lean Software and DevOps"
+    by: Nicole Forsgren, Jez Humble and Gene Kim
+    url: https://itrevolution.com/wp-content/uploads/2022/06/ACC_excerpt.pdf
+    where: A book.
+    note: Read chapter 1, "Accelerate", and chapter 2, "Measuring Performance". Both are free in the publisher's excerpt.
+    trust: It rests on survey research, over 23,000 responses from more than 2,000 organizations across four years. The answers are self-reported, and the teams all build software.
+    only: "Goodhart's Law with data behind it: velocity used to judge a team gets gamed, and pushing utilization toward 100 percent makes lead times grow without limit. Then the four measures of delivery the authors found worth keeping."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel.
@@ -64,7 +77,9 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, most teams ask every step to go faster and to report its own numbers. It feels fair, and it rarely works. Only one step holds the whole flow back, the {{< pm/term "constraint" >}}, and work waits longest in front of it. Your job is to find that step, because speeding up anywhere else won't speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints.
+When delivery is slow, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it. Find it, since speeding up anywhere else won't help.
+
+Keep one danger in mind as you do: Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it. Target the constraint's output and you may get the number without the flow.
 
 [//]: # (short-path)
 
