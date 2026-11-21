@@ -224,7 +224,11 @@ class Server:
         class Q(http.server.SimpleHTTPRequestHandler):
             def log_message(self, *a):
                 pass
-        class S(socketserver.TCPServer):
+        class S(socketserver.ThreadingMixIn, socketserver.TCPServer):
+            # one thread per connection: a browser that holds a connection open must not stall the next page
+            daemon_threads = True
+            allow_reuse_address = True
+
             def handle_error(self, *a):  # a page left mid-load is not an error
                 pass
         self.srv = S(("127.0.0.1", 0), functools.partial(Q, directory=directory))
@@ -1055,7 +1059,16 @@ def engine_checks(p, base):
             for cond in ("normal", "text doubled", "text spacing"):
                 c = b.new_context(**kw); pg = c.new_page()
                 for path in PAGES:
-                    pg.goto(base + path); pg.wait_for_load_state("load")
+                    # the single document is long; a page that stalls once is loaded again in a fresh tab before
+                    # the run gives up, so one slow load can't hide every check after it
+                    for attempt in (1, 2):
+                        try:
+                            pg.goto(base + path, timeout=60000); pg.wait_for_load_state("load", timeout=60000)
+                            break
+                        except Exception:
+                            if attempt == 2:
+                                raise
+                            pg.close(); pg = c.new_page()
                     if cond == "text doubled":   # WebKit and Firefox take no default-size setting here; doubling the root size is the same for rem
                         pg.add_style_tag(content="html { font-size: 200% !important; }")
                     elif cond == "text spacing":
