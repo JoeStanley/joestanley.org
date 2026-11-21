@@ -1446,6 +1446,11 @@ CONTRACTIONS = [  # (the full form, where a speaker could contract it; the contr
 
 # S10: an entry that opens with one of these media is a story (fiction, or a story told on screen or stage)
 STORY = re.compile(r"(?:An? |A pair of |Two )?(?:novel|novella|short story|graphic novel|comic|(?:TV |television |streaming )?series(?! of)|film|documentary|play)\b", re.I)
+# S12: a book's entry opens "A book" or "A textbook"; a time under about 30 minutes marks something short.
+BOOK = re.compile(r"An? (?:book|textbook)\b", re.I)
+SHORT = re.compile(r"\b(?:a few|a couple of|(?:about |some |under )?(\d+)) minutes?\b", re.I)
+# S12: built before the rule, these may hold fewer than two books until the owner picks theirs (PLAN.md, job 8)
+S12_PENDING = {"1 See the System", "2 Find the Constraint"}
 
 
 def _own_words(md):
@@ -1474,7 +1479,7 @@ def _sections(md, names):
 
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11")
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -1576,12 +1581,18 @@ def source_checks(out_dir):
         if name not in ("About",) and re.match(r"\d+ ", name) and not paths:
             fail("S10", f"{name} has no full path, so it carries no story")
         for sec in paths:
-            stories, count = [], 0
+            stories, count, books = [], 0, 0
             for entry in re.split(r"\n(?=- \*\*)", sec):
                 m_ = re.match(r"- \*\*(.+?)\*\*(?!\*)\s*(.*)", entry, re.S)
                 if not m_:
                     continue
                 count += 2 if re.match(r"(?:A pair of|Two) ", m_.group(2)) else 1
+                title = re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50]
+                if not STORY.match(m_.group(2)):
+                    books += 1 if BOOK.match(m_.group(2)) else 0
+                    short = [t for t in SHORT.finditer(m_.group(2)) if not t.group(1) or int(t.group(1)) < 30]
+                    if name in built_tabs and short:
+                        fail("S12", f"{name}: {title} takes {short[0].group(0)}, and nothing on a full path but its story takes under about 30 minutes")
                 if STORY.match(m_.group(2)):
                     title = re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50]
                     stories.append(title)
@@ -1595,6 +1606,8 @@ def source_checks(out_dir):
                 fail("S10", f"{name}: the full path carries no story, and every full path carries one")
             if name in built_tabs and count > 5:
                 fail("S11", f"{name}: the full path recommends {count} things, and five is the most")
+            if name in built_tabs and name not in S12_PENDING and books < 2:
+                fail("S12", f"{name}: the full path holds {books} book{'' if books == 1 else 's'} beside its story, and two is the least")
         own = _own_words(text)
         full = sum(len(re.findall(a, own, re.I)) for a, b in CONTRACTIONS)
         short = sum(len(re.findall(b, own, re.I)) for a, b in CONTRACTIONS)
@@ -2106,11 +2119,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11"):
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11"):
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
     srv = Server(out_dir)

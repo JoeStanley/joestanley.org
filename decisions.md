@@ -4,8 +4,21 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 ## 21 November 2026
 
-From his answers on the Decisions page and his comments in the working doc that night.
+From his answers on the Decisions page and his comments in the working doc that night, and his picks in a session later that day.
 
+- A full path should be truly long because of deep reading and reflection, not a list of short articles kept long by a story's runtime. Beside its story, every full path holds at least two books, read whole or in long parts. Nothing under about 30 minutes stays on it; a long paper may. Each module's prep recuts its list on this rule and brings it to him as a card. The six books his cuts that morning took out are candidates again, and those cuts stand only where they fit the rule (his pick, in the session).
+- A book on the full path carries no reflection prompt (his pick, in the session).
+- Own Your Role's full path, recut on that rule: Clark and Fujimoto's *Product Development Performance*, chapter 9; Schön's *The Reflective Practitioner*, chapters 2 and 8; Wiggins and McTighe's *Understanding by Design*, chapter 1, over Reilly's *The Staff Engineer's Path*; Wrzesniewski and Dutton's "Crafting a Job"; and *Mozart in the Jungle*. Perkins and Salomon, the backward-design white paper and "Being Glue" go, each idea keeping a line (his pick, in the session).
+- Maier and Rechtin's *The Art of Systems Architecting* stays on Mind the Seams' full path. He skimmed it and attests that it holds three heuristics, as practitioners' rules from experience: architect across interfaces, not only up to them; ask what the worst thing is that other elements could do to you across an interface; and draw interfaces so each subsystem can be built independently, without slicing through regions that must exchange a lot of information (in the session).
+- Own Your Role says "vision" in its own words and in its question. The card keeps Clark's title, The Concept Champion, and its first line says Clark's concept is what you'd call the vision (agree, card `concept-or-vision`).
+- Own Your Role's full path loses Schön's book (agree, card `full-path-0`).
+- Map the Domain's full path loses Core Domain Charts and Jackson's book (agree, card `full-path-4`).
+- Design for Change's full path loses "Big Ball of Mud" (agree, card `full-path-5`).
+- Weigh the Evidence's full path loses Budiu, Cartwright and Hardie, and Tversky and Kahneman (agree, card `full-path-7`).
+- Decide and Set Direction's full path loses Rumelt's book, Ryan and Deci, Ancona and Caldwell, Nygard and Chesterton, and Chesterton's fence gets a line in Why this matters. He wants the fence conveyed somewhere, without much more context, and Why this matters is fine if it's the best place (agree, card `full-path-8`).
+- Answer for What You Build's full path loses Harms Modeling and Nissenbaum (agree, card `full-path-9`).
+- Notice When You Are Wrong's full path loses Risk Storming (agree, card `full-path-10`).
+- Bring People With You's full path loses Minto, Williams and Bizup, the rest of Gopen and Swan, and Gabarro and Kotter, so Cohen and Bradford's influence as exchange stays (agree, card `full-path-11`).
 - He chose each module's story himself, in the session, from options set against his own touchstones (the list he keeps for Mesmir): he wants them to reflect his own preferences, not something generic. See the System, *Chernobyl*. Mind the Seams, *Halt and Catch Fire*. Map the Domain, *Brazil*. Design for Change, *Yes Minister* ("Big Brother"). Change Safely, *Ford v Ferrari*. Weigh the Evidence, *The Big Short*. Decide and Set Direction, *Ocean's Eleven*. Answer for What You Build, *The Good Place* ("The Book of Dougs"). Notice When You Are Wrong, *Arrival*. Bring People With You, *Ted Lasso* and *Succession*, together.
 - *Ted Lasso* and *Succession* go on Bring People With You's full path as one entry, a pair to compare and contrast. It counts as two of the five, and *The Trusted Advisor* goes to make room (his pick, in the session).
 - Every full path carries one entertaining story, fiction or a story in another medium, that reinforces its module's lesson. Where a full path has no room, something is cut to make room. A curriculum only of dry reading is less engaging, and the entertainment is what makes a lesson stick: many people look to the fictional Captain Jean-Luc Picard as an exemplary manager.
