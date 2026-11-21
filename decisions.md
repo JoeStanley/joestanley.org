@@ -2,6 +2,22 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, his editing pass
+
+From his edits and comments in the working doc that afternoon, on every module not yet built, and his picks in a session after it.
+
+- Source entries read overly explained, in a way common to LLM writing. Simplify the detail inside the structure as it stands, with no major structural change: think of it as him sharing a recommendation in conversation, why it's neat or valuable, and why it's worth trusting. No edition where context makes it clear, since a reader with another edition still gets the lesson; no telling the reader to buy or borrow a book; no page count or length. Ocean's Eleven shows how.
+- He has now reviewed every source in passing and attests to them, so no session needs to confirm that every edition or version of an item does its job.
+- Every time estimate rounds: up to the nearest 5 minutes within 30 minutes; to the nearest quarter hour, in either direction, from 30 minutes to 2 hours; to the half hour from 2 to 5 hours; to the hour beyond.
+- A module's header gives one rounded total, with no reading and doing split, and each step and exercise shows its own rounded time (his pick, in the session).
+- His own first-person sentences stay in the modules as he wrote them. E3 still bars any "I" a session writes, and his own sentences are listed as its one exception (his pick, in the session).
+- Anything that can be inferred from his ReadMe or LinkedIn is fair game, so his margin note naming the kind of platforms he works on stays as written. Never name his employer, or imply they support anything in the syllabus (in the session).
+- A margin note sits beside the paragraph it's about, not only beside its section's heading (his pick, in the session).
+- "Shape it, spread it" can be read as sexual by a more puerile reader. Find another pair of verbs and replace them wherever they're used in that sense.
+- Klein's and Kahneman's lessons leave Own Your Role's "Why this matters": they fit the module's message poorly and feel tacked on. The two signals for trusting a hunch go to Weigh the Evidence, and getting curious about a view and giving yours after the room go to Decide and Set Direction (his pick, in the session).
+- Own Your Role's Do stays as it is. A session zero suits the kickoff of any complex endeavor, but needs that opportunity, and the Do can happen at any point in a product's life (in the session).
+- Design for Change keeps Coupling Is About a Change as its card, and his margin note on Pace Layers sits beside Brand's essay (his pick, in the session).
+
 ## 21 November 2026
 
 From his answers on the Decisions page and his comments in the working doc that night, and his picks in a session later that day.
