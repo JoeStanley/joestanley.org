@@ -12,9 +12,9 @@
     {{ partial "pm/prose-slots.html" (dict "p" $p "unit" "start" "html" $p.Content) | safeHTML }}
   </div>
 
-  <section class="modules-wrap" data-slot="the-lessons">
-    <h2>The lessons</h2>
-    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-lessons") }}
+  <section class="modules-wrap" data-slot="the-modules">
+    <h2>The modules</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-modules") }}
     <ol class="modules">
       {{- range site.Data.pm.modules }}
       {{- $m := . }}

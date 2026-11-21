@@ -7,9 +7,9 @@ pilot_note: "Pilot draft. Modules 1 and 2 have been rebuilt so far."
 
 > You don't become a good {{< pm/edit "Communist" "Product Manager" >}} by going to meetings or memorizing the [Manifesto](http://agilemanifesto.org). You do it on the streets. You do it with your fists. The rest is bullshit and you know it.
 >
-> [Gregor Anghel](https://en.wikipedia.org/wiki/Comrade_Detective)
+> [Gregor Anghel](https://youtu.be/60P5qYQEuIw?t=43)
 
-I love [Comrade Detective](https://en.wikipedia.org/wiki/Comrade_Detective), and find much truth in Detective Anghel's quote. In my experience, good product managers bounced around career-wise before finding their way to the job. Everything prior felt almost-right, and that restlessness resulted in a wide array of experiences they could bring to bear, becoming whatever the moment needed to get the job done. But the truly best product managers I've worked with went on to couple that praxis with theory.
+I love [Comrade Detective](https://en.wikipedia.org/wiki/Comrade_Detective), and there's much truth in Detective Anghel's quote. In my experience, good product managers bounced around career-wise before finding their way to the job. Everything prior felt almost-right, and that restlessness resulted in a wide array of experiences they could bring to bear, becoming whatever the moment needed to get the job done. But the truly best product managers I've worked with went on to couple that praxis with theory.
 
 This isn't a substitute for the experience. You'll get that in time.
 
@@ -19,7 +19,7 @@ Instead, it's a set of lessons intended to strengthen your *product judgment*, s
 
 ## How it works
 
-- **Twelve lessons, each a module built on one question.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work.
+- **Twelve modules, each built on one question.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work.
 - **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
 - **Every source says why to trust it** and what you'll get from it, so you can decide what's worth your time.
 - **Each idea worth keeping gets a concept card, one page long.** Keep them near your work.

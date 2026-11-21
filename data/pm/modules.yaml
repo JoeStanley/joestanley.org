@@ -8,7 +8,7 @@
   title: Own Your Role
   question: How do you grow your role beyond what you were handed, and bring what you already know to bear on it?
   draft: own-your-role
-  state: Draft of 17 November 2026, in the old format, with a card, two readings and an exercise added on 20 November. It still leans on the deck. The card Glue Work was added on 20 November, from the full read of the deck, and the idea from Mozart in the Jungle went into "Why this matters" and the Curious and Opinionated card the same evening.
+  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 67 minutes. It carries two cards for Joe to keep one, The Concept Champion and Curious and Opinionated, the second without its four moves. Role-Making, Transfer and Glue Work were cut as cards, each kept as a line, and the deck is no longer cited.
 - id: see-the-system
   num: 1
   title: See the System
@@ -24,19 +24,19 @@
   title: Mind the Seams
   question: How does the way we're organized shape what we build?
   draft: mind-the-seams
-  state: Draft of 17 November 2026, in the old format, with cards added on 19 and 20 November. It still leans on the deck. On 20 November, who decides moved to Decide and Set Direction, with the Agency and Coherence card, and the RACI card was cut.
+  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 70 minutes, with one card, Conway's Law. Bottcher's article on the short path carries the idea of the cut Platform as a Product card. Architect Across the Interfaces was cut, and the deck is cited only for Ruth Malan's two lines.
 - id: map-the-domain
   num: 4
   title: Map the Domain
   question: What questions must the system answer, how fast and how fresh, and where should its boundaries fall?
   draft: map-the-domain
-  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down. The card Concepts was added on 20 November, from the full read of the deck. It moved up from Module 7 on 20 November and took the data half of Think With Engineers, which was cut.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 41 minutes, with one card, Access Patterns. Concepts, Core, Supporting, Generic and Data as a Product were cut as cards, each kept as a line or a full-path source.
 - id: design-for-change
   num: 5
   title: Design for Change
   question: What will change, how fast, and what should be easy to change?
   draft: design-for-change
-  state: Draft of 17 November 2026, in the old format. It still leans on the deck. The card Coupling Is About a Change was added on 20 November, from the full read of the deck. It was Module 4 until 20 November, when it took complexity from Think With Engineers, which was cut.
+  state: Draft of 17 November 2026, winnowed on 21 November from the old format into the pilot's parts, at about 54 minutes. Its short path is free and cites the original works, except one walk credited to Ruth Malan. It carries two cards for Joe to keep one, Coupling Is About a Change and Pace Layers.
 - id: change-safely
   num: 6
   title: Change Safely
@@ -54,19 +54,19 @@
   title: Decide and Set Direction
   question: Which decisions matter, whose are they, and what are we choosing not to do?
   draft: decide-and-set-direction
-  state: Draft of 17 November 2026, in the old format. It still leans on the deck. The card Chesterton's Fence was added on 20 November, from the full read of the deck. Who decides moved here from Mind the Seams the same evening, with the Agency and Coherence card.
+  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 67 minutes, with one card, Agency and Coherence. Strategy as Forsaking, Last Responsible Moment and Chesterton's Fence were cut as cards, their ideas kept in Why this matters, the Do and the full path. Bezos, Harmel-Law and Rumelt replace the deck pages, still to be opened.
 - id: answer-for-what-you-build
   num: 9
   title: Answer for What You Build
   question: Who benefits and who is harmed by what we build, and what is our share of the responsibility?
   draft: answer-for-what-you-build
-  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down. The card Consequence Scanning was added on 20 November, from the full read of the deck, and the reading on erasure came from Think With Engineers when it was cut.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 64 minutes, with one card, Many Hands. Value Created, Value Captured, Collect Less and Consequence Scanning were cut as cards, their ideas carried by Doteveryone's own page, Reichheld and Markey in place of Doctorow, Schneier, the Do and the Check.
 - id: notice-when-you-are-wrong
   num: 10
   title: Notice When You Are Wrong
   question: How do we find out we are wrong?
   draft: notice-when-you-are-wrong
-  state: Draft of 17 November 2026, in the old format, written as Notice and Communicate. On 20 November it was cut to finding out, and its communication half and two cards moved to Bring People With You. It still leans on the deck. The card Double-Loop Learning was added on 20 November, from the full read of the deck.
+  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 52 minutes, with one card, Double-Loop Learning. Batista and Edmondson replace six deck readings, a premortem is the main exercise, and the deck is no longer cited.
 - id: bring-people-with-you
   num: 11
   title: Bring People With You

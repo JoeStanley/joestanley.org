@@ -1,174 +1,125 @@
+About 70 minutes: 35 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+
+**If you only do one thing:** Sketch who talks to whom in your area, then how the system's parts connect, and mark where the two pictures disagree.
+
 ## Why this matters
 
-Much of the friction you fight as a PM (dependencies, handoffs, work waiting on another team, decisions that stall) looks like people being slow. It usually isn't. More often it comes from where the boundaries sit between teams, and how teams work across them. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
+Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. It usually isn't. More often it comes from where the boundaries sit between teams, and how teams work across them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
-## Short path (about an hour and three quarters of reading, plus about 45 minutes for the exercises)
+## The short path
 
-The deck is a 514-page set of workshop slide notes written for software architects, not a book, so don't read it like one. Read only the pages named here, and only the parts named. You'll find unfamiliar terms defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 2.
+1. **Conway's Law**
 
-1. The **Conway's Law** concept card (10 minutes).
-2. *Team Topologies* (Skelton and Pais), the chapters "Conway's Law and Why It Matters" and "Team-First Thinking" (about an hour). Either edition will do; the 2025 second edition adds new case studies.
-3. Deck p. 314 (10 minutes). Read the Conway quote, the paraphrase under it, and the sentence about managers deciding on teams. Skip the rest.
-4. Deck p. 319 (5 minutes). Read the quote about keeping an org chart, a diagram of how work actually flows, and a diagram of what the company does. Skip the rest.
-5. Conway's original paper, "How Do Committees Invent?" (1968), about 20 minutes. It's four pages, free at melconway.com.
+   Concept card. 2 minutes.
 
-## Full path
+   **Look for:** Why the system follows who actually talks to whom.
+2. **Melvin Conway, "How Do Committees Invent?" (*Datamation*, 1968)**
 
-- The rest of *Team Topologies*, especially the four team types, the three interaction modes, and evolving team structures through organizational sensing.
-- *An Elegant Puzzle* (Larson), chapter 2, "Organizations": sizing teams, the states a team moves through, and the case against top-down global optimization. The rest of the book is a reference, so dip into it when you need it.
-- For the force running the other way: Henderson and Clark, "Architectural Innovation" (1990), the classic study; Sosa, Eppinger and Rowles, "The Misalignment of Product Architecture and Organizational Structure in Complex Product Development" (2004), on how a product's design interfaces map onto who talks to whom; and Allan Kelly's short essay "Conway's Law v. Software Architecture", a practitioner's account of long-lived systems shaping teams.
-- Deck pp. 52 to 61 (coherence, alignment, and how technology and the people who build and use it shape each other), and pp. 462 to 463 (platforms run as internal products).
-- Optional, if you want the evidence: Colfer and Baldwin, "The Mirroring Hypothesis: Theory, Evidence, and Exceptions" (2016).
+   15 minutes. Free at [melconway.com](http://www.melconway.com/Home/pdf/committees.pdf).
 
-## Terms you will meet
+   **Look for:** His advice for living with his law: since the first design is rarely the best, "flexibility of organization is important to effective design."
 
-- **Cognitive load:** how much a team has to hold in its head to do its work. *Team Topologies* treats it as a limit on how much a team should own.
-- **Interaction modes:** the three ways *Team Topologies* says two teams can work together.
-  - **Collaboration:** working closely on something new, such as a routing team and a driver-app team designing live rerouting side by side. The learning is fast, the cost is high, and it's meant to be temporary.
-  - **X-as-a-Service:** one team uses what another provides with little conversation, such as calling a well-documented internal API.
-  - **Facilitating:** one team helps another learn or get unstuck, such as a testing specialist helping a team adopt automated tests.
-- **Inverse Conway maneuver:** shaping teams and how they communicate on purpose, to get the system you want.
+   **Why trust it:** It's the original, and it's an argument, not a study.
 
-## What to look for
+   **What you'll get:** The law in its author's words, with the reasoning a one-line summary leaves out.
+3. **Allan Kelly, "Conway's Law v. Software Architecture" (allankelly.net, 2013)**
 
-- **The force runs both ways.** The organization shapes the system (Conway), and the system shapes the organization right back. On deck p. 314, notice the point that whoever assigns work to teams is deciding the architecture, whether they mean to or not.
-- **Hard-to-change systems hold teams in place.** When a system is costly to change, the communication around it tends to stay in the system's shape, and teams end up organized around the system they already have. Henderson and Clark (1990) found the same in one industry: architecture gets built into communication channels, and that helped explain why established firms stumbled when it had to change.
-- **You can design for it, within limits.** The inverse Conway maneuver reshapes teams on purpose to get the system you want. Find the limits before you count on it: with a tech lead, work out which parts of your system could change fast enough to follow a new team design, and which would hold the old shape.
-- **Cognitive load is a design limit.** Ask what your own team carries that it can't understand well.
-- **Interaction is a choice, and usually a temporary one.** Each mode fits a different moment. Notice what it costs when collaboration quietly becomes the permanent default: every change needs a meeting.
-- **Enough common ground, and no more.** Teams need just enough common ground to work together, such as shared terms and a shared definition of done. That doesn't mean forcing every team onto one plan. Deck pp. 52 to 53 make this case in denser language, and the Agency and Coherence card, in Module 8, Decide and Set Direction, takes it further.
+   5 minutes. Free at [allankelly.net](https://allankelly.net/archives/638/conway-law-v-software-architecture).
 
-## Apply it to your own work
+   **Look for:** The force running the other way: "Conway's Law is now working in reverse: the system is imposing structure on the organization."
 
-1. Give yourself about 30 minutes to sketch two pictures of your area, boxes and lines only. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. A first pass from what you already know is fine for the second picture. Then ask a tech lead to correct it, and open with "Which of these parts is hardest to change, and why?" Now lay the two side by side. Where do the boundaries line up, and where do they cut across each other? Check the mismatches against the symptoms on the Conway's Law card. Which of them couldn't move even if you wanted them to, because the system there is costly to change?
-2. Take about 15 minutes and pick one dependency on another team that keeps coming back. Which interaction mode is it in today, and which should it be in? What would it take to move it?
+   **Why trust it:** A practitioner's short post from his own experience of long-lived systems.
+
+   **What you'll get:** Why a system that's costly to change can hold a whole company in its shape.
+4. **Evan Bottcher, "What I Talk About When I Talk About Platforms" (martinfowler.com, 2018)**
+
+   13 minutes. Free at [martinfowler.com](https://www.martinfowler.com/articles/talk-about-platforms.html).
+
+   **Look for:** His definition, "a foundation of self-service APIs, tools, services, knowledge and support", run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required.
+
+   **Why trust it:** Bottcher has over two decades as a technical leader, and the model was developed at Thoughtworks, a technology consultancy. It's one practitioner's view, not research.
+
+   **What you'll get:** A checklist of what makes a platform worth choosing.
+
+## Do
+
+**Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then ask a tech lead to correct it, opening with "Which of these parts is hardest to change, and why?" Lay the two side by side. Where do the boundaries line up, and where do they cross?
+
+**Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 
 ## Questions to bring to engineers
 
-- Which parts of our system are hardest to change, and do our team boundaries follow them?
-- If we moved this boundary between teams, which parts of the system could follow it within a quarter, and which would hold the old shape?
-- Which dependency on another team costs us most, and how should we work with that team?
-- What does each side of this interface promise the other, and what happens when it fails?
-- What's the worst thing that could come across this interface?
+- Which parts of our system are hardest to change, and why? Do our team boundaries follow them?
+- At this interface between teams, what does each side promise the other, and what happens when that breaks?
+- What's the worst thing that could come across this interface, and who would notice first?
 
-## Check your own thinking
+## Check yourself
 
-This module is trying to move you from "that team is slow" to "our boundary with that team is in the wrong place, or in the wrong mode". Test whether it has. If you could move one boundary, which would it be? What would you expect to change within one quarter, and which measure (for example, days a request waits) would you watch to find out whether it did? If you'd like a sounding board, take your two pictures and your answer to your manager or a mentor.
+Answer in your head, then check.
 
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition. This guide is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+Does a system mirror the org chart of the organization that builds it?
+
+**Answer:** Not necessarily. It mirrors who actually talks to whom, and that often isn't what the chart shows.
+
+A year after a reorganization, the system still has the old shape. Why?
+
+**Answer:** A system that's costly to change holds the teams around it in its shape, which Kelly calls Conway's Law working in reverse.
+
+Every team hits its target, and customers still see a gap. Where do you look?
+
+**Answer:** Between the teams, at the joins: what one side sends isn't what the other expects, or nobody owns the handoff.
+
+## Go deeper: the full path
+
+Optional, and not counted in the time above.
+
+- **Team Topologies, Matthew Skelton and Manuel Pais (IT Revolution, 2019)** A book. Either edition will do, and the 2025 second edition adds new case studies. Start with the chapters "Conway's Law and Why It Matters" and "Team-First Thinking", then read on for the four team types, the three ways teams work together, and evolving team structures. **Why trust it:** Two consultants' model, built from their work with software teams and widely used, but not tested in studies. **What you'll get:** A vocabulary for designing teams, with cognitive load, how much a team has to hold in its head, as a limit on what it should own.
+- **"Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms," Rebecca Henderson and Kim Clark (*Administrative Science Quarterly*, 1990)** A journal article. **Why trust it:** A peer-reviewed classic, from a study of one industry: the makers of photolithographic alignment equipment, used to make chips. **What you'll get:** Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when it had to change.
+- **"The Misalignment of Product Architecture and Organizational Structure in Complex Product Development," Manuel Sosa, Steven Eppinger and Craig Rowles (*Management Science*, 2004)** A journal article. **Why trust it:** Peer-reviewed, and built on data from a single large engineering project. **What you'll get:** How a product's design interfaces map onto who talks to whom, and what goes wrong where they don't.
+- **The Art of Systems Architecting, Mark Maier and Eberhardt Rechtin (CRC Press, 1997)** A textbook, revised in later editions. It isn't free. **Why trust it:** Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecture program at the University of Southern California. The book's heuristics distill experience and weren't tested in studies. **What you'll get:** Rules of thumb for the joins between parts: look across an interface, not only up to it, and draw boundaries so most change stays local.
+
+*To check: nobody has opened Maier and Rechtin. The link to it in Ruth Malan's workshop notes answers with a bot check, and archive.org has no copy. Check what the book says about interfaces and boundaries against it or Rechtin's Systems Architecting (1991), with the edition. Rechtin's background and the 1997 date are from Wikipedia, opened. Henderson and Clark's industry and the full path's publishers are given from memory. Nobody has opened Team Topologies or Sosa, Eppinger and Rowles in this round, so check each one's reasons. The free copy of Conway's paper is a scan, and his line on flexibility is as Malan's notes quote it (p. 314): check it against the paper.*
+
+## For the glossary
+
+- **Conway's Law:** A system's design tends to copy the communication structure of the organization that builds it.
+- **Inverse Conway maneuver:** Shaping teams, and how they talk to each other, on purpose, to get the system you want.
+- **Interface:** Where two parts of a system, or two teams, meet, and what each side promises the other there.
+- **Platform:** Self-service tools and services that one team runs as an internal product for other teams.
 
 # Conway's Law
 
+*Picture: Two teams, and the system they built split along the same line.*
+
 ## The idea
 
-Organizations that design systems end up with designs that mirror their own communication structures. Mel Conway made the argument in 1968, and Fred Brooks later named it Conway's Law. The word that matters is communication. The system follows who actually talks to whom, and that isn't always what the org chart says. Ruth Malan's shorthand: when the system's architecture and the organization's architecture disagree, the organization's wins (deck p. 314).
+Organizations that design systems, Mel Conway argued in 1968, end up with designs that copy their own communication structures. The word that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. Ruth Malan's shorthand, from her workshop notes (February 2025), p. 314: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins."
 
-## Why a PM should care
+## Why a PM cares
 
-- **Team boundaries become product boundaries.** Each handoff between teams tends to become an interface in the system, and a place where work waits.
-- **Whoever designs the teams is designing the architecture.** Deciding a team's scope, ownership or roadmap is an architecture decision, whether anyone calls it that or not.
-- **Hard-to-change systems hold teams in place.** Once a system is costly to change, the teams around it tend to stay organized in its shape. A classic study of one industry found that architecture gets built into an organization's communication channels, and that helped explain why established firms struggled when the architecture had to change (Henderson and Clark, 1990).
-- **You can use it on purpose.** Teams and their lines of communication can be shaped deliberately to get the system you want, a move called the inverse Conway maneuver. You'll rarely redraw teams yourself, but you can influence who owns what when work is planned, and name a mismatch to engineering leaders when you see one.
-- **Customers feel the seams.** When two teams own two halves of one customer journey, the journey usually shows the join. A traveler books the flight in one flow, then starts over in another to add a bag.
+- **Team boundaries become product boundaries.** Each handoff between teams tends to become an interface, and a place where work waits. Customers feel the join: a traveler books a flight in one flow, then starts over in another to add a bag.
+- **Whoever designs the teams designs the architecture.** Malan again: "if we have managers deciding on teams, and deciding which services will be built, by which teams, we implicitly have managers deciding on the system architecture." Doing that on purpose, to get the system you want, is the inverse Conway maneuver.
 
-## How to spot it at work
+## How to spot it
 
-- A change that touches three teams takes far longer than one that touches one, whatever its size.
+- A change touching three teams takes far longer than one touching one.
 - The product has seams where the organization does: settings split across screens, APIs that follow department lines.
-- A reorganization is announced, and the conversation about what it does to the system comes afterward, if it comes at all.
+- A reorganization is announced, and what it does to the system comes up afterward.
 
 ## What it does not say
 
-It's a strong tendency, not a law of physics. Researchers who reviewed 142 studies found that an organization's structure usually does mirror the structure of what it builds, especially inside a single company. But not always: open, collaborative projects (mostly software) often broke the pattern, and digital coordination tools helped them do it (Colfer and Baldwin, 2016).
+It's a strong tendency, not a law of physics. Reviewing 142 studies, Lyra Colfer and Carliss Baldwin found that organizations usually do mirror what they build, especially inside one company. Open, collaborative projects, mostly software, often broke the pattern, with help from digital coordination tools.
 
-## One question to carry into your work
-
-Where does a boundary between teams in your area cut through something a customer experiences as one thing?
+**One question to carry:** Where does a boundary between teams in your area cut through something a customer experiences as one thing?
 
 ## Go deeper
 
-- Conway, "How Do Committees Invent?" (Datamation, 1968). Four pages, free at melconway.com.
-- *Team Topologies*, the chapter "Conway's Law and Why It Matters".
-- Deck p. 314 (Conway's thesis and what it implies for who decides the architecture) and p. 319 (org charts versus how work actually flows).
-- Henderson and Clark, "Architectural Innovation" (1990), on systems shaping the organizations that build them.
-- Colfer and Baldwin, "The Mirroring Hypothesis: Theory, Evidence, and Exceptions" (2016).
+**[The Mirroring Hypothesis: Theory, Evidence, and Exceptions](https://dash.harvard.edu/entities/publication/73120379-10f0-6bd4-e053-0100007fdf3b), Lyra Colfer and Carliss Baldwin (2016)**
 
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+A research paper in *Industrial and Corporate Change*. Free at dash.harvard.edu.
 
-# Platform as a Product
+**Why trust it:** Peer-reviewed, and it weighs many studies, not one case.
 
-*Picture: A platform team sits between many delivery teams and the plumbing they all need. Each team can use the platform, or build its own.*
+**What you'll get:** Where mirroring holds, where it breaks, and why.
 
-## The idea
-
-Evan Bottcher defines a digital platform as "a foundation of self-service APIs, tools, services, knowledge and support," arranged as an internal product. "Self-service" means a team can use it on its own, without filing a request. The teams that use it are its customers, and the aim is that they deliver features faster, with less coordination.
-
-His central point is that a platform has to be compelling to use. It can't stand on a mandate alone, meaning a rule that says "you must use it." Using it should be easier than building and running your own.
-
-## Why a PM cares
-
-- **Your customers are other teams, and your platform is only worth what they get from it.** A team that can't get a new service into production without waiting on you will find another way, or wait.
-- **Self-service removes the queue.** Bottcher cites a colleague's study at an Australian telecommunications company, where tasks that had to wait for another team were 10 to 12 times slower in elapsed time (the clock time from start to finish). Put a ticket queue in front of your platform and it can become the constraint for everyone downstream (see the card The Five Focusing Steps, on finding the one step that limits the whole flow).
-- **A platform is more than software.** Documentation counts, and so do a quick first success, support, templates and a community. Bottcher lists a quick, cheap on-ramp (an easy way to get started) as part of what makes a platform compelling.
-- **Start from proven needs.** Build what several application teams already need, not what you guess they'll need. He also wants a long-lived team that builds and runs the platform.
-
-## How to spot it
-
-- Routine requests arrive as tickets. On a platform that collects industrial sensor readings, that might be adding a device type or changing an alert threshold.
-- "Self-service" exists, but real changes still need a ticket. Bottcher's example is a self-service tool for requisitioning compute instances from a fixed template, where any further change needed a ticket.
-- Teams build their own copies or workarounds. That tells you the platform isn't compelling yet.
-- Adoption comes from a rule. Ask yourself: if using the platform were optional, would your customers still choose it?
-
-## What it does not say
-
-It does not say you can never require anything. Some controls must apply to every team, such as encrypting card numbers on a payments platform. Bottcher's point is that a mandate isn't enough on its own, and that a compelling platform makes the safe way the easy way: his list includes secure and compliant by default. He also admits the balance is hard. Full team autonomy speeds delivery, but it brings duplicated infrastructure and per-team research overhead.
-
-**One question to carry:** If your customer teams could choose, would they still choose your platform, and how would you know?
-
-## Go deeper
-
-**[What I Talk About When I Talk About Platforms](https://www.martinfowler.com/articles/talk-about-platforms.html), Evan Bottcher (2018)**
-
-A long article. Free at martinfowler.com.
-
-**Why trust it:** Bottcher describes himself as an experienced technical leader with over two decades in the field, and the article presents a model developed at Thoughtworks, a technology consultancy. It's one practitioner's view, not research, so weigh it that way.
-
-**What you'll get:** A concrete list of what makes a platform compelling, plus the Netflix "paved road" idea (a central set of tools): teams may choose another way, but they carry the full cost of maintaining it.
-
-# Architect Across the Interfaces
-
-## The idea
-
-"It is inadequate to architect up to the boundaries or interfaces of a system; one must architect across them." That's Robert Spinrad, a computer designer who later directed Xerox PARC, as reported by Mark Maier and Eberhardt Rechtin. Rechtin gave both halves of the reason: "The greatest leverage in system architecting is at the interfaces." And: "The greatest dangers are also at the interfaces."
-
-Every team can do its own part well and the product can still fail, because the trouble sits between the parts. In Russell Ackoff's version, the best part of each kind, taken from every car, won't make the best car.
-
-## Why a PM cares
-
-- **Teams own their parts. Someone has to own what's between them.** At an insurer, intake and payout can each work perfectly while a claim sits stuck, because the two read "approved" differently. You're often the one person whose work spans both sides, so that join is part of your job.
-- **Ask what could come across.** Rechtin's question: "What is the worst thing that other elements could do to you across the interface?" For a marketplace's search, it might be a seller sending a million price changes in an hour, or a feed that quietly stops. Ask it in design reviews.
-- **A clear interface lets both sides move.** When what each side promises is written down, each team can change its own part without asking the other. Maier and Rechtin: "Make a system evolvable by paying attention to the interfaces."
-
-## How to spot it
-
-- Every team hits its target and customers still see the gap. On an analytics product, ingestion meets its throughput target, dashboards load fast, and the numbers are a day old.
-- Nobody can show you what one side of an interface promises the other: what it sends, how fast, and what happens when it fails.
-- Something breaks across a link nobody drew, like a nightly file another team quietly reads. Rechtin's warning: "Be prepared for reality to surface a few interfaces of its own."
-
-## What it does not say
-
-It doesn't say you design the interfaces, or that a central architect should take them from the teams. Whoever designs one has to look across it, at the whole. Nor does every seam need watching. Rechtin also advises drawing boundaries so that "local activity is high speed and global activity is slow change", and then most seams stay quiet.
-
-**One question to carry:** Which interface in your product has no owner, and what's the worst thing that could come across it?
-
-## Go deeper
-
-**The Art of Systems Architecting, Mark W. Maier and Eberhardt Rechtin (1997)**
-
-A textbook, revised in later editions. It isn't free.
-
-**Why trust it:** Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecture program at the University of Southern California. The heuristics distill that experience. They weren't tested in studies.
-
-**What you'll get:** These heuristics with the reasoning around them, and many more on where to draw a system's boundaries.
-
-*To check: nobody has opened the book. The deck's link to it (sdincose.org) answers with a bot check, not the file, and archive.org has no copy. Every quotation is from the deck (pp. 439, 465, 466, 478): check each against Maier and Rechtin or Rechtin's Systems Architecting (1991), with the edition. The deck has Maier and Rechtin crediting Spinrad's line "as reported by Susan Ruth, 1993", so check who reported it before naming them. Ackoff's car is the deck's retelling (pp. 22, 472) of a video, "If Russ Ackoff had given a TED Talk", which is on YouTube (youtube.com/watch?v=OqEeIG8aPPk) but couldn't be watched here: YouTube now answers automated requests for a video with a bot check. The backgrounds and the 1997 date are from Wikipedia, opened.*
+*To check: the link is to Harvard's repository record, found by a search, so check it opens the full paper.*
