@@ -7,6 +7,7 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 - James C. Scott's *Seeing Like a State* takes the fifth place on Design for Change's full path, from the options put to him: its introduction, chapter 1 and chapter 10, whose four rules for planners are "Take small steps", "Favor reversibility", "Plan on surprises" and "Plan on human inventiveness" (his pick, in the session).
 - A long note beside the full path's heading no longer pushes the first source down: fix it in `pm.css`, so the first source's note waits below it (his pick, in the session).
 - The syllabus's page target is about 75, as it runs: each module keeps its own text to three pages, and its optional full path and back matter add about two more. The aim of about 50, set before full paths held books and before the margin took a third of the page, gives way (his pick, in the session, after the pilot he said would settle it).
+- John Boyd's OODA loop (observe, orient, decide, act) comes into the syllabus, in Decide and Set Direction: a short passage in Why this matters, on orientation and tempo, beside commander's intent. Its prep checks Boyd's own sources and weighs a book on Boyd for the full path, which he'd pick on its card (his idea, and his pick in the session).
 
 ## 21 November 2026, the Decisions page, late night
 
