@@ -50,7 +50,7 @@ check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
   - q: You speed up a step that isn't the constraint. What happens to delivery?
-    a: Almost nothing. The extra work joins the queue in front of the constraint.
+    a: Almost nothing. Before the constraint, the extra work joins its queue. After it, the faster step waits for work.
   - q: Your team hits its target for reviews completed per day, yet releases are no faster. Give two explanations from this module.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
 
@@ -58,13 +58,13 @@ deeper:
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel.
-    note: "Short of time? Read the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out five steps (chapter 36). Chapter numbers can differ by edition, so go by the scenes."
-    only: Goldratt first set out the theory of constraints in this novel, in 1984. You watch a plant manager work out where his plant is stuck, one step at a time, and that makes the steps stick in a way no summary does.
+    note: "Read it whole, or start with the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out the five steps (chapter 36)."
+    only: Goldratt first set out the theory of constraints in this novel, in 1984. You follow a plant manager as he works out where his plant is stuck, one step at a time, and the steps are easier to remember once you've watched someone find them.
 ---
 
 ## Why this matters
 
-When delivery is slow, the usual fix is to ask every step to go faster and to have each one report its own numbers. It rarely works. Your job is to find the one place where work waits longest, the {{< pm/term "constraint" >}}, because speeding up anywhere else won't speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints. Knowing where a push will count is a large part of judgment.
+When delivery is slow, most teams ask every step to go faster and to report its own numbers. It feels fair, and it rarely works. Only one step holds the whole flow back, the {{< pm/term "constraint" >}}, and work waits longest in front of it. Your job is to find that step, because speeding up anywhere else won't speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints.
 
 [//]: # (short-path)
 
