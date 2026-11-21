@@ -1,30 +1,30 @@
 {
  "doc": "https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ",
- "synced": "20 November 2026",
+ "synced": "21 November 2026",
  "tabs": [
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "d36c7ada936efc3a83bab43be41d21a2fa810ba3015b29bec383cae9ea460d75",
+   "sha256": "862beeafdc60a8475fd733dba290ffa38f33370df6dd12957445ad05efaeb7d7",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 12
+   "rev": 13
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "eedfd249fa7a6001713d50b4df4b7096ba5e6a8ab9bffe79a2795d09bf28e934",
+   "sha256": "8a59be09186a411bebac2fceb3281ff6d1d03bbcddd69021f1044e905b68dd50",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 141
+   "rev": 191
   },
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "47387993a306077e3fc601c03789a7394b2bb40e7be62751c6af10bc75901cec",
+   "sha256": "e0d1cf693c9a6f45f74d5876efc82fb9f48d5a343ddb0c08fdf8f73d22327d3a",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 8
+   "rev": 9
   },
   {
    "name": "1 See the System",
@@ -45,74 +45,74 @@
   {
    "name": "3 Mind the Seams",
    "file": "3-mind-the-seams.md",
-   "sha256": "4f10843002cd5d78bd8022442232c33c2437bfadece36857f35437750481589a",
+   "sha256": "56060b19fec6c1b26d1526416a340ac6804ee63763514fc5ff0353f5a0b70121",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 19
+   "rev": 20
   },
   {
    "name": "4 Map the Domain",
    "file": "4-map-the-domain.md",
-   "sha256": "b217cd79dbee7641cfca0c3a70f3ab32be097408ab3cbf83735f12c66571c319",
+   "sha256": "fbfcf269d1a568dc5e971fb7da1baf7a3db651601b084f221ff9b06b1b8528a5",
    "doc_tab": "b3d1938f-b26d",
    "doc_node": "57f2abde-0b8e",
-   "rev": 19
+   "rev": 20
   },
   {
    "name": "5 Design for Change",
    "file": "5-design-for-change.md",
-   "sha256": "69672ff57535b32c9a8d3015ec4edc7d0dcde0aaa4d866740dea5e0d9d3f3e85",
+   "sha256": "033846c460b219fb488b6f3503f2904eccf82b5b11bf1675bd81ef79cfcf3b33",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 14
+   "rev": 15
   },
   {
    "name": "6 Change Safely",
    "file": "6-change-safely.md",
-   "sha256": "cb4241f12e5b9015e967733c526ec3189413e94ef0e78c5e065925df78d7d1fd",
+   "sha256": "44839b96ddadee5f15b3ca0e8319726611dda1c7df5d4e6e76798a8854f00628",
    "doc_tab": "9317d9d1-2129",
    "doc_node": "a29f117c-7f2e",
-   "rev": 13
+   "rev": 14
   },
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "d3ce45ecafb38c7b9385f006de1d483a618bfe2148175e280be90445fda0a885",
+   "sha256": "d6d831055e8dc9ae0e2e519441eb4c23c8a31f96faff5e82ff801db806a4fe19",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 7
+   "rev": 8
   },
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "ae97d1538b291ac7872a8a5d8a518f49fd9a2824ef64bc1f4073c4014e1e3350",
+   "sha256": "653fd7ce0c229602075d780e56884e0f2478d927abaeb8c8fa9f0ed56cd4dad4",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 14
+   "rev": 15
   },
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "d60dc29cce9130e25efcb9b9e6446196a4456a13bcd2598ce15b1125edb563dd",
+   "sha256": "fc47ccaed5b2d5e421d2727cfeea43f3af114805317b4ee3f6d9709f4241f801",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 16
+   "rev": 17
   },
   {
    "name": "10 Notice When You Are Wrong",
    "file": "10-notice-when-you-are-wrong.md",
-   "sha256": "00dd7fe623691340dc8010e51287c9c8e9a63d8a9a6ca03177256c8baa993b95",
+   "sha256": "198b2a86eeff791e0f63e06826cf6b205b6b4a3b1cb25eab8cee96a67c2e4e1e",
    "doc_tab": "73278a69-a68a",
    "doc_node": "0e614323-8b2d",
-   "rev": 10
+   "rev": 11
   },
   {
    "name": "11 Bring People With You",
    "file": "11-bring-people-with-you.md",
-   "sha256": "1365c2a25bba48d30324c24eec90358433de12be0321ceb33f837e371024d83a",
+   "sha256": "e42ae77627798fdcd3ea131e7721f00338d6bed8b2b3a83734ab50fef11cd1af",
    "doc_tab": "8bbdca60-921f",
    "doc_node": "2f658fd4-20e8",
-   "rev": 12
+   "rev": 13
   },
   {
    "name": "Glossary",
