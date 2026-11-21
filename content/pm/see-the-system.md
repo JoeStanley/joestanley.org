@@ -47,7 +47,7 @@ steps:
         url: https://how.complexsystems.fail/
     look: Points 3, 7 and 8. A failure needs several small faults to line up, so one root cause explains little, and hindsight makes it all look obvious.
     trust: Cook was a physician and safety researcher at the University of Chicago. He gives you the points without the evidence behind them.
-    only: A better question to ask after a failure, "what had to line up?"
+    only: "A better question to ask after a failure: \"what had to line up?\""
 
 check:
   - q: A clinic sees more patients each month than it did last year, yet its waiting list keeps growing. What does that tell you?
@@ -61,7 +61,7 @@ deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright
     where: A book.
-    note: "Read chapters 1, 4 and 5: \"The Basics\", \"Why Systems Surprise Us\" and \"System Traps and Opportunities\"."
+    note: "Read chapters 1, 4 and 5: \"The Basics\", \"Why Systems Surprise Us\" and \"System Traps . . . and Opportunities\"."
     trust: It's Meadows's own primer on her field, from the lead author of The Limits to Growth. Diana Wright edited it from her draft after her death.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
   - title: The Field Guide to Understanding 'Human Error'
@@ -69,7 +69,7 @@ deeper:
     where: A book.
     note: "Read chapter 1, \"Two Views of 'Human Error'\", and chapter 5, \"Understanding Your Accident Model\"."
     trust: Dekker is a safety scientist who also flew airliners, writing for people who investigate failures. It's a practitioner's guide built on safety research, not a study of its own.
-    only: Cook's point at book length, with a way to work. Chapter 1 sets the view that blames a bad apple against the view that treats error as a sign of trouble in the system, and chapter 5 shows how the model of accidents you carry decides what you'll find.
+    only: Cook's point at book length. Chapter 1 sets the bad-apple view of error against the view that error is a symptom of trouble in the system, and chapter 5 shows how your model of accidents decides what you'll find.
   - title: Chernobyl
     by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
     where: A TV series.

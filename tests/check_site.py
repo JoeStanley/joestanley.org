@@ -31,7 +31,7 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 2}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
-PRINT_PAGES = 27
+PRINT_PAGES = 26
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
