@@ -59,8 +59,7 @@ deeper:
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel of about 400 pages. Borrow it or buy it.
     note: "Short of time? Read the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out five steps (chapter 36), about an hour in all. Chapter numbers can differ by edition, so go by the scenes."
-    trust: Goldratt introduced the theory of constraints in this 1984 novel, written with Jeff Cox.
-    only: You watch a plant manager work out where his plant is stuck, one step at a time. That makes the steps stick in a way no summary does.
+    only: Goldratt first set out the theory of constraints in this novel, in 1984. You watch a plant manager work out where his plant is stuck, one step at a time, and that makes the steps stick in a way no summary does.
 ---
 
 ## Why this matters
