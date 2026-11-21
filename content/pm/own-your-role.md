@@ -61,7 +61,7 @@ deeper:
     where: A book.
     note: "Read chapter 1, \"Backward Design\"."
     trust: Two educators explaining their own method to teachers, so expect them to champion it.
-    only: "Backward design, test-first's cousin in teaching: name the result, decide what evidence would show you got there, then plan. It's the Do's move, worked out at length."
+    only: "Backward design, test-first's cousin in teaching: name the result, decide what evidence would show you got there, then plan. It's the Do's first exercise, worked out at length."
   - title: "Crafting a Job: Revisioning Employees as Active Crafters of Their Work"
     by: Amy Wrzesniewski and Jane Dutton (Academy of Management Review, 2001)
     where: A journal article.
@@ -96,4 +96,4 @@ And if you work together, you'll play a symphony.
 
 **Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Finish "We're building this in order to ..." for your current work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled, and settling it is your job.
 
-**Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Reshaping a job from the inside is what researchers call {{< pm/term "job-crafting" >}}: changing its tasks, who you work with, or how you see its purpose (Wrzesniewski and Dutton, 2001). Last, ask how much of your week went to {{< pm/term "glue-work" >}}, as Tanya Reilly calls the work that holds a team together, and what it crowded out.
+**Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Reshaping a job from the inside is what researchers call {{< pm/term "job-crafting" >}}: changing its tasks, who you work with, or how you see its purpose (Wrzesniewski and Dutton, 2001). Then ask yourself how much of your week went to {{< pm/term "glue-work" >}}, as Tanya Reilly calls the work that holds a team together, and what it crowded out.

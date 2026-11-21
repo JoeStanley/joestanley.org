@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-Organizations that design systems, Mel Conway argued in 1968, end up with designs that copy their own communication structures. The word that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. Ruth Malan's workshop notes put it in one line (February 2025, p. 314): "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins."
+Organizations that design systems, Mel Conway argued in 1968, end up with designs that copy their own communication structures. The word that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. The software architect Ruth Malan puts it in one line: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins" (workshop notes, February 2025, p. 314).
 
 ## Why a PM cares
 
@@ -26,9 +26,9 @@ Organizations that design systems, Mel Conway argued in 1968, end up with design
 
 ## How to spot it
 
-- A change touching three teams takes far longer than one touching one.
+- A change that touches three teams takes far longer than one that stays inside a team.
 - The product has seams where the organization does: settings split across screens, APIs that follow department lines.
 
 ## What it does not say
 
-It's a strong tendency, not a law of physics. Across 142 studies, Lyra Colfer and Carliss Baldwin found mirroring common, inside firms too, but not universal. Open, collaborative projects, mostly software, often broke it, helped by digital coordination tools.
+It's a strong tendency, not a law of physics. Across 142 studies, Lyra Colfer and Carliss Baldwin found mirroring common, across industries and inside firms, but not universal. Open, collaborative projects, mostly software, often broke it, helped by digital coordination tools.

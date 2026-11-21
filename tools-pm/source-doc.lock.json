@@ -21,10 +21,10 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "b1354ec51bd772c025795eb69f0d74bcd21e32514f55df64ae6c37b1ea79bc80",
+   "sha256": "27fbfa73494c15c5ce17ac9425fba4bcb08bd78a3e209cc5206fec4701b0f6f0",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1913
+   "rev": 1919
   },
   {
    "name": "1 See the System",
@@ -45,10 +45,10 @@
   {
    "name": "3 Mind the Seams",
    "file": "3-mind-the-seams.md",
-   "sha256": "a5399e5791b6a3974a5607f434dad95ed102daff70d21278ccb05ad455f35825",
+   "sha256": "5b54b1621f63c257bd30d951c593b1a1a55ceb07ab011bc05ea69ca50ca305a6",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 24
+   "rev": 35
   },
   {
    "name": "4 Map the Domain",

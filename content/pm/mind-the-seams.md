@@ -38,7 +38,7 @@ steps:
       - text: "Conway's Law v. Software Architecture"
         url: https://allankelly.net/archives/638/conway-law-v-software-architecture
     look: "The force running the other way: \"Conway's Law is now working in reverse: the system is imposing structure on the organization.\""
-    trust: A practitioner's opinion, argued from an example he makes up, not a study.
+    trust: A practitioner's opinion, argued from a made-up example.
     only: Why a system that's hard to change can hold a whole company in its shape.
   - id: bottcher
     kind: read
@@ -49,13 +49,13 @@ steps:
       - text: "What I Talk About When I Talk About Platforms"
         url: https://www.martinfowler.com/articles/talk-about-platforms.html
     look: "His definition, \"a foundation of self-service APIs, tools, services, knowledge and support\", run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required."
-    trust: A Thoughtworks consultant's view, from his own client work. It's one practitioner's view, not research.
+    trust: One Thoughtworks consultant's view, drawn from his own client work.
     only: A checklist of what makes a platform worth choosing.
 
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
     a: Not necessarily. It mirrors who actually talks to whom, and that often isn't what the chart shows.
-  - q: A year after a reorganization, the system still has the old shape. Why?
+  - q: A year after a reorganization, the teams have drifted back to their old shape. Why?
     a: A system that's hard to change holds the teams around it in its shape, which Kelly calls Conway's Law working in reverse.
   - q: Every team hits its target, and customers still see a gap. Where do you look?
     a: Between the teams, at the joins. What one side sends isn't what the other expects, or nobody owns the handoff.
@@ -64,18 +64,18 @@ deeper:
   - title: Team Topologies
     by: Matthew Skelton and Manuel Pais
     where: A book.
-    note: "Read it whole, starting with the chapters \"Conway's Law and Why It Matters\" and \"Team-First Thinking\"."
+    note: "Read the chapters \"Conway's Law and Why It Matters\" and \"Team-First Thinking\" first, then the rest."
     trust: Two consultants' model, built from their work with software teams and widely used, but not tested in studies.
     only: "A vocabulary for designing teams: four team types, three ways for teams to work together, and cognitive load, how much a team has to hold in its head, as a limit on what it should own."
   - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
     by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
     where: A journal article.
     trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips."
-    only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when it had to change.
+    only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
   - title: The Misalignment of Product Architecture and Organizational Structure in Complex Product Development
     by: Manuel Sosa, Steven Eppinger and Craig Rowles (Management Science, 2004)
     where: A journal article.
-    trust: "Peer-reviewed, and built on data from one large project: Pratt and Whitney's PW4098 jet engine."
+    trust: Built on data from one large project, Pratt and Whitney's PW4098 jet engine, and peer-reviewed.
     only: How a product's design interfaces map onto who talks to whom, and how the interfaces that cross team boundaries are the ones most likely to be mismanaged.
   - title: The Art of Systems Architecting
     by: Mark Maier and Eberhardt Rechtin
@@ -87,12 +87,12 @@ deeper:
     by: created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
     where: A TV series.
     note: "A small company builds a portable PC, with a hardware chief, Gordon, and a software lead, Cameron, who want different machines. Her operating system has a personality and needs memory he won't give it, and the programmers take orders from both. In the ninth episode of season 1, when a cheaper copy of their machine turns up at a trade show, Gordon pulls her system out and swaps in MS-DOS: \"We had a problem. Now we have a product.\""
-    only: A product shaped by the fight between the teams that built it. Watch the machine follow the org chart, then the software team walk out and found a company of its own.
+    only: A product shaped by the fight between the teams that built it. Then watch the software team walk out and found a company of its own.
 ---
 
 ## Why this matters
 
-Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. It usually isn't. More often it comes from where the boundaries sit between teams, and how teams work across them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
+Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
 [//]: # (short-path)
 
