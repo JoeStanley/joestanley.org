@@ -2,6 +2,25 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026
+
+From his answers on the Decisions page and his comments in the working doc that night.
+
+- Own Your Role keeps The Concept Champion as its card (agree, on the Decisions page, card `module-0-card`).
+- Own Your Role's question becomes "How do you grow your role beyond what you were handed, and make the product's concept your own?" (agree, card `module-0-question`).
+- Design for Change keeps Coupling Is About a Change (agree, card `module-5-card`).
+- Weigh the Evidence keeps The Law of Small Numbers (agree, card `module-7-card`).
+- Bring People With You keeps The Trust Equation (agree, card `module-11-card`).
+- The Double-Loop Learning card keeps Argyris's 1991 article as its source, behind HBR's paywall, and says so (agree, card `paywalled-card-source`).
+- Every module's title is a verb title, so Module 7 stays Weigh the Evidence (something else, agree, card `title-convention`).
+- Rodrigo De Souza's catchphrase in *Mozart in the Jungle*, to play with the blood, in whatever tense fits, is in the syllabus explicitly.
+- *Mozart in the Jungle* goes on Own Your Role's full path. It isn't formal experience, but it's well regarded for showing many of the challenges of mastering a craft.
+- Every full path may carry a work of fiction, or a story told in another medium than a book, that tells or reinforces the module's lesson, as an extension of transfer. One at most a full path.
+- He has watched *Mozart in the Jungle* and vouches for what he says of it and for what the draft describes.
+- Where the syllabus invokes the show, it is specific about it. Why a concept needs a voice of its own: people respond better to humanity, all endeavor is in some way creative, and creative endeavor is a means of connecting two or more minds. A session looks outside for support for that.
+- "Yeses" goes: "signals" replaces it. That's a dislike of the one word, not a pattern to apply.
+- He opened Kahneman and Klein's 2010 interview himself and found the card directionally true to it.
+
 ## 20 November 2026
 
 From his comments in the working doc, his answers on the Decisions page, and what he asked of the session that day.
