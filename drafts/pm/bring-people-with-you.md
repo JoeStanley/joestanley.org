@@ -1,12 +1,12 @@
-About 106 minutes: 51 reading, 55 doing (a 30-minute exercise and a 25-minute optional one).
+About 69 minutes: 29 reading, 40 doing (a 25-minute exercise and a 15-minute optional one).
 
-**If you only do one thing:** This week, send a short update on a fixed day to someone who depends on your work, and put one item in it that isn't green (not on track: amber or red in the traffic-light colors many teams use for status).
+**If you only do one thing:** Send your most senior reader a short update on a day you've named, with one item in it that isn't on track.
 
 ## Why this matters
 
-People who decide about your work, or rely on it, can't see inside your team. They have the last thing you told them and their own guesses. Going quiet between milestones feels harmless, but that's when the guesses fill the space. If a hospital has planned its clinics around your scheduling release, the guesses tend to be worried ones.
+People who decide about your work, or rely on it, can't see inside your team. Going quiet between milestones feels harmless, but that's when the guesses fill the space. If a hospital has planned its clinics around your scheduling release, the guesses tend to be worried ones.
 
-This module picks up where Notice When You Are Wrong leaves off: once you've found something, you have to say it so the people who decide can act. You build trust by being clear when it counts and predictable when it doesn't. This module covers both: how to open a message so the reader knows what you need, and how to decide which kind of update each person gets. The update-type frame (the Two Kinds of Update card) is the syllabus's own. It comes from practice, not from published research.
+This module picks up where Notice When You Are Wrong leaves off: once you've found something, say it so the people who decide can act. You build trust by being clear when there's news and predictable when there isn't. This syllabus's own frame comes from practice, not research: a time-anchored update goes out on a fixed day whatever happened, and an outcome-anchored one when something lands. Your manager needs the fixed day, and a customer like that hospital needs the news, including the day a date it planned around moves.
 
 ## The short path
 
@@ -14,66 +14,45 @@ This module picks up where Notice When You Are Wrong leaves off: once you've fou
 
    3 minutes. Free at fortune.com.
 
-   **Look for:** What the all-green charts said about the culture, and what Alan Mulally, then Ford's chief executive, did to it with his response.
+   **Look for:** What the all-green status charts said about the culture, and what Alan Mulally, then Ford's chief executive, did when Mark Fields showed a red one.
 
-   **Why trust it:** It's a Fortune magazine report of what Mark Fields said at a Yale event about one 2006 Ford meeting. That's one person's memory, so hold it loosely.
+   **Why trust it:** It's a Fortune report of what Fields said at a Yale event about one 2006 Ford meeting: one person's memory, so hold it loosely.
 
    **What you'll get:** The moment a habit of reporting only good news broke.
 2. **The Trust Equation**
 
-   Concept card. 5 minutes.
+   Concept card. 2 minutes.
 
-   **Look for:** Why self-orientation (how much your focus is on yourself) sits under the other three.
-3. **Two Kinds of Update**
-
-   Concept card. 5 minutes.
-
-   **Look for:** Which of your readers need a fixed rhythm, and which should hear from you only when there's news.
-4. **Will Larson, "Staying aligned with authority" (2020)**
+   **Look for:** Why self-orientation sits under the other three.
+3. **Will Larson, "Staying aligned with authority" (2020)**
 
    5 minutes. Free at staffeng.com.
 
    **Look for:** The first tactic, never surprise your manager, and the weekly email or Slack update he suggests.
 
-   **Why trust it:** A guide from a site on staff engineering, written by Will Larson and dated 21 June 2020. He wrote it for engineers, not PMs, so read it with your own role in mind.
+   **Why trust it:** Larson is an engineering leader writing for staff engineers, not PMs, so read it with your own role in mind.
 
-   **What you'll get:** The case for updating upward as a habit, aimed at people who lead without formal authority.
-5. **Maria Rosala, "Stakeholder Analysis" (Nielsen Norman Group, 2021)**
+   **What you'll get:** The case for updating upward as a habit, for people who lead without formal authority.
+4. **SCR (Situation, Complication, Resolution)**
 
-   6 minutes. Free at nngroup.com.
+   Concept card. 2 minutes.
 
-   **Look for:** The four boxes of the power-interest grid (a square that sorts people by how much power they hold over your work and how interested they are in it), and how she gets from the grid to a communication plan for each person.
+   **Look for:** The complication, in one sentence your reader would agree with.
+5. **Gopen and Swan, "The Science of Scientific Writing" (*American Scientist*, 1990)**
 
-   **Why trust it:** A practitioner guide from a UX research firm, dated 18 April 2021. The grid isn't the firm's own, and the guide says so: it credits Aubrey Mendelow.
+   17 minutes. Free at human.libretexts.org. Read up to the end of the section "The Stress Position".
 
-   **What you'll get:** A quick way to sort the people around your work, and a reminder to redo the map as people's power and interest shift.
-6. **SCR**
+   **Look for:** Why readers expect the end of a sentence, the "stress position", to carry what's new and important.
 
-   Concept card. 5 minutes.
-
-   **Look for:** The complication, in one sentence your reader would agree with. SCR stands for Situation, Complication, Resolution, and it's a three-part way to open a message.
-7. **Fractal Storytelling**
-
-   Concept card. 5 minutes.
-
-   **Look for:** The same story at two sizes, each complete. The card is about telling one story at several lengths and keeping the point every time.
-8. **Gopen and Swan, "The Science of Scientific Writing" (*American Scientist*, 1990)**
-
-   17 minutes. Read from the start through the end of the section "The Stress Position" (about 3,600 to 3,900 words). Free at human.libretexts.org.
-
-   **Look for:** Why readers expect the end of a sentence (the "stress position") to carry what's new and important, and what goes wrong when it doesn't.
-
-   **Why trust it:** A journal article, reprinted on this page with the journal's permission. It's framed around scientific papers, but the argument about what readers expect is a general one.
+   **Why trust it:** A journal article, reprinted with the journal's permission. It's about scientific papers, but its point about readers holds for any prose.
 
    **What you'll get:** A reason, not just a rule, for why some sentences are hard to read.
 
-*Moved to the full path:* the rest of Gopen and Swan (about 19 more minutes), a page from the firm behind the trust equation, and a report on a company founder's routine updates in *Inc.*
-
 ## Do
 
-**Map your audience and send the first update (30 minutes).** List everyone who decides about your work or depends on it. The easy ones to forget sit outside your team: legal, support, partner teams. Place each person on a power-interest grid (10 minutes). Then, for each person the grid says to manage closely or keep satisfied, choose an update type (8 minutes): time-anchored (sent on a fixed day), outcome-anchored (sent when something lands) or both, and note the day or the trigger. Last, write your first time-anchored update and send it to your most senior reader (12 minutes). If you'd need your manager's approval to send to that person, get it first, or pick the most senior person you already update. Keep it to a few lines: what moved, what's stuck, what you need. Make sure one item isn't green, such as a sensor-data feed that's been late twice, or a checkout change still waiting on a security review. Your output is the grid with an update type beside each name, and the sent update.
+**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open with SCR, keep it to a few lines, and include one item that isn't green, such as a sensor-data feed that's been late twice.
 
-**Optional: one story at three sizes (25 minutes).** Take your not-green item, or the top risk from a premortem (Notice When You Are Wrong), and turn it into a clear ask of your manager, such as a decision, a person or some time. Write it as one sentence (3 minutes). Then write it as one SCR paragraph, under 100 words, where the resolution is your ask (7 minutes). Then write a one-page memo: the problem, two or three approaches, your recommendation and the open questions (12 minutes). List each approach's consequences before you call any of them a pro or a con. Last, reread the memo's opening paragraph with Gopen and Swan in mind: does each sentence start with something the reader knows and end on what's new? (3 minutes). Your output is the sentence, the paragraph and the page. Send the page to your manager and ask what's missing.
+**Optional: one story at three sizes (15 minutes).** Turn that item into an ask of your manager. Write it as one sentence, then as an SCR paragraph of under 100 words, then as the outline of a one-page memo: the problem, two or three approaches, your recommendation and the open questions. Write each size fresh, with the ask in it.
 
 ## Check yourself
 
@@ -81,190 +60,119 @@ Answer in your head, then check.
 
 An update arrives on the day you promised it. Which part of the trust equation does that build?
 
-**Answer:** Reliability. An update like that is a small promise kept, and a steady rhythm of them is what builds it.
-
-You send a customer a weekly note even when nothing has changed. What's likely to happen, and what should you send instead?
-
-**Answer:** In this syllabus's frame, the note reads as noise. Customers and other outside partners want the outcome-anchored update, the one you send when meaningful progress lands.
+**Answer:** Reliability. It's a small promise kept, and a steady rhythm of them is what builds it.
 
 Your update lists only wins. Which part of the trust equation does it put at risk?
 
-**Answer:** Self-orientation, because it reads as being about you. It can weaken credibility too: a report where everything is good is hard to believe.
+**Answer:** Self-orientation, because it reads as being about you.
+
+Your update opens with two paragraphs of background and asks for a decision in its last line. What would SCR change?
+
+**Answer:** It puts the ask in the opening, as the resolution, after one line the reader already accepts and one on what changed.
 
 ## Go deeper: the full path
 
 Optional, and not counted in the time above.
 
-- **Gopen and Swan, the rest of the article.** About 19 minutes. Free at human.libretexts.org. From "The Topic Position" to the end: that section, then logical gaps, locating the action and the writing process. **Why trust it:** It's the same article from the same journal, so the same limits apply. **What you'll get:** Further reader-expectation rules, and the case that fixing structure exposes gaps in your thinking.
-- **Bryan Garner, *Legal Writing in Plain English*, third edition (University of Chicago Press, 2023).** A book, 336 pages, about $26 in paperback. Read Part One and sections 21 to 23. Allow about 6 hours, exercises included. **Why trust it:** It's a writing textbook from a university press, now in its third edition. It's written for lawyers, so read past the legal examples. **What you'll get:** Practice at plain, direct sentences, for when you want drills rather than more advice.
-- **"Understanding the Trust Equation," Trusted Advisor Associates.** About 3 minutes. Free at trustedadvisor.com. **Why trust it:** It comes from the firm of Charles Green, a co-author of the book, so read it as an advocate's account of its own model. **What you'll get:** The model's own definitions of each part.
-- **Leigh Buchanan, "How Patagonia's roving CEO stays in the loop" (*Inc.*, 2013).** About 4 minutes. Free at inc.com. **Why trust it:** It's business press describing a practice that founder Yvon Chouinard used. **What you'll get:** A routine report that took staff about 15 minutes to write and managers about 5 to read.
-- **John Gabarro and John Kotter, "Managing Your Boss" (*Harvard Business Review*, 1980, reprinted 2005).** You may need a library login or a purchase. **Why trust it:** It's a long-standing HBR article. **What you'll get:** The case that you and your boss depend on each other, so understanding them is part of your job.
-- **Allan Cohen and David Bradford, *Influence Without Authority*, third edition (Wiley, 2017).** A book. **Why trust it:** Its two authors have taken the book to a third edition. **What you'll get:** Influence as exchange: working out what the other person values and offering it.
-- **David Maister, Charles Green and Robert Galford, *The Trusted Advisor* (2000).** A book, and the source of the trust equation. **What you'll get:** The full argument behind the model.
-- **Mayer, Davis and Schoorman, "An Integrative Model of Organizational Trust" (*Academy of Management Review*, 1995).** A journal article; a summary is free at explore.psychsafety.com. **Why trust it:** It's an academic paper, and it's the research model that the trust equation often gets compared with. **What you'll get:** Trustworthiness split into ability, benevolence and integrity.
+- **Gopen and Swan, the rest of the article** About 19 minutes. Free at human.libretexts.org. From "The Topic Position" to the end. **Why trust it:** It's the same article, so the same limits apply. **What you'll get:** More of what readers expect, and the case that fixing a text's structure shows you the gaps in your thinking.
+- **"Stakeholder Analysis," Maria Rosala (Nielsen Norman Group, 2021)** About 6 minutes. Free at nngroup.com. **Why trust it:** A practitioner guide from a user research firm. The power-interest grid at its center isn't the firm's own, and the guide says so: it credits Aubrey Mendelow. **What you'll get:** A quick way to sort the people around your work by their power over it and their interest in it, and a reminder to redo the map as those shift.
+- ***The Minto Pyramid Principle: Logic in Writing, Thinking and Problem Solving*, Barbara Minto** A book. **Why trust it:** It's where the SCR card's opening comes from. It was written for consultants' reports, so expect more structure than a short update needs. **What you'll get:** The whole pyramid: the main point at the top, the points that support it beneath, and how the opening leads into them.
+- ***Style: Lessons in Clarity and Grace*, Joseph Williams and Joseph Bizup, twelfth edition** A book. Read lesson 7, "Motivation". **Why trust it:** A writing textbook by two teachers of writing, now in its twelfth edition. Its advice comes from the classroom. **What you'll get:** SCR's opening from writing teachers, not consultants: shared context, then a problem (a condition and its cost), then the main point.
+- ***The Trusted Advisor*, David Maister, Charles Green and Robert Galford (2000)** A book, and where the trust equation first appeared. **Why trust it:** Three consultants to professional firms wrote it from their own practice, so it reports what worked for them. **What you'll get:** The full argument behind the model on the card.
+- **"An Integrative Model of Organizational Trust," Mayer, Davis and Schoorman (*Academy of Management Review*, 1995)** A journal article, with a free summary at explore.psychsafety.com. **Why trust it:** It's a peer-reviewed paper, and the research model the trust equation is often compared with. **What you'll get:** Trustworthiness split into ability, benevolence and integrity, and trust defined as a willingness to be vulnerable to someone else's actions.
+- **"Managing Your Boss," John Gabarro and John Kotter (*Harvard Business Review*, 1980, reprinted 2005)** You may need a library login or a purchase. **Why trust it:** Both authors taught at Harvard Business School. It's advice with examples, so judge it against your own boss. **What you'll get:** The case that you and your boss depend on each other, so understanding their goals and pressures is part of your job.
+- ***Influence Without Authority*, Allan Cohen and David Bradford, third edition (Wiley, 2017)** A book. **Why trust it:** Two business school professors, at Babson and Stanford, wrote it from their teaching and consulting, and it's reached a third edition. Expect cases and advice more than research. **What you'll get:** Influence as exchange: work out what the other person values, and offer it.
+
+*To check: the Nielsen Norman Group title may be "Stakeholder Analysis for UX Projects". Nobody has opened the free summary of Mayer, Davis and Schoorman. The authors' backgrounds in the trust lines for The Trusted Advisor, Gabarro and Kotter, and Cohen and Bradford are from memory, as is Minto's full title.*
+
+## For the glossary
+
+- **Trust equation:** A consultants' model that treats trust as credibility, reliability and intimacy, divided by self-orientation.
+- **Time-anchored update:** An update sent on a fixed day, whatever happened.
+- **Outcome-anchored update:** An update sent when something lands, or when a date someone planned around moves.
+- **SCR (Situation, Complication, Resolution):** A three-part opening for a message: what the reader already accepts, what changed, and what you recommend or ask.
+- **Stress position:** The end of a sentence, where readers expect what's new and important.
 
 # The Trust Equation
 
+*Picture: a fraction, with credibility, reliability and intimacy on top and self-orientation below.*
+
 ## The idea
 
-The trust equation is a model of why people trust an adviser. That includes you: a PM advises the people who rely on them. It splits trustworthiness into four parts and lays them out as a fraction: (credibility + reliability + intimacy) divided by self-orientation. More of the first three and trust goes up. More self-orientation and it comes down.
+The trust equation is a model of why people trust an adviser, and that includes you. It lays out four parts as a fraction: (credibility + reliability + intimacy) divided by self-orientation.
 
 - **Credibility** is what you say: can you be believed?
 - **Reliability** is what you do: do you meet expectations?
-- **Intimacy** is whether people feel safe being open and vulnerable with you, as far as a working relationship allows.
-- **Self-orientation** is where your focus sits: on yourself, or on the other person, the team or a shared goal.
+- **Intimacy** is whether people feel safe being open with you.
+- **Self-orientation** is where your focus sits: on yourself, or on the other person and a shared goal.
 
 The model first appeared in *The Trusted Advisor* (2000), by David Maister, Charles Green and Robert Galford.
 
 ## Why a PM cares
 
-- **Reliability is what a rhythm builds.** An update that arrives on the day you said it would is a small promise kept. Miss the day and you've broken it.
-- **Self-orientation is the bottom of the fraction.** An update that lists only wins reads as being about you. Name the problem you're watching and the update turns toward the reader.
-- **Credibility needs some bad news.** If every report says everything's fine, readers stop believing the good news as well. One honest amber item makes the greens easier to trust.
-- **Intimacy is what lets people who see the risks tell you the truth.** If the engineer on call for your streaming service doesn't feel safe saying "this worries me," you hear about it late. Thank the people who raise concerns early.
+- **Reliability is what a rhythm builds.** An update that arrives on the day you said it would is a small promise kept.
+- **Self-orientation is the bottom of the fraction.** An update that lists only wins reads as being about you. Name the problem you're watching, and it turns toward the reader.
+- **Credibility needs some bad news.** If every report says everything's fine, the good news stops being believed. One honest amber item makes the greens easier to trust.
 
 ## How to spot it
 
 - Your updates say "I" and "we" far more than "you need" or "you will want to know."
-- Someone else tells a stakeholder about a problem before you do.
-- Readers skim your updates, or reply with questions the update should have answered.
-- A date you promised passes and you've said nothing.
+- Someone else tells your manager about a problem before you do.
 
 ## What it does not say
 
-This is a consultant's model, not a measured law, and the firm that publishes it says it keeps refining it. It doesn't tell you how much of each part you need, and it does not say the parts can be scored precisely. There's a research version too: Mayer, Davis and Schoorman (1995) split trustworthiness into ability, benevolence and integrity, and define trust as a willingness to be vulnerable to someone else's actions. So don't do arithmetic with the equation. Use it as a checklist of questions to ask about one relationship.
+It's a consultant's model, not a measured law. Researchers split trust differently, into ability, benevolence and integrity (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.
 
-**One question to carry:** Think of the person whose trust you most need. Which of the four parts would they say is weakest, and what would they point to?
+**One question to carry:** Which of the four parts would the person whose trust you most need say is your weakest?
 
 ## Go deeper
 
 **[Understanding the Trust Equation](https://trustedadvisor.com/why-trust-matters/understanding-trust/understanding-the-trust-equation), Trusted Advisor Associates**
 
-A short page (about 3 minutes). Free at trustedadvisor.com.
+A short page, about 3 minutes. Free at trustedadvisor.com.
 
-**Why trust it:** It comes from the firm of Charles Green, a co-author of the book, so read it as an advocate's account of its own model.
+**Why trust it:** It's from the firm of Charles Green, one of the book's authors, so read it as an advocate's account of its own model.
 
-**What you'll get:** The model's own definitions of each part, as the firm states them.
-
-# Two Kinds of Update
-
-## The idea
-
-Every update has one of two anchors. The format can be the same for both: an email, a page, a short call. What differs is why it goes out.
-
-- A **time-anchored** update goes out on a fixed cadence (a regular day, such as every Thursday), whatever happened. It makes you share what's going on between milestones.
-- An **outcome-anchored** update goes out when meaningful progress lands.
-
-The two anchors are this syllabus's own frame. They come from practice, not from a published method.
-
-## Why a PM cares
-
-- **Peers and senior leaders need both.** Between outcomes they get uneasy, or lose sight of the good work your team is doing. The cadence fills that gap.
-- **Outside partners and customers want the outcome-anchored one.** If you send them frequent messages with nothing decided, it reads as noise.
-- **Silence invites guesses.** A survey of 74 communications professionals at large firms found that harmful rumors were common, especially during organizational change (DiFonzo and Bordia, 2000). A study built on 15 interviews and two case studies of change communication found that the successful campaigns were open, reduced uncertainty through collective planning and built trust (DiFonzo and Bordia, 1999).
-- **A cadence that says only green is worse than none.** At Ford in 2006, Mark Fields later recalled, every status chart was green (the "all is well" color), and bad news could end a career. Then he showed a red chart on a coming launch, and the chief executive, Alan Mulally, applauded.
-
-## How to spot it
-
-- A leader stops you in the hallway to ask "what is the team working on?" though nothing you sent was wrong.
-- A customer replies to your third status note with "is there anything I need to do?"
-- Your fixed-day update has said "on track" for six weeks running.
-- You find out about an outcome only because someone else announced it.
-
-## What it does not say
-
-It does not say everyone gets everything. Pick the anchor for each person, and use a power-interest grid if it helps (a square that sorts people by their power over your work and their interest in it). It doesn't say a cadence update has to be long, either: a few lines will do. And it doesn't say green is always suspect. The point is that an update carries information only if it could have said something else, so include one item that isn't green (amber or red on a traffic-light status): a risk you're watching, or a decision you'll need. Report it plainly, along with what you're doing about it. Open with SCR (Situation, Complication, Resolution, a three-part opening covered on the SCR card) so the reader knows what you need.
-
-**One question to carry:** For each person who depends on your work: are they better off hearing from you on a set day, or only when something lands?
-
-## Go deeper
-
-**[A Tale of Two Corporations: Managing Uncertainty During Organizational Change](https://researchportalplus.anu.edu.au/en/publications/a-tale-of-two-corporations-managing-uncertainty-during-organizati/), Nicholas DiFonzo and Prashant Bordia (1999)**
-
-The abstract is free at researchportalplus.anu.edu.au. The full text isn't on that page.
-
-**Why trust it:** It's a journal article in *Human Resource Management* (the abstract page lists the journal and year). It rests on interviews with management and public relations staff, so what you get is what those staff reported.
-
-**What you'll get:** A contrast between a successful and an unsuccessful change communication effort, with rumor as the sign of the failure.
+**What you'll get:** The model's own definitions of each part.
 
 # SCR (Situation, Complication, Resolution)
 
+*Picture: three stacked lines, for what the reader knows, what changed and the ask.*
+
 ## The idea
 
-SCR opens a message so the reader knows right away why it matters and what you want. The situation is what the reader already knows and accepts; the complication is what changed or went wrong; the resolution is what you recommend or ask for. The pattern is Barbara Minto's, developed in The Pyramid Principle while she edited consultants' reports at McKinsey.
+SCR is a three-part opening for a message. The situation is what the reader already knows and accepts. The complication is what changed or went wrong. The resolution is what you recommend or ask for. The pattern comes from Barbara Minto's *The Pyramid Principle*, written for consultants' reports.
 
-Example, for a team that owns a school gradebook:
+For a team that owns a school gradebook:
 
-- **S:** Our gradebook syncs class rosters from each district's records system every night.
-- **C:** Our largest district moves to a new records system in August, and our integration vendor can't ship a connector before school starts.
-- **R:** Approve a weekly manual roster import for one term, so teachers have their classes on day one while the vendor builds the connector.
+- **S:** Our gradebook syncs class rosters nightly from each district's records system.
+- **C:** Our largest district switches records systems in August, and our vendor can't ship a connector before school starts.
+- **R:** Approve a weekly manual roster import for one term, so teachers have their classes on day one.
 
-## Why a PM should care
+## Why a PM cares
 
-- **Decision makers read the top.** Minto's rule is to give the summarizing idea before the ideas it summarizes. A reader who agrees can stop there, and one who doubts knows what to test in the rest.
-- **The situation buys agreement.** Start from something the reader already accepts and you're on the same side before you ask for anything. Keep it short and uncontroversial.
-- **The complication is the case for change.** Without one, the reader has no reason to act. Tell it as a short story: what changed, and why the current course won't work anymore.
-- **It shows you what you do not know.** If you can't write the complication in one sentence, you may not understand the problem yet, and it's better to find that out at your desk than in the meeting. If the resolution doesn't answer the complication, the argument doesn't hold.
-- **It works at every size.** The same three moves open an email, a status update, a note raising a risk or the first slide of a deck.
+- **Decision makers read the top.** After three lines your reader has the ask: one who agrees can stop, and one who doubts knows what to test in the rest.
+- **The complication carries the case.** Without one, the reader has no reason to act. If you can't write it in one sentence, you may not understand the problem yet, and it's better to find that out at your desk than in the meeting.
 
-## How to spot it at work
+## How to spot it
 
 - Updates open with background and get to the ask in the last paragraph, or never.
-- A decision meeting spends its first 20 minutes agreeing on what the problem is.
 - Slides are titled with topics, such as "Q3 metrics", instead of what the reader should conclude.
-- Replies ask "so what do you need from me?"
 
 ## What it does not say
 
-SCR shapes the opening, not the whole document. In Minto's pyramid the supporting points still sit beneath the main point, each group summed up by the point above it. It isn't a way to soften bad news either, because the honest complication often is the bad news. When you don't have a recommendation yet, the resolution can be the question you need help with, stated plainly. And it isn't only a consulting habit: writing teachers Joseph Williams and Joseph Bizup open the same way, with shared context, then a problem (a condition and its cost), then the main point.
+SCR shapes the opening, not the whole document. It isn't a way to soften bad news, either: the honest complication often is the bad news.
 
-## One question to carry into your work
-
-For the decision you most need from someone this month, what's the complication, in one sentence they'd agree with?
+**One question to carry:** For the decision you most need from someone this month, what's the complication, in one sentence they'd agree with?
 
 ## Go deeper
 
-- Barbara Minto, *The Minto Pyramid Principle: Logic in Writing, Thinking and Problem Solving*, the source.
-- Will Larson, ["Notes on The Pyramid Principle"](https://lethain.com/pyramid-principle/) (2018), a short summary by an engineering leader, including the steps of an introduction. Free at lethain.com.
-- Joseph Williams and Joseph Bizup, *Style: Lessons in Clarity and Grace*, twelfth edition, lesson 7, "Motivation", on opening with a problem the reader cares about.
+**[Notes on The Pyramid Principle](https://lethain.com/pyramid-principle/), Will Larson (2018)**
 
-# Fractal Storytelling
+A short post. Free at lethain.com.
 
-## The idea
+**Why trust it:** Larson is an engineering leader, and these are his reading notes on Minto's book: one practitioner's summary, not Minto.
 
-Fractal storytelling means telling the same story at several sizes, each one complete at its own size. This syllabus uses five: one sentence, an elevator pitch, a one-page memo, a 20-minute deck and an hour-long deep dive. Each carries the whole arc, from situation to complication to resolution. Only the depth of detail changes, the way a fractal repeats its shape at every zoom level. The name and the sizes are this syllabus's own framing, drawn from practice and not from a published method. A related habit is bottom line up front: the main point goes first, as in the US Army's standard.
+**What you'll get:** The pyramid and the parts of Minto's introduction, in one sitting.
 
-Example, for a developer platform team pausing a redesign.
-
-- **One sentence:** "Pause the API usage dashboard redesign for six weeks, because the pricing team hasn't yet settled what the new plans will charge for."
-- **Elevator version:** "The dashboard redesign is on track for May. The pricing team may change what we charge for, and building before they decide risks rework. I recommend pausing six weeks for their answer, and I need your help getting it on their calendar."
-
-## Why a PM should care
-
-- **Each audience has a different attention budget.** An executive may give you one sentence in a corridor, and an engineer may give you an hour. Each should get the whole story, not the opening of the long one.
-- **Each size tests the others.** If you can't say it in one sentence, your deck may be a tour of facts. If the sentence can't grow into an hour, it may be a slogan.
-- **Retelling shows you what you missed.** The deck notes that unfolding a design's story for one audience, then another, pulls you toward their point of view, and their questions bring hidden assumptions into view (p. 398).
-- **Consistent sizes build trust.** When the corridor version and the memo agree, people can act on the short one without waiting for the long one.
-
-## How to spot it at work
-
-- The "executive summary" turns out to be the long document's opening paragraph, so a reader who stops there misses the conclusion.
-- Someone asks for the short version, and the answer takes five minutes.
-- The memo and the deck for the same decision recommend slightly different things.
-- People learn about a decision only from the hour-long review.
-
-## What it does not say
-
-It doesn't mean "cut the long version down". An editor can trim a news story from the bottom because the inverted pyramid has already ordered it by importance. A decision story cut short usually loses its resolution, so write each size fresh around the same arc. It does not say every story needs all five sizes: a small decision may need only the sentence and the page. And shorter isn't easier. The one-sentence version is often the hardest to write, and the long versions are where the evidence and the doubts belong.
-
-## One question to carry into your work
-
-Could a colleague outside your team hear the one-sentence version of your main initiative once and repeat it accurately?
-
-## Go deeper
-
-- US Army Regulation 25-50, *Preparing and Managing Correspondence*, the section in chapter 1 on the Army writing standard.
-- Deck p. 398 ("Repairing Blindspots") and pp. 488 and 489 (design labs versus design briefs, and three questions a brief should answer).
-
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+*To check: nobody has opened Larson's notes. Check the year (2018), how long they take and what they say about the introduction. Minto's book may write the opening as Situation, Complication, Question, Answer (SCQA), with SCR a later shorthand: check that, and when she worked at McKinsey, before the rebuild says either.*

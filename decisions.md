@@ -6,6 +6,10 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his comments in the working doc, his answers on the Decisions page, and what he asked of the session that day.
 
+- One card a module, on a full page, is the aim. He isn't sure of every single card the proposal recommends, so where two cards are especially meaningful or earned, both are built and he picks the one to keep (agree, on the Decisions page, card `cards-per-module`).
+- In Own Your Role, the four moves for using an opinion rest on his word alone and carry no weight in choosing what the module keeps. The *Mozart in the Jungle* idea stays. The rest of what he placed there is directional, open to revision or reshaping (with his answer on `cards-per-module`).
+- Module 7 is titled Weigh the Evidence (agree, on the Decisions page). He'd take "Data-Informed, Not Data-Driven" only if the other titles followed the same convention, and asked to see what that would look like.
+- On the Start page, the introduction says "and there's much truth in Detective Anghel's quote"; "How it works" opens "Twelve modules, each built on one question"; the list of modules is headed "The modules"; and "Gregor Anghel" links to the scene on YouTube, 43 seconds in (his suggestions in the working doc).
 - The full path is the cheapest ask of a student. The short path and the concept cards are where the constraints matter most, and where the value per minute should be highest (in the session, during the winnowing proposal).
 - A module's full path prints outside its three pages: the three pages hold the module, and its full path follows and may run onto one more page (chosen in the session).
 - The winnowing cuts five cards as proposed: Architect Across the Interfaces, Concepts, Models That Are Sometimes Wrong, Chesterton's Fence and Fractal Storytelling. Each idea keeps a line, a step, a question or a source in its module (chosen in the session).

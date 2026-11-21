@@ -1,272 +1,164 @@
+About 67 minutes: 32 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+
+**If you only do one thing:** Finish "We're building this in order to ..." for your product, then ask two teammates to finish it without seeing yours.
+
 ## Why this matters
 
-You'll start every PM role by taking it as described. That's the right start, and it's easy to stop there. The strongest PMs don't stop. Once they understand the system around them, they reshape the role toward value nobody assigned, and they borrow tools from anywhere. This module comes first because the rest of the syllabus depends on that second skill. Most of what you'll read comes from other fields. *The Goal* carries factory thinking into any flow of work, *How Buildings Learn* carries buildings into systems that change, and the deck borrows from bridges, cathedrals and aircraft carriers. They pay off only when you carry their patterns into your own work.
+You'll start every PM role by taking it as described. Once you see the system around you, grow it toward value nobody assigned.
 
-Two versions of this job look like the real thing and aren't. In the first, you run the project: dates, status, who's blocked. In the second, you run the room: you gather what everyone wants and write down the average. Both are useful work, and you'll do plenty of each. But a PM who only coordinates, or only facilitates, has left the main job undone. That job is to hold the product's concept, what it's for and where it's going, say it out loud, and work back from it to what must be true to get there. Extrapolating from where you are gets you the next step, which would have happened without you. The destination is yours to name. If you don't name it, usually nobody does.
+Two versions of the job look real and aren't. In one, you run the project: dates, status, who's blocked. In the other, you run the room, averaging what everyone wants. You'll do plenty of both, but the job is to hold the product's concept, what it's for and where it's going, and work back from it. If you don't name the destination, usually nobody does.
 
-It has to be yours for a second reason. In the TV series *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the conductor Rodrigo De Souza wants more from his orchestra than the right notes. The best work, in the show's telling, comes from passion and a voice of its own, and technical perfection alone is soulless. Products work the same way. One built only from the schedule, or only from the average of what everyone asked for, can be right in every detail and still have nothing to say.
+It has to be yours, too, because a product can be right in every detail and still say nothing. In *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the conductor Rodrigo De Souza wants more than the right notes. In the show's telling, the best work has passion and a voice of its own, and technical perfection alone is soulless.
 
-*To check: the series, its years and the character were checked on Wikipedia on 20 November 2026. Nobody has watched the scene the idea comes from. Find the episode and check this description against it before the rebuild.*
+## The short path
 
-## Short path (about two and a quarter hours of reading, plus about an hour and a quarter for the exercises)
+1. **The Concept Champion**
 
-For deck pages, read only the parts named. If a term is new to you, it's defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 6.
+   Concept card. 2 minutes.
 
-1. The **Role-Making** concept card (10 minutes).
-2. The **Curious and Opinionated** concept card (10 minutes).
-3. The **Transfer** concept card (10 minutes).
-4. The **Concept Champion** concept card (10 minutes).
-5. Fred Brooks, "Aristocracy, Democracy, and System Design" (11 minutes). It's chapter 4 of *The Mythical Man-Month*, free as the publisher's [sample chapter](https://ptgmedia.pearsoncmg.com/images/0201835959/samplechapter/chap4.html). Brooks managed IBM's System/360 and its operating system, and this is one manager's account of the 1960s, not a study. He writes "men" where he means people. Read it for the night he handed the specifications to 150 implementers to save the schedule, and what that cost him.
-6. Donella Meadows, ["Envisioning a Sustainable World"](https://donellameadows.org/archives/envisioning-a-sustainable-world/) (17 minutes), free at donellameadows.org. Meadows is the systems scientist you'll meet in Module 1. It's a talk drawn from her own practice, with no data, and its subject is sustainability, not products. Read it for how to hold a vision responsibly: she shows hers to other people, "who correct and refine it".
-7. Perkins and Salomon, "Transfer of Learning" (1992), about 30 minutes. It's a short encyclopedia entry, free online, and it's fine to skim. What you're after is the difference between low-road and high-road transfer.
-8. Backward design, about 20 minutes: the opening chapter of Wiggins and McTighe's *Understanding by Design*, or their free ASCD white paper, "Improve Curriculum, Assessment, and Instruction Using the Understanding by Design Framework" (jaymctighe.com). Either one will do.
-9. Deck pp. 427 to 429 (15 minutes). These are the landing zones and fitness functions the Transfer card mentions. Read the aircraft-carrier analogy for landing zones on p. 427, the example on p. 428, and the first paragraph on fitness functions on p. 429. Skip the rest.
-10. Deck p. 40 (5 minutes). Read the Le Guin quote about the wall. It's about system boundaries, and it works just as well for the boundaries of a role. Skip the rest.
+   **Look for:** What the two look-alike jobs leave undone, and how to work back from a destination.
+2. **Fred Brooks, "Aristocracy, Democracy, and System Design" (Addison-Wesley, 1975)**
 
-## Full path
+   11 minutes. Chapter 4 of *The Mythical Man-Month*, free as the publisher's [sample chapter](https://ptgmedia.pearsoncmg.com/images/0201835959/samplechapter/chap4.html).
 
-- Schön, *The Reflective Practitioner* (1983), by the same Donald Schön the Transfer card cites. It's about how professionals handle situations their training didn't cover.
+   **Look for:** Why he let 150 implementers write the specifications to save the schedule, and what it cost.
 
-## Terms you will meet
+   **Why trust it:** Brooks managed IBM's System/360 and its operating system. It's one manager's account of the 1960s, not a study.
 
-- **Role-taking and role-making:** role-taking is the early period when you do the role as handed to you while your manager sizes up what you can do; role-making is when the two of you work out what it becomes.
-- **Job crafting:** reshaping your own job by changing your tasks, your working relationships, or how you understand the purpose of the work.
-- **Taking charge:** voluntary effort to improve how work gets done, beyond what the job requires.
-- **Lightweight and heavyweight product manager:** names from a study of car development. A lightweight manager coordinates the work and has little say over what gets built. A heavyweight coordinates too, and also holds the product's concept and answers for it.
-- **Conceptual integrity:** Fred Brooks's name for a product that reflects one set of design ideas, so its parts feel like they belong together.
-- **Near and far transfer:** using what you learned in a similar setting, versus in a very different one.
-- **Low-road and high-road transfer:** a habit triggered automatically by a familiar situation, versus deliberately pulling out the general idea and looking for where else it fits.
-- **Backward design:** planning from the end. Name the result, decide what evidence will show it, then plan the work.
-- **Landing zone:** a range of acceptable values (minimum, target, outstanding) set in advance for each thing a product must achieve.
-- **Fitness function:** an automated check that a system still has a property it is meant to have, such as speed or reliability.
+   **What you'll get:** A first-hand case of the schedule beating the concept.
+3. **Donella Meadows, "Envisioning a Sustainable World" (International Society for Ecological Economics, 1994)**
 
-## What to look for
+   17 minutes. Free at [donellameadows.org](https://donellameadows.org/archives/envisioning-a-sustainable-world/).
 
-- **Taking comes before making.** In Graen's sequence, the negotiation comes after a period of doing the role as given. Deliver that role well first, because that's usually what earns you the standing to reshape it.
-- **Crafting has three levers.** Tasks, relationships and meaning. As you read, notice which one you use least.
-- **Curiosity and opinion are how you grow the role.** The Curious and Opinionated card frames the job as seeking the truth, then acting on it. Curiosity is how you find the value nobody assigned you. You earn a say in what the role becomes by knowing when to sharpen an opinion, hold it back, hold it loosely or trust your intuition over the data.
-- **Coordinating and facilitating are part of the job, and they aren't the job.** Notice what Brooks's 150 implementers produced when nobody controlled the concepts. Notice too that he says the fresh idea often comes from an implementer or a user. Holding the concept means listening widely and then deciding.
-- **A destination is a hypothesis.** Meadows judges a vision by the clarity of its values, not by the clarity of the path to it. Hold on to where you're going and stay loose about the route.
-- **Transfer is a habit of attention, not a talent.** In the experiments, people had what they needed and didn't notice that it applied. Being prompted closed much of the gap, and you can prompt yourself: ask "where have I seen this shape before?"
-- **Same pattern, three settings.** Test-first in code, backward design in teaching, landing zones in architecture. Once you can state the shared pattern in one sentence, it's yours.
-- **Every analogy breaks somewhere.** Before you rely on a borrowed pattern, name the assumption it brings with it that may not hold here.
+   **Look for:** She judges a vision by how clear its values are, not how clear the path to it is.
 
-## Apply it to your own work
+   **Why trust it:** Meadows, the systems scientist you'll meet in Module 1, talks from her own practice. There's no data, and her subject is sustainability, not products.
 
-1. **Write your role's tests.** Before your next objective, quarter or project, take about 25 minutes and write three to five statements that would be true if you succeeded, each with how you'd check it. On a developer platform, one might read: "A developer who asks an integration question gets an answer within two working days, checked by the age of open questions in the support queue." Where you can, give a minimum, target and outstanding value, like a landing zone. Then ask your manager what success looks like to them, and compare.
-2. **Map your scope.** In about 20 minutes, list what you were handed. Then add one thing you already do that nobody asked for, and one gap next to your boundary where value is going undelivered. Before you propose anything, check whether the gap is truly unowned or owned elsewhere on purpose. In a checkout product, say, blocking suspicious payments may sit with a separate risk team, so the people chasing conversion don't decide what's safe. If the gap is open, who would you need to talk to in order to take it on?
-3. **Carry one pattern.** In about 15 minutes, pick a tool from a past job, a field you studied, or an engineering practice you've seen. Write its general pattern in one sentence, two places it could apply in your current work, and one place the analogy would break.
-4. **Finish the sentence.** In about 15 minutes, finish "We're building this in order to ..." for the thing you're working on now. Then work backward: write three things that would have to be true for it to happen, and mark the one you're least sure of. Ask two people on your team to finish the same sentence without seeing yours. Where the three versions differ, the product's concept isn't settled yet, and settling it is your work.
+   **What you'll get:** The one reading here on forming a vision and keeping it open to correction.
+4. **Curious and Opinionated**
 
-## Check your own thinking
+   Concept card. 2 minutes.
 
-The shift this module is after is from "my job is what I was given" to "my job is what I can make of what I was given". Here's a way to test yourself. If your role description disappeared tomorrow, could you write a better one in 15 minutes, with three to five statements of value, each with the test that would show you're delivering it? If you'd like a sounding board, take your answers to your manager or a mentor.
+   **Look for:** When to keep your view back, and the three yeses a hunch needs before you trust it.
 
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition. This guide is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+## Do
 
-# Role-Making
+**Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Finish "We're building this in order to ..." for your current work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Ask two teammates to finish the sentence without seeing yours. Where the versions differ, the concept isn't settled, and settling it is your job.
 
-## The idea
+**Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Doing a role as handed, which researchers call role-taking, usually earns you role-making, the chance to reshape it (Graen and Scandura, 1987). Last, ask how much of your week went to glue work, and what it crowded out.
 
-A role is taken before it's made. Research on how working relationships form between a manager and a team member describes three phases: role-taking, when your manager sizes up what you can do; role-making, when the two of you informally negotiate what your role becomes; and routinization, when the new pattern settles (Graen and Scandura, 1987). A related line of research finds that people also reshape their jobs themselves, by changing their tasks, their working relationships, and how they understand the purpose of the work (Wrzesniewski and Dutton, 2001). Either way, the role you were handed is where you start, and its edges can move.
+## Check yourself
 
-## Why a PM should care
+Answer in your head, then check.
 
-- **No PM role is fully specified.** No description can list every place value is waiting to be delivered. The strongest PMs find those places themselves. They don't wait for a leader to assign them.
-- **Taking comes before making.** Do the role as given, and do it well: that's usually what earns you the standing to reshape it. Skip that step and reshaping often reads as grabbing territory.
-- **Scope grows by noticing.** The edges of a role are drawn by people, like any system boundary (deck p. 40). So a gap next to your edge is an invitation: a handoff nobody owns, say, or a customer problem that falls between two teams, like a hotel night stranded by a canceled flight.
-- **It has a name in the research.** Organizational researchers call it taking charge: voluntary, constructive effort to change how work gets done, beyond what the job requires (Morrison and Phelps, 1999).
+Which two versions of the job look real and aren't, and what do both leave undone?
 
-## How to spot it at work
+**Answer:** Running the project and running the room. Neither holds the concept.
 
-- Your backlog holds only what other people asked for.
-- You notice a problem near your area, then wait for someone to assign it.
-- Someone asks what your job is, and you list assignments instead of the outcomes you're working toward.
+Brooks let 150 implementers write the specifications to save the schedule. What did it cost?
 
-And a sign it's working: your manager hears about a gap from you first, and you bring a proposal with it.
+**Answer:** The system's conceptual integrity, and by his estimate a year of debugging time.
 
-## What it does not say
+What does Meadows judge a vision by, and what does she do with hers?
 
-It isn't a license to drop assigned work or take over other people's areas. Role-making is negotiated, with your manager and with the people on the other side of your boundary, and you earn it by delivering the role you took first. Done carelessly, it pushes work or friction onto colleagues, so bring them in early. Some ownership lines are deliberate, too. In a hospital scheduling product, which patient goes first is left to clinicians on purpose. Check that a gap is truly unowned before you offer to fill it.
+**Answer:** How clear its values are, not how clear the path is. And she shows it to other people, who correct and refine it.
 
-## One question to carry into your work
+## Go deeper: the full path
 
-What value sits just outside your current scope that nobody's delivering, and what would it take for you to own it?
+Optional, and not counted in the time above.
 
-## Go deeper
+- **The Reflective Practitioner, Donald Schön (Basic Books, 1983)** A book. **Why trust it:** Schön studied professionals at work, case by case. It's an argument built on those cases, not on experiments. **What you'll get:** How people handle what their training didn't cover, the other half of this module's question: bringing what you already know to something new.
+- **"Crafting a Job: Revisioning Employees as Active Crafters of Their Work," Amy Wrzesniewski and Jane Dutton (*Academy of Management Review*, 2001)** A journal article. **Why trust it:** Peer-reviewed, and the paper that named job crafting. **What you'll get:** Three levers for reshaping a job yourself: your tasks, your working relationships, and how you understand the work's purpose. Notice which one you use least.
+- **"Transfer of Learning," David Perkins and Gavriel Salomon (*International Encyclopedia of Education*, 1992)** An encyclopedia entry, about 30 minutes, and fine to skim. Free at openlab.citytech.cuny.edu. **Why trust it:** Two learning researchers summing up their field. **What you'll get:** Low-road transfer, a habit a familiar situation sets off, against high-road transfer, deliberately pulling out the general idea and looking for where else it fits.
+- **"Improve Curriculum, Assessment, and Instruction Using the Understanding by Design Framework," Grant Wiggins and Jay McTighe (ASCD)** A white paper, about 20 minutes. Free at jaymctighe.com. **Why trust it:** The authors explain their own method to teachers, so expect them to champion it. **What you'll get:** Backward design, test-first's cousin in teaching: name the result, decide what evidence will show it, then plan.
+- **"Being Glue," Tanya Reilly (2019)** A talk and its written version, about 20 minutes. Free at [noidea.dog](https://www.noidea.dog/glue). **Why trust it:** A senior engineer's talk, drawn from experience and aimed mainly at engineers. **What you'll get:** Why the work that holds a team together goes unrecognized, and what to do about it. For a PM, more of the glue is the job, so the bigger risk is that it crowds out the concept.
 
-- Wrzesniewski and Dutton, "Crafting a Job: Revisioning Employees as Active Crafters of Their Work" (Academy of Management Review, 2001).
-- Morrison and Phelps, "Taking Charge at Work: Extrarole Efforts to Initiate Workplace Change" (Academy of Management Journal, 1999).
-- Graen and Scandura, "Toward a Psychology of Dyadic Organizing" (Research in Organizational Behavior, 1987). It's academic and dense, and the summary above is enough for most readers.
-- Deck p. 40 (boundaries are constructions).
+*To check: the series, its years and the character in Mozart in the Jungle were checked on Wikipedia on 20 November 2026, but nobody has watched the scene the idea comes from. Find the episode and check the description against it. Nobody has opened Schön, Wrzesniewski and Dutton, Perkins and Salomon or the ASCD paper in this round, so check each one's reasons, and find the ASCD paper's year. Graen and Scandura (1987), cited in the optional exercise for role-taking and role-making, came from the old draft, and nobody has opened it.*
 
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+## For the glossary
 
-# Curious and Opinionated
-
-## The idea
-
-The PM job is to seek the truth in a complex situation, then act on what you find in the best way. That makes curiosity the most important quality in a PM: it's how you find what nobody has told you.
-
-Acting takes opinions, and there are four moves for using one: sharpen it, hold it back, hold it loosely, or trust your intuition over the data. Knowing which of the four a moment needs is, in this syllabus's view, what separates great PMs from good ones.
-
-## Why a PM should care
-
-- **Have a view worth using.** The four moves assume you've got an opinion. A PM who only collects what everyone else wants ships the average: correct, and lifeless, like the technically perfect playing the conductor in *Mozart in the Jungle* won't settle for (see "Why this matters").
-- **Sharpen it to reach the truth faster.** A specific view gives people something to push against, so stronger views surface sooner. Paul Saffo's mantra, "strong opinions, weakly held," means you let intuition carry you to a conclusion, then go hunting for evidence against it.
-- **Hold it back so you don't bias the group.** State your view first and it pulls the group's thinking toward it. Tversky and Kahneman called the effect anchoring (1974).
-- **Hold it loosely when the task or the relationship needs it.** You'll work with these people again. Axelrod showed that when players meet repeatedly, cooperating pays better than winning each round (*The Evolution of Cooperation*, 1984).
-- **Trust your intuition over the data only when it has earned it.** Data can mislead you, for example once a number becomes a target (Goodhart's Law, in Module 2, Find the Constraint). Kahneman and Klein (2009) found that skilled intuition grows only where patterns repeat and practice brings feedback, and that confidence is no sign of accuracy. So before you back a hunch, look for three yeses:
-  - Have you made this kind of call often, where patterns repeat?
-  - Did you soon learn whether you were right?
-  - Is this the same kind of call, not a neighbor? Expertise is patchy.
-
-  When you do back one, write down why, so the decision can be reviewed later.
-
-## How to spot it at work
-
-- You speak first in a workshop, and every idea after that is a variation on yours.
-- A debate keeps circling because nobody, you included, has put a concrete proposal down.
-- You win an argument you didn't need to win, and that colleague helps less next quarter.
-- The dashboard says the new lesson flow works, teachers tell you otherwise, and nobody asks why.
-
-## What it does not say
-
-Being opinionated isn't being loud. In Saffo's sense, you try to disprove a strong opinion, not repeat it louder. Holding back doesn't mean having no view: you form one and choose when to share it, often after others have spoken. And trusting intuition is not ignoring data. Question what the data measures, then check the hunch against it.
-
-## One question to carry into your work
-
-In your next discussion, which move does the moment need, and is it the one you make by habit?
-
-## Go deeper
-
-- [Strategic decisions: When can you trust your gut?](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut) (McKinsey Quarterly, 2010): Kahneman and Klein in conversation, 15 minutes. Free at mckinsey.com.
-- [Saffo on "strong opinions, weakly held"](https://www.saffo.com/02008/07/26/strong-opinions-weakly-held/) (2008), 5 minutes. Free at saffo.com.
-- In this syllabus: Module 10, Notice When You Are Wrong, for bias, the ladder of inference and psychological safety.
-
-# Transfer: Carry the Pattern
-
-## The idea
-
-A tool you learned in one field usually rests on a general pattern that works in others. The trouble is that people rarely carry it across on their own. Learning researchers separate low-road transfer, a practiced habit triggered by a familiar situation, from high-road transfer, the deliberate effort to pull out the general idea and look for where else it fits (Perkins and Salomon, 1992). Habit alone rarely carries a pattern into a very different setting. That takes the deliberate kind.
-
-## A worked example: test first
-
-In test-driven development, you write the test that defines "working" before you write the code. Strip away the code and the pattern is: decide how you'll know you succeeded before you start. It shows up a long way from software:
-
-- **Teaching:** backward design starts a course by naming the desired results and the evidence that will show them. Only then does it plan the lessons (Wiggins and McTighe, *Understanding by Design*).
-- **Architecture:** landing zones set a minimum, target and outstanding value for each quality a product must reach (deck pp. 427 to 428), and fitness functions turn those targets into checks that run as the system evolves (deck p. 429).
-- **Your role:** before a new objective, quarter or role, write down what would be true if you succeeded and how you'd check it. It's the same idea as writing the test first.
-
-## Why a PM should care
-
-- **People miss analogies unless they look for them.** In a classic experiment, people read a story about an army capturing a fortress, then tried a medical puzzle with the same structure. Roughly 30 percent used the story unprompted. Once they were told to use it, roughly 75 percent did (Gick and Holyoak, 1980).
-- **Two examples beat one.** Reading two stories with the same structure made people much more likely to spot it in a new problem without a hint (Gick and Holyoak, 1983). That's why the worked example gives you two outside cases before your own.
-
-## How to spot it at work
-
-- You've just learned a tool or practice. Ask what its general pattern is, and where else it would work.
-- You're stuck on a problem that feels new. Ask where you've seen one shaped like it.
-
-## What it does not say
-
-Not every analogy holds. Donald Schön argued that a borrowed concept brings new insight but also carries old assumptions along unexamined (*The Displacement of Concepts*, 1963). So before you rely on a borrowed pattern, name where it breaks.
-
-## One question to carry into your work
-
-What tool from a past job, a field you studied, or an engineering practice would change how you approach your biggest current problem?
-
-## Go deeper
-
-- Perkins and Salomon, "Transfer of Learning" (International Encyclopedia of Education, 1992). Free at openlab.citytech.cuny.edu.
-- Wiggins and McTighe, *Understanding by Design*, the opening chapter on backward design.
-- Deck pp. 427 to 429 (landing zones and fitness functions).
-- Gick and Holyoak, "Analogical Problem Solving" (Cognitive Psychology, 1980) and "Schema Induction and Analogical Transfer" (Cognitive Psychology, 1983).
-- Schön, *The Displacement of Concepts* (1963), reissued in 1967 as *Invention and the Evolution of Ideas*.
-
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition, a 514-page set of slide notes; read only the pages cited. This card is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+- **Role-taking and role-making:** Role-taking is doing a new role as handed, and role-making is working out with your manager what it becomes.
+- **Lightweight and heavyweight product manager:** From a study of car development: a lightweight coordinates the work, and a heavyweight also holds the product's concept and answers for it.
+- **Conceptual integrity:** Fred Brooks's name for a product that reflects one set of design ideas, so its parts belong together.
+- **Glue work:** Tanya Reilly's name for the work that holds a team together and rarely shows on a roadmap.
 
 # The Concept Champion
 
-## The idea
-
-A product hangs together when someone holds its concept: who it's for, what it should be like to use, and what it won't do. In the 1980s Kim Clark, Bruce Chew and Takahiro Fujimoto studied 29 car development projects at 20 car makers in Japan, the United States and Europe. Most had what they called a lightweight manager, who coordinates the work "but has little influence over the content of the project". A few had a heavyweight, "not only a coordinator but a concept champion". The heavyweight projects used far fewer engineering hours (Clark, Chew and Fujimoto, 1987).
-
-Fred Brooks got to the same place from software. After managing IBM's System/360, he argued that a design needs conceptual integrity, and that it "must proceed from one mind, or from a very small number of agreeing resonant minds" (*The Mythical Man-Month*, 1975).
-
-The concept comes first, as a destination. For a hospital scheduling product it might read: "We're building this in order to get every patient an appointment within two weeks of referral, without a phone call." Then you work back from it: what would have to be true for us to get there?
-
-## Why a PM should care
-
-- **Product management isn't project management.** A project manager asks whether the work is on time, on budget and to specification. Those are good questions, and a product can pass all three and still be the wrong product. Project management's own researchers separate "the success of a project's process and that of its product" (McLeod, Doolin and MacDonell, 2012).
-- **You facilitate, and you aren't a facilitator.** A facilitator keeps the group working well and stays out of the content. You can't stay out of the content. In one experiment with students, groups left to reach consensus mostly repeated what everyone already knew: they picked the best option 18 percent of the time when the key facts were spread among the members, against 83 percent when everyone had them (Stasser and Titus, 1985).
-- **The lightweight job is where the role drifts if you let it.** Clark and Fujimoto describe the lightweight product manager's work as "to collect information on the status of work, to help functional groups resolve conflicts, and to facilitate completion of the project's overall goals" (1990). On its own it does no harm, and it adds little.
-- **A stated intent lets people act without asking you.** Marine Corps doctrine says the task tells you what to do and "the intent explains why". When the situation changes, the task can go stale, while the intent "is more lasting and continues to guide our actions" (MCDP 1, *Warfighting*, 1997).
-- **Extrapolating gets you the next step, which was coming anyway.** The energy analyst Amory Lovins made the case in 1976: a plan that "works backward from a strategic goal" shows you paths "invisible to anyone working forward in time". Name the destination, then ask what must be true to reach it.
-
-## How to spot it at work
-
-- Your week is status, notes and meetings, and you spend little of it with users or engineers.
-- You can say who asked for each item on the roadmap, but not what the product is for.
-- Time, budget and scope are all green, and nobody can say what changed for the user.
-- Two people disagree about direction, and your first move is to book a meeting, not to offer a position.
-- You can't finish "we're building this in order to ..." for the current release.
-
-## What it does not say
-
-It doesn't say you're a lone genius. Brooks himself writes that "often the fresh concept does come from an implementer or from a user", and a concept gets built with other people and corrected by them. It doesn't say your concept is right. At Microsoft, only about a third of the ideas tested by experiment improved the number they were built to improve (Kohavi and colleagues, 2009), so treat yours as a hypothesis. And it isn't about rank. The heavyweights in the study were senior people running whole vehicle programs. Hold the concept at your own level, inside the one above yours. If nobody gave you the purpose, ask for it.
-
-## One question to carry into your work
-
-Can you finish "we're building this in order to ...", and would your team finish it the same way?
-
-## Go deeper
-
-- Clark, Chew and Fujimoto, ["Product Development in the World Auto Industry"](https://www.brookings.edu/wp-content/uploads/1987/12/1987c_bpea_clark_chew_fujimoto_meyer_scherer.pdf) (Brookings Papers on Economic Activity, 1987), pp. 751 to 756, about 8 minutes. Free at brookings.edu. A field study, small and from one industry: only 4 of the 29 projects were heavyweight, most of them Japanese, and it measures engineering hours and lead time, not whether the car sold.
-- Clark and Fujimoto, ["The Power of Product Integrity"](https://hbr.org/1990/11/the-power-of-product-integrity) (Harvard Business Review, 1990). The same study written up for managers. The site limits how many articles you can read free.
-- U.S. Marine Corps, MCDP 1, *Warfighting* (1997), the sections "Mission tactics" and "Commander's intent", about 4 minutes. A public manual: doctrine, which is an institution's experience written down, not a study.
-- Stasser and Titus, "Pooling of Unshared Information in Group Decision Making" (Journal of Personality and Social Psychology, 1985). A laboratory experiment in which students chose among made-up candidates. The journal charges for it, and the abstract is enough.
-- Kohavi and colleagues, ["Online Experimentation at Microsoft"](https://ai.stanford.edu/~ronnyk/ExPThinkWeek2009Public.pdf) (2009). Free at ai.stanford.edu. A company report by the team that ran the experiments.
-- McLeod, Doolin and MacDonell, ["A Perspective-Based Understanding of Project Success"](https://arxiv.org/pdf/2101.05425) (Project Management Journal, 2012). The authors' free copy. Its review of the research is the part to read, about 5 minutes.
-- Amory Lovins, ["Energy Strategy: The Road Not Taken?"](https://rmi.org/app/uploads/2017/04/Energy-Strategy-The-Road-Not-Taken-Reprint-from-Foreign-Affairs-1976.pdf) (Foreign Affairs, 1976). A free reprint at rmi.org. An advocate's essay on energy policy, long, and better for the one idea than as a reading.
-
-*To check: the sources on this card were opened and its quotations checked on 20 November 2026, with two gaps. MCDP 1 was read on an archive.org copy, so check its wording against the official manual. Stasser and Titus was read on a university's course copy.*
-
-# Glue Work
+*Picture: A path drawn back from a flag on a hill to where the team stands.*
 
 ## The idea
 
-Some of the work that makes a team succeed never shows up on a roadmap: noticing that two teams are about to build the same thing, getting the right people talking, chasing the dependency nobody owns. Tanya Reilly, a software engineer, calls it glue work. Her case (2019) is that it's real technical leadership, that it often isn't the work people get promoted for, and that doing a lot of it too early can hold a career back.
+A product hangs together when someone holds its concept. Kim Clark and colleagues studied 29 car projects in the 1980s. Most had a lightweight manager, who coordinates "but has little influence over the content of the project". The few with a heavyweight, "not only a coordinator but a concept champion", used far fewer engineering hours. Fred Brooks calls the result conceptual integrity.
 
-Researchers call people who work across a team's edge boundary spanners, and the outward work counts. In Ancona and Caldwell's study of 45 new-product teams (1992), which the Agency and Coherence card also cites, the ones that kept to themselves rated their own work highly, and management rated them poorly.
+Hold the concept as a destination and work back from it: what would have to be true to get there?
 
 ## Why a PM cares
 
-- **A lot of your job is glue, so it's easy to do nothing else.** Connecting teams fills every gap in a week. The Concept Champion card says where that drifts: plenty of coordination, and nobody holding what the product is for.
-- **Keep doing the job you're measured on.** Role-Making grows your role by filling gaps nobody owns. If your own work slips while you fill them, people judge you by what slipped, and the next problem you raise carries less weight.
-- **Make it visible, and choose it.** Glue nobody sees can't be credited or handed on. Write down what you connected and what it unblocked, keep the glue that serves the product, and hand the rest back to its owner.
-- **Seeing the system isn't steering it.** On a streaming service you may be the only one who sees that a launch in a new country waits on the player team, rights and billing at once. That view doesn't let you move their dates. It lets you show the people who can.
+- **Product management isn't project management.** A project can be on time, on budget and to spec, and still be the wrong product.
+- **You facilitate, and you aren't a facilitator.** A facilitator stays out of the content, and you can't. Groups seeking consensus picked the best option 18 percent of the time when the key facts were spread among members, and 83 percent when all had them (Stasser and Titus, 1985).
+- **The concept needs a voice of its own.** The conductor in *Mozart in the Jungle* wants more than the right notes, and so should you.
 
 ## How to spot it
 
-- Your week is full, your own work is late, and nobody could say what filled it.
-- When you're out for a week, two teams stop talking.
-- You see a problem across three teams clearly, and you're frustrated that nobody acts on it.
+- You can say who asked for each roadmap item, but not what the product is for.
+- Time, budget and scope are green, and nobody can say what changed for users.
+- Your week is status updates and meetings.
 
 ## What it does not say
 
-It doesn't say stop: someone has to connect teams. It doesn't say all the glue is yours: some belongs to a manager or an engineering lead, and quietly doing it for them can hide a gap. And Reilly speaks mainly to engineers, who are judged on technical work. For you, more of the glue is the job, so the bigger risk is that it crowds out holding the concept.
+It doesn't make you a lone genius. Brooks writes that "often the fresh concept does come from an implementer or from a user."
 
-**One question to carry:** What glue are you doing that nobody can see, and what's it costing the job you were hired to do?
+**One question to carry:** Can you finish "we're building this in order to ...", and would your team finish it the same way?
 
 ## Go deeper
 
-**[Being Glue](https://www.noidea.dog/glue), Tanya Reilly (2019)**
+**[Product Development in the World Auto Industry](https://www.brookings.edu/wp-content/uploads/1987/12/1987c_bpea_clark_chew_fujimoto_meyer_scherer.pdf), Kim Clark, Bruce Chew and Takahiro Fujimoto (1987)**
 
-A conference talk and its written version. Free at noidea.dog.
+Read pages 751 to 756, about 8 minutes. Free at brookings.edu.
 
-**Why trust it:** A senior engineer's talk from experience, not a study. Read the career advice with your own role in mind.
+**Why trust it:** A field study, but small and from one industry: 4 of the 29 projects were heavyweight, most of them Japanese.
 
-**What you'll get:** How glue work goes unrecognized at promotion time, and what to do about it, for yourself and for people you manage.
+**What you'll get:** Where the term comes from, with both kinds of manager side by side.
 
-*To check: Being Glue was opened on 20 November 2026, and the summary, year, format and Reilly's role were checked against it. Still open: Ancona and Caldwell (Administrative Science Quarterly, 1992) is reported as the Agency and Coherence card has it, not reopened. Tushman, "Special Boundary Roles in the Innovation Process" (Administrative Science Quarterly, 1977), is the classic study of these roles, and nobody has opened it.*
+*To check: nobody has watched the Mozart in the Jungle scene, so check the line against the episode. Stasser and Titus was read on a university's course copy, so check its figures against the journal.*
+
+# Curious and Opinionated
+
+*Picture: At a table, one person holds a card face down while the others speak.*
+
+## The idea
+
+The job is to find out what's true, then act on it. Finding out takes curiosity: it's how you learn what nobody told you, like the spreadsheet a customer keeps open beside your product. Acting takes a view of your own, and judgment about when to use it.
+
+## Why a PM cares
+
+- **Have a view of your own.** Collect only what everyone wants and you ship the average. The conductor in *Mozart in the Jungle* won't settle for technically perfect playing: the best work has a voice of its own.
+- **Hold it back so you don't anchor the room.** A number people see first pulls their estimates toward it, which Tversky and Kahneman called anchoring (1974). They tested people alone, but your opening view can pull a room too.
+- **Trust a hunch only once it's earned it.** Kahneman and Klein agree that skilled intuition grows only where patterns repeat and feedback comes fast, and that feeling sure proves nothing. Look for three yeses:
+  - Have you made this kind of call often?
+  - Did you soon learn whether you were right?
+  - Is it the same kind of call, not a neighbor? Expertise is patchy.
+
+## How to spot it
+
+- You speak first in a workshop, and every idea after is a variation on yours.
+- A debate circles because nobody, you included, has put a proposal down.
+- The dashboard says the new lesson flow works, teachers say it doesn't, and nobody asks why.
+
+## What it does not say
+
+Trusting a hunch isn't ignoring data: ask what the data measures, then check the hunch against it.
+
+**One question to carry:** What do you think here, and would the room be better off hearing it first or last?
+
+## Go deeper
+
+**[Strategic decisions: When can you trust your gut?](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut), Daniel Kahneman and Gary Klein (2010)**
+
+An interview in *McKinsey Quarterly*, about 15 minutes. Free at mckinsey.com.
+
+**Why trust it:** Two researchers who long disagreed about intuition say where they agree.
+
+**What you'll get:** When an expert's gut deserves trust, from both sides of the argument.
+
+*To check: nobody has opened the interview (it returned an error twice on 20 November), so check the three yeses and what the card says of Kahneman and Klein against it. Nobody has watched the Mozart in the Jungle scene. Tversky and Kahneman (1974) is as the old draft had it, not reopened.*

@@ -1,89 +1,104 @@
+About 52 minutes: 22 reading, 30 doing (a 20-minute exercise and a 10-minute optional one).
+
+**If you only do one thing:** In your next plan, write down one way it could be wrong and the early signal you'd watch for.
+
 ## Why this matters
 
-Every plan rests on assumptions, and some of yours are probably wrong today. You don't know which yet. This module is about finding them early, in your thinking and your team's.
+Every plan rests on assumptions, and some of yours are probably wrong today. You don't know which yet, and you won't find out by feel. As the writer Kathryn Schulz points out, being wrong feels exactly like being right. So stop asking how to show you're right, and ask how you'd find out you're wrong. That takes habits, in your thinking and your team's: climbing down from a conclusion to what you saw, questioning the goal as well as the method, and making it safe for bad news to reach you. Once you've found something, telling the people who decide is the next module, Bring People With You.
 
-## Short path (about an hour and a half of reading, plus half an hour for the exercises)
+## The short path
 
-The deck is a 514-page set of workshop slide notes written for software architects, not a book, and you don't need most of it here. Read only the pages named, and only the parts named. Any term you don't know is defined under "Terms you will meet", below. If you split the path across two sittings, stop after step 3.
+1. **Ed Batista, "Racing Up the Ladder of Inference" (2014)**
 
-1. Deck p. 389 (5 minutes). Read the notes headed "Cognitive Biases" beneath the slide. Skip the slide and the references above the heading.
-2. Deck pp. 395 and 396 (10 minutes), then Ed Batista, ["Racing Up the Ladder of Inference"](https://www.edbatista.com/2014/02/racing-up-the-ladder-of-inference.html) (2014), about 10 minutes. Free at edbatista.com. On p. 395, look at the ladder on the slide and read the notes headed "Moving Up (and Down) the Ladder of Inference". On p. 396, read the two notes headed "Left Column, Right Column" and "Espoused Theory vs Theory in Use". Skip the rest.
-3. Deck pp. 400 to 403 (20 minutes). On p. 400, read the notes headed "We Need to Loop Back to That". On p. 401, read the slide. On p. 402, read the slide and the notes beneath it that begin "Put simply". On p. 403, read the definition on the slide and the notes headed "Safety Doesn't Mean 'Just Being Nice'". Skip the large side quotes on all four pages.
-4. Deck p. 398 (5 minutes). Read the notes headed "Repairing Blindspots" beneath the slide. Skip the rest.
-5. Deck pp. 455, 456 and 487 (12 minutes). On p. 455, read the three steps on the slide and the right-hand column of notes on quantifying and prioritizing risks. On p. 456, read the notes headed "Premortem". On p. 487, read the short note headed "Design Crit". Skip the rest.
-6. Deck pp. 491, 493 and 496 (15 minutes), then Michael Nygard, ["Consequences are not Pros or Cons"](https://www.michaelnygard.com/blog/2020/06/consequences-are-not-pros-or-cons/) (2020), about 3 minutes. Free at michaelnygard.com. On p. 491, read the slide and the notes headed "Architecture Decisions". On p. 493, read the notes headed "RFC Template". On p. 496, read the notes headed "Writing Things Down". Skip the rest.
+   10 minutes. Free at edbatista.com.
 
-## Full path
+   **Look for:** Each rung, and the questions that climb back down, such as "What assumptions am I making to fill in the gaps?" Judgments feel like facts because you climb so fast.
 
-- Kathryn Schulz, ["On being wrong"](https://www.ted.com/talks/kathryn_schulz_on_being_wrong) (TED2011), about 18 minutes. Free at ted.com.
-- Gary Klein, "Performing a Project Premortem" (*Harvard Business Review*, September 2007), about 15 minutes. It's the source of the premortem on deck p. 456.
-- Deck pp. 387, 390 to 394, 397, 404 to 411, 488, 489, 494, 495 and 497, on bias, error, design briefs and risk radars. About 90 minutes in all.
+   **Why trust it:** Batista is an executive coach who has taught at Stanford's business school. The ladder is Chris Argyris's, so this is a practitioner retelling it.
 
-## Terms you will meet
+   **What you'll get:** Questions to ask yourself in a meeting before you act on a conclusion.
+2. **Double-Loop Learning**
 
-- **Cognitive bias:** a predictable error in thinking that everyone makes, not a sign of carelessness.
-- **Hindsight bias:** after something goes wrong, the feeling that you knew it all along.
-- **Outcome bias:** judging a decision by how bad the result was, not by what was known when it was made.
-- **Ladder of inference:** Chris Argyris's model of how we climb from what we observe, through the data we pick out, the meaning we add and the beliefs we form, to action, usually without noticing the steps.
-- **Left-hand column:** an exercise from Argyris and Donald Schön. Beside what was said in a conversation, you write what you thought and felt but didn't say.
-- **Espoused theory and theory-in-use:** what we say guides our behavior, and what actually does, as others can see from our actions.
-- **Single-loop learning:** changing your actions to reach the same goal, like a thermostat switching the heat on and off.
-- **Double-loop learning:** questioning the assumptions and goals behind the actions, not just the actions.
+   Concept card. 2 minutes.
+
+   **Look for:** The difference between fixing the method and questioning the goal, and how Product X's bad news got softened on the way up.
+3. **Amy Edmondson, "How Fearless Organizations Succeed" (strategy+business, 2018)**
+
+   10 minutes. Free at strategy-business.com.
+
+   **Look for:** What psychological safety isn't. People say what they see, and the bar stays high: "It is not about becoming 'comfortable' at work."
+
+   **Why trust it:** Edmondson is the Harvard Business School professor whose research on teams made the idea widely known. This is her short version: the argument, not the studies.
+
+   **What you'll get:** What lets bad news reach you, from the researcher behind the idea.
+
+## Do
+
+**Run a premortem on your own work (20 minutes).** It's the psychologist Gary Klein's technique. Imagine it's a year from now and your main initiative has failed. Write at least five plausible reasons why, alone and before any discussion, as Simon Brown's risk storming asks. Rate each one low, medium or high for likelihood and for damage. For the top one, name a signal to watch for this month. Then ask whoever would see it break first, such as the on-call engineer: "If this failed, what would you bet the reason was?"
+
+**Optional: write a left-hand column (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the ladder, and rewrite it as a sentence you could have said, starting from what you saw.
+
+## Check yourself
+
+Answer in your head, then check.
+
+A planning doc says, "Field technicians don't trust the new alerts." Where is that on the ladder of inference, and what takes it back down?
+
+**Answer:** Near the top: it's a belief. Ask what was seen, by whom and how often. It may come down to two technicians at one site muting alerts through a week of false alarms.
+
+A streaming service's watch time is flat. One team retunes its recommendations to lift it. Another asks whether watch time is what keeps subscribers. Which is the double loop?
+
+**Answer:** The second. The first changes the method to hit the same goal. Only the second asks whether the goal is right.
+
+Why does a premortem say the project has already failed, and why does everyone write alone first?
+
+**Answer:** It turns "what might go wrong?" into "what did?", so doubting the plan becomes helping with the list. Writing alone keeps the most senior voice from setting everyone's list.
+
+## Go deeper: the full path
+
+Optional, and not counted in the time above.
+
+- **"Performing a Project Premortem," Gary Klein (*Harvard Business Review*, September 2007)** About 15 minutes, at hbr.org. **Why trust it:** Klein is a research psychologist who studies how experienced people decide under pressure, and the premortem is his. This is his short how-to for managers. **What you'll get:** The method from the person who devised it, and why assuming the failure brings out reasons that "what could go wrong?" doesn't.
+- **"On being wrong," Kathryn Schulz (TED2011)** About 18 minutes. Free at ted.com. **Why trust it:** Schulz is a journalist who wrote a book on the subject, *Being Wrong* (2010). It's a talk, so it argues and tells stories without showing evidence. **What you'll get:** Why being wrong feels like being right, and so why your certainty is a poor guide.
+- **"Double Loop Learning in Organizations," Chris Argyris (*Harvard Business Review*, September 1977)** An article, at hbr.org. **Why trust it:** Argyris set out single- and double-loop learning here for managers. His evidence is cases from his field studies of companies. **What you'll get:** Product X in full, and the norms that kept five people's warnings from reaching the top.
+- **"On Being a Senior Engineer," John Allspaw (2012)** Free at kitchensoap.com. Read the part on cognitive biases, a few minutes. **Why trust it:** Allspaw led engineering at Etsy and later studied how people handle incidents. It's a practitioner's essay, and the biases come from psychology research. **What you'll get:** The biases that bend a review after something breaks. You met hindsight bias with Cook in Module 1, and outcome bias judges a decision by how bad the damage was. Listen for "they should have".
+- **Risk Storming, Simon Brown** Free at riskstorming.com. Read the steps and the part on prioritizing risks. **Why trust it:** Brown is a software architecture consultant, and this is his own site for his own technique, so read it as an advocate's account. **What you'll get:** The Do's silent first step, done on a diagram of the system: everyone marks risks alone, then the group compares them and rates each one.
+
+*To check: nobody has opened Batista's post, Edmondson's article, Schulz's talk, Allspaw's essay or riskstorming.com yet. Check that each is free, the minutes given, the two quotations on the short path and Schulz's point as "Why this matters" puts it. The authors' backgrounds in the trust lines are from memory, as are Allspaw's year and Schulz's book. Find whether Klein's article is behind a paywall. The left-hand column's steps come from a version credited to Argyris and Schön with no work named: find the original before the rebuild.*
+
+## For the glossary
+
+- **Ladder of inference:** Chris Argyris's model of how you climb from what you notice to what you conclude and do, usually without seeing the steps.
+- **Double-loop learning:** Questioning a goal and the assumptions behind it, where single-loop learning only changes the actions that serve it.
 - **Psychological safety:** Amy Edmondson's term for a shared belief that it's safe to take interpersonal risks at work, such as raising a concern or admitting a mistake.
-- **Risk storming:** Simon Brown's workshop technique. People mark risks on a diagram of the system alone and in silence, then compare and prioritize them together.
 - **Premortem:** Gary Klein's technique of assuming a project has already failed and asking the team why.
-- **Design crit:** short for design critique, a review that raises questions and concerns about work in progress without attacking the people doing it.
-- **Architecture decision record (ADR):** a short note recording one decision and why you made it; see the decision record in Module 8, Decide and Set Direction.
-- **Request for comment (RFC):** a document that describes a problem and a few possible solutions, shared for comment before anyone decides.
-
-## What to look for
-
-- **Your judgments feel like facts.** On p. 395, notice Argyris's point: we reach them so fast we treat them as concrete. Batista's post gives you a question for each rung, so you can climb back down to the data.
-- **Bad outcomes rewrite history.** In Allspaw's list on p. 389, hindsight bias and outcome bias are the two to watch in any review. Listen for "they should have", and for blame that grows with the size of the damage.
-- **Fixing the action is not fixing the goal.** Pages 401 and 402 contrast tuning the method with questioning the assumptions behind the goal. Retuning a streaming service's recommendations to lift watch time is the first; asking whether watch time keeps subscribers is the second.
-- **Silence can become an organization's habit.** Argyris's 1977 example on p. 400 is a norm against challenging policies top management likes, and a second norm that nobody mentions the first. Edmondson's definition on p. 403 describes the opposite: people say what they see, and the bar stays high. For when to voice or hold back your own view, see the Curious and Opinionated card in Module 0, Own Your Role.
-- **Assume it has already failed.** Klein's premortem on p. 456 asks what did go wrong, not what might, and that makes it safer for doubters to speak. Risk storming on p. 455 adds a second protection: everyone writes risks alone, in silence, before anyone discusses them.
-- **Consequences before verdicts.** Nygard (p. 491 and his post) asks you to list how the future will differ before calling anything a pro or a con. Then ask what follows from each consequence.
-
-## Apply it to your own work
-
-1. Write a left-hand column, in about 15 minutes. Pick a recent meeting where you held back a concern, or where a decision went a way you doubted. Everyone has one. Follow the steps on deck p. 396: what was said goes in the right column, what you thought in the left. Then take one left-column thought down the ladder of inference: what did you actually see or hear, and what did you add? Rewrite it as one sentence you could have said, starting from the data.
-2. Run a premortem on your own work, in about 15 minutes. Imagine it's a year from now and your main initiative has failed. Alone and in silence, as risk storming asks, write at least five plausible reasons why. Rate each one low, medium or high for how likely it is and how much damage it would do (p. 455). For the top one, name an early signal you could watch for in the next month. A first pass from what you already know is fine. To test it, ask a colleague who knows the work, or whoever would see it break first, such as an on-call engineer: "If this failed, what would you bet the reason was?"
-
-## Check your own thinking
-
-The shift this module is after is from "how do I show I am right?" to "how would I find out I am wrong?" Test yourself against it: of your next three plans or proposals, count how many name one way you could be wrong and an early signal you'd watch for. You're aiming for three out of three. If you'd like a sounding board, take your premortem list to your manager or a mentor.
-
-Finding out is half the job. Saying what you found, so the people who decide can act on it, is the next module, Bring People With You.
-
-> Deck page references are to Ruth Malan's System Design and Software Architecture workshop notes, February to March 2025 edition. This guide is an independent companion; it has not been reviewed or endorsed by Ruth Malan.
+- **Left-hand column:** An exercise from Argyris and Donald Schön: beside what was said in a conversation, you write what you thought and felt but didn't say.
 
 # Double-Loop Learning
 
+*Picture: two loops from one result, a small one back to the action and a larger one back to the goal.*
+
 ## The idea
 
-Chris Argyris called organizational learning "a process of detecting and correcting error." Single-loop learning corrects the error and keeps the goal, like a thermostat switching the heat on when the room gets cold. Double-loop learning questions the goal itself, and the norms and assumptions behind it. A double-loop thermostat would ask, "Why am I set at 68 degrees?"
+Single-loop learning, in Chris Argyris's terms, corrects an error and keeps the goal, like a thermostat switching the heat on when the room gets cold. Double-loop learning questions the goal and the assumptions behind it. A double-loop thermostat would ask, "Why am I set at 68 degrees?"
 
-His 1977 *Harvard Business Review* article tells of Product X, which lost more than $100 million. At least five people knew it was in trouble six years before it was dropped, but their memos were softened and cut on the way up. Argyris called the cause "norms embedded within norms": don't confront policies top management is excited about, and don't openly confront the rule that tells you so.
+His 1977 article tells of Product X, which lost more than $100 million. At least five people saw the trouble six years before it was dropped, but their memos were softened on the way up. Argyris blamed "norms embedded within norms": don't confront policies top management is excited about, and don't openly confront that norm either.
 
 ## Why a PM cares
 
-- **Most of your feedback loops are single loop.** Retros, experiments and incident reviews tune the method and leave the goal alone. A claims team that keeps cutting days off insurance payouts may never ask whether speed is what claimants wanted. You're often the one placed to ask.
-- **Bad news waits for a fix.** The people closest to Product X knew "bad news would not be well received at the upper levels if it was not accompanied by suggestions for positive action." If engineers and support tell you first, that's where the softening starts.
-- **Successful people learn worst from failure.** Argyris found that when professionals' "single-loop learning strategies go wrong, they become defensive, screen out criticism, and put the 'blame' on anyone and everyone but themselves." Most of us do it. When a launch misses, check whether every reason you list sits outside your team.
-- **Use his other tools.** The left-hand column and the ladder of inference, earlier in this module, help you find the assumption under a goal.
+- **Most of your feedback loops are single loop.** A claims team cutting days off insurance payouts may never ask whether speed is what claimants want, and you're often the one placed to ask.
+- **Bad news waits for a fix.** Product X's people knew "bad news would not be well received at the upper levels if it was not accompanied by suggestions for positive action." Ask only for problems with solutions attached, and the softening starts with you.
 
 ## How to spot it
 
-- Every retro ends with a tweak to the process. None has asked "should we be doing this at all?"
-- On a telecom network rollout, every slip brings a plan to speed up the crews, and nobody asks whether the coverage target still fits.
-- The real reason a project is struggling gets said in the corridor after the meeting.
+- Every retro ends with a process tweak, and none asks "should we be doing this at all?"
+- The real reason a project is struggling gets said in the corridor afterward.
 
 ## What it does not say
 
-It does not say single-loop learning is bad: Argyris argued that the capacity for double loop "does not inhibit single loop learning; indeed, it usually helps it." It doesn't mean reopening the goal every week. And an off-site where everyone levels with each other won't fix it for long. Of such workshops he wrote, "After a month or so back at home, the spirit seems to wane."
+It does not say single-loop learning is bad. Argyris argued that the capacity for double-loop learning "usually helps it": a team that can question its goal also gets better at the everyday fixes.
 
-**One question to carry:** Which assumption behind your team's goal hasn't been questioned since it was set, and who would tell you if it were wrong?
+**One question to carry:** Which assumption behind your team's goal has nobody questioned since it was set?
 
 ## Go deeper
 
@@ -91,8 +106,8 @@ It does not say single-loop learning is bad: Argyris argued that the capacity fo
 
 A *Harvard Business Review* article, about 30 minutes. Paywalled at hbr.org.
 
-**Why trust it:** Argyris coined the terms. The article draws on his 15 years of studying management consultants: field cases from one profession, not controlled experiments.
+**Why trust it:** Argyris coined the terms. The article draws on his 15 years studying management consultants: field cases from one profession, not experiments.
 
-**What you'll get:** A team meeting that goes wrong line by line, then rewritten so you can hear what questioning your own reasoning sounds like.
+**What you'll get:** Why smart people get defensive when they're wrong, with a meeting rewritten line by line.
 
 *To check: both articles are paywalled (the 1977 one is at hbr.org/1977/09/double-loop-learning-in-organizations). Their full text was readable in the page source on 20 November 2026, and the quotations were copied from it. Confirm them against the printed articles, and decide whether a card should point behind a paywall.*
