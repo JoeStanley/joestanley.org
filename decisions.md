@@ -2,6 +2,16 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, round 3's cards, and the session after them
+
+- Round 3 waits for that proposal, so Change Safely and Weigh the Evidence are built once (his pick, in the session).
+- It starts with a proposal across all twelve modules, built and draft: where each should ask who's affected, who's missing from the data and who bears the cost, as a line, a question, a source or a step, with its sources opened and checked. It comes to him as cards, one per module, before more rebuilds (his pick, in the session).
+- He wishes the curriculum carried more intersectional analysis and ethics consideration, instead of it being a single module (in the session, which is why he waited to pick a book for Weigh the Evidence).
+- "Data-informed, not data-driven" is credited to Adam Mosseri's 2010 talk, where Andrew Chen says he heard it. Nothing of Chen's is linked, since his site now sends readers to Substack (his pick, in the session).
+- Spiegelhalter's *The Art of Statistics* takes the book's place on Weigh the Evidence's full path, beside Muller, the Munro Review, Dawes, Faust and Meehl, and *The Big Short* (agree, in the session, from *Data Feminism* and *The Art of Statistics*, the two he named).
+- Change Safely's full path holds four things: Kohavi, Tang and Xu's *Trustworthy Online Controlled Experiments* (chapters 6, 7 and 15), Shostack's *Threat Modeling* (Part I) in the Threat Modeling Manifesto's place, Sculley and colleagues' "Hidden Technical Debt in Machine Learning Systems", and *Ford v Ferrari*. Snowden and Boone leave, and their idea, experiments that are safe to fail, keeps a line in the module (agree, card `full-path-6-books`).
+- *Thinking, Fast and Slow* stays off Weigh the Evidence's full path: it draws a lot of critiques, and even though they're largely against its details, not its core lessons, they tarnish the whole book. He asked about *Data Feminism* or *The Art of Statistics* in its place (something else, agree, card `full-path-7-books`).
+
 ## 21 November 2026, the round 2 session
 
 - James C. Scott's *Seeing Like a State* takes the fifth place on Design for Change's full path, from the options put to him: its introduction, chapter 1 and chapter 10, whose four rules for planners are "Take small steps", "Favor reversibility", "Plan on surprises" and "Plan on human inventiveness" (his pick, in the session).
