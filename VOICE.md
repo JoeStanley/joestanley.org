@@ -2,7 +2,7 @@
 
 How On Product Judgment should sound. Read this before you write or revise any unit. The rules a check can hold are in `tests/SPEC.md` (E1 to E4); this page is the reasoning and the examples behind them.
 
-It covers the syllabus only. The front door, the ReadMe and Writing are Joe's own voice and are his to write. So are the margin notes.
+It covers the syllabus only. The front door, the ReadMe and Writing are Joe's own voice and are his to write. So are the margin notes, where a session fixes only typos and house rules: they're meant to be looser, more casual and tangential than the rest, so this guide doesn't apply to them. Inside a unit, though, his own sentences and suggestions are a direction: revise them in minor ways where that makes the unit hold together or read more clearly, and ask him where you hesitate. He found earlier sessions keeping his exact words at the cost of the whole (21 November 2026).
 
 On 20 November 2026 Joe asked for what fits from the voice guide he keeps for another project. Rules 10 to 12, "Across a list" and the last three points of "How to revise a unit" come from it, recast for a mentor's syllabus. Its rules for fiction stay there.
 

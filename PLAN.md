@@ -32,7 +32,7 @@ What comes next for joestanley.org and On Product Judgment, and where the work s
 
 ### Joe's input not yet carried out
 
-- **His editing pass of 21 November** (pm-sources `notes/2026-11-21-joes-editing-pass.md`): its margin notes for Modules 4 to 11, word for word, each at its module's rebuild; the simpler entries for Modules 4 to 11, at each rebuild (he agreed, card `simpler-entries`).
+- **His editing pass of 21 November** (pm-sources `notes/2026-11-21-joes-editing-pass.md`): its margin notes for Modules 4 to 11, word for word but for typos and house rules, each at its module's rebuild; the simpler entries for Modules 4 to 11, at each rebuild (he agreed, card `simpler-entries`).
 - His ranking for Find the Constraint (21 November, in the session): of Goodhart's Law, the five focusing steps and the dice game, the dice game adds the least, though he loves the interactive element. Nothing to do now; if that module ever needs a cut, ask him before touching the game.
 - His card picks for Design for Change, Weigh the Evidence and Bring People With You, and Argyris kept as Double-Loop Learning's source behind its paywall: each at its module's rebuild ("For each rebuild").
 - His cuts to the full paths (`decisions.md`, 21 November), each at its module's rebuild, where it fits S12; the module's prep says which.
@@ -71,7 +71,7 @@ Done by a run, so the session that rebuilds a module starts from checked facts. 
 
 - Work from the module's prep note. Read the draft, its tab's comments and his edits there.
 - Where a module carried two cards, keep the one Joe picked (`decisions.md`, 21 November) and give the other its line in the module. Then rewrite any Check question or exercise that rested on the card that went: the cold read of 21 November found some in Modules 5, 7 and 11. Own Your Role's is done in its draft. Read, too, the research tab in the doc's frozen Notes that goes with it, if any: the concept champion (Module 0), agency and cohesion (now in Module 8), value created, value captured (Module 9).
-- Place Joe's margin notes for the module, word for word, beside the paragraph or source each is about (pm-sources `notes/2026-11-21-joes-editing-pass.md`), and answer each one's thread.
+- Place Joe's margin notes for the module, word for word but for typos and house rules (`CLAUDE.md`), beside the paragraph or source each is about (pm-sources `notes/2026-11-21-joes-editing-pass.md`), and answer each one's thread.
 - Change Safely: its short path teaches DORA's four delivery measures, which *Accelerate* on Find the Constraint's full path now picks too. Point back to Module 2 rather than teach them as new (job 8's second cold read).
 - Make the full path Joe picked on the module's card, so it holds five things at most, its story included (S11), and at least two books (S12). Each book's entry opens "A book" or "A textbook" and names the chapters to read, or says to read it whole. Where the cut takes the last trace of an idea, give it a line or say so.
 
