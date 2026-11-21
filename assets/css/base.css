@@ -209,6 +209,10 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
    to the margin, in the owner's hand. */
 .note { display: block; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
 .note b, .note strong { color: var(--ink); font-weight: var(--w-strong); }
+/* Wherever a note folds into the text, "Sidenote:" sits on its own line above it, in the label type, so a reader who
+   can't see a margin still knows it's an aside in the owner's voice. In the margin only a screen reader meets it, as
+   it does every note (spec M1, M3; the owner's word, 21 November 2026). */
+.note-label { display: block; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
 /* A note beside one paragraph follows it in the text, so on a phone and in print it folds in under that paragraph;
    on a wide screen it sits level with it in the margin, at its top, or at its foot when placed lower (spec M1). */
 .noted { position: relative; }
@@ -255,6 +259,7 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
   }
   .reading .noted > .note { position: absolute; top: 0; right: calc(-1 * (var(--margin) + var(--gutter))); margin: 0; }
   .reading .noted > .note-foot { top: auto; bottom: 0; }
+  .reading .note .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   /* The front door: the photo sits in the margin column, beside the name; narrow screens keep it above. */
   .door-inner { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gutter); align-items: center; }
   .door-photo { grid-column: 2; grid-row: 1 / span 4; width: 13rem; height: 13rem; justify-self: start; }

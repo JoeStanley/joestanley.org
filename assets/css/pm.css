@@ -133,11 +133,14 @@
 .example thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
 
 /* Go deeper: folded until asked for. */
-.deeper summary { list-style: none; cursor: pointer; padding: 0 0 var(--sp-4); }
-.deeper summary::-webkit-details-marker { display: none; }
-.deeper summary h2 { display: inline; margin: 0; }
-.deeper summary::after { content: "Open"; content: "Open" / ""; float: right; margin-top: var(--sp-1); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--orange); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-.deeper details[open] summary::after { content: "Close"; content: "Close" / ""; }
+/* Its Open and Close label is the full path's own, set at the right on the line under the hint, inside the heading's
+   box: it draws nothing over the sources below and narrows or pushes none of them, and the disclosures inside the
+   full path keep their own marks (spec R10). */
+.deeper > details > summary { list-style: none; cursor: pointer; padding: 0 0 var(--sp-4); }
+.deeper > details > summary::-webkit-details-marker { display: none; }
+.deeper > details > summary h2 { display: inline; margin: 0; }
+.deeper > details > summary::after { content: "Open"; content: "Open" / ""; display: block; margin-top: var(--sp-1); text-align: right; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--orange); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.deeper > details[open] > summary::after { content: "Close"; content: "Close" / ""; }
 .deeper-hint { display: block; margin-top: var(--sp-1); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
 .deeper-list { list-style: none; margin: 0; padding: 0; }
 .deeper-list > li { padding: var(--sp-4) 0; border-top: 1px solid var(--rule); }
@@ -212,7 +215,9 @@
      but in the margin it sits level with the title, and takes no room in the column. */
   /* Where :has() is missing, a step's note stays in the column, under its step, as on a phone. */
   .reading .step > .note { float: none; width: auto; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); grid-column: 2; }
+  .reading .step > .note .note-label { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; }
   @supports selector(:has(a)) {
+    .reading .step > .note .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .step:has(> .note) { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
     .step:has(> .note) { grid-template-columns: var(--tick) minmax(0, 1fr) calc(var(--margin) + var(--gutter) - var(--sp-4)); }
     /* A step or source with a note starts below any note still running down the margin from above, so notes never meet. */
@@ -268,14 +273,16 @@
   .game .example { display: block !important; }
   .game .takeaway { display: block !important; }
 
-  .deeper summary::after { display: none; }
-  .deeper summary { break-inside: avoid; break-after: avoid; }  /* the full path's heading stays with its first source */
+  .deeper > details > summary::after { display: none; }
+  .deeper > details > summary { break-inside: avoid; break-after: avoid; }  /* the full path's heading stays with its first source */
   .deeper details::details-content { content-visibility: visible !important; display: block !important; }
   .deeper-list > li { break-inside: avoid; }
 
   /* A module prints as a wide screen shows it (spec M1): the text in two thirds of the page and the owner's notes in
      the margin column beside it, in his hand. Letter's 6.9in of text width gives 4.6in of text, 0.3in of gutter and
-     2in of margin. Start, the cards and the glossary keep the full width, and a note there folds in under its part. */
+     2in of margin. Start, the cards and the glossary keep the full width, and a note there folds in under its part, in
+     his hand too, so his notes look alike everywhere in the PDF (the owner, 21 November 2026). */
+  .note { font-family: "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; }
   .module { --margin: 2in; --gutter: 0.3in; }
   .module .reading { padding-right: calc(var(--margin) + var(--gutter)); }
   .module .reading .note {
@@ -291,9 +298,13 @@
   .module .reading .noted { break-inside: avoid; }
   .module .reading .noted > .note { position: absolute; top: 0; right: calc(-1 * (var(--margin) + var(--gutter))); float: none; margin: 0; }
   .module .reading .noted > .note-foot { top: auto; bottom: 0; }
-  /* A step's note sits level with its title in a third column, as on a wide screen; without :has() it stays under it. */
+  .module .reading .note .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  /* A step's note sits level with its title in a third column, as on a wide screen; without :has() it stays under it,
+     labeled. */
   .module .reading .step > .note { float: none; width: auto; margin: var(--sp-2) 0 var(--sp-3); }
+  .module .reading .step > .note .note-label { position: static; width: auto; height: auto; overflow: visible; clip-path: none; white-space: normal; }
   @supports selector(:has(a)) {
+    .module .reading .step > .note .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
     .module .step:has(> .note), .module .deeper-list > li:has(> .note) { clear: right; }
     .module .step:has(> .note) { margin-right: calc(-1 * (var(--margin) + var(--gutter))); grid-template-columns: var(--tick) minmax(0, 1fr) calc(var(--margin) + var(--gutter) - var(--sp-4)); }
     .module .reading .step > .note { grid-column: 3; grid-row: 1 / span 8; align-self: start; margin: 0 0 0 calc(var(--gutter) - var(--sp-4)); }

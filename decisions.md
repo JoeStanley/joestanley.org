@@ -2,6 +2,12 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, the Decisions page that night, and the job 8 session
+
+- Each module's full path spans the whole reading column, like the rest of the module, so his notes beside its sources line up with the rest of the margin (agree, card `full-path-width`).
+- A note on Start, a concept card or the glossary prints where it does now, folded in under its part, but in his hand, so his notes look alike everywhere in the PDF (agree, card `print-notes-elsewhere`).
+- Wherever a note folds into the text or is read aloud, anywhere a reader can't see that it mirrors marginalia, an explicit label goes before it (his note on that card). He chose the word in the session: "Sidenote:".
+
 ## 21 November 2026, the Decisions page that evening
 
 - Every later rebuild writes its source entries the way Own Your Role and Mind the Seams now do: what it is in a word or two, where to start, and why to trust it in a sentence, with no page count, running time, edition or "borrow or buy". Job 8 brings Modules 1 and 2's entries in line (agree, card `simpler-entries`).
