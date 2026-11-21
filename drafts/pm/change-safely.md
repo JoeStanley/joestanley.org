@@ -1,4 +1,4 @@
-About 48 minutes: 18 reading, 30 doing (a 20-minute exercise and a 10-minute optional one).
+About 54 minutes: 24 reading, 30 doing (a 20-minute exercise and a 10-minute optional one).
 
 **If you only do one thing:** Write a one-page rollout plan for your next change, and include how you'd switch it off.
 
@@ -28,7 +28,16 @@ First, though, know how good it has to be, in words engineers can test: "When 50
    **Why trust it:** Hodgson is an engineer explaining how the thing works, on Martin Fowler's site. It's practice, not research.
 
    **What you'll get:** The mechanics behind "released to 1 percent of customers", so you can ask your engineers sharp questions.
-3. **Error Budgets**
+3. **DORA, "DORA's software delivery performance metrics" (Google Cloud)**
+
+   6 minutes. Free at dora.dev.
+
+   **Look for:** Which of the five measures show throughput and which show instability.
+
+   **Why trust it:** It sums up the findings of Google Cloud's research program and leaves the evidence to its yearly reports.
+
+   **What you'll get:** Names for the five measures, so you can ask for your own team's numbers.
+4. **Error Budgets**
 
    Concept card. 2 minutes.
 
@@ -42,7 +51,7 @@ First, though, know how good it has to be, in words engineers can test: "When 50
 2. The goal measure you hope it raises.
 3. The guardrail metrics, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop.
 4. Who can switch it off, and how fast.
-5. The error budget it might spend. If your team has no reliability target, name who could set one.
+5. The error budget it might spend.
 
 Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
 
@@ -51,7 +60,6 @@ Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand th
 ## Questions to bring to engineers
 
 - Do we measure this quality today, and what's its 99th percentile?
-- Who agreed our reliability target, and what happens when the error budget runs out?
 - What can go wrong, and what are we going to do about it?
 - If this model were quietly wrong next month, what would tell us?
 
@@ -61,11 +69,11 @@ Answer in your head, then check.
 
 Your team has error budget left this quarter. What does that let you do, and what happens once it's spent?
 
-**Answer:** You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop: Google's example policy, on the card, halts changes except urgent fixes.
+**Answer:** You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
 
 What's the difference between deploying a change and releasing it?
 
-**Answer:** Deploying puts the code into production, and releasing turns the feature on for customers. A toggle separates the two, so you can release to a small cohort and switch it off without redeploying.
+**Answer:** Deploying puts the code into production, and releasing turns the feature on for customers. A toggle lets you do them at different times.
 
 On a marketplace, a new search ranking raises orders per visit in a test. Why might you still stop the test?
 
@@ -76,7 +84,6 @@ On a marketplace, a new search ranking raises orders per visit in a test. Why mi
 Optional, and not counted in the time above.
 
 - **Trustworthy Online Controlled Experiments, Ron Kohavi, Diane Tang and Ya Xu (Cambridge University Press, 2020)** A book. Read its chapters on metrics. **Why trust it:** The authors led experimentation at Microsoft, Google and LinkedIn, and a university press published it. It's a practical guide to A/B testing, written from inside large online businesses. **What you'll get:** The full treatment of metrics for experiments: goal measures, guardrails, and how to combine them into one overall evaluation criterion.
-- **"DORA's software delivery performance metrics," DORA (Google Cloud)** A short guide, about 6 minutes. Free at dora.dev. **Why trust it:** It sums up the findings of Google Cloud's research program and leaves the evidence to its yearly reports. **What you'll get:** Names for the five delivery measures, sorted into throughput and instability, so you can ask for your own team's numbers.
 - **"A Leader's Framework for Decision Making," David Snowden and Mary Boone (Harvard Business Review, November 2007)** An article. **Why trust it:** Snowden created the Cynefin framework, and this is his account of it for managers, written with Boone. It argues from cases, so read it as a framework, not a finding. **What you'll get:** A way to tell a complex situation, where nobody can work out the answer ahead of time and small experiments that are safe to fail are the right move, from one where analysis or good practice will do.
 - **Threat Modeling Manifesto** Free at threatmodelingmanifesto.org, about 5 minutes. Threat modeling means thinking through what could go wrong with a system before it's built or changed, and the manifesto puts it in four questions: "What are we working on?", "What can go wrong?", "What are we going to do about it?" and "Did we do a good enough job?" **Why trust it:** A working group of 15 practitioners in security and privacy threat modeling wrote it. It's a set of values and principles, not a method. **What you'll get:** Four questions that need no security training, to open a conversation with a security engineer while the design can still move.
 - **"Hidden Technical Debt in Machine Learning Systems," D. Sculley and nine co-authors (NeurIPS, 2015)** A conference paper. Free at proceedings.neurips.cc. **Why trust it:** It was presented at NeurIPS, a machine learning conference, and all ten authors were at Google when it was published. The tools it mentions are dated, so skim past them. **What you'll get:** Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and "changing anything changes everything".
