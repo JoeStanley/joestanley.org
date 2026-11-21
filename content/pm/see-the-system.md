@@ -65,6 +65,11 @@ deeper:
     note: "Read chapters 1, 4 and 5: The Basics, Why Systems Surprise Us, and System Traps and Opportunities."
     trust: Her primer for general readers, drafted in 1993. Colleagues edited and published it in 2008, after her death.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
+  - title: The Wire
+    by: created by David Simon (HBO, 2002 to 2008)
+    where: A TV series, 60 hour-long episodes over five seasons.
+    note: "Start with season 1, or jump to season 3. There a police major makes three zones where drug dealing is tolerated, and his district grows peaceful, until the institutions around him shut it down. In season 4, episode 9, a former detective now teaching math sees his old job in the new one: \"You juke the stats, and majors become colonels. I've been here before.\""
+    only: Structure driving behavior, at the scale of a city. The police, the drug trade, the port, city hall and the schools each run on their own rules, and the people inside them, doing what makes sense where they stand, keep each one making what nobody wants.
 ---
 
 ## Why this matters

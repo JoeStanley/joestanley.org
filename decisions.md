@@ -6,6 +6,8 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his answers on the Decisions page and his comments in the working doc that night.
 
+- He chose each module's story himself, in the session, from options set against his own touchstones (the list he keeps for Mesmir): he wants them to reflect his own preferences, not something generic. See the System, *Chernobyl*. Mind the Seams, *Halt and Catch Fire*. Map the Domain, *Brazil*. Design for Change, *Yes Minister* ("Big Brother"). Change Safely, *Ford v Ferrari*. Weigh the Evidence, *The Big Short*. Decide and Set Direction, *Ocean's Eleven*. Answer for What You Build, *The Good Place* ("The Book of Dougs"). Notice When You Are Wrong, *Arrival*. Bring People With You, *Ted Lasso* and *Succession*, together.
+- *Ted Lasso* and *Succession* go on Bring People With You's full path as one entry, a pair to compare and contrast. It counts as two of the five, and *The Trusted Advisor* goes to make room (his pick, in the session).
 - Every full path carries one entertaining story, fiction or a story in another medium, that reinforces its module's lesson. Where a full path has no room, something is cut to make room. A curriculum only of dry reading is less engaging, and the entertainment is what makes a lesson stick: many people look to the fictional Captain Jean-Luc Picard as an exemplary manager.
 - A story on the full path is there as reinforcement, not evidence, so it isn't forced to say why to trust it.
 - A full path recommends five things at most. A list that needs a cut comes to him with a recommendation of what to cut, so he can review the whole and decide.

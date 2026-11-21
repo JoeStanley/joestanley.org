@@ -4,6 +4,8 @@ About 65 minutes: 30 reading, 35 doing (a 25-minute exercise and a 10-minute opt
 
 ## Why this matters
 
+Tabletop role-playing games have a rule zero, which stands above every rule in the book. This module is the syllabus's rule zero. The others teach parts of the job, and this one is the job.
+
 You'll start every PM role by taking it as described. Once you see the system around you, grow the role toward value nobody assigned.
 
 Two versions of the job look real and aren't. In one, you run the project: dates, status, who's blocked. In the other, you run the room and average what everyone wants. You'll do plenty of both, but the job is the product's concept: what it's for and where it's going. Shape it, spread it until the team can say it too, and work back from it. If you don't name the destination, usually nobody does.

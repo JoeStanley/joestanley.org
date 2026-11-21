@@ -1445,7 +1445,7 @@ CONTRACTIONS = [  # (the full form, where a speaker could contract it; the contr
 
 
 # S10: an entry that opens with one of these media is a story (fiction, or a story told on screen or stage)
-STORY = re.compile(r"(?:An? )?(?:novel|novella|short story|graphic novel|comic|(?:TV |television |streaming )?series(?! of)|film|documentary|play)\b", re.I)
+STORY = re.compile(r"(?:An? |A pair of |Two )?(?:novel|novella|short story|graphic novel|comic|(?:TV |television |streaming )?series(?! of)|film|documentary|play)\b", re.I)
 
 
 def _own_words(md):
@@ -1581,7 +1581,7 @@ def source_checks(out_dir):
                 m_ = re.match(r"- \*\*(.+?)\*\*(?!\*)\s*(.*)", entry, re.S)
                 if not m_:
                     continue
-                count += 1
+                count += 2 if re.match(r"(?:A pair of|Two) ", m_.group(2)) else 1
                 if STORY.match(m_.group(2)):
                     title = re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50]
                     stories.append(title)

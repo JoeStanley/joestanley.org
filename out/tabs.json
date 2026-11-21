@@ -1,0 +1,92 @@
+[
+ {
+  "name": "About",
+  "file": "about.md",
+  "sha256": "21f7e8b26fdcdf59eddd394e3b271183be097e84e68077a4bc32df6253c2aff0",
+  "in_step": true
+ },
+ {
+  "name": "Start",
+  "file": "start.md",
+  "sha256": "e12718037a3d86eeca35db4a84e9ebd60743d5fa9b1b746377393780bbe699ed",
+  "in_step": true
+ },
+ {
+  "name": "0 Own Your Role",
+  "file": "0-own-your-role.md",
+  "sha256": "5597fa1175b8743071d41dfddfaf96ee1e9c5c11cffc5f760097d4cc393366be",
+  "in_step": false
+ },
+ {
+  "name": "1 See the System",
+  "file": "1-see-the-system.md",
+  "sha256": "74bb264f66f9f805721aa4afff00c0ca6dae7962ad12eb8cecf70e626dbad3aa",
+  "in_step": false
+ },
+ {
+  "name": "2 Find the Constraint",
+  "file": "2-find-the-constraint.md",
+  "sha256": "daa03db7707c2314f87e54c0abf3bab703a60c789bc835e1fb1125c508381dc8",
+  "in_step": false
+ },
+ {
+  "name": "3 Mind the Seams",
+  "file": "3-mind-the-seams.md",
+  "sha256": "38328192000645dcc98ee77ec3ab3d97097f853440c6acd425fa4a749549eb81",
+  "in_step": false
+ },
+ {
+  "name": "4 Map the Domain",
+  "file": "4-map-the-domain.md",
+  "sha256": "dc4865e3d75d5f11f61588e99a84be2097824ad7de066c001e757f63f3a5970d",
+  "in_step": false
+ },
+ {
+  "name": "5 Design for Change",
+  "file": "5-design-for-change.md",
+  "sha256": "f8aa05aad46ff8d228dcbcbc8ebe0944a725ec63fde7827f315bce7fe81b53bd",
+  "in_step": false
+ },
+ {
+  "name": "6 Change Safely",
+  "file": "6-change-safely.md",
+  "sha256": "1ee3ad8b34c60d7a46c56e505579a87eb9ed53870e42a17ba84fa935053aa29b",
+  "in_step": false
+ },
+ {
+  "name": "7 Weigh the Evidence",
+  "file": "7-weigh-the-evidence.md",
+  "sha256": "7504c37ceb01fc28d9640463d82ba1aed121155f3413bceae9dc651b68fb365b",
+  "in_step": false
+ },
+ {
+  "name": "8 Decide and Set Direction",
+  "file": "8-decide-and-set-direction.md",
+  "sha256": "cc9debe6384ad89b9eb8e085372ce8e7f98c66edc18b964047dd249b1ac90d90",
+  "in_step": false
+ },
+ {
+  "name": "9 Answer for What You Build",
+  "file": "9-answer-for-what-you-build.md",
+  "sha256": "cb77c02598483a3c99d5a783ba8892dcfb4fedc6318f87c4881893f746e686a7",
+  "in_step": false
+ },
+ {
+  "name": "10 Notice When You Are Wrong",
+  "file": "10-notice-when-you-are-wrong.md",
+  "sha256": "6c148e201edcf7464c2544fc478e763d4aca6382aceca39e3b44f5bc9b50fc1e",
+  "in_step": false
+ },
+ {
+  "name": "11 Bring People With You",
+  "file": "11-bring-people-with-you.md",
+  "sha256": "c894242f6b08b747d9a28415ad3e7ea1c220e851ac0135a6bea7b457c79ca712",
+  "in_step": false
+ },
+ {
+  "name": "Glossary",
+  "file": "glossary.md",
+  "sha256": "65f2da4ab6c0dc4b38405bd6da4049ecf5daa163d90be19503f521c91b357671",
+  "in_step": true
+ }
+]
