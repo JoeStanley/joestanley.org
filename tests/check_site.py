@@ -406,8 +406,9 @@ def check_static():
                 fail("S2", f"{rel}: step {step.get('id')} lacks trust or only")
         deeper = fm.get("deeper")
         for d in (deeper if isinstance(deeper, list) else [deeper] if deeper else []):
-            if not (d.get("trust") and d.get("only")):
-                fail("S2", f"{rel}: further reading {d.get('title')} lacks trust or only")
+            story = STORY.match(d.get("where") or "") and not re.match(r"(?:An? )?documentary", d.get("where") or "", re.I)
+            if not (d.get("only") and (story or d.get("trust"))):
+                fail("S2", f"{rel}: further reading {d.get('title')} lacks " + ("what you'll get" if story else "trust or only"))
     for key in used - set(glossary):
         fail("S3", f"term {key} is used but not in the glossary")
     for key in set(glossary) - used:
@@ -1473,7 +1474,7 @@ def _sections(md, names):
 
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10")
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -1568,15 +1569,32 @@ def source_checks(out_dir):
         for sec in _sections(text, {"Why this matters", "Why a PM cares", "Why a PM should care"}):
             if not re.search(r"\byou(r|'re|'ll|'ve|'d)?\b", sec, re.I):
                 fail("E1", f"{name}: a section that should speak to the reader never says \"you\": {sec.strip()[:50]}")
-        # S10: a full path carries one story at most, its entry opening with its medium
-        for sec in _sections(text, {"Go deeper: the full path"}):
-            stories = []
+        # S10: every full path carries one story, its entry opening with its medium; a story says what
+        # you'll get and carries no "Why trust it" (a documentary may). S11: a built module's full path
+        # recommends five things at most, the story included.
+        paths = _sections(text, {"Go deeper: the full path"})
+        if name not in ("About",) and re.match(r"\d+ ", name) and not paths:
+            fail("S10", f"{name} has no full path, so it carries no story")
+        for sec in paths:
+            stories, count = [], 0
             for entry in re.split(r"\n(?=- \*\*)", sec):
                 m_ = re.match(r"- \*\*(.+?)\*\*(?!\*)\s*(.*)", entry, re.S)
-                if m_ and STORY.match(m_.group(2)):
-                    stories.append(re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50])
+                if not m_:
+                    continue
+                count += 1
+                if STORY.match(m_.group(2)):
+                    title = re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50]
+                    stories.append(title)
+                    if "Why trust it:" in entry and not re.match(r"(?:An? )?documentary", m_.group(2), re.I):
+                        fail("S10", f"{name}: the story {title} carries a \"Why trust it\", and a story is there to make the lesson stick, not as evidence")
+                    if "What you'll get:" not in entry:
+                        fail("S10", f"{name}: the story {title} doesn't say what you'll get")
             if len(stories) > 1:
                 fail("S10", f"{name}: the full path carries {len(stories)} stories, and one is the most: {'; '.join(stories)}")
+            if not stories:
+                fail("S10", f"{name}: the full path carries no story, and every full path carries one")
+            if name in built_tabs and count > 5:
+                fail("S11", f"{name}: the full path recommends {count} things, and five is the most")
         own = _own_words(text)
         full = sum(len(re.findall(a, own, re.I)) for a, b in CONTRACTIONS)
         short = sum(len(re.findall(b, own, re.I)) for a, b in CONTRACTIONS)
@@ -2088,11 +2106,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10"):
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10"):
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
     srv = Server(out_dir)

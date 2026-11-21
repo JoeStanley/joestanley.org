@@ -6,6 +6,11 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 From his answers on the Decisions page and his comments in the working doc that night.
 
+- Every full path carries one entertaining story, fiction or a story in another medium, that reinforces its module's lesson. Where a full path has no room, something is cut to make room. A curriculum only of dry reading is less engaging, and the entertainment is what makes a lesson stick: many people look to the fictional Captain Jean-Luc Picard as an exemplary manager.
+- A story on the full path is there as reinforcement, not evidence, so it isn't forced to say why to trust it.
+- A full path recommends five things at most. A list that needs a cut comes to him with a recommendation of what to cut, so he can review the whole and decide.
+- Own Your Role opens with a short sentence saying it's the syllabus's rule zero, as tabletop role-playing games have a rule zero or a session zero: the most fundamental part, in a class of its own, which a zero marks in a way a one would not.
+- Map the Domain's glossary adds the system of reference, so a reader can tell it from a system of record.
 - Own Your Role keeps The Concept Champion as its card (agree, on the Decisions page, card `module-0-card`).
 - Own Your Role's question becomes "How do you grow your role beyond what you were handed, and make the product's concept your own?" (agree, card `module-0-question`).
 - Design for Change keeps Coupling Is About a Change (agree, card `module-5-card`).

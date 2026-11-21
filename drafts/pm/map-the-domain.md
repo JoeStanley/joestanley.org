@@ -79,7 +79,7 @@ Optional, and not counted in the time above.
 
 - **Access pattern:** A question a system's data has to answer, with who asks it, how often, how fast and how fresh.
 - **Operational and analytical:** Operational use keeps the live service running, and analytical use looks across many records, the way reports do.
-- **System of record:** The system that holds the authoritative copy of some data, from which every other copy is made.
+- **System of record and system of reference:** A system of record holds the authoritative copy of some data, from which every other copy is made. A system of reference makes that data easy to use, by gathering or preparing copies for people to read and decide with, and isn't where it changes.
 - **Bounded context:** An area of a business or a system inside which each word and model has one agreed meaning.
 - **Event time and processing time:** When something happened, and when the system saw it.
 
