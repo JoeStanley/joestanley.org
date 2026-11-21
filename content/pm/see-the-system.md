@@ -65,11 +65,11 @@ deeper:
     note: "Read chapters 1, 4 and 5: The Basics, Why Systems Surprise Us, and System Traps and Opportunities."
     trust: Her primer for general readers, drafted in 1993. Colleagues edited and published it in 2008, after her death.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
-  - title: The Wire
-    by: created by David Simon (HBO, 2002 to 2008)
-    where: A TV series, 60 hour-long episodes over five seasons.
-    note: "Start with season 1, or jump to season 3. There a police major makes three zones where drug dealing is tolerated, and his district grows peaceful, until the institutions around him shut it down. In season 4, episode 9, a former detective now teaching math sees his old job in the new one: \"You juke the stats, and majors become colonels. I've been here before.\""
-    only: Structure driving behavior, at the scale of a city. The police, the drug trade, the port, city hall and the schools each run on their own rules, and the people inside them, doing what makes sense where they stand, keep each one making what nobody wants.
+  - title: Chernobyl
+    by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
+    where: A TV series, five episodes of about an hour.
+    note: "In episode 1, a dosimeter reads 3.6 roentgen, the top of its scale, and the deputy chief engineer takes the number as the level: \"Not great, not terrible.\" In episode 5, the trial walks back through the chain: a safety test signed off as done when it wasn't, a ten-hour delay that handed it to an untrained night shift, and a shutdown button whose rods had graphite tips, because \"It's cheaper.\""
+    only: "Cook's question put to a disaster: not who caused it, but what had to line up. Each link is someone acting sensibly where they stand, inside a system built to hide its own flaw: \"No one in the room that night knew the shutdown button could act as a detonator.\" Critics note that it sharpens some real officials into villains."
 ---
 
 ## Why this matters
