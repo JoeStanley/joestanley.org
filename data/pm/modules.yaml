@@ -42,13 +42,13 @@
   title: Change Safely
   question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
   draft: change-safely
-  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down. The card How Complex Systems Fail was added on 20 November, from the full read of the deck. It was Module 5 until 20 November, when it took quality targets and the card Models That Are Sometimes Wrong from Think With Engineers, which was cut.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 54 minutes, with one card, Error Budgets, sourced to Google's example error budget policy. Guardrail Metrics, How Complex Systems Fail and Models That Are Sometimes Wrong were cut as cards, each kept as a term, a question or a full-path source.
 - id: weigh-the-evidence
   num: 7
   title: Weigh the Evidence
   question: What do the numbers and the stories each tell you, and how much should either decide?
   draft: weigh-the-evidence
-  state: First draft of 20 November 2026, in the pilot format, written the day Joe asked for it, in place of Think With Engineers. It runs over the 90 minutes on purpose, to be cut down with the others.
+  state: First draft of 20 November 2026, winnowed on 21 November into the pilot's parts, at about 56 minutes. It carries two cards for Joe to keep one, The Law of Small Numbers and The McNamara Fallacy. Munro's review, Budiu and Chen moved to the full path.
 - id: decide-and-set-direction
   num: 8
   title: Decide and Set Direction
@@ -72,4 +72,4 @@
   title: Bring People With You
   question: How do you earn the trust of the people who decide and depend on you, and keep it when there is nothing to report?
   draft: bring-people-with-you
-  state: First draft of 19 November 2026, in the pilot format. It runs over the 90 minutes on purpose, to be cut down. On 20 November it took the cards SCR and Fractal Storytelling from Notice When You Are Wrong, still in the old format.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 69 minutes. It carries two cards for Joe to keep one, The Trust Equation and SCR. Two Kinds of Update folded into the text, the Do and the one thing, and Fractal Storytelling became the optional exercise.

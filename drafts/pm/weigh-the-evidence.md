@@ -1,4 +1,4 @@
-About 64 minutes: 29 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+About 56 minutes: 21 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
 
 **If you only do one thing:** Take one decision in front of you, list the evidence you're leaning on, and write next to each piece who's missing from it.
 
@@ -10,37 +10,28 @@ Numbers tell you how much and how often, across many people, but only about what
 
 ## The short path
 
-1. **Raluca Budiu, "Quantitative vs. Qualitative Usability Testing" (Nielsen Norman Group, 2017)**
-
-   8 minutes. Free at nngroup.com.
-
-   **Look for:** Which question each kind of usability test can answer. In a qualitative study, "you aim for insights, not numbers."
-
-   **Why trust it:** It's a user research firm's practical guidance, drawn from its own work.
-
-   **What you'll get:** Why a percentage from five test sessions means very little, and what those sessions are good for instead.
-2. **The Law of Small Numbers**
+1. **The Law of Small Numbers**
 
    Concept card. 2 minutes.
 
-   **Look for:** Why a small sample swings more than you'd expect, and why the worst week usually gets better on its own.
-3. **Eileen Munro, "Decision making under uncertainty in child protection" (*Child and Family Social Work*, 2018)**
+   **Look for:** Why the worst week usually gets better on its own.
+2. **Eileen Munro, "Decision making under uncertainty in child protection" (*Child and Family Social Work*, 2018)**
 
    5 minutes. Free at researchonline.lse.ac.uk. Read the two paragraphs that begin "Being 'risk-to-self averse'".
 
    **Look for:** How a tool that's often more accurate than professionals can still carry their bias, now "out of sight in an apparently neutral scientific instrument".
 
-   **Why trust it:** It's peer-reviewed, by the author of England's 2011 review of child protection, and it grants the research that favors formulas before it names their limits.
+   **Why trust it:** It's peer-reviewed, by the author of England's 2011 review of child protection.
 
-   **What you'll get:** Thursday's mistake, put sharply: numbers trusted because they look official, when they describe only the cases someone recorded, much as your product's data describes only the users you already have.
-4. **The McNamara Fallacy**
+   **What you'll get:** Thursday's mistake, put sharply: numbers trusted because they look official. Your product's data, too, describes only the users you already have.
+3. **The McNamara Fallacy**
 
    Concept card. 2 minutes.
 
-   **Look for:** The four steps from measuring what's easy to deciding the rest doesn't exist, and which step you've seen.
-5. **Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, "Can I make this policy work here?" (Durham University, 2025)**
+   **Look for:** Which of the four steps you've seen.
+4. **Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, "Can I make this policy work here?" (Durham University, 2025)**
 
-   12 minutes. Free at dur.ac.uk. Read "What we do here" and Part 1, to its list of what can help or derail a policy (pages 2 to 6).
+   12 minutes. Free at dur.ac.uk. Read pages 2 to 6.
 
    **Look for:** The question to ask in place of "did it work there?": "How would the policy lead to the intended outcome here?"
 
@@ -50,9 +41,9 @@ Numbers tell you how much and how often, across many people, but only about what
 
 ## Do
 
-**Weigh the evidence for one decision (25 minutes).** Pick a decision in front of you, such as whether to retire a feature few people use, or whether a delivery app should change how it batches orders. List every piece of evidence you're leaning on, one line each: the support tickets, the customer calls, the dashboard, the case study from another company. Mark each one a story or a number. Next to each, answer three questions in a few words. Who's missing from it? How was it collected? And what would have to hold here for it to carry over? Then write one sentence on what would change your mind. Outside the 25 minutes, take the page to someone who'd argue the other side, and ask which piece they'd challenge first.
+**Weigh the evidence for one decision (25 minutes).** Pick a decision in front of you, such as whether a delivery app should change how it batches orders. List every piece of evidence you're leaning on, one line each, and mark each one a story or a number. Next to each, answer three questions in a few words. Who's missing from it? How was it collected? And what would have to hold here for it to carry over? Then write one sentence on what would change your mind.
 
-**Optional: find the stories behind one number (10 minutes).** In a 2023 interview, Jeff Bezos told of a weekly business review where a metric showed customer service waits of under a minute, while customers complained of far longer. He called the number from the meeting and, as he recalls it, waited more than ten minutes. Pick a number on your dashboard that moved last month, such as the time to settle an insurance claim. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.
+**Optional: find the stories behind one number (10 minutes).** Pick a number on your dashboard that moved last month, such as the time to settle an insurance claim. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.
 
 ## Check yourself
 
@@ -74,6 +65,7 @@ A competitor's case study says a feature lifted retention by 20 percent. What do
 
 Optional, and not counted in the time above.
 
+- **"Quantitative vs. Qualitative Usability Testing," Raluca Budiu (Nielsen Norman Group, 2017)** Free at nngroup.com, about 8 minutes. **Why trust it:** It's a user research firm's practical guidance, drawn from its own work. **What you'll get:** Which question each kind of usability test can answer, and why a percentage from five test sessions means very little. In a qualitative study, "you aim for insights, not numbers."
 - **The Munro Review of Child Protection: Final Report, Eileen Munro (UK Department for Education, 2011)** Free at gov.uk. Read paragraphs 2 to 4 and 10 of the executive summary, then paragraphs 6.23 to 6.29 in chapter 6. **Why trust it:** The UK government commissioned it as an independent review, and accepted its principles. Munro is a professor of social policy at the London School of Economics. The review rests on consultation and local trials rather than a controlled study. **What you'll get:** Both mistakes in one system where lives are at stake: indicators and targets "which provide only part of the picture of practice", and intuition defended, then checked: "Gut feelings are neither stupid nor perfect."
 - **Evidence-Based Policy: A Practical Guide to Doing It Better, Nancy Cartwright and Jeremy Hardie (Oxford University Press, 2012)** A book. Read Part I, on getting from "it worked there" to "it will work here". **Why trust it:** A university press published it, and its authors are a philosopher of science and an economist who has worked in policy. **What you'll get:** The full method behind the working paper, with the Munro review as a worked case in an appendix.
 - **"Belief in the Law of Small Numbers," Amos Tversky and Daniel Kahneman (*Psychological Bulletin*, 1971)** A journal article. The publisher charges for it. **Why trust it:** It's the original paper, and its subjects were trained researchers. **What you'll get:** The questions they asked, and how far their colleagues' answers were from the arithmetic.
@@ -81,19 +73,17 @@ Optional, and not counted in the time above.
 - **"Clinical Versus Actuarial Judgment," Robyn Dawes, David Faust and Paul Meehl (*Science*, 1989)** A journal article. The journal charges for it. **Why trust it:** Peer-reviewed, in one of the leading science journals. Meehl's 1954 book brought the question to a wide audience of social scientists. **What you'll get:** The honest counterweight to this module: why a well-built formula does as well as an experienced judge or better at repeated predictions, and why professionals resist hearing it. The Curious and Opinionated card, in Module 0, asks when your intuition has earned your trust.
 - **"Know the difference between data-informed and versus data-driven," Andrew Chen** A blog post, about 5 minutes. Free at andrewchen.com. **Why trust it:** It's a growth practitioner's view, not research. He says he first heard the distinction at a Facebook talk in 2010. **What you'll get:** The phrase this module is built on, and why tuning the metrics you have leads you to "the local maximum", the best version of what you've already built.
 
-*To check: the free copy of Dawes, Faust and Meehl found online is a course reading on a university site, so link only the journal's, unless JSTOR's free reading covers it. The transcript of the Bezos interview (Lex Fridman Podcast #405) shows no date: confirm December 2023.*
+*To check: the free copy of Dawes, Faust and Meehl found online is a course reading on a university site, so link only the journal's, unless JSTOR's free reading covers it.*
 
 ## For the glossary
 
-- **Qualitative research:** Research that asks why, through interviews, observation or test sessions with a few people. It gives insights, not counts.
-- **Quantitative research:** Research that counts, across enough people to say how many or how often.
 - **Regression to the mean:** An extreme result tends to be followed by a less extreme one, whatever you did in between.
 - **McNamara fallacy:** Taking what's easy to measure for all that matters. The market researcher Daniel Yankelovich named it in 1971.
 - **Data-informed:** Using numbers and stories for what each can tell you, while the decision stays yours. Andrew Chen sets it against being data-driven.
 
 # The Law of Small Numbers
 
-*Picture: A cadet's scores bouncing around their average, each praised peak followed by a dip and each scolded dip by a rise.*
+*Picture: A cadet's scores bouncing around their average, each praised peak followed by a dip.*
 
 ## The idea
 
@@ -103,19 +93,17 @@ Its close relative is regression to the mean: an extreme result is usually follo
 
 ## Why a PM cares
 
-- **Early results swing.** A pilot in three schools can look like a win or a disaster by chance.
 - **The worst week usually improves on its own.** Ship a fix after your worst week of failed payments, and the next week will probably look better anyway. Credit the fix only once you've compared it with something that didn't get it.
 - **Your own experience is a small sample too.** The three customers you know best, or one loud sales call, can feel like the whole picture.
 
 ## How to spot it
 
 - A percentage quoted from a few interviews or a small pilot.
-- A test stopped after a day or two because the early result looks strong.
 - A team praised or blamed for one extreme month.
 
 ## What it does not say
 
-It does not say small samples are useless. A few sessions with users are the right tool for finding what's broken and why. The trouble starts when a small sample is asked how many or how often.
+It does not say small samples are useless. A few user sessions are the right tool for finding what's broken and why. They can't tell you how many or how often.
 
 **One question to carry:** How many people is this based on, and would you believe it if it said the opposite?
 
@@ -123,17 +111,17 @@ It does not say small samples are useless. A few sessions with users are the rig
 
 **[Daniel Kahneman, Biographical](https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/) (2002)**
 
-His autobiography for the Nobel Prize, about 4 minutes for the flight instructors and the small numbers paper. Free at nobelprize.org.
+His Nobel autobiography, about 4 minutes for the flight instructors and the small numbers paper. Free at nobelprize.org.
 
 **Why trust it:** His own account, published by the Nobel Foundation: a memoir.
 
-**What you'll get:** The whole flight instructors story, and a classroom demonstration with coins.
+**What you'll get:** The whole flight instructors story.
 
 *To check: the 1971 paper was read on a third-party copy, since the publisher charges for the original. Check the replication question and its two figures against the original before the rebuild.*
 
 # The McNamara Fallacy
 
-*Picture: A bright dashboard, and around it in the dark what it can't count: an hour-long support call, a confused first week.*
+*Picture: A bright dashboard, and around it in the dark what it can't count, such as an hour-long support call.*
 
 ## The idea
 
@@ -144,23 +132,19 @@ In 1971, the market researcher Daniel Yankelovich named "the McNamara fallacy", 
 3. "The third step is to presume that what can't be measured easily really isn't very important. This is blindness."
 4. "The fourth step is to say that what can't be easily measured really doesn't exist. This is suicide."
 
-In his own example, Ford's management discarded nine things his firm found a small car meant to buyers, because they couldn't be quantified as rigorously.
-
 ## Why a PM cares
 
-- **Your dashboard is step one.** It counts what was easy to measure, such as clicks, and that's fine as far as it goes.
-- **Steps two to four creep in.** Usually nobody rules that the hour-long support call doesn't matter. It never reaches the slide, and then it stops coming up.
+- **Steps two to four creep in.** Usually nobody rules that the hour-long support call doesn't matter. It never reaches your slides, and then it stops coming up.
 - **A made-up number is worse than none.** Score "how much users love it" out of ten, and soon it's argued over as if someone measured it.
 
 ## How to spot it
 
-- A decision review shows only charts, and nobody asks what isn't on them.
 - "We don't have data on that" ends the discussion, when it should start the research.
 - Screen reader support on a banking app gets waved off because its users barely show in the totals.
 
 ## What it does not say
 
-It does not say stop measuring. Yankelovich calls the first step okay, and says decisions worth millions shouldn't rest on hunches. Nor is it Goodhart's Law, from Module 2, which is about a number gamed once it becomes a target. This one is about a number mistaken for the whole picture.
+It does not say stop measuring. Yankelovich calls the first step okay, and says decisions worth millions shouldn't rest on hunches. Nor is it Goodhart's Law, from Module 2, a number gamed once it's a target. This one is a number mistaken for the whole picture.
 
 **One question to carry:** What matters here that none of our numbers can see, and who would know?
 
@@ -168,7 +152,7 @@ It does not say stop measuring. Yankelovich calls the first step okay, and says 
 
 **"The New Odds," Daniel Yankelovich (1971)**
 
-A speech to the Sales Executives Club of New York, 15 October 1971, posted online as a scan. The opening and the four steps take about 5 minutes.
+A speech to the Sales Executives Club of New York, 15 October 1971.
 
 **Why trust it:** It's the speech where he named the fallacy, a researcher's argument to marketers.
 
