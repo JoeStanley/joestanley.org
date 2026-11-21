@@ -22,7 +22,7 @@ Once people are judged by a number, they adapt to it, and it stops telling you w
 ## Why a PM cares
 
 - **A target changes behavior before it changes results.** Tell a delivery team to raise its on-time rate, and it can start promising later dates. The number improves while parcels arrive no sooner.
-- **{{< pm/term "okr" >}} make it easy.** A key result often ends in a bare number, and a bare number invites the cheapest way to reach it. When you write one, put the intent beside the number.
+- **{{< pm/term "okr" >}} make gaming easy.** A key result often ends in a bare number, and a bare number invites the cheapest way to reach it. When you write one, put the intent beside the number.
 - **Local targets hide the constraint.** A target on one step, such as reviews completed per day, can lift that step's number while the whole flow stays slow.
 
 ## How to spot it
@@ -33,4 +33,4 @@ Once people are judged by a number, they adapt to it, and it stops telling you w
 
 ## What it does not say
 
-It does not say measures are bad, or that every target fails. The usual remedy is several measures, not none. Pair a speed measure with a quality check: the on-time rate with how far out the promised date was, say.
+It does not say measures are bad, or that every target fails. The usual remedy is more than one measure. Pair each number with one that would show the cheap way of hitting it: the on-time rate with how far out the promised date was, say.

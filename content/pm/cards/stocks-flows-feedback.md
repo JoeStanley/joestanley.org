@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-A {{< pm/term "stock" >}} is anything that builds up and can be counted or measured at one moment: water in a tub, money in an account, requests in a backlog. Flows fill it and drain it. A stock changes only through its flows, so it rises whenever more comes in than goes out. A {{< pm/term "feedback-loop" >}} forms when the level changes one of its own flows, as when a full tub makes you close the tap.
+A {{< pm/term "stock" >}} is anything that builds up and can be counted or measured at one moment: water in a tub, money in an account, requests in a backlog. Flows fill it and drain it. A stock changes only through its flows, so it rises whenever more comes in than goes out. A {{< pm/term "feedback-loop" >}} forms when the level changes one of its own flows, as when a full tub makes you close the tap, which you'll only do if you can see it.
 
 A **balancing** loop pulls a stock toward a goal, as a thermostat does. A **reinforcing** loop pushes it further the way it's going, as interest does. Meadows's essay calls them negative and positive, which doesn't mean bad and good.
 
@@ -29,9 +29,9 @@ A **balancing** loop pulls a stock toward a goal, as a thermostat does. A **rein
 ## How to spot it
 
 - A number that rises or falls steadily is a stock with unequal flows.
-- A number that swings above and below its target is a balancing loop that reacts late, like server capacity that lurches between too much and too little.
-- A number that grows faster and faster is a reinforcing loop.
+- When a number swings above and below its target, a balancing loop is reacting late, like server capacity that lurches between too much and too little.
+- Growth that keeps speeding up comes from a reinforcing loop.
 
 ## What it does not say
 
-It does not say that drawing a system lets you predict or control it. Real systems hold many stocks and loops. The drawing shows you where to look.
+It does not say that drawing a system lets you predict or control it. Real systems hold many stocks and loops, and the drawing only shows you where to look.

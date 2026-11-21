@@ -19,7 +19,7 @@
       {{- range findRE `(?s)<p>.*?</p>` $html -}}
         {{- $plain := . | plainify | htmlUnescape -}}{{- range $k, $v := $norm }}{{ $plain = replace $plain $k $v }}{{ end -}}
         {{- if and (not $done) (in $plain $want) -}}
-          {{- $aside := printf `<aside class="note%s" data-note="%s"><span class="sr">Note: </span>%s</aside>` (cond (eq $n.at "foot") " note-foot" "") $id ($n.note | $.p.RenderString) -}}
+          {{- $aside := printf `<aside class="note%s" data-note="%s"><span class="note-label">Sidenote: </span>%s</aside>` (cond (eq $n.at "foot") " note-foot" "") $id ($n.note | $.p.RenderString) -}}
           {{- $html = replace $html . (printf `<div class="noted" data-beside="%s">%s%s</div>` $id . $aside) -}}
           {{- $done = true -}}
         {{- end -}}

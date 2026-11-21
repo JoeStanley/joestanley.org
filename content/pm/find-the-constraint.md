@@ -3,12 +3,12 @@ title: Find the Constraint
 layout: module
 module: find-the-constraint
 question: Where is the work actually stuck, and are we measuring the right thing?
-one_thing: Play the dice game below, then count where work is waiting in your own team.
+one_thing: Play the dice game below, then count where your team's work waits.
 game: dice
 do_minutes: 35
 
 last_time:
-  - q: In Donella Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a price or a standard, or changing the system's goal?
+  - q: In Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a price, or changing the goal?
     a: The goal. Meadows ranks numbers lowest of her twelve, because they rarely change how a system behaves. The goal sits third from the top.
   - q: Richard Cook says a major failure never has one root cause. Why not?
     a: It takes several small faults lining up, each of which looked harmless alone. Naming one cause says more about the need to blame than about how the failure happened.
@@ -50,21 +50,36 @@ check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
   - q: You speed up a step that isn't the constraint. What happens to delivery?
-    a: Almost nothing. The extra work joins the queue in front of the constraint.
+    a: Almost nothing. Before the constraint, the extra work joins its queue. After it, the faster step waits for work.
   - q: Your team hits its target for reviews completed per day, yet releases are no faster. Give two explanations from this module.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
 
 deeper:
+  - title: The Principles of Product Development Flow
+    by: Donald Reinertsen
+    where: A book.
+    note: "Read chapter 3, \"Managing Queues\", and chapter 4, \"Exploiting Variability\"."
+    trust: A consultant's argument, set out as numbered principles drawn from queueing theory and economics, not a study.
+    only: Why queues are the hidden cost in product work, and why cutting variability, a lesson taken from factories, can cost more than it saves. Watch where he parts with Goldratt.
+  - title: "Accelerate: The Science of Lean Software and DevOps"
+    by: Nicole Forsgren, Jez Humble and Gene Kim
+    url: https://itrevolution.com/wp-content/uploads/2022/06/ACC_excerpt.pdf
+    where: A book.
+    note: Read chapter 1, "Accelerate", and chapter 2, "Measuring Performance". Both are free in the publisher's excerpt.
+    trust: It rests on survey research, over 23,000 responses from more than 2,000 organizations across four years. The answers are self-reported, and the teams all build software.
+    only: "Goodhart's Law in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel.
-    note: "Short of time? Read the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out five steps (chapter 36). Chapter numbers can differ by edition, so go by the scenes."
-    only: Goldratt first set out the theory of constraints in this novel, in 1984. You watch a plant manager work out where his plant is stuck, one step at a time, and that makes the steps stick in a way no summary does.
+    note: "Read it whole, or start with the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out the five steps (chapter 36)."
+    only: Goldratt first set out the theory of constraints in this novel, in 1984. You follow a plant manager as he works out where his plant is stuck, one step at a time, and the steps are easier to remember once you've watched someone find them.
 ---
 
 ## Why this matters
 
-When delivery is slow, the usual fix is to ask every step to go faster and to have each one report its own numbers. It rarely works. Your job is to find the one place where work waits longest, the {{< pm/term "constraint" >}}, because speeding up anywhere else won't speed up the whole. The idea is Eliyahu Goldratt's, and he called it the theory of constraints. Knowing where a push will count is a large part of judgment.
+When delivery is slow, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it. Find it, since speeding up anywhere else won't help.
+
+The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can climb while delivery doesn't.
 
 [//]: # (short-path)
 

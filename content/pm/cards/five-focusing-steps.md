@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-Every system has one part that limits what the whole can deliver: its {{< pm/term "constraint" >}}. Eliyahu Goldratt's five steps tell you what to do about it, in this order:
+Every system has one part that limits what the whole can deliver, and that part is its {{< pm/term "constraint" >}}. Eliyahu Goldratt's five steps tell you what to do about it, in this order:
 
 1. **Identify** the constraint.
 2. **Exploit** it: get the most from it as it is.
@@ -28,15 +28,15 @@ Every system has one part that limits what the whole can deliver: its {{< pm/ter
 ## Why a PM cares
 
 - **Effort anywhere else buys little.** Speed up any other step and you mostly build a longer queue in front of the constraint.
-- **The order saves money.** Steps 2 and 3 cost little. Step 4 costs budget, so it comes last. Ask for more people first and you've skipped the cheaper steps.
+- **The order saves money.** Steps 2 and 3 cost little, and step 4 costs budget, so it comes last. Ask for more people first and you've skipped the cheaper steps.
 - **The constraint may be a rule.** An approval board that meets monthly, or a sign-off only one person can give, limits delivery as surely as a short-staffed team. It's often easier to change, too.
 
 ## How to spot it
 
 - Work piles up in front of one step, while the steps after it wait for something to do.
 - Everyone's busy and delivery is still slow.
-- Knowledge work hides its queues in inboxes, tickets and approval calendars. Count the {{< pm/term "wip" "work in progress" >}} waiting at each step, using ticket or approval dates.
+- Knowledge work hides its queues in inboxes, tickets and approval calendars. Ticket and approval dates will show you how much {{< pm/term "wip" "work in progress" >}} waits at each step.
 
 ## What it does not say
 
-It does not say the other steps don't matter. It says their pace should follow the constraint's. And it's a lens, not a proven law: a 2009 literature review found it had yet to show its effect in academic studies.
+It does not say the other steps don't matter. It says their pace should follow the constraint's. And it's a lens, not a proven law.

@@ -147,7 +147,10 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
             colRight: cR.left + colRight.clientWidth - parseFloat(cS.paddingRight), colLeft: cR.left + parseFloat(cS.paddingLeft),
             slotTop: sr ? sr.top : null, slotBottom: partBottom,
             face: s.fontFamily.split(',')[0].replace(/["']/g, '').trim().toLowerCase(), border: parseFloat(s.borderLeftWidth),
-            hidden: !!n.closest('[aria-hidden="true"]'), lead: (n.firstElementChild && n.firstElementChild.matches('.sr')) ? n.firstElementChild.textContent : '',
+            hidden: !!n.closest('[aria-hidden="true"]'), lead: (n.firstElementChild && n.firstElementChild.matches('.note-label')) ? n.firstElementChild.textContent : '',
+            label: (() => { const l = n.firstElementChild; if (!l || !l.matches('.note-label')) return null; const lr = l.getBoundingClientRect(); const ls = getComputedStyle(l);
+              const rest = document.createRange(); rest.setStartAfter(l); rest.setEnd(n, n.childNodes.length); const rr = [...rest.getClientRects()].filter(x => x.width && x.height);
+              return {shown: lr.width > 2 && lr.height > 2 && ls.clipPath === 'none' && ls.visibility !== 'hidden', own: !rr.length || lr.bottom <= Math.min(...rr.map(x => x.top)) + 1}; })(),
             para: n.parentElement.matches('.noted') && prev && prev.tagName === 'P' ? [prev.getBoundingClientRect().top, prev.getBoundingClientRect().bottom] : null,
             after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (!next && prev && prev.tagName === 'P' && n.parentElement.matches('.noted')) ? 'PARAGRAPH' : '',
             kind: (n.closest('.unit') || {className: ''}).className,
@@ -185,8 +188,8 @@ def margin_checks(ctx, fix_base, axe_src):
                     tag = f"note '{n['note']}'"
                     if n["note"] != n["slot"]:
                         fail("M3", f"{where}: {tag} is not inside or right before its part (found {n['slot']})")
-                    if n["hidden"] or n["lead"] != "Note: ":
-                        fail("M3", f"{where}: {tag} is not introduced to screen readers as a note")
+                    if n["hidden"] or n["lead"] != "Sidenote: ":
+                        fail("M3", f"{where}: {tag} is not introduced to screen readers as a sidenote (\"Sidenote: \")")
                     if n["after"] not in ("H1", "H2", "H3", "DT", "FIRST") and n["before"] not in ("SLOT", "DESCRIPTION", "PARAGRAPH"):
                         fail("M3", f"{where}: {tag} does not come right after its part's heading, a step's description or its paragraph")
                     if w >= 1024:
@@ -198,14 +201,19 @@ def margin_checks(ctx, fix_base, axe_src):
                             fail("M1", f"{where}: {tag} starts below the end of its part, so it no longer sits beside it")
                         if n["para"] and abs(n["top"] - n["para"][0]) > 8 and abs(n["bottom"] - n["para"][1]) > 8:
                             fail("M1", f"{where}: {tag} names a paragraph, and sits level with neither its top nor its foot")
+                        if n["label"] and n["label"]["shown"]:
+                            fail("M1", f"{where}: {tag} shows its label in the margin, where its place says it's an aside")
                     else:
                         if n["right"] > n["colRight"] + 1 or n["left"] < n["colLeft"] - 1:
                             fail("R3", f"{where}: {tag} does not fold into the text")
                         if n["face"] == "shantell sans" or n["border"] < 1:
                             fail("M1", f"{where}: {tag} folds in without the typeset face and pen line")
+                        if not (n["label"] and n["label"]["shown"] and n["label"]["own"]):
+                            fail("M1", f"{where}: {tag} folds in without its label, \"Sidenote:\", on its own line above it")
                         if n["right"] - n["left"] < 0.6 * (n["colRight"] - n["colLeft"]):
                             fail("M1", f"{where}: {tag} folds in only {n['right'] - n['left']:.0f}px wide, in a {n['colRight'] - n['colLeft']:.0f}px column")
                 if w >= 1024:
+                    _one_edge(notes, where)
                     _margin_overlaps(pg, "M2", where)
                     for e in pg.evaluate(JS_RUNON):
                         if e["extra"] > 1:
@@ -236,6 +244,60 @@ def margin_checks(ctx, fix_base, axe_src):
             for s_ in pg.evaluate(JS_SPILL):
                 fail(rule, f"{where}: {s_}")
         c.close()
+
+
+def _one_edge(notes, where):
+    """M1: every note in the margin starts at the same left edge, so the notes read as one column."""
+    if not notes:
+        return
+    edge = min(n["left"] for n in notes)
+    for n in notes:
+        if n["left"] > edge + 1.5:
+            fail("M1", f"{where}: note '{n['note']}' starts {n['left'] - edge:.0f}px right of the margin's edge, out of line with the other notes")
+
+
+# R10: a module's full path, opened: the column's inner width, the list's and each source's, any control inside it that
+# took the full path's Open and Close label, and where its heading ends and its first source starts.
+JS_FULL_PATH = """() => { const sec = document.querySelector('.deeper'); if (!sec) return null;
+  const d = sec.querySelector(':scope > details'); d.open = true;
+  const sum = d.querySelector(':scope > summary'), ul = sec.querySelector('.deeper-list');
+  const cs = getComputedStyle(sec), r = sec.getBoundingClientRect();
+  const stray = [...d.querySelectorAll('summary')].filter(x => x !== sum).filter(x => /Open|Close/.test(getComputedStyle(x, '::after').content));
+  sum.scrollIntoView({block: 'center'}); const s = sum.getBoundingClientRect(), first = ul.firstElementChild.getBoundingClientRect();
+  return {inner: r.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), ul: ul.getBoundingClientRect().width,
+          lis: [...ul.children].map(li => li.getBoundingClientRect().width), stray: stray.length,
+          gap: first.top - s.bottom, left: r.left, width: r.width, bottom: s.bottom}; }"""
+
+
+def full_path_checks(ctx, base, fix_base):
+    """R10: each module's full path, opened, spans its column; its Open and Close label draws nothing outside its own
+    heading and pushes no source down, with or without a note beside the first source; and no control inside it
+    takes the label. Checked on the site and on the sample-note build, where every source has a note."""
+    checked("R10")
+    for b_, kind in ((base, "the site"), (fix_base, "sample notes")):
+        if not b_:
+            continue
+        for w in (390, 1280):
+            c = ctx(viewport={"width": w, "height": 900}); pg = c.new_page()
+            for path, _ in MODULES:
+                pg.goto(b_ + path); pg.evaluate("document.fonts.ready")
+                where = f"{path} {w}px, {kind}, the full path open"
+                f = pg.evaluate(JS_FULL_PATH)
+                if not f:
+                    fail("R10", f"{where}: no full path"); continue
+                if abs(f["ul"] - f["inner"]) > 1 or any(abs(x - f["inner"]) > 1 for x in f["lis"]):
+                    fail("R10", f"{where}: the sources take {min([f['ul']] + f['lis']):.0f}px of the column's {f['inner']:.0f}px")
+                if f["stray"]:
+                    fail("R10", f"{where}: {f['stray']} control(s) inside the full path show its Open or Close label")
+                if abs(f["gap"]) > 1:
+                    fail("R10", f"{where}: the first source starts {f['gap']:.0f}px below the full path's heading, pushed down by its label")
+                clip = {"x": f["left"], "y": f["bottom"], "width": f["width"], "height": 40}
+                shown = pg.screenshot(clip=clip)
+                pg.add_style_tag(content=".deeper > details > summary::after { visibility: hidden !important; }")
+                hidden = pg.screenshot(clip=clip)
+                if shown != hidden:
+                    fail("R10", f"{where}: the Open and Close label draws below its heading, over the first source")
+            c.close()
 
 
 def page_text_width():
@@ -273,12 +335,17 @@ def print_margin_checks(ctx, fix_base):
                 fail("M1", f"{where}: {tag} names a paragraph, and sits level with neither its top nor its foot")
             if n["brk"] >= sp3:
                 fail("M2", f"{where}: a break inside {tag} is {n['brk']:.0f}px, as wide as the gap between two notes")
+            if n["label"] and n["label"]["shown"]:
+                fail("M1", f"{where}: {tag} prints its label in the margin, where its place says it's an aside")
             margin.append(n)
         else:
             if n["right"] > n["colRight"] + 1 or n["left"] < n["colLeft"] - 1:
                 fail("M1", f"{where}: {tag} does not fold into the text")
-            if n["face"] == "shantell sans" or n["border"] < 1:
-                fail("M1", f"{where}: {tag} folds in without the typeset face and pen line")
+            if n["face"] != "shantell sans" or n["border"] < 1:
+                fail("M1", f"{where}: {tag} folds in without the owner's hand and the pen line")
+            if not (n["label"] and n["label"]["shown"] and n["label"]["own"]):
+                fail("M1", f"{where}: {tag} folds in without its label, \"Sidenote:\", on its own line above it")
+    _one_edge(margin, where)
     margin.sort(key=lambda n: n["top"])
     for a_, b_ in zip(margin, margin[1:]):
         if b_["top"] < a_["bottom"] + sp3 - 0.5:
@@ -314,7 +381,7 @@ def pdf_note_checks(pdf_path, out_dir):
 
     soup = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
     for n in soup.select(".unit.module aside.note"):
-        for sr in n.select(".sr"):
+        for sr in n.select(".sr, .note-label"):
             sr.decompose()
         t = toks(n.get_text(" "))
         head, tail = t[:4], t[-4:]
@@ -1046,6 +1113,7 @@ JS_SPILL = """() => { const out = []; const W = document.documentElement.clientW
     if (!n.textContent.trim()) continue; const el = n.parentElement;
     if (!el || el.closest('svg, .sr, .skip, script, style, [hidden], dialog:not([open])')) continue;
     if (getComputedStyle(el).visibility === 'hidden') continue;
+    if (getComputedStyle(el).clipPath !== 'none' && el.getBoundingClientRect().width <= 1) continue;   // for screen readers only, as .sr is
     const r = document.createRange(); r.selectNodeContents(n); const rects = [...r.getClientRects()].filter(x => x.width > 0.5); if (!rects.length) continue;
     const fs = parseFloat(getComputedStyle(el).fontSize), vt = Math.max(1.5, 0.3 * fs);
     let box = el; while (box.parentElement && getComputedStyle(box).display === 'inline') box = box.parentElement;
@@ -1599,8 +1667,8 @@ STORY = re.compile(r"(?:An? |A pair of |Two )?(?:classic )?(?:novel|novella|shor
 # S12: a book's entry opens "A book" or "A textbook"; a time under about 30 minutes marks something short.
 BOOK = re.compile(r"An? (?:book|textbook)\b", re.I)
 SHORT = re.compile(r"\b(?:a few|a couple of|(?:about |some |under )?(\d+)) minutes?\b", re.I)
-# S12: built before the rule, these may hold fewer than two books until the owner picks theirs (PLAN.md, job 8)
-S12_PENDING = {"1 See the System", "2 Find the Constraint"}
+# S12: a built module that may hold fewer than two books for now. Empty since Modules 1 and 2 took theirs (job 8).
+S12_PENDING = set()
 # S12: on a built full path every entry opens with what it is; these kinds ask for 30 minutes or more
 LONG_KIND = re.compile(r"An? (?:book|textbook|(?:journal |law review |long )?article|(?:conference |research |long )?paper|(?:staff )?report)\b", re.I)
 # S13: no unit tells the reader to borrow or buy; no built full path gives a page count or a running time
@@ -1758,7 +1826,7 @@ def source_checks(out_dir):
         if not name or name not in by_name:
             fail("X2", f"the unit {unit} has no tab"); continue
         have = norm(by_name[name])
-        for junk in art.select("svg, script, style, .sr, .print-only, .board, .board-key, .tally, .progress, .result, .setup-note, details.why > summary, [hidden]"):
+        for junk in art.select("svg, script, style, .sr, .note-label, .print-only, .board, .board-key, .tally, .progress, .result, .setup-note, details.why > summary, [hidden]"):
             junk.extract()
         missing = []
         for node in art.find_all(string=True):
@@ -2126,6 +2194,11 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                 margin_checks(ctx, fix_base, axe_src)
             except Exception as e:  # a broken page must fail its rule, not stop the suite
                 fail("M1", f"sample-note check could not finish: {str(e).splitlines()[0][:160]}")
+        if run_for("R10"):
+            try:
+                full_path_checks(ctx, base, fix_base)
+            except Exception as e:  # a broken page must fail its rule, not stop the suite
+                fail("R10", f"check could not finish: {str(e).splitlines()[0][:160]}")
         if fix_base and run_for("M1", "M2"):
             try:
                 print_margin_checks(ctx, fix_base)
@@ -2393,7 +2466,7 @@ def main():
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
             for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
-    fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
+    fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1", "R10") else None
     srv = Server(out_dir)
     fix = Server(fix_out) if fix_out else None
     try:

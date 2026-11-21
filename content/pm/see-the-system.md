@@ -7,8 +7,8 @@ one_thing: Read the card, then draw one thing that piles up in your own work as 
 do_minutes: 30
 
 last_time:
-  - q: Fred Brooks let 150 implementers write the specifications to save the schedule. What did it cost?
-    a: The system's conceptual integrity, and by his estimate a year of debugging time.
+  - q: Fred Brooks traded something away to save the schedule. What, and how?
+    a: The system's conceptual integrity. He let 150 implementers write the specifications, which by his estimate added a year to debugging.
   - q: Engineers write the test before they write the code. What's the same move in a PM's work?
     a: Naming the destination first, "we're building this in order to ...", then working back to what would have to be true to get there.
 
@@ -35,19 +35,19 @@ steps:
     minutes: 20
     where: The same essay, from the meter story to the end.
     look: Why the houses with the meter in the front hall used less electricity. Then her last section, on why the highest leverage is the hardest to use.
-    trust: Her politics show in the examples. Judge the reasoning on its own, whichever way that pulls you.
+    trust: The same essay, so the same reasons hold. Her politics show in the examples, so judge the reasoning apart from them.
     only: Why information, rules and goals outrank numbers.
   - id: cook
     kind: read
     title: Richard Cook, "How Complex Systems Fail"
     minutes: 10
-    where: Eighteen short points on one page. Free at how.complexsystems.fail.
+    where: A short paper, eighteen points on one page. Free at how.complexsystems.fail.
     links:
       - text: "How Complex Systems Fail"
         url: https://how.complexsystems.fail/
     look: Points 3, 7 and 8. A failure needs several small faults to line up, so one root cause explains little, and hindsight makes it all look obvious.
     trust: Cook was a physician and safety researcher at the University of Chicago. He gives you the points without the evidence behind them.
-    only: A better question after a failure. Not "who caused this?" but "what had to line up?"
+    only: "A better question to ask after a failure: \"what had to line up?\""
 
 check:
   - q: A clinic sees more patients each month than it did last year, yet its waiting list keeps growing. What does that tell you?
@@ -61,19 +61,25 @@ deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright
     where: A book.
-    note: "Read chapters 1, 4 and 5: The Basics, Why Systems Surprise Us, and System Traps and Opportunities."
-    trust: Her primer for general readers, drafted in 1993. Colleagues edited and published it in 2008, after her death.
+    note: "Read chapters 1, 4 and 5: \"The Basics\", \"Why Systems Surprise Us\" and \"System Traps . . . and Opportunities\"."
+    trust: It's Meadows's own primer on her field, from the lead author of The Limits to Growth. Diana Wright edited it from her draft after her death.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
+  - title: The Field Guide to Understanding 'Human Error'
+    by: Sidney Dekker
+    where: A book.
+    note: "Read chapter 1, \"Two Views of 'Human Error'\", and chapter 5, \"Understanding Your Accident Model\"."
+    trust: Dekker is a safety scientist who also flew airliners, writing for people who investigate failures. It's a practitioner's guide built on safety research, not a study of its own.
+    only: Cook's point at book length. Chapter 1 sets the bad-apple view of error against the view that error is a symptom of trouble in the system, and chapter 5 shows how your model of accidents decides what you'll find.
   - title: Chernobyl
     by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
     where: A TV series.
     note: "In episode 1, a dosimeter reads 3.6 roentgen, the top of its scale, and the deputy chief engineer takes the number as the level: \"Not great, not terrible.\" In episode 5, the trial walks back through the chain: a safety test signed off as done when it wasn't, a ten-hour delay that handed it to an untrained night shift, and a shutdown button whose rods had graphite tips, because \"It's cheaper.\""
-    only: "Cook's question put to a disaster: not who caused it, but what had to line up. Each link is someone acting sensibly where they stand, inside a system built to hide its own flaw: \"No one in the room that night knew the shutdown button could act as a detonator.\" Critics note that it sharpens some real officials into villains."
+    only: "Cook's question, put to a disaster: what had to line up? The show answers with a system built to hide its own flaw: \"No one in the room that night knew the shutdown button could act as a detonator.\" It sharpens some real officials into villains, so look past them to the chain."
 ---
 
 ## Why this matters
 
-When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues that a failure never has just one cause.
+When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues that a failure in a complex system never has just one cause.
 
 [//]: # (short-path)
 

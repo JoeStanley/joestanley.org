@@ -29,18 +29,18 @@
   {
    "name": "1 See the System",
    "file": "1-see-the-system.md",
-   "sha256": "a1076dfe27fcdde5b8b21344cd3f8f1c38d5f11834afa29d5fc6cabb56e1e00b",
+   "sha256": "9916696ffda36a88ee1115f7e577cbd81b0106206fae7b1b25bdfe38c1c8b510",
    "doc_tab": "82ecdb77-b286",
    "doc_node": "75410f3d-2ea1",
-   "rev": 21
+   "rev": 35
   },
   {
    "name": "2 Find the Constraint",
    "file": "2-find-the-constraint.md",
-   "sha256": "7e2004168505d29799e99dabd17b864ad94c78a1a33cdcbd3bd15551b9b7c8d4",
+   "sha256": "5c0886ca0b9a664a67b9f9a2abfbd4861171663d4a1f6edc2d0da73905461597",
    "doc_tab": "2a162ad5-e7b3",
    "doc_node": "8b268877-78f7",
-   "rev": 22
+   "rev": 34
   },
   {
    "name": "3 Mind the Seams",

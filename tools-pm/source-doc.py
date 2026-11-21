@@ -39,8 +39,8 @@ def inline(el, strip=True):
             out.append(clean(str(c)))
             continue
         cls = c.get("class") or []
-        if c.name in ("script", "style", "svg") or "note" in cls:
-            continue
+        if c.name in ("script", "style", "svg") or "note" in cls or "note-label" in cls:
+            continue   # a note goes in its own line; its label, "Sidenote:", is the page's, not the owner's words
         if "sr" in cls:   # screen-reader words: keep the ones that finish a label, drop the rest
             t = clean(c.get_text())
             out.append(t if t.strip() in (":", ".") else "")
