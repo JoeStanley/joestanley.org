@@ -2,7 +2,7 @@
 title: On Product Judgment
 description: A self-directed syllabus for early-career product managers. Twelve questions, free reading, about 90 minutes each.
 outputs: ["HTML"]
-pilot_note: "Pilot draft. Modules 0 to 3 have been rebuilt so far."
+pilot_note: "Pilot draft. Modules 0 to 5 have been rebuilt so far."
 ---
 
 > You don't become a good {{< pm/edit "Communist" "Product Manager" >}} by going to meetings or memorizing the [Manifesto](http://agilemanifesto.org). You do it on the streets. You do it with your fists. The rest is bullshit and you know it.
