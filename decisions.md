@@ -2,6 +2,11 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, the Decisions page, round 3's cards
+
+- Change Safely's full path holds four things: Kohavi, Tang and Xu's *Trustworthy Online Controlled Experiments* (chapters 6, 7 and 15), Shostack's *Threat Modeling* (Part I) in the Threat Modeling Manifesto's place, Sculley and colleagues' "Hidden Technical Debt in Machine Learning Systems", and *Ford v Ferrari*. Snowden and Boone leave, and their idea, experiments that are safe to fail, keeps a line in the module (agree, card `full-path-6-books`).
+- *Thinking, Fast and Slow* stays off Weigh the Evidence's full path: it draws a lot of critiques, and even though they're largely against its details, not its core lessons, they tarnish the whole book. He asked about *Data Feminism* or *The Art of Statistics* in its place (something else, agree, card `full-path-7-books`).
+
 ## 21 November 2026, the round 2 session
 
 - James C. Scott's *Seeing Like a State* takes the fifth place on Design for Change's full path, from the options put to him: its introduction, chapter 1 and chapter 10, whose four rules for planners are "Take small steps", "Favor reversibility", "Plan on surprises" and "Plan on human inventiveness" (his pick, in the session).
