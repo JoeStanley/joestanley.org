@@ -1,4 +1,4 @@
-About 54 minutes: 19 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+About 1 hour.
 
 **If you only do one thing:** Before your next request is estimated, write down the slowest layer you think it touches.
 
@@ -12,7 +12,7 @@ Engineers have a precise word for what makes a change costly: complexity, anythi
 
 1. **Pace Layers**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** Why the slowest layer a change touches sets its price.
 2. **Stewart Brand, "Pace Layering: How Complex Systems Learn and Keep Learning" (2018)**
@@ -26,7 +26,7 @@ Engineers have a precise word for what makes a change costly: complexity, anythi
    **What you'll get:** Why each layer needs its own pace, in a free essay by the person who drew the layers.
 3. **Coupling Is About a Change**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** The question to ask whenever someone says two parts are tightly coupled.
 
@@ -62,9 +62,9 @@ A small change needed edits in a dozen places, then broke something nobody expec
 
 Optional, and not counted in the time above.
 
-- **How Buildings Learn, Stewart Brand (1994)** A book. Borrow it or buy it. Start with chapter 2, "Shearing Layers", and chapter 11, "The Scenario-buffered Building". **Why trust it:** Brand built the layers out from the architect Frank Duffy's work and tested them on real buildings, photographed as they changed. It's a writer's case from observation, not a study. **What you'll get:** The layers in their first form, and chapter 11's case for designing for several possible futures instead of one forecast. In his words, "All buildings are predictions. All predictions are wrong."
+- **How Buildings Learn, Stewart Brand (1994)** A book. Start with chapter 2, "Shearing Layers", and chapter 11, "The Scenario-buffered Building". **Why trust it:** Brand built the layers out from the architect Frank Duffy's work and tested them on real buildings, photographed as they changed. It's a writer's case from observation, not a study. **What you'll get:** The layers in their first form, and chapter 11's case for designing for several possible futures instead of one forecast. In his words, "All buildings are predictions. All predictions are wrong."
 - **"On the Criteria To Be Used in Decomposing Systems into Modules," David Parnas (*Communications of the ACM*, 1972)** A paper of six pages. The argument is in his comparison of two ways to split the same program, so you can skim the technical detail. **Why trust it:** It's where Parnas set out information hiding, in a peer-reviewed journal. **What you'll get:** Why a system's boundaries go around the decisions likely to change. Engineers can draw them only as well as they know what's coming, and often you're the one who knows.
-- **A Philosophy of Software Design, second edition, John Ousterhout (2021)** A book. Borrow it or buy it. Read chapters 2 and 3, about 35 minutes, or watch his talk at Google (2018), free on YouTube, about an hour. **Why trust it:** Ousterhout teaches computer science at Stanford, and the book grew out of his course in software design there. It's one designer's view, argued from experience. **What you'll get:** The three symptoms in full, and the difference between tactical work, which gets this feature out, and strategic work, which keeps the next one cheap. That difference is the case you can make for engineering time.
+- **A Philosophy of Software Design, second edition, John Ousterhout (2021)** A book. Read chapters 2 and 3, about 30 minutes, or watch his talk at Google (2018), free on YouTube, about an hour. **Why trust it:** Ousterhout teaches computer science at Stanford, and the book grew out of his course in software design there. It's one designer's view, argued from experience. **What you'll get:** The three symptoms in full, and the difference between tactical work, which gets this feature out, and strategic work, which keeps the next one cheap. That difference is the case you can make for engineering time.
 - **"Big Ball of Mud," Brian Foote and Joseph Yoder (1997)** Free at laputan.org. Read the section "Shearing Layers". **Why trust it:** Two software researchers wrote it for a patterns conference, from what they'd seen in real systems. **What you'll get:** Brand's shearing layers carried into software, by engineers, for engineers.
 - **"CQRS," Martin Fowler (2011)** Free at martinfowler.com, 5 minutes. CQRS uses separate models for writing data and for reading it, and you can skim how. **Why trust it:** Fowler, a software developer who's written about design for years, has seen the pattern on real projects, and he says most of the cases he met went poorly. **What you'll get:** A worked case of asking whether a pattern earns its complexity, with his question: is the benefit worth the jump?
 - ***Yes Minister*, "Big Brother", written by Antony Jay and Jonathan Lynn (BBC, 1980)** A TV series. One half-hour episode will do, series 1, episode 4. A new minister wants safeguards on a national database. His predecessor drafted the same ones, and tells him how the permanent secretary stalled them, one polite stage at a time, until an election took the minister away and the department wiped the slate clean. **What you'll get:** Pace layers in a government department. Ministers come and go while the civil service stays, so a change that has to pass through it moves at its speed.

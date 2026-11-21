@@ -1,4 +1,4 @@
-About 52 minutes: 22 reading, 30 doing (a 20-minute exercise and a 10-minute optional one).
+About 1 hour.
 
 **If you only do one thing:** In your next plan, write down one way it could be wrong and the early signal you'd watch for.
 
@@ -19,7 +19,7 @@ Every plan rests on assumptions, and some of yours are probably wrong today. You
    **What you'll get:** Questions to ask yourself in a meeting before you act on a conclusion.
 2. **Double-Loop Learning**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** The difference between fixing the method and questioning the goal, and how Product X's bad news got softened on the way up.
 3. **Amy Edmondson, "How Fearless Organizations Succeed" (strategy+business, 2018)**
@@ -59,7 +59,7 @@ Why does a premortem say the project has already failed, and why does everyone w
 Optional, and not counted in the time above.
 
 - **"Performing a Project Premortem," Gary Klein (*Harvard Business Review*, September 2007)** About 15 minutes, at hbr.org. **Why trust it:** Klein is a research psychologist who studies how experienced people decide under pressure, and the premortem is his. This is his short how-to for managers. **What you'll get:** The method from the person who devised it, and why assuming the failure brings out reasons that "what could go wrong?" doesn't.
-- **"On being wrong," Kathryn Schulz (TED2011)** About 18 minutes. Free at ted.com. **Why trust it:** Schulz is a journalist who wrote a book on the subject, *Being Wrong* (2010). It's a talk, so it argues and tells stories without showing evidence. **What you'll get:** Why being wrong feels like being right, and so why your certainty is a poor guide.
+- **"On being wrong," Kathryn Schulz (TED2011)** About 20 minutes. Free at ted.com. **Why trust it:** Schulz is a journalist who wrote a book on the subject, *Being Wrong* (2010). It's a talk, so it argues and tells stories without showing evidence. **What you'll get:** Why being wrong feels like being right, and so why your certainty is a poor guide.
 - **"Double Loop Learning in Organizations," Chris Argyris (*Harvard Business Review*, September 1977)** An article, at hbr.org. **Why trust it:** Argyris set out single- and double-loop learning here for managers. His evidence is cases from his field studies of companies. **What you'll get:** Product X in full, and the norms that kept five people's warnings from reaching the top.
 - **"On Being a Senior Engineer," John Allspaw (2012)** Free at kitchensoap.com. Read the part on cognitive biases, a few minutes. **Why trust it:** Allspaw led engineering at Etsy and later studied how people handle incidents. It's a practitioner's essay, and the biases come from psychology research. **What you'll get:** The biases that bend a review after something breaks. You met hindsight bias with Cook in Module 1, and outcome bias judges a decision by how bad the damage was. Listen for "they should have".
 - **Risk Storming, Simon Brown** Free at riskstorming.com. Read the steps and the part on prioritizing risks. **Why trust it:** Brown is a software architecture consultant, and this is his own site for his own technique, so read it as an advocate's account. **What you'll get:** The Do's silent first step, done on a diagram of the system: everyone marks risks alone, then the group compares them and rates each one.

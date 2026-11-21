@@ -209,6 +209,9 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
    to the margin, in the owner's hand. */
 .note { display: block; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
 .note b, .note strong { color: var(--ink); font-weight: var(--w-strong); }
+/* A note beside one paragraph follows it in the text, so on a phone and in print it folds in under that paragraph;
+   on a wide screen it sits level with it in the margin, at its top, or at its foot when placed lower (spec M1). */
+.noted { position: relative; }
 
 /* Home: the front door. Plain white, on the same left edge as every other page. The name is the largest thing on
    the site, in orange; the photo is ringed in orange. */
@@ -250,6 +253,8 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
     margin: var(--sp-1) calc(-1 * (var(--margin) + var(--gutter))) var(--sp-4) 0;
     font-family: "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; color: var(--ink);
   }
+  .reading .noted > .note { position: absolute; top: 0; right: calc(-1 * (var(--margin) + var(--gutter))); margin: 0; }
+  .reading .noted > .note-foot { top: auto; bottom: 0; }
   /* The front door: the photo sits in the margin column, beside the name; narrow screens keep it above. */
   .door-inner { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gutter); align-items: center; }
   .door-photo { grid-column: 2; grid-row: 1 / span 4; width: 13rem; height: 13rem; justify-self: start; }

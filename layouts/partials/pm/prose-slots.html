@@ -1,9 +1,30 @@
 {{- /* Marks each section heading in a unit's prose as a margin-note slot, named by the heading's id, and puts the
-       owner's note for it right after the heading (spec M4). Call with p, unit and html; returns the html. */ -}}
+       owner's note for it right after the heading (spec M4). A note in the slot's list that names one of the
+       section's paragraphs by a few of its words (beside) goes right after that paragraph, the two wrapped
+       together so that on a wide screen the note sits level with it, at its top or, with at: foot, its foot
+       (spec M1, M3). Call with p, unit and html; returns the html. */ -}}
 {{- $html := string .html -}}
+{{- $notes := dict -}}
+{{- with site.Data.pm.margin }}{{ with index . $.unit }}{{ $notes = . }}{{ end }}{{ end -}}
+{{- $norm := dict "’" "'" "‘" "'" "“" "\"" "”" "\"" " " " " -}}
 {{- range findRESubmatch `<h2 id="([^"]+)">((?s).*?)</h2>` $html -}}
   {{- $id := index . 1 -}}
   {{- $note := partial "pm/margin.html" (dict "p" $.p "unit" $.unit "slot" $id) -}}
   {{- $html = replace $html (index . 0) (printf `<h2 id="%s" data-slot="%s">%s</h2>%s` $id $id (index . 2) $note) -}}
+  {{- with index $notes $id -}}{{- if reflect.IsSlice . -}}
+    {{- range . -}}{{- if .beside -}}
+      {{- $n := . -}}
+      {{- $want := $n.beside -}}{{- range $k, $v := $norm }}{{ $want = replace $want $k $v }}{{ end -}}
+      {{- $done := false -}}
+      {{- range findRE `(?s)<p>.*?</p>` $html -}}
+        {{- $plain := . | plainify | htmlUnescape -}}{{- range $k, $v := $norm }}{{ $plain = replace $plain $k $v }}{{ end -}}
+        {{- if and (not $done) (in $plain $want) -}}
+          {{- $aside := printf `<aside class="note%s" data-note="%s"><span class="sr">Note: </span>%s</aside>` (cond (eq $n.at "foot") " note-foot" "") $id ($n.note | $.p.RenderString) -}}
+          {{- $html = replace $html . (printf `<div class="noted" data-beside="%s">%s%s</div>` $id . $aside) -}}
+          {{- $done = true -}}
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}{{- end -}}
+  {{- end -}}{{- end -}}
 {{- end -}}
 {{- return $html -}}

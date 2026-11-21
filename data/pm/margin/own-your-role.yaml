@@ -1,0 +1,58 @@
+# Margin notes for Module 0, Own Your Role.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen a note shows in your hand in the margin beside its part. On a phone and in print it sits
+# under the part's heading. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Why this matters
+why-this-matters:
+  - beside: "Two versions of the job look real"
+    note: "The product vision is not only the end experience. It's also the people, process, and technology that makes it. You're shaping a way of how people work together, spending hundreds to millions of hours of life, to create something that will touch the lives of people you'll likely never meet. There's a profound privilege and responsibility there.\n\nDon't shrink from it."
+  - beside: "The vision has to be yours, too"
+    at: "foot"
+    note: "I work in massive, back-end, financial platform design, some of the most standardized and invisible stuff imaginable. If I can find ways for my own voice to come through in the work, anyone reading this can."
+
+# The short path
+short-path: ""
+
+# Short path, step 1: The Concept Champion
+step-card-champion: ""
+
+# Short path, step 2: Fred Brooks, “Aristocracy, Democracy, and System Design”
+step-brooks: ""
+
+# Short path, step 3: Donella Meadows, “Envisioning a Sustainable World”
+step-meadows: ""
+
+# Do
+do: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: Product Development Performance, Kim Clark and Takahiro Fujimoto
+deeper-product-development-performance: ""
+
+# Full path: The Reflective Practitioner, Donald Schön
+deeper-the-reflective-practitioner: ""
+
+# Full path: Understanding by Design, Grant Wiggins and Jay McTighe
+deeper-understanding-by-design: ""
+
+# Full path: Crafting a Job: Revisioning Employees as Active Crafters of Their Work, Amy Wrzesniewski and Jane Dutton (Academy of Management Review, 2001)
+deeper-crafting-a-job-revisioning-employees-as-active-crafters-of-their-work: ""
+
+# Full path: Mozart in the Jungle, developed by Roman Coppola, Jason Schwartzman, Alex Timbers and Paul Weitz (Amazon Prime Video, 2014 to 2018)
+deeper-mozart-in-the-jungle: ""

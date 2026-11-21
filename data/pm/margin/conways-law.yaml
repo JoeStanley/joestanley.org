@@ -1,0 +1,35 @@
+# Margin notes for the concept card Conway’s Law.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen a note shows in your hand in the margin beside its part. On a phone and in print it sits
+# under the part's heading. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# The picture
+picture: ""
+
+# The idea
+the-idea: ""
+
+# Why a PM cares
+why-a-pm-cares: ""
+
+# How to spot it
+how-to-spot-it: ""
+
+# What it does not say
+what-it-does-not-say: ""
+
+# One question to carry
+question: ""
+
+# Go deeper
+go-deeper: ""

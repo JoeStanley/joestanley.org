@@ -2,7 +2,7 @@
 title: On Product Judgment
 description: A self-directed syllabus for early-career product managers. Twelve questions, free reading, about 90 minutes each.
 outputs: ["HTML"]
-pilot_note: "Pilot draft. Modules 1 and 2 have been rebuilt so far."
+pilot_note: "Pilot draft. Modules 0 to 3 have been rebuilt so far."
 ---
 
 > You don't become a good {{< pm/edit "Communist" "Product Manager" >}} by going to meetings or memorizing the [Manifesto](http://agilemanifesto.org). You do it on the streets. You do it with your fists. The rest is bullshit and you know it.
@@ -15,7 +15,7 @@ This isn't a substitute for the experience. You'll get that in time.
 
 It's not a list of tools or frameworks. You can find those anywhere.
 
-Instead, it's a set of lessons intended to strengthen your *product judgment*, supplementing what you'll learn on the job with the principles behind the work. It helps you develop an internal compass to navigate situations for which you have no map.
+Instead, it's a set of lessons intended to strengthen your **product judgment**, supplementing what you'll learn on the job with the principles behind the work. It helps you develop an internal compass to navigate situations for which you have no map.
 
 ## How it works
 

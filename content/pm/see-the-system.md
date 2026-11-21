@@ -2,27 +2,26 @@
 title: See the System
 layout: module
 module: see-the-system
-question: What's the system here, and why does it behave this way?
+question: What's the system, and why does it behave this way?
 one_thing: Read the card, then draw one thing that piles up in your own work as a bathtub.
 do_minutes: 30
-last_time_note: Own Your Role isn't rebuilt yet, so take these two as a preview of it.
 
 last_time:
-  - q: You start a new role and you're handed a narrow scope. What do the best PMs do with it?
-    a: They accept it, then grow it without waiting to be told.
+  - q: Fred Brooks let 150 implementers write the specifications to save the schedule. What did it cost?
+    a: The system's conceptual integrity, and by his estimate a year of debugging time.
   - q: Engineers write the test before they write the code. What's the same move in a PM's work?
-    a: Deciding what success looks like before you start a role or an objective. A tool from one discipline carries over to another.
+    a: Naming the destination first, "we're building this in order to ...", then working back to what would have to be true to get there.
 
 steps:
   - id: card-stocks
     kind: card
     card: cards/stocks-flows-feedback
-    minutes: 2
+    minutes: 5
     look: The picture. Most of Meadows's examples are versions of it.
   - id: meadows-1
     kind: read
     title: Donella Meadows, "Leverage Points", first half
-    minutes: 24
+    minutes: 25
     where: An essay. Free at donellameadows.org. Stop at the section headed "6. The structure of information flows", which opens with a story about an electricity meter.
     links:
       - text: "Leverage Points: Places to Intervene in a System"
@@ -33,7 +32,7 @@ steps:
   - id: meadows-2
     kind: read
     title: Donella Meadows, "Leverage Points", second half
-    minutes: 16
+    minutes: 20
     where: The same essay, from the meter story to the end.
     look: Why the houses with the meter in the front hall used less electricity. Then her last section, on why the highest leverage is the hardest to use.
     trust: Her politics show in the examples. Judge the reasoning on its own, whichever way that pulls you.
@@ -41,7 +40,7 @@ steps:
   - id: cook
     kind: read
     title: Richard Cook, "How Complex Systems Fail"
-    minutes: 8
+    minutes: 10
     where: Eighteen short points on one page. Free at how.complexsystems.fail.
     links:
       - text: "How Complex Systems Fail"
@@ -61,13 +60,13 @@ check:
 deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright
-    where: A book of about 240 pages. Borrow it or buy it.
+    where: A book.
     note: "Read chapters 1, 4 and 5: The Basics, Why Systems Surprise Us, and System Traps and Opportunities."
     trust: Her primer for general readers, drafted in 1993. Colleagues edited and published it in 2008, after her death.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
   - title: Chernobyl
     by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
-    where: A TV series, five episodes of about an hour.
+    where: A TV series.
     note: "In episode 1, a dosimeter reads 3.6 roentgen, the top of its scale, and the deputy chief engineer takes the number as the level: \"Not great, not terrible.\" In episode 5, the trial walks back through the chain: a safety test signed off as done when it wasn't, a ten-hour delay that handed it to an untrained night shift, and a shutdown button whose rods had graphite tips, because \"It's cheaper.\""
     only: "Cook's question put to a disaster: not who caused it, but what had to line up. Each link is someone acting sensibly where they stand, inside a system built to hide its own flaw: \"No one in the room that night knew the shutdown button could act as a detonator.\" Critics note that it sharpens some real officials into villains."
 ---

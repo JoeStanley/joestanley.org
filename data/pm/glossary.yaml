@@ -23,3 +23,22 @@ feedback-loop:
 leverage-point:
   term: Leverage point
   text: A place in a system where a small change can produce a large change in how the whole behaves. Donella Meadows ranked twelve of them.
+heavyweight:
+  term: Heavyweight product manager
+  show: heavyweight
+  text: From a study of car development. A lightweight product manager coordinates the work. A heavyweight also champions the product's concept, what you'd call its vision, and answers for it.
+conceptual-integrity:
+  term: Conceptual integrity
+  text: Fred Brooks's name for a product that reflects one set of design ideas, so its parts belong together.
+job-crafting:
+  term: Job crafting
+  text: Reshaping your own job from the inside, by changing its tasks, your working relationships or how you see its purpose. Amy Wrzesniewski and Jane Dutton named it in 2001.
+glue-work:
+  term: Glue work
+  text: Tanya Reilly's name for the work that holds a team together and rarely shows on a roadmap.
+inverse-conway:
+  term: Inverse Conway maneuver
+  text: Shaping teams, and how they talk to each other, on purpose, to get the system you want.
+interface:
+  term: Interface
+  text: Where two parts of a system, or two teams, meet, and what each side promises the other there.

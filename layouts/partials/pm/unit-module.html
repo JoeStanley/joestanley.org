@@ -1,5 +1,6 @@
 {{- /* A module page. Structure comes from the page's front matter, so every module has the same shape:
-       question, last time, why, short path, (game), do, check, go deeper.
+       question, last time, why, short path, (game), do, check, go deeper. The header gives one total, the rounded
+       sum of the steps' minutes and do_minutes (the Do's exercises), with no split (spec S14).
        Elements with class "note" sit in the margin on wide screens and in the flow elsewhere. */ -}}
 {{- $p := .p -}}{{- $all := .all -}}
 {{- $key := $p.File.ContentBaseName -}}
@@ -16,7 +17,7 @@
     <h1>{{ $p.Title | markdownify }}</h1>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
     <p class="question">{{ $p.Params.question }}</p>
-    <p class="meta">About {{ add $readMin $doMin }} minutes: {{ $readMin }} reading{{ if $p.Params.game }} and playing{{ end }}, {{ $doMin }} doing.</p>
+    <p class="meta">About {{ partial "pm/duration.html" (add $readMin $doMin) }}.</p>
     {{ with $p.Params.one_thing }}<p class="one-thing"><span class="one-thing-label">If you only do one thing<span class="sr">:</span></span> <span class="hl-line"><mark class="hl-v{{ add 1 (mod (int $m.num) 3) }}">{{ . | $p.RenderString }}</mark></span></p>{{ end }}
   </div></div></header>
   <div class="frame"><div class="unit-body reading">

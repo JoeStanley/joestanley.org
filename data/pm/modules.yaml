@@ -6,13 +6,12 @@
 - id: own-your-role
   num: 0
   title: Own Your Role
-  question: How do you grow your role beyond what you were handed, and make the product's concept your own?
-  draft: own-your-role
-  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 65 minutes, and prepared for its rebuild the same day, with every source opened but Graen and Scandura. Its one card is The Concept Champion, as Joe chose, and Curious and Opinionated left a paragraph in Why this matters. Mozart in the Jungle is its full path's one story. Role-Making, Transfer and Glue Work were cut as cards, each kept as a line, and the deck is no longer cited.
+  question: How do you grow your role beyond what you were handed, and make the product's vision your own?
+  page: own-your-role
 - id: see-the-system
   num: 1
   title: See the System
-  question: What's the system here, and why does it behave this way?
+  question: What's the system, and why does it behave this way?
   page: see-the-system
 - id: find-the-constraint
   num: 2
@@ -23,53 +22,52 @@
   num: 3
   title: Mind the Seams
   question: How does the way we're organized shape what we build?
-  draft: mind-the-seams
-  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 70 minutes, with one card, Conway's Law. Bottcher's article on the short path carries the idea of the cut Platform as a Product card. Architect Across the Interfaces was cut, and the deck is cited only for Ruth Malan's two lines.
+  page: mind-the-seams
 - id: map-the-domain
   num: 4
   title: Map the Domain
   question: What questions must the system answer, how fast and how fresh, and where should its boundaries fall?
   draft: map-the-domain
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 41 minutes, with one card, Access Patterns. Concepts, Core, Supporting, Generic and Data as a Product were cut as cards, each kept as a line or a full-path source.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, with one card, Access Patterns. Concepts, Core, Supporting, Generic and Data as a Product were cut as cards, each kept as a line or a full-path source.
 - id: design-for-change
   num: 5
   title: Design for Change
   question: What will change, how fast, and what should be easy to change?
   draft: design-for-change
-  state: Draft of 17 November 2026, winnowed on 21 November from the old format into the pilot's parts, at about 54 minutes. Its short path is free and cites the original works, except one walk credited to Ruth Malan. It carries two cards. Joe kept Coupling Is About a Change on 21 November, and Pace Layers goes at the rebuild.
+  state: Draft of 17 November 2026, winnowed on 21 November from the old format into the pilot's parts. Its short path is free and cites the original works, except one walk credited to Ruth Malan. It carries two cards. Joe kept Coupling Is About a Change on 21 November, and Pace Layers goes at the rebuild.
 - id: change-safely
   num: 6
   title: Change Safely
   question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
   draft: change-safely
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 54 minutes, with one card, Error Budgets, sourced to Google's example error budget policy. Guardrail Metrics, How Complex Systems Fail and Models That Are Sometimes Wrong were cut as cards, each kept as a term, a question or a full-path source.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, with one card, Error Budgets, sourced to Google's example error budget policy. Guardrail Metrics, How Complex Systems Fail and Models That Are Sometimes Wrong were cut as cards, each kept as a term, a question or a full-path source.
 - id: weigh-the-evidence
   num: 7
   title: Weigh the Evidence
   question: What do the numbers and the stories each tell you, and how much should either decide?
   draft: weigh-the-evidence
-  state: First draft of 20 November 2026, winnowed on 21 November into the pilot's parts, at about 56 minutes. It carries two cards. Joe kept The Law of Small Numbers on 21 November, and The McNamara Fallacy goes at the rebuild. Munro's review, Budiu and Chen moved to the full path.
+  state: First draft of 20 November 2026, winnowed on 21 November into the pilot's parts. It carries two cards. Joe kept The Law of Small Numbers on 21 November, and The McNamara Fallacy goes at the rebuild. Munro's review, Budiu and Chen moved to the full path.
 - id: decide-and-set-direction
   num: 8
   title: Decide and Set Direction
   question: Which decisions matter, whose are they, and what are we choosing not to do?
   draft: decide-and-set-direction
-  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 67 minutes, with one card, Agency and Coherence. Strategy as Forsaking, Last Responsible Moment and Chesterton's Fence were cut as cards, their ideas kept in Why this matters, the Do and the full path. Bezos, Harmel-Law and Rumelt replace the deck pages, still to be opened.
+  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, with one card, Agency and Coherence. Strategy as Forsaking, Last Responsible Moment and Chesterton's Fence were cut as cards, their ideas kept in Why this matters, the Do and the full path. Bezos, Harmel-Law and Rumelt replace the deck pages, still to be opened.
 - id: answer-for-what-you-build
   num: 9
   title: Answer for What You Build
-  question: Who benefits and who is harmed by what we build, and what is our share of the responsibility?
+  question: Who benefits and who is harmed by what we build, and what's our share of the responsibility?
   draft: answer-for-what-you-build
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 64 minutes, with one card, Many Hands. Value Created, Value Captured, Collect Less and Consequence Scanning were cut as cards, their ideas carried by Doteveryone's own page, Reichheld and Markey in place of Doctorow, Schneier, the Do and the Check.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, with one card, Many Hands. Value Created, Value Captured, Collect Less and Consequence Scanning were cut as cards, their ideas carried by Doteveryone's own page, Reichheld and Markey in place of Doctorow, Schneier, the Do and the Check.
 - id: notice-when-you-are-wrong
   num: 10
   title: Notice When You Are Wrong
   question: How do we find out we are wrong?
   draft: notice-when-you-are-wrong
-  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, at about 52 minutes, with one card, Double-Loop Learning. Batista and Edmondson replace six deck readings, a premortem is the main exercise, and the deck is no longer cited.
+  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, with one card, Double-Loop Learning. Batista and Edmondson replace six deck readings, a premortem is the main exercise, and the deck is no longer cited.
 - id: bring-people-with-you
   num: 11
   title: Bring People With You
   question: How do you earn the trust of the people who decide and depend on you, and keep it when there is nothing to report?
   draft: bring-people-with-you
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, at about 69 minutes. It carries two cards. Joe kept The Trust Equation on 21 November, and SCR goes at the rebuild. Two Kinds of Update folded into the text, the Do and the one thing, and Fractal Storytelling became the optional exercise.
+  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts. It carries two cards. Joe kept The Trust Equation on 21 November, and SCR goes at the rebuild. Two Kinds of Update folded into the text, the Do and the one thing, and Fractal Storytelling became the optional exercise.

@@ -2,6 +2,14 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, the round 1 session
+
+His picks in the session that carried in his editing pass and rebuilt Modules 0 and 3.
+
+- The PDF puts the margin notes in a margin column beside the text, as the site does, in his hand, with the text in about two thirds of the page's width. He chose it from pilots at three fifths, four fifths and two thirds, and the two-thirds pilot "looks good" (his pick, in the session).
+- The new print layout goes in the next session, not the round 1 pull request (his pick, in the session).
+- A margin note beside a full-path entry doesn't hold space open for itself. It can run on past its entry into the next one, as notes do on a printed page, and he'll tighten his own notes where they overrun.
+
 ## 21 November 2026, his editing pass
 
 From his edits and comments in the working doc that afternoon, on every module not yet built, and his picks in a session after it.

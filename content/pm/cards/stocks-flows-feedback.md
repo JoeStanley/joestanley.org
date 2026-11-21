@@ -10,7 +10,7 @@ deeper:
   title: Dancing With Systems
   by: Donella Meadows
   url: https://donellameadows.org/archives/dancing-with-systems/
-  where: An essay, about 17 minutes. Free at donellameadows.org.
+  where: An essay, about 20 minutes. Free at donellameadows.org.
   trust: Meadows on the limits of her own field. It's advice from experience, not a study.
   only: Fourteen habits for working with a system you can't fully understand or control.
 ---

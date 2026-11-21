@@ -1,0 +1,109 @@
+---
+title: Mind the Seams
+layout: module
+module: mind-the-seams
+question: How does the way we're organized shape what we build?
+one_thing: Sketch who talks to whom in your area, then how the system's parts connect, and mark where the two pictures disagree.
+do_minutes: 35
+
+last_time:
+  - q: Put the five focusing steps in order. Which two cost little?
+    a: Identify the constraint, exploit it, subordinate everything else to it, elevate it, then start again. Exploiting and subordinating cost little, and both come before any spending.
+  - q: A team is judged on reviews completed per day. What does Goodhart's Law warn you about?
+    a: Once the number is a target, people find the cheapest way to raise it, so it stops telling you whether the work flows any faster.
+
+steps:
+  - id: card-conway
+    kind: card
+    card: cards/conways-law
+    minutes: 5
+    look: Why the system follows who actually talks to whom.
+  - id: conway
+    kind: read
+    title: Melvin Conway, "How Do Committees Invent?"
+    minutes: 15
+    where: A magazine article from 1968. Free at melconway.com.
+    links:
+      - text: "How Do Committees Invent?"
+        url: http://www.melconway.com/Home/pdf/committees.pdf
+    look: "His advice for living with his law: since the first design is rarely the best, \"flexibility of organization is important to effective design.\""
+    trust: It's the original, and it's an argument, not a study.
+    only: The law in its author's words, with the reasoning a one-line summary leaves out.
+  - id: kelly
+    kind: read
+    title: Allan Kelly, "Conway's Law v. Software Architecture"
+    minutes: 5
+    where: A blog post. Free at allankelly.net.
+    links:
+      - text: "Conway's Law v. Software Architecture"
+        url: https://allankelly.net/archives/638/conway-law-v-software-architecture
+    look: "The force running the other way: \"Conway's Law is now working in reverse: the system is imposing structure on the organization.\""
+    trust: A practitioner's opinion, argued from a made-up example.
+    only: Why a system that's hard to change can hold a whole company in its shape.
+  - id: bottcher
+    kind: read
+    title: Evan Bottcher, "What I Talk About When I Talk About Platforms"
+    minutes: 15
+    where: An article. Free at martinfowler.com.
+    links:
+      - text: "What I Talk About When I Talk About Platforms"
+        url: https://www.martinfowler.com/articles/talk-about-platforms.html
+    look: "His definition, \"a foundation of self-service APIs, tools, services, knowledge and support\", run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required."
+    trust: One Thoughtworks consultant's view, drawn from his own client work.
+    only: A checklist of what makes a platform worth choosing.
+
+check:
+  - q: Does a system mirror the org chart of the organization that builds it?
+    a: Not necessarily. It mirrors who actually talks to whom, and that often isn't what the chart shows.
+  - q: A year after a reorganization, the teams have drifted back to their old shape. Why?
+    a: A system that's hard to change holds the teams around it in its shape, which Kelly calls Conway's Law working in reverse.
+  - q: Every team hits its target, and customers still see a gap. Where do you look?
+    a: Between the teams, at the joins. What one side sends isn't what the other expects, or nobody owns the handoff.
+
+deeper:
+  - title: Team Topologies
+    by: Matthew Skelton and Manuel Pais
+    where: A book.
+    note: "Read the chapters \"Conway's Law and Why It Matters\" and \"Team-First Thinking\" first, then the rest."
+    trust: Two consultants' model, built from their work with software teams and widely used, but not tested in studies.
+    only: "A vocabulary for designing teams: four team types, three ways for teams to work together, and cognitive load, how much a team has to hold in its head, as a limit on what it should own."
+  - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
+    by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
+    where: A journal article.
+    trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips."
+    only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
+  - title: The Misalignment of Product Architecture and Organizational Structure in Complex Product Development
+    by: Manuel Sosa, Steven Eppinger and Craig Rowles (Management Science, 2004)
+    where: A journal article.
+    trust: Built on data from one large project, Pratt and Whitney's PW4098 jet engine, and peer-reviewed.
+    only: How a product's design interfaces map onto who talks to whom, and how the interfaces that cross team boundaries are the ones most likely to be mismanaged.
+  - title: The Art of Systems Architecting
+    by: Mark Maier and Eberhardt Rechtin
+    where: A textbook.
+    note: "Read the chapter \"Heuristics as Tools\", then the appendix of heuristics for system-level architecting."
+    trust: Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California. Its heuristics are practitioners' rules, gathered from experience, not tested.
+    only: "Rules of thumb for the joins between parts: architect across an interface, not only up to it, as Robert Spinrad put it; ask what's the worst that could come across it; and draw interfaces so each part can be built on its own, without slicing through parts that must talk all the time."
+  - title: Halt and Catch Fire
+    by: created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
+    where: A TV series.
+    note: "A small company builds a portable PC, with a hardware chief, Gordon, and a software lead, Cameron, who want different machines. Her operating system has a personality and needs memory he won't give it, and the programmers take orders from both. In the ninth episode of season 1, when a cheaper copy of their machine turns up at a trade show, Gordon pulls her system out and swaps in MS-DOS: \"We had a problem. Now we have a product.\""
+    only: A product shaped by the fight between the teams that built it. Then watch the software team walk out and found a company of its own.
+---
+
+## Why this matters
+
+Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
+
+[//]: # (short-path)
+
+## Do
+
+**Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then ask a tech lead to correct it. Lay the two side by side. Where do the boundaries line up, and where do they cross?
+
+**Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
+
+## Questions to bring to engineers
+
+- Which parts of our system are hardest to change, and why? Do our team boundaries follow them?
+- At this interface between teams, what does each side promise the other, and what happens when that breaks?
+- What's the worst thing that could come across this interface, and who would notice first?

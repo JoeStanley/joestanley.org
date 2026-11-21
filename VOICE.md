@@ -78,6 +78,20 @@ A line that reads well alone can tire a reader who meets the same build ten time
 - **Spend the turn.** A line that ends on a twist ("and that's the problem", "not X, but Y") works once. End most lines where their thing is, on the fact, the act or the advice, and keep the turn for the line that needs it. A paragraph that closes on a short, punchy sentence is the same habit.
 - **Leave plain ground.** Let some lines only say what's there or what to do. When every line is worked to the same finish, the reader can't tell which one matters. Use the short sentence as a beat, not as the default.
 
+## Source entries
+
+Joe found the source entries "overly explained", in a way common to machine prose, on 21 November 2026. An entry is a recommendation you'd share over coffee: what it is, why it's neat or worth the time, and why it's worth trusting. Keep the labels (spec S2) and simplify what's in them. The *Ocean's Eleven* entry in Decide and Set Direction is his model.
+
+- **Say what it is in a word or two,** "A book.", "A journal article.", "A TV series.", and on the full path stop there: no page count, no running time (spec S13). The short path's times stay, because they add up to the module's total.
+- **No edition where the context makes it clear.** A reader with another edition still gets the lesson.
+- **Never tell the reader to borrow or buy a book.** Saying where it's free is worth a few words.
+- **Point to the part that matters,** the chapter, the scene, the episode, and let "What you'll get" say why it's worth it.
+- **"Why trust it" is a sentence or two:** who made it and what kind of evidence it is. Leave out what doesn't change whether to trust it.
+
+> **Before.** *Designing Data-Intensive Applications*, second edition, Martin Kleppmann and Chris Riccomini (O'Reilly, 2026). A book. Borrow it or buy it. Read chapter 1, ...
+>
+> **After,** Joe's edit. *Designing Data-Intensive Applications*, Martin Kleppmann and Chris Riccomini (O'Reilly, 2026). A book. Read chapter 1, ...
+
 ## Examples
 
 Draw examples from across complex technical product work, and move between settings within a unit: payments and checkout, delivery routing, hospital scheduling, developer platforms and APIs, marketplaces, streaming, industrial sensors, travel booking, education software, analytics tools, games, telecom, insurance claims, public digital services. No unit leans on one setting, and none describes Joe's own employer, team or platform. He asked for this on 20 November 2026.

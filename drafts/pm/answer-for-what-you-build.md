@@ -1,4 +1,4 @@
-About 64 minutes: 29 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+About 1 hour 15 minutes.
 
 **If you only do one thing:** Run a consequence scan on one feature you own, and write down one change you'd propose.
 
@@ -6,7 +6,9 @@ About 64 minutes: 29 reading, 35 doing (a 25-minute exercise and a 10-minute opt
 
 Your choices land on people who were never in the meeting. On a delivery platform, small rules decide how many stops fit in a shift, which order waits when a van runs late, and what counts as delivered. Across millions of orders, a small rule becomes a large effect.
 
-So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave, and for a while the two look alike on a dashboard. And when you feel like one cog among many, what's your share?
+So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave, and for a while the two look alike on a dashboard. Similarly, costs can be solved through good design or passed to less visible or influential parts of the system, yet both look like a win.
+
+In life, there are rarely clear ethical matters of good and bad given to you in that manner. Instead, it's a thousand small choices of degree, like getting fitted for a prescription at the eye doctor. I will not tell you here what's right or wrong per se, that's for you to find your own line. But wherever you land, hold fast.
 
 ## The short path
 
@@ -30,12 +32,12 @@ So ask two things of what you build. Who gains, and who pays? A product can earn
    **What you'll get:** The business case against capturing value, taking it from customers rather than creating it for them, ready for your next pricing review.
 3. **Many Hands**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** The phrases people reach for to feel less responsible.
 4. **Bruce Schneier, ["Data Is a Toxic Asset, So Why Not Throw It Out?"](https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html) (2016)**
 
-   7 minutes. Free at schneier.com.
+   10 minutes. Free at schneier.com.
 
    **Look for:** Why he treats stored data as a liability. Then put one test to every field you collect: which decision will it change?
 

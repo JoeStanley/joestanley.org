@@ -20,15 +20,17 @@ from playwright.sync_api import sync_playwright
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TESTS = os.path.join(ROOT, "tests")
 # The rebuilt modules, each with its concept cards, in reading order. Add a module here when it is rebuilt.
-MODULES = [("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
-           ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"])]
+MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
+           ("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
+           ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
+           ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"])]
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
 PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
-UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 1}
-PRINT_PAGES = 12
+UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 2}
+PRINT_PAGES = 23
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -109,14 +111,14 @@ SAMPLE = ["Sample note. Ask where work waits before you read this.",
 
 
 def build_fixture():
-    """A copy of the site with a sample note in every margin slot, so the margin rules (M1 to M3, R3) are checked
-    with notes present. Returns the built output directory."""
+    """A copy of the site with a sample note in every empty margin slot, beside the owner's own notes, so the margin
+    rules (M1 to M3, R3) are checked with notes present, his among them. Returns the built output directory."""
     tmp = tempfile.mkdtemp(prefix="fixture-")
     src = os.path.join(tmp, "src"); out = os.path.join(tmp, "out")
     shutil.copytree(ROOT, src, ignore=shutil.ignore_patterns(".git", "public", "node_modules", "baseline", "resources", "report.md"))
     for f in glob.glob(os.path.join(src, "data", "pm", "margin", "*.yaml")):
         data = yaml.safe_load(open(f, encoding="utf-8")) or {}
-        filled = {k: SAMPLE[i % len(SAMPLE)] for i, k in enumerate(data)}
+        filled = {k: (v if v else SAMPLE[i % len(SAMPLE)]) for i, k in enumerate(data) for v in [data[k]]}
         open(f, "w", encoding="utf-8").write(yaml.safe_dump(filled, sort_keys=False, allow_unicode=True))
     hugo = os.environ.get("HUGO", "hugo")
     r = subprocess.run([hugo, "--quiet", "-s", src, "-d", out], capture_output=True, text=True)
@@ -131,7 +133,7 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
   return [...document.querySelectorAll('.note')].filter(n => n.getClientRects().length).map(n => {
     const r = n.getBoundingClientRect(); const s = getComputedStyle(n);
     const prev = n.previousElementSibling, next = n.nextElementSibling;
-    const slot = (prev && prev.matches('[data-slot]')) ? prev : (next && next.matches('[data-slot]')) ? next : n.closest('[data-slot]');
+    const slot = (prev && prev.matches('[data-slot]')) ? prev : (next && next.matches('[data-slot]')) ? next : n.closest('[data-slot], [data-beside]');
     // A part ends where the next heading of its level starts, or with its container; a heading's part is the text under it.
     let sr = slot ? slot.getBoundingClientRect() : null, partBottom = sr ? sr.bottom : null;
     if (slot && /^H[1-6]$/.test(slot.tagName)) {
@@ -140,12 +142,13 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
     }
     const colRight = (n.closest('.reading') || col);
     const cR = colRight.getBoundingClientRect(); const cS = getComputedStyle(colRight);
-    return {note: n.dataset.note, slot: slot ? slot.dataset.slot : null, left: r.left, right: r.right, top: r.top, bottom: r.bottom,
+    return {note: n.dataset.note, slot: slot ? (slot.dataset.slot || slot.dataset.beside) : null, left: r.left, right: r.right, top: r.top, bottom: r.bottom,
             colRight: cR.left + colRight.clientWidth - parseFloat(cS.paddingRight), colLeft: cR.left + parseFloat(cS.paddingLeft),
             slotTop: sr ? sr.top : null, slotBottom: partBottom,
             face: s.fontFamily.split(',')[0].replace(/["']/g, '').trim().toLowerCase(), border: parseFloat(s.borderLeftWidth),
             hidden: !!n.closest('[aria-hidden="true"]'), lead: (n.firstElementChild && n.firstElementChild.matches('.sr')) ? n.firstElementChild.textContent : '',
-            after: prev ? prev.tagName : 'FIRST', before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : ''}; }); }"""
+            para: n.parentElement.matches('.noted') && prev && prev.tagName === 'P' ? [prev.getBoundingClientRect().top, prev.getBoundingClientRect().bottom] : null,
+            after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (!next && prev && prev.tagName === 'P' && n.parentElement.matches('.noted')) ? 'PARAGRAPH' : ''}; }); }"""
 
 NOTE_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/"]
 
@@ -168,8 +171,8 @@ def margin_checks(ctx, fix_base, axe_src):
                         fail("M3", f"{where}: {tag} is not inside or right before its part (found {n['slot']})")
                     if n["hidden"] or n["lead"] != "Note: ":
                         fail("M3", f"{where}: {tag} is not introduced to screen readers as a note")
-                    if n["after"] not in ("H1", "H2", "H3", "DT", "FIRST") and n["before"] not in ("SLOT", "DESCRIPTION"):
-                        fail("M3", f"{where}: {tag} does not come right after its part's heading, or a step's description")
+                    if n["after"] not in ("H1", "H2", "H3", "DT", "FIRST") and n["before"] not in ("SLOT", "DESCRIPTION", "PARAGRAPH"):
+                        fail("M3", f"{where}: {tag} does not come right after its part's heading, a step's description or its paragraph")
                     if w >= 1024:
                         if n["left"] < n["colRight"] - 1:
                             fail("R3", f"{where}: {tag} sits in the reading column, not the margin")
@@ -177,6 +180,8 @@ def margin_checks(ctx, fix_base, axe_src):
                             fail("M1", f"{where}: {tag} is set in {n['face']}, not the owner's hand")
                         if n["slotBottom"] is not None and n["top"] > n["slotBottom"] + 8:
                             fail("M1", f"{where}: {tag} starts below the end of its part, so it no longer sits beside it")
+                        if n["para"] and abs(n["top"] - n["para"][0]) > 8 and abs(n["bottom"] - n["para"][1]) > 8:
+                            fail("M1", f"{where}: {tag} names a paragraph, and sits level with neither its top nor its foot")
                     else:
                         if n["right"] > n["colRight"] + 1 or n["left"] < n["colLeft"] - 1:
                             fail("R3", f"{where}: {tag} does not fold into the text")
@@ -219,7 +224,11 @@ class Server:
         class Q(http.server.SimpleHTTPRequestHandler):
             def log_message(self, *a):
                 pass
-        class S(socketserver.TCPServer):
+        class S(socketserver.ThreadingMixIn, socketserver.TCPServer):
+            # one thread per connection: a browser that holds a connection open must not stall the next page
+            daemon_threads = True
+            allow_reuse_address = True
+
             def handle_error(self, *a):  # a page left mid-load is not an error
                 pass
         self.srv = S(("127.0.0.1", 0), functools.partial(Q, directory=directory))
@@ -416,6 +425,9 @@ def check_static():
     return tokens
 
 
+QUOTE_FOLD = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"', "\u00a0": " "})
+
+
 def slot_checks(out_dir):
     """M4: every part of every unit has a slot in data/pm/margin/<unit>.yaml, in reading order, and nothing else."""
     from bs4 import BeautifulSoup
@@ -444,7 +456,19 @@ def slot_checks(out_dir):
         if [k for k in keys if k in slots] != [k for k in slots if k in keys]:
             fail("M4", f"{rel}: slots are not in reading order")
         for k, v in data.items():
-            if v is not None and not isinstance(v, str):
+            if isinstance(v, list):
+                for n in v:
+                    if not isinstance(n, dict) or not isinstance(n.get("note"), str) or set(n) - {"note", "beside", "at"} \
+                            or not isinstance(n.get("beside", ""), str) or n.get("at", "foot") != "foot":
+                        fail("M4", f"{rel}: slot {k} holds a list, and each item is a note in quotes, with beside: and at: foot if wanted")
+                        continue
+                    if n.get("beside"):
+                        want = " ".join(n["beside"].translate(QUOTE_FOLD).split())
+                        hits = [d for d in art.select(f'div.noted[data-beside="{k}"]')
+                                if d.find("p") and want in " ".join(d.find("p").get_text().translate(QUOTE_FOLD).split())]
+                        if not hits:
+                            fail("M4", f"{rel}: a note in slot {k} sits beside the paragraph that holds \"{n['beside']}\", and no paragraph of that part holds it now")
+            elif v is not None and not isinstance(v, str):
                 fail("M4", f"{rel}: slot {k} holds {type(v).__name__}, not text; put the note in quotes")
         # Each unit's parts each carry a slot: sections, steps, sources, the game, the picture, the question, terms.
         for el in art.select("section:not(.print-only), li.step, .deeper-list > li, figure, p.carry, .gloss-list > div"):
@@ -1035,7 +1059,16 @@ def engine_checks(p, base):
             for cond in ("normal", "text doubled", "text spacing"):
                 c = b.new_context(**kw); pg = c.new_page()
                 for path in PAGES:
-                    pg.goto(base + path); pg.wait_for_load_state("load")
+                    # the single document is long; a page that stalls once is loaded again in a fresh tab before
+                    # the run gives up, so one slow load can't hide every check after it
+                    for attempt in (1, 2):
+                        try:
+                            pg.goto(base + path, timeout=60000); pg.wait_for_load_state("load", timeout=60000)
+                            break
+                        except Exception:
+                            if attempt == 2:
+                                raise
+                            pg.close(); pg = c.new_page()
                     if cond == "text doubled":   # WebKit and Firefox take no default-size setting here; doubling the root size is the same for rem
                         pg.add_style_tag(content="html { font-size: 200% !important; }")
                     elif cond == "text spacing":
@@ -1243,17 +1276,22 @@ def unit_page_checks(pdf_path, n_pages):
         with pdf.open_outline() as ol:
             for top in ol.root:
                 kind = "start" if top.title.startswith("Start:") else "module" if top.title.startswith("Module ") else "glossary"
-                units.append((first_page(top), kind, top.title))
-                units += [(first_page(k), "card", k.title) for k in top.children if k.title.startswith("Card: ")]
-    if any(pg is None for pg, _, _ in units):
+                deeper = next((first_page(k) for k in top.children if k.title.startswith("Go deeper: the full path")), None)
+                units.append((first_page(top), kind, top.title, deeper))
+                units += [(first_page(k), "card", k.title, None) for k in top.children if k.title.startswith("Card: ")]
+    if any(u[0] is None for u in units):
         fail("P1", "a unit's bookmark does not land on a page, so its pages cannot be counted"); return
     units.sort(key=lambda u: u[0])
-    for (pg, kind, title), nxt in zip(units, units[1:] + [(n_pages, "", "")]):
+    for (pg, kind, title, deeper), nxt in zip(units, units[1:] + [(n_pages, "", "", None)]):
         n = nxt[0] - pg
+        # a module's full path prints outside its three pages: it starts within them, and may take one more
+        share = UNIT_SHARE[kind] + (1 if kind == "module" and deeper is not None else 0)
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
-        elif n > UNIT_SHARE[kind]:
-            fail("P1", f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}")
+        elif n > share:
+            fail("P1", f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{', and one more for its full path' if share > UNIT_SHARE[kind] else ''}")
+        if kind == "module" and deeper is not None and deeper - pg >= UNIT_SHARE["module"]:
+            fail("P1", f"'{title}' starts its full path on its page {deeper - pg + 1}, so the module itself runs past its {UNIT_SHARE['module']} pages")
 
 
 def pdf_link_meta_checks(pdf_path, out_dir):
@@ -1445,12 +1483,40 @@ CONTRACTIONS = [  # (the full form, where a speaker could contract it; the contr
 
 
 # S10: an entry that opens with one of these media is a story (fiction, or a story told on screen or stage)
-STORY = re.compile(r"(?:An? |A pair of |Two )?(?:novel|novella|short story|graphic novel|comic|(?:TV |television |streaming )?series(?! of)|film|documentary|play)\b", re.I)
+STORY = re.compile(r"(?:An? |A pair of |Two )?(?:classic )?(?:novel|novella|short story|graphic novel|comic|(?:TV |television |streaming )?series(?! of)|film|documentary|play)\b", re.I)
 # S12: a book's entry opens "A book" or "A textbook"; a time under about 30 minutes marks something short.
 BOOK = re.compile(r"An? (?:book|textbook)\b", re.I)
 SHORT = re.compile(r"\b(?:a few|a couple of|(?:about |some |under )?(\d+)) minutes?\b", re.I)
 # S12: built before the rule, these may hold fewer than two books until the owner picks theirs (PLAN.md, job 8)
 S12_PENDING = {"1 See the System", "2 Find the Constraint"}
+# S12: on a built full path every entry opens with what it is; these kinds ask for 30 minutes or more
+LONG_KIND = re.compile(r"An? (?:book|textbook|(?:journal |law review |long )?article|(?:conference |research |long )?paper|(?:staff )?report)\b", re.I)
+# S13: no unit tells the reader to borrow or buy; no built full path gives a page count or a running time
+BORROW = re.compile(r"\b(?:borrow|buy) it\b", re.I)
+LENGTH = re.compile(r"\b(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|a few|a couple of)[ -](?:pages?|minutes?|hours?|episodes?)\b|\babout an? hour\b|\bhalf an hour\b|\bhalf-hour\b|\bof about\b", re.I)
+# S14: a time estimate, and the rounded marks it may take
+DURATION = re.compile(r"(?:(\d+) hours?(?: (\d+) minutes?)?|(\d+) minutes?)")
+
+
+def s14_round(m):
+    """The owner's rounding (spec S14): up to 5 minutes under 30; nearest quarter hour to 2 hours; nearest half
+    hour to 5; nearest hour beyond."""
+    if m < 30:
+        return -(-m // 5) * 5
+    step = 15 if m <= 120 else 30 if m <= 300 else 60
+    return int(m / step + 0.5) * step
+
+
+def s14_minutes(d):
+    """Minutes in "1 hour 15 minutes", "2 hours", "45 minutes"; None if it doesn't read as one."""
+    m_ = DURATION.fullmatch(d.strip())
+    if not m_:
+        return None
+    return int(m_.group(3)) if m_.group(3) else int(m_.group(1)) * 60 + int(m_.group(2) or 0)
+
+
+def s14_on_mark(m):
+    return m == s14_round(m) and (m >= 30 or m % 5 == 0)
 
 
 def _own_words(md):
@@ -1477,9 +1543,55 @@ def _sections(md, names):
     return ["\n".join(x) for x in out]
 
 
+def s14_checks(name, text):
+    """S14: the header's one total, the steps' and exercises' times, and the times sources ask, all on the
+    owner's marks, and the total the rounded sum of the parts."""
+    where = name
+    lines = text.split("\n")
+    times = []
+    if re.match(r"\d+ ", name):
+        head = next((l for l in lines if l.startswith("About ")), None)
+        total = None
+        if head is None:
+            fail("S14", f"{where}: the header gives no total")
+        else:
+            h_ = re.fullmatch(r"About (.+?)\.", head.strip())
+            total = s14_minutes(h_.group(1)) if h_ else None
+            if total is None:
+                fail("S14", f"{where}: the header reads \"{head.strip()[:60]}\", and gives one total, such as \"About 1 hour 15 minutes.\", with no reading and doing split")
+            elif not s14_on_mark(total):
+                fail("S14", f"{where}: the header's total, {head.strip()}, isn't rounded the owner's way")
+        for sec in _sections(text, {"The short path"}):
+            for l in sec.split("\n"):
+                s_ = re.match(r"\s+(?:Concept card\. )?(\d+) minutes\.", l)
+                if s_:
+                    times.append(("a step", int(s_.group(1))))
+        for e_ in re.finditer(r"^\*\*[^*\n]*?\((\d+) minutes\)\.\*\*", text, re.M):
+            times.append(("an exercise", int(e_.group(1))))
+        for what, m in times:
+            if not s14_on_mark(m):
+                fail("S14", f"{where}: {what} takes {m} minutes, and rounds to {s14_round(m)}")
+        if total is not None and times and s14_round(sum(m for _, m in times)) != total:
+            fail("S14", f"{where}: the header says {total} minutes, and the steps and exercises add up to {sum(m for _, m in times)}, which rounds to {s14_round(sum(m for _, m in times))}")
+    # the time a source asks, on a full path or a card: not a story's running time
+    for sec in _sections(text, {"Go deeper: the full path", "Go deeper"}):
+        for entry in re.split(r"\n(?=- \*\*|\*\*)", sec):
+            body = re.sub(r"^- \*\*.+?\*\*(?!\*)\s*", "", entry, flags=re.S)
+            if STORY.match(body):
+                continue
+            if re.match(r"\*\*(?:Why trust it|What you'll get):", entry):
+                continue
+            # what the entry says before its reasons; a "To check:" note quotes facts to check, not estimates
+            lead = body.split("**Why trust it:**")[0].split("**What you'll get:**")[0]
+            lead = "\n".join(l for l in lead.split("\n") if not l.strip().startswith("*To check"))
+            for d_ in re.finditer(r"\b(?:[Aa]bout )?(\d+) minutes\b", lead):
+                if not s14_on_mark(int(d_.group(1))):
+                    fail("S14", f"{where}: a source asks \"{d_.group(0)}\", which rounds to {s14_round(int(d_.group(1)))} minutes")
+
+
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12")
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -1559,6 +1671,10 @@ def source_checks(out_dir):
             fail("X3", f"the record lists a tab the repository no longer makes: {name}")
     # S5, E1 to E3: every unit, built or draft, as its tab shows it
     built_tabs = {f"{m['num']} {m['title']}" for m in mods if m.get("page")}
+    own_words = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "own-words.yaml"), encoding="utf-8")) or []
+    for o in own_words:
+        if o.get("unit") not in by_name:
+            fail("E3", f"data/pm/own-words.yaml lists a sentence for {o.get('unit')}, which has no tab")
     retired = [l.strip().lower() for l in open(os.path.join(TESTS, "retired-settings.txt"), encoding="utf-8") if l.strip() and not l.startswith("#")]
     for name, text in tabs:
         if name == "About":
@@ -1569,6 +1685,9 @@ def source_checks(out_dir):
                 fail("S5", f"{name}: an example is set in a retired setting (\"{phrase}\")")
         if (name in ("Start", "Glossary") or name in built_tabs) and "to check:" in low:
             fail("S7", f"{name} is built and still carries a \"To check:\" line")
+        if BORROW.search(text):
+            fail("S13", f"{name}: \"{BORROW.search(text).group(0)}\": a source entry never tells the reader to borrow or buy")
+        s14_checks(name, text)
         if name in ("Start", "Glossary"):
             continue
         for sec in _sections(text, {"Why this matters", "Why a PM cares", "Why a PM should care"}):
@@ -1588,6 +1707,12 @@ def source_checks(out_dir):
                     continue
                 count += 2 if re.match(r"(?:A pair of|Two) ", m_.group(2)) else 1
                 title = re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1))[:50]
+                # what the entry says of itself: a story's first line (its plot may mention hours), else all before its reasons
+                lead_ = m_.group(2).strip().split("\n")[0] if STORY.match(m_.group(2)) else m_.group(2).split("**Why trust it:**")[0].split("**What you'll get:**")[0]
+                if name in built_tabs and LENGTH.search(lead_):
+                    fail("S13", f"{name}: {title} gives \"{LENGTH.search(lead_).group(0)}\", and a full path gives no page count or running time")
+                if name in built_tabs and not STORY.match(m_.group(2)) and not LONG_KIND.match(m_.group(2)):
+                    fail("S12", f"{name}: {title} doesn't open by naming a long kind (a book, a journal article, a paper, a report): \"{m_.group(2)[:40]}\"")
                 if not STORY.match(m_.group(2)):
                     books += 1 if BOOK.match(m_.group(2)) else 0
                     short = [t for t in SHORT.finditer(m_.group(2)) if not t.group(1) or int(t.group(1)) < 30]
@@ -1609,6 +1734,14 @@ def source_checks(out_dir):
             if name in built_tabs and name not in S12_PENDING and books < 2:
                 fail("S12", f"{name}: the full path holds {books} book{'' if books == 1 else 's'} beside its story, and two is the least")
         own = _own_words(text)
+        flat = " ".join(own.split())
+        for o in own_words:
+            if o["unit"] == name:
+                said = " ".join(o["text"].translate(sd.QUOTES).split())
+                if said not in flat:
+                    fail("E3", f"{name}: the owner's own sentence is no longer there word for word: \"{said[:60]}...\"")
+                flat = flat.replace(said, " ")
+        own = flat
         full = sum(len(re.findall(a, own, re.I)) for a, b in CONTRACTIONS)
         short = sum(len(re.findall(b, own, re.I)) for a, b in CONTRACTIONS)
         if full + short >= 8 and short / (full + short) < 0.6:
@@ -2119,11 +2252,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12"):
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12"):
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1") else None
     srv = Server(out_dir)
