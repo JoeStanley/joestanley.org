@@ -101,9 +101,9 @@ Optional, and not counted in the time above.
 
   A TV series, 60 hour-long episodes over five seasons.
 
-  Start with season 1, or jump to season 3, where a police major makes three zones in which drug dealing is tolerated, his district grows peaceful, and the institutions around him shut it down. In season 4, episode 9, a former detective now teaching math sees his old system in the new one: "You juke the stats, and majors become colonels. I've been here before."
+  Start with season 1, or jump to season 3. There a police major makes three zones where drug dealing is tolerated, and his district grows peaceful, until the institutions around him shut it down. In season 4, episode 9, a former detective now teaching math sees his old job in the new one: "You juke the stats, and majors become colonels. I've been here before."
 
-  **What you'll get:** Structure driving behavior, at the scale of a city. The police, the drug trade, the port, city hall and the schools each run on their own rules, and people who act sensibly where they stand keep each one making what nobody wants. Simon has called himself "very cynical about institutions" and not about people, and the show is built that way.
+  **What you'll get:** Structure driving behavior, at the scale of a city. The police, the drug trade, the port, city hall and the schools each run on their own rules, and the people inside them, doing what makes sense where they stand, keep each one making what nobody wants.
 
 ---
 
