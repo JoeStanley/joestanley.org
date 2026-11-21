@@ -30,7 +30,8 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 2}
-PRINT_PAGES = 23
+DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
+PRINT_PAGES = 26
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -148,7 +149,22 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
             face: s.fontFamily.split(',')[0].replace(/["']/g, '').trim().toLowerCase(), border: parseFloat(s.borderLeftWidth),
             hidden: !!n.closest('[aria-hidden="true"]'), lead: (n.firstElementChild && n.firstElementChild.matches('.sr')) ? n.firstElementChild.textContent : '',
             para: n.parentElement.matches('.noted') && prev && prev.tagName === 'P' ? [prev.getBoundingClientRect().top, prev.getBoundingClientRect().bottom] : null,
-            after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (!next && prev && prev.tagName === 'P' && n.parentElement.matches('.noted')) ? 'PARAGRAPH' : ''}; }); }"""
+            after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (!next && prev && prev.tagName === 'P' && n.parentElement.matches('.noted')) ? 'PARAGRAPH' : '',
+            kind: (n.closest('.unit') || {className: ''}).className,
+            brk: Math.max(0, ...[...n.querySelectorAll(':scope > p')].slice(0, -1).map(p => parseFloat(getComputedStyle(p).marginBottom)))}; }); }"""
+
+# A source's note on the full path holds no room open (M1): its entry ends where the entry's own words end.
+JS_RUNON = """() => [...document.querySelectorAll('.deeper-list > li')].filter(li => li.querySelector(':scope > .note') && li.getClientRects().length).map(li => {
+  const own = [...li.children].filter(k => !k.matches('.note') && k.getClientRects().length).map(k => k.getBoundingClientRect().bottom + Math.max(0, parseFloat(getComputedStyle(k).marginBottom)));
+  return {slot: li.dataset.slot, extra: li.getBoundingClientRect().bottom - parseFloat(getComputedStyle(li).paddingBottom) - Math.max(...own)}; })"""
+
+# The size of a spacing step where the page is, in CSS pixels.
+JS_SP = """(v) => { const d = document.createElement('div'); d.style.height = `var(${v})`; document.body.appendChild(d);
+  const h = d.getBoundingClientRect().height; d.remove(); return h; }"""
+
+# Each module's text column in print: where it starts and ends (M1: about two thirds of the page).
+JS_COLS = """() => [...document.querySelectorAll('.unit.module .unit-body.reading')].map(b => { const r = b.getBoundingClientRect(); const s = getComputedStyle(b);
+  return {id: b.closest('.unit').id, left: r.left + parseFloat(s.paddingLeft), right: r.left + b.clientWidth - parseFloat(s.paddingRight)}; })"""
 
 NOTE_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/"]
 
@@ -191,6 +207,9 @@ def margin_checks(ctx, fix_base, axe_src):
                             fail("M1", f"{where}: {tag} folds in only {n['right'] - n['left']:.0f}px wide, in a {n['colRight'] - n['colLeft']:.0f}px column")
                 if w >= 1024:
                     _margin_overlaps(pg, "M2", where)
+                    for e in pg.evaluate(JS_RUNON):
+                        if e["extra"] > 1:
+                            fail("M1", f"{where}: the full path's source {e['slot']} holds {e['extra']:.0f}px open for its note, which should run on past it")
                     m = pg.evaluate(JS_MARGIN)
                     for e in (m or {}).get("inMargin", []):
                         if not e["owner"]:
@@ -217,6 +236,97 @@ def margin_checks(ctx, fix_base, axe_src):
             for s_ in pg.evaluate(JS_SPILL):
                 fail(rule, f"{where}: {s_}")
         c.close()
+
+
+def page_text_width():
+    """The printed page's text width in CSS pixels: Letter, less the side margins of the @page rule in pm.css."""
+    css = open(os.path.join(ROOT, "assets", "css", "pm.css"), encoding="utf-8").read()
+    m = re.search(r"@page\s*\{[^}]*size:\s*Letter;[^}]*margin:\s*[\d.]+in\s+([\d.]+)in", css)
+    return (8.5 - 2 * float(m.group(1))) * 96
+
+
+def print_margin_checks(ctx, fix_base):
+    """M1 and M2 in print, on the sample-note build laid out at the page's text width: a module's text takes about two
+    thirds of the page, and its notes print in the margin column in the owner's hand, beside their parts, apart from
+    each other; on Start, a card or the glossary a note folds in under its part."""
+    checked("M1", "M2")
+    W = page_text_width()
+    c = ctx(viewport={"width": int(W), "height": 1100}); pg = c.new_page()
+    pg.goto(fix_base + "/pm/all/"); pg.emulate_media(media="print"); pg.evaluate("document.fonts.ready")
+    where = "print /pm/all/, a sample note in every slot"
+    sp3 = pg.evaluate(JS_SP, "--sp-3")
+    for col in pg.evaluate(JS_COLS):
+        share = (col["right"] - col["left"]) / W
+        if not 0.6 <= share <= 0.72:
+            fail("M1", f"{where}: {col['id']}'s text takes {share:.0%} of the page's width, not about two thirds")
+    margin = []
+    for n in pg.evaluate(JS_NOTES):
+        tag = f"note '{n['note']}' in {n['kind'].replace('unit ', '')}"
+        if "module" in n["kind"].split():
+            if n["left"] < n["colRight"] + 1 or n["right"] > W + 0.5:
+                fail("M1", f"{where}: {tag} does not print in the margin column beside the text")
+            if n["face"] != "shantell sans":
+                fail("M1", f"{where}: {tag} prints in {n['face']}, not the owner's hand")
+            if n["slotBottom"] is not None and n["top"] > n["slotBottom"] + 8:
+                fail("M1", f"{where}: {tag} starts below the end of its part, so it no longer sits beside it")
+            if n["para"] and abs(n["top"] - n["para"][0]) > 8 and abs(n["bottom"] - n["para"][1]) > 8:
+                fail("M1", f"{where}: {tag} names a paragraph, and sits level with neither its top nor its foot")
+            if n["brk"] >= sp3:
+                fail("M2", f"{where}: a break inside {tag} is {n['brk']:.0f}px, as wide as the gap between two notes")
+            margin.append(n)
+        else:
+            if n["right"] > n["colRight"] + 1 or n["left"] < n["colLeft"] - 1:
+                fail("M1", f"{where}: {tag} does not fold into the text")
+            if n["face"] == "shantell sans" or n["border"] < 1:
+                fail("M1", f"{where}: {tag} folds in without the typeset face and pen line")
+    margin.sort(key=lambda n: n["top"])
+    for a_, b_ in zip(margin, margin[1:]):
+        if b_["top"] < a_["bottom"] + sp3 - 0.5:
+            fail("M2", f"{where}: notes '{a_['note']}' and '{b_['note']}' print {b_['top'] - a_['bottom']:.0f}px apart, closer than --sp-3 ({sp3:.0f}px)")
+    for e in pg.evaluate(JS_RUNON):
+        if e["extra"] > 1:
+            fail("M1", f"{where}: the full path's source {e['slot']} holds {e['extra']:.0f}px open for its note, which should run on past it")
+    c.close()
+
+
+def pdf_note_checks(pdf_path, out_dir):
+    """M1 in the PDF itself: each of the owner's notes in a module prints whole, on one page, in the margin column, and
+    a paragraph with a note prints whole on the same page."""
+    import html
+    from bs4 import BeautifulSoup
+    checked("M1")
+    css = open(os.path.join(ROOT, "assets", "css", "pm.css"), encoding="utf-8").read()
+    mg = re.search(r"\.module\s*\{\s*--margin:\s*([\d.]+)in;\s*--gutter:\s*([\d.]+)in;", css)
+    side = (8.5 * 96 - page_text_width()) / 2 / 96
+    if not mg:
+        fail("M1", "pm.css gives a module no print margin column (--margin and --gutter in inches)"); return
+    edge = (8.5 - side - float(mg.group(1)) - float(mg.group(2)) / 2) * 72   # halfway across the gutter, in points
+    toks = lambda t: [w for w in (re.sub(r"[^0-9a-z]", "", x.lower()) for x in t.split()) if w]
+    raw = subprocess.run(["pdftotext", "-bbox", pdf_path, "-"], capture_output=True, text=True).stdout
+    pages = []
+    for pg_ in re.findall(r"<page[^>]*>(.*?)</page>", raw, re.S):
+        ws = [(float(a), float(b), html.unescape(w)) for a, b, w in re.findall(r'<word xMin="([\d.]+)" yMin="([\d.]+)"[^>]*>([^<]*)<', pg_)]
+        lines = lambda keep: [t for _, _, w in sorted((w for w in ws if keep(w[0])), key=lambda w: (round(w[1] / 3), w[0])) for t in toks(w)]
+        pages.append((lines(lambda x: x >= edge), lines(lambda x: x < edge)))
+
+    def found(seq, words):
+        return any(words[i:i + len(seq)] == seq for i in range(len(words) - len(seq) + 1))
+
+    soup = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
+    for n in soup.select(".unit.module aside.note"):
+        for sr in n.select(".sr"):
+            sr.decompose()
+        t = toks(n.get_text(" "))
+        head, tail = t[:4], t[-4:]
+        on = [i for i, (m, _) in enumerate(pages) if found(head, m) and found(tail, m)]
+        label = " ".join(n.get_text(" ").split()[:6])
+        if not on:
+            fail("M1", f"PDF: the note '{label} ...' does not print whole, on one page, in the margin column"); continue
+        para = n.find_previous_sibling("p") if "noted" in (n.parent.get("class") or []) else None
+        if para is not None:
+            pt = toks(para.get_text(" "))
+            if not any(found(pt[:4], pages[i][1]) and found(pt[-4:], pages[i][1]) for i in on):
+                fail("M1", f"PDF: the paragraph beside the note '{label} ...' does not print whole on the note's page")
 
 
 class Server:
@@ -1204,7 +1314,9 @@ def pdf_ring_checks(pdf):
             dense = np.where(counts >= 0.3 * counts.max())[0]
             if "px" not in PRINT_TITLE_CAP:
                 fail("R6", "the title's capital height in print was not measured"); continue
-            title_mid = band0 + dense[-1] - PRINT_TITLE_CAP["px"] / 96 * dpi / 2
+            # the title's first line: a title that wraps brings a second line's capitals into the band, after a gap
+            first = np.split(dense, np.where(np.diff(dense) > 0.04 * dpi)[0] + 1)[0]
+            title_mid = band0 + first[-1] - PRINT_TITLE_CAP["px"] / 96 * dpi / 2
             if abs(cy - title_mid) / size > 0.05:
                 fail("R6", f"{where}: the circle sits {(cy - title_mid) / size:+.1%} of its size {'below' if cy > title_mid else 'above'} the middle of the title's capitals")
     if not found:
@@ -1284,12 +1396,12 @@ def unit_page_checks(pdf_path, n_pages):
     units.sort(key=lambda u: u[0])
     for (pg, kind, title, deeper), nxt in zip(units, units[1:] + [(n_pages, "", "", None)]):
         n = nxt[0] - pg
-        # a module's full path prints outside its three pages: it starts within them, and may take one more
-        share = UNIT_SHARE[kind] + (1 if kind == "module" and deeper is not None else 0)
+        # a module's full path prints outside its three pages: it starts within them, and may take two more
+        share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
         elif n > share:
-            fail("P1", f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{', and one more for its full path' if share > UNIT_SHARE[kind] else ''}")
+            fail("P1", f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}")
         if kind == "module" and deeper is not None and deeper - pg >= UNIT_SHARE["module"]:
             fail("P1", f"'{title}' starts its full path on its page {deeper - pg + 1}, so the module itself runs past its {UNIT_SHARE['module']} pages")
 
@@ -2014,6 +2126,11 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                 margin_checks(ctx, fix_base, axe_src)
             except Exception as e:  # a broken page must fail its rule, not stop the suite
                 fail("M1", f"sample-note check could not finish: {str(e).splitlines()[0][:160]}")
+        if fix_base and run_for("M1", "M2"):
+            try:
+                print_margin_checks(ctx, fix_base)
+            except Exception as e:  # a broken page must fail its rule, not stop the suite
+                fail("M1", f"sample-note print check could not finish: {str(e).splitlines()[0][:160]}")
         if run_for("H1"):
             try:
                 variant_checks(ctx, base)
@@ -2094,6 +2211,19 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                   && el.textContent.replace(/[\\d\\s.,:;]/g, '').length).map(el => el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 40) + '"')"""):
                 fail("P4", f"prints but is hidden from assistive technology, so the PDF leaves it untagged: {t}")
             c.close()
+        if run_for("P7"):
+            # P7: nothing that prints reaches past the page's text width, or Chrome shrinks the whole PDF to fit it
+            checked("P7")
+            W = page_text_width()
+            c = ctx(viewport={"width": int(W), "height": 1100}); pg = c.new_page()
+            pg.goto(base + "/pm/all/"); pg.emulate_media(media="print"); pg.evaluate("document.fonts.ready")
+            for e in pg.evaluate("""() => { const W = document.documentElement.clientWidth; const out = [];
+                  for (const el of document.querySelectorAll('body *')) { const r = el.getBoundingClientRect();
+                    if (r.width && r.right > W + 0.5 && !el.parentElement.closest('svg')) out.push(el.tagName + '.' + (typeof el.className === 'string' ? el.className : '') + ' "' + (el.textContent || '').trim().slice(0, 40) + '" to ' + Math.round(r.right) + 'px'); }
+                  if (!out.length && document.documentElement.scrollWidth > W) out.push('the page is ' + document.documentElement.scrollWidth + 'px wide');
+                  return out.slice(0, 5); }"""):
+                fail("P7", f"print: {e} reaches past the page's {int(W)}px, so the PDF prints shrunk")
+            c.close()
         if run_for("S4"):
             try:
                 sources_checks(ctx, base)
@@ -2106,7 +2236,7 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
             except Exception as e:  # a broken engine run must fail its rule, not stop the suite
                 fail("R8", f"check could not finish: {str(e).splitlines()[0][:160]}")
 
-    if run_for("P1", "P2", "P4", "P5", "P6", "R6", "S4", "L1"):
+    if run_for("P1", "P2", "P4", "P5", "P6", "R6", "S4", "L1", "M1"):
         # P1, P2, P4: the PDF, made by the same tool that makes the delivered file
         pdf = os.path.join(tempfile.mkdtemp(), "pilot.pdf")
         r = subprocess.run([sys.executable, os.path.join(ROOT, "tools-pm", "make-pdf.py"), out_dir, pdf, "check"], capture_output=True, text=True)
@@ -2136,6 +2266,11 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                 pdf_link_meta_checks(pdf, out_dir)
             except Exception as e:  # a broken PDF must fail its rule, not stop the suite
                 fail("P5", f"PDF check could not finish: {str(e).splitlines()[0][:160]}")
+        if run_for("M1"):
+            try:
+                pdf_note_checks(pdf, out_dir)
+            except Exception as e:  # a broken PDF must fail its rule, not stop the suite
+                fail("M1", f"PDF note check could not finish: {str(e).splitlines()[0][:160]}")
         if run_for("S4"):
             try:
                 sources_pdf_check(pdf)

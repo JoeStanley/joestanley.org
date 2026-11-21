@@ -210,18 +210,27 @@
   .plate { padding: var(--sp-5); }
   /* A step's or a source's note comes after its description in the text (so on a phone the title stays with its time),
      but in the margin it sits level with the title, and takes no room in the column. */
-  /* Where :has() is missing, such a note stays in the column, under its step, as on a phone. */
-  .reading .step > .note, .reading .deeper-list > li > .note { float: none; width: auto; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); grid-column: 2; }
+  /* Where :has() is missing, a step's note stays in the column, under its step, as on a phone. */
+  .reading .step > .note { float: none; width: auto; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); grid-column: 2; }
   @supports selector(:has(a)) {
-    .step:has(> .note), .deeper-list > li:has(> .note) { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
+    .step:has(> .note) { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
     .step:has(> .note) { grid-template-columns: var(--tick) minmax(0, 1fr) calc(var(--margin) + var(--gutter) - var(--sp-4)); }
     /* A step or source with a note starts below any note still running down the margin from above, so notes never meet. */
     .step:has(> .note), .deeper-list > li:has(> .note) { clear: right; }
-    .deeper-list > li:has(> .note) { display: grid; grid-template-columns: minmax(0, 1fr) var(--margin); column-gap: var(--gutter); }
-    .deeper-list > li:has(> .note) > * { grid-column: 1; }
-    .reading .step > .note, .reading .deeper-list > li > .note { grid-row: 1 / span 8; align-self: start; margin: 0; padding-left: 0; border-left: 0; }
+    .reading .step > .note { grid-row: 1 / span 8; align-self: start; margin: 0; padding-left: 0; border-left: 0; }
     .reading .step > .note { grid-column: 3; margin-left: calc(var(--gutter) - var(--sp-4)); }
-    .reading .deeper-list > li > .note { grid-column: 2; }
+  }
+  /* A source's note on the full path sits level with its title and holds no room open: a long one runs on down the
+     margin past its entry, as a note does on a printed page (the owner, 21 November 2026). */
+  .deeper-list > li { position: relative; }
+  .reading .deeper-list > li > .note { position: absolute; top: var(--sp-4); right: calc(-1 * (var(--margin) + var(--gutter))); float: none; margin: 0; }
+  /* Where the browser can anchor one box to another, a note that would meet the one above it waits below it (M2).
+     Each source's title is an anchor seen only inside its own entry; each note anchors the next. */
+  @supports (anchor-scope: --a) {
+    .deeper-list { position: relative; }
+    .deeper-list > li { position: static; anchor-scope: --deeper-source; }
+    .deeper-list > li > h3 { anchor-name: --deeper-source; }
+    .reading .deeper-list > li > .note { anchor-name: --deeper-note; top: max(anchor(--deeper-source top), calc(anchor(--deeper-note bottom, -100vh) + var(--sp-4))); }
   }
   /* A note inside a panel reaches past the panel's padding to the same margin as every other note. */
   .reading .plate > .note, .reading .game .note { margin-right: calc(-1 * (var(--margin) + var(--gutter) + var(--sp-5))); }
@@ -260,8 +269,45 @@
   .game .takeaway { display: block !important; }
 
   .deeper summary::after { display: none; }
+  .deeper summary { break-inside: avoid; break-after: avoid; }  /* the full path's heading stays with its first source */
   .deeper details::details-content { content-visibility: visible !important; display: block !important; }
   .deeper-list > li { break-inside: avoid; }
+
+  /* A module prints as a wide screen shows it (spec M1): the text in two thirds of the page and the owner's notes in
+     the margin column beside it, in his hand. Letter's 6.9in of text width gives 4.6in of text, 0.3in of gutter and
+     2in of margin. Start, the cards and the glossary keep the full width, and a note there folds in under its part. */
+  .module { --margin: 2in; --gutter: 0.3in; }
+  .module .reading { padding-right: calc(var(--margin) + var(--gutter)); }
+  .module .reading .note {
+    float: right; clear: right; width: var(--margin);
+    margin: var(--sp-1) calc(-1 * (var(--margin) + var(--gutter))) var(--sp-4) 0; padding: 0; border: 0;
+    font-family: "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100;
+  }
+  /* A note's box ends with its words, and a break inside a note is smaller than the space between two notes, so
+     stacked notes read as two (spec M2). */
+  .module .reading .note p { margin-bottom: var(--sp-2); }
+  .module .reading .note > :last-child { margin-bottom: 0; }
+  /* A paragraph with a note never breaks across pages, so its note stays beside it. */
+  .module .reading .noted { break-inside: avoid; }
+  .module .reading .noted > .note { position: absolute; top: 0; right: calc(-1 * (var(--margin) + var(--gutter))); float: none; margin: 0; }
+  .module .reading .noted > .note-foot { top: auto; bottom: 0; }
+  /* A step's note sits level with its title in a third column, as on a wide screen; without :has() it stays under it. */
+  .module .reading .step > .note { float: none; width: auto; margin: var(--sp-2) 0 var(--sp-3); }
+  @supports selector(:has(a)) {
+    .module .step:has(> .note), .module .deeper-list > li:has(> .note) { clear: right; }
+    .module .step:has(> .note) { margin-right: calc(-1 * (var(--margin) + var(--gutter))); grid-template-columns: var(--tick) minmax(0, 1fr) calc(var(--margin) + var(--gutter) - var(--sp-4)); }
+    .module .reading .step > .note { grid-column: 3; grid-row: 1 / span 8; align-self: start; margin: 0 0 0 calc(var(--gutter) - var(--sp-4)); }
+  }
+  /* A source's note on the full path holds no room open: it runs on down the margin past its entry, and waits below
+     the note above it where it would meet it, as on screen. */
+  .module .deeper-list > li { position: relative; }
+  .module .reading .deeper-list > li > .note { position: absolute; top: var(--sp-4); right: calc(-1 * (var(--margin) + var(--gutter))); float: none; margin: 0; }
+  @supports (anchor-scope: --a) {
+    .module .deeper-list { position: relative; }
+    .module .deeper-list > li { position: static; anchor-scope: --deeper-source; }
+    .module .deeper-list > li > h3 { anchor-name: --deeper-source; }
+    .module .reading .deeper-list > li > .note { anchor-name: --deeper-note; top: max(anchor(--deeper-source top), calc(anchor(--deeper-note bottom, -100vh) + var(--sp-4))); }
+  }
 
   /* Source reasons: a module lists them at the back (.sources-back); a card prints its one source's at its foot. */
   .module .source-note { display: none; }
@@ -276,6 +322,11 @@
   .answers h2 { font-size: var(--fs-body); margin: var(--sp-2) 0 var(--sp-1); }
   .answers-label { margin: var(--sp-2) 0 0; font-family: var(--ui); font-weight: var(--w-strong); }
   .answers ol { padding-left: 13pt; }
+  /* The sources' reasons may run on to the next page between two sources, as a list of references does, rather than
+     leave a page nearly empty; each source keeps its title with its reasons. */
+  .answers.sources-back { break-inside: auto; }
+  .sources-back h2, .sources-back .answers-label { break-after: avoid; }
+  .sources-back .notes { break-inside: avoid; }
 
   /* A card is one page: picture beside its caption, the rest in two columns. */
   .card .plate { margin: var(--sp-3) 0 0; padding: var(--sp-3) 14pt; display: grid; grid-template-columns: 2.85in 1fr; column-gap: 20pt; align-items: center; }
@@ -287,7 +338,10 @@
   .card-body ul, .card-body ol { padding-left: 13pt; }
   .card-body li, .card-body p { break-inside: avoid; }
   .carry { margin: var(--sp-4) 0 0; break-inside: avoid; }
+  /* Go deeper sits as close to the question as the card's other headings sit to their text, which the print at full
+     size needs for a long card to keep to its page (P2, P7). */
   .card-deeper { break-inside: avoid; }
+  .unit-body > .card-deeper { margin-top: var(--sp-4); }
   .card-deeper h2 { margin-top: var(--sp-4); }
 
   .modules { margin-top: var(--sp-2); columns: 2; column-gap: 26pt; }

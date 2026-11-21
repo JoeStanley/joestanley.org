@@ -2,6 +2,10 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, the Decisions page that evening
+
+- Every later rebuild writes its source entries the way Own Your Role and Mind the Seams now do: what it is in a word or two, where to start, and why to trust it in a sentence, with no page count, running time, edition or "borrow or buy". Job 8 brings Modules 1 and 2's entries in line (agree, card `simpler-entries`).
+
 ## 21 November 2026, the round 1 session
 
 His picks in the session that carried in his editing pass and rebuilt Modules 0 and 3.

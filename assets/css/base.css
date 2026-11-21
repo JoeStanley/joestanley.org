@@ -278,4 +278,7 @@ a, .recall summary::after, .why > summary { transition: color 180ms ease-out, te
   .band { padding: 0; }
   .band + .frame { padding-top: 0; }
   mark { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  /* A highlighted line keeps its right end on the page: anything reaching past the page's edge makes Chrome shrink the
+     whole PDF to fit, so the print would no longer be at full size (spec P7). */
+  .hl-line { margin-right: 0; }
 }
