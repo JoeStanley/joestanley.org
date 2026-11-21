@@ -3,8 +3,8 @@
        so the checks and tools-pm/margin-slots.py can list every slot. Call with p (the page), unit and slot.
        A slot holds one note, or a list of notes; a note in a list that names a paragraph (beside) is placed by
        pm/prose-slots.html, beside that paragraph, and the rest print here.
-       Wide screens: in the owner's hand, in the margin beside the part. Phones and print: under the part's
-       heading, in the typeset face, with a pen line at its left. */ -}}
+       Wide screens, and a module in print: in the owner's hand, in the margin beside the part. Phones, and Start,
+       a card or the glossary in print: under the part's heading, in the typeset face, with a pen line at its left. */ -}}
 {{- $notes := dict -}}
 {{- with site.Data.pm.margin }}{{ with index . $.unit }}{{ $notes = . }}{{ end }}{{ end -}}
 {{- with index $notes .slot -}}
