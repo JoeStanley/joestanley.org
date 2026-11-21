@@ -51,7 +51,7 @@ Joe Stanley's personal site: a front door, a ReadMe, the syllabus On Product Jud
 - Open and check every source before a module is rebuilt. In a draft, mark what nobody has opened yet with a line that starts "To check:". No built unit may carry one (S7).
 - **Ruth Malan's deck**, her February 2025 workshop notes, which the older drafts cite as "deck p.", is in the private repository `JoeStanley/pm-sources`: the PDF, its text one file per page, a map of every deck reference in the drafts, and what a full read found for each module. Attach it with `add_repo` when you rebuild a module that leans on the deck, and search it rather than reading it whole. Cite the works it points to, and the deck only for Malan's own insight (S8). Nothing from that repository comes here beyond a brief, credited quote.
 - The short path uses only freely available sources; books go on the full path. Every recommended source says why to trust it and what only it gives the reader (S2).
-- The whole syllabus aimed at about 50 printed pages and should read as manageable, not overwhelming. With twelve modules the drafts run past that; Joe settles the page target after a pilot (19 November 2026).
+- The whole syllabus should read as manageable, not overwhelming. It aimed at about 50 printed pages; after the pilot Joe set the target at about 75, as it runs: each module's own text keeps to three pages, and its optional full path and back matter add about two more (21 November 2026).
 - Pilot first: build one piece, get Joe's reaction, then replicate. Ask Joe before a format becomes fixed.
 
 ## The working doc

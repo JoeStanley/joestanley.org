@@ -23,7 +23,9 @@ TESTS = os.path.join(ROOT, "tests")
 MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
            ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
-           ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"])]
+           ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"]),
+           ("/pm/map-the-domain/", ["/pm/cards/access-patterns/"]),
+           ("/pm/design-for-change/", ["/pm/cards/coupling/"])]
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
 PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
@@ -31,7 +33,7 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 2}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
-PRINT_PAGES = 26
+PRINT_PAGES = 38
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -113,13 +115,14 @@ SAMPLE = ["Sample note. Ask where work waits before you read this.",
 
 def build_fixture():
     """A copy of the site with a sample note in every empty margin slot, beside the owner's own notes, so the margin
-    rules (M1 to M3, R3) are checked with notes present, his among them. Returns the built output directory."""
+    rules (M1 to M3, R3) are checked with notes present, his among them. Every full path's heading gets the longest
+    sample, so R10 always meets a note there that runs past the heading. Returns the built output directory."""
     tmp = tempfile.mkdtemp(prefix="fixture-")
     src = os.path.join(tmp, "src"); out = os.path.join(tmp, "out")
     shutil.copytree(ROOT, src, ignore=shutil.ignore_patterns(".git", "public", "node_modules", "baseline", "resources", "report.md"))
     for f in glob.glob(os.path.join(src, "data", "pm", "margin", "*.yaml")):
         data = yaml.safe_load(open(f, encoding="utf-8")) or {}
-        filled = {k: (v if v else SAMPLE[i % len(SAMPLE)]) for i, k in enumerate(data) for v in [data[k]]}
+        filled = {k: (v if v else SAMPLE[1] if k == "go-deeper" else SAMPLE[i % len(SAMPLE)]) for i, k in enumerate(data) for v in [data[k]]}
         open(f, "w", encoding="utf-8").write(yaml.safe_dump(filled, sort_keys=False, allow_unicode=True))
     hugo = os.environ.get("HUGO", "hugo")
     r = subprocess.run([hugo, "--quiet", "-s", src, "-d", out], capture_output=True, text=True)
@@ -170,6 +173,9 @@ JS_COLS = """() => [...document.querySelectorAll('.unit.module .unit-body.readin
   return {id: b.closest('.unit').id, left: r.left + parseFloat(s.paddingLeft), right: r.left + b.clientWidth - parseFloat(s.paddingRight)}; })"""
 
 NOTE_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/"]
+# The margin checks open each module's full path first: folded, its notes aren't drawn, so they meet nothing, and
+# opened, every note shows, so where they sit can be checked as a reader meets them (M1, M2, R7, A13).
+OPEN_FULL_PATH = "document.querySelectorAll('.deeper > details').forEach(d => d.open = true)"
 
 
 def margin_checks(ctx, fix_base, axe_src):
@@ -179,7 +185,7 @@ def margin_checks(ctx, fix_base, axe_src):
         for w in (390, 1280):
             c = ctx(viewport={"width": w, "height": 900}, color_scheme=scheme); pg = c.new_page()
             for path in NOTE_PAGES:
-                pg.goto(fix_base + path); pg.evaluate("document.fonts.ready")
+                pg.goto(fix_base + path); pg.evaluate(OPEN_FULL_PATH); pg.evaluate("document.fonts.ready")
                 where = f"{path} {scheme} {w}px, a sample note in every slot"
                 notes = pg.evaluate(JS_NOTES)
                 if not notes:
@@ -238,7 +244,7 @@ def margin_checks(ctx, fix_base, axe_src):
             pg.goto(fix_base + path)
             if rule == "A13":
                 pg.add_style_tag(content=TEXT_SPACING)
-            pg.evaluate("document.fonts.ready")
+            pg.evaluate(OPEN_FULL_PATH); pg.evaluate("document.fonts.ready")
             where = f"{path} 1280px, {'text size doubled' if rule == 'R7' else 'text spacing overridden'}, sample notes"
             _margin_overlaps(pg, rule, where)
             for s_ in pg.evaluate(JS_SPILL):

@@ -230,9 +230,12 @@
   .deeper-list > li { position: relative; }
   .reading .deeper-list > li > .note { position: absolute; top: var(--sp-4); right: calc(-1 * (var(--margin) + var(--gutter))); float: none; margin: 0; }
   /* Where the browser can anchor one box to another, a note that would meet the one above it waits below it (M2).
-     Each source's title is an anchor seen only inside its own entry; each note anchors the next. */
+     Each source's title is an anchor seen only inside its own entry; each note anchors the next, starting with a note
+     beside the full path's own heading, so a source never moves down to make way for it (R10). */
   @supports (anchor-scope: --a) {
-    .deeper-list { position: relative; }
+    .deeper { position: relative; }
+    .reading .deeper > .note { anchor-name: --deeper-note; }
+    .deeper-list > li:has(> .note) { clear: none; }
     .deeper-list > li { position: static; anchor-scope: --deeper-source; }
     .deeper-list > li > h3 { anchor-name: --deeper-source; }
     .reading .deeper-list > li > .note { anchor-name: --deeper-note; top: max(anchor(--deeper-source top), calc(anchor(--deeper-note bottom, -100vh) + var(--sp-4))); }
@@ -314,7 +317,9 @@
   .module .deeper-list > li { position: relative; }
   .module .reading .deeper-list > li > .note { position: absolute; top: var(--sp-4); right: calc(-1 * (var(--margin) + var(--gutter))); float: none; margin: 0; }
   @supports (anchor-scope: --a) {
-    .module .deeper-list { position: relative; }
+    .module .deeper { position: relative; }
+    .module .reading .deeper > .note { anchor-name: --deeper-note; }
+    .module .deeper-list > li:has(> .note) { clear: none; }
     .module .deeper-list > li { position: static; anchor-scope: --deeper-source; }
     .module .deeper-list > li > h3 { anchor-name: --deeper-source; }
     .module .reading .deeper-list > li > .note { anchor-name: --deeper-note; top: max(anchor(--deeper-source top), calc(anchor(--deeper-note bottom, -100vh) + var(--sp-4))); }

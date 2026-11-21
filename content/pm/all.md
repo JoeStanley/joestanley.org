@@ -6,6 +6,6 @@ weight: 999
 # a library or search shows (spec P6). Change these when the syllabus changes.
 pdf:
   title: On Product Judgment
-  subject: A self-directed syllabus for early-career product managers, on product judgment. Pilot draft with Module 0, Own Your Role, Module 1, See the System, Module 2, Find the Constraint, Module 3, Mind the Seams, their five concept cards and the glossary.
-  keywords: [product management, product judgment, early-career product managers, syllabus, product vision, heavyweight product manager, conceptual integrity, systems thinking, stocks and flows, leverage points, theory of constraints, five focusing steps, Goodhart's Law, Conway's Law, team boundaries]
+  subject: A self-directed syllabus for early-career product managers, on product judgment. Pilot draft with Module 0, Own Your Role, Module 1, See the System, Module 2, Find the Constraint, Module 3, Mind the Seams, Module 4, Map the Domain, Module 5, Design for Change, their seven concept cards and the glossary.
+  keywords: [product management, product judgment, early-career product managers, syllabus, product vision, heavyweight product manager, conceptual integrity, systems thinking, stocks and flows, leverage points, theory of constraints, five focusing steps, Goodhart's Law, Conway's Law, team boundaries, access patterns, data freshness, bounded contexts, systems of record, pace layering, coupling, cost of change]
 ---

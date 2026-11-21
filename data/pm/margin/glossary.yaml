@@ -15,11 +15,32 @@
 # Beside the title
 top: ""
 
+# Access pattern
+access-pattern: ""
+
+# Bounded context
+bounded-context: ""
+
+# Cognitive load
+cognitive-load: ""
+
+# Complexity
+complexity: ""
+
 # Conceptual integrity
 conceptual-integrity: ""
 
 # Constraint (bottleneck)
 constraint: ""
+
+# Cost of change
+cost-of-change: ""
+
+# Coupling
+coupling: ""
+
+# Event time and processing time
+event-time: ""
 
 # Feedback loop
 feedback-loop: ""
@@ -45,8 +66,17 @@ leverage-point: ""
 # OKRs (objectives and key results)
 okr: ""
 
+# Operational and analytical
+operational-analytical: ""
+
+# Pace layers
+pace-layers: ""
+
 # Stock
 stock: ""
+
+# System of record and system of reference
+system-of-record: ""
 
 # Work in progress (WIP)
 wip: ""

@@ -2,6 +2,17 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 21 November 2026, the round 2 session
+
+- James C. Scott's *Seeing Like a State* takes the fifth place on Design for Change's full path, from the options put to him: its introduction, chapter 1 and chapter 10, whose four rules for planners are "Take small steps", "Favor reversibility", "Plan on surprises" and "Plan on human inventiveness" (his pick, in the session).
+- A long note beside the full path's heading no longer pushes the first source down: fix it in `pm.css`, so the first source's note waits below it (his pick, in the session).
+- The syllabus's page target is about 75, as it runs: each module keeps its own text to three pages, and its optional full path and back matter add about two more. The aim of about 50, set before full paths held books and before the margin took a third of the page, gives way (his pick, in the session, after the pilot he said would settle it).
+
+## 21 November 2026, the Decisions page, late night
+
+- Map the Domain's full path keeps all five voices, each in its long form: Kleppmann and Riccomini's *Designing Data-Intensive Applications*, Wirfs-Brock and Verraes's *Design and Reality* read whole, Evans's *Domain-Driven Design* (its chapters on bounded contexts and the core domain), Dehghani's *Data Mesh* (its chapter on data as a product), and *Brazil* (agree, card `full-path-4-books`).
+- Fowler's "CQRS" leaves Design for Change's full path, and he'd rather its place not go to more architecture or engineering. He asked for options from another field, ideally something unexpected and novel to a PM: his first inclination is the future's lack of predictability favoring flexibility, even when the business and its leaders think they have a stable view of it. Closer to expected, but under-included so far, is the business or UX side of the discipline. He'll pick from a list (something else, agree, card `full-path-5-cqrs`).
+
 ## 21 November 2026, the Decisions page that night, and the job 8 session
 
 - Each module's full path spans the whole reading column, like the rest of the module, so his notes beside its sources line up with the rest of the margin (agree, card `full-path-width`).

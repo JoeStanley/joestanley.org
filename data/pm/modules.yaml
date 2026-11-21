@@ -27,14 +27,12 @@
   num: 4
   title: Map the Domain
   question: What questions must the system answer, how fast and how fresh, and where should its boundaries fall?
-  draft: map-the-domain
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, with one card, Access Patterns. Concepts, Core, Supporting, Generic and Data as a Product were cut as cards, each kept as a line or a full-path source.
+  page: map-the-domain
 - id: design-for-change
   num: 5
   title: Design for Change
   question: What will change, how fast, and what should be easy to change?
-  draft: design-for-change
-  state: Draft of 17 November 2026, winnowed on 21 November from the old format into the pilot's parts. Its short path is free and cites the original works, except one walk credited to Ruth Malan. It carries two cards. Joe kept Coupling Is About a Change on 21 November, and Pace Layers goes at the rebuild.
+  page: design-for-change
 - id: change-safely
   num: 6
   title: Change Safely

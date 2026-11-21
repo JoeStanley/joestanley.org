@@ -114,5 +114,6 @@ run_bg "a note folded in on a phone without its label" M1 "echo '@media (max-wid
 run_bg "a card's note printed typeset, not in the owner's hand" M1 "sed -i '/^  .note { font-family: \"Shantell Sans\", var(--ui); font-variation-settings: \"INFM\" 100; }$/d' assets/css/pm.css"
 run_bg "a note read aloud as a plain note again" M3 "sed -i 's/>Sidenote: </>Note: </g' layouts/partials/pm/margin.html layouts/partials/pm/prose-slots.html"
 run_bg "a step's note out of line with the margin" M1 "echo '@media (min-width: 64rem) { .reading .step > .note { margin-left: var(--sp-5) !important; } }' >> assets/css/pm.css"
+run_bg "a long note beside the full path's heading pushing the first source down" R10 "sed -i '/^    .deeper-list > li:has(> .note) { clear: none; }$/d' assets/css/pm.css"
 run_bg "See the System back to one book beside its story" S12 "sed -i '/^  - title: The Field Guide/,/^    only: Cook.s point/d' content/pm/see-the-system.md"
 wait

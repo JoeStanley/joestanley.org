@@ -42,3 +42,33 @@ inverse-conway:
 interface:
   term: Interface
   text: Where two parts of a system, or two teams, meet, and what each side promises the other there.
+access-pattern:
+  term: Access pattern
+  text: A question a system's data has to answer, with who asks it, how often, how fast and how fresh.
+operational-analytical:
+  term: Operational and analytical
+  text: Operational use keeps the live service running, and analytical use looks across many records, the way reports do.
+system-of-record:
+  term: System of record and system of reference
+  text: A system of record holds the authoritative copy of some data, from which every other copy is made. A system of reference makes that data easy to use, by gathering or preparing copies for people to read and decide with, and isn't where it changes.
+bounded-context:
+  term: Bounded context
+  text: An area of a business or a system inside which each word and model has one agreed meaning.
+event-time:
+  term: Event time and processing time
+  text: When something happened, and when the system saw it.
+pace-layers:
+  term: Pace layers
+  text: Parts of a building, a society or a product that change at different speeds, with the slow ones setting the terms for the fast. Stewart Brand's shearing layers are a building's version.
+cost-of-change:
+  term: Cost of change
+  text: What it takes to change part of a product later, set mostly by the slowest layer the change touches.
+coupling:
+  term: Coupling
+  text: How far a change to one part forces a change to another, judged for a particular change.
+complexity:
+  term: Complexity
+  text: In John Ousterhout's sense, anything in a system's structure that makes it hard to understand and change. Its symptoms are change amplification, cognitive load and unknown unknowns.
+cognitive-load:
+  term: Cognitive load
+  text: How much someone has to know to make a change safely.

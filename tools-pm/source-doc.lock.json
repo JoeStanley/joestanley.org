@@ -5,18 +5,18 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "3a5dce481eb6aed4b09bc37bf202db3f7e770c349b43ce55387c769d85d67d58",
+   "sha256": "5950bbe547adf32b2e2c557ce12f40a3a4cdc0aba398a9d2fd85e43d879c2d15",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 32
+   "rev": 33
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "81e400913ca921f683acbbb5ed06c69efc423dec6a12c3d101262b7c2119ec6e",
+   "sha256": "126580424ea7832b73feee43887f00917cdd7b01a016c8a1d70df4c73109c76d",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 199
+   "rev": 201
   },
   {
    "name": "0 Own Your Role",
@@ -53,18 +53,18 @@
   {
    "name": "4 Map the Domain",
    "file": "4-map-the-domain.md",
-   "sha256": "9295408457a8d3bd6d23dca5abf43f5208eef8db366f42948d7bea599ea9f9c8",
+   "sha256": "972ffe6e0b68b82e37f71555afff4d4e0a1ce3fd9941e3d8d6dea14776e66642",
    "doc_tab": "b3d1938f-b26d",
    "doc_node": "57f2abde-0b8e",
-   "rev": 47
+   "rev": 48
   },
   {
    "name": "5 Design for Change",
    "file": "5-design-for-change.md",
-   "sha256": "f1363a542ccb7d02bbe2dbadcc29f2cbacd69ecca8c49ea581e3fd9baa889403",
+   "sha256": "de4299ddda0652b03991d2aefe8f91cc09aca1fbf04ea94034a64e4accc05ca9",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 24
+   "rev": 25
   },
   {
    "name": "6 Change Safely",
@@ -117,10 +117,10 @@
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "0a6faf421feda6220e0b18c96a4329abf45a745133e1f3db94cb8f57fdd218ca",
+   "sha256": "8a3e875034c6245d950c768921aa1b62af3a9be83dc54b27da775cb631ff7ba0",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 3
+   "rev": 4
   }
  ]
 }
