@@ -1,4 +1,4 @@
-About 54 minutes: 24 reading, 30 doing (a 20-minute exercise and a 10-minute optional one).
+About 1 hour.
 
 **If you only do one thing:** Write a one-page rollout plan for your next change, and include how you'd switch it off.
 
@@ -12,7 +12,7 @@ First, though, know how good it has to be, in words engineers can test: "When 50
 
 1. **Google SRE book, "Embracing Risk" (Chapter 3)**
 
-   8 minutes. Free at sre.google. Read "Managing Risk", "Target level of availability" under consumer services, and "Motivation for Error Budgets".
+   10 minutes. Free at sre.google. Read "Managing Risk", "Target level of availability" under consumer services, and "Motivation for Error Budgets".
 
    **Look for:** Why 100 percent is the wrong target, and who sets the reliability target, the service level objective (SLO).
 
@@ -21,7 +21,7 @@ First, though, know how good it has to be, in words engineers can test: "When 50
    **What you'll get:** One shared number to settle disputes between product and reliability.
 2. **Pete Hodgson, "Feature Toggles" (martinfowler.com, 2017)**
 
-   8 minutes. Free at martinfowler.com. Read "A Toggling Tale", then "Release Toggles" and "Experiment Toggles" under "Categories of toggles".
+   10 minutes. Free at martinfowler.com. Read "A Toggling Tale", then "Release Toggles" and "Experiment Toggles" under "Categories of toggles".
 
    **Look for:** How deploying a change, putting it into production switched off, differs from releasing it to customers, a few at first.
 
@@ -30,7 +30,7 @@ First, though, know how good it has to be, in words engineers can test: "When 50
    **What you'll get:** The mechanics behind "released to 1 percent of customers", enough to ask your engineers sharp questions.
 3. **DORA, "DORA's software delivery performance metrics" (Google Cloud)**
 
-   6 minutes. Free at dora.dev.
+   10 minutes. Free at dora.dev.
 
    **Look for:** Which of the five measures show throughput and which show instability.
 
@@ -39,7 +39,7 @@ First, though, know how good it has to be, in words engineers can test: "When 50
    **What you'll get:** Names for the five measures, so you can ask for your own team's numbers.
 4. **Error Budgets**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** How a reliability target turns into minutes you can spend.
 

@@ -1,0 +1,62 @@
+# Margin notes for Module 3, Mind the Seams.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen a note shows in your hand in the margin beside its part. On a phone and in print it sits
+# under the part's heading. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters: ""
+
+# The short path
+short-path: ""
+
+# Short path, step 1: Conway’s Law
+step-card-conway: ""
+
+# Short path, step 2: Melvin Conway, “How Do Committees Invent?”
+step-conway: ""
+
+# Short path, step 3: Allan Kelly, “Conway’s Law v. Software Architecture”
+step-kelly: ""
+
+# Short path, step 4: Evan Bottcher, “What I Talk About When I Talk About Platforms”
+step-bottcher: ""
+
+# Do
+do: ""
+
+# Questions to bring to engineers
+questions-to-bring-to-engineers: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: Team Topologies, Matthew Skelton and Manuel Pais
+deeper-team-topologies: ""
+
+# Full path: Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms, Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
+deeper-architectural-innovation-the-reconfiguration-of-existing-product-technologies-and-the-failure-of-established-firms: "You may think Administrative Science Quarterly is not the most thrilling of publications, and you'd be wrong. Jokes aside, this contains a key point: Many PMs have heard of Conway's Law, but fewer recognize how the system then creates costs in changing the org."
+
+# Full path: The Misalignment of Product Architecture and Organizational Structure in Complex Product Development, Manuel Sosa, Steven Eppinger and Craig Rowles (Management Science, 2004)
+deeper-the-misalignment-of-product-architecture-and-organizational-structure-in-complex-product-development: ""
+
+# Full path: The Art of Systems Architecting, Mark Maier and Eberhardt Rechtin
+deeper-the-art-of-systems-architecting: ""
+
+# Full path: Halt and Catch Fire, created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
+deeper-halt-and-catch-fire: "This show is shockingly good, honestly one of my top ten despite a couple glaring flaws. And it's got Lee Pace. If that doesn't sell you, I can only assume you haven't seen Lee Pace in anything."

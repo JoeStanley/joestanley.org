@@ -88,6 +88,8 @@ def blocks(el):
             out.append("#" * int(c.name[1]) + " " + inline(c))
         elif c.name == "p":
             out.append(inline(c))
+        elif c.name == "aside" and "note" in cls:   # a note beside a paragraph (spec M1), after it
+            out.append(f"*Margin note: {inline(c)}*")
         elif c.name in ("ul", "ol"):
             out.append(listing(c))
         elif c.name == "blockquote":

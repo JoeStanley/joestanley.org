@@ -1,4 +1,4 @@
-About 56 minutes: 21 reading, 35 doing (a 25-minute exercise and a 10-minute optional one).
+About 1 hour.
 
 **If you only do one thing:** Take one decision in front of you, list the evidence you're leaning on, and write next to each piece who's missing from it.
 
@@ -8,11 +8,13 @@ You'll meet both mistakes in the same week. On Monday, one vivid story from a cu
 
 Numbers tell you how much and how often, across many people, but only about what someone chose to measure. Stories tell you why, and what nobody thought to measure, but only about the people who told them. When the numbers and the stories disagree, look into why before you pick a side.
 
+Your own hunch is evidence too. Trust it on two signals only: you've made this kind of call often, and each time you soon learned whether you were right (Kahneman and Klein, 2010).
+
 ## The short path
 
 1. **The Law of Small Numbers**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** Why the worst week usually gets better on its own.
 2. **Eileen Munro, "Decision making under uncertainty in child protection" (*Child and Family Social Work*, 2018)**
@@ -26,12 +28,12 @@ Numbers tell you how much and how often, across many people, but only about what
    **What you'll get:** Thursday's mistake, put sharply: numbers trusted because they look official. Your product's data, too, describes only the users you already have.
 3. **The McNamara Fallacy**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** Which of the four steps you've seen.
 4. **Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, "Can I make this policy work here?" (Durham University, 2025)**
 
-   12 minutes. Free at dur.ac.uk. Read pages 2 to 6.
+   15 minutes. Free at dur.ac.uk. Read pages 2 to 6.
 
    **Look for:** The question to ask in place of "did it work there?": "How would the policy lead to the intended outcome here?"
 
@@ -65,7 +67,7 @@ A competitor's case study says a feature lifted retention by 20 percent. What do
 
 Optional, and not counted in the time above.
 
-- **"Quantitative vs. Qualitative Usability Testing," Raluca Budiu (Nielsen Norman Group, 2017)** Free at nngroup.com, about 8 minutes. **Why trust it:** It's a user research firm's practical guidance, drawn from its own work. **What you'll get:** Which question each kind of usability test can answer, and why a percentage from five test sessions means very little. In a qualitative study, "you aim for insights, not numbers."
+- **"Quantitative vs. Qualitative Usability Testing," Raluca Budiu (Nielsen Norman Group, 2017)** Free at nngroup.com, about 10 minutes. **Why trust it:** It's a user research firm's practical guidance, drawn from its own work. **What you'll get:** Which question each kind of usability test can answer, and why a percentage from five test sessions means very little. In a qualitative study, "you aim for insights, not numbers."
 - **The Munro Review of Child Protection: Final Report, Eileen Munro (UK Department for Education, 2011)** Free at gov.uk. Read paragraphs 2 to 4 and 10 of the executive summary, then paragraphs 6.23 to 6.29 in chapter 6. **Why trust it:** The UK government commissioned it as an independent review, and accepted its principles. Munro is a professor of social policy at the London School of Economics. The review rests on consultation and local trials rather than a controlled study. **What you'll get:** Both mistakes in one system where lives are at stake: indicators and targets "which provide only part of the picture of practice", and intuition defended, then checked. "Gut feelings are neither stupid nor perfect."
 - **Evidence-Based Policy: A Practical Guide to Doing It Better, Nancy Cartwright and Jeremy Hardie (Oxford University Press, 2012)** A book. Read Part I, on getting from "it worked there" to "it will work here". **Why trust it:** A university press published it, and its authors are a philosopher of science and an economist who has worked in policy. **What you'll get:** The full method behind the working paper, with the Munro review as a worked case in an appendix.
 - **"Belief in the Law of Small Numbers," Amos Tversky and Daniel Kahneman (*Psychological Bulletin*, 1971)** A journal article. The publisher charges for it. **Why trust it:** It's the original paper, and its subjects were trained researchers. **What you'll get:** The questions they asked, and how far their colleagues' answers were from the arithmetic.
@@ -112,7 +114,7 @@ It does not say small samples are useless. A few user sessions are the right too
 
 **[Daniel Kahneman, Biographical](https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/) (2002)**
 
-His Nobel autobiography, about 4 minutes for the flight instructors and the small numbers paper. Free at nobelprize.org.
+His Nobel autobiography, about 5 minutes for the flight instructors and the small numbers paper. Free at nobelprize.org.
 
 **Why trust it:** His own account, published by the Nobel Foundation: a memoir.
 

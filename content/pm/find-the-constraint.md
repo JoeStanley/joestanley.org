@@ -23,7 +23,7 @@ steps:
   - id: forte
     kind: read
     title: Tiago Forte, "Theory of Constraints 101"
-    minutes: 13
+    minutes: 15
     where: Three short posts. Free at fortelabs.com.
     links:
       - text: "101: Applying the Principles of Flow to Knowledge Work"
@@ -38,12 +38,12 @@ steps:
   - id: card-steps
     kind: card
     card: cards/five-focusing-steps
-    minutes: 2
+    minutes: 5
     look: The order. Steps 2 and 3 cost little, and they come before any spending.
   - id: card-goodhart
     kind: card
     card: cards/goodharts-law
-    minutes: 2
+    minutes: 5
     look: What a target on one step does to that step's number, and to the whole flow.
 
 check:
@@ -57,8 +57,8 @@ check:
 deeper:
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
-    where: A novel of about 400 pages. Borrow it or buy it.
-    note: "Short of time? Read the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out five steps (chapter 36), about an hour in all. Chapter numbers can differ by edition, so go by the scenes."
+    where: A novel.
+    note: "Short of time? Read the Boy Scout hike (chapters 13 to 15) and the chapter where the managers write out five steps (chapter 36). Chapter numbers can differ by edition, so go by the scenes."
     only: Goldratt first set out the theory of constraints in this novel, in 1984. You watch a plant manager work out where his plant is stuck, one step at a time, and that makes the steps stick in a way no summary does.
 ---
 

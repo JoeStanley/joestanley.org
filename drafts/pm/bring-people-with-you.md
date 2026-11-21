@@ -1,4 +1,4 @@
-About 69 minutes: 29 reading, 40 doing (a 25-minute exercise and a 15-minute optional one).
+About 1 hour 15 minutes.
 
 **If you only do one thing:** Send your most senior reader a short update on a day you've named, with one item in it that isn't on track.
 
@@ -6,13 +6,17 @@ About 69 minutes: 29 reading, 40 doing (a 25-minute exercise and a 15-minute opt
 
 People who decide about your work, or rely on it, can't see inside your team. Going quiet between milestones feels harmless, but that's when the guesses fill the space. If a hospital has planned its clinics around your scheduling release, the guesses tend to be worried ones.
 
-This module picks up where Notice When You Are Wrong leaves off: once you've found something, say it so the people who decide can act. You build trust by being clear when there's news and predictable when there isn't. This syllabus's own frame comes from practice, not research: a time-anchored update goes out on a fixed day whatever happened, and an outcome-anchored one when something lands. Your manager needs the fixed day, and a customer like that hospital needs the news, including the day a date it planned around moves.
+This module picks up where Notice When You Are Wrong leaves off: once you've found something, say it so the people who decide can act. You build trust by being clear when there's news and predictable when there isn't. Industry research reinforces the need for both forms of communication, and what follows is my own personal way of thinking about it, though it's virtually identical to advice you'll see in many places.
+
+First, think about the major milestones or outcome-triggered updates you'd want to communicate. When is a new feature in testing, when does it go live, when is the full release ready, and more. External stakeholders like your customers or key partners are likely the most interested in these. But when they happen may be irregular, with long gaps in between.
+
+So second, think about a regular cadence of updates. Many businesses operate off of a business work week or month, though I try to anchor my communications to the sprint schedule of my teams. But regardless of outcome, communicate out what has happened and what will happen next. Internal stakeholders like your peers (or management chain especially) want to be brought along on the journey, both to learn as well as avoid surprises.
 
 ## The short path
 
 1. **Fortune, "The tipping point in Ford's turnaround" (2010)**
 
-   3 minutes. Free at fortune.com.
+   5 minutes. Free at fortune.com.
 
    **Look for:** What the all-green status charts said about the culture, and what Alan Mulally, then Ford's chief executive, did when Mark Fields showed a red one.
 
@@ -21,7 +25,7 @@ This module picks up where Notice When You Are Wrong leaves off: once you've fou
    **What you'll get:** The moment a habit of reporting only good news broke.
 2. **The Trust Equation**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** Why self-orientation sits under the other three.
 3. **Will Larson, "Staying aligned with authority" (2020)**
@@ -35,12 +39,12 @@ This module picks up where Notice When You Are Wrong leaves off: once you've fou
    **What you'll get:** The case for updating upward as a habit, for people who lead without formal authority.
 4. **SCR (Situation, Complication, Resolution)**
 
-   Concept card. 2 minutes.
+   Concept card. 5 minutes.
 
    **Look for:** The complication, in one sentence your reader would agree with.
 5. **Gopen and Swan, "The Science of Scientific Writing" (*American Scientist*, 1990)**
 
-   17 minutes. Free at human.libretexts.org. Read up to the end of the section "The Stress Position".
+   20 minutes. Free at human.libretexts.org. Read up to the end of the section "The Stress Position".
 
    **Look for:** Why readers expect the end of a sentence, the "stress position", to carry what's new and important.
 
@@ -74,8 +78,8 @@ Your update opens with two paragraphs of background and asks for a decision in i
 
 Optional, and not counted in the time above.
 
-- **Gopen and Swan, the rest of the article** About 19 minutes. Free at human.libretexts.org. From "The Topic Position" to the end. **Why trust it:** It's the same article, so the same limits apply. **What you'll get:** More of what readers expect, and the case that fixing a text's structure shows you the gaps in your thinking.
-- **"Stakeholder Analysis," Maria Rosala (Nielsen Norman Group, 2021)** About 6 minutes. Free at nngroup.com. **Why trust it:** A practitioner guide from a user research firm. The power-interest grid at its center isn't the firm's own, and the guide says so: it credits Aubrey Mendelow. **What you'll get:** A quick way to sort the people around your work by their power over it and their interest in it, and a reminder to redo the map as those shift.
+- **Gopen and Swan, the rest of the article** About 20 minutes. Free at human.libretexts.org. From "The Topic Position" to the end. **Why trust it:** It's the same article, so the same limits apply. **What you'll get:** More of what readers expect, and the case that fixing a text's structure shows you the gaps in your thinking.
+- **"Stakeholder Analysis," Maria Rosala (Nielsen Norman Group, 2021)** About 10 minutes. Free at nngroup.com. **Why trust it:** A practitioner guide from a user research firm. The power-interest grid at its center isn't the firm's own, and the guide says so: it credits Aubrey Mendelow. **What you'll get:** A quick way to sort the people around your work by their power over it and their interest in it, and a reminder to redo the map as those shift.
 - ***The Minto Pyramid Principle: Logic in Writing, Thinking and Problem Solving*, Barbara Minto** A book. **Why trust it:** It's where the SCR card's opening comes from. It was written for consultants' reports, so expect more structure than a short update needs. **What you'll get:** The whole pyramid: the main point at the top, the points that support it beneath, and how the opening leads into them.
 - ***Style: Lessons in Clarity and Grace*, Joseph Williams and Joseph Bizup, twelfth edition** A book. Read lesson 7, "Motivation". **Why trust it:** A writing textbook by two teachers of writing, now in its twelfth edition. Its advice comes from the classroom. **What you'll get:** SCR's opening from writing teachers, not consultants: shared context, then a problem (a condition and its cost), then the main point.
 - **"An Integrative Model of Organizational Trust," Mayer, Davis and Schoorman (*Academy of Management Review*, 1995)** A journal article, with a free summary at explore.psychsafety.com. **Why trust it:** It's a peer-reviewed paper, and the research model the trust equation is often compared with. **What you'll get:** Trustworthiness split into ability, benevolence and integrity, and trust defined as a willingness to be vulnerable to someone else's actions.
@@ -129,7 +133,7 @@ It's a consultant's model, not a measured law. Researchers split trust different
 
 **[Understanding the Trust Equation](https://trustedadvisor.com/why-trust-matters/understanding-trust/understanding-the-trust-equation), Trusted Advisor Associates**
 
-A short page, about 3 minutes. Free at trustedadvisor.com.
+A short page, about 5 minutes. Free at trustedadvisor.com.
 
 **Why trust it:** It's from the firm of Charles Green, one of the book's authors, so read it as an advocate's account of its own model.
 
