@@ -56,7 +56,8 @@ Done by a run, so the session that rebuilds a module starts from checked facts. 
 
 ## For each rebuild
 
-- Work from the module's prep note. Read the draft, its tab's comments and his edits there. Read, too, the research tab in the doc's frozen Notes that goes with it, if any: the concept champion (Module 0), agency and cohesion (now in Module 8), value created, value captured (Module 9).
+- Work from the module's prep note. Read the draft, its tab's comments and his edits there.
+- Where a module carried two cards, keep the one Joe picked and give the other its line in the module. Then rewrite any Check question or exercise that rested on the card that went: the cold read of 21 November found some in Modules 5, 7 and 11. Read, too, the research tab in the doc's frozen Notes that goes with it, if any: the concept champion (Module 0), agency and cohesion (now in Module 8), value created, value captured (Module 9).
 
 ## To post in the doc
 

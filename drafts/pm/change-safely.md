@@ -4,7 +4,7 @@ About 54 minutes: 24 reading, 30 doing (a 20-minute exercise and a 10-minute opt
 
 ## Why this matters
 
-When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. The research points the other way. DORA, Google Cloud's research program, finds that speed and stability aren't trade-offs: its top performers do well on both. Richard Cook, from Module 1, gives part of the reason: "Change introduces new forms of failure."
+When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. The research points the other way. DORA, Google Cloud's research program, finds that speed and stability aren't trade-offs: its top performers do well on both. Richard Cook, from Module 1, gives part of the reason: "Change introduces new forms of failure." A big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh.
 
 First, though, know how good it has to be, in words engineers can test: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th percentile.
 
@@ -25,9 +25,9 @@ First, though, know how good it has to be, in words engineers can test: "When 50
 
    **Look for:** How deploying a change, putting it into production switched off, differs from releasing it to customers, a few at first.
 
-   **Why trust it:** Hodgson is an engineer explaining how the thing works, on Martin Fowler's site. It's practice, not research.
+   **Why trust it:** Hodgson is an engineer explaining how the thing works, on Martin Fowler's site, and he writes from practice.
 
-   **What you'll get:** The mechanics behind "released to 1 percent of customers", so you can ask your engineers sharp questions.
+   **What you'll get:** The mechanics behind "released to 1 percent of customers", enough to ask your engineers sharp questions.
 3. **DORA, "DORA's software delivery performance metrics" (Google Cloud)**
 
    6 minutes. Free at dora.dev.
@@ -61,7 +61,7 @@ Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand th
 
 - Do we measure this quality today, and what's its 99th percentile?
 - What can go wrong, and what are we going to do about it?
-- If this model were quietly wrong next month, what would tell us?
+- If a ranking or recommendation model in this release were quietly wrong next month, what would tell us?
 
 ## Check yourself
 
@@ -85,7 +85,7 @@ Optional, and not counted in the time above.
 
 - **Trustworthy Online Controlled Experiments, Ron Kohavi, Diane Tang and Ya Xu (Cambridge University Press, 2020)** A book. Read its chapters on metrics. **Why trust it:** The authors led experimentation at Microsoft, Google and LinkedIn, and a university press published it. It's a practical guide to A/B testing, written from inside large online businesses. **What you'll get:** The full treatment of metrics for experiments: goal measures, guardrails, and how to combine them into one overall evaluation criterion.
 - **"A Leader's Framework for Decision Making," David Snowden and Mary Boone (Harvard Business Review, November 2007)** An article. **Why trust it:** Snowden created the Cynefin framework, and this is his account of it for managers, written with Boone. It argues from cases, so read it as a framework, not a finding. **What you'll get:** A way to tell a complex situation, where nobody can work out the answer ahead of time and small experiments that are safe to fail are the right move, from one where analysis or good practice will do.
-- **Threat Modeling Manifesto** Free at threatmodelingmanifesto.org, about 5 minutes. Threat modeling means thinking through what could go wrong with a system before it's built or changed, and the manifesto puts it in four questions: "What are we working on?", "What can go wrong?", "What are we going to do about it?" and "Did we do a good enough job?" **Why trust it:** A working group of 15 practitioners in security and privacy threat modeling wrote it. It's a set of values and principles, not a method. **What you'll get:** Four questions that need no security training, to open a conversation with a security engineer while the design can still move.
+- **Threat Modeling Manifesto** Free at threatmodelingmanifesto.org, about 5 minutes. Threat modeling means thinking through what could go wrong with a system before it's built or changed, and the manifesto puts it in four questions: "What are we working on?", "What can go wrong?", "What are we going to do about it?" and "Did we do a good enough job?" **Why trust it:** A working group of 15 practitioners in security and privacy threat modeling wrote it. It sets out values and principles, and leaves the method to you. **What you'll get:** Four questions that need no security training, to open a conversation with a security engineer while the design can still move.
 - **"Hidden Technical Debt in Machine Learning Systems," D. Sculley and nine co-authors (NeurIPS, 2015)** A conference paper. Free at proceedings.neurips.cc. **Why trust it:** It was presented at NeurIPS, a machine learning conference, and all ten authors were at Google when it was published. The tools it mentions are dated, so skim past them. **What you'll get:** Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and "changing anything changes everything".
 
 *To check: before the rebuild cites a quality attribute scenario (the optional exercise), open the free Software Engineering Institute report, Barbacci and others, Quality Attribute Workshop Participants Handbook, or Michael Keeling's Design It!. Also check Hodgson's dates (2017, revised from 2016) and the Manifesto's wording of its last three questions. The trust lines for DORA, for Kohavi, Tang and Xu, and for Snowden and Boone were rewritten from what's widely known, so check the program's yearly reports, the three authors' roles at Microsoft, Google and LinkedIn, and that Snowden created Cynefin.*

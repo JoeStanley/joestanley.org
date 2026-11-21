@@ -8,7 +8,7 @@ You'll start every PM role by taking it as described. Once you see the system ar
 
 Two versions of the job look real and aren't. In one, you run the project: dates, status, who's blocked. In the other, you run the room, averaging what everyone wants. You'll do plenty of both, but the job is to hold the product's concept, what it's for and where it's going, and work back from it. If you don't name the destination, usually nobody does.
 
-It has to be yours, too. In *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the conductor Rodrigo De Souza wants more than the right notes: in the show's telling, the best work has passion and a voice of its own, and technical perfection alone is soulless. A product can be right in every detail and say nothing.
+It has to be yours, too, because a product can be right in every detail and still say nothing. In *Mozart in the Jungle* (Amazon Prime Video, 2014 to 2018), the conductor Rodrigo De Souza wants more than the right notes. In the show's telling, the best work has passion and a voice of its own, and technical perfection alone is soulless.
 
 ## The short path
 
@@ -43,7 +43,7 @@ It has to be yours, too. In *Mozart in the Jungle* (Amazon Prime Video, 2014 to 
 
 ## Do
 
-**Finish the sentence (25 minutes).** Engineers often write the test before the code. Borrow the move. Finish "We're building this in order to ..." for your current work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Ask two teammates to finish the sentence without seeing yours. Where the versions differ, the concept isn't settled, and settling it is your job.
+**Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Finish "We're building this in order to ..." for your current work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Ask two teammates to finish the sentence without seeing yours. Where the versions differ, the concept isn't settled, and settling it is your job.
 
 **Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Doing a role as handed, which researchers call role-taking, usually earns you role-making, the chance to reshape it (Graen and Scandura, 1987). Last, ask how much of your week went to glue work, and what it crowded out.
 
@@ -71,9 +71,9 @@ Optional, and not counted in the time above.
 - **"Crafting a Job: Revisioning Employees as Active Crafters of Their Work," Amy Wrzesniewski and Jane Dutton (*Academy of Management Review*, 2001)** A journal article. **Why trust it:** Peer-reviewed, and the paper that named job crafting. **What you'll get:** Three levers for reshaping a job yourself: your tasks, your working relationships, and how you understand the work's purpose. Notice which one you use least.
 - **"Transfer of Learning," David Perkins and Gavriel Salomon (*International Encyclopedia of Education*, 1992)** An encyclopedia entry, about 30 minutes, and fine to skim. Free at openlab.citytech.cuny.edu. **Why trust it:** Two learning researchers summing up their field. **What you'll get:** Low-road transfer, a habit a familiar situation sets off, against high-road transfer, deliberately pulling out the general idea and looking for where else it fits.
 - **"Improve Curriculum, Assessment, and Instruction Using the Understanding by Design Framework," Grant Wiggins and Jay McTighe (ASCD)** A white paper, about 20 minutes. Free at jaymctighe.com. **Why trust it:** The authors explain their own method to teachers, so expect them to champion it. **What you'll get:** Backward design, test-first's cousin in teaching: name the result, decide what evidence will show it, then plan.
-- **"Being Glue," Tanya Reilly (2019)** A talk and its written version, about 20 minutes. Free at [noidea.dog](https://www.noidea.dog/glue). **Why trust it:** A senior engineer's talk from experience, not a study, and it speaks mainly to engineers. **What you'll get:** Why the work that holds a team together goes unrecognized, and what to do about it. For a PM, more of the glue is the job, so the bigger risk is that it crowds out the concept.
+- **"Being Glue," Tanya Reilly (2019)** A talk and its written version, about 20 minutes. Free at [noidea.dog](https://www.noidea.dog/glue). **Why trust it:** A senior engineer's talk, drawn from experience and aimed mainly at engineers. **What you'll get:** Why the work that holds a team together goes unrecognized, and what to do about it. For a PM, more of the glue is the job, so the bigger risk is that it crowds out the concept.
 
-*To check: the series, its years and the character in Mozart in the Jungle were checked on Wikipedia on 20 November 2026, but nobody has watched the scene the idea comes from. Find the episode and check the description against it. Nobody has opened Schön, Wrzesniewski and Dutton, Perkins and Salomon or the ASCD paper in this round, so check each one's reasons, and find the ASCD paper's year.*
+*To check: the series, its years and the character in Mozart in the Jungle were checked on Wikipedia on 20 November 2026, but nobody has watched the scene the idea comes from. Find the episode and check the description against it. Nobody has opened Schön, Wrzesniewski and Dutton, Perkins and Salomon or the ASCD paper in this round, so check each one's reasons, and find the ASCD paper's year. Graen and Scandura (1987), cited in the optional exercise for role-taking and role-making, came from the old draft, and nobody has opened it.*
 
 ## For the glossary
 
@@ -106,7 +106,7 @@ Hold the concept as a destination and work back from it: what would have to be t
 
 ## What it does not say
 
-It doesn't make you a lone genius: Brooks writes that "often the fresh concept does come from an implementer or from a user."
+It doesn't make you a lone genius. Brooks writes that "often the fresh concept does come from an implementer or from a user."
 
 **One question to carry:** Can you finish "we're building this in order to ...", and would your team finish it the same way?
 

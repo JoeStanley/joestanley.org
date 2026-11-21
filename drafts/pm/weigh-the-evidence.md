@@ -53,7 +53,7 @@ Seven of the ten people in your usability test liked the new flow. Can you say 7
 
 **Answer:** No. Ten people picked for a test don't stand for all your users, and a percentage claims a precision the method can't give. Ask instead why the three who struggled struggled.
 
-After your worst week of complaints, the team changes the checkout, and the next week is better. Did the change work?
+After your worst week of complaints, the team changes the sign-up flow, and the next week is better. Did the change work?
 
 **Answer:** You can't tell yet. A worst week is usually followed by a better one anyway: that's regression to the mean. Compare with customers who didn't get the change (Module 6 covers how), or give it more weeks.
 
@@ -66,11 +66,11 @@ A competitor's case study says a feature lifted retention by 20 percent. What do
 Optional, and not counted in the time above.
 
 - **"Quantitative vs. Qualitative Usability Testing," Raluca Budiu (Nielsen Norman Group, 2017)** Free at nngroup.com, about 8 minutes. **Why trust it:** It's a user research firm's practical guidance, drawn from its own work. **What you'll get:** Which question each kind of usability test can answer, and why a percentage from five test sessions means very little. In a qualitative study, "you aim for insights, not numbers."
-- **The Munro Review of Child Protection: Final Report, Eileen Munro (UK Department for Education, 2011)** Free at gov.uk. Read paragraphs 2 to 4 and 10 of the executive summary, then paragraphs 6.23 to 6.29 in chapter 6. **Why trust it:** The UK government commissioned it as an independent review, and accepted its principles. Munro is a professor of social policy at the London School of Economics. The review rests on consultation and local trials rather than a controlled study. **What you'll get:** Both mistakes in one system where lives are at stake: indicators and targets "which provide only part of the picture of practice", and intuition defended, then checked: "Gut feelings are neither stupid nor perfect."
+- **The Munro Review of Child Protection: Final Report, Eileen Munro (UK Department for Education, 2011)** Free at gov.uk. Read paragraphs 2 to 4 and 10 of the executive summary, then paragraphs 6.23 to 6.29 in chapter 6. **Why trust it:** The UK government commissioned it as an independent review, and accepted its principles. Munro is a professor of social policy at the London School of Economics. The review rests on consultation and local trials rather than a controlled study. **What you'll get:** Both mistakes in one system where lives are at stake: indicators and targets "which provide only part of the picture of practice", and intuition defended, then checked. "Gut feelings are neither stupid nor perfect."
 - **Evidence-Based Policy: A Practical Guide to Doing It Better, Nancy Cartwright and Jeremy Hardie (Oxford University Press, 2012)** A book. Read Part I, on getting from "it worked there" to "it will work here". **Why trust it:** A university press published it, and its authors are a philosopher of science and an economist who has worked in policy. **What you'll get:** The full method behind the working paper, with the Munro review as a worked case in an appendix.
 - **"Belief in the Law of Small Numbers," Amos Tversky and Daniel Kahneman (*Psychological Bulletin*, 1971)** A journal article. The publisher charges for it. **Why trust it:** It's the original paper, and its subjects were trained researchers. **What you'll get:** The questions they asked, and how far their colleagues' answers were from the arithmetic.
 - **The Tyranny of Metrics, Jerry Z. Muller (Princeton University Press, 2018)** A book. **Why trust it:** A historian makes the case, drawing on schools, medicine, policing and business. It's an argument, so expect one side of it. **What you'll get:** When measurement helps and when it harms, ending with a checklist for using metrics well, and his name for trusting numbers over judgment: metric fixation.
-- **"Clinical Versus Actuarial Judgment," Robyn Dawes, David Faust and Paul Meehl (*Science*, 1989)** A journal article. The journal charges for it. **Why trust it:** Peer-reviewed, in one of the leading science journals. Meehl's 1954 book brought the question to a wide audience of social scientists. **What you'll get:** The honest counterweight to this module: why a well-built formula does as well as an experienced judge or better at repeated predictions, and why professionals resist hearing it. The Curious and Opinionated card, in Module 0, asks when your intuition has earned your trust.
+- **"Clinical Versus Actuarial Judgment," Robyn Dawes, David Faust and Paul Meehl (*Science*, 1989)** A journal article. The journal charges for it. **Why trust it:** Peer-reviewed, in one of the leading science journals. Meehl's 1954 book brought the question to a wide audience of social scientists. **What you'll get:** The honest counterweight to this module: why a well-built formula does as well as an experienced judge or better at repeated predictions, and why professionals resist hearing it.
 - **"Know the difference between data-informed and versus data-driven," Andrew Chen** A blog post, about 5 minutes. Free at andrewchen.com. **Why trust it:** It's a growth practitioner's view, not research. He says he first heard the distinction at a Facebook talk in 2010. **What you'll get:** The phrase this module is built on, and why tuning the metrics you have leads you to "the local maximum", the best version of what you've already built.
 
 *To check: the free copy of Dawes, Faust and Meehl found online is a course reading on a university site, so link only the journal's, unless JSTOR's free reading covers it.*
@@ -93,7 +93,7 @@ Its close relative is regression to the mean: an extreme result is usually follo
 
 ## Why a PM cares
 
-- **The worst week usually improves on its own.** Ship a fix after your worst week of failed payments, and the next week will probably look better anyway. Credit the fix only once you've compared it with something that didn't get it.
+- **The worst week usually improves on its own.** Ship a fix after your worst week of app crashes, and the next week will probably look better anyway. Credit the fix only once you've compared it with something that didn't get it.
 - **Your own experience is a small sample too.** The three customers you know best, or one loud sales call, can feel like the whole picture.
 
 ## How to spot it
@@ -125,7 +125,7 @@ His Nobel autobiography, about 4 minutes for the flight instructors and the smal
 
 ## The idea
 
-In 1971, the market researcher Daniel Yankelovich named "the McNamara fallacy", after Robert McNamara, once the president of Ford. It runs in four steps:
+In 1971, the market researcher Daniel Yankelovich named "the McNamara fallacy", after Robert McNamara, president of Ford and then US Secretary of Defense. It runs in four steps:
 
 1. "The first step is to measure whatever can be easily measured. This is okay as far as it goes."
 2. "The second step is to disregard that which can't be easily measured or give it an arbitrary quantitative value. This is artificial and misleading."
@@ -158,4 +158,4 @@ A speech to the Sales Executives Club of New York, 15 October 1971.
 
 **What you'll get:** The four steps in their first form, and the Ford story in full.
 
-*To check: the quotations were checked on 20 November 2026 against a scan from UC San Diego's special collections, posted on a personal site. Find out whether the library offers a copy before the rebuild links to one.*
+*To check: the quotations were checked on 20 November 2026 against a scan from UC San Diego's special collections, posted on a personal site. Find out whether the library offers a copy before the rebuild links to one. McNamara's two posts, at Ford and at Defense, are from general knowledge: check them against a biography.*

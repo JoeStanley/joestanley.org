@@ -4,7 +4,7 @@ About 54 minutes: 19 reading, 35 doing (a 25-minute exercise and a 10-minute opt
 
 ## Why this matters
 
-Ask about time: which parts will change, how often, and at what cost. The slowest layer a request touches sets its cost of change, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap.
+Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its cost of change, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap.
 
 Engineers have a precise word for what makes a change costly: complexity, anything in a system's structure that makes it hard to understand and change. John Ousterhout names three symptoms. Change amplification is a simple change that needs edits in many places. Cognitive load is how much you must know to make a change safely. And with unknown unknowns, nobody knows what a change will touch until something breaks. With those words, you can say why a small request took a month without blaming anyone.
 
@@ -23,7 +23,7 @@ Engineers have a precise word for what makes a change costly: complexity, anythi
 
    **Why trust it:** It's Brand's own, written nearly twenty years after he set out pace layering in *The Clock of the Long Now* (1999). He argues from history and ecology, not from measurement.
 
-   **What you'll get:** Why each layer needs its own pace, from the person who drew the layers, free.
+   **What you'll get:** Why each layer needs its own pace, in a free essay by the person who drew the layers.
 3. **Coupling Is About a Change**
 
    Concept card. 2 minutes.
@@ -34,7 +34,7 @@ Engineers have a precise word for what makes a change costly: complexity, anythi
 
 **List your product's layers (25 minutes).** Take one product or journey you own and list its parts from fastest-changing to slowest: wording, screens, business rules, APIs, the data model, core systems of record, the contracts and laws it must meet. Note how often each changed in the last year. Then place the last request that ran long. Which layers did it touch, and which symptom of complexity showed?
 
-**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025), p. 329, where architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as a second currency at checkout, and trace the parts it would touch. Then ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
+**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as a second currency at checkout, and trace the parts it would touch. Then ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 
 ## Questions to bring to engineers
 

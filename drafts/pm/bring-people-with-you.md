@@ -6,7 +6,7 @@ About 69 minutes: 29 reading, 40 doing (a 25-minute exercise and a 15-minute opt
 
 People who decide about your work, or rely on it, can't see inside your team. Going quiet between milestones feels harmless, but that's when the guesses fill the space. If a hospital has planned its clinics around your scheduling release, the guesses tend to be worried ones.
 
-This module picks up where Notice When You Are Wrong leaves off: once you've found something, say it so the people who decide can act. You build trust by being clear when it counts and predictable when it doesn't. This syllabus's own frame comes from practice, not research: a time-anchored update goes out on a fixed day whatever happened, and an outcome-anchored one when something lands. Your manager needs the fixed day, and a customer like that hospital needs the news, including the day a date it planned around moves.
+This module picks up where Notice When You Are Wrong leaves off: once you've found something, say it so the people who decide can act. You build trust by being clear when there's news and predictable when there isn't. This syllabus's own frame comes from practice, not research: a time-anchored update goes out on a fixed day whatever happened, and an outcome-anchored one when something lands. Your manager needs the fixed day, and a customer like that hospital needs the news, including the day a date it planned around moves.
 
 ## The short path
 
@@ -121,7 +121,7 @@ The model first appeared in *The Trusted Advisor* (2000), by David Maister, Char
 
 ## What it does not say
 
-It's a consultant's model, not a measured law, and it doesn't say the parts can be scored. Researchers split trust differently, into ability, benevolence and integrity (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.
+It's a consultant's model, not a measured law. Researchers split trust differently, into ability, benevolence and integrity (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.
 
 **One question to carry:** Which of the four parts would the person whose trust you most need say is your weakest?
 

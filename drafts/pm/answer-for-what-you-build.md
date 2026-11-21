@@ -27,7 +27,7 @@ So ask two things of what you build. Who gains, and who pays? A product can earn
 
    **Why trust it:** A consultancy arguing for its own customer survey, so read it as a case for a method.
 
-   **What you'll get:** The case against capture in business terms, ready for your next pricing review.
+   **What you'll get:** The business case against capturing value, taking it from customers rather than creating it for them, ready for your next pricing review.
 3. **Many Hands**
 
    Concept card. 2 minutes.
@@ -97,7 +97,7 @@ Optional, and not counted in the time above.
 
 ## The idea
 
-In a large organization, harm often comes from many small contributions, and no one person decides it. Dennis Thompson called this the problem of many hands (1980): so many people contribute that it's hard to say who's responsible. From the inside, it's easy to feel like a cog.
+In a large organization, harm often comes from many small contributions, and no one person decides it. Dennis Thompson called this the problem of many hands (1980): so many people contribute that it's hard to say who's responsible.
 
 The psychologist Albert Bandura listed the ways people quiet their own conscience while they do harm, and the signs below follow his list.
 
@@ -116,7 +116,7 @@ The psychologist Albert Bandura listed the ways people quiet their own conscienc
 
 ## What it does not say
 
-It doesn't say you're as guilty as whoever made the decision, or that you have to refuse every request you dislike. But a share of the responsibility isn't nothing. Yours is usually to see the consequence, say it clearly and make sure someone owns it.
+It doesn't say you're as guilty as whoever made the decision, or that you have to refuse every request you dislike. Your share is usually to see the consequence, say it clearly and make sure someone owns it.
 
 **One question to carry:** If this harms a customer, whose name would be on the decision, and is it anyone's yet?
 

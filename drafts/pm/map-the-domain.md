@@ -28,7 +28,7 @@ Two more choices are partly yours. How fresh does each answer have to be, since 
 
    5 minutes. Free at martinfowler.com.
 
-   **Look for:** A bounded context is an area where each word has one agreed meaning, and his example is a word that meant different things to different departments.
+   **Look for:** His example of a word that meant different things to different departments. A bounded context is an area where each word has one agreed meaning.
 
    **Why trust it:** Fowler is retelling a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business.
 
@@ -36,7 +36,7 @@ Two more choices are partly yours. How fresh does each answer have to be, since 
 
 ## Do
 
-**Write the access patterns for one feature (20 minutes).** Pick a feature, such as a rate limit that caps how many requests one API key can make in a minute. Make a table with a row for each of five questions its data has to answer. The columns: the question, who asks, how often, how fast, how fresh, and operational or analytical. Outside the 20 minutes, take it to your tech lead and ask: "Which of these does our design answer well, and which would be expensive?"
+**Write the access patterns for one feature (20 minutes).** Pick a feature, such as a rate limit that caps how many requests one API key can make in a minute. Make a table with a row for each of five questions its data has to answer. Give it columns for the question, who asks, how often, how fast, how fresh, and whether it's operational or analytical. Outside the 20 minutes, take it to your tech lead and ask: "Which of these does our design answer well, and which would be expensive?"
 
 **Optional: find where one piece of data lives (10 minutes).** Pick one item your product holds, such as a student's final grade on a learning platform. List its system of record, then every copy you know of, in reports, other teams' systems or a vendor's, and who depends on each. Ask of each copy: if this dataset were wrong tomorrow, who would be told first, and who would fix it?
 
@@ -101,7 +101,7 @@ An access pattern is a question the data has to answer, and how it's asked: who 
 
 - A request says "real time" but not for whom, or for which decision.
 - Two screens show different numbers for the same thing, because they read copies of different ages.
-- A question is fast one way and slow the other. Listing one merchant's payments is quick, and finding every merchant that charged one card may not be.
+- A question is fast one way and slow the other. Listing one player's matches is quick, and finding every player who used one item may not be.
 
 ## What it does not say
 
