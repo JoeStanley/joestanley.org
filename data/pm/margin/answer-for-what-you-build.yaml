@@ -38,6 +38,9 @@ step-card-many-hands: ""
 # Short path, step 4: Bruce Schneier, “Data Is a Toxic Asset, So Why Not Throw It Out?”
 step-schneier: ""
 
+# Short path, step 5: GOV.UK Service Manual, “Making your service more inclusive”
+step-inclusive: ""
+
 # Do
 do: ""
 

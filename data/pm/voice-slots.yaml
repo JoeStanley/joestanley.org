@@ -1,0 +1,66 @@
+# Voice slots, and the owner's words that moved (spec X4).
+# Until Joe's final voice pass, sessions may cut, move or reword his words in the syllabus, and never write as him.
+# Where a passage needs his voice, a slot holds its place. The working doc's "Your voice pass" tab lists every open
+# slot and everything under moved:, so his pass starts from one list.
+#
+# slots: one entry a slot.
+#   id:       a short name, used in the unit: {{< pm/voice "id" >}}, in a sentence or as a paragraph of its own
+#   unit:     the tab's name, as the working doc shows it (for example "0 Own Your Role", "Start")
+#   brief:    what the passage must now do, and what the session suggests (raise it, move it to his margin, cut it)
+#   old:      his words before, where there were any
+#   interim:  the words the site shows meanwhile, unmarked; may be empty only for a slot inside a sentence
+# When he fills a slot, put his words in the unit in its place and delete the entry.
+#
+# moved: one entry for each passage of his words that a session cut, moved or changed.
+#   what:   cut, moved or changed
+#   words:  his words, as they stood
+#   from:   where they were
+#   to:     where they went, or "nowhere" for a cut
+#   why:    the reason, in a line
+#   when:   the day
+# The list stays until his pass has been through it.
+
+slots:
+  - id: shopper-incentive
+    unit: 1 Know Who It's For
+    brief: "Say in your own voice what you believe a grocery app's incentive is with the shoppers who pick and deliver its orders, and why it should matter to a PM designing their side of the flow. The paragraph before it gives only what the sources support: unpaid waiting time and a pool of waiting workers (New York's study), shifts below minimum wage (an MIT audit), and Dubal's argument, as hers. No source opened says a company wants workers to need the work, or that low prices were paid for by investors with the cost on shoppers, so that view is yours to state. Your words from the session are below. Suggestion: raise them into the main text here, in your voice."
+    old: "Their jobs are usually brutal, the companies subsidized by VC money are putting most of their cost on this marginalized group, and it creates an incentive for the company to preserve the conditions that create an ample, desperate workforce."
+    interim: "Who gains from that, and who pays for it? Answer for What You Build takes up the question."
+
+moved:
+  - what: moved
+    words: "A tangent here, more obvious in B2B products: The customer is who buys, while the consumer is who experiences it. Be mindful when these two aren't the same, as it creates incentives to prioritize the former at the expense of the latter."
+    from: Map the Domain, a margin note beside Why this matters
+    to: Know Who It's For's draft, beside the paragraph on who buys and who uses
+    why: Map the Domain folds into its neighbors, and this is the customer module's own point (card v1-map, and your note on v1-customer).
+    when: 22 November 2026
+  - what: moved
+    words: "You often know these better than the engineers, because the questions come from customers, consumers, support, operations and finance, and you hear them first."
+    from: Map the Domain, Why this matters, where you added "consumers"
+    to: Design for Change, Why this matters, in the new paragraph on the questions data must answer, reworded to fit it
+    why: Access patterns move to Design for Change with their card.
+    when: 22 November 2026
+  - what: cut
+    words: "It's where bounded contexts and the core domain start. This one's target audience is architects, but I think the work required to navigate it as a PM pays for itself in time, especially as agentic workflows become more common."
+    from: Map the Domain, the full path, Eric Evans's Domain-Driven Design, Why trust it
+    to: nowhere
+    why: Evans leaves with the fold (card v1-map). Your point on agentic workflows may fit the AI thread (job 32).
+    when: 22 November 2026
+  - what: cut
+    words: "Dehghani set out data mesh at Thoughtworks, an approach in which each part of a business owns and serves its own analytical data. This is her case for it."
+    from: Map the Domain, the full path, Zhamak Dehghani's Data Mesh, Why trust it, as you reworded it
+    to: nowhere
+    why: Data Mesh leaves with the fold (card v1-map). Your wish that readers leave with a compass for data is card data-compass.
+    when: 22 November 2026
+  - what: cut
+    words: "A classic film. A fly falls into a teleprinter, an arrest warrant for Tuttle comes out as Buttle, and the state pursues and arrests the wrong man. The entire thing is a story of what happens when indifference leads to bureaucratic dystopia, reinforcing societal indifference."
+    from: Map the Domain, the full path, Brazil
+    to: nowhere
+    why: Brazil leaves with the fold (card v1-map). Mind the Seams and Design for Change keep their own stories.
+    when: 22 November 2026
+  - what: cut
+    words: "Built on data from one large project, Pratt and Whitney's PW4098 jet engine. Peer-reviewed."
+    from: Mind the Seams, the full path, Sosa, Eppinger and Rowles, Why trust it, as you reworded it
+    to: nowhere
+    why: Design and Reality takes its place, as you picked (card v1-map).
+    when: 22 November 2026

@@ -13,7 +13,9 @@ of what was last put there.
 
 "public" is a built site (hugo -d public). A built unit's tab is made from the built page, so it holds the words a
 reader meets, template wording included. A draft's tab is its file in drafts/pm/, under the title, state and
-question the map gives it. Needs PyYAML and beautifulsoup4.
+question the map gives it. A voice slot (spec X4) shows its interim words in place, as the page does, and then its
+own block: the brief and the owner's old words. The last tab, "Your voice pass", lists every open slot and every
+word of his that moved (data/pm/voice-slots.yaml). Needs PyYAML and beautifulsoup4.
 """
 import datetime, hashlib, json, os, re, sys
 
@@ -30,6 +32,39 @@ def clean(s):
     return re.sub(r"\s+", " ", s.translate(QUOTES))
 
 
+# ---------- voice slots (spec X4) ----------
+VOICE_TAB = "Your voice pass"
+SLOT_HEAD = "> **Voice slot, waiting for your pass:**"
+PENDING = []   # slots met in the text since the last block was written, so each one's block follows its paragraph
+
+
+def voice():
+    v = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "voice-slots.yaml"), encoding="utf-8")) or {}
+    return {"slots": v.get("slots") or [], "moved": v.get("moved") or []}
+
+
+def slot_block(sid):
+    """A slot's own block in its tab: what the passage must do, his words before, what the site shows for now."""
+    s = next((x for x in voice()["slots"] if x.get("id") == sid), {})
+    lines = [f"{SLOT_HEAD} `{sid}`", f"**What it must do:** {clean(s.get('brief') or '').strip()}"]
+    if s.get("old"):
+        lines.append(f"**Your words before:** {clean(s['old']).strip()}")
+    lines.append(f"**For now the site says:** {clean(s.get('interim') or '').strip() or 'nothing, inside its sentence'}")
+    return "\n>\n".join(l if i == 0 else "> " + l for i, l in enumerate(lines))
+
+
+def flush():
+    """The blocks of the slots met since the last call, in the order they were met."""
+    out = [slot_block(sid) for sid in PENDING]
+    PENDING.clear()
+    return out
+
+
+def strip_slots(md):
+    """A tab without its slots' blocks: what X2 compares with the page."""
+    return re.sub(r"(?m)^" + re.escape(SLOT_HEAD) + r".*(?:\n>.*)*", "", md)
+
+
 # ---------- a built page's HTML, as Markdown ----------
 def inline(el, strip=True):
     """The words inside an element, with emphasis, links and line edits kept."""
@@ -41,6 +76,8 @@ def inline(el, strip=True):
         cls = c.get("class") or []
         if c.name in ("script", "style", "svg") or "note" in cls or "note-label" in cls:
             continue   # a note goes in its own line; its label, "Sidenote:", is the page's, not the owner's words
+        if c.get("data-voice"):   # a voice slot (spec X4): its interim words here, its block after the paragraph
+            PENDING.append(c["data-voice"])
         if "sr" in cls:   # screen-reader words: keep the ones that finish a label, drop the rest
             t = clean(c.get_text())
             out.append(t if t.strip() in (":", ".") else "")
@@ -84,8 +121,12 @@ def blocks(el):
         cls = c.get("class") or []
         if c.name in ("script", "style", "svg") or "print-only" in cls:
             continue
+        if c.get("data-voice"):   # a voice slot as a paragraph of its own (spec X4); its block follows it
+            PENDING.append(c["data-voice"])
         if c.name in ("h2", "h3", "h4"):
             out.append("#" * int(c.name[1]) + " " + inline(c))
+        elif c.name == "span" and c.get("data-voice"):
+            out.append(inline(c))
         elif c.name == "p":
             out.append(inline(c))
         elif c.name == "aside" and "note" in cls:   # a note beside a paragraph (spec M1), after it
@@ -107,6 +148,7 @@ def blocks(el):
             out.append("---")
         else:
             out.extend(blocks(c))
+        out += flush()
     return [b for b in out if b]
 
 
@@ -201,7 +243,7 @@ def module_tab(art, state):
                 links = b.find("ul", class_="step-links")
                 if links:
                     paras[0] += "\n" + listing(links)
-                paras += look(b) + reasons(b) + note_of(li)
+                paras += look(b) + reasons(b) + note_of(li) + flush()
                 steps.append(f"{i}. **{inline(b.find('h3'))}**\n\n" + indent(paras))
             out.append("\n".join(steps))
         elif "game" in cls:
@@ -212,7 +254,7 @@ def module_tab(art, state):
             items = []
             for li in sec.select("ul.deeper-list > li"):
                 paras = [inline(li.find(class_="meta-line"))]
-                paras += [inline(p) for p in li.find_all("p", class_="deeper-note")] + look(li) + reasons(li) + note_of(li)
+                paras += [inline(p) for p in li.find_all("p", class_="deeper-note")] + look(li) + reasons(li) + note_of(li) + flush()
                 items.append(f"- **{inline(li.find('h3'))}**\n\n" + indent(paras, "  "))
             out.append("\n\n".join(items))
         else:
@@ -258,8 +300,22 @@ def glossary_tab(art):
 
 
 # ---------- a draft file, as its tab ----------
+VOICE_CODE = re.compile(r'\{\{<\s*pm/voice\s+"([^"]+)"(?:\s+"paragraph")?\s*>\}\}')
+
+
+def draft_slots(md):
+    """A draft's voice slots, as a built page's: the interim words in place, then each slot's block."""
+    slots = {x.get("id"): x for x in voice()["slots"]}
+    out = []
+    for para in md.split("\n\n"):
+        ids = VOICE_CODE.findall(para)
+        out.append(VOICE_CODE.sub(lambda m_: clean(slots.get(m_.group(1), {}).get("interim") or "").strip(), para))
+        out += [slot_block(i) for i in ids]
+    return "\n\n".join(out)
+
+
 def draft_tab(m):
-    body = open(os.path.join(DRAFTS, m["draft"] + ".md"), encoding="utf-8").read().strip()
+    body = draft_slots(open(os.path.join(DRAFTS, m["draft"] + ".md"), encoding="utf-8").read().strip())
     head = [f"# Module {m['num']}: {m['title']}", f"*{m['state']}*", f"**The question:** {m['question']}"]
     parts = re.split(r"(?m)^(?=# )", body)
     out = ["\n\n".join(head) + "\n\n" + parts[0].strip()]
@@ -282,8 +338,28 @@ def about_tab(mods, synced):
         "Comment on any line, or edit it. A Claude Code session carries your comments and edits into the repository, then puts the result back here, so the two stay the same. The checks in the repository fail if a tab falls out of step.",
         "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
         + "\n".join(rows) + "\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
+        f"The last tab, {VOICE_TAB}, lists every passage that waits for your voice and every word of yours a session cut, moved or changed, so your final pass starts from one list. A passage that waits shows a block in its own tab too, where you read it.",
         "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes from before 20 November 2026, kept as history. Decisions for you now wait on the [Decisions page](https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq), and what comes next is in `PLAN.md` in the private pm-sources repository.",
     ])
+
+
+def voice_tab():
+    """The owner's voice pass in one list (spec X4): every open slot, then every word of his that moved."""
+    v = voice()
+    out = [f"# {VOICE_TAB}",
+           "Everything that waits for you in your final voice pass, in one place. A voice slot is a passage that needs your voice: the site shows its interim words for now, and its tab shows a block with what the passage must do. Below them, every passage of your words a session cut, moved or changed since you opened your words to agents on 22 November 2026, with where it went and why. Nothing here is written as you.",
+           "## Open voice slots"]
+    for s_ in v["slots"]:
+        out += [f"**In {s_.get('unit')}.**", slot_block(s_.get("id"))]
+    if not v["slots"]:
+        out.append("None yet.")
+    out.append("## Your words that moved")
+    if not v["moved"]:
+        out.append("None yet.")
+    for e in v["moved"]:
+        out.append(f"**{str(e.get('what', '')).capitalize()}, {e.get('when')}.** From {e.get('from')}. To {e.get('to')}. {e.get('why')}")
+        out.append("> " + clean(e.get("words") or "").strip())
+    return "\n\n".join(out)
 
 
 # ---------- all tabs ----------
@@ -291,18 +367,20 @@ def tabs(site, synced=None):
     soup = BeautifulSoup(open(os.path.join(site, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
     arts = {a["data-unit"]: a for a in soup.select("main article.unit")}
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
-    out = [("About", about_tab(mods, synced or today())), ("Start", "\n\n".join(start_tab(arts["start"])))]
+    PENDING.clear()
+    out = [("About", about_tab(mods, synced or today())), ("Start", "\n\n".join(start_tab(arts["start"]) + flush()))]
     for m in mods:
         name = f"{m['num']} {m['title']}"
         if m.get("page"):
-            parts = module_tab(arts[m["page"]], "Built, and on the site.")
+            parts = module_tab(arts[m["page"]], "Built, and on the site.") + flush()
             for a in arts.values():
                 if "card" in a["class"] and a.get("data-module") == m["id"]:
-                    parts += card_tab(a)
+                    parts += card_tab(a) + flush()
             out.append((name, "\n\n".join(parts)))
         else:
             out.append((name, draft_tab(m)))
-    out.append(("Glossary", "\n\n".join(glossary_tab(arts["glossary"]))))
+    out.append(("Glossary", "\n\n".join(glossary_tab(arts["glossary"]) + flush())))
+    out.append((VOICE_TAB, voice_tab()))
     return [(n, re.sub(r"\n{3,}", "\n\n", t.translate(QUOTES)).strip() + "\n") for n, t in out]
 
 

@@ -7,10 +7,10 @@ one_thing: Before your next request is estimated, write down the slowest layer y
 do_minutes: 35
 
 last_time:
-  - q: Besides the question itself, which four things make an access pattern?
-    a: Who asks it, how often, how fast and how fresh.
-  - q: Why do reports usually read a copy of the data, not the live system?
-    a: Reports ask different questions than running the service does, so they get a copy of their own. The fresher that copy has to be, the more machinery it takes to keep it so.
+  - q: Why can't "customer" mean one thing across the whole company?
+    a: Different groups mean different things by it. Give each bounded context its own consistent model, and make the translation between contexts explicit, with someone who owns it.
+  - q: What makes an internal platform worth choosing, and not only required?
+    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and it has to be good enough that those teams would pick it.
 
 steps:
   - id: brand
@@ -29,6 +29,22 @@ steps:
     card: cards/coupling
     minutes: 5
     look: The question to ask whenever someone says two parts are tightly coupled.
+  - id: card-access
+    kind: card
+    card: cards/access-patterns
+    minutes: 5
+    look: The four things to write down about every question, and why freshness has a price.
+  - id: reporting
+    kind: read
+    title: Martin Fowler, "Reporting Database"
+    minutes: 5
+    where: A short note from 2004, updated since. Free at martinfowler.com.
+    links:
+      - text: "Reporting Database"
+        url: https://martinfowler.com/bliki/ReportingDatabase.html
+    look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
+    trust: "He's a software developer who's written about design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
+    only: Operational use against analytical use, and the price of freshness, on one page.
 
 check:
   - q: Letting a student join two classes at once looks small on screen. Why might it take a quarter?
@@ -39,12 +55,12 @@ check:
     a: "Name the symptoms: change amplification, then an unknown unknown. Both describe the design, not the people, and both show where it could be cheaper to change."
 
 deeper:
-  - title: How Buildings Learn
-    by: Stewart Brand
+  - title: Designing Data-Intensive Applications
+    by: Martin Kleppmann and Chris Riccomini
     where: A book.
-    note: "Start with the chapters \"Shearing Layers\" and \"The Scenario-Buffered Building.\""
-    trust: Brand grew the architect Frank Duffy's four layers into six. He makes his case as a writer, from real buildings and how they changed.
-    only: "The building version that pace layering grew from, and the case for designing for several futures instead of one forecast. In his words, \"All buildings are predictions. All predictions are wrong.\""
+    note: "Read chapter 1, especially \"Operational Versus Analytical Systems\" and \"Systems of Record and Derived Data,\" then chapters 11 and 12, on batch and stream processing."
+    trust: Kleppmann built large-scale data infrastructure at LinkedIn before he became a professor at Cambridge.
+    only: The whole picture of where data lives and how it moves, and what each choice trades away.
   - title: Seeing Like a State
     by: James C. Scott
     where: A book.
@@ -72,9 +88,11 @@ deeper:
 
 ## Why this matters
 
-Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap.
+Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap. Mind the Seams asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
 
 Slow isn't the enemy, though. A payments ledger moves slowly on purpose, because every balance depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Some slow layers aren't yours. Your customers' phones change at their own pace, so retiring an old app version saves your team the upkeep and hands the bill to people who can't update, often those on the oldest or cheapest phones.
+
+Data is often the slowest layer of all, because so much reads it, and the data a feature creates outlives the feature. Its shape follows the questions people will ask of it: each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because they come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds. And when two reports disagree, there's usually a copy behind it: reports, caches and other teams read copies of the {{< pm/term "system-of-record" "system of record" >}}, each for its own {{< pm/term "operational-analytical" "operational or analytical" >}} use, and every copy is one more place a change has to reach.
 
 There's a precise word for what makes a change costly: {{< pm/term "complexity" >}}. John Ousterhout uses it for anything in a system's structure that makes it hard to understand and change, and names three symptoms. Change amplification is a simple change that needs edits in many places. {{< pm/term "cognitive-load" "Cognitive load" >}} is how much you must know to make a change safely. And with unknown unknowns, nobody can tell in advance what a change will touch. With those words, you can say why a small request took a month without blaming anyone.
 
@@ -91,3 +109,5 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 - Which of these layers is hardest to change, and why?
 - Where in our system is change amplification worst?
 - Is the pattern you're proposing earning its complexity, or would a plainer design do?
+- How long after a change does each copy of this data catch up?
+- When data arrives late, does it count in the period it happened or the period we saw it?

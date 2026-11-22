@@ -6,7 +6,8 @@
 {{- $key := $p.File.ContentBaseName -}}
 {{- $m := index (where site.Data.pm.modules "id" $p.Params.module) 0 -}}
 {{- $prev := false -}}
-{{- range site.Data.pm.modules }}{{ if eq (int .num) (sub (int $m.num) 1) }}{{ $prev = . }}{{ end }}{{ end -}}
+{{- /* Last time asks about the nearest earlier module that's built: a reader can't have read a draft. */ -}}
+{{- range site.Data.pm.modules }}{{ if and .page (lt (int .num) (int $m.num)) }}{{ $prev = . }}{{ end }}{{ end -}}
 {{- $parts := split $p.RawContent "[//]: # (short-path)" -}}
 {{- $readMin := 0 -}}
 {{- range $p.Params.steps }}{{ $readMin = add $readMin .minutes }}{{ end -}}

@@ -2,7 +2,7 @@
 title: Bring People With You
 layout: module
 module: bring-people-with-you
-question: How do you earn the trust of the people who decide and depend on you, and keep it when there is nothing to report?
+question: How do you earn the trust of the people around you, and bring them along when they don't agree?
 one_thing: Send your most senior reader a short update on a day you've named, with one item in it that isn't on track.
 do_minutes: 40
 

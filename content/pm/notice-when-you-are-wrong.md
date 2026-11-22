@@ -2,7 +2,7 @@
 title: Notice When You Are Wrong
 layout: module
 module: notice-when-you-are-wrong
-question: How do we find out we are wrong?
+question: How do you find out you're wrong, early enough to change course?
 one_thing: In your next plan, write down one way it could be wrong and the early signal you'd watch for.
 do_minutes: 30
 

@@ -30,6 +30,12 @@ step-brand: "I've repeatedly been in trade discussions with architects and more 
 # Short path, step 2: Coupling Is About a Change
 step-card-coupling: ""
 
+# Short path, step 3: Access Patterns
+step-card-access: ""
+
+# Short path, step 4: Martin Fowler, “Reporting Database”
+step-reporting: ""
+
 # Do
 do: ""
 
@@ -42,8 +48,8 @@ check: ""
 # Go deeper: the full path
 go-deeper: ""
 
-# Full path: How Buildings Learn, Stewart Brand
-deeper-how-buildings-learn: ""
+# Full path: Designing Data-Intensive Applications, Martin Kleppmann and Chris Riccomini
+deeper-designing-data-intensive-applications: ""
 
 # Full path: Seeing Like a State, James C. Scott
 deeper-seeing-like-a-state: ""
