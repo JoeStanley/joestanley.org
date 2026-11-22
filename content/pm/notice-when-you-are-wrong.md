@@ -53,7 +53,7 @@ deeper:
   - title: The Fearless Organization
     by: Amy C. Edmondson
     where: A book.
-    note: "Read chapter 1, \"The Underpinning\", chapter 4, \"Dangerous Silence\", and chapter 7, \"Making it Happen\"."
+    note: "Read chapter 1, \"The Underpinning,\" chapter 4, \"Dangerous Silence,\" and chapter 7, \"Making it Happen.\""
     trust: It's the researcher behind the idea writing for managers, from her studies and from company cases. A 2017 review, pooling more than a hundred samples, backed the idea's links to learning and to performance.
     only: What it costs when people stay quiet about what they see, and what a leader can do so they speak up.
   - title: "Overcoming Organizational Defenses: Facilitating Organizational Learning"
@@ -65,7 +65,7 @@ deeper:
   - title: Arrival
     by: directed by Denis Villeneuve, written by Eric Heisserer from Ted Chiang's "Story of Your Life" (Paramount, 2016)
     where: A film.
-    note: "Early on, the linguist Louise Banks tells a colonel that \"kangaroo\" first meant \"I don't understand\", then admits the story isn't true. Later the aliens' answer translates as \"offer weapon\", and she warns the room, \"We don't know if they understand the difference between a weapon and a tool.\" China reads it as \"use weapon\" and breaks off talks, other nations go dark, and China gives the aliens 24 hours to leave."
+    note: "Early on, the linguist Louise Banks tells a colonel that \"kangaroo\" first meant \"I don't understand,\" then admits the story isn't true. Later the aliens' answer translates as \"offer weapon,\" and she warns the room, \"We don't know if they understand the difference between a weapon and a tool.\" China reads it as \"use weapon\" and breaks off talks, other nations go dark, and China gives the aliens 24 hours to leave."
     only: A whole government's conclusion resting on one translated word, the ladder of inference climbed in a day, with the world at stake.
 ---
 

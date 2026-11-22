@@ -48,7 +48,7 @@ steps:
     links:
       - text: "What I Talk About When I Talk About Platforms"
         url: https://www.martinfowler.com/articles/talk-about-platforms.html
-    look: "His definition, \"a foundation of self-service APIs, tools, services, knowledge and support\", run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required."
+    look: "His definition, \"a foundation of self-service APIs, tools, services, knowledge and support,\" run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required."
     trust: One Thoughtworks consultant's view, drawn from his own client work.
     only: A checklist of what makes a platform worth choosing.
 
@@ -82,7 +82,7 @@ deeper:
   - title: The Art of Systems Architecting
     by: Mark Maier and Eberhardt Rechtin
     where: A textbook.
-    note: "Read the chapter \"Heuristics as Tools\", then the appendix of heuristics for system-level architecting."
+    note: "Read the chapter \"Heuristics as Tools,\" then the appendix of heuristics for system-level architecting."
     trust: Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California. These are the collected insights of that experience.
     only: "Rules of thumb for the joins between parts: architect across an interface, not only up to it, as Robert Spinrad put it; ask what's the worst that could come across it; and draw interfaces so each part can be built on its own, without slicing through parts that must talk all the time."
   - title: Halt and Catch Fire

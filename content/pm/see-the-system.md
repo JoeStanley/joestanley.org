@@ -10,7 +10,7 @@ last_time:
   - q: Fred Brooks traded something away to save the schedule. What, and how?
     a: The system's conceptual integrity. He let 150 implementers write the specifications, which by his estimate added a year to debugging.
   - q: Engineers write the test before they write the code. What's the same move in a PM's work?
-    a: Naming the destination first, "we're building this in order to ...", then working back to what would have to be true to get there.
+    a: Naming the destination first, "we're building this in order to ...," then working back to what would have to be true to get there.
 
 steps:
   - id: card-stocks
@@ -20,9 +20,9 @@ steps:
     look: The picture. Most of Meadows's examples are versions of it.
   - id: meadows-1
     kind: read
-    title: Donella Meadows, "Leverage Points", first half
+    title: Donella Meadows, "Leverage Points," first half
     minutes: 25
-    where: An essay. Free at donellameadows.org. Stop at the section headed "6. The structure of information flows", which opens with a story about an electricity meter.
+    where: An essay. Free at donellameadows.org. Stop at the section headed "6. The structure of information flows," which opens with a story about an electricity meter.
     links:
       - text: "Leverage Points: Places to Intervene in a System"
         url: https://donellameadows.org/archives/leverage-points-places-to-intervene-in-a-system/
@@ -31,7 +31,7 @@ steps:
     only: Twelve places to change a system, ranked, with examples.
   - id: meadows-2
     kind: read
-    title: Donella Meadows, "Leverage Points", the rest
+    title: Donella Meadows, "Leverage Points," the rest
     continues: meadows-1
     minutes: 20
     where: The same essay, from the meter story to the end.
@@ -61,13 +61,13 @@ deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright
     where: A book.
-    note: "Read chapters 1, 4 and 5: \"The Basics\", \"Why Systems Surprise Us\" and \"System Traps . . . and Opportunities\"."
+    note: "Read chapters 1, 4 and 5: \"The Basics,\" \"Why Systems Surprise Us\" and \"System Traps . . . and Opportunities.\""
     trust: It's Meadows's own primer on her field, from the lead author of The Limits to Growth.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
   - title: The Field Guide to Understanding 'Human Error'
     by: Sidney Dekker
     where: A book.
-    note: "Read chapter 1, \"Two Views of 'Human Error'\", and chapter 5, \"Understanding Your Accident Model\"."
+    note: "Read chapter 1, \"Two Views of 'Human Error,'\" and chapter 5, \"Understanding Your Accident Model.\""
     trust: Dekker is a safety scientist who also flew airliners, writing for people who investigate failures. It's a practitioner's guide built on safety research, not a study of its own.
     only: Cook's point at book length. Chapter 1 sets the bad-apple view of error against the view that error is a symptom of trouble in the system, and chapter 5 shows how your model of accidents decides what you'll find.
   - title: A Brief Introduction to Critical Systems Heuristics (CSH)

@@ -42,13 +42,13 @@ deeper:
   - title: How Buildings Learn
     by: Stewart Brand
     where: A book.
-    note: "Start with the chapters \"Shearing Layers\" and \"The Scenario-Buffered Building\"."
+    note: "Start with the chapters \"Shearing Layers\" and \"The Scenario-Buffered Building.\""
     trust: Brand grew the architect Frank Duffy's four layers into six. He makes his case as a writer, from real buildings and how they changed.
     only: "The building version that pace layering grew from, and the case for designing for several futures instead of one forecast. In his words, \"All buildings are predictions. All predictions are wrong.\""
   - title: Seeing Like a State
     by: James C. Scott
     where: A book.
-    note: "Read the introduction, then chapter 1, \"Nature and Space\", on the scientific forestry of eighteenth-century Prussia and Saxony, and chapter 10, \"Conclusion\". It's dense in places, so take your time as needed."
+    note: "Read the introduction, then chapter 1, \"Nature and Space,\" on the scientific forestry of eighteenth-century Prussia and Saxony, and chapter 10, \"Conclusion.\" It's dense in places, so take your time as needed."
     trust: This is an industry classic for a reason. Scott was a political scientist and anthropologist at Yale. He builds his case from real schemes, from a planned capital city to collectivized farms, showing how in complex dynamics even the smartest and wisest continue to assume an overly predictable world.
     only: "Why planners sure of one future build what can't change, and four rules for doing better that are applicable to our own work: \"Take small steps.\" \"Favor reversibility.\" \"Plan on surprises.\" \"Plan on human inventiveness.\""
   - title: A Philosophy of Software Design
@@ -66,7 +66,7 @@ deeper:
   - title: Yes Minister
     by: written by Antony Jay and Jonathan Lynn (BBC, 1980)
     where: A TV series.
-    note: "Watch series 1, episode 4, \"Big Brother\". A new minister wants safeguards on a national database. His predecessor drafted the same ones. He tells the new minister how the permanent secretary stalled them, one polite stage at a time, until an election took him out of office and the department wiped the slate clean."
+    note: "Watch series 1, episode 4, \"Big Brother.\" A new minister wants safeguards on a national database. His predecessor drafted the same ones. He tells the new minister how the permanent secretary stalled them, one polite stage at a time, until an election took him out of office and the department wiped the slate clean."
     only: Pace layers in a government department. Ministers come and go while the civil service stays, so a change that has to pass through it moves at its speed.
 ---
 

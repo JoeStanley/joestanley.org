@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-No service is perfectly reliable, and chasing 100 percent costs a lot for a difference customers won't notice. So you agree on a reliability target, a {{< pm/term "slo" "service level objective (SLO)" >}} such as "up 99.9 percent of the time", and treat the gap below perfect as an {{< pm/term "error-budget" "error budget" >}}. While some is left, releases go ahead. Once it's spent, they slow or stop until reliability recovers. A written policy says ahead of time what "stop" means, and who can make an exception.
+No service is perfectly reliable, and chasing 100 percent costs a lot for a difference customers won't notice. So you agree on a reliability target, a {{< pm/term "slo" "service level objective (SLO)" >}} such as "up 99.9 percent of the time," and treat the gap below perfect as an {{< pm/term "error-budget" "error budget" >}}. While some is left, releases go ahead. Once it's spent, they slow or stop until reliability recovers. A written policy says ahead of time what "stop" means, and who can make an exception.
 
 ## Why a PM cares
 
@@ -26,7 +26,7 @@ No service is perfectly reliable, and chasing 100 percent costs a lot for a diff
 
 ## How to spot it
 
-- Arguments about reliability end in "it depends who you ask", not a number.
+- Arguments about reliability end in "it depends who you ask," not a number.
 - Nobody can tell you your service's target, or who agreed to it.
 - Releases freeze after every incident, however small, or never freeze at all.
 

@@ -22,11 +22,11 @@ steps:
     kind: read
     title: 'Eileen Munro, "Decision making under uncertainty in child protection"'
     minutes: 5
-    where: A journal article. Free at researchonline.lse.ac.uk. Read the two paragraphs on being "risk-to-self averse", just before the heading "Organisational Cultures about Uncertainty".
+    where: A journal article. Free at researchonline.lse.ac.uk. Read the two paragraphs on being "risk-to-self averse," just before the heading "Organisational Cultures about Uncertainty."
     links:
       - text: "Decision making under uncertainty in child protection: creating a just and learning culture"
         url: https://researchonline.lse.ac.uk/id/eprint/88108/1/Munro_Decision%20Making_Accepted.pdf
-    look: How a tool that's often more accurate than professionals can still carry their bias, now "out of sight in an apparently neutral scientific instrument".
+    look: How a tool that's often more accurate than professionals can still carry their bias, now "out of sight in an apparently neutral scientific instrument."
     trust: It's a peer-reviewed paper by the professor of social policy who led England's 2011 review of child protection.
     only: Bias hidden in a number that looks neutral, put sharply. Your product's data, too, carries the judgment of whoever collected it.
   - id: cartwright
@@ -53,20 +53,20 @@ deeper:
   - title: The Tyranny of Metrics
     by: Jerry Z. Muller
     where: A book.
-    note: "Read the introduction, the first two chapters, the case chapter nearest your work (medicine, policing, business and finance), and the last, \"When and How to Use Metrics: A Checklist\"."
+    note: "Read the introduction, the first two chapters, the case chapter nearest your work (medicine, policing, business and finance), and the last, \"When and How to Use Metrics: A Checklist.\""
     trust: Muller is a historian, arguing from cases. It's an argument, so expect one side of it.
     only: Thursday's mistake in field after field, what he calls metric fixation, and a checklist for using numbers alongside judgment, not in place of it.
   - title: The Art of Statistics
     by: David Spiegelhalter
     where: A book.
-    note: "Read chapter 3, \"Why Are We Looking at Data Anyway? Populations and Measurement\", then chapter 5, \"Modelling Relationships Using Regression\", where regression to the mean starts with Galton's heights of fathers and sons, and chapter 9, \"Putting Probability and Statistics Together\", whose funnel plot of death rates by district shows why small places swing more than large ones."
+    note: "Read chapter 3, \"Why Are We Looking at Data Anyway? Populations and Measurement,\" then chapter 5, \"Modelling Relationships Using Regression,\" where regression to the mean starts with Galton's heights of fathers and sons, and chapter 9, \"Putting Probability and Statistics Together,\" whose funnel plot of death rates by district shows why small places swing more than large ones."
     trust: Spiegelhalter is a Cambridge statistician and a past president of the Royal Statistical Society, writing for readers who don't want equations. Its examples lean on British medicine and public health.
     only: "The card's ideas at full length: small samples, chance and regression to the mean. Then how to read a number well. It balances a list that's mostly warnings about numbers."
   - title: Data Feminism
     by: Catherine D'Ignazio and Lauren F. Klein
     url: https://doi.org/10.7551/mitpress/11805.001.0001
     where: A book.
-    note: "Free at direct.mit.edu, open access. Read chapter 4, \"What Gets Counted Counts\", and chapter 6, \"The Numbers Don't Speak for Themselves\"."
+    note: "Free at direct.mit.edu, open access. Read chapter 4, \"What Gets Counted Counts,\" and chapter 6, \"The Numbers Don't Speak for Themselves.\""
     trust: Its authors are professors, of urban science at MIT and of data and decision sciences at Emory, and its draft went through open peer review. It argues from a stated standpoint, intersectional feminism, and says so.
     only: "Who gets counted, and how: colleges' official counts of sexual assault, whose picture ran \"closer to the reverse\" of what anonymous surveys found, and a gender field that took any answer and still sorted people into two."
   - title: Clinical Versus Actuarial Judgment

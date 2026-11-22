@@ -10,7 +10,7 @@ last_time:
   - q: Kelly says Conway's Law can work in reverse. What does he mean?
     a: A system that's hard to change holds the organization around it in its shape, so teams drift back to fit the system.
   - q: What makes an internal platform worth choosing, and not only required?
-    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support", and it has to be good enough that those teams would pick it.
+    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and it has to be good enough that those teams would pick it.
 
 steps:
   - id: card-access
@@ -37,7 +37,7 @@ steps:
     links:
       - text: "Bounded Context"
         url: https://martinfowler.com/bliki/BoundedContext.html
-    look: The word "meter", which meant different things to different parts of an electricity utility. A bounded context is an area where each word has one agreed meaning.
+    look: The word "meter," which meant different things to different parts of an electricity utility. A bounded context is an area where each word has one agreed meaning.
     trust: Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business.
     only: A way to hear a boundary in how people talk.
   - id: inclusive
@@ -64,25 +64,25 @@ deeper:
   - title: Designing Data-Intensive Applications
     by: Martin Kleppmann and Chris Riccomini
     where: A book.
-    note: "Read chapter 1, especially \"Operational Versus Analytical Systems\" and \"Systems of Record and Derived Data\", then chapters 11 and 12, on batch and stream processing."
+    note: "Read chapter 1, especially \"Operational Versus Analytical Systems\" and \"Systems of Record and Derived Data,\" then chapters 11 and 12, on batch and stream processing."
     trust: Kleppmann built large-scale data infrastructure at LinkedIn before he became a professor at Cambridge.
     only: The whole picture of where data lives and how it moves, and what each choice trades away.
   - title: Design and Reality
     by: Rebecca Wirfs-Brock and Mathias Verraes
     where: A book of six essays.
-    note: "Read it whole, starting with the title essay. Engineers on an oil rig switched the alarms off during a long failure, and the system took the silence to mean the emergency was over. One word, \"alarm\", had been covering two things. Then read \"Splitting a Domain Across Multiple Bounded Contexts\"."
+    note: "Read it whole, starting with the title essay. Engineers on an oil rig switched the alarms off during a long failure, and the system took the silence to mean the emergency was over. One word, \"alarm,\" had been covering two things. Then read \"Splitting a Domain Across Multiple Bounded Contexts.\""
     trust: Wirfs-Brock invented responsibility-driven design, a widely taught way of designing software, and Verraes founded DDD Europe, a conference on domain-driven design. It's two practitioners writing up cases from their own work.
     only: How a team finds a concept nobody had named, and where to draw the lines between contexts.
   - title: Domain-Driven Design
     by: Eric Evans
     where: A book.
-    note: "Read the chapters \"Maintaining Model Integrity\" and \"Distillation\"."
+    note: "Read the chapters \"Maintaining Model Integrity\" and \"Distillation.\""
     trust: It's where bounded contexts and the core domain start. This one's target audience is architects, but I think the work required to navigate it as a PM pays for itself in time, especially as agentic workflows become more common.
     only: Where to draw the lines between models, and where to spend. Keep the core, the part that sets your product apart, small. Think about buying the generic parts everyone needs, such as login.
   - title: Data Mesh
     by: Zhamak Dehghani
     where: A book.
-    note: "Read the chapter \"Principle of Data as a Product\"."
+    note: "Read the chapter \"Principle of Data as a Product.\""
     trust: Dehghani set out data mesh at Thoughtworks, an approach in which each part of a business owns and serves its own analytical data. This is her case for it.
     only: What it takes to run a dataset as a product, with an owner measured on its quality and on how satisfied its users are.
   - title: Brazil

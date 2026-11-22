@@ -9,7 +9,7 @@ do_minutes: 30
 last_time:
   - q: Stewart Brand says "Fast learns, slow remembers." Why not push a slow layer to move at a fast layer's pace?
     a: The slow layer holds what the rest depends on, such as a payments ledger or a contract. Forced to another layer's pace, it ends badly, whichever way the push goes.
-  - q: Two parts of a system are coupled "with respect to a particular change". What does that let you do as a PM?
+  - q: Two parts of a system are coupled "with respect to a particular change." What does that let you do as a PM?
     a: Name the change you expect next, and ask whether it would make both parts move. You often know better than anyone which changes are coming.
 
 steps:
@@ -17,7 +17,7 @@ steps:
     kind: read
     title: 'Google SRE book, "Embracing Risk"'
     minutes: 10
-    where: A chapter. Free at sre.google. Read "Managing Risk"; then, under "Identifying the Risk Tolerance of Consumer Services", "Target level of availability" and "Types of failures"; then "Motivation for Error Budgets".
+    where: A chapter. Free at sre.google. Read "Managing Risk"; then, under "Identifying the Risk Tolerance of Consumer Services," "Target level of availability" and "Types of failures"; then "Motivation for Error Budgets."
     links:
       - text: "Embracing Risk"
         url: https://sre.google/sre-book/embracing-risk/
@@ -28,13 +28,13 @@ steps:
     kind: read
     title: 'Pete Hodgson, "Feature Toggles (aka Feature Flags)"'
     minutes: 10
-    where: An article from 2016. Free at martinfowler.com. Read "A Toggling Tale", then, under "Categories of toggles", "Release Toggles", "Experiment Toggles" and "Ops Toggles".
+    where: An article from 2016. Free at martinfowler.com. Read "A Toggling Tale," then, under "Categories of toggles," "Release Toggles," "Experiment Toggles" and "Ops Toggles."
     links:
       - text: "Feature Toggles (aka Feature Flags)"
         url: https://martinfowler.com/articles/feature-toggles.html
     look: "How deploying a change differs from releasing it: one puts it into production switched off, the other turns it on for customers, a few at first. Then how an ops toggle switches it off fast."
     trust: Hodgson is a software delivery consultant who spent years at Thoughtworks, and he writes from his work with teams. He's frank that every toggle adds complexity.
-    only: The mechanics behind "released to 1 percent of customers", enough to ask your engineers sharp questions.
+    only: The mechanics behind "released to 1 percent of customers," enough to ask your engineers sharp questions.
   - id: dora
     kind: read
     title: 'DORA, "DORA''s software delivery performance metrics"'
@@ -64,13 +64,13 @@ deeper:
   - title: Trustworthy Online Controlled Experiments
     by: Ron Kohavi, Diane Tang and Ya Xu
     where: A book.
-    note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion\", then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk\"."
+    note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion,\" then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk.\""
     trust: Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and a university press published it. It's a practical guide, written from inside large online businesses.
     only: How to choose the measures an experiment answers to, guardrails among them, and how to combine the ones you want to move into one overall evaluation criterion. Then how to ramp a change from a few users to everyone without trading safety for speed.
   - title: Threat Modeling
     by: Adam Shostack
     where: A book.
-    note: "Read Part I, \"Getting Started\". Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\", \"What can go wrong?\", \"What are we going to do about it?\" and \"Did we do a good enough job?\""
+    note: "Read Part I, \"Getting Started.\" Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
     trust: Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool.
     only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
   - title: Hidden Technical Debt in Machine Learning Systems
@@ -79,7 +79,7 @@ deeper:
     where: A conference paper.
     note: Free at proceedings.neurips.cc. It's dense, so read it slowly. Section 4, on feedback loops, and section 7, on changes in the outside world, matter most here.
     trust: Engineers at Google wrote it from the systems they ran, and NeurIPS, a leading machine learning conference, published it. It argues from experience, and from before today's large language models.
-    only: "Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and \"changing anything changes everything\"."
+    only: "Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and \"changing anything changes everything.\""
   - title: Ford v Ferrari
     by: directed by James Mangold (20th Century Fox, 2019)
     where: A film.

@@ -58,14 +58,14 @@ deeper:
   - title: The Principles of Product Development Flow
     by: Donald Reinertsen
     where: A book.
-    note: "Read chapter 3, \"Managing Queues\", and chapter 4, \"Exploiting Variability\"."
+    note: "Read chapter 3, \"Managing Queues,\" and chapter 4, \"Exploiting Variability.\""
     trust: A consultant's argument, set out as numbered principles drawn from queueing theory and economics, not a study.
     only: Why queues are the hidden cost in product work, and why cutting variability, a lesson taken from factories, can cost more than it saves. Watch where he parts with Goldratt.
   - title: "Accelerate: The Science of Lean Software and DevOps"
     by: Nicole Forsgren, Jez Humble and Gene Kim
     url: https://itrevolution.com/wp-content/uploads/2022/06/ACC_excerpt.pdf
     where: A book.
-    note: Read chapter 1, "Accelerate", and chapter 2, "Measuring Performance". Both are free in the publisher's excerpt.
+    note: Read chapter 1, "Accelerate," and chapter 2, "Measuring Performance." Both are free in the publisher's excerpt.
     trust: It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software.
     only: "Goodhart's Law in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal

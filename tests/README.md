@@ -1,6 +1,6 @@
 # Checks
 
-`SPEC.md` is the design spec: numbered rules the site must meet. `check_site.py` builds the site and checks every rule marked **auto**, then writes `report.md` and exits with an error if any rule fails. `mutations.sh` breaks copies of the site on purpose, seventy-seven ways, to prove the checks catch real regressions.
+`SPEC.md` is the design spec: numbered rules the site must meet. `check_site.py` builds the site and checks every rule marked **auto**, then writes `report.md` and exits with an error if any rule fails. `mutations.sh` breaks copies of the site on purpose, a hundred and two ways, to prove the checks catch real regressions. Each prints `caught`, `MISSED`, or `STALE` when its change no longer finds what it aimed at, so it tests nothing and needs aiming again. The whole run takes about 35 minutes here.
 
 ## Run
 

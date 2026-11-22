@@ -17,11 +17,11 @@ steps:
     kind: read
     title: 'Jeff Bezos, "2015 Letter to Shareholders"'
     minutes: 5
-    where: A shareholder letter. Free at sec.gov. Read the section headed "Invention Machine".
+    where: A shareholder letter. Free at sec.gov. Read the section headed "Invention Machine."
     links:
       - text: "2015 Letter to Shareholders"
         url: https://www.sec.gov/Archives/edgar/data/1018724/000119312516530910/d168744dex991.htm
-    look: "Which decisions deserve the slow process: the \"one-way doors\", hard or impossible to undo. Most decisions are two-way doors, and Bezos wants those made quickly, by people with good judgment or small groups."
+    look: "Which decisions deserve the slow process: the \"one-way doors,\" hard or impossible to undo. Most decisions are two-way doors, and Bezos wants those made quickly, by people with good judgment or small groups."
     trust: A chief executive's rule for his own company, not a study.
     only: "What it costs to run every decision through the slow process: \"slowness, unthoughtful risk aversion, failure to experiment sufficiently, and consequently diminished invention.\""
   - id: card-agency-coherence
@@ -37,7 +37,7 @@ steps:
     links:
       - text: "Scaling the Practice of Architecture, Conversationally"
         url: https://martinfowler.com/articles/scaling-architecture-conversationally.html
-    look: "One rule and one qualifier: anyone can decide, after asking everyone the decision affects and people with expertise in it. The decider is \"in no way obliged to agree with the advice\", but has to seek it out, listen and write it down."
+    look: "One rule and one qualifier: anyone can decide, after asking everyone the decision affects and people with expertise in it. The decider is \"in no way obliged to agree with the advice,\" but has to seek it out, listen and write it down."
     trust: Harmel-Law is a technology principal at Thoughtworks, writing up a practice he's run with teams.
     only: A way to spread decisions out and still know who's accountable.
   - id: rumelt
@@ -65,28 +65,28 @@ deeper:
     by: Michael Porter (Harvard Business Review, 1996)
     url: https://hbr.org/1996/11/what-is-strategy
     where: A long article.
-    note: "At hbr.org, which counts free articles and may ask you to subscribe. Read section III, on trade-offs, and section V, \"Rediscovering Strategy: The Failure to Choose\", most closely."
+    note: "At hbr.org, which counts free articles and may ask you to subscribe. Read section III, on trade-offs, and section V, \"Rediscovering Strategy: The Failure to Choose,\" most closely."
     trust: A Harvard Business School professor's own short statement of his theory, argued from company cases.
     only: "Straddling in full: Continental Lite copied Southwest while staying a full-service airline, and lost hundreds of millions of dollars."
   - title: Lean Software Development
     by: Mary and Tom Poppendieck
     url: https://ptgmedia.pearsoncmg.com/images/9780321150783/samplepages/0321150783.pdf
     where: A book.
-    note: "Free at pearsoncmg.com, in the publisher's sample. Read chapter 3, \"Decide as Late as Possible\"."
+    note: "Free at pearsoncmg.com, in the publisher's sample. Read chapter 3, \"Decide as Late as Possible.\""
     trust: It's the book that brought the last responsible moment, a term from lean construction, to software teams.
     only: "When to decide: hold off while waiting costs less than deciding wrong, and do the work that makes waiting possible. \"Procrastinating is not the same as making decisions at the last responsible moment,\" they add."
   - title: Warfighting (MCDP 1)
     by: U.S. Marine Corps (1997)
     url: https://www.marines.mil/News/Publications/MCPEL/Electronic-Library-Display/Article/899837/mcdp-1/
     where: A book.
-    note: "Free at marines.mil. Read it whole. Chapter 4, \"The Conduct of War\", holds commander's intent and mission tactics."
+    note: "Free at marines.mil. Read it whole. Chapter 4, \"The Conduct of War,\" holds commander's intent and mission tactics."
     trust: It's doctrine, an institution's experience written down, not a study of how every unit works. Its notes credit John Boyd for the loop and for implicit communication.
     only: "Commander's intent at its source. The task says what to do and the intent says why, and when the situation makes the task obsolete, \"the intent is more lasting and continues to guide our actions.\""
   - title: Science, Strategy and War
     by: Frans Osinga
     url: https://hdl.handle.net/1887/4211793
     where: A book.
-    note: "Free at Leiden University, as the doctoral thesis it grew from. Read chapter 7: the part on \"Organic Design for Command and Control\", then from \"The Essence of Winning and Losing\" to \"Beyond the rapid OODA loop idea\"."
+    note: "Free at Leiden University, as the doctoral thesis it grew from. Read chapter 7: the part on \"Organic Design for Command and Control,\" then from \"The Essence of Winning and Losing\" to \"Beyond the rapid OODA loop idea.\""
     trust: Osinga, a Dutch Air Force F-16 pilot turned strategy scholar, works through Boyd's own briefings slide by slide, in a thesis Routledge later published.
     only: Why Boyd's loop is about orientation, not speed, and why a team that shares one can act on intent without being told what to do.
   - title: Ocean's Eleven

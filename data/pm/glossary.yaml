@@ -78,7 +78,7 @@ percentile:
 slo:
   term: Service level objective
   also: SLO
-  text: A reliability target for a service, such as "up 99.9 percent of the time", agreed before anything goes wrong.
+  text: A reliability target for a service, such as "up 99.9 percent of the time," agreed before anything goes wrong.
 error-budget:
   term: Error budget
   text: The amount of failure a service's SLO allows, treated as a budget. While some is left, releases go ahead.

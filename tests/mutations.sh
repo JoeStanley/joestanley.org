@@ -5,6 +5,10 @@ set -u
 SRC=$(cd "$(dirname "$0")/.." && pwd)
 run() {  # description, rule, command that breaks the copy
   D=$(mktemp -d); cp -r "$SRC"/. "$D"/; (cd "$D" && eval "$3")
+  # A mutation whose target has moved or gone changes nothing, and tests nothing: say so, rather than run the
+  # check and read its result as a miss or, worse, as a catch for some other reason (22 November 2026, when
+  # five still aimed at drafts that every module's rebuild had deleted).
+  if diff -rq --exclude=.git "$SRC" "$D" >/dev/null 2>&1; then echo "STALE: $1 ($2) changed nothing"; rm -rf "$D"; return; fi
   (cd "$D" && python3 tests/check_site.py --only "$2" >/dev/null 2>&1)
   if grep -q "| $2 | auto | FAIL" "$D/tests/report.md"; then echo "caught: $1 ($2)"; else echo "MISSED: $1 ($2)"; fi
   rm -rf "$D"
@@ -65,9 +69,9 @@ run_bg "the hand-written correction pushing the words beside it apart" H2 "sed -
 run_bg "the hand-written correction written level" H2 "sed -i 's/transform: rotate(-4deg);/transform: none;/' assets/css/base.css"
 run_bg "the hand-written correction running past the end of its line" H2 "sed -i 's/if (over > 0) ins.style.translate/if (false) ins.style.translate/' assets/js/pm.js"
 run_bg "a retired setting back in an example" S5 "sed -i 's/a tweak to checkout/a change to a contact frequency rule/' content/pm/find-the-constraint.md"
-run_bg "a source linked from Substack" S9 "printf '\n- [A newsletter post](https://example.substack.com/p/a-post), 5 minutes.\n' >> drafts/pm/notice-when-you-are-wrong.md"
-run_bg "two stories on one full path" S10 "sed -i '0,/^## Go deeper: the full path\$/s//&\\n\\n- **A Film About Change** A film, about two hours.\\n- **A Novel About Change** A novel of about 300 pages./' drafts/pm/notice-when-you-are-wrong.md"
-run_bg "a full path with no story" S10 "sed -i '/^- \*\*\*Ocean.s Eleven\*/d' drafts/pm/decide-and-set-direction.md"
+run_bg "a source linked from Substack" S9 "printf '\n- [A newsletter post](https://example.substack.com/p/a-post), 5 minutes.\n' >> content/pm/notice-when-you-are-wrong.md"
+run_bg "two stories on one full path" S10 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: A Film About Change\n    by: Someone\n    where: A film.\n    only: The lesson again, on screen.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e, 1))\""
+run_bg "a full path with no story" S10 "sed -i '/^  - title: Ocean.s Eleven\$/,/^    only: /d' content/pm/decide-and-set-direction.md"
 run_bg "a story asked to be trusted as evidence" S10 "sed -i 's/^    only: Goldratt first/    trust: It sold millions of copies.\n    only: Goldratt first/' content/pm/find-the-constraint.md"
 run_bg "a sixth thing on a built full path" S11 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: Peer-reviewed.\n    only: More of the same.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e * 5, 1))\""
 run_bg "a pair counted as one thing on a built full path" S11 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: Peer-reviewed.\n    only: More of the same.\n'; pr='  - title: Two Shows\n    by: Someone\n    where: A pair of TV series, watched side by side.\n    only: A contrast.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + pr + e * 2, 1))\""
@@ -77,8 +81,8 @@ run_bg "an unchecked source on a built page" S7 "printf '\n*To check: nobody has
 run_bg "a module that stops talking to the reader" E1 "sed -i 's/The danger while you work on it is/The danger in working on it is/; s/Before you trust a stand-in, ask/Before trusting a stand-in, ask/' content/pm/find-the-constraint.md"
 run_bg "a module with its contractions spelled out" E2 "sed -i 's/\([Dd]\)on\x27t/\1o not/g; s/isn\x27t/is not/g; s/\([Ii]\)t\x27s/\1t is/g; s/doesn\x27t/does not/g; s/didn\x27t/did not/g; s/won\x27t/will not/g; s/can\x27t/cannot/g; s/you\x27re/you are/g; s/there\x27s/there is/g' content/pm/find-the-constraint.md content/pm/cards/five-focusing-steps.md content/pm/cards/goodharts-law.md layouts/partials/pm/dicegame.html data/pm/dicegame.yaml"
 run_bg "an experience invented for the owner" E3 "printf '\nI learned this the hard way on my second team.\n' >> content/pm/see-the-system.md"
-run_bg "a module with no source" X1 "sed -i '/^  draft: decide-and-set-direction$/d' data/pm/modules.yaml"
-run_bg "a draft left behind after its module is built" X1 "cp drafts/pm/notice-when-you-are-wrong.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
+run_bg "a module with no source" X1 "sed -i '/^  page: decide-and-set-direction$/d' data/pm/modules.yaml"
+run_bg "a draft left behind after its module is built" X1 "mkdir -p drafts/pm; cp content/pm/see-the-system.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
 run_bg "the tab drops what to look for" X2 "sed -i 's/paras += look(b) + reasons(b) + note_of(li)/paras += reasons(b) + note_of(li)/' tools-pm/source-doc.py"
 run_bg "a word changed without reaching the working doc" X3 "sed -i 's/Nothing is sent anywhere./Nothing leaves your browser./' content/pm/_index.md"
 run_bg "link easing ignores reduced motion" D5 "sed -i '/@media (prefers-reduced-motion: reduce) { a, .recall/d' assets/css/base.css"
@@ -129,4 +133,6 @@ run_bg "the kind's words shown to the eye beside the icon" S15 "sed -i 's/<p cla
 run_bg "a card's quoted sentence left uncredited" S16 "sed -i '/<figcaption class=\"plate-caption\">{{ .by }}/d' layouts/partials/pm/unit-card.html"
 run_bg "the header's hour back in digits" S14 "sed -i 's/{{- else if eq \$h 1 }}an hour/{{- else if eq \$h 1 }}1 hour/' layouts/partials/pm/duration.html"
 run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 's/    continues: meadows-1/    continues: card-stocks/' content/pm/see-the-system.md"
+run_bg "a comma back outside a closing quotation mark" T9 "sed -i 's/\"Leverage Points,\" first half/\"Leverage Points\", first half/' content/pm/see-the-system.md"
+run_bg "a period back outside a quoted title in a source's note" T9 "sed -i 's/Backward Design.\\\\\"/Backward Design\\\\\"./' content/pm/own-your-role.md"
 wait

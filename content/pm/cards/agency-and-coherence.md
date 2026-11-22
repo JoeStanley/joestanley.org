@@ -12,7 +12,7 @@ deeper:
   url: https://www.bredemeyer.com/pdf_files/MinimalistArchitecture.PDF
   where: A magazine column. Free at bredemeyer.com.
   trust: Two architecture consultants' opinion column in an IEEE magazine, from their practice, with no data.
-  only: The card's test in full, and their warning that each decision you add "can potentially dilute the impact of all the other decisions".
+  only: The card's test in full, and their warning that each decision you add "can potentially dilute the impact of all the other decisions."
 ---
 
 ## The idea
@@ -21,8 +21,8 @@ Work many people do at once needs two things that pull against each other: agenc
 
 ## Why a PM cares
 
-- **You often write the strict list.** Agree what "delivered" means, and a marketplace's teams can build without meeting about it. Take a decision from a team only for a benefit "that the organization could not otherwise achieve", as Ruth Malan and Dana Bredemeyer put it.
-- **Give the intent, not only the task.** The Marine Corps' doctrine, MCDP 1, seeks unity "not principally through imposed control, but through harmonious initiative". Knowing why, a team can adapt when the plan goes stale.
+- **You often write the strict list.** Agree what "delivered" means, and a marketplace's teams can build without meeting about it. Take a decision from a team only for a benefit "that the organization could not otherwise achieve," as Ruth Malan and Dana Bredemeyer put it.
+- **Give the intent, not only the task.** The Marine Corps' doctrine, MCDP 1, seeks unity "not principally through imposed control, but through harmonious initiative." Knowing why, a team can adapt when the plan goes stale.
 - **Agency needs feedback.** A team has to see what its choice did, so make sure it can see the numbers its own change moved.
 
 ## How to spot it

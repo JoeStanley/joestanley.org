@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-Small samples swing more than anyone expects, experts included. In 1971, Amos Tversky and Daniel Kahneman asked research psychologists how likely a study's result was to hold up in a small repeat. The typical answer was 85 percent. The arithmetic, they showed, said a little under half. They called the belief that a small sample will look like the whole population "the law of small numbers".
+Small samples swing more than anyone expects, experts included. In 1971, Amos Tversky and Daniel Kahneman asked research psychologists how likely a study's result was to hold up in a small repeat. The typical answer was 85 percent. The arithmetic, they showed, said a little under half. They called the belief that a small sample will look like the whole population "the law of small numbers."
 
 Its close relative is {{< pm/term "regression-to-the-mean" "regression to the mean" >}}: an extreme result is usually followed by a less extreme one, whatever you did in between. A flight instructor told Kahneman that cadets he praised for a clean maneuver usually did worse next time, and cadets he screamed at did better. Kahneman saw both as regression to the mean: "we are statistically punished for rewarding others and rewarded for punishing them."
 

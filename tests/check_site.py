@@ -1746,7 +1746,7 @@ def variant_checks(ctx, base):
     c.close()
 
 
-# ---------- the working source: one source per unit, mirrored in the doc (X1 to X3), and its voice (E1 to E3, S5) ----------
+# ---------- the working source: one source per unit, mirrored in the doc (X1 to X3), its voice (E1 to E3, S5) and punctuation (T9) ----------
 def _source_doc():
     import importlib.util
     spec = importlib.util.spec_from_file_location("source_doc", os.path.join(ROOT, "tools-pm", "source-doc.py"))
@@ -1777,6 +1777,9 @@ LONG_KIND = re.compile(r"An? (?:book|textbook|(?:journal |law review |long )?art
 # S13: no unit tells the reader to borrow or buy; no built full path gives a page count or a running time
 BORROW = re.compile(r"\b(?:borrow|buy) it\b", re.I)
 LENGTH = re.compile(r"\b(?:\d+|one|two|three|four|five|six|seven|eight|nine|ten|a few|a couple of)[ -](?:pages?|minutes?|hours?|episodes?)\b|\babout an? hour\b|\bhalf an hour\b|\bhalf-hour\b|\bof about\b", re.I)
+# T9: a comma or a period after a closing double quotation mark (straight or curly), past any bold, italic or
+# link markup that closes with it. A quote that follows a space or an opening bracket opens; it doesn't close.
+OUTSIDE = re.compile(r"(?<=[^\s(\[{])[\"\u201d](?:\*{1,3}|_)?(?:\]\([^)\s]*\))?(?:\*{1,3}|_)?[,.]")
 # S14: a time estimate, and the rounded marks it may take
 DURATION = re.compile(r"(?:(\d+) hours?(?: (\d+) minutes?)?|(\d+) minutes?)")
 
@@ -1895,7 +1898,7 @@ def s14_checks(name, text):
 
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14")
+    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -2010,6 +2013,13 @@ def source_checks(out_dir):
             fail("S7", f"{name} is built and still carries a \"To check:\" line")
         if BORROW.search(text):
             fail("S13", f"{name}: \"{BORROW.search(text).group(0)}\": a source entry never tells the reader to borrow or buy")
+        # T9: American punctuation, a comma or a period inside the closing quotation mark
+        outside = list(OUTSIDE.finditer(text))
+        for o_ in outside[:3]:
+            ctx_ = text[max(0, o_.start() - 40):o_.end() + 10].replace("\n", " ")
+            fail("T9", f"{name}: a comma or a period after a closing quotation mark, where American punctuation puts it inside: \"...{ctx_}...\"")
+        if len(outside) > 3:
+            fail("T9", f"{name}: and {len(outside) - 3} more commas or periods after a closing quotation mark")
         s14_checks(name, text)
         if name in ("Start", "Glossary"):
             continue
@@ -2609,11 +2619,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14"):
+    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14"):
+            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1", "R10") else None
     srv = Server(out_dir)
