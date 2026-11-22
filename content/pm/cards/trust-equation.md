@@ -11,8 +11,8 @@ deeper:
   by: Trusted Advisor Associates
   url: https://trustedadvisor.com/build-trust/trust-equation
   where: A web page, about 5 minutes. Free at trustedadvisor.com.
-  trust: It's from the firm Charles Green founded, one of the book's three authors, so read it as an advocate's account of its own model.
-  only: The model's own question for each part, such as "Do we meet expectations?" for reliability.
+  trust: It's from the firm founded by Charles Green, one of the book's three authors, so read it as an advocate's account of its own model.
+  only: The model in its makers' words, with short videos.
 ---
 
 ## The idea
@@ -30,7 +30,7 @@ The model first appeared in *The Trusted Advisor* (2000), by David Maister, Char
 
 - **Reliability is what a rhythm builds.** An update that arrives on the day you said it would is a small promise kept.
 - **Self-orientation is the bottom of the fraction.** An update that lists only wins reads as being about you. Name the problem you're watching, and it turns toward the reader.
-- **Credibility needs some bad news.** If every report says everything's fine, the good news stops being believed. One honest amber item makes the greens easier to trust.
+- **Credibility needs some bad news.** If every report says everything's fine, the good news stops being believed. One honest item that isn't on track makes the rest easier to trust.
 
 ## How to spot it
 
@@ -39,4 +39,4 @@ The model first appeared in *The Trusted Advisor* (2000), by David Maister, Char
 
 ## What it does not say
 
-It's a consultant's model, not a measured law. Researchers split trust differently, into ability, benevolence and integrity (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.
+It's a consultants' model, not a measured law. Researchers split trustworthiness differently, into ability, benevolence and integrity, and treat trust itself as a willingness to be vulnerable (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.

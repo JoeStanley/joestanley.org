@@ -5,18 +5,18 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "82aa2e633e0d5c601d135a7bb49a1cd5d184071007c223a37ec09f57f616ee93",
+   "sha256": "b39db328779ab583d61d51e5d232c6958643a43cb26fefec6ba76eb04fa4bde3",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 38
+   "rev": 42
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "74eaebc489a78721dce47dca1e2ad1709321a36903f302b4ccfb952561a78e03",
+   "sha256": "b78377f4363e3da942a405e1465efcba9c53728f075449f4c18f75b034c913fb",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 205
+   "rev": 207
   },
   {
    "name": "0 Own Your Role",
@@ -101,26 +101,26 @@
   {
    "name": "10 Notice When You Are Wrong",
    "file": "10-notice-when-you-are-wrong.md",
-   "sha256": "4042c4126a252b5b7076a3404fdfd500ad2738ad8d5369060b0cb55e3b377fad",
+   "sha256": "ea2cc9bba62f61528cb089e31aaf0cdd5b5ce8c32960c69c7206e858848e7e89",
    "doc_tab": "73278a69-a68a",
    "doc_node": "0e614323-8b2d",
-   "rev": 17
+   "rev": 18
   },
   {
    "name": "11 Bring People With You",
    "file": "11-bring-people-with-you.md",
-   "sha256": "dd0b43a02560b7a230dc60d36d7ad05be38b0fc032fa3da513b5159ed4e5a4e9",
+   "sha256": "09a74e7e30ad0a13dc35a612c96f888acc66915565fa07fdd12a502ac33340af",
    "doc_tab": "8bbdca60-921f",
    "doc_node": "2f658fd4-20e8",
-   "rev": 981
+   "rev": 982
   },
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "bf0cb251744f40ba1fc6174cc6178f0ceaf873fa6d892fca37c599bb2fa3b5cb",
+   "sha256": "1e80e13db006d11032d30502e7032cf2cd4e8b8b02e7212bf9f656e70cf2b2da",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 6
+   "rev": 7
   }
  ]
 }

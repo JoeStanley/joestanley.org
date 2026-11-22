@@ -138,8 +138,8 @@ regression-to-the-mean: ""
 # Right to erasure
 right-to-erasure: ""
 
-# Situation, complication, question (SCQ)
-scq: ""
+# SCR (situation, complication, resolution)
+scr: ""
 
 # Service level objective (SLO)
 slo: ""
