@@ -1,13 +1,18 @@
 {{- /* A full-path entry's kind as an icon before its title (spec S15): book, article or screen. Call with the entry's
        kind line ("A book.", "A journal article.", "A TV series."). It is drawn in the heading's ink and hidden from
-       screen readers, which hear the kind's words from the line kept for them under the title. Simple line drawings
-       in the manner of Feather icons, drawn for this site. */ -}}
+       screen readers, which hear the kind's words from the line kept for them under the title.
+       The book is Lucide's "book-text", which the owner chose on 22 November 2026, redrawn on the article icon's grid:
+       the same width, height and title lines. Lucide is under the ISC License: Copyright (c) for portions of Lucide
+       are held by Cole Bemis 2013-2022 as part of Feather (MIT); all other copyright (c) for Lucide is held by Lucide
+       Contributors 2022. Permission to use, copy, modify, and/or distribute this software for any purpose with or
+       without fee is hereby granted, provided that the above copyright notice and this permission notice appear in
+       all copies. The article and the screen are simple line drawings in the same manner, drawn for this site. */ -}}
 {{- $w := . | default "" -}}
 {{- $kind := "article" -}}
 {{- if findRE `^(?:An? |A pair of |Two )?(?:classic )?(?:film|(?:TV |television |streaming )?series|documentary)` $w }}{{ $kind = "screen" }}
 {{- else if findRE `^An? (?:book|textbook|novel|novella)\b` $w }}{{ $kind = "book" }}{{ end -}}
 <svg class="kind-icon" data-kind="{{ $kind }}" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
-{{- if eq $kind "book" }}<path d="M8 4.2C6.6 3.1 4.6 2.8 1.8 3.2v9.4c2.8-.4 4.8-.1 6.2 1 1.4-1.1 3.4-1.4 6.2-1V3.2c-2.8-.4-4.8-.1-6.2 1z"/><path d="M8 4.2v9.4"/>
+{{- if eq $kind "book" }}<path d="M3.6 12.8V3.2a1.6 1.6 0 0 1 1.6-1.6h6.6a.6.6 0 0 1 .6.6v11.6a.6.6 0 0 1-.6.6H5.2a1.6 1.6 0 0 1 0-3.2h7.2"/><path d="M5.8 4.8h3.3M5.8 7.4h4.4"/>
 {{- else if eq $kind "screen" }}<rect x="1.6" y="2.8" width="12.8" height="8.8" rx="1.4"/><path d="M5.4 14.2h5.2M8 11.6v2.6"/>
 {{- else }}<path d="M3.6 1.6h5.8l3 3v9.8H3.6z"/><path d="M9.4 1.6v3h3M5.8 7.4h4.4M5.8 9.8h4.4M5.8 12.2h2.8"/>{{ end -}}
 </svg>

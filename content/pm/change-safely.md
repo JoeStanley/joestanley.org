@@ -32,7 +32,7 @@ steps:
     links:
       - text: "Feature Toggles (aka Feature Flags)"
         url: https://martinfowler.com/articles/feature-toggles.html
-    look: How deploying a change, putting it into production switched off, differs from releasing it to customers, a few at first. Then how an ops toggle switches it off fast.
+    look: "How deploying a change differs from releasing it: one puts it into production switched off, the other turns it on for customers, a few at first. Then how an ops toggle switches it off fast."
     trust: Hodgson is a software delivery consultant who spent years at Thoughtworks, and he writes from his work with teams. He's frank that every toggle adds complexity.
     only: The mechanics behind "released to 1 percent of customers", enough to ask your engineers sharp questions.
   - id: dora
@@ -53,7 +53,7 @@ steps:
     look: How a reliability target turns into minutes you can spend.
 
 check:
-  - q: Your team has error budget left this quarter. What does that let you do, and what happens once it's spent?
+  - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
   - q: What's the difference between deploying a change and releasing it?
     a: Deploying puts the code into production, switched off. Releasing turns the feature on for customers. A toggle lets you do them at different times.
@@ -66,12 +66,12 @@ deeper:
     where: A book.
     note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion\", then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk\"."
     trust: Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and a university press published it. It's a practical guide, written from inside large online businesses.
-    only: How to choose the measures an experiment answers to, guardrails among them, and fold them into one overall evaluation criterion. Then how to ramp a change from a few users to everyone without trading safety for speed.
+    only: How to choose the measures an experiment answers to, guardrails among them, and how to combine the ones you want to move into one overall evaluation criterion. Then how to ramp a change from a few users to everyone without trading safety for speed.
   - title: Threat Modeling
     by: Adam Shostack
     where: A book.
     note: "Read Part I, \"Getting Started\". Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\", \"What can go wrong?\", \"What are we going to do about it?\" and \"Did we do a good enough job?\""
-    trust: Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool. It's a practitioner's method, built for real projects.
+    trust: Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool.
     only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
   - title: Hidden Technical Debt in Machine Learning Systems
     by: D. Sculley and colleagues (NeurIPS, 2015)
@@ -89,17 +89,17 @@ deeper:
 
 ## Why this matters
 
-When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA's [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/) points the other way: teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and the approvals didn't make changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
+When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA's [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/) points the other way: teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and DORA found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
 
 Richard Cook, from Module 1, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
-First, though, know how good it has to be, in words engineers can test: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
+Before you change anything, know how good the service has to be, in words engineers can test: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 
 [//]: # (short-path)
 
 ## Do
 
-**Plan one rollout (20 minutes).** Pick a change that's coming up on your product, such as a new search ranking. Write a one-page plan in five lines.
+**Plan one rollout (20 minutes).** Pick a change that's coming up on your product, such as a new way to pay at checkout. Write a one-page plan that answers five things.
 
 1. The cohort: who gets it first, and how many.
 2. The goal measure you hope it raises.
