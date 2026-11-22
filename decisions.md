@@ -2,6 +2,21 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 22 November 2026, the job 14 session: what v1.0 needs
+
+- Before v1.0 goes live, a reader who wrote none of it reads all twelve modules in order, for cohesion, repetition and cross-references, and its fixes go in. Then he reads Modules 8 to 11 in the doc, and launch waits on his read (his pick, in the session).
+- v1.0 has link previews when a page is shared, a 404 page, a browser-tab icon, and a line on Start inviting readers to send feedback (his picks, in the session).
+- The 404 page sends a visitor to the front door, not to the ReadMe or the syllabus (in the session).
+- He needs a way to review every page himself, so he can give detailed final notes on the site's holistic feel. That's a private preview of the whole built site on claude.ai, where he comments on any part (his pick, in the session).
+- He needs a way to make revisions to the ReadMe that may be more structural. The ReadMe joins the working doc as a tab of its own (his pick, in the session).
+- At launch, "Pilot draft" gives way to "Version 1.0" and the month (his pick, in the session).
+- The front door keeps its paragraph, and the placeholder note goes (his pick, in the session).
+- Writing is hidden for now. Games gets a small teaser about what he's working on through the Mesmir studio: the upcoming setting by name, a high-level summary of its narrative and mechanics, the equivalent of an elevator pitch, and a target launch date in late Q1 2027 (in the session).
+- The print allowances that end "when the site goes live" hold until a PDF is published, not until launch (his pick, in the session).
+- He writes the Games teaser himself, starting it in a Mesmir session alongside this work, and provides the language before go-live; a session sets the job's requirement (in the session).
+- Before launch, the working record moves into the private pm-sources: `decisions.md`, `PLAN.md`, the Decisions page's source, the style rounds' history and `VOICE.md`. The public repository keeps what the site needs: the site, its spec and checks with the V1 screenshots, its tools, its workflows and a slimmer `CLAUDE.md`. His inclination was to move every non-essential asset; he picked this after asking what moving the screenshots too would add (his pick, in the session).
+- The public history stays as it is: a clean tree is enough (his pick, in the session).
+
 ## 22 November 2026, the round 5 session
 
 - Bring People With You says practitioners, not research, back the two kinds of update: "Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places." He had understood from an earlier session that research supported both halves (agree, in the session).
