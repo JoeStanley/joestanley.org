@@ -53,14 +53,14 @@ steps:
     only: "Two questions for any strategy you're handed: does it say what's going on, and does it rule anything out?"
 
 check:
-  - q: Change Safely says small, frequent releases are safer than big, careful ones. This module saves a slow, careful process for one-way doors. Which does a new field in a public API get?
-    against: change-safely
-    a: The slow one, for the field itself. Once outside developers build on it, removing it breaks their code, so it's nearly a one-way door. The code behind it can still ship in small steps. Small releases win where you can undo, and care wins where you can't.
+  - q: Weigh the Evidence asked who's missing from your evidence before you lean on it. Here you decide on purpose, with what you have. When do you stop gathering and decide?
+    against: weigh-the-evidence
+    a: When more evidence wouldn't change the call, or when waiting costs more than being wrong. A two-way door can be decided on thin evidence and fixed later. A one-way door, such as a new field in a public API that outside developers will build on, earns the extra weeks.
   - q: A decision has stalled because five people each think they can say no. What do you change?
     a: Name one person to decide, and make everyone else an adviser. Nobody holds a veto.
   - q: Your team's strategy reads "Delight customers with a fast, reliable product," and nobody objects. What's wrong with it?
     a: Nobody would argue for the opposite, so it isn't a choice. It's a goal, with no diagnosis or guiding policy behind it.
-  - q: "**Beyond this module.** This module helps you choose. What does it leave for after the choice?"
+  - q: "**Beyond this module.** Once you've chosen, what's left to do?"
     a: Finding out whether you chose well, early enough to change course. Notice When You Are Wrong takes that up, starting from your decision log.
 
 deeper:
@@ -105,7 +105,7 @@ A roadmap is a set of decisions, and on most teams many of them get made by defa
 
 Saying no to something your team already does has a catch. Find out first why it started and what leans on it. G. K. Chesterton made the point in 1929 with a fence across a road: don't clear it away until you can say why someone put it up.
 
-Then ask whose decision it is. A few decisions need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide. Input shapes a decision, but it isn't a veto. When a view makes no sense to you, Gary Klein, from Weigh the Evidence, advises getting curious about why someone holds it. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room, the way the first guess at the coins in a jar sways the next (Kahneman and Klein, 2010). And think of the people it lands on who'll never be in the room. Werner Ulrich, from See the System's full path, puts it as a question: "Who is witness to the interests of those affected but not involved?"
+Then ask whose decision it is. A few decisions need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide. Input shapes a decision, but it isn't a veto. When a view makes no sense to you, get curious about why someone holds it, as Gary Klein advises. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room, the way the first guess at the coins in a jar sways the next (Kahneman and Klein, 2010). And think of the people it lands on who'll never be in the room. Werner Ulrich, from See the System's full path, puts it as a question: "Who is witness to the interests of those affected but not involved?"
 
 Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot who became a military strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster. His own stress was on orientation, the picture you act from, since "orientation shapes the way we observe, the way we decide, the way we act." A team that shares your picture can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale. It's the "in order to" of Own Your Role, given with each task. That's where the team's tempo comes from: it doesn't have to stop and ask.
 
@@ -115,6 +115,6 @@ Handing a decision out works only when the person deciding sees the situation as
 
 **Write a kernel and a not-doing list (25 minutes).** Write one sentence for the diagnosis, the main challenge facing your product area, and one for the guiding policy, your approach to it. Add two or three actions that carry it out together: with them, that's Rumelt's {{< pm/term "kernel-of-a-strategy" "kernel of a strategy" >}}. Then list three things you won't do this quarter, whether someone asked for them or your team does them now, each with a sentence tying the no to your diagnosis. Beside each, write who it leaves waiting, and whether they'll hear it from you. Before you stop anything your team does now, find out why it started and what leans on it, like the fence above. That may take a conversation after the 25 minutes. Test each line: would a reasonable colleague argue for the opposite? If not, it isn't a choice yet.
 
-**For your decision log.** Pick one line from your not-doing list. Write what you expect to happen because you said no, how sure you are, and when you'll know.
+**For your decision log.** Pick one line from your not-doing list. Write what you expect to happen because you said no, how sure you are, and the date you'll check.
 
 **Optional: take apart a stalled decision (10 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.

@@ -44,8 +44,10 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
+GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
+                 # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 80   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 89   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -1597,11 +1599,14 @@ def unit_page_checks(pdf_path, n_pages):
     if any(u[0] is None for u in units):
         fail("P1", "a unit's bookmark does not land on a page, so its pages cannot be counted"); return
     units.sort(key=lambda u: u[0])
+    mods_ = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    with_game = {f"Module {m['num']}: {m['title']}" for m in mods_ if m["id"] in GAMES.values()}
     for (pg, kind, title, deeper), nxt in zip(units, units[1:] + [(n_pages, "", "", None)]):
         n = nxt[0] - pg
         # a module's full path prints outside its three pages: it starts within them, and may take two more
         share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
-        grace = MODULE_GRACE if kind == "module" else 0   # the website first: a module's extra page is noted, not failed
+        # the website first: a module's extra page is noted, not failed, and a module with a game may run further
+        grace = (GAME_GRACE if _plain_title(title) in with_game else MODULE_GRACE) if kind == "module" else 0
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
@@ -1610,13 +1615,18 @@ def unit_page_checks(pdf_path, n_pages):
         elif n > share + grace:
             fail("P1", said)
         elif n > share:
-            NOTE["P1"].append(said + ", and may run one page over until the site goes live")
+            NOTE["P1"].append(said + (", and may run further, since it carries a game, until a PDF is published" if grace == GAME_GRACE else ", and may run one page over until the site goes live"))
         if kind == "module" and deeper is not None and deeper - pg >= UNIT_SHARE["module"]:
             said = f"'{title}' starts its full path on its page {deeper - pg + 1}, so the module itself runs past its {UNIT_SHARE['module']} pages"
-            if deeper - pg >= UNIT_SHARE["module"] + MODULE_GRACE:
+            if deeper - pg >= UNIT_SHARE["module"] + grace:
                 fail("P1", said)
             else:
-                NOTE["P1"].append(said + ", which it may do by one page until the site goes live")
+                NOTE["P1"].append(said + (", which a module with a game may do until a PDF is published" if grace == GAME_GRACE else ", which it may do by one page until the site goes live"))
+
+
+def _plain_title(t):
+    """A bookmark's title with the typographer's apostrophe made plain, to match the map's."""
+    return t.replace("\u2019", "'")
 
 
 def pdf_link_meta_checks(pdf_path, out_dir):

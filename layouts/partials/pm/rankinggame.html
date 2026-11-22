@@ -8,7 +8,7 @@
 <section class="game" id="ranking-game" data-game="ranking" data-slot="ranking-game">
   <h2>The ranking game</h2>
   {{- partial "pm/margin.html" (dict "p" .p "unit" .unit "slot" "ranking-game") }}
-  <p>A grocery app ranks its {{ $stores }} stores every week by the share of their orders that were late. Every store is late on 1 order in 10, so none is better run than another. They differ only in size: {{ range $i, $g := $d.sizes }}{{ if $i }}{{ if eq $i (sub (len $d.sizes) 1) }}, and {{ else }}, {{ end }}{{ end }}{{ $g.stores }} {{ lower $g.label }} stores fill {{ lang.FormatNumber 0 $g.orders }} orders a week{{ end }}.</p>
+  <p>A grocery app ranks its {{ $stores }} stores every week by the share of their orders that were late. Every store is late on 1 order in 10, so none is better run than another. They differ only in size. Each week, {{ range $i, $g := $d.sizes }}{{ if $i }}{{ if eq $i (sub (len $d.sizes) 1) }}, and {{ else }}, {{ end }}{{ end }}each of the {{ $g.stores }} {{ lower $g.label }} stores fills {{ lang.FormatNumber 0 $g.orders }}{{ if not $i }} orders{{ end }}{{ end }}.</p>
 
   <div class="game-live">
     <fieldset class="guess">
@@ -32,7 +32,7 @@
       </div>
       {{- end }}
     </div>
-    <p class="board-key" aria-hidden="true">Each dot is a store, as high as its late rate. A yellow dot is one of the week's five worst, and a ringed one was among the week before's. The square is the store that really is worse, and the band, once drawn, is the range chance allows for that size.</p>
+    <p class="board-key" aria-hidden="true">Each dot is a store, as high as its late rate. A yellow dot is one of the week's five worst, and a ringed one was among the five worst the week before. The square is the store that really is worse, and the band, once drawn, is the range chance allows for that size.</p>
 
     <p class="tally" aria-live="off">
       <span>Week <b data-week>0</b><span class="sr">.</span></span>
@@ -75,10 +75,10 @@
     <h3>What to take away</h3>
     <ol>
       <li>Both ends of a ranking by rate belong to the smallest groups, by chance alone.</li>
-      <li>The next week they trade places, so help for the worst or praise for the best looks as if it worked.</li>
-      <li>A real problem can sit mid-table in a big group, where it costs the most. Judge a rate against its size, as the funnel does, before you rank.</li>
+      <li>The next week they trade places, so help for the worst looks as if it worked, and praise for the best as if it backfired.</li>
+      <li>A real problem can sit in the middle of the ranking, at a big store, where it costs the most. Judge a rate against its size, as the funnel does, before you rank.</li>
     </ol>
-    <p class="limits"><strong>What the game leaves out.</strong> Real stores differ in more than size. Their neighborhoods, their staff and the weather move a late rate too, so the funnel is a first filter, not a verdict. And small stores have a use the ranking hides: they're cheap places to try a fix before the large ones get it. One small store's result swings as much as its rank does, though, so try the fix in several, and compare them with small stores that didn't get it.</p>
+    <p class="limits"><strong>What the game leaves out.</strong> Real stores differ in more than size. Their neighborhoods and their staff move a late rate too, so the funnel is a first filter, not a verdict. And small stores have a use the ranking hides: they're cheap places to try a fix before the large ones get it. One small store's result swings as much as its rank does, though, so try the fix in several, and compare them with small stores that didn't get it.</p>
     <p class="credit">Comparing 52 fertility clinics in 1998, Clare Marshall and David Spiegelhalter found that ranks are <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC28567/">"extremely unreliable statistical summaries of performance,"</a> above all for the smaller clinics. Spiegelhalter later made the case for funnel plots, which "avoid spurious ranking of institutions into 'league tables'" (<cite>Statistics in Medicine</cite>, 2005). His <cite>The Art of Statistics</cite> is on the full path below.</p>
   </div>
 </section>

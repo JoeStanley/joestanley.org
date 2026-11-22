@@ -134,22 +134,20 @@
 .example thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
 
 /* The waiting game and the ranking game (spec J5) share the dice game's panel, guess, tally, setups and takeaway. */
-.game .jobs { width: 100%; border-collapse: collapse; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); margin: var(--sp-2) 0 var(--sp-3); font-variant-numeric: tabular-nums; }
-.game .jobs th, .game .jobs td { padding: var(--sp-1); border-bottom: 1px solid var(--rule); text-align: right; }
-.game .jobs th:first-child { text-align: left; }
-.game .jobs tbody th { font-weight: var(--w-regular); }
-.game .jobs thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
+.game .jobs { margin: var(--sp-2) 0 var(--sp-3); padding-left: 1.25rem; }
+.game .jobs li { margin: var(--sp-1) 0; }
 .setups.order { margin-top: var(--sp-4); }
 .pick-list { margin: var(--sp-2) 0 var(--sp-3); padding: 0; list-style: none; display: grid; gap: var(--sp-2); }
 .setup.pick::before { content: none; }
 .setup.pick[aria-pressed="true"] { box-shadow: none; font-weight: var(--w-regular); }
 .pick-place:not(:empty) { display: inline-block; min-width: 2.4em; margin-right: var(--sp-2); text-align: center; border: 1px solid var(--ink); border-radius: 0.2rem; font-weight: var(--w-strong); }
 .board-waiting { display: block; min-height: 0; padding: var(--sp-2); }
-.wk-row { display: grid; grid-template-columns: minmax(5.5rem, 8rem) repeat(var(--weeks), minmax(0, 1fr)); column-gap: 2px; align-items: center; margin: 0 0 var(--sp-1); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+/* On a phone each job's name sits above its row of weeks; from 46rem it sits beside them. */
+.wk-row { display: grid; grid-template-columns: repeat(var(--weeks), minmax(0, 1fr)); column-gap: 2px; align-items: center; margin: 0 0 var(--sp-2); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.wk-row .wk-name { grid-column: 1 / -1; }
 .wk-row:last-child { margin-bottom: 0; }
 .wk-name { padding-right: var(--sp-1); overflow-wrap: anywhere; }
 .wk { aspect-ratio: 1; border: 1px solid var(--rule); border-radius: 0.15rem; }
-.wk-head .wk { aspect-ratio: auto; border: 0; text-align: center; white-space: nowrap; overflow: visible; color: var(--muted); font-variant-numeric: tabular-nums; }
 .wk.is-build { border: 2px solid var(--ink); }
 .wk.is-wait { background: var(--mark); border-color: var(--ink); }
 .board-ranking { grid-template-columns: 2.25rem 1.7fr 1.2fr 0.8fr; gap: 0 var(--sp-2); align-items: stretch; min-height: 0; padding: var(--sp-3) var(--sp-2) var(--sp-2); }
@@ -247,6 +245,8 @@
 @media (min-width: 46rem) {
   .tally { grid-template-columns: repeat(4, auto); justify-content: start; gap: 0 var(--sp-5); }
   .setup-list { grid-template-columns: 1fr 1fr; }
+  .wk-row { grid-template-columns: minmax(0, 8rem) repeat(var(--weeks), minmax(0, 1fr)); margin-bottom: var(--sp-1); }
+  .wk-row .wk-name { grid-column: auto; }
   .game { margin-left: 0; margin-right: 0; padding: var(--sp-5); border-radius: 0.4rem; }
 }
 @media (min-width: 64rem) {
@@ -313,6 +313,9 @@
   .step-links li { margin: var(--sp-1) 0; }
 
   .game { break-inside: avoid; }
+  /* The waiting and ranking games are longer than the dice game: they may break across pages, but their parts don't. */
+  .game[data-game="waiting"], .game[data-game="ranking"] { break-inside: auto; }
+  .game .jobs, .game .example table, .game .takeaway, .game .takeaway li { break-inside: avoid; }
   .game .example { display: block !important; }
   .game .takeaway { display: block !important; }
 

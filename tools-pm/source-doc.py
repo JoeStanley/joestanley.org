@@ -206,7 +206,7 @@ def start_tab(art):
 def game(sec):
     """A game (spec J5): its rules, then the words of its live part, its recorded run and its takeaway."""
     out = ["## " + inline(sec.find("h2"))] + note_of(sec)
-    for c in sec.find_all(["p", "table"], recursive=False):
+    for c in sec.find_all(["p", "table", "ul"], recursive=False):
         wrap = BeautifulSoup("<div></div>", "html.parser").div
         wrap.append(copy.copy(c))
         out += blocks(wrap)

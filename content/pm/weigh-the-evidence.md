@@ -51,13 +51,13 @@ steps:
 check:
   - q: Your dashboard ranks twenty cities by on-time delivery, and the bottom three are called in for a review. What do you check first?
     a: How many orders each city had. The smallest fill both ends of a ranking by chance alone, and they'll trade places next week. Compare each rate with the range its size allows, as the funnel did in the ranking game.
-  - q: Know Who It's For says interviews beat your vision on what the problem is. This module says a story speaks only for the people who told it. Which do you trust?
+  - q: Know Who It's For says interviews beat your vision on what the problem is, and a story speaks only for whoever told it. When do three interviews settle it, and when do you need the numbers?
     against: know-who-its-for
-    a: Each for what it can tell you. The interviews tell you what the problem is for the people you asked, and the numbers how many share it. When the two disagree, find out who you didn't interview.
+    a: Interviews settle what the problem is for the people you asked. Numbers tell you how many share it. When the two disagree, find out who you didn't interview.
   - q: A competitor's case study says a feature lifted retention by 20 percent. What do you ask before you copy it?
     a: "Cartwright's question: how would it lead to that result here, step by step, and what would support or derail each step for your customers?"
-  - q: "**Beyond this module.** This module weighs the evidence you have. What decides how much more to gather?"
-    a: What it costs to be wrong, and whether you can undo the call. Decide and Set Direction, next, sorts out the decisions worth slowing down for.
+  - q: "**Beyond this module.** You've weighed the evidence you have. What decides how much more to gather?"
+    a: What it costs to be wrong, and whether you can undo the call. Decide and Set Direction sorts out the decisions worth slowing down for.
 
 deeper:
   - title: The Tyranny of Metrics
@@ -101,7 +101,7 @@ Numbers tell you how much and how often, across many people, but only about what
 
 When you break a number down, break it down by more than one thing at once. In [Gender Shades](https://proceedings.mlr.press/v81/buolamwini18a.html), a 2018 paper, Joy Buolamwini and Timnit Gebru tested face analysis from three companies on gender and skin type together. It got darker-skinned women's gender wrong up to a third of the time, and lighter-skinned men's almost never. The word for looking where two such lines cross is {{< pm/term "intersectional" >}}, from Kimberlé Crenshaw, whom you met in Mind the Seams. The groups there are small, so they swing, as the card warns: get more data there, not less attention.
 
-Your own hunch is evidence too: "an important data point," as Gary Klein, a psychologist who studies how experts make decisions, puts it, to check like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right (Kahneman and Klein, 2010).
+Your own hunch is evidence too. Gary Klein, a psychologist who studies how experts decide, calls it "an important data point," and you check it like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right (Kahneman and Klein, 2010).
 
 [//]: # (short-path)
 

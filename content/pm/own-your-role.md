@@ -42,7 +42,7 @@ check:
     a: Its conceptual integrity, one set of design ideas throughout. When Brooks let 150 implementers write the specifications to save the schedule, it cost his system that, and by his estimate a year of debugging time.
   - q: What does Meadows judge a vision by, and what does she do with hers?
     a: How clear its values are, not how clear the path is. And she shows it to other people, who correct and refine it.
-  - q: "**Beyond this module.** This module says what the job is for. What can't it tell you about the job you have?"
+  - q: "**Beyond this module.** What can't any course tell you about the job you have?"
     a: What your company means by it. The same title covers very different work from one company to the next, so ask your manager and the leads you work with what they'd miss if you stopped doing it, and what they wish you'd start.
 
 deeper:

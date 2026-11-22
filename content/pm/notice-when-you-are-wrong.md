@@ -46,11 +46,11 @@ check:
     a: Near the top, since it's a belief. Ask what was seen, by whom and how often. It may come down to two technicians at one site muting alerts through a week of false alarms.
   - q: A support team's time to close tickets is flat. One lead coaches agents to close faster. Another asks whether closing fast is what keeps customers' problems fixed. Which is the double loop?
     a: The second. The first changes the method to hit the same goal. Only the second asks whether the goal is right.
-  - q: Decide and Set Direction asks you to decide on purpose and keep to a not-doing list. This module asks you to keep looking for how you're wrong. When do you hold a call, and when do you reopen it?
+  - q: Decide and Set Direction asks you to decide on purpose and keep to a not-doing list. Here you keep looking for how you're wrong. When do you hold a call, and when do you reopen it?
     against: decide-and-set-direction
     a: Hold it until a signal you named in advance shows up, then reopen it. Doubt written down before the bet is part of the plan. Doubt after every bad day is drift.
-  - q: "**Beyond this module.** This module helps you find out you're wrong. What decides whether anyone acts on what you found?"
-    a: Whether the people who decide trust you enough to hear it. Bring People With You, next, is about earning that trust.
+  - q: "**Beyond this module.** A premortem finds the ways a plan fails. What does it miss?"
+    a: The plan that never quite fails and never quite works, and drifts on for a year. Before you start, write in your decision log the date you'll look and the result below which you'd stop.
 
 deeper:
   - title: The Fearless Organization
@@ -62,8 +62,8 @@ deeper:
   - title: "Overcoming Organizational Defenses: Facilitating Organizational Learning"
     by: Chris Argyris
     where: A book.
-    note: Read chapters 4 to 6.
-    trust: Argyris developed these ideas over decades of work inside companies, with Donald Schön, whose *The Reflective Practitioner* is on Own Your Role's full path. This is his case for managers, from field cases and his own interventions.
+    note: Read chapters 4 to 6. Schön, his partner in this work, wrote *The Reflective Practitioner*, on Own Your Role's full path.
+    trust: Argyris developed these ideas, with Donald Schön, over decades of work inside companies. This is his case for managers, from field cases and his own interventions.
     only: The ladder, the double loop and the left-hand column from their source, with the routines that keep a team from saying what it sees. Chapter 4 has a manager's left-hand column, chapter 5 ends on the ladder, and chapter 6 is double-loop learning.
   - title: Arrival
     by: directed by Denis Villeneuve, written by Eric Heisserer from Ted Chiang's "Story of Your Life" (Paramount, 2016)

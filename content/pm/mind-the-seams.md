@@ -66,7 +66,7 @@ steps:
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
     a: Not necessarily. It mirrors who actually talks to whom, and that often isn't what the chart shows.
-  - q: Own Your Role asked you to grow toward the gap at your edge that nobody owns. This module says every seam needs an owner. Should the owner be you?
+  - q: Own Your Role asked you to grow the role toward value nobody assigned, like a gap at your edge. Here, a handoff between teams needs someone who owns it. Should that be you?
     against: own-your-role
     a: For a while, so customers don't fall through it while you show the gap is real. Then get it an owner who'll still be there when you move on, since a seam held by one person's goodwill opens again when they leave.
   - q: Every team hits its target, and customers still see a gap. Where do you look?
@@ -84,8 +84,8 @@ deeper:
   - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
     by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
     where: A journal article.
-    note: Read it whole.
-    trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips. Kim Clark is the researcher behind the heavyweight product manager on Own Your Role's full path."
+    note: Read it whole. Kim Clark is the researcher behind the heavyweight product manager on Own Your Role's full path.
+    trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips."
     only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
   - title: Design and Reality
     by: Rebecca Wirfs-Brock and Mathias Verraes
@@ -120,7 +120,7 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 **Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then ask a tech lead to correct it. Lay the two side by side. Where do the boundaries line up, and where do they cross?
 
-**For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how sure you are, and when you'll know.
+**For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 
 **Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 

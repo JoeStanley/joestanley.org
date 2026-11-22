@@ -112,7 +112,8 @@ run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"n
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
 wait
 run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('And if you work together', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nAnd if you work together', 1))\""
-run_bg "a module whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/find-the-constraint.md'; s=open(p).read(); open(p, 'w').write(s.replace('Before you trust a stand-in', 'A sentence that runs on to fill the page. ' * 90 + 'Before you trust a stand-in', 1))\""
+run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/design-for-change.md'; s=open(p).read(); open(p, 'w').write(s.replace('Slow isn\\'t the enemy, though.', 'A sentence that runs on to fill the page. ' * 90 + 'Slow isn\\'t the enemy, though.', 1))\""
+run_bg "a module with a game that runs past even a game's allowance" P1 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); open(p, 'w').write(s.replace('Start with what people do, not what they say', 'A sentence that runs on to fill the page. ' * 120 + 'Start with what people do, not what they say', 1))\""
 wait
 
 # The print layout at two thirds (job 10, 21 November 2026): notes in a module's print margin, notes that run on

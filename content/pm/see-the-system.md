@@ -58,7 +58,7 @@ check:
   - q: A review of a failed release names one person's skipped step as the root cause. Give two reasons from Cook to doubt it.
     a: A failure needs several faults to line up, so naming one explains little. And hindsight makes the danger look more obvious than it was at the time.
   - q: "**Beyond this module.** Your bathtub shows what piles up, and why. What can't a drawing tell you?"
-    a: How much each flow matters, and where to act first. A drawing shows the structure, and only counts show which step holds the rest back. Find the Constraint takes that up next.
+    a: Where to act first. A drawing shows the structure, not which step holds the rest back, and finding that takes timing how long work waits at each one. Find the Constraint has you do it.
 
 deeper:
   - title: Thinking in Systems
@@ -101,4 +101,4 @@ Where you draw the system's edge matters too, because it decides whose costs you
 
 **Reread one failure (10 minutes).** Take a missed date or a failed release on your team that got pinned on one cause. List three other things that had to be true for it to happen.
 
-**For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, how sure you are, and when you'll know.
+**For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, and how sure you are. Add the date you'll look again.

@@ -286,7 +286,7 @@
       text += "In this order, " + when.slice(0, -1).join(", ") + " and " + when[when.length - 1] + ". The waiting cost " + money(total) + ". ";
       var worst = d.every[d.every.length - 1].total;
       text += total === best ? "That's the cheapest of the six orders. "
-        : (total === worst ? "That's the dearest of the six orders. " : "") + "The cheapest order costs " + money(best) + ", so this one costs " + money(total - best) + " more. ";
+        : (total === worst ? "That's the costliest of the six orders. " : "") + "The cheapest order costs " + money(best) + ", so this one costs " + money(total - best) + " more. ";
       if (rule) text += d.rules[rule].after;
       el.result.textContent = text.trim();
       playedOnce = true; running = false; busyOn(el.play, false);
@@ -399,7 +399,7 @@
       if (!playedOnce && picked) text = "You guessed " + picked.value + ". ";
       if (current === "next") {
         var stay = worst.filter(function (i) { return prevWorst.indexOf(i) >= 0; }).length;
-        text += "Of last week's five worst, " + (stay === 1 ? "1 is" : stay + " are") + " among the five worst again. ";
+        text += "Of last week's five worst, " + (stay === 0 ? "none is" : stay === 1 ? "1 is" : stay + " are") + " among the five worst again. ";
       }
       text += "This week the five worst stores were " + byGroup(worst) + ", late on " + span(worst) + " of their orders. "
         + "The five best were " + byGroup(best) + ", late on " + span(best) + ". ";
@@ -414,7 +414,7 @@
         var others = out.filter(function (i) { return i !== worse; }).length, found = out.indexOf(worse) >= 0;
         text += found
           ? "Outside the funnel this week: " + (others ? "the store that really is worse, and " + (others === 1 ? "1 other store" : others + " other stores") + " by chance. " : "only the store that really is worse. ")
-          : "This week the store that really is worse stayed inside its band" + (others ? ", and " + (others === 1 ? "1 other store" : others + " other stores") + " fell outside by chance" : "") + ". It happens about one week in a hundred. ";
+          : "This week the store that really is worse stayed inside its band" + (others ? ", and " + (others === 1 ? "1 other store" : others + " other stores") + " fell outside by chance" : "") + ". At its size that almost never happens: play another week. ";
       }
       text += d.setups[current].after;
       el.result.textContent = text.trim();
