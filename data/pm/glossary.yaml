@@ -116,16 +116,16 @@ commanders-intent:
   text: The why given with a task, so people can still act when the task goes stale. From military doctrine.
 kernel-of-a-strategy:
   term: Kernel of a strategy
-  text: "Richard Rumelt's name for the three parts a strategy needs: a diagnosis of what's going on, a guiding policy that rules many actions out, and coherent actions that carry it out."
+  text: "Richard Rumelt's name for the three parts a strategy needs: a diagnosis of what's going on, a guiding policy for meeting it, and coherent actions that carry it out."
 decision-record:
   term: Decision record
   text: A short note of one significant decision, with its context, the decision, its status and its consequences. Engineers call it an architecture decision record (ADR).
 advice-process:
   term: Advice process
-  text: Anyone may make a decision, after asking the people it affects and people with relevant expertise. They don't have to follow the advice.
+  text: Anyone may make a decision, after asking the people it affects and people with relevant expertise. They don't have to follow the advice, but they have to seek it out and write it down.
 consequence-scanning:
   term: Consequence scanning
-  text: A short team conversation before a feature is built, about everything it could cause, run on three questions from Doteveryone.
+  text: A short team conversation, early in a product's or a feature's life, about everything it could cause, run on three questions from Doteveryone.
 many-hands:
   term: Problem of many hands
   text: Dennis Thompson's name for harm that comes from so many small contributions that it's hard to say who's responsible.

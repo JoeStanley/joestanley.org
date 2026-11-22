@@ -10,7 +10,7 @@ last_time:
   - q: A number on your dashboard moved last month. Before you act on it, what do you go and read?
     a: A few of the cases behind it. If what happened to those people doesn't match the number, the number isn't measuring what you think.
   - q: Why break a number down by more than one thing at once?
-    a: A harm can hide in every single breakdown and show only where two lines cross, as Gender Shades found for darker-skinned women.
+    a: A harm can be far worse where two lines cross than either line shows alone, as Gender Shades found for darker-skinned women.
 
 steps:
   - id: bezos
@@ -23,7 +23,7 @@ steps:
         url: https://www.sec.gov/Archives/edgar/data/1018724/000119312516530910/d168744dex991.htm
     look: "Which decisions deserve the slow process: the \"one-way doors\", hard or impossible to undo. Most decisions are two-way doors, and Bezos wants those made quickly, by people with good judgment or small groups."
     trust: A chief executive's rule for his own company, not a study.
-    only: "A test for any decision: how hard is it to undo?"
+    only: "What it costs to run every decision through the slow process: \"slowness, unthoughtful risk aversion, failure to experiment sufficiently, and consequently diminished invention.\""
   - id: card-agency-coherence
     kind: card
     card: cards/agency-and-coherence
@@ -72,7 +72,7 @@ deeper:
     by: Mary and Tom Poppendieck
     url: https://ptgmedia.pearsoncmg.com/images/9780321150783/samplepages/0321150783.pdf
     where: A book.
-    note: "Read chapter 3, \"Decide as Late as Possible\", free in the publisher's sample."
+    note: "Free at pearsoncmg.com, in the publisher's sample. Read chapter 3, \"Decide as Late as Possible\"."
     trust: It's the book that brought the last responsible moment, a term from lean construction, to software teams.
     only: "When to decide: hold off while waiting costs less than deciding wrong, and do the work that makes waiting possible. \"Procrastinating is not the same as making decisions at the last responsible moment,\" they add."
   - title: Warfighting (MCDP 1)
@@ -88,7 +88,7 @@ deeper:
     where: A book.
     note: "Free at Leiden University, as the doctoral thesis it grew from. Read chapter 7: the part on \"Organic Design for Command and Control\", then from \"The Essence of Winning and Losing\" to \"Beyond the rapid OODA loop idea\"."
     trust: Osinga, a Dutch Air Force F-16 pilot turned strategy scholar, works through Boyd's own briefings slide by slide, in a thesis Routledge later published.
-    only: Why Boyd's loop is about orientation, not speed, and why a team that shares one can act on intent without being told.
+    only: Why Boyd's loop is about orientation, not speed, and why a team that shares one can act on intent without being told what to do.
   - title: Ocean's Eleven
     by: directed by Steven Soderbergh, written by Ted Griffin (Warner Bros., 2001)
     where: A film.
@@ -102,9 +102,9 @@ A roadmap is a set of decisions, and on most teams many of them get made by defa
 
 Saying no to something your team already does has a catch. Find out first why it started and what leans on it. G. K. Chesterton made the point in 1929 with a fence across a road: don't clear it away until you can say why someone put it up.
 
-Then ask whose decision it is. A few decisions need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide. Input shapes a decision, but it isn't a veto. When a view makes no sense to you, Gary Klein's advice is to get curious about why someone holds it. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room, the way the first guess at the coins in a jar sways the next (Kahneman and Klein, 2010). And think of the people it lands on who'll never be in the room. Werner Ulrich, whose boundary questions are on See the System's full path, puts it as a question: "Who is witness to the interests of those affected but not involved?"
+Then ask whose decision it is. A few decisions need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide. Input shapes a decision, but it isn't a veto. When a view makes no sense to you, Gary Klein's advice is to get curious about why someone holds it. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room, the way the first guess at the coins in a jar sways the next (Kahneman and Klein, 2010). And think of the people it lands on who'll never be in the room. Werner Ulrich, from See the System's full path, puts it as a question: "Who is witness to the interests of those affected but not involved?"
 
-Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot who became a military strategist, described every decision as a loop: observe, orient, decide, act, his {{< pm/term "ooda-loop" "OODA loop" >}}. It's often taught as a race to loop faster. His own stress was on orientation, the picture you act from, since "orientation shapes the way we observe, the way we decide, the way we act." A team that shares your picture can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale. That's where its tempo comes from: it doesn't have to stop and ask.
+Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot who became a military strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster. His own stress was on orientation, the picture you act from, since "orientation shapes the way we observe, the way we decide, the way we act." A team that shares your picture can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale. That's where its tempo comes from: it doesn't have to stop and ask.
 
 [//]: # (short-path)
 

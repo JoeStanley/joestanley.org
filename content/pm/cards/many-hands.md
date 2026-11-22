@@ -4,7 +4,7 @@ layout: card
 module: answer-for-what-you-build
 weight: 10
 figure: many-hands
-figure_caption: Each part was small, and each had its reasons.
+figure_caption: Six small parts, each with someone's reason behind it, meet in one harm.
 question: If this harms a customer, whose name would be on the decision, and is it anyone's yet?
 deeper:
   title: "Designing Responsibility: The Problem of Many Hands in Complex Organizations"
@@ -22,7 +22,7 @@ In a large organization, harm often comes from many small contributions, and no 
 ## Why a PM cares
 
 - **You're a hand, not a bystander.** Thompson asks whether your act was a cause, and whether you could have acted otherwise. "I had no choice" is often a poor excuse, and so is not having noticed.
-- **Targets can turn people into cogs.** US regulators found that sales targets and bonuses led Wells Fargo employees to open accounts without customers' consent.
+- **Targets can make a harm feel like someone else's call.** US regulators found that sales targets and bonuses led Wells Fargo employees to open accounts without customers' consent.
 - **Responsibility can be designed in.** Thompson proposes naming who's responsible for the structure before anything fails. Do the same for each harm you can foresee: name its owner in the decision's record.
 
 ## How to spot it
@@ -34,4 +34,4 @@ In a large organization, harm often comes from many small contributions, and no 
 
 ## What it does not say
 
-It doesn't say you're as guilty as whoever made the decision. Your share is usually to see the consequence, say it clearly and make sure someone owns it.
+It doesn't say you're as much to blame as the people with the most say. Your share is usually to see the consequence, say it clearly and make sure someone owns it.

@@ -4,7 +4,7 @@ layout: card
 module: decide-and-set-direction
 weight: 10
 figure: agency-coherence
-figure_caption: Strict about a few things, loose about the rest.
+figure_caption: Each team picks its own path inside one direction. Only what has to fit is fixed.
 question: Does this decision need a view of the whole? If it doesn't, whose is it?
 deeper:
   title: Less is More with Minimalist Architecture
@@ -17,13 +17,13 @@ deeper:
 
 ## The idea
 
-Work many people do at once needs two things that pull against each other: room to decide, and pieces that fit. Only variety can absorb variety, as Ross Ashby's law of requisite variety (1956) has it, so a team needs room to respond in its own way. The philosopher Alicia Juarrero shows how to have both in [a 2022 talk](https://www.youtube.com/watch?v=WmtjQZCIsqY): constraints that depend on context don't only limit, they enable, and open up new alternatives. So be strict about a few things, and loose about the rest.
+Work many people do at once needs two things that pull against each other: agency, room to decide, and coherence, pieces that fit. "Variety can destroy variety," as Ross Ashby put it in 1956, so a team needs as many ways to respond as the world has ways to surprise it. In [a 2022 talk](https://www.youtube.com/watch?v=WmtjQZCIsqY), the philosopher Alicia Juarrero describes constraints that depend on context as enabling: they don't only limit, they open up new alternatives. So be strict about a few things, and loose about the rest.
 
 ## Why a PM cares
 
 - **You often write the strict list.** Agree what "delivered" means, and a marketplace's teams can build without meeting about it. Take a decision from a team only for a benefit "that the organization could not otherwise achieve", as Ruth Malan and Dana Bredemeyer put it.
 - **Give the intent, not only the task.** The Marine Corps' doctrine, MCDP 1, seeks unity "not principally through imposed control, but through harmonious initiative". Knowing why, a team can adapt when the plan goes stale.
-- **Agency needs feedback.** A team has to see what its choice did, so get it the numbers for its own change.
+- **Agency needs feedback.** A team has to see what its choice did, so make sure it can see the numbers its own change moved.
 
 ## How to spot it
 

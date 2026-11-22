@@ -1,6 +1,6 @@
 <svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-hands-title fig-hands-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-hands-title">Many small parts, one harm, and no one's hand on all of it.</title>
-  <desc id="fig-hands-desc">Six people down the left, each with a small part: a target, a review, a sign-off, a default, a script and a deadline. A thin line runs from each of them, and all six meet in one highlighted spot, the harm. One arrow carries it on to a customer at the far right, who was never in the room.</desc>
+  <desc id="fig-hands-desc">Six small parts down the left: a target, a review, a sign-off, a default, a script and a deadline. A thin line runs from each, and all six meet in one highlighted spot, the harm. One arrow carries it on to a customer at the far right, who saw none of them.</desc>
 
   <path class="fig-axis" d="M106,30 C170,30 200,110 240,110"/>
   <path class="fig-axis" d="M106,62 C170,62 205,110 240,110"/>

@@ -23,7 +23,7 @@ steps:
         url: https://www.adalovelaceinstitute.org/resource/doteveryone-consequence-scanning/
     look: The three questions you'll use in the Do, and how a session runs.
     trust: It's from the method's designers at Doteveryone, a responsible technology think tank that ran from 2015 to 2020. It describes a tool rather than testing one.
-    only: A conversation to run with your team in under an hour, before a feature is built.
+    only: A conversation to run with your team in about an hour, early, while the feature can still change.
   - id: reichheld-markey
     kind: read
     title: 'Fred Reichheld and Rob Markey, "Blowing the whistle on bad profits"'
@@ -34,7 +34,7 @@ steps:
         url: https://www.bain.com/insights/blowing-whistle-on-bad-profits
     look: "What they count as bad profits, \"profits earned at the expense of customer relationships\". Then ask how much of your product's revenue comes from value it created, and how much from making it hard to leave."
     trust: Two Bain consultants arguing for their own customer survey, so read it as a case for a method.
-    only: The business case against capturing value, taking it from customers rather than creating it for them, ready for your next pricing review.
+    only: A name for that kind of revenue, bad profits, to bring to your next pricing review.
   - id: card-many-hands
     kind: card
     card: cards/many-hands
@@ -48,13 +48,13 @@ steps:
     links:
       - text: "Data Is a Toxic Asset, So Why Not Throw It Out?"
         url: https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html
-    look: "Why he treats stored data as a liability. Then put one test to every field you collect: which decision will it change?"
-    trust: "A security writer's opinion essay, first published by CNN: an argument, not a study."
-    only: A reason to collect less that rests on risk.
+    look: "Why he treats stored data as a liability, and one test to put to every field you collect: which decision will it change?"
+    trust: An opinion essay by a security technologist, first published by CNN.
+    only: "His fix, in one line: \"there's no better security than deleting the data.\""
 
 check:
   - q: A change lifts hours watched on your streaming service by starting the next episode without asking. Has it created value?
-    a: Ask whether viewers are better off, or only up later than they meant to be. If they'd switch it off given a plain choice, those hours were captured, not created.
+    a: Ask whether viewers are better off, or only up later than they meant to be. If they'd switch it off given a plain choice, those hours were taken from them, not created for them.
   - q: To meet sales targets, Wells Fargo employees opened accounts customers hadn't asked for. Which idea from this module explains it, and which from Find the Constraint?
     a: "Many Hands: each employee could say they were only following the targets. And Goodhart's Law: once accounts opened became a target, the count stopped showing what customers wanted."
   - q: A teammate wants a new sign-up field "in case we need it". What do you ask?
@@ -66,20 +66,20 @@ deeper:
     where: A book.
     note: "Read chapter 4, \"The Allegheny Algorithm\", then chapter 2, \"Automating Eligibility in the Heartland\"."
     trust: "Eubanks is a political scientist at the University at Albany, and this is reporting with a point of view: she chose cases that let the families affected speak. The county answered her, its tool changed after the book, and evaluations since disagree on how fair it is."
-    only: Who carries a system's mistakes, and who isn't in its data at all. Allegheny County's screening tool learned only from families who use public services, since families who pay privately for treatment never appear in its records.
+    only: Who carries a system's mistakes, and who isn't in its data at all. Allegheny County's screening tool draws on public-service records, so a family that pays privately for treatment leaves no trace in them.
   - title: Design Justice
     by: Sasha Costanza-Chock
     url: https://doi.org/10.7551/mitpress/12255.001.0001
     where: A book.
     note: "Free at direct.mit.edu, open access. Read the opening of the introduction, through the airport scanner and the network's principles, then chapter 2, \"Design Practices: 'Nothing about Us without Us'\"."
     trust: "Costanza-Chock was a research scientist at MIT and helps lead the Design Justice Network, whose principles the book sets out: an insider's case, argued from cases, and openly normative."
-    only: "An airport scanner that flags a body for not matching the button the operator pressed, and who it fails most. Then who a team imagines as its user, and why \"Better for whom?\" is the question to put to every test."
+    only: "An airport scanner that flags a body for not matching the button the operator pressed, and who it fails most. Chapter 2 asks who a team imagines as its user, a choice the book calls political."
   - title: Your Face Belongs to Us
     by: Kashmir Hill
     where: A book.
     note: Read it whole.
-    trust: Hill is a New York Times technology reporter who broke the story of Clearview AI in 2020. It's reporting, not a study.
-    only: A startup that built what Google and Facebook had held back, face search across billions of scraped photos, and sold it to police. Then a Black father in Detroit, arrested on a false match and held for nearly thirty hours.
+    trust: Reporting by the *New York Times* technology reporter whose exposé brought Clearview to light in early 2020.
+    only: A startup that built what Google and Facebook had held back, face search across billions of scraped photos, and sold it to police, and a Black father in Michigan, arrested on a false match and held for nearly thirty hours.
   - title: "Pinto Fires and Personal Ethics: A Script Analysis of Missed Opportunities"
     by: Dennis Gioia (Journal of Business Ethics, 1992)
     url: https://doi.org/10.1007/BF00870550
@@ -89,21 +89,21 @@ deeper:
   - title: The Good Place
     by: created by Michael Schur (NBC)
     where: A TV series.
-    note: "A sitcom about moral philosophy. Watch \"The Book of Dougs\", in season 3. Nobody has gotten into the Good Place in more than 500 years. Long ago, one Doug gives his grandmother roses and earns 145 points. A modern Doug does the same and loses four, because his phone, his roses and the companies he paid each hurt someone he'll never see."
+    note: "A sitcom about moral philosophy. Watch \"The Book of Dougs\", in season 3. Nobody has gotten into the Good Place in more than 500 years. Long ago, one Doug gives his grandmother flowers and earns 145 points. A modern Doug does the same and loses four, because his phone, his roses and the companies he paid each hurt someone he'll never see."
     only: "The Many Hands card's problem, with jokes: harm spread so thin across a supply chain that nobody in it feels responsible."
 ---
 
 ## Why this matters
 
-Your choices land on people who were never in the meeting. On a delivery platform, small rules decide how many stops fit in a shift, which order waits when a van runs late, and what counts as delivered. Across millions of orders, a small rule becomes a large effect.
+What you build reaches people you'll never meet. On a delivery platform, small rules decide how many stops fit in a shift, which order waits when a van runs late, and what counts as delivered.
 
-Some of those people live a world away. In 2017, Myanmar's military killed, raped and drove out Rohingya by the thousands, and [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide. Facebook, they found, had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook promised more. Four years on, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. In 2023, Amnesty International found Meta's failures had contributed to abuses again, in Ethiopia's war. A fix announced after a disaster isn't proof the cause is gone.
+Some of them live a world away. In 2017, Myanmar's military killed and raped Rohingya by the thousands and drove hundreds of thousands into Bangladesh. [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide, and found that Facebook had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook agreed it should do more. In 2022, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. And in 2023, Amnesty International found that Meta, as Facebook's owner is now called, had contributed to abuses again, against Tigrayans in Ethiopia's war.
 
 You've met parts of this question already: whose costs fall outside a system's edge, in See the System; whom a stand-in measure misses, in Find the Constraint; who falls between two categories, in Mind the Seams. Here it's the whole module.
 
-So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave, and for a while the two look alike on a dashboard. Costs, too, can be designed away or passed on to parts of the system that are less visible or have less say, and both look like a win.
+So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
 
-In life, there are rarely clear ethical matters of good and bad given to you in that manner. Instead, it's a thousand small choices of degree, like getting fitted for a prescription at the eye doctor. I will not tell you here what's right or wrong per se, that's for you to find your own line. But wherever you land, hold fast.
+In life, ethical matters rarely come to you as clear cases of good and bad. Instead, it's a thousand small choices of degree, like getting fitted for a prescription at the eye doctor. I will not tell you here what's right or wrong per se. That's for you to work out, and to find your own line. But wherever you land, hold fast.
 
 [//]: # (short-path)
 
@@ -111,7 +111,7 @@ In life, there are rarely clear ethical matters of good and bad given to you in 
 
 **Scan one feature you own (25 minutes).** Pick a feature, such as a retry rule for failed card payments or a marketplace search ranking, and run a {{< pm/term "consequence-scanning" "consequence scan" >}} on it. On one page, answer the method's three questions in order:
 
-1. What are the intended and unintended consequences? Name everyone affected, including the easiest to overlook, like the cardholder whose retried payment tips the account into overdraft. Then look where groups overlap. A harm that's rare for each group alone can be common for the people in both, which is what Kimberlé Crenshaw meant by {{< pm/term "intersectional" >}}.
+1. What are the intended and unintended consequences? Name everyone affected, including the easiest to overlook, like the cardholder whose retried payment tips the account into overdraft. Then look where groups overlap. A harm can be invisible in each group alone and plain for the people in both: the overlap Kimberlé Crenshaw called {{< pm/term "intersectional" >}}, as you saw in Mind the Seams.
 2. Which positive consequences do you want to focus on?
 3. Which do you want to mitigate? Beside each one, write who'd own the fix.
 
