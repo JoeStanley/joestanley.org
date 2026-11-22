@@ -54,6 +54,9 @@ data-informed: ""
 # Decision record
 decision-record: ""
 
+# Double-loop learning
+double-loop-learning: ""
+
 # Error budget
 error-budget: ""
 
@@ -90,6 +93,12 @@ job-crafting: ""
 # Kernel of a strategy
 kernel-of-a-strategy: ""
 
+# Ladder of inference
+ladder-of-inference: ""
+
+# Left-hand column
+left-hand-column: ""
+
 # Leverage point
 leverage-point: ""
 
@@ -114,14 +123,23 @@ pace-layers: ""
 # Percentile
 percentile: ""
 
+# Premortem
+premortem: ""
+
 # Problem of many hands
 problem-of-many-hands: ""
+
+# Psychological safety
+psychological-safety: ""
 
 # Regression to the mean
 regression-to-the-mean: ""
 
 # Right to erasure
 right-to-erasure: ""
+
+# SCR (situation, complication, resolution)
+scr: ""
 
 # Service level objective (SLO)
 slo: ""
@@ -132,8 +150,14 @@ stock: ""
 # Straddling
 straddling: ""
 
+# Stress position
+stress-position: ""
+
 # System of record and system of reference
 system-of-record: ""
+
+# Trust equation
+trust-equation: ""
 
 # Work in progress (WIP)
 wip: ""

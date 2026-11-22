@@ -57,11 +57,9 @@
   num: 10
   title: Notice When You Are Wrong
   question: How do we find out we are wrong?
-  draft: notice-when-you-are-wrong
-  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, with one card, Double-Loop Learning. Batista and Edmondson replace six deck readings, a premortem is the main exercise, and the deck is no longer cited.
+  page: notice-when-you-are-wrong
 - id: bring-people-with-you
   num: 11
   title: Bring People With You
   question: How do you earn the trust of the people who decide and depend on you, and keep it when there is nothing to report?
-  draft: bring-people-with-you
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts. It carries two cards. Joe kept The Trust Equation on 21 November, and SCR goes at the rebuild. Two Kinds of Update folded into the text, the Do and the one thing, and Fractal Storytelling became the optional exercise.
+  page: bring-people-with-you

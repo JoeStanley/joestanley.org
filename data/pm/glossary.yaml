@@ -132,3 +132,28 @@ problem-of-many-hands:
 right-to-erasure:
   term: Right to erasure
   text: A person's right, under the General Data Protection Regulation (GDPR) in the EU and the UK, to ask an organization to delete their personal data, in some circumstances.
+ladder-of-inference:
+  term: Ladder of inference
+  text: Chris Argyris's model of how you climb from what you notice to what you conclude and do, usually without seeing the steps.
+double-loop-learning:
+  term: Double-loop learning
+  text: Questioning a goal and the assumptions behind it, where single-loop learning only changes the actions that serve it.
+psychological-safety:
+  term: Psychological safety
+  text: A shared belief that it's safe to take interpersonal risks at work, such as raising a concern or admitting a mistake. Amy Edmondson's research on teams made the idea widely known.
+premortem:
+  term: Premortem
+  text: Gary Klein's technique of telling a team its project has already failed and asking each person, alone, to write down why.
+left-hand-column:
+  term: Left-hand column
+  text: An exercise from Chris Argyris and Donald Schön. Beside what was said in a conversation, you write what you thought and felt but didn't say.
+trust-equation:
+  term: Trust equation
+  text: A consultants' model that treats trust as credibility, reliability and intimacy, divided by self-orientation.
+scr:
+  term: SCR
+  also: situation, complication, resolution
+  text: A three-part opening for a message. The situation is what the reader already accepts, the complication is what changed, and the resolution is what you recommend or ask. It adapts Barbara Minto's situation, complication and question.
+stress-position:
+  term: Stress position
+  text: The end of a sentence, which readers naturally emphasize, so it's the place for what you most want noticed. The term is Gopen and Swan's.

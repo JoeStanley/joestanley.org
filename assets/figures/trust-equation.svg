@@ -1,0 +1,19 @@
+<svg class="fig" viewBox="0 0 360 150" role="img" aria-labelledby="fig-trust-title fig-trust-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-trust-title">The trust equation as a fraction: three parts on top, self-orientation below.</title>
+  <desc id="fig-trust-desc">Trust equals credibility plus reliability plus intimacy, divided by self-orientation. Above each part on top is what it means: what you say, what you do, and how safe people feel being vulnerable with you. Below the line, highlighted, is self-orientation, where your focus sits, and it divides all three.</desc>
+
+  <text class="fig-label" x="16" y="86">Trust =</text>
+
+  <g class="fig-note" text-anchor="middle">
+    <text x="116" y="40">what you say</text><text x="200" y="40">what you do</text><text x="285" y="27">safe to be</text><text x="285" y="40">vulnerable</text>
+  </g>
+  <g class="fig-label" text-anchor="middle">
+    <text x="116" y="62">Credibility</text><text x="158" y="62">+</text><text x="200" y="62">Reliability</text><text x="243" y="62">+</text><text x="285" y="62">Intimacy</text>
+  </g>
+
+  <path class="fig-line" d="M76,82 L334,82"/>
+
+  <rect class="fig-mark" x="152" y="94" width="106" height="24"/>
+  <text class="fig-label" x="205" y="110" text-anchor="middle">Self-orientation</text>
+  <text class="fig-note" x="205" y="136" text-anchor="middle">where your focus sits</text>
+</svg>

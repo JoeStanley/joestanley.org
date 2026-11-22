@@ -2,6 +2,17 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 22 November 2026, the round 5 session
+
+- Bring People With You says practitioners, not research, back the two kinds of update: "Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places." He had understood from an earlier session that research supported both halves (agree, in the session).
+- The Double-Loop Learning card keeps Argyris's full quote on bad news, which a session had cut to fit the card on its printed page; the session's other trims for print stay. He asked whether the PDF work hadn't been deprioritized (his pick, in the session).
+- In the trust equation's picture, "safe to be vulnerable" sits on two lines over Intimacy, clear of "what you do" (his comment, in the session).
+- The syllabus moves to American punctuation, commas inside closing quotation marks as periods are, as a job of its own across every unit (agree, in the session).
+- He looks for full-path books that are industry-recognized classics, or from the past ten years, highly rated and not pop science (his question in the session, which ruled out Schulz's *Being Wrong* and Galef's *The Scout Mindset*).
+- Notice When You Are Wrong's full path holds Edmondson's *The Fearless Organization* (chapters 1, 4 and 7), Argyris's *Overcoming Organizational Defenses* (chapters 4 to 6) and *Arrival*. Klein's article, Schulz's talk, Argyris's 1977 article and Allspaw's essay leave (his pick, in the session).
+- He prefers SCR, situation, complication and resolution, to Barbara Minto's situation, complication and question: Bring People With You's opening ends on a recommendation, and the module says it's the variant he uses of Minto's, in his first person (his pick, in the session, with the wording revised by his pick after the cold read).
+- Bring People With You's full path takes *The Trusted Advisor* back, its chapters on the trust equation and the development of trust, in the Nielsen Norman Group guide's place, beside Cohen and Bradford, Mayer, Davis and Schoorman, and *Ted Lasso* with *Succession* (agree, in the session).
+
 ## 22 November 2026, Module 8's cards, and the round 4 session
 
 - Decide and Set Direction's full path holds Porter's "What Is Strategy?", Poppendieck's chapter 3, MCDP 1 read whole, Osinga's study of Boyd (chapter 7) and *Ocean's Eleven*. Malan and Bredemeyer's column becomes the Agency and Coherence card's Go deeper (agree, card `full-path-8-books`).

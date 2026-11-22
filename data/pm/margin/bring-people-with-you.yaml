@@ -1,0 +1,60 @@
+# Margin notes for Module 11, Bring People With You.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen, and in a module's print, a note shows in your hand in the margin beside its part. On a phone it
+# sits under the part's heading, typeset; in print on Start, a card or the glossary it sits there in your hand.
+# Wherever it sits in the text, "Sidenote:" goes above it, and a screen reader always reads that word first.
+# A note beside a source on the full path may run on past it. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters:
+  - beside: "So second, think about a regular cadence"
+    note: "And if something starts to go sideways you may not yet see, they can help you identify and correct for it before you end up having to share news that the new major outcome has been delayed. In my experience most managers actually do want to help, they just need to see how."
+
+# The short path
+short-path: ""
+
+# Short path, step 1: Alan Mulally and Jim Morgan, “People First Leadership”
+step-mulally: ""
+
+# Short path, step 2: The Trust Equation
+step-card-trust-equation: ""
+
+# Short path, step 3: Will Larson, “Staying aligned with authority”
+step-larson: ""
+
+# Short path, step 4: George Gopen and Judith Swan, “The Science of Scientific Writing”
+step-gopen-swan: ""
+
+# Do
+do: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: The Trusted Advisor, David Maister, Charles Green and Robert Galford
+deeper-the-trusted-advisor: ""
+
+# Full path: Influence Without Authority, Allan Cohen and David Bradford
+deeper-influence-without-authority: ""
+
+# Full path: An Integrative Model of Organizational Trust, Roger Mayer, James Davis and David Schoorman (Academy of Management Review, 1995)
+deeper-an-integrative-model-of-organizational-trust: ""
+
+# Full path: Ted Lasso, developed by Jason Sudeikis, Bill Lawrence, Brendan Hunt and Joe Kelly (Apple TV+, 2020), with *Succession*, created by Jesse Armstrong (HBO, 2018)
+deeper-ted-lasso: ""

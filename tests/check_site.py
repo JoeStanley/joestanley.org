@@ -29,7 +29,9 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/change-safely/", ["/pm/cards/error-budgets/"]),
            ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/"]),
            ("/pm/decide-and-set-direction/", ["/pm/cards/agency-and-coherence/"]),
-           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/"])]
+           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/"]),
+           ("/pm/notice-when-you-are-wrong/", ["/pm/cards/double-loop-learning/"]),
+           ("/pm/bring-people-with-you/", ["/pm/cards/trust-equation/"])]
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
 PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
@@ -39,7 +41,7 @@ UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 65   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 77   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -889,10 +891,14 @@ def a11y_checks(browser, ctx, base, out_dir):
                             fail("A7", f"{path}: tick box name does not say what ticking does: '{name[:40]}'")
                 for msg in pg.evaluate(JS_PAUSES):
                     fail("A7", f"{path}: no pause after {msg}")
-                m = re.search(COLOR_WORDS, " ".join(spoken), re.I)
-                if m:
-                    text = " ".join(spoken); i = m.start()
+                text = " ".join(spoken)
+                for m in re.finditer(COLOR_WORDS, text, re.I):
+                    i = m.start()
+                    # A capitalized color word after another capitalized word is a name, such as Charles Green
+                    if m.group(0)[0].isupper() and re.search(r"\b[A-Z][\w'.-]*\s+$", text[:i]):
+                        continue
                     fail("A12", f"{path}: screen readers read a color: '...{text[max(0, i - 40):i + 30]}...'")
+                    break
                 for msg in pg.evaluate(JS_HEADINGS):
                     fail("A11", f"{path}: heading skips a level, {msg}")
                 for t in pg.evaluate(JS_STRIKE):
