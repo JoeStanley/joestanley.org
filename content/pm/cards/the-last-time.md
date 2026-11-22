@@ -11,13 +11,13 @@ deeper:
   by: Teresa Torres
   url: https://www.producttalk.org/customer-interviews/
   where: A guide. Free at producttalk.org. Read its section on what to ask and not ask, about 5 minutes.
-  trust: Torres coaches product teams on discovery for a living, and the guide is the method of her book's chapter on interviewing.
+  trust: It's the method of her book's chapter on interviewing, free, from a coach who teaches it to product teams.
   only: What to ask, what not to, and how to steer a story back to one specific time.
 ---
 
 ## The idea
 
-Ask about the last time it happened, not whether they'd want it. A forecast of your own behavior is a guess, and last Tuesday is evidence. Teresa Torres puts it plainly: "Our past behavior is much more predictive of our future behavior than any prediction we might make ourselves about our future behavior." Then ask what they did about it and what it cost them, which is what it's worth to them.
+Ask about the last time it happened, not whether they'd want it. A forecast of your own behavior is a guess, and last Tuesday is evidence. Teresa Torres puts it plainly: "Our past behavior is much more predictive of our future behavior than any prediction we might make ourselves about our future behavior." Then ask what they did about it and what it cost them, which sets a ceiling on what a fix is worth to them.
 
 ## Why a PM cares
 
@@ -33,4 +33,4 @@ Ask about the last time it happened, not whether they'd want it. A forecast of y
 
 ## What it does not say
 
-It doesn't say people's opinions are worthless. They tell you what someone believes about themselves, which matters for how you describe the product. They're just poor evidence of what they'll do.
+It doesn't say people's opinions are worthless. They tell you what someone believes about themselves, which matters for how you describe the product. They're just poor evidence of what someone will do.

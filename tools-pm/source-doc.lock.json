@@ -5,18 +5,18 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "23410a88c9dfec072049402e8c8461f7726c33f13443a1875d175b8ebe9013c0",
+   "sha256": "96ae5e0206729f6e23cb05577c9020cd5a03b511aa62f816d6583a328c9933e4",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 44
+   "rev": 46
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "937bbee2fa2e63ca2cfccbf24578c43b66b610d6ff81c56b79ebc1469f0a18aa",
+   "sha256": "abd9fe6f4efa2d38864038a686881d5fb7bfd9057a9e928f415760a9fb99917b",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 208
+   "rev": 209
   },
   {
    "name": "0 Own Your Role",
@@ -29,18 +29,18 @@
   {
    "name": "1 Know Who It's For",
    "file": "1-know-who-it-s-for.md",
-   "sha256": "aae772392317215edc1b45f7bcda90b6ff45fbe7ece6050f7ec5d62d516b36e2",
+   "sha256": "1716908ac1a5f8ad863a23335f9b19b3d4a6ae0beba09c500716cdab5fd7dcff",
    "doc_tab": "81ce484c-5d49",
    "doc_node": "12526a95-0a50",
-   "rev": 1
+   "rev": 2
   },
   {
    "name": "2 See the System",
    "file": "2-see-the-system.md",
-   "sha256": "3767aafcef74aaf5150944dfef359c7577085fd181a2c81006b277f2fa86a95b",
+   "sha256": "c58b355ce1c5171474313723adaba8e080ac808597b80b744fe3e4483fc29a84",
    "doc_tab": "82ecdb77-b286",
    "doc_node": "75410f3d-2ea1",
-   "rev": 453
+   "rev": 458
   },
   {
    "name": "3 Find the Constraint",
@@ -117,18 +117,18 @@
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "58e85e2fcca3ce26c9d32a2d3f0e8638a527c01ed0e8b43f126b1d3d3201f525",
+   "sha256": "905748b3880faaafaa56407650db8c8580566c729c7dc2b73174eca6860c9fbf",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 11
+   "rev": 12
   },
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "9841f9705cc128a50e27b6bb857f3262de350fb284405cab6e767be765187f8a",
+   "sha256": "ae21da3cc21fbcee72d662aadb4a24f161a29791188f4ac9c4955ec668ccd65f",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 1
+   "rev": 3
   }
  ]
 }
