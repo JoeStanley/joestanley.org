@@ -17,7 +17,7 @@ steps:
     kind: read
     title: 'Alan Mulally and Jim Morgan, "People First Leadership"'
     minutes: 5
-    where: A podcast transcript. Free at lean.org. Read the section headed "How to Encourage Transparency and Information Sharing".
+    where: A podcast transcript. Free at lean.org. Read the section headed "How to Encourage Transparency and Information Sharing."
     links:
       - text: "People First Leadership"
         url: https://www.lean.org/the-lean-post/articles/people-first-leadership-a-conversation-between-jim-morgan-and-alan-mulally/
@@ -44,7 +44,7 @@ steps:
     kind: read
     title: 'George Gopen and Judith Swan, "The Science of Scientific Writing"'
     minutes: 20
-    where: An article. Free at human.libretexts.org, where you may need to click to open the article on the page. Read up to the end of the section "The Stress Position".
+    where: An article. Free at human.libretexts.org, where you may need to click to open the article on the page. Read up to the end of the section "The Stress Position."
     links:
       - text: "The Science of Scientific Writing"
         url: https://human.libretexts.org/Bookshelves/Composition/Technical_Composition/Effective_Technical_Writing_in_the_Information_Age_(Schall)/10%3A_Journal_Articles_about_Writing/10.06%3A_The_Science_of_Scientific_Writing
@@ -64,13 +64,13 @@ deeper:
   - title: The Trusted Advisor
     by: David Maister, Charles Green and Robert Galford
     where: A book.
-    note: "Read the chapters \"The Trust Equation\" and \"The Development of Trust\"."
+    note: "Read the chapters \"The Trust Equation\" and \"The Development of Trust.\""
     trust: It's where the card's model comes from, written by three advisers to professional firms from their own practice. We found no peer-reviewed test of the equation.
     only: The trust equation from its authors, and the stages they see trust go through as it grows.
   - title: Influence Without Authority
     by: Allan Cohen and David Bradford
     where: A book.
-    note: "Read the chapters on the influence model and its currencies of exchange, then \"Influencing Your Boss\"."
+    note: "Read the chapters on the influence model and its currencies of exchange, then \"Influencing Your Boss.\""
     trust: Two business school teachers, at Babson and Stanford, wrote it from their teaching and consulting, and it's reached a third edition. Expect cases and advice more than research.
     only: "Influence as exchange: work out what the other person values, the book's currencies, and offer it."
   - title: An Integrative Model of Organizational Trust

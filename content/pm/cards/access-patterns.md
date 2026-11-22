@@ -10,7 +10,7 @@ deeper:
   title: "The world beyond batch: Streaming 101"
   by: Tyler Akidau (2015)
   url: https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/
-  where: An article. Free at oreilly.com. Read through "Event time vs. processing time", about 15 minutes.
+  where: An article. Free at oreilly.com. Read through "Event time vs. processing time," about 15 minutes.
   trust: Akidau was working on Google's large-scale streaming systems when he wrote it.
   only: The words engineers use about batch and streaming, and why late data is the hard part.
 ---
@@ -22,7 +22,7 @@ An {{< pm/term "access-pattern" >}} is a question the data has to answer, and ho
 ## Why a PM cares
 
 - **The questions are product knowledge.** On an insurance claims product, you know what the claimant, the adjuster and finance will ask, and how soon.
-- **Freshness has a price.** Fresher copies take more machinery to keep up, so before you ask for "real time", ask what decision the answer feeds.
+- **Freshness has a price.** Fresher copies take more machinery to keep up, so before you ask for "real time," ask what decision the answer feeds.
 - **Late data forces a choice.** {{< pm/term "event-time" "Event time" >}} is when something happened, and processing time is when the system saw it. A sensor reading taken on Friday arrives on Monday, and someone has to decide which day it counts for.
 
 ## How to spot it

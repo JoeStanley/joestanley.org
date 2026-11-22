@@ -32,7 +32,7 @@ steps:
     links:
       - text: "Blowing the whistle on bad profits"
         url: https://www.bain.com/insights/blowing-whistle-on-bad-profits
-    look: "What they count as bad profits, \"profits earned at the expense of customer relationships\". Then ask how much of your product's revenue comes from value it created, and how much from making it hard to leave."
+    look: "What they count as bad profits, \"profits earned at the expense of customer relationships.\" Then ask how much of your product's revenue comes from value it created, and how much from making it hard to leave."
     trust: Two Bain consultants arguing for their own customer survey, so read it as a case for a method.
     only: A name for that kind of revenue, bad profits, to bring to your next pricing review.
   - id: card-many-hands
@@ -57,21 +57,21 @@ check:
     a: Ask whether viewers are better off, or only up later than they meant to be. If they'd switch it off given a plain choice, those hours were taken from them, not created for them.
   - q: To meet sales targets, Wells Fargo employees opened accounts customers hadn't asked for. Which idea from this module explains it, and which from Find the Constraint?
     a: "Many Hands: each employee could say they were only following the targets. And Goodhart's Law: once accounts opened became a target, the count stopped showing what customers wanted."
-  - q: A teammate wants a new sign-up field "in case we need it". What do you ask?
+  - q: A teammate wants a new sign-up field "in case we need it." What do you ask?
     a: Which decision will it change? If none does yet, leave it out. Every field you keep is something to secure, and something to find when a customer asks you to erase it.
 
 deeper:
   - title: Automating Inequality
     by: Virginia Eubanks
     where: A book.
-    note: "Read chapter 4, \"The Allegheny Algorithm\", then chapter 2, \"Automating Eligibility in the Heartland\"."
+    note: "Read chapter 4, \"The Allegheny Algorithm,\" then chapter 2, \"Automating Eligibility in the Heartland.\""
     trust: "Eubanks is a political scientist at the University at Albany, and this is reporting with a point of view: she chose cases that let the families affected speak. The county answered her, its tool changed after the book, and evaluations since disagree on how fair it is."
     only: Who carries a system's mistakes, and who isn't in its data at all. Allegheny County's screening tool draws on public-service records, so a family that pays privately for treatment leaves no trace in them.
   - title: Design Justice
     by: Sasha Costanza-Chock
     url: https://doi.org/10.7551/mitpress/12255.001.0001
     where: A book.
-    note: "Free at direct.mit.edu, open access. Read the opening of the introduction, through the airport scanner and the network's principles, then chapter 2, \"Design Practices: 'Nothing about Us without Us'\"."
+    note: "Free at direct.mit.edu, open access. Read the opening of the introduction, through the airport scanner and the network's principles, then chapter 2, \"Design Practices: 'Nothing about Us without Us.'\""
     trust: "Costanza-Chock was a research scientist at MIT and helps lead the Design Justice Network, whose principles the book sets out: an insider's case, argued from cases, and openly normative."
     only: "An airport scanner that flags a body for not matching the button the operator pressed, and who it fails most. Chapter 2 asks who a team imagines as its user, a choice the book calls political."
   - title: Your Face Belongs to Us
@@ -89,7 +89,7 @@ deeper:
   - title: The Good Place
     by: created by Michael Schur (NBC)
     where: A TV series.
-    note: "A sitcom about moral philosophy. Watch \"The Book of Dougs\", in season 3. Nobody has gotten into the Good Place in more than 500 years. Long ago, one Doug gives his grandmother flowers and earns 145 points. A modern Doug does the same and loses four, because his phone, his roses and the companies he paid each hurt someone he'll never see."
+    note: "A sitcom about moral philosophy. Watch \"The Book of Dougs,\" in season 3. Nobody has gotten into the Good Place in more than 500 years. Long ago, one Doug gives his grandmother flowers and earns 145 points. A modern Doug does the same and loses four, because his phone, his roses and the companies he paid each hurt someone he'll never see."
     only: "The Many Hands card's problem, with jokes: harm spread so thin across a supply chain that nobody in it feels responsible."
 ---
 

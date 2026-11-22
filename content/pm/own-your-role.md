@@ -47,19 +47,19 @@ deeper:
   - title: Product Development Performance
     by: Kim Clark and Takahiro Fujimoto
     where: A book.
-    note: "Read chapter 9, \"Leadership and Organization: The Heavyweight Product Manager\". Internet Archive's lending library has it."
+    note: "Read chapter 9, \"Leadership and Organization: The Heavyweight Product Manager.\" Internet Archive's lending library has it."
     trust: It's the full study behind the card, by two of the researchers who ran it.
     only: The heavyweight product manager at full length, the "concept infuser" who carries one idea of the car into every team's work.
   - title: The Reflective Practitioner
     by: Donald Schön
     where: A book.
-    note: "Read chapter 2, \"From Technical Rationality to Reflection-in-Action\", and chapter 8, \"The Art of Managing: Reflection-in-Action Within an Organizational Learning System\"."
+    note: "Read chapter 2, \"From Technical Rationality to Reflection-in-Action,\" and chapter 8, \"The Art of Managing: Reflection-in-Action Within an Organizational Learning System.\""
     trust: Schön watched professionals at work, case by case, from engineers and architects to managers and town planners. It's an argument built on those cases, not on experiments.
     only: How good practitioners handle a case their training didn't cover, by thinking while they act. Chapter 8 turns it on managers.
   - title: Understanding by Design
     by: Grant Wiggins and Jay McTighe
     where: A book.
-    note: "Read chapter 1, \"Backward Design\"."
+    note: "Read chapter 1, \"Backward Design.\""
     trust: Two educators explaining their own method to teachers, so expect them to champion it.
     only: "Backward design, test-first's cousin in teaching: name the result, decide what evidence would show you got there, then plan. It's the Do's first exercise, worked out at length."
   - title: "Crafting a Job: Revisioning Employees as Active Crafters of Their Work"
