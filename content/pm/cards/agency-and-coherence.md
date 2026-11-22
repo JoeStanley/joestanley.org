@@ -4,7 +4,7 @@ layout: card
 module: decide-and-set-direction
 weight: 10
 figure: agency-coherence
-figure_caption: "Strict about a few things, loose about the rest: each team picks its own path, and every path passes through what has to fit."
+figure_caption: Strict about a few things, loose about the rest.
 question: Does this decision need a view of the whole? If it doesn't, whose is it?
 deeper:
   title: Less is More with Minimalist Architecture
@@ -17,15 +17,13 @@ deeper:
 
 ## The idea
 
-Work many people do at once needs two things that pull against each other: room to decide, and pieces that fit. Ross Ashby's law of requisite variety (1956) says only variety can absorb variety, so a team needs as many ways to respond as the world it faces has ways to surprise it. But its pieces still have to fit, so it also needs a few things everyone holds to.
-
-The philosopher Alicia Juarrero makes the case for having both in [a 2022 talk](https://www.youtube.com/watch?v=WmtjQZCIsqY): constraints that depend on context don't only limit what can happen, they enable it, and open up alternatives that weren't there before. So be strict about a few things, and loose about the rest.
+Work many people do at once needs two things that pull against each other: room to decide, and pieces that fit. Only variety can absorb variety, as Ross Ashby's law of requisite variety (1956) has it, so a team needs room to respond in its own way. The philosopher Alicia Juarrero shows how to have both in [a 2022 talk](https://www.youtube.com/watch?v=WmtjQZCIsqY): constraints that depend on context don't only limit, they enable, and open up new alternatives. So be strict about a few things, and loose about the rest.
 
 ## Why a PM cares
 
-- **You often write the strict list.** Agree what "delivered" means, and a marketplace's teams can build without meeting about it. But take a decision from a team only for a benefit "that the organization could not otherwise achieve", as Ruth Malan and Dana Bredemeyer wrote in 2002.
-- **Give the intent, not only the task.** The Marine Corps' 1997 doctrine, MCDP 1, seeks unity "not principally through imposed control, but through harmonious initiative". Knowing why, a team can adapt when the plan goes stale.
-- **Agency needs feedback.** Choosing is half of it. A team also has to see what its choice did, so get it the numbers for its own change.
+- **You often write the strict list.** Agree what "delivered" means, and a marketplace's teams can build without meeting about it. Take a decision from a team only for a benefit "that the organization could not otherwise achieve", as Ruth Malan and Dana Bredemeyer put it.
+- **Give the intent, not only the task.** The Marine Corps' doctrine, MCDP 1, seeks unity "not principally through imposed control, but through harmonious initiative". Knowing why, a team can adapt when the plan goes stale.
+- **Agency needs feedback.** A team has to see what its choice did, so get it the numbers for its own change.
 
 ## How to spot it
 
@@ -35,4 +33,4 @@ The philosopher Alicia Juarrero makes the case for having both in [a 2022 talk](
 
 ## What it does not say
 
-It doesn't say more autonomy is always better. Guzzo and Dickson's 1996 review found "substantial variance" in what autonomous work groups did for productivity, turnover and attitudes.
+It doesn't say more autonomy is always better. A 1996 review by Guzzo and Dickson found "substantial variance" in what autonomous work groups did for productivity.

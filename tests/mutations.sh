@@ -56,6 +56,7 @@ run_bg "a picture color with no value for dark screens" C7 "sed -i '/prefers-col
 run_bg "station numbers pushed low in their discs" R6 "echo '.st-name { padding-top: 2px; }' >> assets/css/pm.css"
 run_bg "a module that runs past three pages" P1 "for i in \$(seq 60); do printf 'A filler paragraph that says nothing and only takes up room on the printed page.\n\n' >> content/pm/see-the-system.md; done"
 run_bg "the Start page runs onto a third page" P1 "for i in \$(seq 60); do printf '\nA filler paragraph that says nothing and only takes up room on the printed page.\n' >> content/pm/_index.md; done"
+run_bg "a concept card that runs onto a second page, though the glossary may run long" P1 "python3 -c \"p='content/pm/cards/many-hands.md'; s=open(p).read(); open(p, 'w').write(s + '\\n' + 'A filler sentence that only takes up room on the printed card. ' * 40 + '\\n')\""
 run_bg "the hand-written correction dropped into the line" H2 "sed -i 's/^\.edit ins { display: flex;/.edit ins { display: inline;/' assets/css/base.css"
 run_bg "the scratch drawn in one ink for light and dark" H2 "sed -i '/^  :root { --scratch-1:/d' assets/css/base.css"
 run_bg "the hand-written correction pushing the words beside it apart" H2 "sed -i 's/ contain: inline-size;//' assets/css/base.css"

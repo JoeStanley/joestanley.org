@@ -71,7 +71,7 @@ deeper:
     by: Sasha Costanza-Chock
     url: https://doi.org/10.7551/mitpress/12255.001.0001
     where: A book.
-    note: "Free at direct.mit.edu, open access. Read the introduction's first eight pages, then chapter 2, \"Design Practices: 'Nothing about Us without Us'\"."
+    note: "Free at direct.mit.edu, open access. Read the opening of the introduction, through the airport scanner and the network's principles, then chapter 2, \"Design Practices: 'Nothing about Us without Us'\"."
     trust: "Costanza-Chock was a research scientist at MIT and helps lead the Design Justice Network, whose principles the book sets out: an insider's case, argued from cases, and openly normative."
     only: "An airport scanner that flags a body for not matching the button the operator pressed, and who it fails most. Then who a team imagines as its user, and why \"Better for whom?\" is the question to put to every test."
   - title: Your Face Belongs to Us
@@ -96,6 +96,8 @@ deeper:
 ## Why this matters
 
 Your choices land on people who were never in the meeting. On a delivery platform, small rules decide how many stops fit in a shift, which order waits when a van runs late, and what counts as delivered. Across millions of orders, a small rule becomes a large effect.
+
+Some of those people live a world away. In 2017, Myanmar's military killed, raped and drove out Rohingya by the thousands, and [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide. Facebook, they found, had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook promised more. Four years on, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. In 2023, Amnesty International found Meta's failures had contributed to abuses again, in Ethiopia's war. A fix announced after a disaster isn't proof the cause is gone.
 
 You've met parts of this question already: whose costs fall outside a system's edge, in See the System; whom a stand-in measure misses, in Find the Constraint; who falls between two categories, in Mind the Seams. Here it's the whole module.
 
