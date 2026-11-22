@@ -55,10 +55,13 @@ steps:
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
-  - q: What's the difference between deploying a change and releasing it?
-    a: Deploying puts the code into production, switched off. Releasing turns the feature on for customers. A toggle lets you do them at different times.
+  - q: Design for Change said a payments ledger moves slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for the ledger?
+    against: design-for-change
+    a: Both, at different layers. Ship the code around the ledger in small steps, behind a toggle. Change the ledger's data and its contracts slowly, since every balance depends on them and a toggle can't switch a wrong balance back.
   - q: On a marketplace, a new search ranking raises orders per visit in a test. Why might you still stop the test?
     a: A guardrail metric got worse, such as returns, late deliveries or page load time, overall or for one group of customers.
+  - q: "**Beyond this module.** Everything here assumes a change you release. What can change how your product behaves with no release at all?"
+    a: "The world it runs in: a new phone, a partner's API, your customers' habits, or the data a model learned from. Read your last few incident reports for causes that weren't a release of yours."
 
 deeper:
   - title: Trustworthy Online Controlled Experiments
@@ -108,6 +111,8 @@ Before you change anything, know how good the service has to be, in words engine
 5. The error budget it might spend.
 
 Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
+
+**For your decision log.** Write whether you expect the rollout to reach everyone without being switched off, how sure you are, and when you'll know.
 
 **Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a player waits for a match, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
 

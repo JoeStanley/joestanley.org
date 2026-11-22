@@ -5,6 +5,7 @@ module: weigh-the-evidence
 question: What do the numbers and the stories each tell you, and how much should either decide?
 one_thing: Take one decision in front of you, list the evidence you're leaning on, and write next to each piece who's missing from it.
 do_minutes: 35
+game: ranking
 
 last_time:
   - q: Why break a rollout's guardrail metrics down for the customers it could hurt most?
@@ -18,6 +19,12 @@ steps:
     card: cards/law-of-small-numbers
     minutes: 5
     look: Why the worst week usually gets better on its own.
+  - id: ranking
+    kind: play
+    title: Play the ranking game
+    minutes: 5
+    where: It's on this page, just below this list.
+    look: Which stores fill both ends of the ranking, and where the one real problem ends up.
   - id: munro
     kind: read
     title: 'Eileen Munro, "Decision making under uncertainty in child protection"'
@@ -42,12 +49,15 @@ steps:
     only: A way to read a competitor's case study step by step before you copy it.
 
 check:
-  - q: Seven of the ten people in your usability test liked the new flow. Can you say 70 percent of your users like it?
-    a: No. Ten people picked for a test don't stand for all your users, and a percentage claims a precision the method can't give. Ask instead what put the other three off.
-  - q: After your worst week of complaints, the team changes the sign-up flow, and the next week is better. Did the change work?
-    a: "You can't tell yet. A worst week is usually followed by a better one anyway: that's regression to the mean. Compare with customers who didn't get the change, as an experiment toggle from Change Safely lets you, or give it more weeks."
+  - q: Your dashboard ranks twenty cities by on-time delivery, and the bottom three are called in for a review. What do you check first?
+    a: How many orders each city had. The smallest fill both ends of a ranking by chance alone, and they'll trade places next week. Compare each rate with the range its size allows, as the funnel did in the ranking game.
+  - q: Know Who It's For says interviews beat your vision on what the problem is. This module says a story speaks only for the people who told it. Which do you trust?
+    against: know-who-its-for
+    a: Each for what it can tell you. The interviews tell you what the problem is for the people you asked, and the numbers how many share it. When the two disagree, find out who you didn't interview.
   - q: A competitor's case study says a feature lifted retention by 20 percent. What do you ask before you copy it?
     a: "Cartwright's question: how would it lead to that result here, step by step, and what would support or derail each step for your customers?"
+  - q: "**Beyond this module.** This module weighs the evidence you have. What decides how much more to gather?"
+    a: What it costs to be wrong, and whether you can undo the call. Decide and Set Direction, next, sorts out the decisions worth slowing down for.
 
 deeper:
   - title: The Tyranny of Metrics
@@ -87,16 +97,18 @@ deeper:
 
 You'll meet both mistakes in the same week. On Monday, one vivid story from a customer, or one loud sales call, turns the roadmap. On Thursday, a dashboard settles an argument because it has decimals in it, though nobody can say who's in the data or who isn't. Both feel responsible at the time. Adam Mosseri, then a designer at Facebook, put the aim in the title of [a 2010 talk](https://www.youtube.com/watch?v=bKZiXAFeBeY): be {{< pm/term "data-informed" >}}, not data-driven. Use the numbers and the stories for what each can tell you, and keep the decision yours.
 
-Numbers tell you how much and how often, across many people, but only about what someone chose to measure. Forget that, and what's hard to measure gets left out, then called unimportant, then treated as if it isn't there: the {{< pm/term "mcnamara-fallacy" "McNamara fallacy" >}}, as the market researcher Daniel Yankelovich named it in 1971. Stories tell you why, and what nobody thought to measure, but only about the people who told them, which is why Know Who It's For asked whose problem you hear. When the numbers and the stories disagree, look into why before you pick a side.
+Numbers tell you how much and how often, across many people, but only about what someone chose to measure. Forget that, and what's hard to measure gets left out, then called unimportant, then treated as if it isn't there: the {{< pm/term "mcnamara-fallacy" "McNamara fallacy" >}}, as the market researcher Daniel Yankelovich named it in 1971. It's a sibling of Goodhart's Law from Find the Constraint: there a number is gamed once it's a target, and here it's trusted because it can be counted. Stories tell you why, and what nobody thought to measure, but only about the people who told them, which is why Know Who It's For asked whose problem you hear. When the numbers and the stories disagree, look into why before you pick a side.
 
 When you break a number down, break it down by more than one thing at once. In [Gender Shades](https://proceedings.mlr.press/v81/buolamwini18a.html), a 2018 paper, Joy Buolamwini and Timnit Gebru tested face analysis from three companies on gender and skin type together. It got darker-skinned women's gender wrong up to a third of the time, and lighter-skinned men's almost never. The word for looking where two such lines cross is {{< pm/term "intersectional" >}}, from Kimberlé Crenshaw, whom you met in Mind the Seams. The groups there are small, so they swing, as the card warns: get more data there, not less attention.
 
-Your own hunch is evidence too: "an important data point," as Gary Klein puts it, to check like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right (Kahneman and Klein, 2010).
+Your own hunch is evidence too: "an important data point," as Gary Klein, a psychologist who studies how experts make decisions, puts it, to check like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right (Kahneman and Klein, 2010).
 
 [//]: # (short-path)
 
 ## Do
 
 **Weigh the evidence for one decision (25 minutes).** Pick a decision in front of you, such as whether a delivery app should change how it batches orders. List every piece of evidence you're leaning on, one line each, and mark each one a story or a number. Next to each, answer three questions in a few words. Who's missing from it? How was it collected? And what would have to hold here for it to carry over? Then write one sentence on what would change your mind.
+
+**For your decision log.** Write the call you'd make on that decision now, what you expect to happen, how sure you are, and when you'll know.
 
 **Optional: find the stories behind one number (10 minutes).** Pick a number on your dashboard that moved last month, such as the time to settle an insurance claim. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.

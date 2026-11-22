@@ -49,10 +49,13 @@ steps:
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
-  - q: You speed up a step that isn't the constraint. What happens to delivery?
-    a: Almost nothing. Before the constraint, the extra work joins its queue. After it, the faster step waits for work.
+  - q: See the System asked you to look at the whole structure, not one part. This module says only one step holds the flow back. Which wins?
+    against: see-the-system
+    a: Each, in turn. You find the constraint by looking at the whole flow, then put your effort on that one step. Once it moves, the constraint moves somewhere else, so you look at the whole again.
   - q: Your team hits its target for reviews completed per day, yet releases are no faster. Give two explanations from this module.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
+  - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
+    a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. Mind the Seams, next, looks at what falls between teams."
 
 deeper:
   - title: The Principles of Product Development Flow
@@ -88,5 +91,7 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 ## Do
 
 **Map one flow (25 minutes).** Pick one kind of change your team ships again and again: a pricing update, a new report, a tweak to checkout. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Then ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
+
+**For your decision log.** Name your candidate constraint, what you expect delivery to do if it gets help, how sure you are, and when you'll know.
 
 **Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed up the whole flow or only that step.

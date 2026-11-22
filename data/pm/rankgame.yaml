@@ -1,0 +1,47 @@
+# The ranking game, in Weigh the Evidence (spec J5). A grocery app ranks its 30 stores each week by the share of
+# orders that were late. Every store is late on 1 order in 10; they differ only in size. In the last two setups
+# the last large store really is worse.
+# funnel and averages are worked out by tools-pm/game-numbers.py, and the checks hold them to it.
+sizes:
+  - label: Small
+    stores: 15
+    orders: 20
+  - label: Medium
+    stores: 10
+    orders: 200
+  - label: Large
+    stores: 5
+    orders: 5000
+late: 0.10
+worse_late: 0.13
+# The funnel: the late rate plus or minus this many standard errors, the range chance allows 998 times in 1,000.
+funnel_z: 3.09
+# For each size, lowest and highest late rate inside the funnel, in percent.
+funnel: [[0.0, 30.7], [3.4, 16.6], [8.7, 11.3]]
+# Over 200,000 simulated weeks: small stores among the five worst and among the five best; of one week's five
+# worst, how many are there again the next; where the store that really is worse ranks on average; how often, in
+# 100 weeks, it's among the five worst; and how often the funnel picks it out alone.
+averages: {small_worst: 4.1, small_best: 4.6, stay: 1.2, worse_rank: 7, worse_in_worst: 28, worse_alone: 94}
+setups:
+  equal:
+    label: This week
+    note: Every store is late on 1 order in 10.
+    after: Nothing sets the smallest stores apart but their size. With 20 orders a week, one late order moves a store's rate 5 points.
+  next:
+    label: The next week
+    note: The same stores, a week later. A ring marks last week's five worst.
+    after: Nothing changed in any store. Whichever left the bottom left by chance, and if you'd sent them help, it would have looked as if it worked.
+  worse:
+    label: One large store really is worse
+    note: One large store, the square, is now late on 13 orders in 100. Every other store is still late on 1 in 10.
+    after: The ranking puts small stores' bad luck above the one real problem, though the real problem costs the most late orders.
+  funnel:
+    label: Draw the funnel
+    note: The same stores. A band now shows the range chance allows at each size.
+    after: A store inside its band may only be unlucky. Look first at what falls outside it.
+# One recorded week with every store the same, for print and for a page without JavaScript: each size's lowest and
+# highest late rate, in percent, and how many of its stores were among the five worst and the five best.
+example:
+  - {label: Small, lowest: 5, highest: 20, worst: 4, best: 5}
+  - {label: Medium, lowest: 6, highest: 13, worst: 1, best: 0}
+  - {label: Large, lowest: 9.7, highest: 10.7, worst: 0, best: 0}

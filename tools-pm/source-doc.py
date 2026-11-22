@@ -17,7 +17,7 @@ question the map gives it. A voice slot (spec X4) shows its interim words in pla
 own block: the brief and the owner's old words. The last tab, "Your voice pass", lists every open slot and every
 word of his that moved (data/pm/voice-slots.yaml). Needs PyYAML and beautifulsoup4.
 """
-import datetime, hashlib, json, os, re, sys
+import copy, datetime, hashlib, json, os, re, sys
 
 import yaml
 from bs4 import BeautifulSoup, NavigableString, Tag
@@ -204,17 +204,29 @@ def start_tab(art):
 
 
 def game(sec):
+    """A game (spec J5): its rules, then the words of its live part, its recorded run and its takeaway."""
     out = ["## " + inline(sec.find("h2"))] + note_of(sec)
-    out += [inline(p) for p in sec.find_all("p", recursive=False)]
+    for c in sec.find_all(["p", "table"], recursive=False):
+        wrap = BeautifulSoup("<div></div>", "html.parser").div
+        wrap.append(copy.copy(c))
+        out += blocks(wrap)
     live = sec.find(class_="game-live")
     if live:
         out.append("*On the site the playable game sits here. Its words:*")
         choices = " / ".join(clean(l.get_text()).strip() for l in live.select("fieldset label"))
         out.append(f"{inline(live.find('legend'))} {choices}.")
-        out.append(f"{inline(live.find('button', attrs={'data-play': True}))}. {inline(live.find(class_='setups-label'))}")
-        setups = json.loads(live.find("script", attrs={"data-game-setups": True}).string)
-        order = [b["data-setup"] for b in live.select("button.setup")]
-        out.append("\n".join(f"- **{clean(setups[k]['label'])}.** {clean(setups[k]['note'])} *After a run:* {clean(setups[k]['after'])}" for k in order))
+        labels = live.select(".setups-label")
+        picks = live.select("[data-pick]")
+        if picks:   # the waiting game: the reader puts the jobs in any order
+            out.append(f"{inline(labels[0])} " + " / ".join(inline(b) for b in picks) + ".")
+        out.append(f"{inline(live.find('button', attrs={'data-play': True}))}. {inline(labels[-1])}")
+        data = json.loads(live.find("script", attrs={"data-game-setups": True}).string)
+        setups = data.get("setups") or data.get("rules") or data
+        items = []
+        for k in [b["data-setup"] for b in live.select("button.setup[data-setup]")]:
+            note = f" {clean(setups[k]['note'])}" if setups[k].get("note") else ""
+            items.append(f"- **{clean(setups[k]['label'])}.**{note} *After a run:* {clean(setups[k]['after'])}")
+        out.append("\n".join(items))
     for part in sec.select(".example, .takeaway"):
         out += blocks(part)
     return out

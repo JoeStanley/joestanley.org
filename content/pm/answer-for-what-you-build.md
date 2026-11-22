@@ -66,10 +66,13 @@ steps:
 check:
   - q: A change lifts hours watched on your streaming service by starting the next episode without asking. Has it created value?
     a: Ask whether viewers are better off, or only up later than they meant to be. If they'd switch it off given a plain choice, those hours were taken from them, not created for them.
-  - q: To meet sales targets, Wells Fargo employees opened accounts customers hadn't asked for. Which idea from this module explains it, and which from Find the Constraint?
-    a: "Many Hands: each employee could say they were only following the targets. And Goodhart's Law: once accounts opened became a target, the count stopped showing what customers wanted."
+  - q: To meet sales targets, Wells Fargo employees opened accounts customers hadn't asked for. See the System would look at the structure, not the people. This module says each was one of the many hands. Who's right?
+    against: see-the-system
+    a: Both. The targets were the structure, and once accounts opened became a target, the count stopped showing what customers wanted, which is Goodhart's Law. Still, each employee could have done otherwise, so part of it was theirs. Fix the structure, and own your share.
   - q: A teammate wants a new sign-up field "in case we need it." What do you ask?
     a: Which decision will it change? If none does yet, leave it out. Every field you keep is something to secure, and something to find when a customer asks you to erase it.
+  - q: "**Beyond this module.** This module asks what your share is. What does it leave for others to tell you?"
+    a: Where the law draws the line. Ask your legal or privacy team which rules your product has to meet, then decide where your own line sits beyond them.
 
 deeper:
   - title: Automating Inequality
@@ -127,5 +130,7 @@ In life, ethical matters rarely come to you as clear cases of good and bad. Inst
 3. Which do you want to mitigate? Beside each one, write who'd own the fix.
 
 End with one change you'd propose. Afterwards, show it to someone in support and ask what you missed.
+
+**For your decision log.** Write the change you'd propose, what you expect it to cost or save, and for whom, how sure you are, and when you'll know.
 
 **Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?

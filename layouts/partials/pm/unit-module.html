@@ -51,7 +51,7 @@
           {{- if $card }}
           <h3><a href="{{ partial "pm/href.html" (dict "p" $card "all" $all) }}">{{ $card.Title | markdownify }}</a></h3>
           {{- else if eq .kind "play" }}
-          <h3><a href="#dice-game">{{ .title }}</a></h3>
+          <h3><a href="#{{ $p.Params.game }}-game">{{ .title }}</a></h3>
           {{- else }}
           <h3>{{ .title | $p.RenderString }}</h3>
           {{- end }}
@@ -74,7 +74,8 @@
     </ol>
   </section>
 
-  {{ if eq $p.Params.game "dice" }}{{ partial "pm/dicegame.html" (dict "p" $p "unit" $key) }}{{ end }}
+  {{- /* A module may carry one game (spec J5): the dice game, the waiting game or the ranking game, in pm/<name>game.html. */}}
+  {{ with $p.Params.game }}{{ partial (printf "pm/%sgame.html" .) (dict "p" $p "unit" $key) }}{{ end }}
 
   {{ if gt (len $parts) 1 }}
   <section class="do prose">

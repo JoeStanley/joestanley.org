@@ -46,8 +46,11 @@ check:
     a: Near the top, since it's a belief. Ask what was seen, by whom and how often. It may come down to two technicians at one site muting alerts through a week of false alarms.
   - q: A support team's time to close tickets is flat. One lead coaches agents to close faster. Another asks whether closing fast is what keeps customers' problems fixed. Which is the double loop?
     a: The second. The first changes the method to hit the same goal. Only the second asks whether the goal is right.
-  - q: Why does a premortem say the project has already failed, and why, in a team, does everyone write alone first?
-    a: Asking what did go wrong, not what might, turns doubting the plan into helping with it. Alone, people write down what they'd usually keep quiet, and nobody's list shapes anyone else's.
+  - q: Decide and Set Direction asks you to decide on purpose and keep to a not-doing list. This module asks you to keep looking for how you're wrong. When do you hold a call, and when do you reopen it?
+    against: decide-and-set-direction
+    a: Hold it until a signal you named in advance shows up, then reopen it. Doubt written down before the bet is part of the plan. Doubt after every bad day is drift.
+  - q: "**Beyond this module.** This module helps you find out you're wrong. What decides whether anyone acts on what you found?"
+    a: Whether the people who decide trust you enough to hear it. Bring People With You, next, is about earning that trust.
 
 deeper:
   - title: The Fearless Organization
@@ -60,7 +63,7 @@ deeper:
     by: Chris Argyris
     where: A book.
     note: Read chapters 4 to 6.
-    trust: Argyris developed these ideas, with Donald Schön, over decades of work inside companies. This is his case for managers, from field cases and his own interventions.
+    trust: Argyris developed these ideas over decades of work inside companies, with Donald Schön, whose *The Reflective Practitioner* is on Own Your Role's full path. This is his case for managers, from field cases and his own interventions.
     only: The ladder, the double loop and the left-hand column from their source, with the routines that keep a team from saying what it sees. Chapter 4 has a manager's left-hand column, chapter 5 ends on the ladder, and chapter 6 is double-loop learning.
   - title: Arrival
     by: directed by Denis Villeneuve, written by Eric Heisserer from Ted Chiang's "Story of Your Life" (Paramount, 2016)
@@ -81,6 +84,8 @@ Finding out takes habits, in your thinking and your team's: climbing down from a
 
 ## Do
 
-**Run a {{< pm/term "premortem" >}} on your own work (20 minutes).** It's the psychologist Gary Klein's technique. Imagine your main initiative has failed, badly. Asking what did go wrong, not what might, turns doubting the plan into helping with it. Write down every plausible reason why, especially the ones you'd usually keep to yourself. If you run it with your team, have everyone write alone before anyone talks, so nobody's list shapes anyone else's. Rate each one low, medium or high, for how likely it is and how much damage it would do, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, name a signal to watch for this month. Then ask the people who'd see it break first, such as the on-call engineer, and the support lead who'd hear from the customers it failed: "If this failed, what would you bet the reason was?"
+**Run a {{< pm/term "premortem" >}} on your own work (20 minutes).** It's a technique of Gary Klein's, whose advice on hunches you met in Weigh the Evidence. Imagine your main initiative has failed, badly. Asking what did go wrong, not what might, turns doubting the plan into helping with it. Write down every plausible reason why, especially the ones you'd usually keep to yourself. If you run it with your team, have everyone write alone before anyone talks, so nobody's list shapes anyone else's. Rate each one low, medium or high, for how likely it is and how much damage it would do, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, name a signal to watch for this month. Then ask the people who'd see it break first, such as the on-call engineer, and the support lead who'd hear from the customers it failed: "If this failed, what would you bet the reason was?"
+
+**Review your decision log.** Read back the calls you've logged since Know Who It's For, and mark each one right, wrong or not known yet. Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with the signal you'll watch for.
 
 **Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the {{< pm/term "ladder-of-inference" "ladder" >}}, and rewrite it as a sentence you could have said, starting from what you saw.

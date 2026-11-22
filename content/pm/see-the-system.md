@@ -52,10 +52,13 @@ steps:
 check:
   - q: A clinic sees more patients each month than it did last year, yet its waiting list keeps growing. What does that tell you?
     a: More is still coming in than going out. A stock rises whenever its inflow is larger than its outflow.
-  - q: Why does Meadows rank putting an electricity meter where people can see it above changing a number?
-    a: It adds a feedback loop that wasn't there. People see what they use as they use it. A new number leaves the same people acting on the same information.
+  - q: Own Your Role asked you to act where nobody assigned you. This module says the structure, not the people, drives what a system does. When does one person's push win, and when does the structure?
+    against: own-your-role
+    a: "Against the structure, a push wins for a while, then the system drifts back. So aim it at the structure itself: a goal, a rule, or who sees the feedback, all of which Meadows ranks above any number. That's where one person's push lasts."
   - q: A review of a failed release names one person's skipped step as the root cause. Give two reasons from Cook to doubt it.
     a: A failure needs several faults to line up, so naming one explains little. And hindsight makes the danger look more obvious than it was at the time.
+  - q: "**Beyond this module.** Your bathtub shows what piles up, and why. What can't a drawing tell you?"
+    a: How much each flow matters, and where to act first. A drawing shows the structure, and only counts show which step holds the rest back. Find the Constraint takes that up next.
 
 deeper:
   - title: Thinking in Systems
@@ -88,7 +91,7 @@ deeper:
 
 When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues that a failure in a complex system never has just one cause.
 
-Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around your support team's queue, and the customers who gave up before they ever filed a ticket fall outside it. In another essay, "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
+Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around your support team's queue, and the customers who gave up before they ever filed a ticket fall outside it: the ones Know Who It's For said you most need to hear. In another essay, "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
 
 [//]: # (short-path)
 
@@ -97,3 +100,5 @@ Where you draw the system's edge matters too, because it decides whose costs you
 **Draw one stock (20 minutes).** Pick one thing that piles up in your team's work: open defects, customers waiting to be onboarded, orders held for review. Draw it as a bathtub, with what flows in and what flows out. Three months of counts from your ticket tool will do, and estimates are fine if that's all you have. Note who sees the level, and how late they see it. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve, near the top of her essay. Was it aimed at a number, or at something higher up?
 
 **Reread one failure (10 minutes).** Take a missed date or a failed release on your team that got pinned on one cause. List three other things that had to be true for it to happen.
+
+**For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, how sure you are, and when you'll know.

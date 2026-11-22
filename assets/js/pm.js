@@ -2,7 +2,7 @@
    Everything here is an extra: the pages read fine with JavaScript off.
    1. Progress: ticks on the short path, saved in this browser only.
    2. Single-document view: show one unit at a time (used by the preview and the print page).
-   3. The dice game.
+   3. The games: the dice game, the waiting game and the ranking game.
    4. A line edit stays on its line. */
 (function () {
   "use strict";
@@ -117,8 +117,13 @@
     window.addEventListener("hashchange", refit);
   }
 
-  /* ---- 3. the dice game ---- */
-  all("[data-game]").forEach(function (game) {
+  /* ---- 3. the games (spec J5): the dice game, the waiting game and the ranking game ---- */
+  var still = function () { return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches); };
+  var money = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
+  /* While a run plays, Play is marked busy rather than disabled, so it keeps keyboard and screen reader focus. */
+  var busyOn = function (btn, on) { if (on) btn.setAttribute("aria-disabled", "true"); else btn.removeAttribute("aria-disabled"); };
+
+  function diceGame(game) {
     var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
     var setups; try { setups = JSON.parse(dataEl.textContent); } catch (e) { return; }
     var ROUNDS = 20, current = "equal", timer = null, state, running = false;
@@ -213,5 +218,229 @@
     game.classList.add("is-live");
     if (el.takeaway) el.takeaway.hidden = true;
     reset();
+  }
+
+  /* The waiting game: three jobs built one at a time, in an order the reader picks. Each week a job isn't live costs
+     its cost of delay, the weeks it's being built included. */
+  function waitingGame(game) {
+    var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
+    var d; try { d = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var jobs = d.jobs, W = d.weeks, by = {}, places = ["1st", "2nd", "3rd"];
+    jobs.forEach(function (j) { by[j.id] = j; });
+    var el = {
+      picks: all("[data-pick]", game), rules: all("[data-setup]", game), note: game.querySelector("[data-setup-note]"),
+      week: game.querySelector("[data-week]"), live: game.querySelector("[data-live]"), cost: game.querySelector("[data-cost]"),
+      play: game.querySelector("[data-play]"), result: game.querySelector("[data-result]"), takeaway: game.querySelector("[data-takeaway]"), rows: {}
+    };
+    all("[data-row]", game).forEach(function (r) { el.rows[r.getAttribute("data-row")] = all(".wk", r); });
+    var order = d.rules.biggest.order.slice(), rule = "biggest", wk = 0, timer = null, running = false, playedOnce = false;
+
+    function complete() { return order.length === jobs.length; }
+    function fill() { jobs.forEach(function (j) { if (order.indexOf(j.id) < 0) order.push(j.id); }); }
+    function matchRule() {
+      for (var k in d.rules) if (d.rules[k].order.join(" ") === order.join(" ")) return k;
+      return "";
+    }
+    /* When each job starts and goes live, in weeks from now. */
+    function plan() {
+      var t = 0, out = {};
+      order.forEach(function (id) { out[id] = { start: t, live: t + by[id].weeks }; t += by[id].weeks; });
+      return out;
+    }
+    function costTo(w, p) { return order.reduce(function (c, id) { return c + by[id].cost * Math.min(w, p[id].live); }, 0); }
+    function said() { return order.map(function (id) { return by[id].short; }).join(", then "); }
+
+    function draw() {
+      var p = complete() ? plan() : null;
+      jobs.forEach(function (j) {
+        el.rows[j.id].forEach(function (cell, i) {
+          var w = i + 1, s = "";
+          if (p && w <= wk) s = w <= p[j.id].start ? " is-wait" : w <= p[j.id].live ? " is-build" : " is-live";
+          cell.className = "wk" + s;
+        });
+      });
+      el.week.textContent = wk;
+      el.live.textContent = p ? order.filter(function (id) { return p[id].live <= wk; }).length : 0;
+      el.cost.textContent = money(p ? costTo(wk, p) : 0);
+    }
+    function showOrder() {
+      el.picks.forEach(function (b) {
+        var i = order.indexOf(b.getAttribute("data-pick"));
+        b.setAttribute("aria-pressed", i >= 0 ? "true" : "false");
+        b.querySelector("[data-place]").textContent = i >= 0 ? places[i] : "";
+      });
+      el.rules.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-setup") === rule ? "true" : "false"); });
+      el.note.textContent = !complete() ? "First, " + by[order[0]].short + ". Pick the next."
+        : (rule ? d.rules[rule].label + ": " : "Your order: ") + said() + ".";
+    }
+    function reset() {
+      clearTimeout(timer); wk = 0; running = false; busyOn(el.play, false);
+      el.result.textContent = ""; showOrder(); draw();
+      el.play.textContent = "Play " + W + " weeks" + (playedOnce ? " again" : "");
+    }
+    function finish() {
+      var p = plan(), total = costTo(W, p), best = d.every[0].total, text = "";
+      var picked = game.querySelector("input[name=waiting-guess]:checked");
+      if (!playedOnce && picked) text = "You guessed " + picked.value + ". ";
+      var when = order.map(function (id, i) { return by[id].short + (i === 0 ? " went live in week " : " in week ") + p[id].live; });
+      text += "In this order, " + when.slice(0, -1).join(", ") + " and " + when[when.length - 1] + ". The waiting cost " + money(total) + ". ";
+      var worst = d.every[d.every.length - 1].total;
+      text += total === best ? "That's the cheapest of the six orders. "
+        : (total === worst ? "That's the dearest of the six orders. " : "") + "The cheapest order costs " + money(best) + ", so this one costs " + money(total - best) + " more. ";
+      if (rule) text += d.rules[rule].after;
+      el.result.textContent = text.trim();
+      playedOnce = true; running = false; busyOn(el.play, false);
+      el.play.textContent = "Play " + W + " weeks again";
+      if (el.takeaway) el.takeaway.hidden = false;
+    }
+    function play() {
+      if (running) return;
+      if (!complete()) { fill(); rule = matchRule(); showOrder(); }
+      clearTimeout(timer); wk = 0; draw(); el.result.textContent = ""; running = true; busyOn(el.play, true);
+      if (still()) { wk = W; draw(); finish(); return; }
+      (function tick() { wk++; draw(); if (wk < W) timer = setTimeout(tick, 260); else finish(); })();
+    }
+
+    el.picks.forEach(function (b) {
+      b.addEventListener("click", function () {
+        var id = b.getAttribute("data-pick");
+        if (complete()) order = [id];
+        else if (order.indexOf(id) < 0) { order.push(id); if (order.length === jobs.length - 1) fill(); }
+        rule = complete() ? matchRule() : "";
+        reset();
+      });
+    });
+    el.rules.forEach(function (b) {
+      b.addEventListener("click", function () { rule = b.getAttribute("data-setup"); order = d.rules[rule].order.slice(); reset(); });
+    });
+    el.play.addEventListener("click", play);
+    game.classList.add("is-live");
+    if (el.takeaway) el.takeaway.hidden = true;
+    reset();
+  }
+
+  /* The ranking game: stores of three sizes, every one late on the same share of orders, ranked each week by their
+     late rate. In the last two setups one large store really is worse, and the funnel shows the range chance allows. */
+  function rankingGame(game) {
+    var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
+    var d; try { d = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var size = [], group = [];
+    d.sizes.forEach(function (g, gi) { for (var i = 0; i < g.stores; i++) { size.push(g.orders); group.push(gi); } });
+    var N = size.length, worse = N - 1, TOP = 0.4, current = "equal", week = 0, playedOnce = false;
+    var rate = null, late = null, worst = [], best = [], prevWorst = null, out = [];
+    var el = {
+      dots: all(".rk-dot", game), week: game.querySelector("[data-week]"), small: game.querySelector("[data-small]"), best: game.querySelector("[data-best]"),
+      note: game.querySelector("[data-setup-note]"), result: game.querySelector("[data-result]"), play: game.querySelector("[data-play]"),
+      takeaway: game.querySelector("[data-takeaway]"), setupButtons: all("[data-setup]", game)
+    };
+    var worldWorse = function () { return current === "worse" || current === "funnel"; };
+    var pct = function (r) { return String(Math.round(r * 1000) / 10); };
+    var ordinal = function (k) { var t = k % 100; return k + (t > 10 && t < 14 ? "th" : ["th", "st", "nd", "rd"][k % 10] || "th"); };
+
+    // One week: every order is late with the store's chance of lateness. Ties in the ranking break at random.
+    function oneWeek() {
+      late = []; rate = [];
+      for (var i = 0; i < N; i++) {
+        var p = i === worse && worldWorse() ? d.worse_late : d.late, n = 0;
+        for (var k = 0; k < size[i]; k++) if (Math.random() < p) n++;
+        late.push(n); rate.push(n / size[i]);
+      }
+      var tie = rate.map(function () { return Math.random(); });
+      var idx = rate.map(function (r, i) { return i; }).sort(function (a, b) { return rate[b] - rate[a] || tie[b] - tie[a]; });
+      worst = idx.slice(0, 5); best = idx.slice(-5);
+      out = [];
+      for (var j = 0; j < N; j++) { var f = d.funnel[group[j]], v = rate[j] * 100; if (v < f[0] || v > f[1]) out.push(j); }
+      return idx;
+    }
+    function byGroup(list) {
+      var n = d.sizes.map(function () { return 0; });
+      list.forEach(function (i) { n[group[i]]++; });
+      var parts = [];
+      n.forEach(function (c, gi) { if (c) parts.push(c + " " + d.sizes[gi].label.toLowerCase()); });
+      return parts.length > 1 ? parts.slice(0, -1).join(", ") + " and " + parts[parts.length - 1] : "all " + d.sizes[group[list[0]]].label.toLowerCase();
+    }
+    function smallIn(list) { return list.filter(function (i) { return group[i] === 0; }).length; }
+    function span(list) {
+      var rs = list.map(function (i) { return rate[i]; }), hi = Math.max.apply(null, rs), lo = Math.min.apply(null, rs);
+      return hi === lo ? pct(hi) + " percent" : pct(lo) + " to " + pct(hi) + " percent";
+    }
+
+    function draw() {
+      game.classList.toggle("shows-funnel", current === "funnel" && week > 0);
+      el.dots.forEach(function (dot, i) {
+        var has = rate !== null;
+        dot.style.setProperty("--r", has ? Math.min(rate[i], TOP) / TOP : 0);
+        dot.classList.toggle("is-shown", has);
+        dot.classList.toggle("is-worst", has && worst.indexOf(i) >= 0);
+        dot.classList.toggle("was-worst", has && current === "next" && !!prevWorst && prevWorst.indexOf(i) >= 0);
+        dot.classList.toggle("is-worse", i === worse && worldWorse());
+        dot.classList.toggle("is-out", has && current === "funnel" && out.indexOf(i) >= 0);
+      });
+      el.week.textContent = week;
+      el.small.textContent = rate ? smallIn(worst) : 0;
+      el.best.textContent = rate ? smallIn(best) : 0;
+    }
+    function reset() {
+      el.result.textContent = "";
+      if (current !== "next") prevWorst = null;
+      rate = null; week = 0; draw();
+      el.play.textContent = "Play a week";
+    }
+
+    function play() {
+      var picked = game.querySelector("input[name=ranking-guess]:checked"), text = "";
+      if (current === "next") {
+        if (!prevWorst) { oneWeek(); prevWorst = worst.slice(); }
+        else prevWorst = worst.slice();
+      }
+      var idx = oneWeek(); week++;
+      if (current === "equal") prevWorst = worst.slice();
+      draw();
+      if (!playedOnce && picked) text = "You guessed " + picked.value + ". ";
+      if (current === "next") {
+        var stay = worst.filter(function (i) { return prevWorst.indexOf(i) >= 0; }).length;
+        text += "Of last week's five worst, " + (stay === 1 ? "1 is" : stay + " are") + " among the five worst again. ";
+      }
+      text += "This week the five worst stores were " + byGroup(worst) + ", late on " + span(worst) + " of their orders. "
+        + "The five best were " + byGroup(best) + ", late on " + span(best) + ". ";
+      if (current === "worse" || current === "funnel") {
+        var k = idx.indexOf(worse) + 1, small = 0, usual = Math.round(size[worse] * d.late);
+        late.forEach(function (n, i) { if (group[i] === 0) small += n; });
+        text += "The store that really is worse ranked " + ordinal(k) + ", late on " + pct(rate[worse]) + " percent"
+          + (k > 1 ? ", behind " + (k === 2 ? "1 store" : (k - 1) + " stores") + " that only had an unlucky week" : "") + ". "
+          + "Its " + late[worse].toLocaleString("en-US") + " late orders were about " + (late[worse] - usual).toLocaleString("en-US") + " more than a store its size usually has, while all " + d.sizes[0].stores + " small stores together had " + small + ". ";
+      }
+      if (current === "funnel") {
+        var others = out.filter(function (i) { return i !== worse; }).length, found = out.indexOf(worse) >= 0;
+        text += found
+          ? "Outside the funnel this week: " + (others ? "the store that really is worse, and " + (others === 1 ? "1 other store" : others + " other stores") + " by chance. " : "only the store that really is worse. ")
+          : "This week the store that really is worse stayed inside its band" + (others ? ", and " + (others === 1 ? "1 other store" : others + " other stores") + " fell outside by chance" : "") + ". It happens about one week in a hundred. ";
+      }
+      text += d.setups[current].after;
+      el.result.textContent = text.trim();
+      playedOnce = true;
+      el.play.textContent = "Play another week";
+      if (el.takeaway) el.takeaway.hidden = false;
+    }
+
+    el.setupButtons.forEach(function (b) {
+      b.addEventListener("click", function () {
+        current = b.getAttribute("data-setup");
+        el.setupButtons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        el.note.textContent = d.setups[current].note;
+        reset();
+      });
+    });
+    el.play.addEventListener("click", play);
+    game.classList.add("is-live");
+    if (el.takeaway) el.takeaway.hidden = true;
+    reset();
+  }
+
+  all("[data-game]").forEach(function (game) {
+    var kind = game.getAttribute("data-game");
+    if (kind === "waiting") waitingGame(game);
+    else if (kind === "ranking") rankingGame(game);
+    else diceGame(game);
   });
 })();

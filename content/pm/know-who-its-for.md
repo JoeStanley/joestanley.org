@@ -5,6 +5,7 @@ module: know-who-its-for
 question: Whose problem is this, what's it worth to them, and how do you know?
 one_thing: Ask about the last time it happened, not whether they'd want it.
 do_minutes: 30
+game: waiting
 
 last_time:
   - q: Who does your "in order to" leave out?
@@ -62,12 +63,19 @@ steps:
     look: Why urgency and value are hard to tell apart, and what a week of waiting costs.
     trust: Arnold was one of the people who ran the cost-of-delay work at Maersk Line, so it's a practitioner's account from inside the change.
     only: A way to put a price on waiting that a finance team will follow.
+  - id: waiting
+    kind: play
+    title: Play the waiting game
+    minutes: 5
+    where: It's on this page, just below this list.
+    look: What each week of waiting costs, and the order that wastes least.
 check:
   - q: A user says they'd pay $10 a month for a feature. What do you ask next, and why?
     a: "What they pay now, in money or time, for the workaround. As Teresa Torres puts it, \"What did you pay for that service?\" tells you more than any price for a service that doesn't exist yet."
   - q: A change drops the substitution questions from checkout, so it's faster, and has shoppers photograph each swap in the aisle for the customer to confirm. Who pays for the speed, and how would you find out?
     a: The shoppers, in time, and unpaid unless the pay model counts it. You'd find out from the shoppers themselves, not from the customers, who only see the faster checkout.
-  - q: Your vision says customers want one thing, and three interviews in a row describe doing another. When does the vision win, and when do the interviews?
+  - q: Own Your Role asked you to make the vision your own. Yours says customers want one thing, and three interviews in a row describe doing another. When does the vision win, and when do the interviews?
+    against: own-your-role
     a: The interviews win on what the problem is, since they're evidence of what people did. The vision wins on where you're going, as long as its "in order to" still names a problem those people have. When it doesn't, rewrite the sentence, not the interviews.
   - q: "**Beyond this module.** This module shows you how to learn about a problem. What does judging it well take that no course can give you?"
     a: "Product sense: a working knowledge of your own product's domain, what it does and who uses it. You build it in your product, with its people and its data."
@@ -131,7 +139,7 @@ An order has a third person in it, too: the shopper who picks it and brings it t
 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 
-**Start a decision log.** Write down the call you'd make on this problem now, how sure you are, and when you'll know. Keep the page.
+**Start a decision log.** Write down the call you'd make on this problem now, what you expect to happen, how sure you are, and when you'll know. Keep the page: each module from here adds a line.
 
 ## Questions to bring to designers and researchers
 
