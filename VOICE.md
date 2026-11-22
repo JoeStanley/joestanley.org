@@ -45,7 +45,7 @@ The glossary is plain definitions. A reader should be able to go from the Start 
 - Not uniform. Every bullet in a list built the same way, or every paragraph closing on a short sentence, reads as a pattern instead of a person ("Across a list", below).
 - Not preachy about judgment. The syllabus is about product judgment, and each module is one side of it. Say so where it helps, at most once in a module. The word is not a refrain.
 
-Carried over from the standing rules: American English, no em dashes (spec T3), plain and short.
+Carried over from the standing rules: American English, with its punctuation, so a comma or a period that ends a quotation goes inside the closing mark (spec T9); no em dashes (spec T3); plain and short.
 
 ## Before and after
 
