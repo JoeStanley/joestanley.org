@@ -13,6 +13,9 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 - The front door keeps its paragraph, and the placeholder note goes (his pick, in the session).
 - Writing is hidden for now. Games gets a small teaser about what he's working on through the Mesmir studio: the upcoming setting by name, a high-level summary of its narrative and mechanics, the equivalent of an elevator pitch, and a target launch date in late Q1 2027 (in the session).
 - The print allowances that end "when the site goes live" hold until a PDF is published, not until launch (his pick, in the session).
+- He writes the Games teaser himself, starting it in a Mesmir session alongside this work, and provides the language before go-live; a session sets the job's requirement (in the session).
+- Before launch, the working record moves into the private pm-sources: `decisions.md`, `PLAN.md`, the Decisions page's source, the style rounds' history and `VOICE.md`. The public repository keeps what the site needs: the site, its spec and checks with the V1 screenshots, its tools, its workflows and a slimmer `CLAUDE.md`. His inclination was to move every non-essential asset; he picked this after asking what moving the screenshots too would add (his pick, in the session).
+- The public history stays as it is: a clean tree is enough (his pick, in the session).
 
 ## 22 November 2026, the round 5 session
 
