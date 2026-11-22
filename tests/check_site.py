@@ -25,7 +25,11 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
            ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"]),
            ("/pm/map-the-domain/", ["/pm/cards/access-patterns/"]),
-           ("/pm/design-for-change/", ["/pm/cards/coupling/"])]
+           ("/pm/design-for-change/", ["/pm/cards/coupling/"]),
+           ("/pm/change-safely/", ["/pm/cards/error-budgets/"]),
+           ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/"]),
+           ("/pm/decide-and-set-direction/", ["/pm/cards/agency-and-coherence/"]),
+           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/"])]
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
 PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
@@ -1915,6 +1919,25 @@ def source_checks(out_dir):
         used.add(m.get("draft"))
     for d in sorted(drafts - used):
         fail("X1", f"drafts/pm/{d}.md belongs to no module on the map")
+    # X1: the checks visit every built module and its cards, so none is built without being checked in a browser
+    listed = {m_: set(c_) for m_, c_ in MODULES}
+    card_dir = os.path.join(ROOT, "content", "pm", "cards")
+    card_of = {}
+    for f in sorted(os.listdir(card_dir)) if os.path.isdir(card_dir) else []:
+        if f.endswith(".md"):
+            mm = re.search(r"^module:\s*(\S+)", open(os.path.join(card_dir, f), encoding="utf-8").read(), re.M)
+            if mm:
+                card_of.setdefault(mm.group(1), []).append(f"/pm/cards/{f[:-3]}/")
+    for m in mods:
+        if not m.get("page"):
+            continue
+        url = f"/pm/{m['page']}/"
+        if url not in listed:
+            fail("X1", f"Module {m['num']}, {m['title']}, is built, and the checks don't visit it: add it to MODULES in tests/check_site.py")
+            continue
+        for c in card_of.get(m["id"], []):
+            if c not in listed[url]:
+                fail("X1", f"the card {c} is built, and the checks don't visit it: add it to its module in MODULES")
     if FAIL.get("X1"):
         return
     sd = _source_doc()
