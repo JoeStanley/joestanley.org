@@ -150,10 +150,10 @@ left-hand-column:
 trust-equation:
   term: Trust equation
   text: A consultants' model that treats trust as credibility, reliability and intimacy, divided by self-orientation.
-scq:
-  term: Situation, complication, question
-  also: SCQ
-  text: Barbara Minto's opening for a message. The situation is what the reader already accepts, the complication is what changed, and the question is the one that raises, which the rest of the message answers.
+scr:
+  term: SCR
+  also: situation, complication, resolution
+  text: A three-part opening for a message. The situation is what the reader already accepts, the complication is what changed, and the resolution is what you recommend or ask. It adapts Barbara Minto's situation, complication and question.
 stress-position:
   term: Stress position
   text: The end of a sentence, which readers naturally emphasize, so it's the place for what you most want noticed. The term is Gopen and Swan's.

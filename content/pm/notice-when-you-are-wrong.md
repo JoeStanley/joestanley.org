@@ -60,7 +60,7 @@ deeper:
     by: Chris Argyris
     where: A book.
     note: Read chapters 4 to 6.
-    trust: Argyris named double-loop learning, with Donald Schön, and drew the ladder of inference. This is his case for managers, built from field cases and his own work inside companies, not from experiments.
+    trust: It's by the scholar behind all three tools, writing for managers. His evidence is field cases and his own work inside companies, not experiments.
     only: All three tools from their source, with the routines that keep a team from saying what it sees. Chapter 4 has a manager's left-hand column, chapter 5 ends on the ladder, and chapter 6 is double-loop learning.
   - title: Arrival
     by: directed by Denis Villeneuve, written by Eric Heisserer from Ted Chiang's "Story of Your Life" (Paramount, 2016)

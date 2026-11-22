@@ -21,7 +21,7 @@ steps:
     links:
       - text: "People First Leadership"
         url: https://www.lean.org/the-lean-post/articles/people-first-leadership-a-conversation-between-jim-morgan-and-alan-mulally/
-    look: What 300 all-green status charts said about Ford, at a company about to lose billions, and what Mulally, then its chief executive, did when Mark Fields showed a red one.
+    look: What it said about Ford that all 300 status charts showed everything on track, at a company about to lose billions, and what Mulally, then its chief executive, did when Mark Fields showed the first one that didn't.
     trust: It's Mulally telling his own story, years later, on the Lean Enterprise Institute's podcast. One man's memory of his best moment, so hold the details loosely.
     only: "The moment a habit of reporting only good news broke, and the rule behind the habit: at Ford, \"you only brought an issue to your supervisor or your manager when you had a solution.\""
   - id: card-trust-equation
@@ -57,8 +57,8 @@ check:
     a: Reliability. It's a small promise kept, and a steady rhythm of them is what builds it.
   - q: Your update lists only wins. Which part of the trust equation does it put at risk?
     a: Self-orientation, because it reads as being about you.
-  - q: Your update opens with two paragraphs of background and asks for a decision in its last line. What would Minto's opening change?
-    a: It puts the ask near the top, as the answer to a question, after one line the reader already accepts and one on what changed.
+  - q: Your update opens with two paragraphs of background and asks for a decision in its last line. What would SCR change?
+    a: It puts the ask in the opening, as the resolution, after one line the reader already accepts and one on what changed.
 
 deeper:
   - title: The Trusted Advisor
@@ -102,6 +102,6 @@ Credibility isn't handed out evenly, though. In a [2014 report on women in scien
 
 ## Do
 
-**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it the way Barbara Minto, who worked out her method editing reports at McKinsey, teaches: the {{< pm/term "scq" "situation, complication and question" >}}. That's one line your reader already accepts, one on what changed, and the question that raises, which your ask answers. Keep it to a few lines, and include one item that isn't green, such as a sensor-data feed that's been late twice.
+**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's my variant of Barbara Minto's opening, which ends instead on the question the complication raises. Keep it to a few lines, and include one item that isn't on track, such as a sensor-data feed that's been late twice.
 
-**Optional: one story at three sizes (15 minutes).** Turn that item into an ask of your manager. Write it as one sentence, then as a paragraph of under 100 words that opens Minto's way, then as the outline of a one-page memo: the problem, two or three approaches, your recommendation and the open questions. Write each size fresh, with the ask in it, and end your sentences on what you most want noticed, the {{< pm/term "stress-position" "stress position" >}}.
+**Optional: one story at three sizes (15 minutes).** Turn that item into an ask of your manager. Write it as one sentence, then as an SCR paragraph of under 100 words, then as the outline of a one-page memo: the problem, two or three approaches, your recommendation and the open questions. Write each size fresh, with the ask in it, and end your sentences on what you most want noticed, the {{< pm/term "stress-position" "stress position" >}}.

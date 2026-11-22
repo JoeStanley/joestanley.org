@@ -5,10 +5,10 @@
   <text class="fig-label" x="16" y="86">Trust =</text>
 
   <g class="fig-note" text-anchor="middle">
-    <text x="116" y="40">what you say</text><text x="196" y="40">what you do</text><text x="290" y="40">safe to be vulnerable</text>
+    <text x="116" y="40">what you say</text><text x="196" y="40">what you do</text><text x="286" y="40">safe to be vulnerable</text>
   </g>
   <g class="fig-label" text-anchor="middle">
-    <text x="116" y="62">Credibility</text><text x="157" y="62">+</text><text x="196" y="62">Reliability</text><text x="244" y="62">+</text><text x="290" y="62">Intimacy</text>
+    <text x="116" y="62">Credibility</text><text x="157" y="62">+</text><text x="196" y="62">Reliability</text><text x="241" y="62">+</text><text x="283" y="62">Intimacy</text>
   </g>
 
   <path class="fig-line" d="M76,82 L334,82"/>

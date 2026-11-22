@@ -6,6 +6,7 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 
 - He looks for full-path books that are industry-recognized classics, or from the past ten years, highly rated and not pop science (his question in the session, which ruled out Schulz's *Being Wrong* and Galef's *The Scout Mindset*).
 - Notice When You Are Wrong's full path holds Edmondson's *The Fearless Organization* (chapters 1, 4 and 7), Argyris's *Overcoming Organizational Defenses* (chapters 4 to 6) and *Arrival*. Klein's article, Schulz's talk, Argyris's 1977 article and Allspaw's essay leave (his pick, in the session).
+- He prefers SCR, situation, complication and resolution, to Barbara Minto's situation, complication and question: Bring People With You's opening ends on a recommendation, and the module says it's his variant of Minto's, in his first person (his pick, in the session).
 - Bring People With You's full path takes *The Trusted Advisor* back, its chapters on the trust equation and the development of trust, in the Nielsen Norman Group guide's place, beside Cohen and Bradford, Mayer, Davis and Schoorman, and *Ted Lasso* with *Succession* (agree, in the session).
 
 ## 22 November 2026, Module 8's cards, and the round 4 session
