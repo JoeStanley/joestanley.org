@@ -21,98 +21,98 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "4d18e7afa3ab7d091e046ddb2710dfa4c2aec19fbb66a38d213d431201ea8c73",
+   "sha256": "4d9ece2c4b2e755cff9e74db29233838299b7f6eaf2fda79d31c3ee9ae35c655",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1933
+   "rev": 1934
   },
   {
    "name": "1 Know Who It's For",
    "file": "1-know-who-it-s-for.md",
-   "sha256": "1716908ac1a5f8ad863a23335f9b19b3d4a6ae0beba09c500716cdab5fd7dcff",
+   "sha256": "cf356f6d6c4ae6de3b64d50900ec8542fceb684e38808ff6975078a574b34508",
    "doc_tab": "81ce484c-5d49",
    "doc_node": "12526a95-0a50",
-   "rev": 2
+   "rev": 4
   },
   {
    "name": "2 See the System",
    "file": "2-see-the-system.md",
-   "sha256": "c58b355ce1c5171474313723adaba8e080ac808597b80b744fe3e4483fc29a84",
+   "sha256": "a7e32c7653fbd02c2f9a2c0be27d5c201cf81fea2be982f6db4acf3ee8948049",
    "doc_tab": "82ecdb77-b286",
    "doc_node": "75410f3d-2ea1",
-   "rev": 458
+   "rev": 459
   },
   {
    "name": "3 Find the Constraint",
    "file": "3-find-the-constraint.md",
-   "sha256": "b98f52c85b88c9cdf666e3947431b69cea5954fa8e7b1189a163e0fe8f70ad29",
+   "sha256": "14c8b404bce9ad739920754c5b7046df3d891e4c9f6ce70a14ffc0a98e8e317c",
    "doc_tab": "2a162ad5-e7b3",
    "doc_node": "8b268877-78f7",
-   "rev": 79
+   "rev": 80
   },
   {
    "name": "4 Mind the Seams",
    "file": "4-mind-the-seams.md",
-   "sha256": "af1b13fd68ac31341c5b4b82d789f2c686960aa0f4eec5d9feec7b1843ed46e8",
+   "sha256": "2cb4fd5959f817895540f2f65792e0265bbffaf6a92d48c069804d16655982ce",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 388
+   "rev": 389
   },
   {
    "name": "5 Design for Change",
    "file": "5-design-for-change.md",
-   "sha256": "ae728b92c49ec496efc660523809ff8172ea7af5d90931c694aa9be6da32ef14",
+   "sha256": "d9f83f6560571ea92f5432681c8de86144f9bdfc4d9d5ea891ae85c2079192d1",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 380
+   "rev": 381
   },
   {
    "name": "6 Change Safely",
    "file": "6-change-safely.md",
-   "sha256": "03a63e30bfc7d4c753ace2d13735ff8ca681b28e5042bca5eaa5821c274fd6e2",
+   "sha256": "8e3b770e2aa1fc31e48540869513c3bf4e412dbb05a10423dd182eb4032807ab",
    "doc_tab": "9317d9d1-2129",
    "doc_node": "a29f117c-7f2e",
-   "rev": 43
+   "rev": 44
   },
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "2edbfc0697be719dc231035006fd066a6cc05e71313f8a7b20e32b24a4c0cc07",
+   "sha256": "459e8b73e3ff98aa8ecb13781f6b1accfe0211fcef1a52b082e1a75a51850665",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 31
+   "rev": 33
   },
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "be8344ac046d699b1e8b0a5f8df421c6d7500a985f5363426159eb73330e79e9",
+   "sha256": "1de2299f01dbc614bed6f97da44ceefe92e00ec9e9540b9c9a8a9d9d9b058da9",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 207
+   "rev": 208
   },
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "8b6d7bb6271bf218c22e7021c8f8f9ebb9153204fffd1733336162eb1b1b174b",
+   "sha256": "9a93ec51ccaef74e1dcd94cadb37bb0ad1844fc7465eb6e19fd200180ea37216",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 432
+   "rev": 433
   },
   {
    "name": "10 Notice When You Are Wrong",
    "file": "10-notice-when-you-are-wrong.md",
-   "sha256": "586efb99034145200277897910bcd91da76c3115af7752f34b14146d5ddb4d5f",
+   "sha256": "d7d5cdce696b74d433acfcb89c6188381b98a950b6a3eebbae9bfdcbee752050",
    "doc_tab": "73278a69-a68a",
    "doc_node": "0e614323-8b2d",
-   "rev": 29
+   "rev": 30
   },
   {
    "name": "11 Bring People With You",
    "file": "11-bring-people-with-you.md",
-   "sha256": "58eeaefc9c35172424c62ad0a9dec1e909ea5413ef7fd6a82fe7e9e04efb267e",
+   "sha256": "2e53a5fc71a6d189e06632d358f80278c38109d567b106522168a050d6058a76",
    "doc_tab": "8bbdca60-921f",
    "doc_node": "2f658fd4-20e8",
-   "rev": 990
+   "rev": 991
   },
   {
    "name": "Glossary",

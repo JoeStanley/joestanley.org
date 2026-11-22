@@ -85,7 +85,7 @@
 .notes dd { display: inline; }
 
 
-/* The dice game */
+/* The games (spec J5), the dice game first */
 .game { margin-left: calc(var(--pad) * -1); margin-right: calc(var(--pad) * -1); padding: var(--sp-5) var(--pad); background: var(--panel); }
 .game > h2:first-child { margin-top: 0; }
 .game p { margin: 0 0 var(--sp-3); }
@@ -126,11 +126,44 @@
 .takeaway ol { margin: 0 0 var(--sp-3); padding-left: 1.25rem; }
 .takeaway li { margin: var(--sp-1) 0; }
 .takeaway li::marker { font-family: var(--ui); font-weight: var(--w-strong); }
+.game .limits { margin: 0 0 var(--sp-3); }
 .game .credit { margin: 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
 .example table { width: 100%; border-collapse: collapse; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); margin: var(--sp-2) 0 var(--sp-3); font-variant-numeric: tabular-nums; }
 .example th, .example td { padding: var(--sp-1) var(--sp-1); border-bottom: 1px solid var(--rule); text-align: right; }
 .example th:first-child { text-align: left; font-weight: var(--w-strong); }
 .example thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
+
+/* The waiting game and the ranking game (spec J5) share the dice game's panel, guess, tally, setups and takeaway. */
+.game .jobs { margin: var(--sp-2) 0 var(--sp-3); padding-left: 1.25rem; }
+.game .jobs li { margin: var(--sp-1) 0; }
+.setups.order { margin-top: var(--sp-4); }
+.pick-list { margin: var(--sp-2) 0 var(--sp-3); padding: 0; list-style: none; display: grid; gap: var(--sp-2); }
+.setup.pick::before { content: none; }
+.setup.pick[aria-pressed="true"] { box-shadow: none; font-weight: var(--w-regular); }
+.pick-place:not(:empty) { display: inline-block; min-width: 2.4em; margin-right: var(--sp-2); text-align: center; border: 1px solid var(--ink); border-radius: 0.2rem; font-weight: var(--w-strong); }
+.board-waiting { display: block; min-height: 0; padding: var(--sp-2); }
+/* On a phone each job's name sits above its row of weeks; from 46rem it sits beside them. */
+.wk-row { display: grid; grid-template-columns: repeat(var(--weeks), minmax(0, 1fr)); column-gap: 2px; align-items: center; margin: 0 0 var(--sp-2); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.wk-row .wk-name { grid-column: 1 / -1; }
+.wk-row:last-child { margin-bottom: 0; }
+.wk-name { padding-right: var(--sp-1); overflow-wrap: anywhere; }
+.wk { aspect-ratio: 1; border: 1px solid var(--rule); border-radius: 0.15rem; }
+.wk.is-build { border: 2px solid var(--ink); }
+.wk.is-wait { background: var(--mark); border-color: var(--ink); }
+.board-ranking { grid-template-columns: 2.25rem 1.7fr 1.2fr 0.8fr; gap: 0 var(--sp-2); align-items: stretch; min-height: 0; padding: var(--sp-3) var(--sp-2) var(--sp-2); }
+.rk-axis { position: relative; height: 12rem; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.rk-axis span { position: absolute; right: 0; bottom: calc(var(--y) / 40 * 100%); transform: translateY(50%); font-variant-numeric: tabular-nums; }
+.rk-col { display: flex; flex-direction: column; min-width: 0; }
+.rk-plot { position: relative; height: 12rem; border-bottom: 1px solid var(--ink); background: repeating-linear-gradient(to top, var(--rule) 0 1px, transparent 1px 25%); }
+.rk-label { margin-top: var(--sp-1); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); text-align: center; }
+.rk-band { position: absolute; left: 0; right: 0; bottom: calc(var(--lo) / 40 * 100%); height: calc((var(--hi) - var(--lo)) / 40 * 100%); background: var(--rule); border-radius: 0.2rem; visibility: hidden; }
+.shows-funnel .rk-band { visibility: visible; }
+.rk-dot { position: absolute; left: calc((var(--i) + 0.5) / var(--n) * 100%); bottom: calc(var(--r, 0) * 100%); width: 0.65rem; height: 0.65rem; transform: translate(-50%, 50%); border: 1.5px solid var(--ink); border-radius: 50%; background: var(--paper); visibility: hidden; transition: bottom 0.3s ease-out; }
+.rk-dot.is-shown { visibility: visible; }
+.rk-dot.is-worst { background: var(--mark); }
+.rk-dot.was-worst { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink); }
+.rk-dot.is-worse { border-radius: 0.1rem; }
+.rk-dot.is-out { border-width: 3px; }
 
 /* Go deeper: folded until asked for. */
 /* Its Open and Close label is the full path's own, set at the right on the line under the hint, inside the heading's
@@ -212,6 +245,8 @@
 @media (min-width: 46rem) {
   .tally { grid-template-columns: repeat(4, auto); justify-content: start; gap: 0 var(--sp-5); }
   .setup-list { grid-template-columns: 1fr 1fr; }
+  .wk-row { grid-template-columns: minmax(0, 8rem) repeat(var(--weeks), minmax(0, 1fr)); margin-bottom: var(--sp-1); }
+  .wk-row .wk-name { grid-column: auto; }
   .game { margin-left: 0; margin-right: 0; padding: var(--sp-5); border-radius: 0.4rem; }
 }
 @media (min-width: 64rem) {
@@ -250,7 +285,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pile { transition: none; }
+  .pile, .rk-dot { transition: none; }
 }
 
 /* Print: the PDF is made from this. One unit starts a new page; a card fits on one page. Always light.
@@ -278,6 +313,9 @@
   .step-links li { margin: var(--sp-1) 0; }
 
   .game { break-inside: avoid; }
+  /* The waiting and ranking games are longer than the dice game: they may break across pages, but their parts don't. */
+  .game[data-game="waiting"], .game[data-game="ranking"] { break-inside: auto; }
+  .game .jobs, .game .example table, .game .takeaway, .game .takeaway li { break-inside: avoid; }
   .game .example { display: block !important; }
   .game .takeaway { display: block !important; }
 

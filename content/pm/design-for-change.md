@@ -51,8 +51,11 @@ check:
     a: The slowest layer it touches sets the cost. If it reaches into the data model, a core system or a contract, it moves at that layer's pace.
   - q: An engineer says search and the inventory system are tightly coupled. What do you ask?
     a: For which change? Parts are coupled only with respect to a particular change, so name the one you expect and ask whether it would make both move.
-  - q: A small change needed edits in a dozen places, then broke something nobody expected. How do you describe it without naming a culprit?
-    a: "Name the symptoms: change amplification, then an unknown unknown. Both describe the design, not the people, and both show where it could be cheaper to change."
+  - q: Know Who It's For put a price on every week of waiting. This module asks you to spend weeks making likely changes cheap. When does each win?
+    against: know-who-its-for
+    a: Price both. When a change is likely and soon, making it cheap pays for itself in the weeks it saves later. When it's a guess, ship the value now, and count the rework in the price of the decision.
+  - q: "**Beyond this module.** Your list stops at what you build and the phones it runs on. What slow layer lives in your customers' heads?"
+    a: Their habits, and what they've learned to do on your screens. A redesign that's quick for you can be slow for them. After your next change to a screen people use every day, read your support queue for a week.
 
 deeper:
   - title: Designing Data-Intensive Applications
@@ -101,6 +104,8 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 ## Do
 
 **List your product's layers (25 minutes).** Take one product or journey you own and list its parts from fastest-changing to slowest: wording, screens, business rules, APIs, the data model, core systems of record, the contracts and laws it must meet. Note how often each changed in the last year. Then take the last request that ran long. Which layers did it touch, and which symptom of complexity showed?
+
+**For your decision log.** Write how long you expect the next request that touches your slowest layer to take, and how sure you are. You'll know when it ships.
 
 **Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as a second currency at checkout, and trace the parts it would touch. Then ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 

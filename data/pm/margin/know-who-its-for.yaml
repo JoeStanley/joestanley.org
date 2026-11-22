@@ -41,6 +41,12 @@ step-govuk: ""
 # Short path, step 5: Joshua Arnold, “Cost of Delay”
 step-arnold: ""
 
+# Short path, step 6: Play the waiting game
+step-waiting: ""
+
+# The waiting game
+waiting-game: ""
+
 # Do
 do: ""
 

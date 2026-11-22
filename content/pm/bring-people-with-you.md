@@ -53,12 +53,15 @@ steps:
     only: A reason, not just a rule, for why some sentences are hard to read.
 
 check:
-  - q: An update arrives on the day you promised it. Which part of the trust equation does that build?
-    a: Reliability. It's a small promise kept, and a steady rhythm of them is what builds it.
+  - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation first. When does each hold?
+    against: decide-and-set-direction
+    a: SCR is for when someone else makes the call. They need your view from the first line, so they can weigh it. Speaking last is for when the call is yours, and you need the room's views more than its agreement.
   - q: Your update lists only wins. Which parts of the trust equation does it work against?
     a: Two. Self-orientation goes up, because it reads as being about you, and credibility goes down, because nobody believes nothing's wrong.
   - q: Your update opens with two paragraphs of background and asks for a decision in its last line. What would SCR change?
     a: It puts the ask in the opening, as the resolution, after one line the reader already accepts and one on what changed.
+  - q: "**Beyond this module.** Whose trust will you need in a year that you haven't started to earn?"
+    a: Someone your work will soon depend on, such as a team you'll need next year or a leader two levels up. Name one, and ask your manager how that person likes to hear news.
 
 deeper:
   - title: The Trusted Advisor
@@ -96,12 +99,14 @@ First, think about the milestones and outcomes you'd want to tell people about: 
 
 So second, think about a regular cadence of updates. Many businesses operate off of a business work week or month, though I try to anchor my communications to the sprint schedule of my teams. Whatever rhythm you pick, say what has happened and what will happen next. People inside it, like your peers and your management chain especially, want to be brought along, both to learn and to avoid surprises.
 
-Credibility isn't handed out evenly, though. In a [2014 report on women in science](https://worklifelaw.org/publication/double-jeopardy-gender-bias-against-women-of-color-in-science/), about two thirds said they'd had to prove their competence again and again, and Black women said so most often. It's a survey of one association's members, not a peer-reviewed study, but it's one of the few that breaks the pattern down by race. So notice whose updates you take on trust, and whose you check.
+Credibility isn't handed out evenly, though. In a [2014 report on women in science](https://worklifelaw.org/publication/double-jeopardy-gender-bias-against-women-of-color-in-science/), about two thirds said they'd had to prove their competence again and again, and Black women said so most often. It's a survey of one association's members, not a peer-reviewed study, but it's one of the few that breaks the pattern down by race. So notice whose updates you take on trust, and whose you check: it's Weigh the Evidence's question, how much weight a piece of evidence deserves, asked of the people who bring it.
 
 [//]: # (short-path)
 
 ## Do
 
 **Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every site's morning dashboard runs on the sensor feed. It's been late twice this week. Let's start the pilot on Thursday, once the retry is fixed." Keep the update to a few lines, include one item that isn't on track, and end its line on what you need, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
+
+**For your decision log.** Write how you expect your senior reader to take the item that isn't on track, and how sure you are. You'll know by their reply.
 
 **Optional: one story at three sizes (15 minutes).** Turn that item into an ask of your manager. Write it as one sentence, then as an SCR paragraph of under 100 words, then as the outline of a one-page memo: the problem, two or three approaches, your recommendation and the open questions. Write each size fresh, with the ask in it. SCR puts the ask at the top of the message. Inside each sentence, end on what you most want noticed.

@@ -112,7 +112,8 @@ run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"n
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
 wait
 run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('And if you work together', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nAnd if you work together', 1))\""
-run_bg "a module whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/find-the-constraint.md'; s=open(p).read(); open(p, 'w').write(s.replace('Before you trust a stand-in', 'A sentence that runs on to fill the page. ' * 90 + 'Before you trust a stand-in', 1))\""
+run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/design-for-change.md'; s=open(p).read(); open(p, 'w').write(s.replace('Slow isn\\'t the enemy, though.', 'A sentence that runs on to fill the page. ' * 90 + 'Slow isn\\'t the enemy, though.', 1))\""
+run_bg "a module with a game that runs past even a game's allowance" P1 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); open(p, 'w').write(s.replace('Start with what people do, not what they say', 'A sentence that runs on to fill the page. ' * 120 + 'Start with what people do, not what they say', 1))\""
 wait
 
 # The print layout at two thirds (job 10, 21 November 2026): notes in a module's print margin, notes that run on
@@ -148,4 +149,18 @@ run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 
 run_bg "a comma back outside a closing quotation mark" T9 "sed -i 's/\"Leverage Points,\" first half/\"Leverage Points\", first half/' content/pm/see-the-system.md"
 run_bg "a period back outside a quoted title in a source's note" T9 "sed -i 's/Backward Design.\\\\\"/Backward Design\\\\\"./' content/pm/own-your-role.md"
 run_bg "an em dash in the voice guide, which lives in pm-sources" T3 "mkdir .pm-sources && cp \"\${PM_SOURCES:-\$SRC/../pm-sources}/VOICE.md\" .pm-sources/ && printf '\\nA line \\xe2\\x80\\x94 with an em dash.\\n' >> .pm-sources/VOICE.md"
+run_bg "a Check that doesn't end beyond its module" J1 "sed -i 's/\*\*Beyond this module\.\*\* Once you.ve chosen/Once you have chosen/' content/pm/decide-and-set-direction.md"
+run_bg "a collision with no against" J2 "sed -i '/^    against: see-the-system$/d' content/pm/find-the-constraint.md"
+run_bg "a collision set against a later module" J2 "sed -i 's/^    against: own-your-role$/    against: weigh-the-evidence/' content/pm/mind-the-seams.md"
+run_bg "the log's review under the wrong label" J3 "sed -i 's/^\*\*Review your decision log\.\*\*/**For your decision log.**/' content/pm/notice-when-you-are-wrong.md"
+run_bg "the decision log's line after the optional exercise" J3 "python3 -c 'p=\"content/pm/find-the-constraint.md\"; s=open(p).read(); l=[x for x in s.split(chr(10)) if x.startswith(\"**For your decision log.**\")][0]; s=s.replace(l+chr(10)+chr(10), \"\", 1).rstrip()+chr(10)+chr(10)+l+chr(10); open(p, \"w\").write(s)'"
+run_bg "a module that names no earlier one" J4 "sed -i 's/ The longest wait you mapped in Find the Constraint may well sit at one of them\.//' content/pm/mind-the-seams.md"
+run_bg "a game that doesn't say what it leaves out" J5 "sed -i '/<p class=\"limits\">/d' layouts/partials/pm/rankinggame.html"
+run_bg "a total the waiting game's jobs don't give" J5 "sed -i 's/^    total: 493000$/    total: 439000/' data/pm/waitgame.yaml"
+run_bg "the waiting game off the short path" J5 "sed -i '/^  - id: waiting$/,/^    look: What each week of waiting costs/d' content/pm/know-who-its-for.md"
+run_bg "the waiting game's result a week off its board" A8 "sed -i 's/ in week \") + p\[id\]\.live; });/ in week \") + (p[id].live + 1); });/' assets/js/pm.js"
+run_bg "the ranking game's board hiding the small stores among the worst" A8 "sed -i 's/dot.classList.toggle(\"is-worst\", has \&\& worst.indexOf(i) >= 0);/dot.classList.toggle(\"is-worst\", has \&\& worst.indexOf(i) >= 0 \&\& group[i] > 0);/' assets/js/pm.js"
+run_bg "the waiting game's Play disabled during a run" A9 "sed -i 's/running = true; busyOn(el.play, true);/running = true; el.play.disabled = true;/' assets/js/pm.js"
+run_bg "the waiting game's recorded orders hidden without JavaScript" D1 "echo '.game[data-game=waiting] .example { display: none; }' >> assets/css/pm.css"
+run_bg "the waiting game animated with reduced motion" D5 "sed -i 's/if (still()) { wk = W; draw(); finish(); return; }//' assets/js/pm.js"
 wait

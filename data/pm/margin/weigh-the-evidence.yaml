@@ -29,11 +29,17 @@ short-path: ""
 # Short path, step 1: The Law of Small Numbers
 step-card-small-numbers: ""
 
-# Short path, step 2: Eileen Munro, “Decision making under uncertainty in child protection”
+# Short path, step 2: Play the ranking game
+step-ranking: ""
+
+# Short path, step 3: Eileen Munro, “Decision making under uncertainty in child protection”
 step-munro: ""
 
-# Short path, step 3: Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, “Can I make this policy work here?”
+# Short path, step 4: Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, “Can I make this policy work here?”
 step-cartwright: ""
+
+# The ranking game
+ranking-game: ""
 
 # Do
 do: ""

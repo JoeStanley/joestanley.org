@@ -2,7 +2,7 @@
        Without JavaScript, and in print, the reader gets the rules, one recorded run and the takeaway. */ -}}
 {{- $d := site.Data.pm.dicegame -}}
 {{- $first := $d.setups.equal -}}
-<section class="game" id="dice-game" data-game data-slot="dice-game">
+<section class="game" id="dice-game" data-game="dice" data-slot="dice-game">
   <h2>The dice game</h2>
   {{- partial "pm/margin.html" (dict "p" .p "unit" .unit "slot" "dice-game") }}
   <p>Five people pass work down a line, left to right. Each round, everyone rolls a die in turn and passes on that many items, or everything they have if that is fewer. The first person never runs out.</p>
@@ -75,6 +75,7 @@
       <li>The pile shows you where the constraint is.</li>
       <li>Speed added anywhere else mostly becomes a queue, not output.</li>
     </ol>
+    <p class="limits"><strong>What the game leaves out.</strong> Real steps aren't dice. People help each other out, and the constraint moves once you've relieved it. The game shows why a line falls short of its averages. It can't tell you where yours is stuck, and your map of waiting times can.</p>
     <p class="credit">The game comes from the Boy Scout hike in <cite>The Goal</cite>, which is on the full path below.</p>
   </div>
 </section>

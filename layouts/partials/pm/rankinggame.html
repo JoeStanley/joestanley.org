@@ -1,0 +1,84 @@
+{{- /* The ranking game (spec J5), in Weigh the Evidence. The stores, the funnel and every average live in
+       data/pm/rankgame.yaml, which tools-pm/game-numbers.py holds to a fresh simulation. Without JavaScript, and in
+       print, the reader gets the rules, one recorded week, the averages and the takeaway. */ -}}
+{{- $d := site.Data.pm.rankgame -}}
+{{- $a := $d.averages -}}
+{{- $setups := slice "equal" "next" "worse" "funnel" -}}
+{{- $stores := 0 -}}{{- range $d.sizes }}{{ $stores = add $stores .stores }}{{ end -}}
+<section class="game" id="ranking-game" data-game="ranking" data-slot="ranking-game">
+  <h2>The ranking game</h2>
+  {{- partial "pm/margin.html" (dict "p" .p "unit" .unit "slot" "ranking-game") }}
+  <p>A grocery app ranks its {{ $stores }} stores every week by the share of their orders that were late. Every store is late on 1 order in 10, so none is better run than another. They differ only in size. Each week, {{ range $i, $g := $d.sizes }}{{ if $i }}{{ if eq $i (sub (len $d.sizes) 1) }}, and {{ else }}, {{ end }}{{ end }}each of the {{ $g.stores }} {{ lower $g.label }} stores fills {{ lang.FormatNumber 0 $g.orders }}{{ if not $i }} orders{{ end }}{{ end }}.</p>
+
+  <div class="game-live">
+    <fieldset class="guess">
+      <legend>Before you play, guess. Of this week's five worst stores, how many are small?</legend>
+      <label><input type="radio" name="ranking-guess" value="one or two"> One or two</label>
+      <label><input type="radio" name="ranking-guess" value="about half, their share of the stores"> About half, their share of the stores</label>
+      <label><input type="radio" name="ranking-guess" value="four or five"> Four or five</label>
+    </fieldset>
+
+    {{- /* The board and its key are hidden from screen readers; the result after each run says what it shows. */}}
+    <div class="board board-ranking" aria-hidden="true">
+      <div class="rk-axis">{{ range slice 40 30 20 10 0 }}<span style="--y: {{ . }}">{{ . }}%</span>{{ end }}</div>
+      {{- range $gi, $g := $d.sizes }}
+      {{- $f := index $d.funnel $gi }}
+      <div class="rk-col" data-col="{{ $gi }}" style="--n: {{ $g.stores }}">
+        <div class="rk-plot">
+          <span class="rk-band" style="--lo: {{ index $f 0 }}; --hi: {{ index $f 1 }}"></span>
+          {{- range seq $g.stores }}<span class="rk-dot" style="--i: {{ sub . 1 }}"></span>{{ end }}
+        </div>
+        <span class="rk-label">{{ $g.label }}</span>
+      </div>
+      {{- end }}
+    </div>
+    <p class="board-key" aria-hidden="true">Each dot is a store, as high as its late rate. A yellow dot is one of the week's five worst, and a ringed one was among the five worst the week before. The square is the store that really is worse, and the band, once drawn, is the range chance allows for that size.</p>
+
+    <p class="tally" aria-live="off">
+      <span>Week <b data-week>0</b><span class="sr">.</span></span>
+      <span>Small stores in the five worst <b data-small>0</b><span class="sr">.</span></span>
+      <span>In the five best <b data-best>0</b><span class="sr">.</span></span>
+    </p>
+
+    <div class="controls">
+      <button type="button" class="btn" data-play>Play a week</button>
+    </div>
+    <p class="result" data-result role="status"></p>
+
+    <div class="setups">
+      <p class="setups-label">Then change one thing at a time, and play again.</p>
+      <ol class="setup-list">
+        {{- range $i, $k := $setups }}
+        <li><button type="button" class="setup" data-setup="{{ $k }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ (index $d.setups $k).label }}</button></li>
+        {{- end }}
+      </ol>
+      <p class="setup-note" data-setup-note aria-live="polite">{{ $d.setups.equal.note }}</p>
+    </div>
+    <script type="application/json" data-game-setups>{{ dict "setups" $d.setups "sizes" $d.sizes "late" $d.late "worse_late" $d.worse_late "funnel" $d.funnel | jsonify | safeJS }}</script>
+  </div>
+
+  <div class="example">
+    <h3>One recorded week, every store the same</h3>
+    <table>
+      <thead><tr><th scope="col">Size</th><th scope="col">Late, lowest to highest</th><th scope="col">In the five worst</th><th scope="col">In the five best</th></tr></thead>
+      <tbody>
+        {{- range $d.example }}
+        <tr><th scope="row">{{ .label }}</th><td>{{ .lowest }} to {{ .highest }} percent</td><td>{{ .worst }}</td><td>{{ .best }}</td></tr>
+        {{- end }}
+      </tbody>
+    </table>
+    {{- $r := $a.worse_rank }}
+    <p>Simulated 200,000 times, the five worst hold {{ $a.small_worst }} small stores on average, and the five best {{ $a.small_best }}. Of one week's five worst, {{ $a.stay }} are there again the next week. A large store that really is late on 13 orders in 100 comes about {{ $r }}{{ if eq $r 1 }}st{{ else if eq $r 2 }}nd{{ else if eq $r 3 }}rd{{ else }}th{{ end }}, and in the five worst only {{ $a.worse_in_worst }} weeks in 100. The funnel picks it out alone in {{ $a.worse_alone }}.</p>
+  </div>
+
+  <div class="takeaway" data-takeaway>
+    <h3>What to take away</h3>
+    <ol>
+      <li>Both ends of a ranking by rate belong to the smallest groups, by chance alone.</li>
+      <li>The next week they trade places, so help for the worst looks as if it worked, and praise for the best as if it backfired.</li>
+      <li>A real problem can sit in the middle of the ranking, at a big store, where it costs the most. Judge a rate against its size, as the funnel does, before you rank.</li>
+    </ol>
+    <p class="limits"><strong>What the game leaves out.</strong> Real stores differ in more than size. Their neighborhoods and their staff move a late rate too, so the funnel is a first filter, not a verdict. And small stores have a use the ranking hides: they're cheap places to try a fix before the large ones get it. One small store's result swings as much as its rank does, though, so try the fix in several, and compare them with small stores that didn't get it.</p>
+    <p class="credit">Comparing 52 fertility clinics in 1998, Clare Marshall and David Spiegelhalter found that ranks are <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC28567/">"extremely unreliable statistical summaries of performance,"</a> above all for the smaller clinics. Spiegelhalter later made the case for funnel plots, which "avoid spurious ranking of institutions into 'league tables'" (<cite>Statistics in Medicine</cite>, 2005). His <cite>The Art of Statistics</cite> is on the full path below.</p>
+  </div>
+</section>

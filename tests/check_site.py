@@ -44,8 +44,10 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
+GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
+                 # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 80   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 89   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -959,36 +961,66 @@ def a11y_checks(browser, ctx, base, out_dir):
     except Exception as e:  # a broken page must fail its rule, not stop the suite
         fail("A5", f"check could not finish: {str(e).splitlines()[0][:160]}")
 
-    # A8: the dice game in words (reduced motion, so a run finishes at once)
-    try:
-        c = ctx(viewport={"width": 1280, "height": 900}, reduced_motion="reduce"); pg = c.new_page(); pg.set_default_timeout(8000); pg.goto(base + "/pm/find-the-constraint/")
-        attrs = pg.evaluate("""() => ({key: document.querySelector('.board-key') ? document.querySelector('.board-key').closest('[aria-hidden=true]') !== null : true,
-            note: (() => { const n = document.querySelector('[data-setup-note]'); return !!n && (n.getAttribute('aria-live') === 'polite' || n.getAttribute('role') === 'status' || !!n.closest('[aria-live=polite], [role=status]')); })()})""")
-        if not attrs["key"]:
-            fail("A8", "the key to the board is read by screen readers, but the board is hidden from them")
-        if not attrs["note"]:
-            fail("A8", "a change of setup is not announced")
-        for setup in ("equal", "slow3"):
-            pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
-            res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent,
-                board: [...document.querySelectorAll('.st')].slice(1).map(st => +(st.querySelector('.pile-n').textContent || 0))})""")
-            said = {int(st): int(n) for n, st in re.findall(r"(\d+) at station (\d)", res["text"])}
-            for i, n in enumerate(res["board"], start=2):
-                if said.get(i) != n:
-                    fail("A8", f"setup {setup}: the result says {said.get(i)} waiting at station {i}; the board shows {n}")
-        c.close()
-    except Exception as e:  # a broken page must fail its rule, not stop the suite
-        fail("A8", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    # A8: each game in words (reduced motion, so a run finishes at once)
+    for g, mid in GAMES.items():
+        try:
+            c = ctx(viewport={"width": 1280, "height": 900}, reduced_motion="reduce"); pg = c.new_page(); pg.set_default_timeout(8000); pg.goto(base + f"/pm/{mid}/")
+            attrs = pg.evaluate("""() => ({key: document.querySelector('.board-key') ? document.querySelector('.board-key').closest('[aria-hidden=true]') !== null : true,
+                note: (() => { const n = document.querySelector('[data-setup-note]'); return !!n && (n.getAttribute('aria-live') === 'polite' || n.getAttribute('role') === 'status' || !!n.closest('[aria-live=polite], [role=status]')); })()})""")
+            if not attrs["key"]:
+                fail("A8", f"the {g} game: the key to the board is read by screen readers, but the board is hidden from them")
+            if not attrs["note"]:
+                fail("A8", f"the {g} game: a change of setup is not announced")
+            if g == "dice":
+                for setup in ("equal", "slow3"):
+                    pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
+                    res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent,
+                        board: [...document.querySelectorAll('.st')].slice(1).map(st => +(st.querySelector('.pile-n').textContent || 0))})""")
+                    said = {int(st): int(n) for n, st in re.findall(r"(\d+) at station (\d)", res["text"])}
+                    for i, n in enumerate(res["board"], start=2):
+                        if said.get(i) != n:
+                            fail("A8", f"the dice game, setup {setup}: the result says {said.get(i)} waiting at station {i}; the board shows {n}")
+            elif g == "waiting":
+                for setup in ("biggest", "cd3"):
+                    pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
+                    res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent, cost: document.querySelector('[data-cost]').textContent,
+                        rows: Object.fromEntries([...document.querySelectorAll('[data-row]')].map(r => [r.getAttribute('data-row'), r.querySelectorAll('.wk.is-wait, .wk.is-build').length]))})""")
+                    jobs = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "waitgame.yaml"), encoding="utf-8"))["jobs"]
+                    for j in jobs:
+                        m_ = re.search(re.escape(j["short"]) + r"(?: went live)? in week (\d+)", res["text"])
+                        if not m_ or int(m_.group(1)) != res["rows"].get(j["id"]):
+                            fail("A8", f"the waiting game, {setup}: the result says {j['short']} went live in week {m_.group(1) if m_ else 'none'}; the board shows {res['rows'].get(j['id'])} weeks before it was live")
+                    if res["cost"] not in res["text"]:
+                        fail("A8", f"the waiting game, {setup}: the result doesn't say what the board's tally does, {res['cost']}")
+            else:
+                for setup in ("equal", "funnel"):
+                    pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
+                    res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent,
+                        small: document.querySelectorAll('.rk-col[data-col="0"] .rk-dot.is-worst').length, out: document.querySelectorAll('.rk-dot.is-out').length})""")
+                    m_ = re.search(r"five worst stores were (all small|(\d+) small)", res["text"])
+                    said = 5 if m_ and m_.group(1) == "all small" else int(m_.group(2)) if m_ and m_.group(2) else 0
+                    if said != res["small"]:
+                        fail("A8", f"the ranking game, {setup}: the result says {said} small stores in the five worst; the board shows {res['small']}")
+                    if setup == "funnel":
+                        o = re.search(r"(\d+) other stores?", res["text"])
+                        n_out = (0 if "stayed inside" in res["text"] else 1) + (int(o.group(1)) if o else 0)
+                        if n_out != res["out"]:
+                            fail("A8", f"the ranking game, funnel: the result puts {n_out} stores outside the funnel; the board shows {res['out']}")
+            c.close()
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("A8", f"the {g} game: check could not finish: {str(e).splitlines()[0][:160]}")
 
     # A9: focus is never dropped
     try:
-        c = ctx(viewport={"width": 1280, "height": 900}); pg = c.new_page(); pg.set_default_timeout(8000); pg.goto(base + "/pm/find-the-constraint/")
-        pg.focus("[data-play]"); pg.keyboard.press("Enter"); pg.wait_for_timeout(500)
-        if not pg.evaluate("document.activeElement.matches('[data-play]')"):
-            fail("A9", "pressing Play drops focus while the game runs")
-        pg.wait_for_timeout(4500)
-        if not pg.evaluate("document.activeElement.matches('[data-play]')"):
-            fail("A9", "focus is not on Play when the game finishes")
+        c = ctx(viewport={"width": 1280, "height": 900}); pg = c.new_page(); pg.set_default_timeout(8000)
+        for g, mid in GAMES.items():
+            pg.goto(base + f"/pm/{mid}/")
+            pg.focus("[data-play]"); pg.keyboard.press("Enter"); pg.wait_for_timeout(500)
+            if not pg.evaluate("document.activeElement.matches('[data-play]')"):
+                fail("A9", f"the {g} game: pressing Play drops focus while the game runs")
+            pg.wait_for_timeout(4500)
+            if not pg.evaluate("document.activeElement.matches('[data-play]')"):
+                fail("A9", f"the {g} game: focus is not on Play when the game finishes")
         pg.goto(base + "/pm/all/")
         target = pg.evaluate("[...document.querySelectorAll('.unit-nav a')].map(a => a.getAttribute('href')).pop()")
         pg.focus(f".unit-nav a[href='{target}']"); pg.keyboard.press("Enter"); pg.wait_for_timeout(200)
@@ -1567,11 +1599,14 @@ def unit_page_checks(pdf_path, n_pages):
     if any(u[0] is None for u in units):
         fail("P1", "a unit's bookmark does not land on a page, so its pages cannot be counted"); return
     units.sort(key=lambda u: u[0])
+    mods_ = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    with_game = {f"Module {m['num']}: {m['title']}" for m in mods_ if m["id"] in GAMES.values()}
     for (pg, kind, title, deeper), nxt in zip(units, units[1:] + [(n_pages, "", "", None)]):
         n = nxt[0] - pg
         # a module's full path prints outside its three pages: it starts within them, and may take two more
         share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
-        grace = MODULE_GRACE if kind == "module" else 0   # the website first: a module's extra page is noted, not failed
+        # the website first: a module's extra page is noted, not failed, and a module with a game may run further
+        grace = (GAME_GRACE if _plain_title(title) in with_game else MODULE_GRACE) if kind == "module" else 0
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
@@ -1580,13 +1615,18 @@ def unit_page_checks(pdf_path, n_pages):
         elif n > share + grace:
             fail("P1", said)
         elif n > share:
-            NOTE["P1"].append(said + ", and may run one page over until the site goes live")
+            NOTE["P1"].append(said + (", and may run further, since it carries a game, until a PDF is published" if grace == GAME_GRACE else ", and may run one page over until the site goes live"))
         if kind == "module" and deeper is not None and deeper - pg >= UNIT_SHARE["module"]:
             said = f"'{title}' starts its full path on its page {deeper - pg + 1}, so the module itself runs past its {UNIT_SHARE['module']} pages"
-            if deeper - pg >= UNIT_SHARE["module"] + MODULE_GRACE:
+            if deeper - pg >= UNIT_SHARE["module"] + grace:
                 fail("P1", said)
             else:
-                NOTE["P1"].append(said + ", which it may do by one page until the site goes live")
+                NOTE["P1"].append(said + (", which a module with a game may do until a PDF is published" if grace == GAME_GRACE else ", which it may do by one page until the site goes live"))
+
+
+def _plain_title(t):
+    """A bookmark's title with the typographer's apostrophe made plain, to match the map's."""
+    return t.replace("\u2019", "'")
 
 
 def pdf_link_meta_checks(pdf_path, out_dir):
@@ -1969,6 +2009,100 @@ def voice_checks(sd, soup, mods, tab_of, by_name):
             fail("X4", f"the voice slot {sid} in {s_.get('unit')} is still open, and nothing that waits for the owner's voice is published")
     elif slots:
         NOTE["X4"].append(f"{len(slots)} voice slot{'' if len(slots) == 1 else 's'} open, which publishing (--live) would fail on")
+
+
+# The games (spec J5): each one's name, as a module's front matter gives it, and the module that carries it.
+GAMES = {"dice": "find-the-constraint", "waiting": "know-who-its-for", "ranking": "weigh-the-evidence"}
+BEYOND = "**Beyond this module.**"
+LOG_LABEL = {"know-who-its-for": "Start a decision log", "notice-when-you-are-wrong": "Review your decision log"}
+
+
+def practice_checks(out_dir):
+    """J1 to J5: every Check ends with one question beyond the module; from Module 1 one question collides with an
+    earlier module, names it and carries against:; each Do from Module 1 has its line for the decision log, after the
+    timed exercises and before any optional one; each module from 1 names an earlier one in its Why this matters or
+    Do; and each game is a step on its module's short path, with a guess, a result, a takeaway that says what it leaves
+    out, and numbers that match what tools-pm/game-numbers.py works out."""
+    from bs4 import BeautifulSoup
+    checked("J1", "J2", "J3", "J4", "J5")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    num = {m["id"]: int(m["num"]) for m in mods}
+    title = {m["id"]: m["title"] for m in mods}
+    carried = {}
+    for m in mods:
+        if not m.get("page"):
+            continue
+        where = f"Module {m['num']}, {m['title']}"
+        n = int(m["num"])
+        _, fm, body = open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)
+        d = yaml.safe_load(fm) or {}
+        checks = d.get("check") or []
+        # J1: the last Check question, and only that one, reaches past the module
+        beyond = [c for c in checks if str(c.get("q", "")).lstrip().startswith(BEYOND)]
+        if not checks or not str(checks[-1].get("q", "")).lstrip().startswith(BEYOND):
+            fail("J1", f"{where}: its Check doesn't end with a question that opens \"Beyond this module.\" in bold")
+        if len(beyond) > 1:
+            fail("J1", f"{where}: {len(beyond)} Check questions are marked \"Beyond this module\", and only the last one should be")
+        # J2: from Module 1, one question collides with an earlier module and names it by its title
+        coll = [c for c in checks if c.get("against")]
+        if n >= 1 and len(coll) != 1:
+            fail("J2", f"{where}: {len(coll)} Check questions carry against:, and one should set this module against an earlier one")
+        for c in coll:
+            a = c["against"]
+            if a not in num:
+                fail("J2", f"{where}: a Check question is set against {a}, which isn't on the map")
+            elif num[a] >= n:
+                fail("J2", f"{where}: a Check question is set against {title[a]}, which doesn't come earlier on the map")
+            elif title[a] not in str(c.get("q", "")):
+                fail("J2", f"{where}: the question set against {title[a]} doesn't name it by its title")
+        parts = body.split("[//]: # (short-path)")
+        why = parts[0]
+        rest = parts[1] if len(parts) > 1 else ""
+        do = re.split(r"\n## ", rest.split("## Do", 1)[1])[0] if "## Do" in rest else ""
+        if n < 1:
+            continue
+        # J3: the decision log's line, after the timed exercises and before any optional one
+        want = LOG_LABEL.get(m["id"], "For your decision log")
+        paras = [p_.strip() for p_ in do.split("\n\n") if p_.strip()]
+        labels = [p_ for p_ in paras if re.match(r"\*\*(Start a decision log|For your decision log|Review your decision log)\.\*\*", p_)]
+        if len(labels) != 1 or not labels[0].startswith(f"**{want}.**"):
+            fail("J3", f"{where}: its Do should hold one line for the decision log, opening \"{want}.\" in bold")
+        else:
+            i_log = paras.index(labels[0])
+            i_opt = next((i for i, p_ in enumerate(paras) if p_.startswith("**Optional")), len(paras))
+            timed = [i for i, p_ in enumerate(paras) if re.match(r"\*\*.*?\(\d+ minutes\)\.\*\*", p_) and not p_.startswith("**Optional")]
+            if i_log > i_opt or not timed or i_log < max(timed):
+                fail("J3", f"{where}: the decision log's line should follow the Do's timed exercises and come before any optional one")
+        # J4: an earlier module named by its title in Why this matters or the Do
+        if not any(title[o] in why + do for o in num if num[o] < n):
+            fail("J4", f"{where}: neither its Why this matters nor its Do names an earlier module by its title")
+        # J5: the module's game
+        if d.get("game"):
+            carried[d["game"]] = m["id"]
+    for g, mid in GAMES.items():
+        where = f"the {g} game"
+        if carried.get(g) != mid:
+            fail("J5", f"{where} belongs in {title.get(mid, mid)}, and isn't there")
+            continue
+        m = next(m_ for m_ in mods if m_["id"] == mid)
+        d = yaml.safe_load(open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)[1])
+        if not any(s_.get("kind") == "play" for s_ in d.get("steps") or []):
+            fail("J5", f"{where} isn't a step on {title[mid]}'s short path")
+        soup = BeautifulSoup(open(os.path.join(out_dir, "pm", m["page"], "index.html"), encoding="utf-8").read(), "html.parser")
+        sec = soup.select_one(f"section[data-game={g}]")
+        if not sec:
+            fail("J5", f"{where} isn't on {title[mid]}'s page"); continue
+        if not soup.select_one(f'.steps a[href="#{sec.get("id")}"]'):
+            fail("J5", f"{title[mid]}: the step that plays {where} doesn't lead to it")
+        for sel, what in ((".guess legend", "a guess before the first play"), ("[data-play]", "a Play button"), ("[data-result]", "a result in words"), (".takeaway", "a takeaway")):
+            if not sec.select_one(sel):
+                fail("J5", f"{where} has no {what}")
+        lim = sec.select_one(".takeaway .limits")
+        if not lim or not clean_text(lim.get_text()).startswith("What the game leaves out."):
+            fail("J5", f"{where}: its takeaway doesn't say what the game leaves out")
+    r = subprocess.run([sys.executable, os.path.join(ROOT, "tools-pm", "game-numbers.py"), "check"], capture_output=True, text=True)
+    for line in (r.stdout + r.stderr).strip().splitlines() if r.returncode else []:
+        fail("J5", line[:200])
 
 
 def source_checks(out_dir):
@@ -2379,16 +2513,17 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
             # D1: without JavaScript
             checked("D1", "D2", "D3", "D5")
             c = ctx(viewport={"width": 390, "height": 900}, java_script_enabled=False); pg = c.new_page()
-            pg.goto(base + "/pm/find-the-constraint/")
-            v = pg.evaluate("""() => ({example: getComputedStyle(document.querySelector('.example')).display, takeaway: getComputedStyle(document.querySelector('.takeaway')).display,
-                 live: getComputedStyle(document.querySelector('.game-live')).display, folded: [...document.querySelectorAll('.recall')].every(d => !d.open),
-                 terms: [...document.querySelectorAll('.term')].map(t => t.tagName === 'A' ? t.getAttribute('href') : null)})""")
-            if v["example"] == "none" or v["takeaway"] == "none":
-                fail("D1", "without JavaScript the recorded run or takeaway is hidden")
-            if v["live"] != "none":
-                fail("D1", "without JavaScript the live game controls show")
-            if not v["folded"]:
-                fail("D1", "answers are not folded")
+            for g, mid in GAMES.items():
+                pg.goto(base + f"/pm/{mid}/")
+                v = pg.evaluate("""() => ({example: getComputedStyle(document.querySelector('.game .example')).display, takeaway: getComputedStyle(document.querySelector('.game .takeaway')).display,
+                     live: getComputedStyle(document.querySelector('.game-live')).display, folded: [...document.querySelectorAll('.recall')].every(d => !d.open),
+                     terms: [...document.querySelectorAll('.term')].map(t => t.tagName === 'A' ? t.getAttribute('href') : null)})""")
+                if v["example"] == "none" or v["takeaway"] == "none":
+                    fail("D1", f"the {g} game: without JavaScript the recorded run or takeaway is hidden")
+                if v["live"] != "none":
+                    fail("D1", f"the {g} game: without JavaScript the live game controls show")
+                if not v["folded"]:
+                    fail("D1", f"{mid}: answers are not folded")
             glossary_html = open(os.path.join(out_dir, "pm", "glossary", "index.html"), encoding="utf-8").read()
             for href in v["terms"]:
                 if not href:
@@ -2477,6 +2612,14 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                 fail("D5", "with reduced motion the dice game does not finish at once")
             if pg.evaluate("getComputedStyle(document.querySelector('.pile')).transitionDuration") not in ("0s", ""):
                 fail("D5", "with reduced motion the piles still animate")
+            weeks = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "waitgame.yaml"), encoding="utf-8"))["weeks"]
+            pg.goto(base + f"/pm/{GAMES['waiting']}/"); pg.click("[data-play]")
+            if pg.evaluate("document.querySelector('[data-week]').textContent") != str(weeks):
+                fail("D5", "with reduced motion the waiting game does not finish at once")
+            pg.goto(base + f"/pm/{GAMES['ranking']}/"); pg.click("[data-play]")
+            if pg.evaluate("getComputedStyle(document.querySelector('.rk-dot')).transitionDuration") not in ("0s", ""):
+                fail("D5", "with reduced motion the ranking game's stores still glide")
+            pg.goto(base + f"/pm/{GAMES['dice']}/")
             if any(d not in ("0s", "") for d in pg.evaluate("[...document.querySelectorAll('main a')].slice(0, 20).map(a => getComputedStyle(a).transitionDuration.split(',')[0].trim())")):
                 fail("D5", "with reduced motion a link still eases on hover")
             c.close()
@@ -2703,6 +2846,12 @@ def main():
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
             for r in ("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("J1", "J2", "J3", "J4", "J5"):
+        try:
+            practice_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rules, not stop the suite
+            for r in ("J1", "J2", "J3", "J4", "J5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1", "R10") else None
     srv = Server(out_dir)

@@ -1,0 +1,56 @@
+# The waiting game, in Know Who It's For (spec J5). The grocery app's team builds one job at a time.
+# Each week a job isn't live costs its cost of delay, the weeks it's being built included.
+# weeks, the rules' totals, every and cd3 are worked out by tools-pm/game-numbers.py, and the checks hold them to it.
+jobs:
+  - id: swaps
+    name: Let customers approve swaps
+    short: swap approvals
+    tag: Swap approvals
+    weeks: 8
+    cost: 40000
+  - id: fix
+    name: Fix checkout on older phones
+    short: the checkout fix
+    tag: Checkout fix
+    weeks: 2
+    cost: 30000
+  - id: recipes
+    name: Add a recipe page
+    short: the recipe page
+    tag: Recipe page
+    weeks: 1
+    cost: 3000
+# The three rules a team might use, in the order the page offers them.
+rules:
+  biggest:
+    label: Biggest value first
+    order: [swaps, fix, recipes]
+    total: 653000
+    after: The job worth most each week went first, and the other two waited eight weeks behind it.
+  quickest:
+    label: Quickest first
+    order: [recipes, fix, swaps]
+    total: 533000
+    after: The quick win went first, but the recipe page earns so little that its week held up two jobs worth $70,000 a week between them.
+  cd3:
+    label: Most value per week of work first
+    order: [fix, swaps, recipes]
+    total: 493000
+    after: This order divides each job's cost of delay by its weeks and builds the highest first. The checkout fix scores $15,000 a week of work, swap approvals $5,000 and the recipe page $3,000.
+weeks: 11
+# All six orders, cheapest first.
+every:
+  - order: [fix, swaps, recipes]
+    total: 493000
+  - order: [fix, recipes, swaps]
+    total: 509000
+  - order: [recipes, fix, swaps]
+    total: 533000
+  - order: [swaps, fix, recipes]
+    total: 653000
+  - order: [swaps, recipes, fix]
+    total: 677000
+  - order: [recipes, swaps, fix]
+    total: 693000
+# Highest cost of delay per week of work first.
+cd3: [fix, swaps, recipes]
