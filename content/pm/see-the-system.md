@@ -31,17 +31,17 @@ steps:
     only: Twelve places to change a system, ranked, with examples.
   - id: meadows-2
     kind: read
-    title: Donella Meadows, "Leverage Points", second half
+    title: Donella Meadows, "Leverage Points", the rest
+    continues: meadows-1
     minutes: 20
     where: The same essay, from the meter story to the end.
     look: Why the houses with the meter in the front hall used less electricity. Then her last section, on why the highest leverage is the hardest to use.
-    trust: The same essay, so the same reasons hold. Her politics show in the examples, so judge the reasoning apart from them.
     only: Why information, rules and goals outrank numbers.
   - id: cook
     kind: read
     title: Richard Cook, "How Complex Systems Fail"
     minutes: 10
-    where: A short paper, eighteen points on one page. Free at how.complexsystems.fail.
+    where: A short paper of key points. Free at how.complexsystems.fail.
     links:
       - text: "How Complex Systems Fail"
         url: https://how.complexsystems.fail/
@@ -62,7 +62,7 @@ deeper:
     by: Donella Meadows, edited by Diana Wright
     where: A book.
     note: "Read chapters 1, 4 and 5: \"The Basics\", \"Why Systems Surprise Us\" and \"System Traps . . . and Opportunities\"."
-    trust: It's Meadows's own primer on her field, from the lead author of The Limits to Growth. Diana Wright edited it from her draft after her death.
+    trust: It's Meadows's own primer on her field, from the lead author of The Limits to Growth.
     only: Chapter 1 teaches stocks, flows and loops with diagrams. Chapter 5 names common traps, such as chasing the wrong goal, and a way out of each.
   - title: The Field Guide to Understanding 'Human Error'
     by: Sidney Dekker
@@ -73,8 +73,8 @@ deeper:
   - title: Chernobyl
     by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
     where: A TV series.
-    note: "In episode 1, a dosimeter reads 3.6 roentgen, the top of its scale, and the deputy chief engineer takes the number as the level: \"Not great, not terrible.\" In episode 5, the trial walks back through the chain: a safety test signed off as done when it wasn't, a ten-hour delay that handed it to an untrained night shift, and a shutdown button whose rods had graphite tips, because \"It's cheaper.\""
-    only: "Cook's question, put to a disaster: what had to line up? The show answers with a system built to hide its own flaw: \"No one in the room that night knew the shutdown button could act as a detonator.\" It sharpens some real officials into villains, so look past them to the chain."
+    note: "A terrifyingly gripping narrative of the Chernobyl disaster, split in three main stages: the event, the brilliance and sacrifice needed to solve it, and the investigation after. And through it all, the structural incentives that not only led to the original problem, but informed all that followed."
+    only: "Cook's question, put to a disaster: what had to line up? The show answers with a system built to hide its own flaw: \"No one in the room that night knew the shutdown button could act as a detonator.\""
 ---
 
 ## Why this matters

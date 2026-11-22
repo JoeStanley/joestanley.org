@@ -3,21 +3,25 @@ title: Conway's Law
 layout: card
 module: mind-the-seams
 weight: 10
-figure: conways-law
-figure_caption: The line between the teams runs through the system, and the join is where work waits.
+figure_quote:
+  text: "The basic thesis of this article is that organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."
+  by: Melvin Conway
+  work: How Do Committees Invent?
+  url: https://www.melconway.com/Home/Committees_Paper.html
+  year: 1968
 question: Where does a boundary between teams in your area cut through something a customer experiences as one thing?
 deeper:
   title: "The Mirroring Hypothesis: Theory, Evidence, and Exceptions"
   by: Lyra Colfer and Carliss Baldwin (2016)
   url: https://dash.harvard.edu/bitstream/handle/1/33785675/colfer%2cbaldwin_mirroring-hypothesis.pdf
   where: A paper in Industrial and Corporate Change. Free at dash.harvard.edu.
-  trust: It's peer-reviewed, and it weighs 142 studies, not one case.
+  trust: Peer-reviewed, built on an analysis of over a hundred studies.
   only: Where mirroring holds, where it breaks, and why.
 ---
 
 ## The idea
 
-Organizations that design systems, Mel Conway argued in 1968, end up with designs that copy their own communication structures. The word that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. The software architect Ruth Malan puts it in one line: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins" (workshop notes, February 2025, p. 314).
+The word in Conway's sentence that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. The software architect Ruth Malan puts it in one line: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins" (workshop notes, February 2025, p. 314).
 
 ## Why a PM cares
 
@@ -31,4 +35,4 @@ Organizations that design systems, Mel Conway argued in 1968, end up with design
 
 ## What it does not say
 
-It's a strong tendency, not a law of physics. Across 142 studies, Lyra Colfer and Carliss Baldwin found mirroring common, across industries and inside firms, but not universal. Open, collaborative projects, mostly software, often broke it, helped by digital coordination tools.
+It's a strong tendency, not a law of physics. Over more than a hundred studies, Lyra Colfer and Carliss Baldwin found mirroring common, across industries and inside firms, but not universal. Open, collaborative projects, mostly software, often broke it, helped by digital coordination tools.

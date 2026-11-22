@@ -1,0 +1,118 @@
+---
+title: Change Safely
+layout: module
+module: change-safely
+question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
+one_thing: Write a one-page rollout plan for your next change, and include how you'd switch it off.
+do_minutes: 30
+
+last_time:
+  - q: Stewart Brand says "Fast learns, slow remembers." Why not push a slow layer to move at a fast layer's pace?
+    a: The slow layer holds what the rest depends on, such as a payments ledger or a contract. Forced to another layer's pace, it ends badly, whichever way the push goes.
+  - q: Two parts of a system are coupled "with respect to a particular change". What does that let you do as a PM?
+    a: Name the change you expect next, and ask whether it would make both parts move. You often know better than anyone which changes are coming.
+
+steps:
+  - id: sre
+    kind: read
+    title: 'Google SRE book, "Embracing Risk"'
+    minutes: 10
+    where: A chapter. Free at sre.google. Read "Managing Risk"; then, under "Identifying the Risk Tolerance of Consumer Services", "Target level of availability" and "Types of failures"; then "Motivation for Error Budgets".
+    links:
+      - text: "Embracing Risk"
+        url: https://sre.google/sre-book/embracing-risk/
+    look: Why 100 percent is the wrong target, and who sets the reliability target, the service level objective (SLO).
+    trust: Google's site reliability engineers describe their own practice. It's a practitioner's account, not an independent study.
+    only: One shared number to settle arguments between product and reliability.
+  - id: hodgson
+    kind: read
+    title: 'Pete Hodgson, "Feature Toggles (aka Feature Flags)"'
+    minutes: 10
+    where: An article from 2016. Free at martinfowler.com. Read "A Toggling Tale", then, under "Categories of toggles", "Release Toggles", "Experiment Toggles" and "Ops Toggles".
+    links:
+      - text: "Feature Toggles (aka Feature Flags)"
+        url: https://martinfowler.com/articles/feature-toggles.html
+    look: How deploying a change, putting it into production switched off, differs from releasing it to customers, a few at first. Then how an ops toggle switches it off fast.
+    trust: Hodgson is a software delivery consultant who spent years at Thoughtworks, and he writes from his work with teams. He's frank that every toggle adds complexity.
+    only: The mechanics behind "released to 1 percent of customers", enough to ask your engineers sharp questions.
+  - id: dora
+    kind: read
+    title: 'DORA, "DORA''s software delivery performance metrics"'
+    minutes: 10
+    where: A guide. Free at dora.dev.
+    links:
+      - text: "DORA's software delivery performance metrics"
+        url: https://dora.dev/guides/dora-metrics/
+    look: Which of the five measures show throughput and which show instability, and why smaller changes help both. If you read *Accelerate* on Module 2's full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
+    trust: DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade, and the guide sums up what it keeps finding. The answers are self-reported, and the evidence is in the yearly reports.
+    only: The measures as DORA uses them today, so you can ask for your own team's numbers.
+  - id: card-error-budgets
+    kind: card
+    card: cards/error-budgets
+    minutes: 5
+    look: How a reliability target turns into minutes you can spend.
+
+check:
+  - q: Your team has error budget left this quarter. What does that let you do, and what happens once it's spent?
+    a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
+  - q: What's the difference between deploying a change and releasing it?
+    a: Deploying puts the code into production, switched off. Releasing turns the feature on for customers. A toggle lets you do them at different times.
+  - q: On a marketplace, a new search ranking raises orders per visit in a test. Why might you still stop the test?
+    a: A guardrail metric got worse, such as returns, late deliveries or page load time, overall or for one group of customers.
+
+deeper:
+  - title: Trustworthy Online Controlled Experiments
+    by: Ron Kohavi, Diane Tang and Ya Xu
+    where: A book.
+    note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion\", then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk\"."
+    trust: Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and a university press published it. It's a practical guide, written from inside large online businesses.
+    only: How to choose the measures an experiment answers to, guardrails among them, and fold them into one overall evaluation criterion. Then how to ramp a change from a few users to everyone without trading safety for speed.
+  - title: Threat Modeling
+    by: Adam Shostack
+    where: A book.
+    note: "Read Part I, \"Getting Started\". Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\", \"What can go wrong?\", \"What are we going to do about it?\" and \"Did we do a good enough job?\""
+    trust: Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool. It's a practitioner's method, built for real projects.
+    only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
+  - title: Hidden Technical Debt in Machine Learning Systems
+    by: D. Sculley and colleagues (NeurIPS, 2015)
+    url: https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html
+    where: A conference paper.
+    note: Free at proceedings.neurips.cc. It's dense, so read it slowly. Section 4, on feedback loops, and section 7, on changes in the outside world, matter most here.
+    trust: Engineers at Google wrote it from the systems they ran, and NeurIPS, a leading machine learning conference, published it. It argues from experience, and from before today's large language models.
+    only: "Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and \"changing anything changes everything\"."
+  - title: Ford v Ferrari
+    by: directed by James Mangold (20th Century Fox, 2019)
+    where: A film.
+    note: "Called *Le Mans '66* in some countries. Carroll Shelby and the driver Ken Miles build a car to beat Ferrari by testing it, lap after lap. Yarn taped to the body shows the front lifting at speed, and a brake failure in testing ends in a crash and a fire before they find a fix the rules allow. Meanwhile every change has to pass up through Ford. \"You can't win a race by committee,\" Shelby tells Henry Ford II. The film makes more of a villain of one executive, Leo Beebe, than history does."
+    only: Speed that comes from many small tests, each cheap to fail, set against a company trying to make change safe by adding sign-offs.
+---
+
+## Why this matters
+
+When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA's [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/) points the other way: teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and the approvals didn't make changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
+
+Richard Cook, from Module 1, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
+
+First, though, know how good it has to be, in words engineers can test: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
+
+[//]: # (short-path)
+
+## Do
+
+**Plan one rollout (20 minutes).** Pick a change that's coming up on your product, such as a new search ranking. Write a one-page plan in five lines.
+
+1. The cohort: who gets it first, and how many.
+2. The goal measure you hope it raises.
+3. The {{< pm/term "guardrail-metric" "guardrail metrics" >}}, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop. Break each down for the customers the change could hurt most, such as people on older phones or using a screen reader: a guardrail can hold on average while it fails them.
+4. Who can switch it off with a {{< pm/term "feature-toggle" "feature toggle" >}}, and how fast.
+5. The error budget it might spend.
+
+Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
+
+**Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a player waits for a match, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
+
+## Questions to bring to engineers
+
+- Do we measure this quality today, and what's its 99th percentile?
+- What can go wrong, and what are we going to do about it?
+- If a ranking or recommendation model in this release were quietly wrong next month, what would tell us?

@@ -147,12 +147,17 @@
 .deeper-list > li::after { content: ""; display: block; clear: both; }
 .deeper cite { font-style: italic; }
 .deeper-note { margin: var(--sp-2) 0 0; }
+/* A full-path entry's kind, as an icon before its title (spec S15). Its words are kept for screen readers. */
+.kind-icon { display: inline-block; width: 1.05em; height: 1.05em; margin-right: 0.4em; vertical-align: -0.14em; }
 
 /* Concept cards */
 .plate { margin: 0; padding: var(--sp-4); background: var(--panel); }
 .plate::after { content: ""; display: block; clear: both; }
 /* A picture's caption sits under it at every width; in print, beside it. */
 .plate-caption { margin: var(--sp-3) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
+/* A sentence in its author's words in the picture's place (spec S16): large, in the reading face, credited below. */
+.plate-quote-text { margin: 0; padding: 0; border: 0; }
+.plate-quote-text p { margin: 0; font: var(--w-regular) var(--fs-head)/var(--lh-text) var(--text); text-wrap: pretty; }
 .fig { display: block; width: 100%; max-width: 30rem; height: auto; margin: 0 auto; font-family: var(--ui); }
 .fig-pipe { fill: var(--paper); stroke: var(--ink); stroke-width: 1.5; stroke-linejoin: round; }
 /* Pictures may use colors of their own where the subject calls for one (spec C7). Each is named here, with a value

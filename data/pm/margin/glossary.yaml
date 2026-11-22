@@ -39,8 +39,17 @@ cost-of-change: ""
 # Coupling
 coupling: ""
 
+# Data-informed
+data-informed: ""
+
+# Error budget
+error-budget: ""
+
 # Event time and processing time
 event-time: ""
+
+# Feature toggle (feature flag)
+feature-toggle: ""
 
 # Feedback loop
 feedback-loop: ""
@@ -48,11 +57,17 @@ feedback-loop: ""
 # Glue work
 glue-work: ""
 
+# Guardrail metric
+guardrail-metric: ""
+
 # Heavyweight product manager
 heavyweight: ""
 
 # Interface
 interface: ""
+
+# Intersectional
+intersectional: ""
 
 # Inverse Conway maneuver
 inverse-conway: ""
@@ -63,6 +78,9 @@ job-crafting: ""
 # Leverage point
 leverage-point: ""
 
+# McNamara fallacy
+mcnamara-fallacy: ""
+
 # OKRs (objectives and key results)
 okr: ""
 
@@ -71,6 +89,15 @@ operational-analytical: ""
 
 # Pace layers
 pace-layers: ""
+
+# Percentile
+percentile: ""
+
+# Regression to the mean
+regression-to-the-mean: ""
+
+# Service level objective (SLO)
+slo: ""
 
 # Stock
 stock: ""

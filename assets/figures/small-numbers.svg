@@ -1,0 +1,20 @@
+<svg class="fig" viewBox="0 0 360 214" role="img" aria-labelledby="fig-small-title fig-small-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-small-title">A cadet's scores, flight after flight, bouncing around their average.</title>
+  <desc id="fig-small-desc">A line of nine scores rises and falls around a dashed line for the cadet's average. Twice the cadet has a high score and is praised, and the next score falls back toward the average. Once the cadet has a low score and is scolded, and the next score rises toward the average. The praise and the scolding made no difference: extreme results are usually followed by less extreme ones.</desc>
+
+  <path class="fig-axis" d="M36,30 L36,184 L346,184"/>
+  <text class="fig-note" x="40" y="24">Score</text>
+  <text class="fig-note" x="346" y="202" text-anchor="end">Flight after flight</text>
+
+  <path class="fig-wanted" d="M40,110 L346,110"/>
+  <text class="fig-note" x="232" y="126">The cadet's average</text>
+
+  <circle class="fig-mark" cx="85" cy="62" r="11"/>
+  <circle class="fig-mark" cx="190" cy="152" r="11"/>
+  <circle class="fig-mark" cx="295" cy="58" r="11"/>
+  <path class="fig-number" d="M50,118 L85,62 L120,104 L155,126 L190,152 L225,112 L260,98 L295,58 L330,100"/>
+
+  <text class="fig-label" x="70" y="44">Praised, then a dip</text>
+  <text class="fig-label" x="340" y="40" text-anchor="end">Praised, then a dip</text>
+  <text class="fig-label" x="190" y="176" text-anchor="middle">Scolded, then a rise</text>
+</svg>

@@ -1,4 +1,4 @@
-About 1 hour 15 minutes.
+About an hour and 15 minutes.
 
 **If you only do one thing:** Write three things your team won't do this quarter, each with a one-sentence reason.
 

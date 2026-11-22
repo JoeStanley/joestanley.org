@@ -22,7 +22,7 @@ steps:
       - text: "Pace Layering: How Complex Systems Learn and Keep Learning"
         url: https://longnow.org/ideas/pace-layers/
     look: "Two points: slow layers control fast ones, and a layer forced to another's pace ends badly, whichever way the push goes. One of his examples is the Soviet Union forcing a five-year-plan pace on commerce and art."
-    trust: It's Brand's own, a chapter from his book The Clock of the Long Now, lightly edited. He argues from history and ecology, and gives no measurements.
+    trust: It's Brand's own, a chapter from his book whose message has resonated for decades at this point, refined through constructive feedback along the way.
     only: Why each layer needs its own pace, from the person who drew the layers.
   - id: card-coupling
     kind: card
@@ -48,14 +48,14 @@ deeper:
   - title: Seeing Like a State
     by: James C. Scott
     where: A book.
-    note: "Read the introduction, then chapter 1, \"Nature and Space\", on the scientific forestry of eighteenth-century Prussia and Saxony, and chapter 10, \"Conclusion\". It's dense in places, and its cases are states, not companies, so make the bridge to your product as you read."
-    trust: Scott was a political scientist and anthropologist at Yale. He builds his case from real schemes, from a planned capital city to collectivized farms.
-    only: "Why planners sure of one future build what can't change, and four rules for doing better that read like rules for product design: \"Take small steps.\" \"Favor reversibility.\" \"Plan on surprises.\" \"Plan on human inventiveness.\""
+    note: "Read the introduction, then chapter 1, \"Nature and Space\", on the scientific forestry of eighteenth-century Prussia and Saxony, and chapter 10, \"Conclusion\". It's dense in places, so take your time as needed."
+    trust: This is an industry classic for a reason. Scott was a political scientist and anthropologist at Yale. He builds his case from real schemes, from a planned capital city to collectivized farms, showing how in complex dynamics even the smartest and wisest continue to assume an overly predictable world.
+    only: "Why planners sure of one future build what can't change, and four rules for doing better that are applicable to our own work: \"Take small steps.\" \"Favor reversibility.\" \"Plan on surprises.\" \"Plan on human inventiveness.\""
   - title: A Philosophy of Software Design
     by: John Ousterhout
     where: A book.
     note: Read it whole. Chapters 2 and 3, on complexity and on tactical against strategic work, are the heart of it for this module.
-    trust: Ousterhout taught a software design course at Stanford, and the book grew out of it. It's one designer's view, argued from experience.
+    trust: Ousterhout taught a software design course at Stanford, and the book grew out of it. It's one designer's view, argued from experience, and another industry classic.
     only: The three symptoms of complexity in full, and the difference between tactical work, which gets this feature out, and strategic work, which keeps the next one cheap. That difference is the case you can make for engineering time.
   - title: On the Criteria To Be Used in Decomposing Systems into Modules
     by: David Parnas (Communications of the ACM, 1972)

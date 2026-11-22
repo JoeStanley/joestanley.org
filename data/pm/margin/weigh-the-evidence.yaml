@@ -1,0 +1,60 @@
+# Margin notes for Module 7, Weigh the Evidence.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen, and in a module's print, a note shows in your hand in the margin beside its part. On a phone it
+# sits under the part's heading, typeset; in print on Start, a card or the glossary it sits there in your hand.
+# Wherever it sits in the text, "Sidenote:" goes above it, and a screen reader always reads that word first.
+# A note beside a source on the full path may run on past it. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters:
+  - beside: "data-informed, not data-driven"
+    note: "In the traditional SV tech sector especially, there's a cultural bias toward quantitative metrics and an undeserved superiority complex on the part of quants.\n\nNever forget that quantitative data is essentially qualitative data that has been coded (be it in the assumptions of the instrument designers, or more literally), and even together they always tell an incomplete story."
+
+# The short path
+short-path: ""
+
+# Short path, step 1: The Law of Small Numbers
+step-card-small-numbers: ""
+
+# Short path, step 2: Eileen Munro, “Decision making under uncertainty in child protection”
+step-munro: ""
+
+# Short path, step 3: Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, “Can I make this policy work here?”
+step-cartwright: ""
+
+# Do
+do: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: The Tyranny of Metrics, Jerry Z. Muller
+deeper-the-tyranny-of-metrics: ""
+
+# Full path: The Art of Statistics, David Spiegelhalter
+deeper-the-art-of-statistics: ""
+
+# Full path: Data Feminism, Catherine D'Ignazio and Lauren F. Klein
+deeper-data-feminism: ""
+
+# Full path: Clinical Versus Actuarial Judgment, Robyn Dawes, David Faust and Paul Meehl (Science, 1989)
+deeper-clinical-versus-actuarial-judgment: ""
+
+# Full path: The Big Short, directed by Adam McKay, written by Charles Randolph and McKay from Michael Lewis's book (Paramount, 2015)
+deeper-the-big-short: ""

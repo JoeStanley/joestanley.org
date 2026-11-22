@@ -1,4 +1,4 @@
-About 1 hour.
+About an hour.
 
 **If you only do one thing:** In your next plan, write down one way it could be wrong and the early signal you'd watch for.
 

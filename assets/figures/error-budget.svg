@@ -1,0 +1,21 @@
+<svg class="fig" viewBox="0 0 360 196" role="img" aria-labelledby="fig-eb-title fig-eb-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-eb-title">A month of uptime, and the error budget at its end.</title>
+  <desc id="fig-eb-desc">Two bars, each a month held to a 99.9 percent reliability target. Nearly all of each bar is uptime. A thin slice at its end, drawn wider than scale, is the error budget. In the first bar, two incidents have eaten part of the slice and some is left, so releases go ahead. In the second, incidents have eaten all of it, so releases slow or stop until reliability recovers.</desc>
+
+  <text class="fig-label" x="20" y="22">Some budget left: releases go ahead</text>
+  <text class="fig-label" x="340" y="22" text-anchor="end">The budget</text>
+  <rect class="fig-pipe" x="20" y="30" width="320" height="34" rx="4"/>
+  <text class="fig-note" x="140" y="51" text-anchor="middle">Uptime</text>
+  <rect class="fig-mark" x="282" y="30.75" width="57.25" height="32.5"/>
+  <rect class="fig-ink" x="282" y="30.75" width="12" height="32.5"/>
+  <rect class="fig-ink" x="300" y="30.75" width="9" height="32.5"/>
+  <path class="fig-axis" d="M295,68 L295,76"/>
+  <text class="fig-note" x="295" y="88" text-anchor="middle">Incidents</text>
+
+  <text class="fig-label" x="20" y="118">Budget spent: releases slow or stop</text>
+  <rect class="fig-pipe" x="20" y="126" width="320" height="34" rx="4"/>
+  <text class="fig-note" x="140" y="147" text-anchor="middle">Uptime</text>
+  <rect class="fig-ink" x="282" y="126.75" width="57.25" height="32.5"/>
+
+  <text class="fig-note" x="20" y="184">Not to scale: the budget is about 43 minutes a month</text>
+</svg>

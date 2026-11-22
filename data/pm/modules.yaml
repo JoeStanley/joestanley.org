@@ -37,14 +37,12 @@
   num: 6
   title: Change Safely
   question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
-  draft: change-safely
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, with one card, Error Budgets, sourced to Google's example error budget policy. Guardrail Metrics, How Complex Systems Fail and Models That Are Sometimes Wrong were cut as cards, each kept as a term, a question or a full-path source.
+  page: change-safely
 - id: weigh-the-evidence
   num: 7
   title: Weigh the Evidence
   question: What do the numbers and the stories each tell you, and how much should either decide?
-  draft: weigh-the-evidence
-  state: First draft of 20 November 2026, winnowed on 21 November into the pilot's parts. It carries two cards. Joe kept The Law of Small Numbers on 21 November, and The McNamara Fallacy goes at the rebuild. Munro's review, Budiu and Chen moved to the full path.
+  page: weigh-the-evidence
 - id: decide-and-set-direction
   num: 8
   title: Decide and Set Direction

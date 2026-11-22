@@ -1,5 +1,5 @@
-{{- /* A time estimate, rounded the owner's way (spec S14) and written out: "45 minutes", "1 hour 15 minutes",
-       "2 hours". Under 30 minutes it rounds up to the next 5; to 2 hours, to the nearest quarter hour; to 5 hours,
+{{- /* A module's total, rounded the owner's way (spec S14) and written with the hour in words: "45 minutes",
+       "an hour", "an hour and 15 minutes", "an hour and a half", "2 hours", "2 and a half hours". Under 30 minutes it rounds up to the next 5; to 2 hours, to the nearest quarter hour; to 5 hours,
        to the nearest half hour; beyond, to the nearest hour. Call with the minutes. */ -}}
 {{- $m := float . -}}
 {{- $r := 0 -}}
@@ -9,4 +9,7 @@
 {{- else }}{{ $r = mul (math.Floor (add (div $m 60) 0.5)) 60 }}{{ end -}}
 {{- $r = int $r -}}
 {{- $h := div $r 60 -}}{{- $mm := mod $r 60 -}}
-{{- if eq $h 0 }}{{ $mm }} minutes{{ else }}{{ $h }} hour{{ if gt $h 1 }}s{{ end }}{{ with $mm }} {{ . }} minutes{{ end }}{{ end -}}
+{{- if eq $h 0 }}{{ $mm }} minutes
+{{- else if eq $h 1 }}an hour{{ if eq $mm 30 }} and a half{{ else if $mm }} and {{ $mm }} minutes{{ end }}
+{{- else if eq $mm 30 }}{{ $h }} and a half hours
+{{- else }}{{ $h }} hours{{ with $mm }} and {{ . }} minutes{{ end }}{{ end -}}

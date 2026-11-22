@@ -99,8 +99,9 @@
         {{- range . }}
         {{- $slot := printf "deeper-%s" (urlize (lower .title)) }}
         <li data-slot="{{ $slot }}">
-          <h3>{{ with .url }}<a href="{{ . }}">{{ end }}<cite>{{ .title }}</cite>{{ with .url }}</a>{{ end }}{{ with .by }}, {{ . }}{{ end }}</h3>
-          <p class="meta-line">{{ .where }}</p>
+          {{- /* The kind shows as an icon; its words stay for screen readers and the doc (spec S15). */}}
+          <h3>{{ partial "pm/kind-icon.html" .where }}{{ with .url }}<a href="{{ . }}">{{ end }}<cite>{{ .title }}</cite>{{ with .url }}</a>{{ end }}{{ with .by }}, {{ . }}{{ end }}</h3>
+          <p class="meta-line kind-line sr">{{ .where }}</p>
           {{ with .note }}<p class="deeper-note">{{ . | $p.RenderString }}</p>{{ end }}
           {{ partial "pm/source-notes.html" (dict "s" . "p" $p "part" "look") }}
           <div class="source-note">

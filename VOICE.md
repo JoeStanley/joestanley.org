@@ -34,6 +34,7 @@ The glossary is plain definitions. A reader should be able to go from the Start 
 10. **Show what people do.** Start an example from one small, specific thing: the pull request that sat in review for nine days, not "delays". Describe a skill by what someone does, not by a trait. "She's strategic" gives the reader nothing to copy; "she asked which of the three launches could slip" does.
 11. **Give everyone their real reasons.** The engineer who pushes back, the sales lead who wants a date, the lawyer who says no: each gets the reason they would give, in their own terms. No one in an example is a straw man, so the reader practices against the strongest case.
 12. **Judge exactly, and praise in few words.** "The clearest short account of it we found" tells the reader more than "essential". No superlatives or hype about a source, a method or the syllabus itself.
+13. **Let a number carry a fact, not weight.** Machine prose leans on exact figures to sound important: "across 142 studies", "over 23,000 responses". Say it the way a person would across the table: "in more than a hundred studies", "years of survey research". Keep the number where it's the point: the 43 minutes an error budget leaves, a third of the time against almost never, the 99th percentile to ask for. Joe asked for this on 22 November 2026, in the spirit of his rounded times.
 
 ## What it is not
 

@@ -21,7 +21,7 @@ last-time: ""
 # Why this matters
 why-this-matters:
   - beside: "the questions come from customers"
-    note: "This is a key nuance that's more obvious in B2B products: The customer is who buys, while the consumer is who uses or experiences it. Be mindful when these two aren't the same, especially in how it will create incentives to make a bad product for the consumer."
+    note: "A tangent here, more obvious in B2B products: The customer is who buys, while the consumer is who experiences it. Be mindful when these two aren't the same, as it creates incentives to prioritize the former at the expense of the latter."
 
 # The short path
 short-path: ""

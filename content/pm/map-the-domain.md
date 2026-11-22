@@ -66,19 +66,19 @@ deeper:
     by: Eric Evans
     where: A book.
     note: "Read the chapters \"Maintaining Model Integrity\" and \"Distillation\"."
-    trust: It's where bounded contexts and the core domain start. Fowler calls it not the easiest read, but one that amply repays the effort.
+    trust: It's where bounded contexts and the core domain start. This one's target audience is architects, but I think the work required to navigate it as a PM pays for itself in time, especially as agentic workflows become more common.
     only: Where to draw the lines between models, and where to spend. Keep the core, the part that sets your product apart, small. Think about buying the generic parts everyone needs, such as login.
   - title: Data Mesh
     by: Zhamak Dehghani
     where: A book.
     note: "Read the chapter \"Principle of Data as a Product\"."
-    trust: Dehghani set out data mesh at Thoughtworks, an approach in which each part of a business owns and serves its own analytical data, and the book is her full case for it. It's written for analytical data, and it argues for her approach, so read it as a case being made.
+    trust: Dehghani set out data mesh at Thoughtworks, an approach in which each part of a business owns and serves its own analytical data. This is her case for it.
     only: What it takes to run a dataset as a product, with an owner measured on its quality and on how satisfied its users are.
   - title: Brazil
     by: directed by Terry Gilliam, written by Gilliam, Tom Stoppard and Charles McKeown (1985)
     where: A classic film.
-    note: "A fly falls into a teleprinter, an arrest warrant for Tuttle comes out as Buttle, and the state arrests the wrong man, who dies under interrogation. Then each system records him its own way: the census has him \"dormanted\", Security \"excised\", Administration \"completed\". The clerks who find the mistake are relieved it's another department's: \"Information Retrieval.\""
-    only: A dark satire of the system of record. One copy goes wrong, everything downstream trusts it, and correcting it is nobody's job.
+    note: "A fly falls into a teleprinter, an arrest warrant for Tuttle comes out as Buttle, and the state pursues and arrests the wrong man. The entire thing is a story of what happens when indifference leads to bureaucratic dystopia, reinforcing societal indifference."
+    only: A dark satire of the system of record.
 ---
 
 ## Why this matters
