@@ -149,7 +149,7 @@ run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 
 run_bg "a comma back outside a closing quotation mark" T9 "sed -i 's/\"Leverage Points,\" first half/\"Leverage Points\", first half/' content/pm/see-the-system.md"
 run_bg "a period back outside a quoted title in a source's note" T9 "sed -i 's/Backward Design.\\\\\"/Backward Design\\\\\"./' content/pm/own-your-role.md"
 run_bg "an em dash in the voice guide, which lives in pm-sources" T3 "mkdir .pm-sources && cp \"\${PM_SOURCES:-\$SRC/../pm-sources}/VOICE.md\" .pm-sources/ && printf '\\nA line \\xe2\\x80\\x94 with an em dash.\\n' >> .pm-sources/VOICE.md"
-run_bg "a Check that doesn't end beyond its module" J1 "sed -i 's/\*\*Beyond this module\.\*\* This module helps you choose/This module helps you choose/' content/pm/decide-and-set-direction.md"
+run_bg "a Check that doesn't end beyond its module" J1 "sed -i 's/\*\*Beyond this module\.\*\* Once you.ve chosen/Once you have chosen/' content/pm/decide-and-set-direction.md"
 run_bg "a collision with no against" J2 "sed -i '/^    against: see-the-system$/d' content/pm/find-the-constraint.md"
 run_bg "a collision set against a later module" J2 "sed -i 's/^    against: own-your-role$/    against: weigh-the-evidence/' content/pm/mind-the-seams.md"
 run_bg "the log's review under the wrong label" J3 "sed -i 's/^\*\*Review your decision log\.\*\*/**For your decision log.**/' content/pm/notice-when-you-are-wrong.md"
