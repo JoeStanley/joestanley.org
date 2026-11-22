@@ -70,6 +70,13 @@ deeper:
     note: "Read chapter 1, \"Two Views of 'Human Error'\", and chapter 5, \"Understanding Your Accident Model\"."
     trust: Dekker is a safety scientist who also flew airliners, writing for people who investigate failures. It's a practitioner's guide built on safety research, not a study of its own.
     only: Cook's point at book length. Chapter 1 sets the bad-apple view of error against the view that error is a symptom of trouble in the system, and chapter 5 shows how your model of accidents decides what you'll find.
+  - title: A Brief Introduction to Critical Systems Heuristics (CSH)
+    by: Werner Ulrich (2005)
+    url: https://wulrich.com/downloads/ulrich_2005f.pdf
+    where: A paper.
+    note: Free at wulrich.com. Read it whole, and keep its checklist of boundary questions nearby.
+    trust: Ulrich, a philosopher of social planning, developed the method, so this is his own account of it, not a test of how well it works.
+    only: Questions to put to any plan's boundary, from whose interests it serves to who speaks for the people it affects but doesn't involve.
   - title: Chernobyl
     by: written by Craig Mazin, directed by Johan Renck (HBO and Sky, 2019)
     where: A TV series.
@@ -80,6 +87,8 @@ deeper:
 ## Why this matters
 
 When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues that a failure in a complex system never has just one cause.
+
+Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around your support team's queue, and the customers who gave up before they ever filed a ticket fall outside it. In another essay, "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
 
 [//]: # (short-path)
 

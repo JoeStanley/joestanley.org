@@ -2,6 +2,12 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 22 November 2026, the job 13 session
+
+- A v1.0 of the curriculum on joestanley.org matters more now than the PDF. After this session, work on the PDF waits unless it helps the site launch, and the work goes to the curriculum and the site being ready to go live (in the session).
+- Find the Constraint keeps Obermeyer's case at its full length on the site, though it runs the module's own text onto a fourth printed page. Until the site goes live, P1 notes a module's extra printed page instead of failing on it (his pick, in the session, "Website first").
+- v1.0 needs all twelve modules built before it goes live (his pick, in the session).
+
 ## 22 November 2026, the ethics cards, and the round 3 session
 
 - Each module asks who's affected in its own way, as one addition fitted to what it already teaches, and Answer for What You Build names the thread once, pointing back to where the reader met it. No standing element runs through every module (agree, card `ethics-thread`).

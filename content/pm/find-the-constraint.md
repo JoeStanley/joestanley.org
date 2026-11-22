@@ -81,6 +81,8 @@ When delivery is slow, most teams ask every step to go faster and to report its 
 
 The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can improve while value delivery doesn't.
 
+A number can mislead with nobody gaming it, too. An algorithm a US hospital used to pick patients for extra care took the cost of their care as a stand-in for how sick they were. Less had been spent on Black patients who were just as sick, so at any given score they were sicker than White patients, and too few of them were picked (Obermeyer and colleagues, 2019). Before you trust a stand-in, ask whether it tracks the real thing equally well for everyone.
+
 [//]: # (short-path)
 
 ## Do
