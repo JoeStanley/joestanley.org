@@ -49,8 +49,8 @@ operational-analytical:
   term: Operational and analytical
   text: Operational use keeps the live service running, and analytical use looks across many records, the way reports do.
 system-of-record:
-  term: System of record and system of reference
-  text: A system of record holds the authoritative copy of some data, from which every other copy is made. A system of reference makes that data easy to use, by gathering or preparing copies for people to read and decide with, and isn't where it changes.
+  term: System of record
+  text: The system that holds the authoritative copy of some data, from which every other copy is made.
 bounded-context:
   term: Bounded context
   text: An area of a business or a system inside which each word and model has one agreed meaning.
@@ -110,7 +110,7 @@ straddling:
 ooda-loop:
   term: OODA loop
   also: observe, orient, decide, act
-  text: John Boyd's loop of observe, orient, decide and act. He held that orienting, the picture you act from, matters most.
+  text: John Boyd's model of every decision as a loop. He held that orienting, the picture you act from, matters most.
 commanders-intent:
   term: Commander's intent
   text: The why given with a task, so people can still act when the task goes stale. From military doctrine.

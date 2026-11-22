@@ -89,7 +89,7 @@ deeper:
 
 ## Why this matters
 
-When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA's [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/) points the other way: teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and DORA found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
+When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
 
 Richard Cook, from Module 1, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
