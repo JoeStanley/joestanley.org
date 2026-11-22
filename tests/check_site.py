@@ -25,6 +25,7 @@ TESTS = os.path.join(ROOT, "tests")
 PM_SOURCES = os.environ.get("PM_SOURCES") or os.path.normpath(os.path.join(ROOT, "..", "pm-sources"))
 # The built modules, each with its concept cards, in reading order. Add a module here when it is built.
 MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
+           ("/pm/know-who-its-for/", ["/pm/cards/the-last-time/"]),
            ("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
            ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
            ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"]),
@@ -44,7 +45,7 @@ UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 73   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 80   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()

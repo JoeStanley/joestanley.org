@@ -1,0 +1,33 @@
+<svg class="fig" viewBox="0 0 360 200" role="img" aria-labelledby="fig-last-title fig-last-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-last-title">Two questions to a customer, and what each one brings back.</title>
+  <desc id="fig-last-desc">On the left, "Would you use it?" brings back "Yes, probably," a forecast. On the right, "Tell me about the last time ..." brings back a story, highlighted: it was last Tuesday, they kept a spreadsheet, and it cost them two hours. The story is evidence, with the workaround and what it cost.</desc>
+
+  <!-- the forecast -->
+  <g class="fig-label" text-anchor="middle">
+    <text x="88" y="20">“Would you</text><text x="88" y="34">use it?”</text>
+  </g>
+  <path class="fig-axis" d="M88,44 L88,84"/>
+  <path class="fig-arrow" d="M83,82 L88,91 L93,82 Z"/>
+  <rect class="fig-pipe" x="30" y="96" width="116" height="44" rx="8"/>
+  <text class="fig-note" x="88" y="122" text-anchor="middle">“Yes, probably.”</text>
+  <text class="fig-label" x="88" y="180" text-anchor="middle">A forecast</text>
+  <text class="fig-note" x="88" y="194" text-anchor="middle">a guess about themselves</text>
+
+  <!-- the evidence -->
+  <g class="fig-label" text-anchor="middle">
+    <text x="262" y="20">“Tell me about</text><text x="262" y="34">the last time ...”</text>
+  </g>
+  <path class="fig-axis" d="M262,44 L262,56"/>
+  <path class="fig-arrow" d="M257,54 L262,63 L267,54 Z"/>
+  <rect class="fig-pipe" x="186" y="68" width="152" height="100" rx="8"/>
+  <rect class="fig-mark" x="198" y="80" width="128" height="20"/>
+  <rect class="fig-mark" x="198" y="108" width="128" height="20"/>
+  <rect class="fig-mark" x="198" y="136" width="128" height="20"/>
+  <g class="fig-label">
+    <text x="206" y="94">When: last Tuesday</text>
+    <text x="206" y="122">Did: a spreadsheet</text>
+    <text x="206" y="150">Cost: two hours</text>
+  </g>
+  <text class="fig-label" x="262" y="180" text-anchor="middle">Evidence</text>
+  <text class="fig-note" x="262" y="194" text-anchor="middle">the workaround, and its price</text>
+</svg>
