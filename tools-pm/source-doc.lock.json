@@ -5,18 +5,18 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "e75409757369f4ff040656d2fc611cfc12a9a0417bbab5741ec7aefcfe6d37b2",
+   "sha256": "82aa2e633e0d5c601d135a7bb49a1cd5d184071007c223a37ec09f57f616ee93",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 34
+   "rev": 38
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "fb232d7ffcb39ce17f2b049a20d55147875915de09a617f7c0d7dad7589c16f6",
+   "sha256": "74eaebc489a78721dce47dca1e2ad1709321a36903f302b4ccfb952561a78e03",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 203
+   "rev": 205
   },
   {
    "name": "0 Own Your Role",
@@ -85,18 +85,18 @@
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "7c6482971994def7715498c9d8af1a240bebf2ba836d1b86c7cf1ba308a77397",
+   "sha256": "f28f454ba3360713eb56b188342c3f8a6b4db584f25562a85b76c55a8d8e9862",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 194
+   "rev": 195
   },
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "77cd79dd6eaa6e312686feaad017df20c8d93fd3b8fbf7c392d8fd657e701ece",
+   "sha256": "551c12cb3e6d57ca9a26c1203641896613810df4f0c45e386ecfd6451ce6d64a",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 418
+   "rev": 419
   },
   {
    "name": "10 Notice When You Are Wrong",
@@ -117,10 +117,10 @@
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "5020d9a62c03e94e0168bf793d01df998d2945156c7c017131e8abc0d43e20f3",
+   "sha256": "bf0cb251744f40ba1fc6174cc6178f0ceaf873fa6d892fca37c599bb2fa3b5cb",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 5
+   "rev": 6
   }
  ]
 }

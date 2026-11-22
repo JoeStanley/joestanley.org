@@ -126,7 +126,7 @@ advice-process:
 consequence-scanning:
   term: Consequence scanning
   text: A short team conversation, early in a product's or a feature's life, about everything it could cause, run on three questions from Doteveryone.
-many-hands:
+problem-of-many-hands:
   term: Problem of many hands
   text: Dennis Thompson's name for harm that comes from so many small contributions that it's hard to say who's responsible.
 right-to-erasure:

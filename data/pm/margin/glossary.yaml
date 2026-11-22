@@ -93,9 +93,6 @@ kernel-of-a-strategy: ""
 # Leverage point
 leverage-point: ""
 
-# Problem of many hands
-many-hands: ""
-
 # McNamara fallacy
 mcnamara-fallacy: ""
 
@@ -116,6 +113,9 @@ pace-layers: ""
 
 # Percentile
 percentile: ""
+
+# Problem of many hands
+problem-of-many-hands: ""
 
 # Regression to the mean
 regression-to-the-mean: ""

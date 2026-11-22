@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-In a large organization, harm often comes from many small contributions, and no one person decides it. Dennis Thompson called this the {{< pm/term "many-hands" "problem of many hands" >}} (1980). The psychologist Albert Bandura listed the ways people quiet their own conscience while they do harm, and the signs below follow his list.
+In a large organization, harm often comes from many small contributions, and no one person decides it. Dennis Thompson called this the {{< pm/term "problem-of-many-hands" "problem of many hands" >}} (1980). The psychologist Albert Bandura listed the ways people quiet their own conscience while they do harm, and the signs below follow his list.
 
 ## Why a PM cares
 
