@@ -11,9 +11,9 @@
       <li><a href="{{ .RelPermalink }}">{{ .Title }}</a>{{ with .Description }}<p>{{ . }}</p>{{ end }}</li>
       {{- end }}
     </ul>
-    {{ else }}
+    {{ else }}{{ if not .Content }}
     <p class="empty">Nothing here yet. In the meantime, <a href="{{ "/pm/" | relURL }}">On Product Judgment</a> and the <a href="{{ "/page/readme/" | relURL }}">ReadMe</a> are ready to read.</p>
-    {{ end }}
+    {{ end }}{{ end }}
   </div></div>
 </article>
 {{ end }}
