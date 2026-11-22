@@ -22,9 +22,9 @@ steps:
   - id: ranking
     kind: play
     title: Play the ranking game
-    minutes: 5
+    minutes: 10
     where: It's on this page, just below this list.
-    look: Which stores fill both ends of the ranking, and where the one real problem ends up.
+    look: Which stores fill both ends of the ranking, where the one real problem ends up, and how long a fix tried in small stores takes to show.
   - id: munro
     kind: read
     title: 'Eileen Munro, "Decision making under uncertainty in child protection"'

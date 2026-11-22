@@ -138,7 +138,7 @@
 .game .jobs li { margin: var(--sp-1) 0; }
 .setups.order { margin-top: var(--sp-4); }
 .pick-list { margin: var(--sp-2) 0 var(--sp-3); padding: 0; list-style: none; display: grid; gap: var(--sp-2); }
-.setup.pick::before { content: none; }
+.setup.pick::before, .setup.test::before { content: none; }
 .setup.pick[aria-pressed="true"] { box-shadow: none; font-weight: var(--w-regular); }
 .pick-place:not(:empty) { display: inline-block; min-width: 2.4em; margin-right: var(--sp-2); text-align: center; border: 1px solid var(--ink); border-radius: 0.2rem; font-weight: var(--w-strong); }
 .board-waiting { display: block; min-height: 0; padding: var(--sp-2); }
@@ -161,7 +161,7 @@
 .rk-dot { position: absolute; left: calc((var(--i) + 0.5) / var(--n) * 100%); bottom: calc(var(--r, 0) * 100%); width: 0.65rem; height: 0.65rem; transform: translate(-50%, 50%); border: 1.5px solid var(--ink); border-radius: 50%; background: var(--paper); visibility: hidden; transition: bottom 0.3s ease-out; }
 .rk-dot.is-shown { visibility: visible; }
 .rk-dot.is-worst { background: var(--mark); }
-.rk-dot.was-worst { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink); }
+.rk-dot.was-worst, .rk-dot.is-trial { box-shadow: 0 0 0 2px var(--paper), 0 0 0 3.5px var(--ink); }
 .rk-dot.is-worse { border-radius: 0.1rem; }
 .rk-dot.is-out { border-width: 3px; }
 

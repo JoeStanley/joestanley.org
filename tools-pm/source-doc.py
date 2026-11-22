@@ -216,11 +216,19 @@ def game(sec):
         choices = " / ".join(clean(l.get_text()).strip() for l in live.select("fieldset label"))
         out.append(f"{inline(live.find('legend'))} {choices}.")
         labels = live.select(".setups-label")
+        tests = live.select("[data-test]")
         picks = live.select("[data-pick]")
-        if picks:   # the waiting game: the reader puts the jobs in any order
-            out.append(f"{inline(labels[0])} " + " / ".join(inline(b) for b in picks) + ".")
-        out.append(f"{inline(live.find('button', attrs={'data-play': True}))}. {inline(labels[-1])}")
         data = json.loads(live.find("script", attrs={"data-game-setups": True}).string)
+        if tests:   # the waiting game: the reader picks an estimate to test while the team builds
+            out.append(f"{inline(labels[0])} " + " / ".join(inline(b) for b in tests) + ".")
+            said = []
+            for j in data["jobs"]:
+                for r in ([j["report"]] if j.get("report") else [o["report"] for o in j.get("outcomes", [])]):
+                    said.append(clean(r).replace("{value}", "*its value*"))
+            out.append(f"*A test's answer, at the end of week {data['test_weeks']}:* " + " / ".join(said))
+        if picks:   # the waiting game: the reader puts the jobs in any order, picking the next when it falls due
+            out.append(f"{inline(labels[1 if tests else 0])} " + " / ".join(inline(b) for b in picks) + ".")
+        out.append(f"{inline(live.find('button', attrs={'data-play': True}))}. {inline(labels[-1])}")
         setups = data.get("setups") or data.get("rules") or data
         items = []
         for k in [b["data-setup"] for b in live.select("button.setup[data-setup]")]:

@@ -47,7 +47,7 @@ MODULE_GRACE = 1   # until launch, a module may run one page past either limit: 
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
                  # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 89   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 90   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -981,18 +981,32 @@ def a11y_checks(browser, ctx, base, out_dir):
                         if said.get(i) != n:
                             fail("A8", f"the dice game, setup {setup}: the result says {said.get(i)} waiting at station {i}; the board shows {n}")
             elif g == "waiting":
-                for setup in ("biggest", "cd3"):
+                for setup in ("biggest", "stop", "test"):
                     pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
                     res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent, cost: document.querySelector('[data-cost]').textContent,
                         rows: Object.fromEntries([...document.querySelectorAll('[data-row]')].map(r => [r.getAttribute('data-row'), r.querySelectorAll('.wk.is-wait, .wk.is-build').length]))})""")
                     jobs = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "waitgame.yaml"), encoding="utf-8"))["jobs"]
                     for j in jobs:
-                        m_ = re.search(re.escape(j["short"]) + r"(?: went live)? in week (\d+)", res["text"])
+                        m_ = re.search(re.escape(j["short"]) + r"(?: went live)? (?:in|after) week (\d+)", res["text"])
                         if not m_ or int(m_.group(1)) != res["rows"].get(j["id"]):
                             fail("A8", f"the waiting game, {setup}: the result says {j['short']} went live in week {m_.group(1) if m_ else 'none'}; the board shows {res['rows'].get(j['id'])} weeks before it was live")
                     if res["cost"] not in res["text"]:
                         fail("A8", f"the waiting game, {setup}: the result doesn't say what the board's tally does, {res['cost']}")
+                    for j in jobs:
+                        if not re.search(re.escape(j["short"]) + r"(?: \w+)? (?:was worth|\$[\d,]+)|" + re.escape(j["tag"]) + r" \w+: it was worth", res["text"], re.I):
+                            fail("A8", f"the waiting game, {setup}: the result doesn't say what {j['short']} turned out to be worth")
+                # a pick left for later: the run waits when it falls due, and says so
+                pg.click("[data-test=swaps]"); pg.click("[data-pick=fix]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
+                st = pg.evaluate("""() => ({week: document.querySelector('[data-week]').textContent, report: document.querySelector('[data-report]').textContent, result: document.querySelector('[data-result]').textContent})""")
+                if st["week"] != "2" or "answer is in" not in st["report"] or st["result"]:
+                    fail("A8", f"the waiting game: with the next pick left open, the run doesn't wait at week 2 and give the test's answer in words ({st})")
             else:
+                pg.click("[data-setup=trial]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
+                res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent, n: document.querySelectorAll('.rk-dot.is-trial.is-worst').length, ringed: document.querySelectorAll('.rk-dot.is-trial').length})""")
+                m_ = re.search(r"Of the five worst stores, (none|one|two|three|four|five|\d+) ha", res["text"])
+                said = ["none", "one", "two", "three", "four", "five"].index(m_.group(1)) if m_ and not m_.group(1).isdigit() else int(m_.group(1)) if m_ else -1
+                if said != res["n"] or not res["ringed"]:
+                    fail("A8", f"the ranking game, trial: the result says {said} of the five worst have the fix; the board shows {res['n']}")
                 for setup in ("equal", "funnel"):
                     pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
                     res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent,

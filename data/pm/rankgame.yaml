@@ -14,14 +14,19 @@ sizes:
     orders: 5000
 late: 0.10
 worse_late: 0.13
+# The trial: the first few small stores get a fix that cuts their late rate, and the reader plays it week by week.
+trial: {stores: 5, late: 0.07}
 # The funnel: the late rate plus or minus this many standard errors, the range chance allows 998 times in 1,000.
 funnel_z: 3.09
 # For each size, lowest and highest late rate inside the funnel, in percent.
 funnel: [[0.0, 30.7], [3.4, 16.6], [8.7, 11.3]]
 # Over 200,000 simulated weeks: small stores among the five worst and among the five best; of one week's five
 # worst, how many are there again the next; where the store that really is worse ranks on average; how often, in
-# 100 weeks, it's among the five worst; and how often the funnel picks it out alone.
-averages: {small_worst: 4.1, small_best: 4.6, stay: 1.2, worse_rank: 7, worse_in_worst: 28, worse_alone: 94}
+# 100 weeks, it's among the five worst; and how often the funnel picks it out alone. For the trial: how many of a week's
+# five worst have the fix, on average; and in 100 trials, how often the stores with the fix look better, all their
+# orders together, than the small stores without it, and how often worse, after one week and after eight.
+averages: {small_worst: 4.1, small_best: 4.6, stay: 1.2, worse_rank: 7, worse_in_worst: 28, worse_alone: 94, trial_in_worst: 0.7,
+  trial_better_one: 80, trial_worse_one: 16, trial_better_eight: 99, trial_worse_eight: 1}
 setups:
   equal:
     label: This week
@@ -39,6 +44,10 @@ setups:
     label: Draw the funnel
     note: The same stores. A band now shows the range chance allows at each size.
     after: A store inside its band may only be unlucky. Look first at what falls outside it.
+  trial:
+    label: Try a fix in five small stores
+    note: Five small stores, ringed, get a fix that cuts their late orders from 10 in 100 to 7 in 100. Every other store is still late on 1 in 10. Play a week at a time.
+    after: One store's week swings too far to show a fix. Pool the stores that got it, compare them with stores that didn't, and give it weeks.
 # One recorded week with every store the same, for print and for a page without JavaScript: each size's lowest and
 # highest late rate, in percent, and how many of its stores were among the five worst and the five best.
 example:
