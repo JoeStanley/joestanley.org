@@ -45,7 +45,7 @@ check:
   - q: Seven of the ten people in your usability test liked the new flow. Can you say 70 percent of your users like it?
     a: No. Ten people picked for a test don't stand for all your users, and a percentage claims a precision the method can't give. Ask instead what put the other three off.
   - q: After your worst week of complaints, the team changes the sign-up flow, and the next week is better. Did the change work?
-    a: "You can't tell yet. A worst week is usually followed by a better one anyway: that's regression to the mean. Compare with customers who didn't get the change (Module 6 covers how), or give it more weeks."
+    a: "You can't tell yet. A worst week is usually followed by a better one anyway: that's regression to the mean. Compare with customers who didn't get the change, as an experiment toggle from Change Safely lets you, or give it more weeks."
   - q: A competitor's case study says a feature lifted retention by 20 percent. What do you ask before you copy it?
     a: "Cartwright's question: how would it lead to that result here, step by step, and what would support or derail each step for your customers?"
 

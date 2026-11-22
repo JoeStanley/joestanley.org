@@ -21,10 +21,10 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "a1b69490801c77e06d9a9b0f757ab2948a21aa235325d9e7460363cd3e7af424",
+   "sha256": "de623efbb95a9af5ed4b37b64dbb840563835d83290f483a1eec8ff270a3204f",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1931
+   "rev": 1932
   },
   {
    "name": "1 See the System",
@@ -37,10 +37,10 @@
   {
    "name": "2 Find the Constraint",
    "file": "2-find-the-constraint.md",
-   "sha256": "320dba37e500805fa0dbe4fa7df118ba794e9af8728713f7b1a4124922755413",
+   "sha256": "6eae36b9e74ea1ccced4d19d7ec40bd91d8b4ed2f948c43c59aaf70fd77ebd08",
    "doc_tab": "2a162ad5-e7b3",
    "doc_node": "8b268877-78f7",
-   "rev": 74
+   "rev": 75
   },
   {
    "name": "3 Mind the Seams",
@@ -69,34 +69,34 @@
   {
    "name": "6 Change Safely",
    "file": "6-change-safely.md",
-   "sha256": "febde55765ce845ef8b6d77701695daec473965cb95d422c3374ad12720133fd",
+   "sha256": "66bb07ed4550a18aa7ce450335c12c7e9d043ded98602e8a70e5eafa4b9dd332",
    "doc_tab": "9317d9d1-2129",
    "doc_node": "a29f117c-7f2e",
-   "rev": 38
+   "rev": 41
   },
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "5d5eeeeb4dbb122ed092887cb01cae2fd7de5d303629d894b5b9a397516abf26",
+   "sha256": "b9bfc6d7b147412c582451ee23bcdd39e343977aae6299941d0fd057e1a102e0",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 29
+   "rev": 30
   },
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "9ad63338f9a80b09368706b896642f41456b119db65911f4b17eda74e05c5713",
+   "sha256": "be8344ac046d699b1e8b0a5f8df421c6d7500a985f5363426159eb73330e79e9",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 206
+   "rev": 207
   },
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "532509e27313cb180d43ace64ea53b442ffb7c245b2c87ea574e8f1db94467a4",
+   "sha256": "d02b376546b8961c4dc40e7ad61ef7d6f4761e0cf1d47defb269ea4811520a2c",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 425
+   "rev": 427
   },
   {
    "name": "10 Notice When You Are Wrong",
@@ -117,10 +117,10 @@
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "7a3254263faeedc5a06407598c3dededea0b83675095d49bac035360f119bee6",
+   "sha256": "58e85e2fcca3ce26c9d32a2d3f0e8638a527c01ed0e8b43f126b1d3d3201f525",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 8
+   "rev": 11
   }
  ]
 }

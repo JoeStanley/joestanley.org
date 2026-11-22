@@ -48,7 +48,7 @@ steps:
     links:
       - text: "Data Is a Toxic Asset, So Why Not Throw It Out?"
         url: https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html
-    look: "Why he treats stored data as a liability, and one test to put to every field you collect: which decision will it change?"
+    look: "Why he treats stored data as a liability, and one test to put to every field you collect: which decision will it change? It's Map the Domain's GOV.UK test, from the security side."
     trust: An opinion essay by a security technologist, first published by CNN.
     only: "His fix, in one line: \"there's no better security than deleting the data.\""
 
@@ -99,7 +99,7 @@ What you build reaches people you'll never meet. On a delivery platform, small r
 
 Some of them live a world away. In 2017, Myanmar's military killed and raped Rohingya by the thousands and drove hundreds of thousands into Bangladesh. [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide, and found that Facebook had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook agreed it should do more. In 2022, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. And in 2023, Amnesty International found that Meta, as Facebook's owner is now called, had contributed to abuses again, against Tigrayans in Ethiopia's war.
 
-You've met parts of this question already: whose costs fall outside a system's edge, in See the System; whom a stand-in measure misses, in Find the Constraint; who falls between two categories, in Mind the Seams. Here it's the whole module.
+You've met parts of this question already. See the System asked whose costs fall outside a system's edge, Find the Constraint whom a stand-in measure misses, and Mind the Seams who falls between two categories. Map the Domain asked who a data model can't record, Design for Change who pays for a change, and Change Safely and Weigh the Evidence whom an average hides. Here it's the whole module.
 
 So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
 
