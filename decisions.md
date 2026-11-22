@@ -5,6 +5,7 @@ One line per decision, newest first. Only what Joe decided. A session adds a lin
 ## 22 November 2026, the round 5 session
 
 - Bring People With You says practitioners, not research, back the two kinds of update: "Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places." He had understood from an earlier session that research supported both halves (agree, in the session).
+- The Double-Loop Learning card keeps Argyris's full quote on bad news, which a session had cut to fit the card on its printed page; the session's other trims for print stay. He asked whether the PDF work hadn't been deprioritized (his pick, in the session).
 - In the trust equation's picture, "safe to be vulnerable" sits on two lines over Intimacy, clear of "what you do" (his comment, in the session).
 - The syllabus moves to American punctuation, commas inside closing quotation marks as periods are, as a job of its own across every unit (agree, in the session).
 - He looks for full-path books that are industry-recognized classics, or from the past ten years, highly rated and not pop science (his question in the session, which ruled out Schulz's *Being Wrong* and Galef's *The Scout Mindset*).

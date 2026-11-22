@@ -101,18 +101,18 @@
   {
    "name": "10 Notice When You Are Wrong",
    "file": "10-notice-when-you-are-wrong.md",
-   "sha256": "ea2cc9bba62f61528cb089e31aaf0cdd5b5ce8c32960c69c7206e858848e7e89",
+   "sha256": "9d7126682fa4cefb80f4234f0958dfab65517e7eecd79c96553bf6899ca5f4a1",
    "doc_tab": "73278a69-a68a",
    "doc_node": "0e614323-8b2d",
-   "rev": 18
+   "rev": 23
   },
   {
    "name": "11 Bring People With You",
    "file": "11-bring-people-with-you.md",
-   "sha256": "09a74e7e30ad0a13dc35a612c96f888acc66915565fa07fdd12a502ac33340af",
+   "sha256": "ea80150d0891774e6053e2782e86c9f02e555f18d9748d2faaab752152a51667",
    "doc_tab": "8bbdca60-921f",
    "doc_node": "2f658fd4-20e8",
-   "rev": 982
+   "rev": 985
   },
   {
    "name": "Glossary",

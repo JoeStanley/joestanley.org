@@ -4,7 +4,7 @@ layout: card
 module: notice-when-you-are-wrong
 weight: 10
 figure: double-loop
-figure_caption: Single-loop learning goes back to the action and keeps the goal. Double-loop learning goes back further, to ask whether the goal is right.
+figure_caption: Single-loop learning goes back to the action. Double-loop learning goes back to the goal, and asks if it's right.
 question: Which assumption behind your team's goal has nobody questioned since it was set?
 deeper:
   title: Teaching Smart People How to Learn
@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-Single-loop learning, in Chris Argyris's terms, corrects an error and keeps the goal, like a thermostat switching the heat on when the room gets cold. {{< pm/term "double-loop-learning" "Double-loop learning" >}} questions the goal and the assumptions behind it, like a thermostat that could ask itself whether it should be set at 68 degrees at all.
+Single-loop learning, in Chris Argyris's terms, corrects an error and keeps the goal, like a thermostat switching the heat on when the room gets cold. {{< pm/term "double-loop-learning" "Double-loop learning" >}} questions the goal and the assumptions behind it, like a thermostat asking whether it should be set at 68 degrees at all.
 
 In "Double Loop Learning in Organizations" (*Harvard Business Review*, 1977), he tells of Product X, which lost more than $100 million. At least five people knew it was in serious trouble six years before it was dropped, but their memos were cut down on the way up. Argyris blamed "norms embedded within norms": don't confront policies top management is excited about, and don't openly confront that norm either.
 
@@ -33,4 +33,4 @@ In "Double Loop Learning in Organizations" (*Harvard Business Review*, 1977), he
 
 ## What it does not say
 
-It does not say single-loop learning is bad. Argyris argued that double-loop learning doesn't get in the way of the everyday fixes: "indeed, it usually helps it."
+It doesn't say single-loop learning is bad. Double-loop learning, Argyris argued, doesn't get in its way: "indeed, it usually helps it."

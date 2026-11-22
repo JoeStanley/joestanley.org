@@ -1,4 +1,4 @@
-<svg class="fig" viewBox="0 0 360 230" role="img" aria-labelledby="fig-loops-title fig-loops-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 18 360 212" role="img" aria-labelledby="fig-loops-title fig-loops-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-loops-title">Two loops back from one result: a small one to the action, a larger one to the goal.</title>
   <desc id="fig-loops-desc">Three stops in a row, left to right: the goal, a thermostat set at 68 degrees; the action, heat on; and the result, how warm the room is. A small loop runs from the result back to the action: single-loop learning fixes the action and keeps the goal. A larger loop runs from the result back under the action to the goal, which is highlighted: double-loop learning asks whether the goal is right.</desc>
 

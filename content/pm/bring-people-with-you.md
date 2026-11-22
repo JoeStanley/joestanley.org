@@ -7,7 +7,7 @@ one_thing: Send your most senior reader a short update on a day you've named, wi
 do_minutes: 40
 
 last_time:
-  - q: Every retro on your team ends with a process tweak. What question is missing?
+  - q: Every retro ends with a process tweak. What question is missing?
     a: Whether the goal is right. A tweak changes the method to hit the same goal, which is single-loop learning. The double loop asks why the goal is what it is.
   - q: Complaints to support fell by half this quarter. Is that good news?
     a: Not on its own. Low numbers can mean people stopped telling you. Ask the support lead what changed, and who'd be the last to write in.
@@ -90,9 +90,9 @@ deeper:
 
 People who decide about your work, or rely on it, can't see inside your team. Going quiet between milestones feels harmless, but that's when the guesses fill the space. If a hospital has planned its clinics around your scheduling release, the guesses tend to be worried ones.
 
-This module picks up where Notice When You Are Wrong leaves off: once you've found something, say it so the people who decide can act. You build trust by being clear when there's news and predictable when there isn't. Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places.
+Once you've found something, say it. You build trust by being clear when there's news and predictable when there isn't. Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places.
 
-First, think about the milestones and outcomes you'd want to tell people about: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, are likely the most interested in these. But they may come irregularly, with long gaps in between.
+First, think about the milestones and outcomes you'd want to tell people about: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, are likely the most interested in these, though they may come irregularly, with long gaps in between.
 
 So second, think about a regular cadence of updates. Many businesses operate off of a business work week or month, though I try to anchor my communications to the sprint schedule of my teams. Whatever rhythm you pick, say what has happened and what will happen next. People inside it, like your peers and your management chain especially, want to be brought along, both to learn and to avoid surprises.
 
