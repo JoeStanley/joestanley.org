@@ -5,6 +5,7 @@ Run from the site repo root:
     npm install --prefix tests          # once, for axe-core
     python3 tests/check_site.py         # build, check, report
     python3 tests/check_site.py --update-baseline   # only after the owner approves the look
+    python3 tests/check_site.py --live              # before publishing: also fails while a voice slot is open (X4)
 
 Needs Hugo 0.141.0 extended (HUGO env var or on PATH), Python 3 with playwright, pyyaml and Pillow,
 Chrome or Playwright's Chromium (CHROME env var to point at one), and pdftotext.
@@ -60,6 +61,7 @@ def checked(*rules):
 
 ONLY = set()   # with --only, run just the checks behind these rules (mutations.sh uses this to stay quick)
 SKIP = set()   # with --skip, leave these rules out (GitHub's checks skip V1: screenshots depend on the machine)
+LIVE = []      # with --live, as publish.yml runs it: an open voice slot fails X4, since nothing waiting reaches the site
 
 
 def run_for(*rules):
@@ -1906,9 +1908,72 @@ def s14_checks(name, text):
                     fail("S14", f"{where}: a source asks \"{d_.group(0)}\", which rounds to {s14_round(int(d_.group(1)))} minutes")
 
 
+def voice_checks(sd, soup, mods, tab_of, by_name):
+    """X4: every voice slot in data/pm/voice-slots.yaml is placed in its unit and shows its block in its tab, every
+    placed slot is in the file, no brief or old words reach a page, no wordless slot stands as a paragraph, the moved
+    list says what, from, to, why and when, and with --live no slot is open."""
+    v = sd.voice()
+    slots = {s_.get("id"): s_ for s_ in v["slots"]}
+    norm = lambda t: " ".join(re.findall(r"[a-z0-9']+", (t or "").translate(sd.QUOTES).lower()))
+    for i, s_ in enumerate(v["slots"]):
+        for k in ("id", "unit", "brief"):
+            if not s_.get(k):
+                fail("X4", f"data/pm/voice-slots.yaml: slot {s_.get('id') or i + 1} has no {k}")
+        if s_.get("unit") and s_["unit"] not in by_name:
+            fail("X4", f"the voice slot {s_.get('id')} names the unit {s_['unit']}, which has no tab")
+    # where each slot is placed: a built page, as the single document shows it, or a draft's file
+    placed = {}
+    for art in soup.select("main article.unit"):
+        unit = art["data-unit"]
+        name = tab_of.get(unit) or next((tab_of[m["page"]] for m in mods if m.get("page") and m["id"] == art.get("data-module")), None)
+        for el in art.select("[data-voice]"):
+            placed.setdefault(el["data-voice"], []).append(name)
+            if el.name == "p" and not norm(el.get_text()):
+                fail("X4", f"{name}: the voice slot {el['data-voice']} shows no words and stands as a paragraph of its own, which leaves an empty one")
+            if el.name == "span" and el.parent.name in ("div", "section", "article", "blockquote", "main"):
+                fail("X4", f"{name}: the voice slot {el['data-voice']} stands on its own line outside any paragraph: place it as {{{{< pm/voice \"{el['data-voice']}\" \"paragraph\" >}}}}")
+        text = norm(art.get_text(" "))
+        for sid, s_ in slots.items():
+            b = norm(s_.get("brief"))
+            if b and len(b.split()) >= 3 and b in text:
+                fail("X4", f"{name}: the brief of the voice slot {sid} reached the page")
+            o = norm(s_.get("old"))
+            if o and len(o.split()) >= 3 and o != norm(s_.get("interim")) and o in text:
+                fail("X4", f"{name}: the owner's old words for the voice slot {sid} reached the page, and only its interim words should")
+    for m in mods:
+        if m.get("draft") and os.path.exists(os.path.join(ROOT, "drafts", "pm", m["draft"] + ".md")):
+            for sid in sd.VOICE_CODE.findall(open(os.path.join(ROOT, "drafts", "pm", m["draft"] + ".md"), encoding="utf-8").read()):
+                placed.setdefault(sid, []).append(f"{m['num']} {m['title']}")
+    for sid, units in placed.items():
+        if sid not in slots:
+            fail("X4", f"{units[0]} places the voice slot {sid}, and data/pm/voice-slots.yaml has no such slot")
+    for sid, s_ in slots.items():
+        if sid not in placed:
+            fail("X4", f"the voice slot {sid} is in data/pm/voice-slots.yaml and placed in no unit: place it with {{{{< pm/voice \"{sid}\" >}}}}, or delete it once it's filled")
+        elif s_.get("unit") not in placed[sid]:
+            fail("X4", f"the voice slot {sid} belongs to {s_.get('unit')} and is placed in {', '.join(placed[sid])}")
+        elif f"{sd.SLOT_HEAD} `{sid}`" not in by_name.get(s_.get("unit"), ""):
+            fail("X4", f"{s_.get('unit')}: the tab doesn't show the block of the voice slot {sid}, so the owner can't fill it where he reads")
+        if sid not in by_name.get(sd.VOICE_TAB, ""):
+            fail("X4", f"the tab {sd.VOICE_TAB} doesn't list the voice slot {sid}")
+    for i, e in enumerate(v["moved"]):
+        missing = [k for k in ("what", "words", "from", "to", "why", "when") if not e.get(k)]
+        if missing:
+            fail("X4", f"data/pm/voice-slots.yaml: moved entry {i + 1} has no {', '.join(missing)}")
+        if e.get("what") not in ("cut", "moved", "changed"):
+            fail("X4", f"data/pm/voice-slots.yaml: moved entry {i + 1} says what happened as \"{e.get('what')}\", and it's cut, moved or changed")
+        if e.get("words") and " ".join(sd.clean(e["words"]).split()) not in " ".join(by_name.get(sd.VOICE_TAB, "").split()):
+            fail("X4", f"the tab {sd.VOICE_TAB} doesn't list moved entry {i + 1}: \"{e['words'][:50]}...\"")
+    if LIVE:
+        for sid, s_ in slots.items():
+            fail("X4", f"the voice slot {sid} in {s_.get('unit')} is still open, and nothing that waits for the owner's voice is published")
+    elif slots:
+        NOTE["X4"].append(f"{len(slots)} voice slot{'' if len(slots) == 1 else 's'} open, which publishing (--live) would fail on")
+
+
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9")
+    checked("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -1965,7 +2030,7 @@ def source_checks(out_dir):
     try:
         tabs = sd.tabs(out_dir, lock_all.get("synced") or None)
     except Exception as e:
-        for r in ("X2", "X3"):
+        for r in ("X2", "X3", "X4"):
             fail(r, f"tools-pm/source-doc.py could not make the tabs: {str(e).splitlines()[0][:160]}")
         return
     by_name = dict(tabs)
@@ -1981,7 +2046,7 @@ def source_checks(out_dir):
         name = tab_of.get(unit) or next((tab_of[m["page"]] for m in mods if m.get("page") and m["id"] == art.get("data-module")), None)
         if not name or name not in by_name:
             fail("X2", f"the unit {unit} has no tab"); continue
-        have = norm(by_name[name])
+        have = norm(sd.strip_slots(by_name[name]))
         for junk in art.select("svg, script, style, .sr, .note-label, .print-only, .board, .board-key, .tally, .progress, .result, .setup-note, details.why > summary, [hidden]"):
             junk.extract()
         missing = []
@@ -2005,6 +2070,7 @@ def source_checks(out_dir):
     for name in lock:
         if name not in by_name:
             fail("X3", f"the record lists a tab the repository no longer makes: {name}")
+    voice_checks(sd, soup, mods, tab_of, by_name)
     # S5, E1 to E3: every unit, built or draft, as its tab shows it
     built_tabs = {f"{m['num']} {m['title']}" for m in mods if m.get("page")}
     own_words = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "own-words.yaml"), encoding="utf-8")) or []
@@ -2013,7 +2079,7 @@ def source_checks(out_dir):
             fail("E3", f"data/pm/own-words.yaml lists a sentence for {o.get('unit')}, which has no tab")
     retired = [l.strip().lower() for l in open(os.path.join(TESTS, "retired-settings.txt"), encoding="utf-8") if l.strip() and not l.startswith("#")]
     for name, text in tabs:
-        if name == "About":
+        if name in ("About", sd.VOICE_TAB):
             continue
         low = text.lower()
         for phrase in retired:
@@ -2610,7 +2676,10 @@ def main():
     ap.add_argument("--update-baseline", action="store_true")
     ap.add_argument("--only", default="", help="comma-separated rule IDs: run just the checks behind them")
     ap.add_argument("--skip", default="", help="comma-separated rule IDs: leave them out")
+    ap.add_argument("--live", action="store_true", help="as publishing runs it: X4 fails while any voice slot is open")
     args = ap.parse_args()
+    if args.live:
+        LIVE.append(True)
     ONLY.update(r.strip() for r in args.only.split(",") if r.strip())
     SKIP.update(r.strip() for r in args.skip.split(",") if r.strip())
     out_dir = tempfile.mkdtemp(prefix="site-")
@@ -2629,11 +2698,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
+    if run_for("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
+            for r in ("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1", "R10") else None
     srv = Server(out_dir)

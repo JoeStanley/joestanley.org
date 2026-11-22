@@ -1,0 +1,15 @@
+{{- /* A voice slot (spec X4): a passage that waits for the owner's voice until his final pass.
+       First argument: the slot's id in data/pm/voice-slots.yaml. The page shows only the slot's interim words,
+       unmarked, so it reads whole; its brief and his old words stay in the working doc. In a sentence it's
+       {{< pm/voice "id" >}}; as a paragraph of its own, on its own line, {{< pm/voice "id" "paragraph" >}}, since
+       Hugo wraps no paragraph around a shortcode that stands alone. */ -}}
+{{- $id := .Get 0 -}}
+{{- $s := "" -}}
+{{- range (index site.Data.pm "voice-slots").slots }}{{ if eq .id $id }}{{ $s = . }}{{ end }}{{ end -}}
+{{- if not $s }}{{ errorf "pm/voice: no slot %q in data/pm/voice-slots.yaml (used in %s)" $id .Page.File.Path }}{{ end -}}
+{{- if eq (.Get 1) "paragraph" -}}
+<p data-voice="{{ $id }}">{{ with $s.interim }}{{ . | markdownify }}{{ end }}</p>
+{{- else -}}
+<span data-voice="{{ $id }}">{{ with $s.interim }}{{ . | markdownify }}{{ end }}</span>
+{{- end -}}
+{{- /**/ -}}

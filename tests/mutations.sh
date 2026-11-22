@@ -88,6 +88,14 @@ run_bg "a module with no source" X1 "sed -i '/^  page: decide-and-set-direction$
 run_bg "a draft left behind after its module is built" X1 "mkdir -p drafts/pm; cp content/pm/see-the-system.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
 run_bg "the tab drops what to look for" X2 "sed -i 's/paras += look(b) + reasons(b) + note_of(li)/paras += reasons(b) + note_of(li)/' tools-pm/source-doc.py"
 run_bg "a word changed without reaching the working doc" X3 "sed -i 's/Nothing is sent anywhere./Nothing leaves your browser./' content/pm/_index.md"
+# X4: a voice slot on Start, placed as a paragraph of its own. The mutations below each place it, then break one thing.
+SLOT="sed -i 's/^slots: \\[\\]/slots:\\n  - id: t\\n    unit: Start\\n    brief: Say what judgment is, in your own words.\\n    interim: Judgment is what you bring when the map runs out./' data/pm/voice-slots.yaml; printf '\\n{{< pm/voice \\\"t\\\" \\\"paragraph\\\" >}}\\n' >> content/pm/_index.md"
+run_bg "a voice slot listed and placed nowhere" X4 "sed -i 's/^slots: \\[\\]/slots:\\n  - id: t\\n    unit: Start\\n    brief: Say what judgment is.\\n    interim: For now./' data/pm/voice-slots.yaml"
+run_bg "an open voice slot on its way to joestanley.org" X4 "$SLOT; sed -i 's/LIVE = \\[\\]  /LIVE = [True]/' tests/check_site.py"
+run_bg "a voice slot's brief shown on the page" X4 "$SLOT; sed -i 's/{{ with \\\$s.interim }}/{{ \\\$s.brief }} {{ with \\\$s.interim }}/' layouts/shortcodes/pm/voice.html"
+run_bg "the tab drops a voice slot's block" X4 "$SLOT; sed -i 's/    out = \\[slot_block(sid) for sid in PENDING\\]/    out = []/' tools-pm/source-doc.py"
+run_bg "a voice slot as a paragraph, placed without saying so" X4 "$SLOT; sed -i 's/ \\\"paragraph\\\" >}}/ >}}/' content/pm/_index.md"
+run_bg "a word of the owner's moved and not listed for his pass" X4 "sed -i 's/^  - what: moved$/  - what: shifted/' data/pm/voice-slots.yaml"
 run_bg "link easing ignores reduced motion" D5 "sed -i '/@media (prefers-reduced-motion: reduce) { a, .recall/d' assets/css/base.css"
 wait
 

@@ -8,6 +8,11 @@ on:
   push:
     branches: [main]
   workflow_call:
+    inputs:
+      live:
+        description: "Publishing: also fail while any voice slot is open (spec X4)"
+        type: boolean
+        default: false
   workflow_dispatch:
 permissions:
   contents: read
@@ -33,7 +38,8 @@ jobs:
           bash tests/setup.sh | tee "$RUNNER_TEMP/setup.out"
           tail -n 1 "$RUNNER_TEMP/setup.out" | sed 's/^export //' | tr ' ' '\n' >> "$GITHUB_ENV"
       - name: Check the site against tests/SPEC.md
-        run: python3 tests/check_site.py --skip V1
+        # publish.yml calls this workflow with live: true, so a passage still waiting for Joe's voice (X4) stops it.
+        run: python3 tests/check_site.py --skip V1 ${{ inputs.live && '--live' || '' }}
       - name: Keep the report
         if: always()
         uses: actions/upload-artifact@v4
