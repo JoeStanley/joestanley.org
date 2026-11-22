@@ -21,50 +21,50 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "ee2b30f79a30b5cf2f0ca46ecd66c3bc71ce55e428a79022f9854cf09610c526",
+   "sha256": "fd563fc99aa9acf6161b936ebcf4ca6468ee256930026418ba7dc31b52378bdf",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1920
+   "rev": 1923
   },
   {
    "name": "1 See the System",
    "file": "1-see-the-system.md",
-   "sha256": "86633fca980c14283bde71a420bcf5d2dde3421ef022eb7b862a83b84d0a0503",
+   "sha256": "3579e07d880c89f31e28cdb9fa3761dddc9bd4c2a5744cbfec86cf1b6143e120",
    "doc_tab": "82ecdb77-b286",
    "doc_node": "75410f3d-2ea1",
-   "rev": 442
+   "rev": 443
   },
   {
    "name": "2 Find the Constraint",
    "file": "2-find-the-constraint.md",
-   "sha256": "c4a20e39e4f34bd17280a2ed0bfa7e9c6baabc561eec227a123545b3d1b6ff46",
+   "sha256": "004d5486eef9cc5dca8c936ee644f52b2495e0215b3bb97b1b4bc78b8240bf70",
    "doc_tab": "2a162ad5-e7b3",
    "doc_node": "8b268877-78f7",
-   "rev": 69
+   "rev": 70
   },
   {
    "name": "3 Mind the Seams",
    "file": "3-mind-the-seams.md",
-   "sha256": "c7bfb5570749bafbff9a7e66608c71cc530f090153a27340aa855239eb78a36b",
+   "sha256": "dae926383bd1618c943b1820770dee03c2ab5a436a475267624df6d4e076025c",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 369
+   "rev": 372
   },
   {
    "name": "4 Map the Domain",
    "file": "4-map-the-domain.md",
-   "sha256": "199c9fff7dc045a13d170a7adcaf1045308baf59940715960205da708864f092",
+   "sha256": "5a476f7a8c194f6598762a6d133da313fcd509791af1186f4c928f718f423666",
    "doc_tab": "b3d1938f-b26d",
    "doc_node": "57f2abde-0b8e",
-   "rev": 566
+   "rev": 567
   },
   {
    "name": "5 Design for Change",
    "file": "5-design-for-change.md",
-   "sha256": "0cfd181916fe4e4a42f24d269ab37eb966ecb938643c37dd601281a28c7868e3",
+   "sha256": "2da218fa46f3c7246517d51a8f23730ec69a253f15ccf00a7e560acd1fef7ba8",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 362
+   "rev": 363
   },
   {
    "name": "6 Change Safely",
@@ -77,10 +77,10 @@
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "1dddb6d2f709d45513570f1fde0b1d30be6a6161e1892110e46493b3cce72510",
+   "sha256": "92d8453871811c11be3e710f7ec13867c9354e8740e0f7f7c32776604a4b060f",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 18
+   "rev": 19
   },
   {
    "name": "8 Decide and Set Direction",

@@ -40,6 +40,17 @@ steps:
     look: The word "meter", which meant different things to different parts of an electricity utility. A bounded context is an area where each word has one agreed meaning.
     trust: Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business.
     only: A way to hear a boundary in how people talk.
+  - id: inclusive
+    kind: read
+    title: GOV.UK Service Manual, "Making your service more inclusive"
+    minutes: 5
+    where: A guide for the UK government's digital teams. Free at gov.uk.
+    links:
+      - text: "Making your service more inclusive"
+        url: https://www.gov.uk/service-manual/design/making-your-service-more-inclusive
+    look: Why "Is this your first child?" is hard for some people to answer, and the fix, "Focus on what your service really needs to know."
+    trust: "It's the UK government's guidance for its own services, which have to work for everyone, since people usually have no alternative to using them. Parts are written for a public service's legal duties."
+    only: A test for every field you ask people to fill in, and the common reasons people get shut out, from time and trust to the evidence they're asked for.
 
 check:
   - q: A dashboard shows yesterday's totals. Is that a defect?
@@ -100,3 +111,4 @@ Two choices in particular are partly yours. How fresh does each answer have to b
 - How long after a change does each copy catch up?
 - When data arrives late, does it count in the period it happened or the period we saw it?
 - Does "user" or "order" mean the same thing on both sides of this boundary?
+- Who can't our model record as they are: someone whose name won't split into first and last, or a child with two mothers?

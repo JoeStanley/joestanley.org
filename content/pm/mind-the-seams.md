@@ -96,6 +96,8 @@ deeper:
 
 Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
+People fall between categories the way work falls between teams. In 1976 five Black women sued General Motors, which had hired no Black women before 1964, and a US court said it would hear their case as race discrimination or as sex discrimination, "but not a combination of both." In 1989 the law scholar Kimberlé Crenshaw used their case to name {{< pm/term "intersectional" "intersectionality" >}}: what happens where two categories meet, and what neither one shows on its own. Look for it in your product as you'd look for any seam: the customer whose problem is half one team's and half another's, so each team looks at its half and finds nothing wrong, or who belongs in two boxes on a form that allows one.
+
 [//]: # (short-path)
 
 ## Do

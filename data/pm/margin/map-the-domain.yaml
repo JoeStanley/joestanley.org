@@ -35,6 +35,9 @@ step-reporting: ""
 # Short path, step 3: Martin Fowler, “Bounded Context”
 step-bounded: ""
 
+# Short path, step 4: GOV.UK Service Manual, “Making your service more inclusive”
+step-inclusive: ""
+
 # Do
 do: ""
 
