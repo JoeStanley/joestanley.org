@@ -18,17 +18,26 @@ top: ""
 # Access pattern
 access-pattern: ""
 
+# Advice process
+advice-process: ""
+
 # Bounded context
 bounded-context: ""
 
 # Cognitive load
 cognitive-load: ""
 
+# Commander's intent
+commanders-intent: ""
+
 # Complexity
 complexity: ""
 
 # Conceptual integrity
 conceptual-integrity: ""
+
+# Consequence scanning
+consequence-scanning: ""
 
 # Constraint (bottleneck)
 constraint: ""
@@ -41,6 +50,9 @@ coupling: ""
 
 # Data-informed
 data-informed: ""
+
+# Decision record
+decision-record: ""
 
 # Error budget
 error-budget: ""
@@ -75,6 +87,9 @@ inverse-conway: ""
 # Job crafting
 job-crafting: ""
 
+# Kernel of a strategy
+kernel-of-a-strategy: ""
+
 # Leverage point
 leverage-point: ""
 
@@ -83,6 +98,12 @@ mcnamara-fallacy: ""
 
 # OKRs (objectives and key results)
 okr: ""
+
+# One-way and two-way doors
+one-way-doors: ""
+
+# OODA loop (observe, orient, decide, act)
+ooda-loop: ""
 
 # Operational and analytical
 operational-analytical: ""
@@ -93,14 +114,23 @@ pace-layers: ""
 # Percentile
 percentile: ""
 
+# Problem of many hands
+problem-of-many-hands: ""
+
 # Regression to the mean
 regression-to-the-mean: ""
+
+# Right to erasure
+right-to-erasure: ""
 
 # Service level objective (SLO)
 slo: ""
 
 # Stock
 stock: ""
+
+# Straddling
+straddling: ""
 
 # System of record and system of reference
 system-of-record: ""

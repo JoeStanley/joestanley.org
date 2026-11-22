@@ -1,0 +1,63 @@
+# Margin notes for Module 9, Answer for What You Build.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen, and in a module's print, a note shows in your hand in the margin beside its part. On a phone it
+# sits under the part's heading, typeset; in print on Start, a card or the glossary it sits there in your hand.
+# Wherever it sits in the text, "Sidenote:" goes above it, and a screen reader always reads that word first.
+# A note beside a source on the full path may run on past it. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters:
+  - beside: "So ask two things"
+    note: "And know, no matter how replaceable you may feel, that's not a justification for doing the unethical thing.\n\nIn tech especially, this is also where the value of organized labor shows. Most of us are well-compensated and may not think we need a union, but an organized workforce can put a seat on a board, or reject selling their products to facilitate genocides."
+
+# The short path
+short-path: ""
+
+# Short path, step 1: Doteveryone, “Consequence Scanning”
+step-doteveryone: ""
+
+# Short path, step 2: Fred Reichheld and Rob Markey, “Blowing the whistle on bad profits”
+step-reichheld-markey: ""
+
+# Short path, step 3: Many Hands
+step-card-many-hands: ""
+
+# Short path, step 4: Bruce Schneier, “Data Is a Toxic Asset, So Why Not Throw It Out?”
+step-schneier: ""
+
+# Do
+do: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: Automating Inequality, Virginia Eubanks
+deeper-automating-inequality: ""
+
+# Full path: Design Justice, Sasha Costanza-Chock
+deeper-design-justice: ""
+
+# Full path: Your Face Belongs to Us, Kashmir Hill
+deeper-your-face-belongs-to-us: ""
+
+# Full path: Pinto Fires and Personal Ethics: A Script Analysis of Missed Opportunities, Dennis Gioia (Journal of Business Ethics, 1992)
+deeper-pinto-fires-and-personal-ethics-a-script-analysis-of-missed-opportunities: ""
+
+# Full path: The Good Place, created by Michael Schur (NBC)
+deeper-the-good-place: "If you must, this is the shtick in one episode, but I strongly encourage you to watch the whole thing from start to finish. Great cast, great premise, great message. Doesn't overstay its welcome."

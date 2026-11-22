@@ -2,6 +2,19 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 22 November 2026, Module 8's cards, and the round 4 session
+
+- Decide and Set Direction's full path holds Porter's "What Is Strategy?", Poppendieck's chapter 3, MCDP 1 read whole, Osinga's study of Boyd (chapter 7) and *Ocean's Eleven*. Malan and Bredemeyer's column becomes the Agency and Coherence card's Go deeper (agree, card `full-path-8-books`).
+- Module 8's three links open to what the module says they are: Bezos's 2015 letter at sec.gov, MCDP 1 at marines.mil, and Boyd's *Discourse* at Air University Press (agree, card `check-links-8`).
+- Jabe Bloom's talk couldn't be found, so the Agency and Coherence card drops his words (agree, card `check-bloom`).
+- Juarrero's open-access book doesn't hold the card's quote (agree, card `check-juarrero`). He found the book a very dense read. He watched her 2022 talk, where she describes context-dependent constraints as enabling complexity, which implicitly enable further alternatives (his note on that card). So the card credits the idea to her talk, without quotation marks, and doesn't point to the book (his pick, in the session).
+- Until the site goes live, P1 notes the glossary's page count instead of failing on it, so every term Modules 8 and 9 bring goes in, Boyd's two included (his pick, in the session).
+- Answer for What You Build's full path holds Eubanks's *Automating Inequality*, Costanza-Chock's *Design Justice*, Kashmir Hill's *Your Face Belongs to Us*, Gioia's "Pinto Fires and Personal Ethics" and *The Good Place*. Bandura's article and the FTC's report on dark patterns leave (his pick, in the session).
+- His paragraph in Answer for What You Build reads: "In life, ethical matters rarely come to you as clear cases of good and bad. ... I will not tell you here what's right or wrong per se. That's for you to work out, and to find your own line. But wherever you land, hold fast." The cold read found that "given to you in that manner" pointed back to nothing, and a comma splice (his pick, in the session).
+- A short-path link may break inside a word when the word can't fit its line, as "Conversationally" couldn't on a phone with text doubled (his pick, in the session: one line in `pm.css`).
+- He asked that Facebook's part in the genocide of the Rohingya in Myanmar be a possible example in Answer for What You Build, with how many of the problems still haven't been solved (in the session).
+- He asked for something on surveillance culture and tools misused by the powerful, such as police using surveillance in racist ways or to track people illegally, with contemporary examples, so it reads as an eternal issue, not something that used to happen and no longer does (in the session, which is why Hill's book is there).
+
 ## 22 November 2026, the job 13 session
 
 - A v1.0 of the curriculum on joestanley.org matters more now than the PDF. After this session, work on the PDF waits unless it helps the site launch, and the work goes to the curriculum and the site being ready to go live (in the session).

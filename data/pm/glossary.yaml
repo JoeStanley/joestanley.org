@@ -101,3 +101,34 @@ intersectional:
 regression-to-the-mean:
   term: Regression to the mean
   text: An extreme result tends to be followed by a less extreme one, whatever you did in between.
+one-way-doors:
+  term: One-way and two-way doors
+  text: Jeff Bezos's terms for decisions you can't easily undo, and decisions you can.
+straddling:
+  term: Straddling
+  text: Michael Porter's word for trying to hold two positions that don't fit together, such as a full-service airline copying a low-cost rival.
+ooda-loop:
+  term: OODA loop
+  also: observe, orient, decide, act
+  text: John Boyd's loop of observe, orient, decide and act. He held that orienting, the picture you act from, matters most.
+commanders-intent:
+  term: Commander's intent
+  text: The why given with a task, so people can still act when the task goes stale. From military doctrine.
+kernel-of-a-strategy:
+  term: Kernel of a strategy
+  text: "Richard Rumelt's name for the three parts a strategy needs: a diagnosis of what's going on, a guiding policy for meeting it, and coherent actions that carry it out."
+decision-record:
+  term: Decision record
+  text: A short note of one significant decision, with its context, the decision, its status and its consequences. Engineers call it an architecture decision record (ADR).
+advice-process:
+  term: Advice process
+  text: Anyone may make a decision, after asking the people it affects and people with relevant expertise. They don't have to follow the advice, but they have to seek it out and write it down.
+consequence-scanning:
+  term: Consequence scanning
+  text: A short team conversation, early in a product's or a feature's life, about everything it could cause, run on three questions from Doteveryone.
+problem-of-many-hands:
+  term: Problem of many hands
+  text: Dennis Thompson's name for harm that comes from so many small contributions that it's hard to say who's responsible.
+right-to-erasure:
+  term: Right to erasure
+  text: A person's right, under the General Data Protection Regulation (GDPR) in the EU and the UK, to ask an organization to delete their personal data, in some circumstances.

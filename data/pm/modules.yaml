@@ -47,14 +47,12 @@
   num: 8
   title: Decide and Set Direction
   question: Which decisions matter, whose are they, and what are we choosing not to do?
-  draft: decide-and-set-direction
-  state: Draft of 17 November 2026, winnowed on 21 November into the pilot's parts, with one card, Agency and Coherence. Strategy as Forsaking, Last Responsible Moment and Chesterton's Fence were cut as cards, their ideas kept in Why this matters, the Do and the full path. Bezos, Harmel-Law and Rumelt replace the deck pages, still to be opened.
+  page: decide-and-set-direction
 - id: answer-for-what-you-build
   num: 9
   title: Answer for What You Build
   question: Who benefits and who is harmed by what we build, and what's our share of the responsibility?
-  draft: answer-for-what-you-build
-  state: First draft of 19 November 2026, winnowed on 21 November into the pilot's parts, with one card, Many Hands. Value Created, Value Captured, Collect Less and Consequence Scanning were cut as cards, their ideas carried by Doteveryone's own page, Reichheld and Markey in place of Doctorow, Schneier, the Do and the Check.
+  page: answer-for-what-you-build
 - id: notice-when-you-are-wrong
   num: 10
   title: Notice When You Are Wrong
