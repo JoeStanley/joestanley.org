@@ -1,0 +1,21 @@
+<svg class="fig" viewBox="0 0 360 212" role="img" aria-labelledby="fig-agency-title fig-agency-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-agency-title">Teams on paths of their own, inside one direction.</title>
+  <desc id="fig-agency-desc">A broad arrow points to the right. Inside it, four small arrows wander on paths of their own. Each passes through one narrow highlighted band, the few things that have to fit, and all four end pointing the way the broad arrow points.</desc>
+
+  <path class="fig-pipe" d="M18,58 L262,58 L262,32 L346,100 L262,168 L262,142 L18,142 Z"/>
+  <rect class="fig-mark" x="184" y="60" width="12" height="80"/>
+
+  <path class="fig-axis" d="M36,72 C70,62 100,88 130,80 S175,70 190,78 S240,92 288,88"/>
+  <path class="fig-axis" d="M36,94 C60,110 95,80 125,96 S170,104 190,98 S245,96 288,98"/>
+  <path class="fig-axis" d="M36,112 C65,100 95,126 128,112 S172,102 190,108 S245,110 288,106"/>
+  <path class="fig-axis" d="M36,128 C70,136 100,118 132,126 S176,124 190,118 S245,120 288,116"/>
+  <path class="fig-arrow" d="M286,83 L295,88 L286,93 Z"/>
+  <path class="fig-arrow" d="M286,93 L295,98 L286,103 Z"/>
+  <path class="fig-arrow" d="M286,101 L295,106 L286,111 Z"/>
+  <path class="fig-arrow" d="M286,111 L295,116 L286,121 Z"/>
+
+  <text class="fig-label" x="140" y="46" text-anchor="middle">One direction everyone holds to</text>
+  <path class="fig-axis" d="M190,146 L190,172"/>
+  <text class="fig-label" x="190" y="188" text-anchor="middle">The few things that have to fit</text>
+  <text class="fig-note" x="190" y="204" text-anchor="middle">Everything else is each team's call</text>
+</svg>

@@ -34,6 +34,7 @@ WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
+GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
 PRINT_PAGES = 52   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
@@ -1552,6 +1553,8 @@ def unit_page_checks(pdf_path, n_pages):
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
+        elif kind == "glossary" and GLOSSARY_GRACE is None and n > share:
+            NOTE["P1"].append(said + ", and may run past them until the site goes live, so every term goes in")
         elif n > share + grace:
             fail("P1", said)
         elif n > share:

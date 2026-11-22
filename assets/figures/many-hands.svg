@@ -1,0 +1,34 @@
+<svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-hands-title fig-hands-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-hands-title">Many small parts, one harm, and no one's hand on all of it.</title>
+  <desc id="fig-hands-desc">Six people down the left, each with a small part: a target, a review, a sign-off, a default, a script and a deadline. A thin line runs from each of them, and all six meet in one highlighted spot, the harm. One arrow carries it on to a customer at the far right, who was never in the room.</desc>
+
+  <path class="fig-axis" d="M106,30 C170,30 200,110 240,110"/>
+  <path class="fig-axis" d="M106,62 C170,62 205,110 240,110"/>
+  <path class="fig-axis" d="M106,94 C170,94 210,110 240,110"/>
+  <path class="fig-axis" d="M106,126 C170,126 210,110 240,110"/>
+  <path class="fig-axis" d="M106,158 C170,158 205,110 240,110"/>
+  <path class="fig-axis" d="M106,190 C170,190 200,110 240,110"/>
+
+  <g class="fig-stops">
+    <circle cx="100" cy="30" r="6"/>
+    <circle cx="100" cy="62" r="6"/>
+    <circle cx="100" cy="94" r="6"/>
+    <circle cx="100" cy="126" r="6"/>
+    <circle cx="100" cy="158" r="6"/>
+    <circle cx="100" cy="190" r="6"/>
+    <circle cx="322" cy="110" r="7"/>
+  </g>
+  <text class="fig-note" x="86" y="34" text-anchor="end">A target</text>
+  <text class="fig-note" x="86" y="66" text-anchor="end">A review</text>
+  <text class="fig-note" x="86" y="98" text-anchor="end">A sign-off</text>
+  <text class="fig-note" x="86" y="130" text-anchor="end">A default</text>
+  <text class="fig-note" x="86" y="162" text-anchor="end">A script</text>
+  <text class="fig-note" x="86" y="194" text-anchor="end">A deadline</text>
+
+  <rect class="fig-mark" x="240" y="97" width="26" height="26"/>
+  <text class="fig-label" x="253" y="88" text-anchor="middle">One harm</text>
+  <path class="fig-axis" d="M268,110 L300,110"/>
+  <path class="fig-arrow" d="M298,105 L307,110 L298,115 Z"/>
+  <text class="fig-label" x="322" y="136" text-anchor="middle">A customer</text>
+  <text class="fig-note" x="190" y="214" text-anchor="middle">No one's hand is on all of it</text>
+</svg>
