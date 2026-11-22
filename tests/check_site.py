@@ -29,7 +29,9 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/change-safely/", ["/pm/cards/error-budgets/"]),
            ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/"]),
            ("/pm/decide-and-set-direction/", ["/pm/cards/agency-and-coherence/"]),
-           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/"])]
+           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/"]),
+           ("/pm/notice-when-you-are-wrong/", ["/pm/cards/double-loop-learning/"]),
+           ("/pm/bring-people-with-you/", ["/pm/cards/trust-equation/"])]
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
 PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
