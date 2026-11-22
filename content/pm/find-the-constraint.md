@@ -3,7 +3,7 @@ title: Find the Constraint
 layout: module
 module: find-the-constraint
 question: Where is the work actually stuck, and are we measuring the right thing?
-one_thing: Play the dice game below, then count where your team's work waits.
+one_thing: Play the dice game below to get the key point, then identify where your team's work waits.
 game: dice
 do_minutes: 35
 
@@ -19,7 +19,7 @@ steps:
     title: Play the dice game
     minutes: 10
     where: It's on this page, just below this list.
-    look: The line finishes less than its averages promise, and work piles up in the middle.
+    look: The line falls short of its averages, and work piles up midway.
   - id: forte
     kind: read
     title: Tiago Forte, "Theory of Constraints 101"
@@ -66,7 +66,7 @@ deeper:
     url: https://itrevolution.com/wp-content/uploads/2022/06/ACC_excerpt.pdf
     where: A book.
     note: Read chapter 1, "Accelerate", and chapter 2, "Measuring Performance". Both are free in the publisher's excerpt.
-    trust: It rests on survey research, over 23,000 responses from more than 2,000 organizations across four years. The answers are self-reported, and the teams all build software.
+    trust: It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software.
     only: "Goodhart's Law in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
@@ -79,7 +79,7 @@ deeper:
 
 When delivery is slow, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it. Find it, since speeding up anywhere else won't help.
 
-The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can climb while delivery doesn't.
+The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can improve while value delivery doesn't.
 
 [//]: # (short-path)
 

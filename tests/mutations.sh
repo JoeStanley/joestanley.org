@@ -13,7 +13,7 @@ run() {  # description, rule, command that breaks the copy
 # machine make checks time out, which reads as a miss.
 run_bg() { while [ "$(jobs -rp | wc -l)" -ge "${JOBS:-2}" ]; do sleep 2; done; run "$@" & }
 run_bg "orange section heading" W2 "echo 'h2 { color: var(--orange) !important; }' >> assets/css/pm.css"
-run_bg "step without a look line" S1 "sed -i '0,/    look: The line finishes/{/    look: The line finishes/d}' content/pm/find-the-constraint.md"
+run_bg "step without a look line" S1 "sed -i '0,/    look: The line falls short/{/    look: The line falls short/d}' content/pm/find-the-constraint.md"
 run_bg "photo back above the name" R4 "sed -i 's/grid-column: 2; grid-row: 1 \/ span 4;/grid-column: 1;/' assets/css/base.css"
 run_bg "light grey body text" C4 "sed -i 's/--muted: #5c5955;/--muted: #a09c96;/' assets/css/base.css"
 run_bg "filled label box" C2 "echo '.kicker .tag { background: var(--orange); color: #fff; }' >> assets/css/pm.css"
@@ -62,9 +62,9 @@ run_bg "the hand-written correction pushing the words beside it apart" H2 "sed -
 run_bg "the hand-written correction written level" H2 "sed -i 's/transform: rotate(-4deg);/transform: none;/' assets/css/base.css"
 run_bg "the hand-written correction running past the end of its line" H2 "sed -i 's/if (over > 0) ins.style.translate/if (false) ins.style.translate/' assets/js/pm.js"
 run_bg "a retired setting back in an example" S5 "sed -i 's/a tweak to checkout/a change to a contact frequency rule/' content/pm/find-the-constraint.md"
-run_bg "a source linked from Substack" S9 "printf '\n- [A newsletter post](https://example.substack.com/p/a-post), 5 minutes.\n' >> drafts/pm/change-safely.md"
-run_bg "two stories on one full path" S10 "sed -i '0,/^## Go deeper: the full path\$/s//&\\n\\n- **A Film About Change** A film, about two hours.\\n- **A Novel About Change** A novel of about 300 pages./' drafts/pm/change-safely.md"
-run_bg "a full path with no story" S10 "sed -i '/^- \*\*\*The Big Short\*/d' drafts/pm/weigh-the-evidence.md"
+run_bg "a source linked from Substack" S9 "printf '\n- [A newsletter post](https://example.substack.com/p/a-post), 5 minutes.\n' >> drafts/pm/notice-when-you-are-wrong.md"
+run_bg "two stories on one full path" S10 "sed -i '0,/^## Go deeper: the full path\$/s//&\\n\\n- **A Film About Change** A film, about two hours.\\n- **A Novel About Change** A novel of about 300 pages./' drafts/pm/notice-when-you-are-wrong.md"
+run_bg "a full path with no story" S10 "sed -i '/^- \*\*\*Ocean.s Eleven\*/d' drafts/pm/decide-and-set-direction.md"
 run_bg "a story asked to be trusted as evidence" S10 "sed -i 's/^    only: Goldratt first/    trust: It sold millions of copies.\n    only: Goldratt first/' content/pm/find-the-constraint.md"
 run_bg "a sixth thing on a built full path" S11 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: Peer-reviewed.\n    only: More of the same.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e * 5, 1))\""
 run_bg "a pair counted as one thing on a built full path" S11 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: Peer-reviewed.\n    only: More of the same.\n'; pr='  - title: Two Shows\n    by: Someone\n    where: A pair of TV series, watched side by side.\n    only: A contrast.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + pr + e * 2, 1))\""
@@ -74,8 +74,8 @@ run_bg "an unchecked source on a built page" S7 "printf '\n*To check: nobody has
 run_bg "a module that stops talking to the reader" E1 "sed -i 's/The danger while you work on it is/The danger in working on it is/' content/pm/find-the-constraint.md"
 run_bg "a module with its contractions spelled out" E2 "sed -i 's/\([Dd]\)on\x27t/\1o not/g; s/isn\x27t/is not/g; s/\([Ii]\)t\x27s/\1t is/g; s/doesn\x27t/does not/g; s/didn\x27t/did not/g; s/won\x27t/will not/g; s/can\x27t/cannot/g; s/you\x27re/you are/g; s/there\x27s/there is/g' content/pm/find-the-constraint.md content/pm/cards/five-focusing-steps.md content/pm/cards/goodharts-law.md layouts/partials/pm/dicegame.html data/pm/dicegame.yaml"
 run_bg "an experience invented for the owner" E3 "printf '\nI learned this the hard way on my second team.\n' >> content/pm/see-the-system.md"
-run_bg "a module with no source" X1 "sed -i '/^  draft: change-safely$/d' data/pm/modules.yaml"
-run_bg "a draft left behind after its module is built" X1 "cp drafts/pm/change-safely.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
+run_bg "a module with no source" X1 "sed -i '/^  draft: decide-and-set-direction$/d' data/pm/modules.yaml"
+run_bg "a draft left behind after its module is built" X1 "cp drafts/pm/notice-when-you-are-wrong.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
 run_bg "the tab drops what to look for" X2 "sed -i 's/paras += look(b) + reasons(b) + note_of(li)/paras += reasons(b) + note_of(li)/' tools-pm/source-doc.py"
 run_bg "a word changed without reaching the working doc" X3 "sed -i 's/Nothing is sent anywhere./Nothing leaves your browser./' content/pm/_index.md"
 run_bg "link easing ignores reduced motion" D5 "sed -i '/@media (prefers-reduced-motion: reduce) { a, .recall/d' assets/css/base.css"
@@ -116,4 +116,13 @@ run_bg "a note read aloud as a plain note again" M3 "sed -i 's/>Sidenote: </>Not
 run_bg "a step's note out of line with the margin" M1 "echo '@media (min-width: 64rem) { .reading .step > .note { margin-left: var(--sp-5) !important; } }' >> assets/css/pm.css"
 run_bg "a long note beside the full path's heading pushing the first source down" R10 "sed -i '/^    .deeper-list > li:has(> .note) { clear: none; }$/d' assets/css/pm.css"
 run_bg "See the System back to one book beside its story" S12 "sed -i '/^  - title: The Field Guide/,/^    only: Cook.s point/d' content/pm/see-the-system.md"
+wait
+
+# Joe's picks of 22 November 2026: the kind as an icon on the full path (S15), Conway's sentence in his card's
+# picture slot (S16), the hour in words in a module's header (S14), and a step that reads on in the one before (S2)
+run_bg "a film shown with the article icon" S15 "sed -i 's/(?:classic )?(?:film|/(?:classic )?(?:flim|/' layouts/partials/pm/kind-icon.html"
+run_bg "the kind's words shown to the eye beside the icon" S15 "sed -i 's/<p class=\"meta-line kind-line sr\">/<p class=\"meta-line kind-line\">/' layouts/partials/pm/unit-module.html"
+run_bg "a card's quoted sentence left uncredited" S16 "sed -i '/<figcaption class=\"plate-caption\">{{ .by }}/d' layouts/partials/pm/unit-card.html"
+run_bg "the header's hour back in digits" S14 "sed -i 's/{{- else if eq \$h 1 }}an hour/{{- else if eq \$h 1 }}1 hour/' layouts/partials/pm/duration.html"
+run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 's/    continues: meadows-1/    continues: card-stocks/' content/pm/see-the-system.md"
 wait

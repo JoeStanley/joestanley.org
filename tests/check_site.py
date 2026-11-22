@@ -31,9 +31,9 @@ PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # Change PRINT_PAGES with the spec when a unit is added or its length changes on purpose.
-UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 2}
+UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
-PRINT_PAGES = 38
+PRINT_PAGES = 51
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -591,11 +591,17 @@ def check_static():
         m = re.match(r"---\n(.*?)\n---", text, re.S)
         fm = yaml.safe_load(m.group(1)) if m else {}
         rel = os.path.relpath(path, ROOT)
+        earlier = {}
         for step in fm.get("steps", []) or []:
             if not step.get("look"):
                 fail("S1", f"{rel}: step {step.get('id')} has no look line")
-            if step.get("kind") not in ("card", "play") and not (step.get("trust") and step.get("only")):
+            # a step that reads on in the step before it shares that step's trust (spec S2)
+            before = earlier.get(step.get("continues")) if step.get("continues") else None
+            if step.get("continues") and not (before and before.get("trust") and list(earlier)[-1] == step.get("continues")):
+                fail("S2", f"{rel}: step {step.get('id')} continues {step.get('continues')}, which isn't the step just before it with a trust line")
+            if step.get("kind") not in ("card", "play") and not ((step.get("trust") or before) and step.get("only")):
                 fail("S2", f"{rel}: step {step.get('id')} lacks trust or only")
+            earlier[step.get("id")] = step
         deeper = fm.get("deeper")
         for d in (deeper if isinstance(deeper, list) else [deeper] if deeper else []):
             story = STORY.match(d.get("where") or "") and not re.match(r"(?:An? )?documentary", d.get("where") or "", re.I)
@@ -606,6 +612,75 @@ def check_static():
     for key in set(glossary) - used:
         fail("S3", f"glossary entry {key} is never used")
     return tokens
+
+
+# S15: what each kind of full-path entry shows as, read from its kind's words, apart from the template's own reading
+KIND_SCREEN = re.compile(r"(?:An? |A pair of |Two )?(?:classic )?(?:film|(?:TV |television |streaming )?series|documentary)\b", re.I)
+KIND_BOOK = re.compile(r"An? (?:book|textbook|novel|novella)\b", re.I)
+KIND_ARTICLE = re.compile(r"An? (?:(?:journal |law review |magazine |long )?article|(?:conference |research |working |long )?paper|(?:staff )?report|essay)\b", re.I)
+
+
+def kind_checks(out_dir):
+    """S15: a full-path entry's kind as an icon before its title, its words kept for screen readers and the doc.
+    S16: a card opens with a picture, or a quoted sentence in its place, credited under it."""
+    from bs4 import BeautifulSoup
+    checked("S15", "S16")
+    for m in yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"))):
+        if not m.get("page"):
+            continue
+        path = os.path.join(out_dir, "pm", m["page"], "index.html")
+        soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+        for li in soup.select(".deeper-list > li"):
+            h3 = li.find("h3")
+            title = clean_text(h3.get_text()) if h3 else "?"
+            icons = h3.select("svg.kind-icon") if h3 else []
+            line = li.find("p", class_="meta-line")
+            words = clean_text(line.get_text()) if line else ""
+            if len(icons) != 1 or h3.find(True) is not icons[0]:
+                fail("S15", f"{m['page']}: {title}: no single kind icon before the title"); continue
+            icon = icons[0]
+            if icon.get("aria-hidden") != "true":
+                fail("S15", f"{m['page']}: {title}: the kind icon is read aloud, so the kind would be heard twice")
+            if not line or "sr" not in (line.get("class") or []):
+                fail("S15", f"{m['page']}: {title}: the kind's words show to the eye, or are gone; keep them for screen readers only")
+            want = "screen" if KIND_SCREEN.match(words) else "book" if KIND_BOOK.match(words) else "article" if KIND_ARTICLE.match(words) else None
+            if want is None:
+                fail("S15", f"{m['page']}: {title}: \"{words}\" names no kind the icons show (a book, an article or a screen)")
+            elif icon.get("data-kind") != want:
+                fail("S15", f"{m['page']}: {title}: \"{words}\" shows the {icon.get('data-kind')} icon, not the {want}")
+            if re.search(r"\bFree at\b", words):
+                fail("S15", f"{m['page']}: {title}: \"Free at\" sits in the hidden kind line; it opens the note")
+        for st in soup.select("li.step .meta-line"):
+            if "sr" in (st.get("class") or []):
+                fail("S15", f"{m['page']}: a short-path step's line is hidden, and it carries the minutes")
+    for path in sorted(glob.glob(os.path.join(ROOT, "content", "pm", "cards", "*.md"))):
+        text = open(path, encoding="utf-8").read()
+        fm = yaml.safe_load(re.match(r"---\n(.*?)\n---", text, re.S).group(1))
+        name = os.path.splitext(os.path.basename(path))[0]
+        html = os.path.join(out_dir, "pm", "cards", name, "index.html")
+        soup = BeautifulSoup(open(html, encoding="utf-8").read(), "html.parser")
+        plate = soup.select_one("article.card figure.plate[data-slot=picture]")
+        q = fm.get("figure_quote")
+        if bool(fm.get("figure")) == bool(q):
+            fail("S16", f"card {name}: opens with {'both a picture and a quote' if q else 'neither a picture nor a quote'}")
+        if not plate:
+            fail("S16", f"card {name}: no picture in the picture's place"); continue
+        if q:
+            missing = [k for k in ("text", "by", "work", "url", "year") if not q.get(k)]
+            if missing:
+                fail("S16", f"card {name}: the quote lacks its {', '.join(missing)}")
+            bq = plate.select_one("blockquote.plate-quote-text")
+            cap = plate.find("figcaption")
+            if not bq or clean_text(bq.get_text()) != clean_text(q.get("text") or ""):
+                fail("S16", f"card {name}: the quoted sentence isn't set word for word in the picture's place")
+            if not cap or not cap.find("cite") or (q.get("by") or "") not in clean_text(cap.get_text()):
+                fail("S16", f"card {name}: the quote isn't credited under it, with its author and work")
+        elif not plate.select_one("svg[role=img]"):
+            fail("S16", f"card {name}: its picture is missing")
+
+
+def clean_text(s):
+    return re.sub(r"\s+", " ", s.translate(QUOTE_FOLD)).strip()
 
 
 QUOTE_FOLD = str.maketrans({"’": "'", "‘": "'", "“": '"', "”": '"', "\u00a0": " "})
@@ -1701,6 +1776,27 @@ def s14_minutes(d):
     return int(m_.group(3)) if m_.group(3) else int(m_.group(1)) * 60 + int(m_.group(2) or 0)
 
 
+# S14: a module's header puts the hour in words: "an hour", "an hour and 15 minutes", "an hour and a half",
+# "2 hours", "2 and a half hours", "2 hours and 15 minutes", "45 minutes"
+HEADER_TIME = re.compile(r"(?:(an|\d+) hours?(?: and (?:a half|(\d+) minutes))?|(\d+) and a half hours|(\d+) minutes)")
+
+
+def s14_header_minutes(d):
+    """Minutes in a header's total, written as the owner wrote it (spec S14); None if it doesn't read so."""
+    m_ = HEADER_TIME.fullmatch(d.strip())
+    if not m_:
+        return None
+    if m_.group(4):
+        return int(m_.group(4))
+    if m_.group(3):
+        return int(m_.group(3)) * 60 + 30
+    h = 1 if m_.group(1) == "an" else int(m_.group(1))
+    if (h == 1) != (m_.group(1) == "an") or (h == 1 and "hours" in d):
+        return None
+    half = d.strip().endswith("a half")
+    return h * 60 + (30 if half else int(m_.group(2) or 0))
+
+
 def s14_on_mark(m):
     return m == s14_round(m) and (m >= 30 or m % 5 == 0)
 
@@ -1742,9 +1838,9 @@ def s14_checks(name, text):
             fail("S14", f"{where}: the header gives no total")
         else:
             h_ = re.fullmatch(r"About (.+?)\.", head.strip())
-            total = s14_minutes(h_.group(1)) if h_ else None
+            total = s14_header_minutes(h_.group(1)) if h_ else None
             if total is None:
-                fail("S14", f"{where}: the header reads \"{head.strip()[:60]}\", and gives one total, such as \"About 1 hour 15 minutes.\", with no reading and doing split")
+                fail("S14", f"{where}: the header reads \"{head.strip()[:60]}\", and gives one total with the hour in words, such as \"About an hour and 15 minutes.\", with no reading and doing split")
             elif not s14_on_mark(total):
                 fail("S14", f"{where}: the header's total, {head.strip()}, isn't rounded the owner's way")
         for sec in _sections(text, {"The short path"}):
@@ -2461,6 +2557,12 @@ def main():
     tokens = check_static()
     if run_for("L1"):
         license_checks(out_dir)
+    if run_for("S15", "S16"):
+        try:
+            kind_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rules, not stop the suite
+            for r in ("S15", "S16"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("M4"):
         try:
             slot_checks(out_dir)

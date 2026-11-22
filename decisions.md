@@ -2,6 +2,28 @@
 
 One line per decision, newest first. Only what Joe decided. A session adds a line when he decides something and changes nothing else here.
 
+## 22 November 2026, the ethics cards, and the round 3 session
+
+- Each module asks who's affected in its own way, as one addition fitted to what it already teaches, and Answer for What You Build names the thread once, pointing back to where the reader met it. No standing element runs through every module (agree, card `ethics-thread`).
+- Own Your Role takes both: the Do's sentence asking the reader to read their vision as someone it touches but doesn't name would, and the glue-work line in the optional exercise, from Babcock and colleagues (2017) (agree, card `ethics-0`).
+- See the System says where you draw a system's edge decides whose costs you see, quoting Meadows's "expand the boundary of caring", and its full path adds Ulrich's introduction to critical systems heuristics (agree, card `ethics-1`).
+- Find the Constraint shows a stand-in measure that misled for one group with nobody gaming it, from Obermeyer and colleagues (2019), as a line in Why this matters (agree, card `ethics-2`).
+- Intersectionality comes into the syllabus at Mind the Seams, as a seam between categories: a line in Why this matters citing Crenshaw's 1989 paper, and a glossary term. Her talk doesn't go on the short path (agree, card `ethics-3`).
+- Map the Domain adds GOV.UK's "Making your service more inclusive" as a short-path step, and asks engineers who the data model can't record as they are (agree, card `ethics-4`).
+- Design for Change says who pays for a change outside the team, as a line in Why this matters (agree, card `ethics-5`).
+- Change Safely's rollout plan breaks each guardrail down for the customers the change could hurt most (agree, card `ethics-6`).
+- Weigh the Evidence teaches breaking a number down by more than one thing at once, from Gender Shades, and *Data Feminism* (chapters 4 and 6) takes the Munro Review's place on its full path (agree, card `ethics-7`).
+- Decide and Set Direction's not-doing list says who each no leaves waiting, and Why this matters gains Ulrich's question on who speaks for those affected but not involved, calling back to See the System (agree, card `ethics-8`).
+- Answer for What You Build's consequence scan looks where groups overlap, and its Why this matters names the thread once. Crenshaw's talk isn't added (agree, card `ethics-9`).
+- Answer for What You Build's two books are Eubanks's *Automating Inequality* and Costanza-Chock's *Design Justice* (agree, card `ethics-9-books`).
+- Notice When You Are Wrong takes all three: the premortem asks the support lead who'd hear from the customers it failed, a line says silence isn't proof, and the Clery Act case from *Data Feminism* carries it. Ignoring heavy topics is the same as silencing them: building products carries a profound responsibility, and a PM should understand its impolite realities when it's done poorly (agree, card `ethics-10`, his note).
+- Bring People With You says credibility isn't handed out evenly, from the *Double Jeopardy?* report, with its limits named in its "Why trust it" (agree, card `ethics-11`).
+- A full path shows each entry's kind as one of three icons before its title, book, article or screen, its words kept for screen readers and the doc, "Free at" moved into the note, and the short path's line unchanged (his pick, in the session, from his comment on See the System's full path that the kind lines had grown too short to earn their line).
+- The book icon is Lucide's book, as is or refined to match the article icon. He saw three rounds of drawings: an open book, a book lying with its cover lifted (which read as a stack), and an upright book on display, seen from above (the best of those, but still lacking), and asked for a look at established icon sets first (his pick, in the session).
+- Conway's Law's card puts Conway's own sentence from 1968 in the picture's place, and the drawing goes. The picture wasn't great, and the syllabus never quoted the law itself (his pick, in the session, from his comment on the card).
+- A module's header puts the hour in words: "About an hour", "About an hour and 15 minutes", "About an hour and a half" (his pick, in the session, from his edit to Find the Constraint's header).
+- LLM language tends to be overly specific and to lean on numbers to convey importance in prose. Abstract them where that applies, to read more like a conversational note a person might say (his comment on the Conway's Law card, where he made the change himself).
+
 ## 21 November 2026, round 3's cards, and the session after them
 
 - Round 3 waits for that proposal, so Change Safely and Weigh the Evidence are built once (his pick, in the session).

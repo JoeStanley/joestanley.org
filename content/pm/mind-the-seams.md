@@ -65,23 +65,25 @@ deeper:
     by: Matthew Skelton and Manuel Pais
     where: A book.
     note: "Read the chapters \"Conway's Law and Why It Matters\" and \"Team-First Thinking\" first, then the rest."
-    trust: Two consultants' model, built from their work with software teams and widely used, but not tested in studies.
+    trust: Two consultants' model, built from their work with software teams and widely used.
     only: "A vocabulary for designing teams: four team types, three ways for teams to work together, and cognitive load, how much a team has to hold in its head, as a limit on what it should own."
   - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
     by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
     where: A journal article.
+    note: Read it whole.
     trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips."
     only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
   - title: The Misalignment of Product Architecture and Organizational Structure in Complex Product Development
     by: Manuel Sosa, Steven Eppinger and Craig Rowles (Management Science, 2004)
     where: A journal article.
-    trust: Built on data from one large project, Pratt and Whitney's PW4098 jet engine, and peer-reviewed.
+    note: Read it whole.
+    trust: Built on data from one large project, Pratt and Whitney's PW4098 jet engine. Peer-reviewed.
     only: How a product's design interfaces map onto who talks to whom, and how the interfaces that cross team boundaries are the ones most likely to be mismanaged.
   - title: The Art of Systems Architecting
     by: Mark Maier and Eberhardt Rechtin
     where: A textbook.
     note: "Read the chapter \"Heuristics as Tools\", then the appendix of heuristics for system-level architecting."
-    trust: Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California. Its heuristics are practitioners' rules, gathered from experience, not tested.
+    trust: Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California. These are the collected insights of that experience.
     only: "Rules of thumb for the joins between parts: architect across an interface, not only up to it, as Robert Spinrad put it; ask what's the worst that could come across it; and draw interfaces so each part can be built on its own, without slicing through parts that must talk all the time."
   - title: Halt and Catch Fire
     by: created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)

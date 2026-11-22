@@ -227,7 +227,11 @@ def card_tab(art):
     fig = body.find("figure")
     if fig:
         cap = fig.find("figcaption")
-        out += note_of(fig) + ([f"*Picture: {inline(cap)}*"] if cap else [])
+        quote = fig.find("blockquote")
+        if quote:   # a sentence in its author's words in the picture's place (spec S16), then its credit
+            out += note_of(fig) + [f"> {inline(quote.find('p'))}"] + ([f"*{inline(cap)}*"] if cap else [])
+        else:
+            out += note_of(fig) + ([f"*Picture: {inline(cap)}*"] if cap else [])
     out += blocks(body.find(class_="card-body"))
     for n in body.find_all("aside", class_="note", recursive=False):
         out.append(f"*Margin note: {inline(n)}*")

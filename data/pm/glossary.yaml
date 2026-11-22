@@ -72,3 +72,32 @@ complexity:
 cognitive-load:
   term: Cognitive load
   text: How much someone has to know to make a change safely.
+percentile:
+  term: Percentile
+  text: Where a case falls when all of them are ranked. If the 99th percentile wait is 3 seconds, 99 in 100 wait 3 seconds or less.
+slo:
+  term: Service level objective
+  also: SLO
+  text: A reliability target for a service, such as "up 99.9 percent of the time", agreed before anything goes wrong.
+error-budget:
+  term: Error budget
+  text: The amount of failure a service's SLO allows, treated as a budget. While some is left, releases go ahead.
+feature-toggle:
+  term: Feature toggle
+  also: feature flag
+  text: A switch in the software that turns a feature on or off without changing the code.
+guardrail-metric:
+  term: Guardrail metric
+  text: A measure that must not get worse while you try to move another. You agree in advance the level at which you'd stop.
+data-informed:
+  term: Data-informed
+  text: Using numbers and stories for what each can tell you, while the decision stays yours. Adam Mosseri set it against being data-driven in a 2010 talk.
+mcnamara-fallacy:
+  term: McNamara fallacy
+  text: Taking what's easy to measure for all that matters. The market researcher Daniel Yankelovich named it in 1971.
+intersectional:
+  term: Intersectional
+  text: Looking at where two or more groups overlap, such as gender and skin type together, not at one at a time. Kimberlé Crenshaw named the idea in 1989.
+regression-to-the-mean:
+  term: Regression to the mean
+  text: An extreme result tends to be followed by a less extreme one, whatever you did in between.

@@ -1,4 +1,4 @@
-About 1 hour 15 minutes.
+About an hour and 15 minutes.
 
 **If you only do one thing:** Run a consequence scan on one feature you own, and write down one change you'd propose.
 

@@ -1,4 +1,4 @@
-About 1 hour 15 minutes.
+About an hour and 15 minutes.
 
 **If you only do one thing:** Send your most senior reader a short update on a day you've named, with one item in it that isn't on track.
 

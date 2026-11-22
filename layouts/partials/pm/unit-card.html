@@ -18,7 +18,14 @@
     {{ (resources.Get (printf "figures/%s.svg" .)).Content | safeHTML }}
     {{ with $p.Params.figure_caption }}<figcaption class="plate-caption">{{ . }}</figcaption>{{ end }}
   </figure>
-  {{ end }}
+  {{ else }}{{ with $p.Params.figure_quote }}
+  {{- /* A sentence in its author's words in the picture's place, credited under it (spec S16). */}}
+  <figure class="plate plate-quote" data-slot="picture">
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "picture") }}
+    <blockquote class="plate-quote-text"><p>{{ .text }}</p></blockquote>
+    <figcaption class="plate-caption">{{ .by }}, {{ with .url }}<a href="{{ . }}">{{ end }}<cite>{{ .work }}</cite>{{ with .url }}</a>{{ end }}{{ with .year }} ({{ . }}){{ end }}</figcaption>
+  </figure>
+  {{ end }}{{ end }}
 
   <div class="card-body prose">{{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" $p.Content) | safeHTML }}</div>
 

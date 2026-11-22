@@ -52,7 +52,7 @@ go-deeper: ""
 deeper-team-topologies: ""
 
 # Full path: Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms, Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
-deeper-architectural-innovation-the-reconfiguration-of-existing-product-technologies-and-the-failure-of-established-firms: "You may think Administrative Science Quarterly is not the most thrilling of publications, and you'd be wrong. Jokes aside, this contains a key point: Many PMs have heard of Conway's Law, but fewer recognize how the system then creates costs in changing the org."
+deeper-architectural-innovation-the-reconfiguration-of-existing-product-technologies-and-the-failure-of-established-firms: "You may think Administrative Science Quarterly is not the most thrilling of publications, but you'd be wrong. Jokes aside, many PMs have heard of Conway's Law, but fewer intentionally consider how the technical system then creates costs in changing the org."
 
 # Full path: The Misalignment of Product Architecture and Organizational Structure in Complex Product Development, Manuel Sosa, Steven Eppinger and Craig Rowles (Management Science, 2004)
 deeper-the-misalignment-of-product-architecture-and-organizational-structure-in-complex-product-development: ""
@@ -61,4 +61,4 @@ deeper-the-misalignment-of-product-architecture-and-organizational-structure-in-
 deeper-the-art-of-systems-architecting: ""
 
 # Full path: Halt and Catch Fire, created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
-deeper-halt-and-catch-fire: "This show is shockingly good, honestly one of my top ten despite a couple glaring flaws. And it's got Lee Pace. If that doesn't sell you, I can only assume you haven't seen Lee Pace in anything."
+deeper-halt-and-catch-fire: "This show is fantastic, honestly one of my top ten. And it's got Lee Pace. If that doesn't sell you, I can only assume you haven't seen Lee Pace in anything."
