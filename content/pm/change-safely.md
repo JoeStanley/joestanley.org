@@ -43,7 +43,7 @@ steps:
     links:
       - text: "DORA's software delivery performance metrics"
         url: https://dora.dev/guides/dora-metrics/
-    look: Which of the five measures show throughput and which show instability, and why smaller changes help both. If you read *Accelerate* on Module 2's full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
+    look: Which of the five measures show throughput and which show instability, and why smaller changes help both. If you read *Accelerate* on Find the Constraint's full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
     trust: DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade, and the guide sums up what it keeps finding. The answers are self-reported, and the evidence is in the yearly reports.
     only: The measures as DORA uses them today, so you can ask for your own team's numbers.
   - id: card-error-budgets
@@ -91,7 +91,7 @@ deeper:
 
 When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
 
-Richard Cook, from Module 1, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
+Richard Cook, from See the System, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
 Before you change anything, know how good the service has to be, in words engineers can test: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 

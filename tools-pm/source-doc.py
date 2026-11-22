@@ -300,7 +300,7 @@ def glossary_tab(art):
 
 
 # ---------- a draft file, as its tab ----------
-VOICE_CODE = re.compile(r'\{\{<\s*pm/voice\s+"([^"]+)"\s*>\}\}')
+VOICE_CODE = re.compile(r'\{\{<\s*pm/voice\s+"([^"]+)"(?:\s+"paragraph")?\s*>\}\}')
 
 
 def draft_slots(md):
@@ -349,9 +349,9 @@ def voice_tab():
     out = [f"# {VOICE_TAB}",
            "Everything that waits for you in your final voice pass, in one place. A voice slot is a passage that needs your voice: the site shows its interim words for now, and its tab shows a block with what the passage must do. Below them, every passage of your words a session cut, moved or changed since you opened your words to agents on 22 November 2026, with where it went and why. Nothing here is written as you.",
            "## Open voice slots"]
-    if v["slots"]:
-        out.append("\n".join(f"- **{s_.get('unit')}** (`{s_.get('id')}`): {clean(s_.get('brief') or '').strip()}" for s_ in v["slots"]))
-    else:
+    for s_ in v["slots"]:
+        out += [f"**In {s_.get('unit')}.**", slot_block(s_.get("id"))]
+    if not v["slots"]:
         out.append("None yet.")
     out.append("## Your words that moved")
     if not v["moved"]:

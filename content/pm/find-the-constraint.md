@@ -58,7 +58,7 @@ deeper:
   - title: The Principles of Product Development Flow
     by: Donald Reinertsen
     where: A book.
-    note: "Read chapter 3, \"Managing Queues,\" and chapter 4, \"Exploiting Variability.\""
+    note: "Read chapter 2, \"The Economic View,\" on putting a price on delay, then chapter 3, \"Managing Queues,\" and chapter 4, \"Exploiting Variability.\""
     trust: A consultant's argument, set out as numbered principles drawn from queueing theory and economics, not a study.
     only: Why queues are the hidden cost in product work, and why cutting variability, a lesson taken from factories, can cost more than it saves. Watch where he parts with Goldratt.
   - title: "Accelerate: The Science of Lean Software and DevOps"

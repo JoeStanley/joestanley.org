@@ -2,7 +2,7 @@
 title: Mind the Seams
 layout: module
 module: mind-the-seams
-question: How does the way we're organized shape what we build?
+question: How does the way we're organized shape what we build, and what falls between the parts?
 one_thing: Sketch who talks to whom in your area, then how the system's parts connect, and mark where the two pictures disagree.
 do_minutes: 35
 
@@ -51,6 +51,17 @@ steps:
     look: "His definition, \"a foundation of self-service APIs, tools, services, knowledge and support,\" run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required."
     trust: One Thoughtworks consultant's view, drawn from his own client work.
     only: A checklist of what makes a platform worth choosing.
+  - id: bounded
+    kind: read
+    title: Martin Fowler, "Bounded Context"
+    minutes: 5
+    where: A short note. Free at martinfowler.com.
+    links:
+      - text: "Bounded Context"
+        url: https://martinfowler.com/bliki/BoundedContext.html
+    look: The word "meter," which meant different things to different parts of an electricity utility.
+    trust: Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business.
+    only: A way to hear a boundary in how people talk.
 
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
@@ -73,12 +84,12 @@ deeper:
     note: Read it whole.
     trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips."
     only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
-  - title: The Misalignment of Product Architecture and Organizational Structure in Complex Product Development
-    by: Manuel Sosa, Steven Eppinger and Craig Rowles (Management Science, 2004)
-    where: A journal article.
-    note: Read it whole.
-    trust: Built on data from one large project, Pratt and Whitney's PW4098 jet engine. Peer-reviewed.
-    only: How a product's design interfaces map onto who talks to whom, and how the interfaces that cross team boundaries are the ones most likely to be mismanaged.
+  - title: Design and Reality
+    by: Rebecca Wirfs-Brock and Mathias Verraes
+    where: A book of six essays.
+    note: "Read it whole, starting with the title essay. Engineers on an oil rig switched the alarms off during a long failure, and the system took the silence to mean the emergency was over. One word, \"alarm,\" had been covering two things. Then read \"Splitting a Domain Across Multiple Bounded Contexts.\""
+    trust: Wirfs-Brock invented responsibility-driven design, a widely taught way of designing software, and Verraes founded DDD Europe, a conference on domain-driven design. It's two practitioners writing up cases from their own work.
+    only: How a team finds a concept nobody had named, and where to draw the lines between contexts.
   - title: The Art of Systems Architecting
     by: Mark Maier and Eberhardt Rechtin
     where: A textbook.
@@ -96,7 +107,9 @@ deeper:
 
 Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
-People fall between categories the way work falls between teams. In 1976 five Black women sued General Motors, which had hired no Black women before 1964, and a US court said it would hear their case as race discrimination or as sex discrimination, "but not a combination of both." In 1989 the law scholar Kimberlé Crenshaw used their case to name {{< pm/term "intersectional" "intersectionality" >}}: what happens where two categories meet, and what neither one shows on its own. Look for it in your product as you'd look for any seam: the customer whose problem is half one team's and half another's, so each team looks at its half and finds nothing wrong, or who belongs in two boxes on a form that allows one.
+Some seams run through words. When two teams use one word, such as "customer" or "approved," for two things, the bug ships between them. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
+
+A category is a boundary of meaning too, and people fall between categories the way work falls between teams. In 1976 five Black women sued General Motors, which had hired no Black women before 1964, and a US court said it would hear their case as race discrimination or as sex discrimination, "but not a combination of both." In 1989 the law scholar Kimberlé Crenshaw used their case to name {{< pm/term "intersectional" "intersectionality" >}}: what happens where two categories meet, and what neither one shows on its own. Look for it in your product as you'd look for any seam: the customer whose problem is half one team's and half another's, so each team looks at its half and finds nothing wrong, or who belongs in two boxes on a form that allows one.
 
 [//]: # (short-path)
 
@@ -111,3 +124,4 @@ People fall between categories the way work falls between teams. In 1976 five Bl
 - Which parts of our system are hardest to change, and why? Do our team boundaries follow them?
 - At this interface between teams, what does each side promise the other, and what happens when that breaks?
 - What's the worst thing that could come across this interface, and who would notice first?
+- Does "user" or "order" mean the same thing on both sides of this boundary?

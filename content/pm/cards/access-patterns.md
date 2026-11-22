@@ -1,8 +1,8 @@
 ---
 title: Access Patterns
 layout: card
-module: map-the-domain
-weight: 10
+module: design-for-change
+weight: 20
 figure: access-patterns
 figure_caption: Every question reaches the same data, each with its own need for freshness, and the freshest answers cost the most to keep.
 question: Who will ask this, how fast do they need the answer, and what would break if it were a day old?

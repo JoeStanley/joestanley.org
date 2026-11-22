@@ -28,7 +28,7 @@
         <div class="mod-body">
           <h3><span class="sr">Module {{ .num }}: </span>{{ with $page }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ $m.title }}</a>{{ else }}{{ $m.title }}{{ end }}</h3>
           <p class="mod-question">{{ .question }}</p>
-          <p class="mod-status">{{ with $page }}<span data-map-status>Ready</span>{{ else }}Not rebuilt yet{{ end }}</p>
+          <p class="mod-status">{{ with $page }}<span data-map-status>Ready</span>{{ else }}Not built yet{{ end }}</p>
         </div>
       </li>
       {{- end }}

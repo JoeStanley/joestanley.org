@@ -48,9 +48,20 @@ steps:
     links:
       - text: "Data Is a Toxic Asset, So Why Not Throw It Out?"
         url: https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html
-    look: "Why he treats stored data as a liability, and one test to put to every field you collect: which decision will it change? It's Map the Domain's GOV.UK test, from the security side."
+    look: "Why he treats stored data as a liability, and one test to put to every field you collect: which decision will it change?"
     trust: An opinion essay by a security technologist, first published by CNN.
     only: "His fix, in one line: \"there's no better security than deleting the data.\""
+  - id: inclusive
+    kind: read
+    title: GOV.UK Service Manual, "Making your service more inclusive"
+    minutes: 5
+    where: A guide for the UK government's digital teams. Free at gov.uk.
+    links:
+      - text: "Making your service more inclusive"
+        url: https://www.gov.uk/service-manual/design/making-your-service-more-inclusive
+    look: Why "Is this your first child?" is hard for some people to answer, and the fix, "Focus on what your service really needs to know." It's Schneier's test from the service side.
+    trust: "It's the UK government's guidance for its own services, which have to work for everyone, since people usually have no alternative to using them. Parts are written for a public service's legal duties."
+    only: A test for every field you ask people to fill in, and the common reasons people get shut out, from time and trust to the evidence they're asked for.
 
 check:
   - q: A change lifts hours watched on your streaming service by starting the next episode without asking. Has it created value?
@@ -99,7 +110,7 @@ What you build reaches people you'll never meet. On a delivery platform, small r
 
 Some of them live a world away. In 2017, Myanmar's military killed and raped Rohingya by the thousands and drove hundreds of thousands into Bangladesh. [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide, and found that Facebook had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook agreed it should do more. In 2022, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. And in 2023, Amnesty International found that Meta, as Facebook's owner is now called, had contributed to abuses again, against Tigrayans in Ethiopia's war.
 
-You've met parts of this question already. See the System asked whose costs fall outside a system's edge, Find the Constraint whom a stand-in measure misses, and Mind the Seams who falls between two categories. Map the Domain asked who a data model can't record, Design for Change who pays for a change, and Change Safely and Weigh the Evidence whom an average hides. Here it's the whole module.
+You've met parts of this question already. Know Who It's For asked whose problem you hear, and whose work an order rests on. See the System asked whose costs fall outside a system's edge, Find the Constraint whom a stand-in measure misses, and Mind the Seams who falls between two categories. Design for Change asked who pays for a change, and Change Safely and Weigh the Evidence whom an average hides. Here it's the whole module.
 
 So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
 
@@ -117,4 +128,4 @@ In life, ethical matters rarely come to you as clear cases of good and bad. Inst
 
 End with one change you'd propose. Afterwards, show it to someone in support and ask what you missed.
 
-**Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?
+**Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?

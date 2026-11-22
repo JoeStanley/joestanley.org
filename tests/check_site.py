@@ -23,13 +23,12 @@ TESTS = os.path.join(ROOT, "tests")
 # The private JoeStanley/pm-sources, which holds the working record and the voice guide (T3), sits beside this
 # repository in every working session. GitHub's checks can't see it, so what lives there is noted, not failed.
 PM_SOURCES = os.environ.get("PM_SOURCES") or os.path.normpath(os.path.join(ROOT, "..", "pm-sources"))
-# The rebuilt modules, each with its concept cards, in reading order. Add a module here when it is rebuilt.
+# The built modules, each with its concept cards, in reading order. Add a module here when it is built.
 MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
            ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
            ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"]),
-           ("/pm/map-the-domain/", ["/pm/cards/access-patterns/"]),
-           ("/pm/design-for-change/", ["/pm/cards/coupling/"]),
+           ("/pm/design-for-change/", ["/pm/cards/coupling/", "/pm/cards/access-patterns/"]),
            ("/pm/change-safely/", ["/pm/cards/error-budgets/"]),
            ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/"]),
            ("/pm/decide-and-set-direction/", ["/pm/cards/agency-and-coherence/"]),

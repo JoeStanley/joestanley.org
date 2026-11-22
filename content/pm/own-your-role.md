@@ -32,7 +32,7 @@ steps:
       - text: "Envisioning a Sustainable World"
         url: https://donellameadows.org/archives/envisioning-a-sustainable-world/
     look: She judges a vision by how clear its values are, not how clear the path to it is.
-    trust: Meadows, the systems scientist you'll meet in Module 1, writing from her own practice. There's no data in it, and her subject is a sustainable world, not a product.
+    trust: Meadows, the systems scientist you'll meet in See the System, writing from her own practice. There's no data in it, and her subject is a sustainable world, not a product.
     only: The one reading here on forming a vision and keeping it open to correction.
 
 check:

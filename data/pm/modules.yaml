@@ -1,4 +1,6 @@
-# The twelve modules, in reading order. One entry per stop on the map (spec X1).
+# The twelve modules, in reading order. Map the Domain folded into Mind the Seams, Design for Change and Answer
+# for What You Build on 22 November 2026, and Know Who It's For took the place after Own Your Role (Joe's picks).
+# One entry per stop on the map (spec X1).
 # A module is either built or a draft, never both:
 #   page:  the content file under content/pm/, once the module is rebuilt for the site.
 #   draft: the file under drafts/pm/ that holds the module and its cards until then. "state" says where it stands.
@@ -8,26 +10,27 @@
   title: Own Your Role
   question: How do you grow your role beyond what you were handed, and make the product's vision your own?
   page: own-your-role
-- id: see-the-system
+- id: know-who-its-for
   num: 1
+  title: Know Who It's For
+  question: Whose problem is this, what's it worth to them, and how do you know?
+  draft: know-who-its-for
+  state: Draft of 22 November 2026, from its prep. New, with one card, The Last Time, and a grocery delivery app as its setting. Job 30 builds it.
+- id: see-the-system
+  num: 2
   title: See the System
   question: What's the system, and why does it behave this way?
   page: see-the-system
 - id: find-the-constraint
-  num: 2
+  num: 3
   title: Find the Constraint
   question: Where is the work actually stuck, and are we measuring the right thing?
   page: find-the-constraint
 - id: mind-the-seams
-  num: 3
-  title: Mind the Seams
-  question: How does the way we're organized shape what we build?
-  page: mind-the-seams
-- id: map-the-domain
   num: 4
-  title: Map the Domain
-  question: What questions must the system answer, how fast and how fresh, and where should its boundaries fall?
-  page: map-the-domain
+  title: Mind the Seams
+  question: How does the way we're organized shape what we build, and what falls between the parts?
+  page: mind-the-seams
 - id: design-for-change
   num: 5
   title: Design for Change
@@ -56,10 +59,10 @@
 - id: notice-when-you-are-wrong
   num: 10
   title: Notice When You Are Wrong
-  question: How do we find out we are wrong?
+  question: How do you find out you're wrong, early enough to change course?
   page: notice-when-you-are-wrong
 - id: bring-people-with-you
   num: 11
   title: Bring People With You
-  question: How do you earn the trust of the people who decide and depend on you, and keep it when there is nothing to report?
+  question: How do you earn the trust of the people around you, and bring them along when they don't agree?
   page: bring-people-with-you

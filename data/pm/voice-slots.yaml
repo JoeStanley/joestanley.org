@@ -20,7 +20,12 @@
 #   when:   the day
 # The list stays until his pass has been through it.
 
-slots: []
+slots:
+  - id: shopper-incentive
+    unit: 1 Know Who It's For
+    brief: "Say in your own voice what you believe a grocery app's incentive is with the shoppers who pick and deliver its orders, and why it should matter to a PM designing their side of the flow. The paragraph before it gives only what the sources support: unpaid waiting time and a pool of waiting workers (New York's study), shifts below minimum wage (an MIT audit), and Dubal's argument, as hers. No source opened says a company wants workers to need the work, or that low prices were paid for by investors with the cost on shoppers, so that view is yours to state. Your words from the session are below. Suggestion: raise them into the main text here, in your voice."
+    old: "Their jobs are usually brutal, the companies subsidized by VC money are putting most of their cost on this marginalized group, and it creates an incentive for the company to preserve the conditions that create an ample, desperate workforce."
+    interim: "Who gains from that, and who pays for it? Answer for What You Build takes up the question."
 
 moved:
   - what: moved
