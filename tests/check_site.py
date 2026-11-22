@@ -25,6 +25,7 @@ TESTS = os.path.join(ROOT, "tests")
 PM_SOURCES = os.environ.get("PM_SOURCES") or os.path.normpath(os.path.join(ROOT, "..", "pm-sources"))
 # The built modules, each with its concept cards, in reading order. Add a module here when it is built.
 MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
+           ("/pm/know-who-its-for/", ["/pm/cards/the-last-time/"]),
            ("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
            ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
            ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"]),

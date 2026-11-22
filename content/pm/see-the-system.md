@@ -7,10 +7,10 @@ one_thing: Read the card, then draw one thing that piles up in your own work as 
 do_minutes: 30
 
 last_time:
-  - q: Fred Brooks traded something away to save the schedule. What, and how?
-    a: The system's conceptual integrity. He let 150 implementers write the specifications, which by his estimate added a year to debugging.
-  - q: Engineers write the test before they write the code. What's the same move in a PM's work?
-    a: Naming the destination first, "we're building this in order to ...," then working back to what would have to be true to get there.
+  - q: A customer says they'd use a new feature "all the time." What do you ask instead?
+    a: About the last time the problem came up, what they did about it and what it cost them. What they did is evidence, and what they say they'd do is a forecast.
+  - q: On a grocery app, an adult child orders for an aging parent. Whose problem is a bad substitution, and why does it matter which of them you hear from?
+    a: The parent's, who eats it, though the child pays and is the one who writes in. A team that hears only from the buyer drifts toward the buyer.
 
 steps:
   - id: card-stocks

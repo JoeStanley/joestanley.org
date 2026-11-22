@@ -14,8 +14,7 @@
   num: 1
   title: Know Who It's For
   question: Whose problem is this, what's it worth to them, and how do you know?
-  draft: know-who-its-for
-  state: Draft of 22 November 2026, from its prep. New, with one card, The Last Time, and a grocery delivery app as its setting. Job 30 builds it.
+  page: know-who-its-for
 - id: see-the-system
   num: 2
   title: See the System

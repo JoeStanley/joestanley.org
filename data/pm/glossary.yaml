@@ -36,6 +36,12 @@ job-crafting:
 glue-work:
   term: Glue work
   text: Tanya Reilly's name for the work that holds a team together and rarely shows on a roadmap.
+discovery:
+  term: Discovery
+  text: The work of learning whether a problem is real, whose it is and what solving it is worth, before and while you build.
+cost-of-delay:
+  term: Cost of delay
+  text: What a week of waiting costs, in the value you don't get while the work isn't done. It puts urgency and value in one number.
 inverse-conway:
   term: Inverse Conway maneuver
   text: Shaping teams, and how they talk to each other, on purpose, to get the system you want.
