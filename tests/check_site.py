@@ -19,6 +19,9 @@ from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TESTS = os.path.join(ROOT, "tests")
+# The private JoeStanley/pm-sources, which holds the working record and the voice guide (T3), sits beside this
+# repository in every working session. GitHub's checks can't see it, so what lives there is noted, not failed.
+PM_SOURCES = os.environ.get("PM_SOURCES") or os.path.normpath(os.path.join(ROOT, "..", "pm-sources"))
 # The rebuilt modules, each with its concept cards, in reading order. Add a module here when it is rebuilt.
 MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/see-the-system/", ["/pm/cards/stocks-flows-feedback/"]),
@@ -512,16 +515,23 @@ def check_static():
         if own:
             fail("C7", f"{os.path.relpath(path, ROOT)} sets a color itself ({own[0].strip()}); name it in pm.css and use a class")
 
-    # T3: no em dashes
-    for pattern in ["content/**/*", "drafts/**/*", "layouts/**/*", "assets/**/*.css", "assets/**/*.js", "data/**/*", "hugo.yaml", "tests/SPEC.md", "README*.md", "VOICE.md"]:
-        for path in glob.glob(os.path.join(ROOT, pattern), recursive=True):
-            if os.path.isfile(path):
-                try:
-                    text = open(path, encoding="utf-8").read()
-                except UnicodeDecodeError:
-                    continue
-                if "\u2014" in text:
-                    fail("T3", f"em dash in {os.path.relpath(path, ROOT)}")
+    # T3: no em dashes, here and in the voice guide, which lives in pm-sources (22 November 2026)
+    t3_paths = [p for pattern in ["content/**/*", "drafts/**/*", "layouts/**/*", "assets/**/*.css", "assets/**/*.js", "data/**/*", "hugo.yaml", "tests/SPEC.md", "README*.md"]
+                for p in glob.glob(os.path.join(ROOT, pattern), recursive=True)]
+    voice = os.path.join(PM_SOURCES, "VOICE.md")
+    if os.path.isfile(voice):
+        t3_paths.append(voice)
+    else:
+        NOTE["T3"].append(f"VOICE.md not scanned: pm-sources isn't at {PM_SOURCES}, as on GitHub; a working session scans it")
+    for path in t3_paths:
+        if os.path.isfile(path):
+            try:
+                text = open(path, encoding="utf-8").read()
+            except UnicodeDecodeError:
+                continue
+            if "\u2014" in text:
+                where = "pm-sources/" + os.path.relpath(path, PM_SOURCES) if path == voice else os.path.relpath(path, ROOT)
+                fail("T3", f"em dash in {where}")
 
     # T1: fonts referenced exist, with a licence file per family
     fonts_dir = os.path.join(ROOT, "static", "fonts")

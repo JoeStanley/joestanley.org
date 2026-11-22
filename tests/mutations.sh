@@ -9,7 +9,10 @@ run() {  # description, rule, command that breaks the copy
   # check and read its result as a miss or, worse, as a catch for some other reason (22 November 2026, when
   # five still aimed at drafts that every module's rebuild had deleted).
   if diff -rq --exclude=.git "$SRC" "$D" >/dev/null 2>&1; then echo "STALE: $1 ($2) changed nothing"; rm -rf "$D"; return; fi
-  (cd "$D" && python3 tests/check_site.py --only "$2" >/dev/null 2>&1)
+  # The voice guide lives in pm-sources, beside this repository (T3). A mutation that breaks a copy of it puts the
+  # copy in .pm-sources inside the copy of the site, and the check reads that one.
+  PMS="$D/.pm-sources"; [ -d "$PMS" ] || PMS="${PM_SOURCES:-$SRC/../pm-sources}"
+  (cd "$D" && PM_SOURCES="$PMS" python3 tests/check_site.py --only "$2" >/dev/null 2>&1)
   if grep -q "| $2 | auto | FAIL" "$D/tests/report.md"; then echo "caught: $1 ($2)"; else echo "MISSED: $1 ($2)"; fi
   rm -rf "$D"
 }
@@ -135,4 +138,5 @@ run_bg "the header's hour back in digits" S14 "sed -i 's/{{- else if eq \$h 1 }}
 run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 's/    continues: meadows-1/    continues: card-stocks/' content/pm/see-the-system.md"
 run_bg "a comma back outside a closing quotation mark" T9 "sed -i 's/\"Leverage Points,\" first half/\"Leverage Points\", first half/' content/pm/see-the-system.md"
 run_bg "a period back outside a quoted title in a source's note" T9 "sed -i 's/Backward Design.\\\\\"/Backward Design\\\\\"./' content/pm/own-your-role.md"
+run_bg "an em dash in the voice guide, which lives in pm-sources" T3 "mkdir .pm-sources && cp \"\${PM_SOURCES:-\$SRC/../pm-sources}/VOICE.md\" .pm-sources/ && printf '\\nA line \\xe2\\x80\\x94 with an em dash.\\n' >> .pm-sources/VOICE.md"
 wait
