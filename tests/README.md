@@ -1,6 +1,6 @@
 # Checks
 
-`SPEC.md` is the design spec: numbered rules the site must meet. `check_site.py` builds the site and checks every rule marked **auto**, then writes `report.md` and exits with an error if any rule fails. `mutations.sh` breaks copies of the site on purpose, a hundred and two ways, to prove the checks catch real regressions. Each prints `caught`, `MISSED`, or `STALE` when its change no longer finds what it aimed at, so it tests nothing and needs aiming again. The whole run takes about 35 minutes here.
+`SPEC.md` is the design spec: numbered rules the site must meet. `check_site.py` builds the site and checks every rule marked **auto**, then writes `report.md` and exits with an error if any rule fails. `mutations.sh` breaks copies of the site on purpose, a hundred and three ways, to prove the checks catch real regressions. Each prints `caught`, `MISSED`, or `STALE` when its change no longer finds what it aimed at, so it tests nothing and needs aiming again. The whole run takes about 35 minutes here.
 
 ## Run
 
@@ -16,7 +16,7 @@ Rules A5 to A12 and P4 came from the round 7 accessibility review. Round 8 added
 
 ## The working source (X1 to X3) and the voice (E1 to E3, S5, S7)
 
-`tools-pm/source-doc.py` makes the working doc's tabs from the repository: a built unit from its built page, a draft from its file in `drafts/pm/`. The checks read those same tabs. X1 holds one source for every module on the map. X2 compares each built page's words with its tab. X3 compares each tab with `tools-pm/source-doc.lock.json`, the record of what was last put in the doc, and fails until the doc is synced and the record updated. E1 to E3 hold the voice (`VOICE.md`), S5 keeps the settings in `retired-settings.txt` out of the examples, and S7 keeps a "To check:" line out of a built unit.
+`tools-pm/source-doc.py` makes the working doc's tabs from the repository: a built unit from its built page, a draft from its file in `drafts/pm/`. The checks read those same tabs. X1 holds one source for every module on the map. X2 compares each built page's words with its tab. X3 compares each tab with `tools-pm/source-doc.lock.json`, the record of what was last put in the doc, and fails until the doc is synced and the record updated. E1 to E3 hold the voice (`VOICE.md`, in the private pm-sources, which T3 also scans when it sits beside this repository), S5 keeps the settings in `retired-settings.txt` out of the examples, and S7 keeps a "To check:" line out of a built unit.
 
 ## Rules for changes
 
