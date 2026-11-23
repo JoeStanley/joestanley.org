@@ -14,7 +14,8 @@ of what was last put there.
 "public" is a built site (hugo -d public). A built unit's tab is made from the built page, so it holds the words a
 reader meets, template wording included. A draft's tab is its file in drafts/pm/, under the title, state and
 question the map gives it. A voice slot (spec X4) shows its interim words in place, as the page does, and then its
-own block: the brief and the owner's old words. The last tab, "Your voice pass", lists every open slot and every
+own block: the brief and the owner's old words. The second tab, after About, is the owner's ReadMe, made from its built
+page with its structure kept, so he can revise it there (spec X2). The last tab, "Your voice pass", lists every open slot and every
 word of his that moved (data/pm/voice-slots.yaml). Needs PyYAML and beautifulsoup4.
 """
 import copy, datetime, hashlib, json, os, re, sys
@@ -319,6 +320,23 @@ def glossary_tab(art):
     return out
 
 
+# ---------- the owner's ReadMe (spec X2) ----------
+README_TAB = "ReadMe"
+README_NOTE = ("*Your own words, as the site shows them at /page/readme/. Revise anything here, its structure too: "
+               "a session carries your edits into the site as you made them.*")
+BREAK = "\ue000"   # a line break inside a paragraph, kept as Markdown's hard break so its lines stay lines
+
+
+def readme_tab(site):
+    """The ReadMe as its page shows it: his headings, paragraphs, lists, links and the struck word, line breaks kept."""
+    soup = BeautifulSoup(open(os.path.join(site, "page", "readme", "index.html"), encoding="utf-8").read(), "html.parser")
+    art = soup.select_one("main article.page")
+    for br in art.find_all("br"):
+        br.replace_with(BREAK)
+    out = ["# " + inline(art.find("h1")), README_NOTE] + blocks(art.select_one(".prose"))
+    return re.sub(" *" + BREAK + " *", "\\\\\n", "\n\n".join(out))
+
+
 # ---------- a draft file, as its tab ----------
 VOICE_CODE = re.compile(r'\{\{<\s*pm/voice\s+"([^"]+)"(?:\s+"paragraph")?\s*>\}\}')
 
@@ -354,9 +372,9 @@ def about_tab(mods, synced):
     return "\n\n".join([
         "# On Product Judgment: Working Source",
         f"Last put here from the repository on {synced}.",
-        "This doc mirrors the syllabus as it stands in the joestanley.org repository. Each tab is one unit: the Start page, each module with its concept cards, and the glossary. What you read here is what the repository holds, word for word.",
+        "This doc mirrors the syllabus as it stands in the joestanley.org repository, and your ReadMe. The next tab, ReadMe, is your own words as the site shows them: revise anything there, its structure too, and a session carries your edits into the site as you made them, fixing only a house rule and telling you. Each tab after it is one unit: the Start page, each module with its concept cards, and the glossary. What you read here is what the repository holds, word for word.",
         "Comment on any line, or edit it. A Claude Code session carries your comments and edits into the repository, then puts the result back here, so the two stay the same. The checks in the repository fail if a tab falls out of step.",
-        "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
+        "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| ReadMe | On the site, in your own words. | `content/page/readme.md` |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
         + "\n".join(rows) + "\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
         f"The last tab, {VOICE_TAB}, lists every passage that waits for your voice and every word of yours a session cut, moved or changed, so your final pass starts from one list. A passage that waits shows a block in its own tab too, where you read it.",
         "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes from before 20 November 2026, kept as history. Decisions for you now wait on the [Decisions page](https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq), and what comes next is in `PLAN.md` in the private pm-sources repository.",
@@ -388,7 +406,8 @@ def tabs(site, synced=None):
     arts = {a["data-unit"]: a for a in soup.select("main article.unit")}
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
     PENDING.clear()
-    out = [("About", about_tab(mods, synced or today())), ("Start", "\n\n".join(start_tab(arts["start"]) + flush()))]
+    out = [("About", about_tab(mods, synced or today())), (README_TAB, readme_tab(site)),
+           ("Start", "\n\n".join(start_tab(arts["start"]) + flush()))]
     for m in mods:
         name = f"{m['num']} {m['title']}"
         if m.get("page"):
