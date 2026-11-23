@@ -25,7 +25,7 @@ Set the vision as a destination, keep it current as engineers and customers teac
 
 - **Product management isn't project management.** A project can be on time and on budget and still be the wrong product.
 - **You facilitate, but you aren't a facilitator.** Groups don't pool what they know on their own: they picked the best candidate 18 percent of the time when its facts were spread among them, 83 percent when everyone had them (Stasser and Titus, 1985).
-- **The vision needs a voice of its own.** Tolstoy saw art as joining people "together in the same feelings," and thought it strongest when it's individual and sincere. In *Mozart in the Jungle*, that's playing with the blood.
+- **The vision needs a voice of its own.** People respond to the person in the work. A product made by averaging every request can be right in every detail and still say nothing.
 
 ## How to spot it
 

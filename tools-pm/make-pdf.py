@@ -85,6 +85,8 @@ def finish(path, info):
             u["label"] = f"Module {u['num']}: {u['title']}"
         elif u["kind"] == "card":
             u["label"] = f"Card: {u['title']}"
+        elif u["kind"] == "closing":   # The Compass (spec S21), named by its kicker, "To close"
+            u["label"] = f"To close: {u['title']}"
         else:
             u["label"] = u["title"]
         labels[u["id"]] = u["label"]

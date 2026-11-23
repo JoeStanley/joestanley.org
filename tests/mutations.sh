@@ -189,4 +189,16 @@ run_bg "a link to a page the preview doesn't hold" X5 "printf '\nThe [archive](/
 run_bg "Start's invitation to write gone" S19 "sed -i '/^If you disagree with any of this, good/d' content/pm/_index.md"
 run_bg "Start's address hidden under other words" S19 "sed -i 's/\[mail@joestanley.org\](mailto:/[write to me](mailto:/' content/pm/_index.md"
 run_bg "Start's invitation folded into How it works' list" S19 "sed -i 's/^If you disagree with any of this, good/- If you disagree with any of this, good/' content/pm/_index.md"
+# Job 29, the two ends (23 November 2026): the arc on Start (S20) and The Compass, the closing unit (S21)
+run_bg "a module left out of the arc" S20 "sed -i 's/modules: \\[own-your-role, know-who-its-for\\]/modules: [own-your-role]/' data/pm/arc.yaml"
+run_bg "the arc's part names gone from Start" S20 "sed -i '/^<p class=\"arc-part\"><strong>{{ .title }}/d' layouts/partials/pm/arc-list.html"
+run_bg "The Compass gone from Start's list" S20 "sed -i 's/{{- if \\\$start }}{{ with site.Data.pm.arc.closing }}/{{- if false }}{{ with site.Data.pm.arc.closing }}/' layouts/partials/pm/arc-list.html"
+run_bg "The Compass's framing not in a voice slot" S21 "sed -i '/pm\\/voice \"compass-framing\"/d' content/pm/the-compass.md"
+run_bg "The Compass's walk-through with no collision" S21 "sed -i '/^Here two questions collide/d' content/pm/the-compass.md"
+run_bg "Start's How it works without the closing page" S21 "sed -i 's/, then a closing page\\./\\./; s/The closing page, The Compass, has you look back over it\\.//' content/pm/_index.md"
+run_bg "The Compass's Do not reviewing the log" J3 "sed -i 's/^\\*\\*Review your decision log (20 minutes)\\.\\*\\*/**Look back (20 minutes).**/' content/pm/the-compass.md"
+run_bg "The Compass a page too long" P1 "python3 -c \"p='content/pm/the-compass.md'; s=open(p).read(); a=s.index('Real calls'); b=s.index('## Do'); open(p, 'w').write(s[:b] + s[a:b] + s[b:])\""
+run_bg "The Compass bookmarked without its kind" P6 "sed -i 's/u\\[\"label\"\\] = f\"To close: {u\\[.title.\\]}\"/u[\"label\"] = u[\"title\"]/' tools-pm/make-pdf.py"
+run_bg "The Compass without a tab" X2 "sed -i 's/    if closing and closing in arts:/    if False:/' tools-pm/source-doc.py"
+run_bg "The Compass not on the checks' list" X1 "sed -i 's/ + \\[CLOSING\\]$//' tests/check_site.py"
 wait

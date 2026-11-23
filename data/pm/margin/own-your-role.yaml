@@ -32,8 +32,11 @@ step-card-champion: ""
 # Short path, step 2: Fred Brooks, “Aristocracy, Democracy, and System Design”
 step-brooks: ""
 
-# Short path, step 3: Donella Meadows, “Envisioning a Sustainable World”
-step-meadows: ""
+# Short path, step 3: Werner Vogels, “Working Backwards”
+step-vogels: ""
+
+# Short path, step 4: Tanya Reilly, “Being Glue”
+step-reilly: ""
 
 # Do
 do: ""
@@ -50,8 +53,8 @@ deeper-product-development-performance: ""
 # Full path: The Reflective Practitioner, Donald Schön
 deeper-the-reflective-practitioner: ""
 
-# Full path: Understanding by Design, Grant Wiggins and Jay McTighe
-deeper-understanding-by-design: ""
+# Full path: Working Backwards, Colin Bryar and Bill Carr
+deeper-working-backwards: ""
 
 # Full path: Crafting a Job: Revisioning Employees as Active Crafters of Their Work, Amy Wrzesniewski and Jane Dutton (Academy of Management Review, 2001)
 deeper-crafting-a-job-revisioning-employees-as-active-crafters-of-their-work: ""

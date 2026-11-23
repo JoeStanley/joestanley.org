@@ -11,5 +11,8 @@
     {{- end }}
     {{- end }}{{ end }}
   {{- end }}
+  {{- with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}
+  <a href="#{{ .File.ContentBaseName }}">{{ .Title | markdownify }}</a>
+  {{- end }}{{ end }}
   <a href="#glossary">Glossary</a>
 </nav>

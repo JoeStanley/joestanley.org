@@ -15,24 +15,7 @@
   <section class="modules-wrap" data-slot="the-modules">
     <h2>The modules</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-modules") }}
-    <ol class="modules">
-      {{- range site.Data.pm.modules }}
-      {{- $m := . }}
-      {{- $page := "" }}
-      {{- with .page }}{{ $page = site.GetPage (printf "/pm/%s" .) }}{{ end }}
-      {{- $ids := slice }}
-      {{- with $page }}{{ range .Params.steps }}{{ $ids = $ids | append .id }}{{ end }}{{ end }}
-      <li class="mod{{ if not $page }} is-pending{{ end }}"
-          {{- with $page }} data-map-unit="{{ .File.ContentBaseName }}" data-map-steps="{{ len $ids }}" data-map-ids="{{ delimit $ids " " }}"{{ end }}>
-        <span class="mod-num" aria-hidden="true">{{ .num }}</span>
-        <div class="mod-body">
-          <h3><span class="sr">Module {{ .num }}: </span>{{ with $page }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ $m.title }}</a>{{ else }}{{ $m.title }}{{ end }}</h3>
-          <p class="mod-question">{{ .question }}</p>
-          <p class="mod-status">{{ with $page }}<span data-map-status>Ready</span>{{ else }}Not built yet{{ end }}</p>
-        </div>
-      </li>
-      {{- end }}
-    </ol>
+    {{- partial "pm/arc-list.html" (dict "p" $p "all" $all "start" true) }}
   </section>
 </div></div>
 </article>
