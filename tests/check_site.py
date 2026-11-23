@@ -11,7 +11,7 @@ Needs Hugo 0.141.0 extended (HUGO env var or on PATH), Python 3 with playwright,
 Chrome or Playwright's Chromium (CHROME env var to point at one), and pdftotext.
 Writes tests/report.md and exits 1 if any rule fails. Each failure names its rule ID from SPEC.md.
 """
-import argparse, functools, glob, http.server, json, os, re, shutil, socketserver, subprocess, sys, tempfile, threading
+import argparse, functools, glob, http.server, io, json, os, re, shutil, socketserver, subprocess, sys, tempfile, threading
 from collections import defaultdict
 
 import yaml
@@ -47,7 +47,7 @@ MODULE_GRACE = 1   # until launch, a module may run one page past either limit: 
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
                  # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 91   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 90   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -2434,6 +2434,81 @@ def edit_checks(ctx, base):
         fail("H2", "the scratch is drawn in one ink for light and dark screens")
 
 
+# ---------- X5: the preview, the whole site in one page on claude.ai ----------
+PREVIEW = {}   # what preview_checks made: the tool, the page in its stand-in frame, and the pages it holds
+
+
+def _preview_tool():
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("preview", os.path.join(ROOT, "tools", "preview.py"))
+    mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+    return mod
+
+
+def preview_checks(out_dir):
+    """X5: the preview can be made from the build, holds every page a reader can reach, and points nowhere outside."""
+    checked("X5")
+    pv = _preview_tool()
+    try:
+        page, pages, problems = pv.build(out_dir)
+    except Exception as e:
+        fail("X5", f"tools/preview.py could not make the preview: {str(e).splitlines()[0][:160]}"); return
+    for p in problems:
+        fail("X5", f"the preview: {p}")
+    held = {p.path for p in pages}
+    for path in PAGES:
+        if path != "/pm/all/" and path not in held:
+            fail("X5", f"the preview doesn't hold {path}, which a reader can reach on the site")
+    lock = json.load(open(pv.LOCK, encoding="utf-8")) if os.path.exists(pv.LOCK) else {}
+    if not lock.get("url"):
+        fail("X5", "tools/preview.lock.json names no preview: publish it, then record it (CLAUDE.md, 'The preview')")
+    elif lock.get("sha256") != pv.sha(page):
+        NOTE["X5"].append(f"the preview differs from what was last published ({lock.get('published', 'never')}): "
+                          "republish it, then record it (CLAUDE.md, 'The preview')")
+    d = tempfile.mkdtemp(prefix="preview-")
+    open(os.path.join(d, "index.html"), "w", encoding="utf-8").write(pv.STAND_IN + page + "</body></html>\n")
+    PREVIEW.update(tool=pv, dir=d, pages=[p.path for p in pages])
+
+
+def preview_render_checks(ctx, base):
+    """X5: each page in the preview, in a stand-in for claude.ai's frame, renders as the site renders it."""
+    pv, srv = PREVIEW["tool"], Server(PREVIEW["dir"])
+
+    def shot(pg):
+        pg.evaluate("document.fonts.ready"); pg.wait_for_timeout(100)
+        return Image.open(io.BytesIO(pg.screenshot(full_page=True))).convert("RGB")
+
+    def same(a, b, where):
+        if a.size != b.size:
+            fail("X5", f"{where}: the preview's page is {b.size[0]}x{b.size[1]}, the site's {a.size[0]}x{a.size[1]}"); return
+        diff = ImageChops.difference(a, b).convert("L").point(lambda v: 255 if v > 24 else 0)
+        share = sum(diff.histogram()[255:]) / (a.width * a.height)
+        if share > 0.005:
+            fail("X5", f"{where}: the preview's page differs from the site's in {share:.1%} of pixels")
+
+    sample = ["/", "/pm/find-the-constraint/", "/pm/cards/stocks-flows-feedback/", "/pm/glossary/"]
+    runs = [("light", w, PREVIEW["pages"], None) for w in (390, 1280)]
+    runs += [("dark", w, sample, None) for w in (390, 1280)]
+    # A theme picked in claude.ai sets data-theme on the root, whatever the system's setting is.
+    runs += [("light", 1280, sample[:2], "dark"), ("dark", 1280, sample[:2], "light")]
+    try:
+        for scheme, w, paths, picked in runs:
+            c_site = ctx(viewport={"width": w, "height": 900}, color_scheme=picked or scheme, device_scale_factor=1)
+            c_prev = ctx(viewport={"width": w, "height": 900}, color_scheme=scheme, device_scale_factor=1)
+            site, prev = c_site.new_page(), c_prev.new_page()
+            prev.goto(srv.base + "/"); prev.wait_for_load_state("load")
+            if picked:
+                prev.evaluate(f"document.documentElement.setAttribute('data-theme', '{picked}')")
+            for path in paths:
+                site.goto(base + path); site.wait_for_load_state("load")
+                prev.evaluate(f"location.hash = '{pv.key_of(path)}'")
+                where = f"{path} {scheme}{' with ' + picked + ' picked in claude.ai' if picked else ''} {w}px"
+                same(shot(site), shot(prev), where)
+            c_site.close(); c_prev.close()
+    finally:
+        srv.close()
+
+
 def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
     axe_path = os.path.join(TESTS, "node_modules", "axe-core", "axe.min.js")
     axe_src = open(axe_path).read() if os.path.exists(axe_path) else None
@@ -2740,6 +2815,11 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                 sources_checks(ctx, base)
             except Exception as e:  # a broken page must fail its rule, not stop the suite
                 fail("S4", f"check could not finish: {str(e).splitlines()[0][:160]}")
+        if run_for("X5") and PREVIEW:
+            try:
+                preview_render_checks(ctx, base)
+            except Exception as e:  # a broken preview must fail its rule, not stop the suite
+                fail("X5", f"check could not finish: {str(e).splitlines()[0][:160]}")
         browser.close()
         if run_for("R8", "R1", "R7", "A13", "T4", "T5", "T6", "T8"):
             try:
@@ -2925,6 +3005,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("J1", "J2", "J3", "J4", "J5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("X5"):
+        try:
+            preview_checks(out_dir)
+        except Exception as e:  # a broken tool must fail its rule, not stop the suite
+            fail("X5", f"check could not finish: {str(e).splitlines()[0][:160]}")
     fix_out = build_fixture() if run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1", "R10") else None
     srv = Server(out_dir)
     fix = Server(fix_out) if fix_out else None

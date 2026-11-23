@@ -176,4 +176,9 @@ run_bg "one setting leading three modules" S6 "sed -i 's/^setting: a ride-hailin
 run_bg "a Why trust it that hides its kind of evidence" S17 "sed -i 's/^    trust: \"Experience. Forte runs/    trust: \"Forte runs/' content/pm/find-the-constraint.md"
 run_bg "the reflexive not a study back in a card" S17 "sed -i 's/on the limits of her own field\./on the limits of her own field, not a study./' content/pm/cards/stocks-flows-feedback.md"
 run_bg "every source's reasons printed twice at the back of the PDF" S4 "sed -i 's/^{{ \$list }}\$/{{ \$list }}{{ \$list }}/' layouts/partials/pm/source-notes.html"
+# Job 18, the preview (23 November 2026): the whole site in one page on claude.ai, as joestanley.org shows it (X5)
+run_bg "the preview leaves ids as they were, so two pages' ids meet" X5 "sed -i 's/^                new = self.pid(val)$/                new = val/' tools/preview.py"
+run_bg "the preview ignores a dark theme picked in claude.ai" X5 "sed -i 's/{{{explicit}}}/{{}}/' tools/preview.py"
+run_bg "the preview shows each page with the other page's stylesheet" X5 "sed -i 's/? \"all\" : \"not all\"; });/? \"not all\" : \"all\"; });/' tools/preview.py"
+run_bg "a link to a page the preview doesn't hold" X5 "printf '\nThe [archive](/pm/archive/) holds the rest.\n' >> content/pm/find-the-constraint.md"
 wait

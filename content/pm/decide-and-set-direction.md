@@ -86,13 +86,6 @@ deeper:
     note: "Free at marines.mil. Read it whole. Chapter 4, \"The Conduct of War,\" holds commander's intent and mission tactics."
     trust: "An argument. It's doctrine, an institution's experience written down, and its notes credit John Boyd for the loop and for implicit communication."
     only: "Commander's intent at its source. The task says what to do and the intent says why, and when the situation makes the task obsolete, \"the intent is more lasting and continues to guide our actions.\""
-  - title: Science, Strategy and War
-    by: Frans Osinga
-    url: https://hdl.handle.net/1887/4211793
-    where: A book.
-    note: "Free at Leiden University, as the doctoral thesis it grew from. Read chapter 7: the part on \"Organic Design for Command and Control,\" then from \"The Essence of Winning and Losing\" to \"Beyond the rapid OODA loop idea.\""
-    trust: "A study. Osinga, a Dutch Air Force F-16 pilot turned strategy scholar, works through Boyd's own briefings slide by slide, in a thesis Routledge later published."
-    only: Why Boyd's loop is about orientation, not speed, and why a team that shares one can act on intent without being told what to do.
   - title: Ocean's Eleven
     by: directed by Steven Soderbergh, written by Ted Griffin (Warner Bros., 2001)
     where: A film.
