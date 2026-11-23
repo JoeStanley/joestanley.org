@@ -1,56 +1,88 @@
-# The waiting game, in Know Who It's For (spec J5). The grocery app's team builds one job at a time.
-# Each week a job isn't live costs its cost of delay, the weeks it's being built included.
-# weeks, the rules' totals, every and cd3 are worked out by tools-pm/game-numbers.py, and the checks hold them to it.
+# The waiting game, in Know Who It's For (spec J5). The grocery app's team builds one job at a time. Each week a job
+# isn't live costs its cost of delay, the weeks it's being built included. No one knows those costs: each is an
+# estimate. Two are narrow, and the third is a flop or a win at even odds. While the team builds, the reader may test
+# one estimate, and the answer comes in when the test ends, so the next pick can use it.
+# weeks, board, estimate, cd3, moves and each plan's costs are worked out by tools-pm/game-numbers.py, and the checks
+# hold them to it.
 jobs:
-  - id: swaps
-    name: Let customers approve swaps
-    short: swap approvals
-    tag: Swap approvals
-    weeks: 8
-    cost: 40000
   - id: fix
     name: Fix checkout on older phones
     short: the checkout fix
     tag: Checkout fix
     weeks: 2
-    cost: 30000
-  - id: recipes
-    name: Add a recipe page
-    short: the recipe page
-    tag: Recipe page
-    weeks: 1
-    cost: 3000
-# The three rules a team might use, in the order the page offers them.
+    # One of these, each as likely, is what it's really worth each week.
+    values: [27000, 30000, 33000]
+    how: crash logs count the orders it loses
+    report: A closer study of the crash logs puts the checkout fix at {value} a week, inside the range they gave.
+    estimate: 30000
+  - id: reorder
+    name: Add one-tap reorder
+    short: one-tap reorder
+    tag: One-tap reorder
+    weeks: 4
+    values: [18000, 20000, 22000]
+    how: you can count the customers who rebuild past orders by hand
+    report: A survey of customers who reorder puts one-tap reorder at {value} a week, inside the range the counts gave.
+    estimate: 20000
+  - id: swaps
+    name: Let customers approve swaps
+    short: swap approvals
+    tag: Swap approvals
+    weeks: 6
+    # Even odds: it flops or it works.
+    outcomes:
+      - id: flop
+        value: 5000
+        said: flopped
+        report: In one city, shoppers texted each swap to the customer by hand. Most customers ignored the texts, so swap approvals is worth about {value} a week.
+      - id: works
+        value: 75000
+        said: worked
+        report: In one city, shoppers texted each swap to the customer by hand. Most customers answered and kept their orders, so swap approvals is worth about {value} a week.
+    how: no one knows if customers will answer a text from their shopper
+    estimate: 40000
+# A test runs beside the build, and its answer comes in at the end of this week.
+test_weeks: 2
+# The weeks every job takes, built one after another; and the board's width, with room for a team that stops to test.
+weeks: 12
+board: 14
+# Most value per week of work first, by the estimates.
+cd3: [fix, swaps, reorder]
+# The estimates whose test could change the order the estimates give. The others' ranges are too narrow to move it.
+moves: [swaps]
+# The plans a reader can take. Each one's cost if swap approvals flops, if it works, and on average.
 rules:
+  est:
+    label: Build on the estimates
+    test: none
+    order: [fix, swaps, reorder]
+    after: This plan divides each estimate by its weeks of work and builds the highest first. Swap approvals' estimate, $40,000 a week, is an average of a flop and a win, and it's neither.
+    flop: 340000
+    works: 900000
+    average: 620000
   biggest:
-    label: Biggest value first
-    order: [swaps, fix, recipes]
-    total: 653000
-    after: The job worth most each week went first, and the other two waited eight weeks behind it.
-  quickest:
-    label: Quickest first
-    order: [recipes, fix, swaps]
-    total: 533000
-    after: The quick win went first, but the recipe page earns so little that its week held up two jobs worth $70,000 a week between them.
-  cd3:
-    label: Most value per week of work first
-    order: [fix, swaps, recipes]
-    total: 493000
-    after: This order divides each job's cost of delay by its weeks and builds the highest first. The checkout fix scores $15,000 a week of work, swap approvals $5,000 and the recipe page $3,000.
-weeks: 11
-# All six orders, cheapest first.
-every:
-  - order: [fix, swaps, recipes]
-    total: 493000
-  - order: [fix, recipes, swaps]
-    total: 509000
-  - order: [recipes, fix, swaps]
-    total: 533000
-  - order: [swaps, fix, recipes]
-    total: 653000
-  - order: [swaps, recipes, fix]
-    total: 677000
-  - order: [recipes, swaps, fix]
-    total: 693000
-# Highest cost of delay per week of work first.
-cd3: [fix, swaps, recipes]
+    label: Biggest estimate first
+    test: none
+    order: [swaps, fix, reorder]
+    after: Swap approvals has the biggest estimate, but it's a bet, and the two surer jobs waited six weeks or more behind it.
+    flop: 510000
+    works: 930000
+    average: 720000
+  stop:
+    label: Stop two weeks to test all three
+    test: all
+    order: []
+    after: The team built nothing while it waited for three answers, and only the answer on swap approvals could change the order. Every job went live two weeks later than it had to.
+    flop: 350000
+    works: 1150000
+    average: 750000
+  test:
+    label: Fix first, testing swap approvals
+    test: swaps
+    order: [fix]
+    after: The test's answer came in as the checkout fix went live, just when the next pick fell due, so the pick could use it.
+    flop: 240000
+    works: 900000
+    average: 570000
+# Knowing every number from the start: the cheapest order in each outcome, and on average.
+best: {flop: 240000, works: 900000, average: 570000}

@@ -66,9 +66,9 @@ steps:
   - id: waiting
     kind: play
     title: Play the waiting game
-    minutes: 5
+    minutes: 10
     where: It's on this page, just below this list.
-    look: What each week of waiting costs, and the order that wastes least.
+    look: Which estimate is worth testing while the team builds, and when each pick falls due.
 check:
   - q: A user says they'd pay $10 a month for a feature. What do you ask next, and why?
     a: "What they pay now, in money or time, for the workaround. As Teresa Torres puts it, \"What did you pay for that service?\" tells you more than any price for a service that doesn't exist yet."

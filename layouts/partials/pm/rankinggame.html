@@ -3,7 +3,7 @@
        print, the reader gets the rules, one recorded week, the averages and the takeaway. */ -}}
 {{- $d := site.Data.pm.rankgame -}}
 {{- $a := $d.averages -}}
-{{- $setups := slice "equal" "next" "worse" "funnel" -}}
+{{- $setups := slice "equal" "next" "worse" "funnel" "trial" -}}
 {{- $stores := 0 -}}{{- range $d.sizes }}{{ $stores = add $stores .stores }}{{ end -}}
 <section class="game" id="ranking-game" data-game="ranking" data-slot="ranking-game">
   <h2>The ranking game</h2>
@@ -32,7 +32,7 @@
       </div>
       {{- end }}
     </div>
-    <p class="board-key" aria-hidden="true">Each dot is a store, as high as its late rate. A yellow dot is one of the week's five worst, and a ringed one was among the five worst the week before. The square is the store that really is worse, and the band, once drawn, is the range chance allows for that size.</p>
+    <p class="board-key" aria-hidden="true">Each dot is a store, as high as its late rate. A yellow dot is one of the week's five worst, and a ringed one was among the five worst the week before or, in the trial, has the fix. The square is the store that really is worse, and the band, once drawn, is the range chance allows for that size.</p>
 
     <p class="tally" aria-live="off">
       <span>Week <b data-week>0</b><span class="sr">.</span></span>
@@ -54,7 +54,7 @@
       </ol>
       <p class="setup-note" data-setup-note aria-live="polite">{{ $d.setups.equal.note }}</p>
     </div>
-    <script type="application/json" data-game-setups>{{ dict "setups" $d.setups "sizes" $d.sizes "late" $d.late "worse_late" $d.worse_late "funnel" $d.funnel | jsonify | safeJS }}</script>
+    <script type="application/json" data-game-setups>{{ dict "setups" $d.setups "sizes" $d.sizes "late" $d.late "worse_late" $d.worse_late "funnel" $d.funnel "trial" $d.trial "averages" $d.averages | jsonify | safeJS }}</script>
   </div>
 
   <div class="example">
@@ -68,7 +68,7 @@
       </tbody>
     </table>
     {{- $r := $a.worse_rank }}
-    <p>Simulated 200,000 times, the five worst hold {{ $a.small_worst }} small stores on average, and the five best {{ $a.small_best }}. Of one week's five worst, {{ $a.stay }} are there again the next week. A large store that really is late on 13 orders in 100 comes about {{ $r }}{{ if eq $r 1 }}st{{ else if eq $r 2 }}nd{{ else if eq $r 3 }}rd{{ else }}th{{ end }}, and in the five worst only {{ $a.worse_in_worst }} weeks in 100. The funnel picks it out alone in {{ $a.worse_alone }}.</p>
+    <p>Simulated 200,000 times, the five worst hold {{ $a.small_worst }} small stores on average, and the five best {{ $a.small_best }}. Of one week's five worst, {{ $a.stay }} are there again the next week. A large store that really is late on 13 orders in 100 comes about {{ $r }}{{ if eq $r 1 }}st{{ else if eq $r 2 }}nd{{ else if eq $r 3 }}rd{{ else }}th{{ end }}, and in the five worst only {{ $a.worse_in_worst }} weeks in 100. The funnel picks it out alone in {{ $a.worse_alone }}. Tried in five small stores, a fix cuts their late orders from 10 in 100 to {{ math.Round (mul $d.trial.late 100) }} in 100. Run that trial many times, and after one week the five look better than the ten small stores without it in {{ $a.trial_better_one }} runs in 100, and worse in {{ $a.trial_worse_one }}. After eight weeks they look better in {{ $a.trial_better_eight }}.</p>
   </div>
 
   <div class="takeaway" data-takeaway>
@@ -77,8 +77,9 @@
       <li>Both ends of a ranking by rate belong to the smallest groups, by chance alone.</li>
       <li>The next week they trade places, so help for the worst looks as if it worked, and praise for the best as if it backfired.</li>
       <li>A real problem can sit in the middle of the ranking, at a big store, where it costs the most. Judge a rate against its size, as the funnel does, before you rank.</li>
+      <li>A fix tried in a few small stores risks little, but each store's week is noisy. Pool their orders, compare them with small stores that didn't get it, give it weeks, and never judge it by rank.</li>
     </ol>
-    <p class="limits"><strong>What the game leaves out.</strong> Real stores differ in more than size. Their neighborhoods and their staff move a late rate too, so the funnel is a first filter, not a verdict. And small stores have a use the ranking hides: they're cheap places to try a fix before the large ones get it. One small store's result swings as much as its rank does, though, so try the fix in several, and compare them with small stores that didn't get it.</p>
+    <p class="limits"><strong>What the game leaves out.</strong> Real stores differ in more than size. Their neighborhoods and their staff move a late rate too, so the funnel is a first filter, not a verdict. In the trial the two groups differ only in the fix. At work the stores that try one first are often the ones whose managers asked for it, so compare them with stores like them.</p>
     <p class="credit">Comparing 52 fertility clinics in 1998, Clare Marshall and David Spiegelhalter found that ranks are <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC28567/">"extremely unreliable statistical summaries of performance,"</a> above all for the smaller clinics. Spiegelhalter later made the case for funnel plots, which "avoid spurious ranking of institutions into 'league tables'" (<cite>Statistics in Medicine</cite>, 2005). His <cite>The Art of Statistics</cite> is on the full path below.</p>
   </div>
 </section>
