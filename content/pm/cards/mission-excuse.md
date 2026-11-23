@@ -23,12 +23,11 @@ A big enough mission can excuse almost anything. When a founder's vision promise
 
 - **You see the trade first.** You're often the one who knows the test failed, or which users a launch will hurt.
 - **Doubt gets turned on you.** At Theranos, Erika Cheung raised concerns about test results and was told to do what she was paid to do. Soon she wondered if she was "the crazy one."
-- **Decide before you're asked.** Once you're in the room, the pull and the doubt are already at work. Your line holds best when you drew it while nobody was asking.
+- **Decide before you're asked.** Once you're in the room, the pull and the doubt are already at work.
 
 ## How to spot it
 
-- Cosmic stakes: the future of humanity rides on this launch.
-- Inevitability: the future is coming anyway, and doubters stand in its way.
+- Cosmic stakes: the future of humanity rides on this launch, and it's coming anyway.
 - The founder as the argument: "It's what the CEO wants" ends the discussion.
 - Dissent read as disloyalty: "If you don't believe in this, maybe this isn't the place for you."
 - Doubt turned inward: you start to think the problem is you.

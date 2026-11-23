@@ -49,7 +49,7 @@ GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run i
 RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so: six on its full path (S11), and a game's
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 90   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 93   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
