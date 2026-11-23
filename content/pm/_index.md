@@ -19,7 +19,7 @@ Instead, it's a set of lessons intended to strengthen your **product judgment**,
 
 ## How it works
 
-- **Twelve modules, each built on one question.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work.
+- **Twelve modules, each built on one question.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work. Answer for What You Build runs longer, on purpose.
 - **Some exercises end with a question for a colleague.** That part sits outside the module's time. Save them up for a month, and ask each person theirs in one conversation.
 - **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
 - **Every source but a story says why to trust it,** starting with its kind of evidence: a study, a review of studies, experience or an argument. It says what you'll get from it, too, so you can decide what's worth your time.
