@@ -5,10 +5,10 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "1594ad83a2b78cb784a617307047d85b2e1dfcd8f3701bbedb5e65ffec87fac7",
+   "sha256": "98e572e790a45131f439d5aa33d7c915bb98de95aeb3aa45fa9d6f9bfe00020d",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 48
+   "rev": 49
   },
   {
    "name": "ReadMe",
@@ -21,18 +21,18 @@
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "b45289d014835a74367555a1c0845f30e3c8e8e67bf32b99c9953c7ebb707dee",
+   "sha256": "304789afde287c56f40c51dd79f207883d6d82a369d3f8d027567b28fdaf983d",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 214
+   "rev": 215
   },
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "92eb5b5efca3677b30fa21f5a0d75e963e541f6cc204dffbd23d9a737ba6cc6c",
+   "sha256": "3b8a9971af11a5b0390b87c56cb1b8ea1b257376adcccd0644385ecff9034509",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1948
+   "rev": 1955
   },
   {
    "name": "1 Know Who It's For",
@@ -123,6 +123,14 @@
    "rev": 1002
   },
   {
+   "name": "The Compass",
+   "file": "the-compass.md",
+   "sha256": "c6f8c7cce120616016a7d3ab8f5bae17caf77056d667c33afb3965c304e5c867",
+   "doc_tab": "68f6f34d-b06c",
+   "doc_node": "347f5a8a-09fe",
+   "rev": 1
+  },
+  {
    "name": "Glossary",
    "file": "glossary.md",
    "sha256": "4c39315475730aa0ae8de3a5e0f343ee105f72986681e048bcc65529ea2a7dac",
@@ -133,10 +141,10 @@
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "5d4f46a084053dcd0b4d9bc339b7607702bdb20d6a4b1cddce6a5e1707bc5448",
+   "sha256": "363d49df5f2ae8c035f218219882d2eb850e5b9ab98808bd81ab5e62e612bb59",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 7
+   "rev": 8
   }
  ]
 }
