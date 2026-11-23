@@ -5,7 +5,7 @@ module: answer-for-what-you-build
 question: Who benefits and who is harmed by what we build, and what's our share of the responsibility?
 setting: a video-sharing app
 one_thing: Run a consequence scan on one feature you own, and write down one change you'd propose.
-do_minutes: 35
+do_minutes: 40
 
 last_time:
   - q: Your team still sends a weekly report nobody seems to read. Before you stop it, what do you find out?
@@ -41,6 +41,22 @@ steps:
     card: cards/many-hands
     minutes: 5
     look: The phrases people reach for to feel less responsible.
+  - id: card-mission-excuse
+    kind: card
+    card: cards/mission-excuse
+    minutes: 5
+    look: The signs that a mission has started to excuse its costs, and the question to carry.
+  - id: cheung
+    kind: read
+    title: 'Erika Cheung, "Theranos, whistleblowing and speaking truth to power"'
+    minutes: 15
+    where: A talk, with a transcript. Free at ted.com.
+    links:
+      - text: "Theranos, whistleblowing and speaking truth to power"
+        url: CHEUNG_URL
+    look: "When her doubts begin, what she's told when she raises them, and the question she asks after: what happens when \"the vision is so compelling and the desire to believe is so strong that it starts to cloud your judgment about what reality is?\""
+    trust: "Experience. Cheung joined Theranos straight out of college, raised her concerns inside, and was told to do what she was paid to do. It's her own account."
+    only: What the pull feels like from the inside, for someone early in her career, down to the moment she wonders if she's the crazy one.
   - id: schneier
     kind: read
     title: 'Bruce Schneier, "Data Is a Toxic Asset, So Why Not Throw It Out?"'
@@ -72,6 +88,8 @@ check:
     a: "See the System, when you ask why it happened and how to stop it: change the targets. This module, when you're the one asked to hit them: a target explains a choice, but it doesn't make it for you."
   - q: A teammate wants a new sign-up field "in case we need it." What do you ask?
     a: Which decision will it change? If none does yet, leave it out. Every field you keep is something to secure, and something to find when a customer asks you to erase it.
+  - q: Your CEO calls the new feed the company's future. To make the launch date, your lead asks you to leave one failing test out of the launch review, just this once. Everyone else is excited. What do you do?
+    a: "Name the move: a big end making a small harm look fine. Ask who pays if the test is right, and whether you'd still ship if the vision never came true. Say so to your lead, and if the room won't hear it, take it to someone outside it, such as your legal or trust and safety team. Being the only doubter is a reason to slow down, not proof you're wrong."
   - q: "**Beyond this module.** Your own line is yours to draw. Which line isn't?"
     a: The one the law draws. Ask your legal or privacy team which rules your product has to meet. Your own line sits beyond them.
 
@@ -110,6 +128,8 @@ deeper:
 
 ## Why this matters
 
+This module runs longer than the others, on purpose. It ties together threads you've met in earlier modules, and it still has new ground to cover.
+
 What you build reaches people you'll never meet. On a video-sharing app, small rules decide which video plays next, who can send a teenager a message, and what counts as a view.
 
 Some of them live a world away. In 2017, Myanmar's military killed and raped Rohingya by the thousands and drove hundreds of thousands into Bangladesh. [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide, and found that Facebook had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook agreed it should do more. In 2022, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. And in 2023, Amnesty International found that Meta, as Facebook's owner is now called, had contributed to abuses again, against Tigrayans in Ethiopia's war.
@@ -117,6 +137,8 @@ Some of them live a world away. In 2017, Myanmar's military killed and raped Roh
 You've met parts of this question already. Know Who It's For asked whose problem you hear, and whose work an order rests on. See the System asked whose costs fall outside a system's edge, Find the Constraint whom a stand-in measure misses, and Mind the Seams who falls between two categories. Design for Change asked who pays for a change, and Change Safely and Weigh the Evidence whom an average hides. Here it's the whole module.
 
 So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
+
+The hardest pressure may come from inside, from a mission you believe in. Tech leaders often talk about their products the way prophets talk about salvation. Marc Andreessen calls AI that's held back ["a form of murder,"](ANDREESSEN_URL) and names "tech ethics" and "trust and safety" among his enemies. Bryan Johnson says of his longevity project, ["Don't Die is a religion."](JOHNSON_URL) Mary-Jane Rubenstein, a scholar of religion, hears in the billionaires' race to space ["a barely-disguised doomsday prophecy."](RUBENSTEIN_URL) The historian Jason Resnikoff hears last century's talk of automation, which made its outcomes ["seem natural, even inevitable."](RESNIKOFF_URL) A story that big makes any cost in its way look small, and any doubt look like disloyalty. The Mission Excuse card says how to spot it, and Erika Cheung's talk shows how it feels from inside.
 
 In life, ethical matters rarely come to you as clear cases of good and bad. Instead, it's a thousand small choices of degree, {{< pm/voice "eye-doctor" >}}. {{< pm/voice "own-line" >}} But wherever you land, hold fast.
 
@@ -131,6 +153,8 @@ In life, ethical matters rarely come to you as clear cases of good and bad. Inst
 3. Which do you want to mitigate? Beside each one, write who'd own the fix.
 
 End with one change you'd propose. Outside the 25 minutes, show it to someone in support or in trust and safety, and ask what you missed.
+
+**Write your lines first (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it. Beside them, write who outside your team you'd go to if you were asked. Keep the page somewhere you'll see it again.
 
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
 
