@@ -11,7 +11,7 @@ deeper:
   by: Tyler Akidau (2015)
   url: https://www.oreilly.com/radar/the-world-beyond-batch-streaming-101/
   where: An article. Free at oreilly.com. Read through "Event time vs. processing time," about 15 minutes.
-  trust: Akidau was working on Google's large-scale streaming systems when he wrote it.
+  trust: "Experience. Akidau was working on Google's large-scale streaming systems when he wrote it."
   only: The words engineers use about batch and streaming, and why late data is the hard part.
 ---
 

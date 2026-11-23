@@ -47,7 +47,7 @@ MODULE_GRACE = 1   # until launch, a module may run one page past either limit: 
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
                  # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 90   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 91   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -1470,6 +1470,8 @@ def sources_pdf_check(pdf):
     """S4 in the PDF itself: each source's reasons print exactly once."""
     text = " ".join(subprocess.run(["pdftotext", pdf, "-"], capture_output=True, text=True).stdout.split())
     text = text.replace("\u2019", "'").replace("\u201c", '"').replace("\u201d", '"')
+    # A voice slot in a source's lines (X4) prints its interim words, so the probe reads those.
+    slots = {x.get("id"): x.get("interim") or "" for x in (yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "voice-slots.yaml"), encoding="utf-8")) or {}).get("slots") or []}
     for path in glob.glob(os.path.join(ROOT, "content", "pm", "**", "*.md"), recursive=True):
         m = re.match(r"---\n(.*?)\n---", open(path, encoding="utf-8").read(), re.S)
         fm = yaml.safe_load(m.group(1)) if m else {}
@@ -1477,7 +1479,9 @@ def sources_pdf_check(pdf):
         for s_ in (fm.get("steps") or []) + (deeper if isinstance(deeper, list) else [deeper] if deeper else []):
             for key in ("trust", "only"):
                 if s_.get(key):
-                    probe = " ".join(_plain(s_[key]).replace("\u2019", "'").split()[:6])
+                    said = re.sub(r'\{\{<\s*pm/voice\s+"([^"]+)"[^>]*>\}\}', lambda v: slots.get(v.group(1), ""), str(s_[key]))
+                    # Eight words, since every "Why trust it" now opens with one of four tags (S17).
+                    probe = " ".join(_plain(said).replace("\u2019", "'").split()[:8])
                     n = text.count(probe)
                     if n != 1:
                         fail("S4", f"PDF: '{probe}' prints {n} times, expected once")
@@ -2117,6 +2121,54 @@ def practice_checks(out_dir):
     r = subprocess.run([sys.executable, os.path.join(ROOT, "tools-pm", "game-numbers.py"), "check"], capture_output=True, text=True)
     for line in (r.stdout + r.stderr).strip().splitlines() if r.returncode else []:
         fail("J5", line[:200])
+
+
+EVIDENCE_TAGS = ("A study.", "A review of studies.", "Experience.", "An argument.")
+
+
+def setting_evidence_checks():
+    """S6: every built module names its main setting, and no setting leads more than two modules.
+    S17: every "Why trust it" in a module or a card opens with one of the four evidence tags, and none says
+    "not a study"."""
+    checked("S6", "S17")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    units = []
+    for m in mods:
+        if m.get("page"):
+            units.append((f"Module {m['num']}, {m['title']}", os.path.join(ROOT, "content", "pm", m["page"] + ".md"), True))
+    card_dir = os.path.join(ROOT, "content", "pm", "cards")
+    for f in sorted(os.listdir(card_dir)) if os.path.isdir(card_dir) else []:
+        if f.endswith(".md"):
+            units.append((f"the card {f[:-3]}", os.path.join(card_dir, f), False))
+    leads = defaultdict(list)
+    for where, path, is_module in units:
+        m = re.match(r"---\n(.*?)\n---", open(path, encoding="utf-8").read(), re.S)
+        fm = (yaml.safe_load(m.group(1)) if m else {}) or {}
+        if is_module:
+            setting = " ".join(str(fm.get("setting") or "").split())
+            if not setting:
+                fail("S6", f"{where} names no main setting: add setting: to its front matter, the product its own examples follow")
+            else:
+                leads[setting.lower()].append(where)
+        trusts = []
+        def walk(x):
+            if isinstance(x, dict):
+                if "trust" in x:
+                    trusts.append((x.get("title") or x.get("card") or "its source", str(x["trust"])))
+                for v in x.values():
+                    walk(v)
+            elif isinstance(x, list):
+                for v in x:
+                    walk(v)
+        walk(fm)
+        for title, t in trusts:
+            if not t.strip().startswith(EVIDENCE_TAGS):
+                fail("S17", f"{where}: the \"Why trust it\" for {title} doesn't open with its kind of evidence, one of {', '.join(EVIDENCE_TAGS)}: \"{t[:50]}...\"")
+            if re.search(r"\bnot a study\b", t, re.I):
+                fail("S17", f"{where}: the \"Why trust it\" for {title} says \"not a study,\" which its tag now says plainly")
+    for setting, where in sorted(leads.items()):
+        if len(where) > 2:
+            fail("S6", f"the setting \"{setting}\" leads {len(where)} modules ({', '.join(where)}), and two is the most")
 
 
 def source_checks(out_dir):
@@ -2860,6 +2912,12 @@ def main():
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
             for r in ("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("S6", "S17"):
+        try:
+            setting_evidence_checks()
+        except Exception as e:  # a broken file must fail its rules, not stop the suite
+            for r in ("S6", "S17"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("J1", "J2", "J3", "J4", "J5"):
         try:

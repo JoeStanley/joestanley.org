@@ -11,7 +11,7 @@ deeper:
   by: Teresa Torres
   url: https://www.producttalk.org/customer-interviews/
   where: A guide. Free at producttalk.org. Read its section on what to ask and not ask, about 5 minutes.
-  trust: It's the method of her book's chapter on interviewing, free, from a coach who teaches it to product teams.
+  trust: "Experience. It's the method of her book's chapter on interviewing, free, from a coach who teaches it to product teams."
   only: What to ask, what not to, and how to steer a story back to one specific time.
 ---
 

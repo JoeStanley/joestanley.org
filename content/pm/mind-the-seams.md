@@ -3,6 +3,7 @@ title: Mind the Seams
 layout: module
 module: mind-the-seams
 question: How does the way we're organized shape what we build, and what falls between the parts?
+setting: a marketplace for secondhand goods
 one_thing: Sketch who talks to whom in your area, then how the system's parts connect, and mark where the two pictures disagree.
 do_minutes: 35
 
@@ -27,7 +28,7 @@ steps:
       - text: "How Do Committees Invent?"
         url: http://www.melconway.com/Home/pdf/committees.pdf
     look: "His advice for living with his law: since the first design is rarely the best, \"flexibility of organization is important to effective design.\""
-    trust: It's the original, and it's an argument, not a study.
+    trust: "An argument. It's the original."
     only: The law in its author's words, with the reasoning a one-line summary leaves out.
   - id: kelly
     kind: read
@@ -38,7 +39,7 @@ steps:
       - text: "Conway's Law v. Software Architecture"
         url: https://allankelly.net/archives/638/conway-law-v-software-architecture
     look: "The force running the other way: \"Conway's Law is now working in reverse: the system is imposing structure on the organization.\""
-    trust: A practitioner's opinion, argued from a made-up example.
+    trust: "An argument. A practitioner's opinion, built on a made-up example."
     only: Why a system that's hard to change can hold a whole company in its shape.
   - id: bottcher
     kind: read
@@ -49,7 +50,7 @@ steps:
       - text: "What I Talk About When I Talk About Platforms"
         url: https://www.martinfowler.com/articles/talk-about-platforms.html
     look: "His definition, \"a foundation of self-service APIs, tools, services, knowledge and support,\" run as an internal product. Its customers are the other teams, so it has to be worth choosing, not only required."
-    trust: One Thoughtworks consultant's view, drawn from his own client work.
+    trust: "Experience. One Thoughtworks consultant's view, drawn from his own client work."
     only: A checklist of what makes a platform worth choosing.
   - id: bounded
     kind: read
@@ -60,7 +61,7 @@ steps:
       - text: "Bounded Context"
         url: https://martinfowler.com/bliki/BoundedContext.html
     look: The word "meter," which meant different things to different parts of an electricity utility.
-    trust: Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business.
+    trust: "Experience. It's Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business."
     only: A way to hear a boundary in how people talk.
 
 check:
@@ -69,7 +70,7 @@ check:
   - q: Own Your Role asked you to grow the role toward value nobody assigned, like a gap at your edge. Here, a handoff between teams needs someone who owns it. Should that be you?
     against: own-your-role
     a: For a while, so customers don't fall through it while you show the gap is real. Then get it an owner who'll still be there when you move on, since a seam held by one person's goodwill opens again when they leave.
-  - q: Every team hits its target, and customers still see a gap. Where do you look?
+  - q: Every team on the marketplace hits its target, and buyers still see a gap. Where do you look?
     a: Between the teams, at the joins. What one side sends isn't what the other expects, or nobody owns the handoff.
   - q: "**Beyond this module.** Your two pictures show your own company's teams and parts. Who shapes the product from outside both?"
     a: Vendors, partners, regulators and the open-source projects you build on. Their seams are yours too, and you can't reorganize them. Ask your tech lead which outside part you'd least like to lose.
@@ -79,25 +80,25 @@ deeper:
     by: Matthew Skelton and Manuel Pais
     where: A book.
     note: "Read the chapters \"Conway's Law and Why It Matters\" and \"Team-First Thinking\" first, then the rest."
-    trust: Two consultants' model, built from their work with software teams and widely used.
+    trust: "Experience. Two consultants' model, built from their work with software teams and widely used."
     only: "A vocabulary for designing teams: four team types, three ways for teams to work together, and cognitive load, how much a team has to hold in its head, as a limit on what it should own."
   - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
     by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
     where: A journal article.
     note: Read it whole. Kim Clark is the researcher behind the heavyweight product manager on Own Your Role's full path.
-    trust: "A peer-reviewed classic, from a study of one industry: the makers of the alignment equipment used to make chips."
+    trust: "A study. A peer-reviewed classic, from one industry: the makers of the alignment equipment used to make chips."
     only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
   - title: Design and Reality
     by: Rebecca Wirfs-Brock and Mathias Verraes
     where: A book of six essays.
     note: "Read it whole, starting with the title essay. Engineers on an oil rig switched the alarms off during a long failure, and the system took the silence to mean the emergency was over. One word, \"alarm,\" had been covering two things. Then read \"Splitting a Domain Across Multiple Bounded Contexts.\""
-    trust: Wirfs-Brock invented responsibility-driven design, a widely taught way of designing software, and Verraes founded DDD Europe, a conference on domain-driven design. It's two practitioners writing up cases from their own work.
+    trust: "Experience. Wirfs-Brock invented responsibility-driven design, a widely taught way of designing software, and Verraes founded DDD Europe, a conference on domain-driven design. They write up cases from their own work."
     only: How a team finds a concept nobody had named, and where to draw the lines between contexts.
   - title: The Art of Systems Architecting
     by: Mark Maier and Eberhardt Rechtin
     where: A textbook.
     note: "Read the chapter \"Heuristics as Tools,\" then the appendix of heuristics for system-level architecting."
-    trust: Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California. These are the collected insights of that experience.
+    trust: "Experience. Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California, and the book collects what that work taught."
     only: "Rules of thumb for the joins between parts: architect across an interface, not only up to it, as Robert Spinrad put it; ask what's the worst that could come across it; and draw interfaces so each part can be built on its own, without slicing through parts that must talk all the time."
   - title: Halt and Catch Fire
     by: created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
@@ -110,7 +111,7 @@ deeper:
 
 Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. The longest wait you mapped in Find the Constraint may well sit at one of them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
-Some seams run through words. When two teams use one word, such as "customer" or "approved," for two things, the bug ships between them. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
+Some seams run through words. When two teams use one word for two things, the bug ships between them. On a secondhand marketplace, "approved" can mean to one team that a listing passed review, and to another that the seller can be paid. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
 
 A category is a boundary of meaning too, and people fall between categories the way work falls between teams. In 1976 five Black women sued General Motors, which had hired no Black women before 1964, and a US court said it would hear their case as race discrimination or as sex discrimination, "but not a combination of both." In 1989 the law scholar Kimberlé Crenshaw used their case to name {{< pm/term "intersectional" "intersectionality" >}}: what happens where two categories meet, and what neither one shows on its own. Look for it in your product as you'd look for any seam: the customer whose problem is half one team's and half another's, so each team looks at its half and finds nothing wrong, or who belongs in two boxes on a form that allows one.
 
@@ -118,7 +119,7 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 ## Do
 
-**Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then ask a tech lead to correct it. Lay the two side by side. Where do the boundaries line up, and where do they cross?
+**Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, and lay the two side by side. Where do the boundaries line up, and where do they cross? Outside the 25 minutes, ask a tech lead to correct your second picture.
 
 **For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 

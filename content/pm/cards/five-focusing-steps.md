@@ -11,7 +11,7 @@ deeper:
   by: Theory of Constraints Institute
   url: https://www.tocinstitute.org/five-focusing-steps.html
   where: A short page. Free at tocinstitute.org.
-  trust: The institute trains and advises on Goldratt's method, so read it as an advocate's account.
+  trust: "An argument. The institute trains and advises on Goldratt's method, so it's an advocate's account."
   only: What each step asks you to do, in a few lines per step.
 ---
 

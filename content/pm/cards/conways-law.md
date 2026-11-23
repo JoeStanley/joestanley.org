@@ -15,7 +15,7 @@ deeper:
   by: Lyra Colfer and Carliss Baldwin (2016)
   url: https://dash.harvard.edu/bitstream/handle/1/33785675/colfer%2cbaldwin_mirroring-hypothesis.pdf
   where: A paper in Industrial and Corporate Change. Free at dash.harvard.edu.
-  trust: Peer-reviewed, built on an analysis of over a hundred studies.
+  trust: "A review of studies. It's peer-reviewed, and it analyzes more than a hundred."
   only: Where mirroring holds, where it breaks, and why.
 ---
 
@@ -26,7 +26,7 @@ The word in Conway's sentence that matters is communication: the system follows 
 ## Why a PM cares
 
 - **Team boundaries become product boundaries.** Each handoff between teams tends to become an {{< pm/term "interface" >}}, and a place where work waits. Customers feel the join: a traveler books a flight in one flow, then starts over in another to add a bag.
-- **Whoever designs the teams designs the architecture.** Malan again: "if we have managers deciding on teams, and deciding which services will be built, by which teams, we implicitly have managers deciding on the system architecture." Doing that on purpose, to get the system you want, is the {{< pm/term "inverse-conway" "inverse Conway maneuver" >}}.
+- **Whoever designs the teams designs the architecture.** Malan again: "if we have managers deciding on teams, and deciding which services will be built, by which teams, we implicitly have managers deciding on the system architecture." Doing that on purpose, to get the system you want, is the {{< pm/term "inverse-conway" "inverse Conway maneuver" >}}. If you don't draw the teams, sketch the system you want and show it to whoever does.
 
 ## How to spot it
 

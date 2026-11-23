@@ -11,7 +11,7 @@ deeper:
   by: Michael Nygard (2018)
   url: https://www.youtube.com/watch?v=EirOknZJvYc
   where: A talk, his SATURN 2018 keynote. Free on YouTube.
-  trust: Nygard is a software architect and wrote Release It!, a book on building software that holds up in production. It's one practitioner's talk, not research.
+  trust: "Experience. Nygard is a software architect and wrote Release It!, a book on building software that holds up in production. This is one practitioner's talk."
   only: All five kinds of coupling, as he lays them out.
 ---
 

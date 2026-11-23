@@ -3,13 +3,14 @@ title: Know Who It's For
 layout: module
 module: know-who-its-for
 question: Whose problem is this, what's it worth to them, and how do you know?
+setting: a grocery delivery app
 one_thing: Ask about the last time it happened, not whether they'd want it.
 do_minutes: 30
 game: waiting
 
 last_time:
   - q: Who does your "in order to" leave out?
-    a: Someone your work touches but the sentence never names, like the courier who carries a delivery app's orders. Read the sentence as them, and ask whether they'd want you to get there.
+    a: Someone your work touches but the sentence never names, like the musicians whose songs a streaming app plays. Read the sentence as them, and ask whether they'd want you to get there.
   - q: What does Rule Zero say about the job you were handed?
     a: That a rule can bend where following it would cost the table what it came for. So take the job as described first, and once you see the system around you, grow it toward value nobody assigned.
 
@@ -23,7 +24,7 @@ steps:
       - text: "Why You Are Asking the Wrong Customer Interview Questions"
         url: https://www.producttalk.org/customer-interview-questions/
     look: The two answers about jeans, and which one to build on.
-    trust: Torres coaches product teams on discovery for a living. It's a practitioner's post, built on one interview, and it promotes her paid course, though it stands alone.
+    trust: "Experience. Torres coaches product teams on discovery for a living, and the post is built on one interview. It promotes her paid course, though it stands alone."
     only: How someone thinks they buy against how they bought, in one conversation you can copy.
   - id: milkshake
     kind: read
@@ -34,7 +35,7 @@ steps:
       - text: "Clay Christensen's Milkshake Marketing"
         url: https://www.library.hbs.edu/working-knowledge/clay-christensens-milkshake-marketing
     look: "What watching the restaurant found that asking never did: 40 percent of the milkshakes went first thing in the morning, to commuters."
-    trust: It's on Harvard Business School's own site, retelling a case from Christensen's research. It's a short account for managers, not the research itself.
+    trust: "Experience. It's on Harvard Business School's own site: a short account for managers, retelling a case from Christensen's research."
     only: What Christensen called the job a product is hired to do, in one memorable case.
   - id: card-last-time
     kind: card
@@ -50,7 +51,7 @@ steps:
       - text: "Learning about users and their needs"
         url: https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs
     look: "Who counts as a user, staff included, and a need named as a problem: \"needing a reminder rather than needing an email or letter.\""
-    trust: The UK government wrote it for its own digital teams, from practice on services that have to work for everyone.
+    trust: "Experience. The UK government wrote it for its own digital teams, from practice on services that have to work for everyone."
     only: "A rule for every opinion that doesn't come from users: treat it as an assumption to prove."
   - id: arnold
     kind: read
@@ -61,7 +62,7 @@ steps:
       - text: "Cost of Delay"
         url: https://blackswanfarming.com/cost-of-delay/
     look: Why urgency and value are hard to tell apart, and what a week of waiting costs.
-    trust: Arnold was one of the people who ran the cost-of-delay work at Maersk Line, so it's a practitioner's account from inside the change.
+    trust: "Experience. Arnold was one of the people who ran the cost-of-delay work at Maersk Line, so it comes from inside the change."
     only: A way to put a price on waiting that a finance team will follow.
   - id: waiting
     kind: play
@@ -85,26 +86,26 @@ deeper:
     by: Rob Fitzpatrick
     where: A book.
     note: "Read it whole: it's short. Chapter 1, \"The Mom Test,\" is the core, with questions such as \"Talk me through the last time that happened.\""
-    trust: A founder's handbook for other founders. Its site says it's taught at Harvard, UCL and Seedcamp.
+    trust: "Experience. It's a founder's handbook for other founders, and its site says it's taught at Harvard, UCL and Seedcamp."
     only: Questions even your mother couldn't lie to you about, and how to tell a compliment from a commitment.
   - title: Continuous Discovery Habits
     by: Teresa Torres
     where: A book.
     note: Read chapters 5 to 7, on interviewing every week, mapping what you hear and choosing which opportunity to work on.
-    trust: It's the method Torres teaches the product teams she coaches, set out step by step.
+    trust: "Experience. It's the method Torres teaches the product teams she coaches, set out step by step."
     only: A weekly habit of talking to customers, and her opportunity solution tree, which ties what you hear to the outcome you're after.
   - title: Monetizing Innovation
     by: Madhavan Ramanujam and Georg Tacke
     where: A book.
     note: "Read chapter 4, \"Have the 'Willingness-to-Pay' Talk Early: You Can't Prioritize without It,\" and chapter 5 if you want more."
-    trust: Both work at Simon-Kucher, a pricing consultancy, and the cases are named products, from Porsche to LinkedIn. Expect them to champion their firm's way of working.
+    trust: "Experience. Both work at Simon-Kucher, a pricing consultancy, and the cases are named products, from Porsche to LinkedIn. Expect them to champion their firm's way of working."
     only: How to ask what a product is worth to its customers before anything is built.
   - title: Black Swan Farming using Cost of Delay
     by: Joshua Arnold and Özlem Yüce (2013)
     url: https://blackswanfarming.com/black-swan-farming-using-cost-of-delay/
     where: A paper.
     note: Free at blackswanfarming.com. Read it whole.
-    trust: It's the whole case, with its numbers, written by the two who ran the change.
+    trust: "Experience. It's the whole case, with its numbers, written by the two who ran the change."
     only: How Maersk Line put a price on waiting, one feature at a time, and what that changed about what it built first.
   - title: Silicon Valley
     by: created by Mike Judge, John Altschuler and Dave Krinsky (HBO, 2014 to 2019)
@@ -115,7 +116,7 @@ deeper:
 
 ## Why this matters
 
-Own Your Role had you finish "We're building this in order to ...," a sentence that names someone the work is for. This module asks whether that person really has the problem, what it's worth to them, and how you'd know. Teams call this work {{< pm/term "discovery" >}}.
+Own Your Role had you finish "We're building this in order to ...," a sentence that names someone the work is for. This module asks whether that person really has the problem, what it's worth to them, and how you'd know. Teams call this work {{< pm/term "discovery" >}}. When enough people like them keep using and paying for what you build, you'll hear that called product-market fit.
 
 Start with what people do, not what they say they'd want. People are poor forecasters of their own behavior and good witnesses to their last week. Ask a woman what matters most when she buys jeans and she'll say the fit. Ask about the last pair she bought, and it came from Amazon, on sale, from a brand she knew. She thinks she buys on fit, and she bought on brand and price. Your data shows what people did, but not why. So ask about the last time it happened, what they did about it, and what it cost them. The workaround is your real competition, and what it cost them is a ceiling on what your fix is worth.
 

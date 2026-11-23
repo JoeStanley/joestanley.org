@@ -11,7 +11,7 @@ deeper:
   by: Ruth Malan and Dana Bredemeyer (2002)
   url: https://www.bredemeyer.com/pdf_files/MinimalistArchitecture.PDF
   where: A magazine column. Free at bredemeyer.com.
-  trust: Two architecture consultants' opinion column in an IEEE magazine, from their practice, with no data.
+  trust: "An argument. It's an opinion column in an IEEE magazine by two architecture consultants, from their practice."
   only: The card's test in full, and their warning that each decision you add "can potentially dilute the impact of all the other decisions."
 ---
 
