@@ -38,6 +38,9 @@ step-dora: ""
 # Short path, step 4: Error Budgets
 step-card-error-budgets: ""
 
+# Short path, step 5: People + AI Research, “Errors + Graceful Failure”
+step-pair: ""
+
 # Do
 do: ""
 
@@ -56,8 +59,8 @@ deeper-trustworthy-online-controlled-experiments: ""
 # Full path: Threat Modeling, Adam Shostack
 deeper-threat-modeling: ""
 
-# Full path: Hidden Technical Debt in Machine Learning Systems, D. Sculley and colleagues (NeurIPS, 2015)
-deeper-hidden-technical-debt-in-machine-learning-systems: ""
+# Full path: AI Engineering, Chip Huyen
+deeper-ai-engineering: ""
 
 # Full path: Ford v Ferrari, directed by James Mangold (20th Century Fox, 2019)
 deeper-ford-v-ferrari: ""

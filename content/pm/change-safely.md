@@ -52,6 +52,17 @@ steps:
     card: cards/error-budgets
     minutes: 5
     look: How a reliability target turns into minutes you can spend.
+  - id: pair
+    kind: read
+    title: 'People + AI Research, "Errors + Graceful Failure"'
+    minutes: 10
+    where: A chapter of Google's People + AI Guidebook. Free at pair.withgoogle.com. Read from "Define 'errors' & 'failure'" through "Weigh situational stakes & error risk," then "Provide paths forward from failure."
+    links:
+      - text: "Errors + Graceful Failure"
+        url: https://pair.withgoogle.com/chapter/errors-failing/
+    look: Why a feature that's right 60 percent of the time can be a success or a failure, and the errors that neither the user nor the system notices.
+    trust: "Experience. Google's People + AI Research team wrote it from the company's user research, whose details it keeps private."
+    only: How good a feature built on a model has to be, asked from the user's side, and what it should do when it's wrong.
 
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
@@ -77,13 +88,12 @@ deeper:
     note: "Read Part I, \"Getting Started.\" Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
     trust: "Experience. Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool."
     only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
-  - title: Hidden Technical Debt in Machine Learning Systems
-    by: D. Sculley and colleagues (NeurIPS, 2015)
-    url: https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html
-    where: A conference paper.
-    note: Free at proceedings.neurips.cc. It's dense, so read it slowly. Section 4, on feedback loops, and section 7, on changes in the outside world, matter most here.
-    trust: "Experience. Engineers at Google wrote it from the systems they ran, and NeurIPS, a leading machine learning conference, published it. It's from before today's large language models."
-    only: "Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and \"changing anything changes everything.\""
+  - title: AI Engineering
+    by: Chip Huyen
+    where: A book.
+    note: "Read chapter 3, \"Evaluation Methodology,\" its sections \"Challenges of Evaluating Foundation Models,\" \"Exact Evaluation\" and \"AI as a Judge,\" then chapter 4, \"Evaluate AI Systems,\" its sections \"Evaluation Criteria\" and \"Design Your Evaluation Pipeline.\""
+    trust: "Experience. Huyen taught machine learning systems design at Stanford and writes from real cases, many of them her own. She sticks to the fundamentals, not any one tool, and says a real system often blends today's models with older machine learning."
+    only: "How to tell whether output that varies is good enough, and keep telling: graded examples, models used as judges and where they fall short, and a pipeline that checks every part of the system on every change."
   - title: Ford v Ferrari
     by: directed by James Mangold (20th Century Fox, 2019)
     where: A film.
@@ -98,6 +108,8 @@ When a failure would be expensive, as on a ticketing app the morning a big tour 
 Richard Cook, from See the System, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
 Before you change anything, know how good the service has to be, in words engineers can test: "When 50,000 fans try to buy in the first minute of an on-sale, checkout confirms 99 in 100 orders within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
+
+That's harder to say when the output varies, as a model's does. So decide which part of the call a model makes and which part stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can check the cases in between. The model sees patterns nobody could write down, and the rule keeps what happens to a fan predictable and easy to explain. Keep checking after launch, too: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
 
 [//]: # (short-path)
 

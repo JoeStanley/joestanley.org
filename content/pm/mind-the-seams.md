@@ -92,7 +92,7 @@ deeper:
     by: Rebecca Wirfs-Brock and Mathias Verraes
     where: A book of six essays.
     note: "Read it whole, starting with the title essay. Engineers on an oil rig switched the alarms off during a long failure, and the system took the silence to mean the emergency was over. One word, \"alarm,\" had been covering two things. Then read \"Splitting a Domain Across Multiple Bounded Contexts.\""
-    trust: "Experience. Wirfs-Brock invented responsibility-driven design, a widely taught way of designing software, and Verraes founded DDD Europe, a conference on domain-driven design. They write up cases from their own work."
+    trust: "Experience. Wirfs-Brock invented responsibility-driven design, which shapes software around what each part is responsible for, and Verraes founded DDD Europe, a conference on domain-driven design. They write up cases from their own work."
     only: How a team finds a concept nobody had named, and where to draw the lines between contexts.
   - title: The Art of Systems Architecting
     by: Mark Maier and Eberhardt Rechtin

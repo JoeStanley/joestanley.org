@@ -516,6 +516,48 @@ def start_checks(out_dir):
         fail("S19", "Start's invitation to write isn't a paragraph of its own after How it works' list")
 
 
+def thread_checks(out_dir):
+    """S22: the AI and data threads run as lines in the course's own frames. Each line data/pm/threads.yaml lists is
+    on its unit's built page, and The Compass asks the data thread's three questions."""
+    from bs4 import BeautifulSoup
+    checked("S22")
+    path = os.path.join(ROOT, "data", "pm", "threads.yaml")
+    if not os.path.exists(path):
+        fail("S22", "data/pm/threads.yaml is missing, so nothing says where the AI and data threads run")
+        return
+    th = yaml.safe_load(open(path, encoding="utf-8")) or {}
+    norm = lambda t: " ".join(str(t).replace("\u2019", "'").replace("\u2018", "'")
+                              .replace("\u201c", '"').replace("\u201d", '"').split())
+    texts = {}
+
+    def text(unit):
+        if unit not in texts:
+            f = os.path.join(out_dir, "pm", *unit.split("/"), "index.html")
+            if not os.path.exists(f):
+                texts[unit] = None
+            else:
+                main = BeautifulSoup(open(f, encoding="utf-8").read(), "html.parser").find("main")
+                texts[unit] = norm(main.get_text(" ")) if main else ""
+        return texts[unit]
+
+    for thread in ("ai", "data"):
+        lines = th.get(thread) or []
+        if len(lines) < 3:
+            fail("S22", f"the {thread} thread runs through {len(lines)} line(s) in data/pm/threads.yaml, too few to be a thread")
+        for e in lines:
+            t = text(e["unit"])
+            if t is None:
+                fail("S22", f"the {thread} thread names {e['unit']}, which has no built page")
+            elif norm(e["words"]) not in t:
+                fail("S22", f"{e['unit']}: the {thread} thread's line \"{e['words']}\" isn't on the page")
+    c = th.get("compass") or {}
+    t = text(c.get("unit", "the-compass"))
+    if not c.get("questions"):
+        fail("S22", "data/pm/threads.yaml gives The Compass no questions to carry for the data thread")
+    elif t is None or norm(c["questions"]) not in t:
+        fail("S22", "The Compass doesn't ask the data thread's three questions: " + c["questions"])
+
+
 JS_WALKS = """() => ({ toggle: (() => { const t = document.querySelector('[data-walk-toggle]'); return !!t && t.getClientRects().length > 0; })(),
   shown: [...document.querySelectorAll('[data-walk]')].filter(w => w.getClientRects().length > 0).map(w => w.dataset.walk),
   pressed: [...document.querySelectorAll('[data-walk-show]')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.dataset.walkShow),
@@ -3278,6 +3320,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("S20", "S21"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("S22"):
+        try:
+            thread_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("S22", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S15", "S16"):
         try:
             kind_checks(out_dir)
