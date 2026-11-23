@@ -8,8 +8,8 @@ one_thing: In your next plan, write down one way it could be wrong and the early
 do_minutes: 30
 
 last_time:
-  - q: A retry rule recovers more failed card payments, and revenue is up. Before you call it a win, who do you look for?
-    a: Whoever pays for it, such as the cardholder whose retried payment tips the account into overdraft. A product can earn by helping people, or cut a cost by passing it to people with less say.
+  - q: Autoplay lifts hours watched on a video app. Before you call it a win, who do you look for?
+    a: Whoever pays for it, such as the viewer up later than they meant to be. A product can earn by helping people, or cut a cost by passing it to people with less say.
   - q: Everyone on a launch could say "the business asked for it." What's your share?
     a: You're one of the many hands. If what you did was a cause, and you could have done otherwise, part of it is yours. Name who owns each harm you can foresee before it lands.
 
@@ -75,7 +75,7 @@ deeper:
 
 ## Why this matters
 
-Every plan rests on assumptions, and some of yours are probably wrong today. You don't know which yet, and you won't find out by feel. As the writer [Kathryn Schulz puts it](https://www.ted.com/talks/kathryn_schulz_on_being_wrong), being wrong "feels like being right." So stop asking how to show you're right, and ask how you'd find out you're wrong.
+Every plan rests on assumptions, and some of yours are probably wrong today: that technicians will trust a new alert, say, or that a sensor's readings mean what you think. You don't know which yet, and you won't find out by feel. As the writer [Kathryn Schulz puts it](https://www.ted.com/talks/kathryn_schulz_on_being_wrong), being wrong "feels like being right." So stop asking how to show you're right, and ask how you'd find out you're wrong.
 
 Silence isn't proof, either. Low numbers can mean people stopped telling you. US colleges publish their counts of sexual assault on campus, under a law called the Clery Act. When students set those counts beside anonymous surveys, Catherine D'Ignazio and Lauren Klein write in *Data Feminism*, the truth was "closer to the reverse" of what the counts suggested. Many of the colleges with higher counts were the ones putting more into support for survivors, where survivors had more reason to come forward. Weigh the Evidence's full path recommends the book.
 

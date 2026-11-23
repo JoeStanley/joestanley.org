@@ -116,7 +116,7 @@ deeper:
 
 ## Why this matters
 
-Own Your Role had you finish "We're building this in order to ...," a sentence that names someone the work is for. This module asks whether that person really has the problem, what it's worth to them, and how you'd know. Teams call this work {{< pm/term "discovery" >}}, and when the answers hold for enough people that they'd keep paying for what you build, you'll hear it called product-market fit.
+Own Your Role had you finish "We're building this in order to ...," a sentence that names someone the work is for. This module asks whether that person really has the problem, what it's worth to them, and how you'd know. Teams call this work {{< pm/term "discovery" >}}. When enough people like them keep using and paying for what you build, you'll hear that called product-market fit.
 
 Start with what people do, not what they say they'd want. People are poor forecasters of their own behavior and good witnesses to their last week. Ask a woman what matters most when she buys jeans and she'll say the fit. Ask about the last pair she bought, and it came from Amazon, on sale, from a brand she knew. She thinks she buys on fit, and she bought on brand and price. Your data shows what people did, but not why. So ask about the last time it happened, what they did about it, and what it cost them. The workaround is your real competition, and what it cost them is a ceiling on what your fix is worth.
 

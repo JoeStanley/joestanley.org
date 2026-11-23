@@ -53,7 +53,7 @@ check:
   - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Which is it?
     against: see-the-system
     a: Each answers its own question. When something has gone wrong, look for the several causes that lined up. When work is slow, look for the one step that sets its pace, and once you've helped it, look at the whole flow again, since the constraint moves.
-  - q: Your fitness app's team hits its target for reviews completed per day, yet new workouts reach users no faster. Give two explanations from this module.
+  - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations from this module.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
     a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. Mind the Seams looks at what falls between teams."
@@ -63,7 +63,7 @@ deeper:
     by: Donald Reinertsen
     where: A book.
     note: "Read chapter 2, \"The Economic View,\" on putting a price on delay, then chapter 3, \"Managing Queues,\" and chapter 4, \"Exploiting Variability.\""
-    trust: "An argument. A consultant's, set out as numbered principles drawn from queueing theory and economics."
+    trust: "An argument. Reinertsen, a consultant, sets it out as numbered principles drawn from queueing theory and economics."
     only: Why queues are the hidden cost in product work, and why cutting variability, a lesson taken from factories, can cost more than it saves. Watch where he parts with Goldratt.
   - title: "Accelerate: The Science of Lean Software and DevOps"
     by: Nicole Forsgren, Jez Humble and Gene Kim
@@ -81,7 +81,7 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in See the System. Find it, since speeding up anywhere else won't help.
+When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in See the System. Find it, since speeding up anywhere else won't help.
 
 The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can improve while value delivery doesn't.
 

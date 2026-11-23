@@ -80,7 +80,7 @@ deeper:
     by: Virginia Eubanks
     where: A book.
     note: "Read chapter 4, \"The Allegheny Algorithm,\" then chapter 2, \"Automating Eligibility in the Heartland.\""
-    trust: "An argument. Eubanks is a political scientist at the University at Albany, and she reports with a point of view, choosing cases that let the families affected speak. The county answered her, its tool changed after the book, and evaluations since disagree on how fair it is."
+    trust: "An argument. Eubanks is a political scientist at the University at Albany, and she reports with a point of view: she chose cases that let the families affected speak. The county answered her, its tool changed after the book, and evaluations since disagree on how fair it is."
     only: Who carries a system's mistakes, and who isn't in its data at all. Allegheny County's screening tool draws on public-service records, so a family that pays privately for treatment leaves no trace in them.
   - title: Design Justice
     by: Sasha Costanza-Chock

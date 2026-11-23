@@ -56,9 +56,9 @@ steps:
 check:
   - q: Weigh the Evidence asked who's missing from your evidence before you lean on it. Here you decide on purpose, with what you have. When do you stop gathering and decide?
     against: weigh-the-evidence
-    a: When more evidence wouldn't change the call, or when waiting costs more than being wrong. A two-way door can be decided on thin evidence and fixed later. A one-way door, such as a change to the points loyalty members have saved for years, earns the extra weeks.
+    a: When more evidence wouldn't change the call, or when waiting costs more than being wrong. A two-way door can be decided on thin evidence and fixed later. A one-way door, such as a change to the loyalty points members have saved for years, earns the extra weeks.
   - q: A decision has stalled because five people each think they can say no. What do you change?
-    a: "Get one person named to decide, with everyone else an adviser and nobody holding a veto. If naming them isn't your call, ask whoever's call it is, \"Who decides this?\""
+    a: "Get one person named to decide, with everyone else an adviser and nobody holding a veto. If naming them isn't your call, ask the group, \"Who decides this?\""
   - q: Your team's strategy reads "Delight travelers with a fast, reliable app," and nobody objects. What's wrong with it?
     a: Nobody would argue for the opposite, so it isn't a choice. It's a goal, with no diagnosis or guiding policy behind it.
   - q: "**Beyond this module.** Once you've chosen, what's left to do?"
@@ -70,7 +70,7 @@ deeper:
     url: https://hbr.org/1996/11/what-is-strategy
     where: A long article.
     note: "At hbr.org, which counts free articles and may ask you to subscribe. Read section III, on trade-offs, and section V, \"Rediscovering Strategy: The Failure to Choose,\" most closely."
-    trust: "An argument. It's a Harvard Business School professor's own short statement of his theory, made from company cases."
+    trust: "An argument. It's a Harvard Business School professor's own short statement of his theory, drawn from company cases."
     only: "Straddling in full: Continental Lite copied Southwest while staying a full-service airline, and lost hundreds of millions of dollars."
   - title: Lean Software Development
     by: Mary and Tom Poppendieck
@@ -97,7 +97,7 @@ deeper:
     by: directed by Steven Soderbergh, written by Ted Griffin (Warner Bros., 2001)
     where: A film.
     note: "Danny's briefing hands each of ten specialists one part of the job, and the plan says only how the parts fit. {{< pm/voice \"oceans-eleven\" >}}"
-    only: "Each specialist decides how to do his own part, and the plan settles only what has to fit. Watch, too, how much of what looks improvised was planned."
+    only: "Each specialist decides how to do his own part. Watch, too, how much of what looks improvised was planned."
 ---
 
 ## Why this matters
@@ -106,7 +106,7 @@ A roadmap is a set of decisions, and on most teams many of them get made by defa
 
 Saying no to something your team already does has a catch. Find out first why it started and what leans on it. G. K. Chesterton made the point in 1929 with a fence across a road: don't clear it away until you can say why someone put it up.
 
-Then ask whose decision it is. A few decisions need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide, or, if that isn't your call, ask who it is. Input shapes a decision, but it isn't a veto. When a view makes no sense to you, get curious about why someone holds it, as Gary Klein advises. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room, the way the first guess at the coins in a jar sways the next (Kahneman and Klein, 2010). And think of the people it lands on who'll never be in the room. Werner Ulrich, from See the System's full path, puts it as a question: "Who is witness to the interests of those affected but not involved?"
+Then ask whose decision it is. A few decisions need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide. If that isn't your call, ask who decides. Input shapes a decision, but it isn't a veto. When a view makes no sense to you, get curious about why someone holds it, as Gary Klein advises. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room, the way the first guess at the coins in a jar sways the next (Kahneman and Klein, 2010). And think of the people it lands on who'll never be in the room. Werner Ulrich, from See the System's full path, puts it as a question: "Who is witness to the interests of those affected but not involved?"
 
 Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot who became a military strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster. His own stress was on orientation, the picture you act from, since "orientation shapes the way we observe, the way we decide, the way we act." A team that shares your picture can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale. It's the "in order to" of Own Your Role, given with each task. That's where the team's tempo comes from: it doesn't have to stop and ask.
 

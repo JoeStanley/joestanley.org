@@ -22,7 +22,7 @@ steps:
       - text: "Aristocracy, Democracy, and System Design"
         url: https://ptgmedia.pearsoncmg.com/images/0201835959/samplechapter/chap4.html
     look: Why he let 150 implementers write the specifications to save the schedule, and what it cost.
-    trust: "Experience. Brooks managed IBM's System/360 and its operating system, so you're hearing it from the man who made the call, about the 1960s."
+    trust: "Experience. Brooks managed IBM's System/360 and its operating system in the 1960s, so you're hearing it from the man who made the call."
     only: A first-hand case of the schedule beating a product's conceptual integrity.
   - id: meadows
     kind: read
@@ -57,7 +57,7 @@ deeper:
     by: Donald Schön
     where: A book.
     note: "Read chapter 2, \"From Technical Rationality to Reflection-in-Action,\" and chapter 8, \"The Art of Managing: Reflection-in-Action Within an Organizational Learning System.\""
-    trust: "An argument. Schön watched professionals at work, case by case, from engineers and architects to managers and town planners, and he builds on what he saw."
+    trust: "An argument. Schön watched professionals at work, case by case, from engineers and architects to managers and town planners, and he builds his case on what he saw."
     only: How good practitioners handle a case their training didn't cover, by thinking while they act. Chapter 8 turns it on managers.
   - title: Understanding by Design
     by: Grant Wiggins and Jay McTighe
@@ -95,6 +95,6 @@ Now with all this said, a word of caution: you champion the vision, but you're n
 
 ## Do
 
-**Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Finish "We're building this in order to ..." for your current work. Then write your tests: three things that would be true if you got there, each with how you'd check it. They're outcomes, what changes for people, where the features you ship are outputs: it's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, the musicians whose songs it plays. Would they want you to get there? Outside the 25 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled, and settling it is your job.
+**Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Finish "We're building this in order to ..." for your current work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? Outside the 25 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled, and settling it is your job.
 
 **Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Reshaping a job from the inside is what researchers call {{< pm/term "job-crafting" >}}: changing its tasks, who you work with, or how you see its purpose (Wrzesniewski and Dutton, 2001). Then ask yourself how much of your week went to {{< pm/term "glue-work" >}}, as Tanya Reilly calls the work that holds a team together, and what it crowded out. Notice, too, who on your team does most of it. Economists have found that women volunteer for work that does little for a promotion more often than men do, are asked more often, and say yes more often (Babcock and colleagues, 2017).

@@ -1470,6 +1470,8 @@ def sources_pdf_check(pdf):
     """S4 in the PDF itself: each source's reasons print exactly once."""
     text = " ".join(subprocess.run(["pdftotext", pdf, "-"], capture_output=True, text=True).stdout.split())
     text = text.replace("\u2019", "'").replace("\u201c", '"').replace("\u201d", '"')
+    # A voice slot in a source's lines (X4) prints its interim words, so the probe reads those.
+    slots = {x.get("id"): x.get("interim") or "" for x in (yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "voice-slots.yaml"), encoding="utf-8")) or {}).get("slots") or []}
     for path in glob.glob(os.path.join(ROOT, "content", "pm", "**", "*.md"), recursive=True):
         m = re.match(r"---\n(.*?)\n---", open(path, encoding="utf-8").read(), re.S)
         fm = yaml.safe_load(m.group(1)) if m else {}
@@ -1477,7 +1479,9 @@ def sources_pdf_check(pdf):
         for s_ in (fm.get("steps") or []) + (deeper if isinstance(deeper, list) else [deeper] if deeper else []):
             for key in ("trust", "only"):
                 if s_.get(key):
-                    probe = " ".join(_plain(s_[key]).replace("\u2019", "'").split()[:6])
+                    said = re.sub(r'\{\{<\s*pm/voice\s+"([^"]+)"[^>]*>\}\}', lambda v: slots.get(v.group(1), ""), str(s_[key]))
+                    # Eight words, since every "Why trust it" now opens with one of four tags (S17).
+                    probe = " ".join(_plain(said).replace("\u2019", "'").split()[:8])
                     n = text.count(probe)
                     if n != 1:
                         fail("S4", f"PDF: '{probe}' prints {n} times, expected once")

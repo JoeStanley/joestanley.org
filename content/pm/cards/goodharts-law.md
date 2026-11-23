@@ -11,7 +11,7 @@ deeper:
   by: David Manheim and Scott Garrabrant (2018)
   url: https://arxiv.org/abs/1803.04585
   where: A research paper. Free at arxiv.org.
-  trust: "An argument. It's a research preprint, so treat it as careful, not settled."
+  trust: "An argument. It's a research preprint: careful, but not a settled finding."
   only: It separates the different ways a measure can fail, so you can tell which one you're looking at.
 ---
 

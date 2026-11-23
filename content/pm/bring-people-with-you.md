@@ -75,7 +75,7 @@ deeper:
     by: Allan Cohen and David Bradford
     where: A book.
     note: "Read the chapters on the influence model and its currencies of exchange, then \"Influencing Your Boss.\""
-    trust: "Experience. Two business school teachers, at Babson and Stanford, wrote it from their teaching and consulting, and it's reached a third edition. Expect cases and advice."
+    trust: "Experience. Two business school teachers, at Babson and Stanford, wrote it from their teaching and consulting, and it's reached a third edition."
     only: "Influence as exchange: work out what the other person values, the book's currencies, and offer it."
   - title: An Integrative Model of Organizational Trust
     by: Roger Mayer, James Davis and David Schoorman (Academy of Management Review, 1995)

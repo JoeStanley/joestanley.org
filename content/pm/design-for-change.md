@@ -8,7 +8,7 @@ one_thing: Before your next request is estimated, write down the slowest layer y
 do_minutes: 35
 
 last_time:
-  - q: Why can't "customer" mean one thing across the whole company?
+  - q: Why can't "approved" mean one thing to every team on a marketplace?
     a: Different groups mean different things by it. Give each bounded context its own consistent model, and make the translation between contexts explicit, with someone who owns it.
   - q: What makes an internal platform worth choosing, and not only required?
     a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and it has to be good enough that those teams would pick it.
@@ -75,13 +75,13 @@ deeper:
     by: John Ousterhout
     where: A book.
     note: Read it whole. Chapters 2 and 3, on complexity and on tactical against strategic work, are the heart of it for this module.
-    trust: "An argument. Ousterhout taught a software design course at Stanford, and the book grew out of it, so it's one designer's view, made from experience."
+    trust: "An argument. Ousterhout taught a software design course at Stanford, and the book grew out of it. It's one designer's view, made from experience."
     only: The three symptoms of complexity in full, and the difference between tactical work, which gets this feature out, and strategic work, which keeps the next one cheap. That difference is the case you can make for engineering time.
   - title: On the Criteria To Be Used in Decomposing Systems into Modules
     by: David Parnas (Communications of the ACM, 1972)
     where: A journal article.
     note: It's short and dense, so read it slowly. The argument is in his comparison of two ways to split the same program, and you can skim the technical detail.
-    trust: "An argument. It's the classic case for information hiding, keeping each decision likely to change inside one module, made from a single worked example."
+    trust: "An argument. It's the classic case for information hiding, keeping each decision likely to change inside one module, and he makes it from a single worked example."
     only: Why a system's boundaries go around the decisions likely to change. Engineers can draw them only as well as they know what's coming, and often you're the one who knows.
   - title: Yes Minister
     by: written by Antony Jay and Jonathan Lynn (BBC, 1980)

@@ -51,7 +51,7 @@ steps:
     only: "A better question to ask after a failure: \"what had to line up?\""
 
 check:
-  - q: A clinic sees more patients each month than it did last year, yet its waiting list keeps growing. What does that tell you?
+  - q: Your app clears more drivers' background checks each month than it did last year, yet the queue waiting for one keeps growing. What does that tell you?
     a: More is still coming in than going out. A stock rises whenever its inflow is larger than its outflow.
   - q: Own Your Role asked you to act where nobody assigned you. This module says the structure, not the people, drives what a system does. When does one person's push win, and when does the structure?
     against: own-your-role

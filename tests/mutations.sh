@@ -175,4 +175,5 @@ run_bg "a module that names no main setting" S6 "sed -i '/^setting: a fitness ap
 run_bg "one setting leading three modules" S6 "sed -i 's/^setting: a ride-hailing app$/setting: a grocery delivery app/' content/pm/see-the-system.md"
 run_bg "a Why trust it that hides its kind of evidence" S17 "sed -i 's/^    trust: \"Experience. Forte runs/    trust: \"Forte runs/' content/pm/find-the-constraint.md"
 run_bg "the reflexive not a study back in a card" S17 "sed -i 's/on the limits of her own field\./on the limits of her own field, not a study./' content/pm/cards/stocks-flows-feedback.md"
+run_bg "every source's reasons printed twice at the back of the PDF" S4 "sed -i 's/^{{ \$list }}\$/{{ \$list }}{{ \$list }}/' layouts/partials/pm/source-notes.html"
 wait

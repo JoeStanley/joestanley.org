@@ -26,7 +26,7 @@ The word in Conway's sentence that matters is communication: the system follows 
 ## Why a PM cares
 
 - **Team boundaries become product boundaries.** Each handoff between teams tends to become an {{< pm/term "interface" >}}, and a place where work waits. Customers feel the join: a traveler books a flight in one flow, then starts over in another to add a bag.
-- **Whoever designs the teams designs the architecture.** Malan again: "if we have managers deciding on teams, and deciding which services will be built, by which teams, we implicitly have managers deciding on the system architecture." Doing that on purpose, to get the system you want, is the {{< pm/term "inverse-conway" "inverse Conway maneuver" >}}. If you don't draw the teams, bring that picture to whoever does.
+- **Whoever designs the teams designs the architecture.** Malan again: "if we have managers deciding on teams, and deciding which services will be built, by which teams, we implicitly have managers deciding on the system architecture." Doing that on purpose, to get the system you want, is the {{< pm/term "inverse-conway" "inverse Conway maneuver" >}}. If you don't draw the teams, sketch the system you want and show it to whoever does.
 
 ## How to spot it
 

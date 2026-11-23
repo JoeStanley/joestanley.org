@@ -9,7 +9,7 @@ do_minutes: 30
 
 last_time:
   - q: Stewart Brand says "Fast learns, slow remembers." Why not push a slow layer to move at a fast layer's pace?
-    a: The slow layer holds what the rest depends on, such as a payments ledger or a contract. Forced to another layer's pace, it ends badly, whichever way the push goes.
+    a: The slow layer holds what the rest depends on, such as a school's record of grades or a contract. Forced to another layer's pace, it ends badly, whichever way the push goes.
   - q: Two parts of a system are coupled "with respect to a particular change." What does that let you do as a PM?
     a: Name the change you expect next, and ask whether it would make both parts move. You often know better than anyone which changes are coming.
 
@@ -56,9 +56,9 @@ steps:
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
-  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of who holds which seat?
+  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of which fan has which seat?
     against: design-for-change
-    a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and the contracts that read it slowly, since every sale depends on them and a toggle can't switch a seat sold twice back.
+    a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and its contracts slowly, since every sale depends on them, and a toggle can't undo a seat sold twice.
   - q: On your ticketing app, a new seat map raises orders per visit in a test. Why might you still stop the test?
     a: A guardrail metric got worse, such as refunds, complaints about seats or page load time, overall or for one group of customers.
   - q: "**Beyond this module.** Everything here guards against honest mistakes. What about someone breaking your product on purpose?"

@@ -28,7 +28,7 @@ steps:
       - text: "How Do Committees Invent?"
         url: http://www.melconway.com/Home/pdf/committees.pdf
     look: "His advice for living with his law: since the first design is rarely the best, \"flexibility of organization is important to effective design.\""
-    trust: "An argument. It's the original, from 1968."
+    trust: "An argument. It's the original."
     only: The law in its author's words, with the reasoning a one-line summary leaves out.
   - id: kelly
     kind: read
@@ -39,7 +39,7 @@ steps:
       - text: "Conway's Law v. Software Architecture"
         url: https://allankelly.net/archives/638/conway-law-v-software-architecture
     look: "The force running the other way: \"Conway's Law is now working in reverse: the system is imposing structure on the organization.\""
-    trust: "An argument. A practitioner's opinion, made from a made-up example."
+    trust: "An argument. A practitioner's opinion, built on a made-up example."
     only: Why a system that's hard to change can hold a whole company in its shape.
   - id: bottcher
     kind: read
@@ -111,7 +111,7 @@ deeper:
 
 Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. The longest wait you mapped in Find the Constraint may well sit at one of them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
 
-Some seams run through words. When two teams use one word for two things, the bug ships between them. On a secondhand marketplace, "approved" can mean a listing passed review to one team and a seller can be paid to another. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
+Some seams run through words. When two teams use one word for two things, the bug ships between them. On a secondhand marketplace, "approved" can mean to one team that a listing passed review, and to another that the seller can be paid. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
 
 A category is a boundary of meaning too, and people fall between categories the way work falls between teams. In 1976 five Black women sued General Motors, which had hired no Black women before 1964, and a US court said it would hear their case as race discrimination or as sex discrimination, "but not a combination of both." In 1989 the law scholar Kimberlé Crenshaw used their case to name {{< pm/term "intersectional" "intersectionality" >}}: what happens where two categories meet, and what neither one shows on its own. Look for it in your product as you'd look for any seam: the customer whose problem is half one team's and half another's, so each team looks at its half and finds nothing wrong, or who belongs in two boxes on a form that allows one.
 
@@ -123,7 +123,7 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 **For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 
-**Optional: walk one seam (10 minutes).** Pick a place where a buyer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
+**Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 
 ## Questions to bring to engineers
 
