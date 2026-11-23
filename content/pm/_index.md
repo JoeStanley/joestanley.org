@@ -25,3 +25,5 @@ Instead, it's a set of lessons intended to strengthen your **product judgment**,
 - **Every source but a story says why to trust it,** starting with its kind of evidence: a study, a review of studies, experience or an argument. It says what you'll get from it, too, so you can decide what's worth your time.
 - **Each idea worth keeping gets a concept card, one page long.** Keep them near your work.
 - **On the site, your progress stays in your browser.** Nothing is sent anywhere.
+
+If you disagree with any of this, good. Tell me why at [mail@joestanley.org](mailto:mail@joestanley.org). The same goes for a broken link, or a part that lost you.

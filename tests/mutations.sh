@@ -185,4 +185,8 @@ run_bg "the preview leaves ids as they were, so two pages' ids meet" X5 "sed -i 
 run_bg "the preview ignores a dark theme picked in claude.ai" X5 "sed -i 's/{{{explicit}}}/{{}}/' tools/preview.py"
 run_bg "the preview shows each page with the other page's stylesheet" X5 "sed -i 's/? \"all\" : \"not all\"; });/? \"not all\" : \"all\"; });/' tools/preview.py"
 run_bg "a link to a page the preview doesn't hold" X5 "printf '\nThe [archive](/pm/archive/) holds the rest.\n' >> content/pm/find-the-constraint.md"
+# Job 22, Joe's line on Start (23 November 2026): an invitation to write, with his address shown as text (S19)
+run_bg "Start's invitation to write gone" S19 "sed -i '/^If you disagree with any of this, good/d' content/pm/_index.md"
+run_bg "Start's address hidden under other words" S19 "sed -i 's/\[mail@joestanley.org\](mailto:/[write to me](mailto:/' content/pm/_index.md"
+run_bg "Start's invitation folded into How it works' list" S19 "sed -i 's/^If you disagree with any of this, good/- If you disagree with any of this, good/' content/pm/_index.md"
 wait
