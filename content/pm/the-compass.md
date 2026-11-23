@@ -1,6 +1,12 @@
 ---
 title: The Compass
 layout: closing
+# The two versions of the walked-through call (spec S21), in the order their buttons show; the first shows first.
+walks:
+  - id: product
+    label: A customer-facing product
+  - id: platform
+    label: An internal platform
 question: Which question does the call in front of you need?
 do_minutes: 30
 ---
@@ -11,7 +17,12 @@ do_minutes: 30
 
 ## One call, walked through
 
-Real calls need several questions at once. Here's one, on Own Your Role's music streaming app: should you retire the old version of the app, the one that still runs on older phones?
+Real calls need several questions at once. Here's one, walked through twice: once for a product customers use, and once for a platform other teams build on. Pick the one closer to your work.
+
+{{< pm/walk-toggle >}}
+
+{{< pm/walk "product" >}}
+On Own Your Role's music streaming app: should you retire the old version of the app, the one that still runs on older phones?
 
 Start with who it's for. Ask the people still on it about the last time they tried to update, not whether they'd mind (Know Who It's For). Then look at the system. The old version's support tickets pile up like water in a tub (See the System), and if the engineers who answer them are the ones every release waits on (Find the Constraint), retiring it speeds up everything behind it.
 
@@ -22,12 +33,27 @@ Ask what kind of door it is. Switching the old version off can be undone. But th
 Here two questions collide. Know Who It's For says waiting is expensive. Answer for What You Build asks who pays: here, the people with the oldest phones and the least say, as Design for Change warned. Neither wins by rule. Ask whether the cost can be designed away rather than passed on: a longer notice, a web player that runs on old phones, an export for what they saved. If it can, retire the old version in small steps, on a date, with a guardrail for those listeners, such as how many stop listening altogether (Change Safely). If it can't, say so plainly, and decide with the cost in view.
 
 Last, decide who hears it, and when (Bring People With You): the listeners on the old version, from the app, with a date, and the support team who'll answer them. Then log the call, with what you expect, how sure you are and the result that would make you reopen it (Notice When You Are Wrong).
+{{< /pm/walk >}}
+
+{{< pm/walk "platform" >}}
+Now the same app from the inside. You run the service that keeps every listener's library, their saved songs and playlists, and the app teams build on it. Should you retire version 1 of its API, which a few teams' services still call?
+
+Start with who it's for. Your customers are the teams that call it, so ask each about the last time they tried to move to version 2, and what stopped them (Know Who It's For). Then trace each one back to the listeners it serves: a call behind every play counts for more than a script nobody remembers writing. Then look at the system. Version 1's pages to whoever's on call and its one-off fixes pile up (See the System), and if that time is what your next release waits on (Find the Constraint), retiring it speeds up everything behind it.
+
+Check what the evidence leaves out. The logs say three services still call version 1. Weigh the Evidence would ask what the logs can't see: a job that runs once a quarter, a partner's integration, a team that calls version 1 through a shared library without knowing it.
+
+Ask what kind of door it is. Switching version 1 off can be undone. But the data a feature creates outlives the feature (Design for Change): if version 1 records something version 2 doesn't, the reports and models built on it will have a gap that never fills. Treat that part as a one-way door (Decide and Set Direction), and settle where that data goes first.
+
+Here two questions collide. Know Who It's For says waiting is expensive. Answer for What You Build asks who pays: here, the team with the least time to migrate, and the listeners behind its feature. Mind the Seams would add that the migration sits in the seam between your team and theirs, where it's easy for nobody to own it. Neither wins by rule. Ask whether the cost can be designed away rather than passed on: a shim that keeps version 1's calls working, a migration your team does for them, a later date. If it can, retire it in small steps, with a guardrail for each calling team, such as its error rate (Change Safely). If it can't, say so plainly, and decide with the cost in view.
+
+Last, decide who hears it, and when (Bring People With You): each calling team, with a date, and whoever answers for the features they run. Then log the call, with what you expect, how sure you are and the result that would make you reopen it (Notice When You Are Wrong).
+{{< /pm/walk >}}
 
 ## Do
 
 **Review your decision log (20 minutes).** Notice When You Are Wrong had you mark each call right or wrong. Now read them all back, from Know Who It's For on. For each one, write what you predicted, how sure you were, and what happened. Mark the ones you can't judge yet, and look again in a month. Where were you sure and wrong? Where were you right for a reason that turned out not to matter? For each miss, find the module whose question would have changed the call, and write that question beside it.
 
-**Walk one call of your own (10 minutes).** Walk a call in front of you now, as the old app was walked. Which questions does it need, and where do two of them collide? Log it, with what you expect.
+**Walk one call of your own (10 minutes).** Walk a call in front of you now, the way the call above was walked. Which questions does it need, and where do two of them collide? Log it, with what you expect.
 
 ## Where to go from here
 

@@ -1,0 +1,11 @@
+{{- /* The Compass's two walks (spec S21): two buttons, in the games' setup style, pick which version of the call
+       shows. The script unhides them and hides the version not picked; without it both versions show, one after the
+       other, and print shows both. The versions are the page's front matter, walks: [{id, label}]. */ -}}
+{{- $walks := .Page.Params.walks -}}
+<div class="walk-toggle" data-walk-toggle role="group" aria-label="Which kind of product" hidden>
+<ul class="setup-list">
+{{- range $i, $w := $walks }}
+<li><button type="button" class="setup view" data-walk-show="{{ $w.id }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ $w.label }}</button></li>
+{{- end }}
+</ul>
+</div>

@@ -43,7 +43,7 @@ PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # PRINT_PAGES is a record kept with the spec: a change in the count is noted in the report, not failed.
-UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "closing": 2, "glossary": 3}
+UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "closing": 3, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
@@ -514,6 +514,51 @@ def start_checks(out_dir):
         fail("S19", "Start's invitation to write isn't a paragraph of its own after How it works' list")
 
 
+JS_WALKS = """() => ({ toggle: (() => { const t = document.querySelector('[data-walk-toggle]'); return !!t && t.getClientRects().length > 0; })(),
+  shown: [...document.querySelectorAll('[data-walk]')].filter(w => w.getClientRects().length > 0).map(w => w.dataset.walk),
+  pressed: [...document.querySelectorAll('[data-walk-show]')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.dataset.walkShow),
+  focus: document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.walkShow || '' : '' })"""
+
+
+def walk_browser_checks(out_dir, path, walks):
+    """S21 in a browser: the first version shows, a button swaps it and keeps focus; without the script, and in
+    print, both versions show and the buttons don't."""
+    if len(walks) != 2:
+        return
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            for js in (True, False):
+                ctx = b.new_context(viewport={"width": 390, "height": 900}, java_script_enabled=js)
+                pg = ctx.new_page()
+                pg.goto(srv.base + path)
+                r = pg.evaluate(JS_WALKS) if js else None
+                if js:
+                    if not r["toggle"] or r["shown"] != walks[:1] or r["pressed"] != walks[:1]:
+                        fail("S21", f"{path}: with the script, the buttons and the first version should show, and only it: {r}")
+                    pg.click(f"button[data-walk-show={walks[1]}]")
+                    r = pg.evaluate(JS_WALKS)
+                    if r["shown"] != walks[1:] or r["pressed"] != walks[1:]:
+                        fail("S21", f"{path}: the second button doesn't swap the versions: {r}")
+                    if r["focus"] != walks[1]:
+                        fail("S21", f"{path}: focus left the button that was pressed (A9)")
+                    pg.emulate_media(media="print")
+                    r = pg.evaluate(JS_WALKS)
+                    if r["shown"] != walks or r["toggle"]:
+                        fail("S21", f"{path}: in print both versions should show, and no buttons: {r}")
+                else:
+                    shown = pg.evaluate("() => [...document.querySelectorAll('[data-walk]')].filter(w => w.getClientRects().length > 0).map(w => w.dataset.walk)")
+                    tog = pg.evaluate("() => { const t = document.querySelector('[data-walk-toggle]'); return !!t && t.getClientRects().length > 0; }")
+                    if shown != walks or tog:
+                        fail("S21", f"{path}: without the script both versions should show, and no buttons: {shown}")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
 def arc_checks(out_dir):
     """S20: the arc's four parts on Start, each name and line above its modules, every module in one part in reading
     order, The Compass last under "To close". S21: The Compass, made from a module's parts, closes the course."""
@@ -643,12 +688,35 @@ def arc_checks(out_dir):
             if sib.name == "p":
                 out.append(norm(sib.get_text(" ")))
         return out
-    walk = " ".join(section("One call, walked through"))
-    named = [t for t in title.values() if t in walk]
-    if len(named) < 6:
-        fail("S21", f"{where}'s walked-through call names {len(named)} modules by title, and it names at least six")
-    if not re.search(r"\bcollide", walk):
-        fail("S21", f"{where}'s walked-through call doesn't say where two questions collide, and how to weigh them")
+    # the call, walked twice: a customer-facing product and an internal platform, picked with two buttons
+    fm_ = yaml.safe_load(open(os.path.join(ROOT, "content", "pm", f"{page}.md"), encoding="utf-8").read().split("---", 2)[1]) or {}
+    want_walks = [w_.get("id") for w_ in fm_.get("walks") or []]
+    walks = body.select("div.walk[data-walk]")
+    if [w_["data-walk"] for w_ in walks] != want_walks or len(walks) != 2:
+        fail("S21", f"{where}'s call should be walked twice, a customer-facing product and an internal platform: it has {[w_.get('data-walk') for w_ in walks]}")
+    for w_ in walks:
+        t_ = w_.find(class_="walk-title")
+        text_ = norm(w_.get_text(" "))
+        named = [t for t in title.values() if t in text_]
+        label_ = norm(t_.get_text()) if t_ else w_["data-walk"]
+        if not t_:
+            fail("S21", f"{where}: the walk {w_['data-walk']} has no title, so without the script or in print nothing names it")
+        if len(named) < 6:
+            fail("S21", f"{where}: the walk \"{label_}\" names {len(named)} modules by title, and each names at least six")
+        if not re.search(r"\bcollide", text_):
+            fail("S21", f"{where}: the walk \"{label_}\" doesn't say where two questions collide, and how to weigh them")
+        if w_.has_attr("hidden"):
+            fail("S21", f"{where}: the walk \"{label_}\" is hidden in the page itself, so without the script nobody reads it")
+    tog = body.select_one("[data-walk-toggle]")
+    btns = tog.select("button[data-walk-show]") if tog else []
+    if not tog or [b_["data-walk-show"] for b_ in btns] != want_walks:
+        fail("S21", f"{where} has no buttons to pick a version of its call, one for each")
+    elif not tog.has_attr("hidden"):
+        fail("S21", f"{where}'s buttons show without the script, where they'd do nothing")
+    elif [b_.get("aria-pressed") for b_ in btns] != ["true"] + ["false"] * (len(btns) - 1):
+        fail("S21", f"{where}'s first button should start pressed, and only it")
+    elif any("setup" not in (b_.get("class") or []) for b_ in btns):
+        fail("S21", f"{where}'s buttons should take the games' setup style, so they bring no new look")
     do = section("Do")
     if not do or not do[0].startswith("Review your decision log"):
         fail("J3", f"{where}'s Do should open \"Review your decision log.\" in bold, and review the log whole")
@@ -656,6 +724,7 @@ def arc_checks(out_dir):
         fail("J3", f"{where}'s Do should open \"Review your decision log.\" in bold")
     if not re.search(r"where to draw (the|a) line", " ".join(section("Where to go from here")), re.I):
         fail("S21", f"{where}'s last section doesn't name the judgment that recurs, where to draw the line")
+    walk_browser_checks(out_dir, f"/pm/{page}/", want_walks)
     how = start.find("h2", id="how-it-works")
     ul = how.find_next("ul") if how else None
     if not ul or "closing page" not in norm(ul.get_text(" ")) or "The Compass" not in norm(ul.get_text(" ")):

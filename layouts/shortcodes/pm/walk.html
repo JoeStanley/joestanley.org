@@ -1,0 +1,9 @@
+{{- /* One version of The Compass's walked-through call (spec S21), named by its id in the page's walks. Its title is
+       seen in print and without the script, and heard always; on screen the button that picked it names it. */ -}}
+{{- $id := .Get 0 -}}
+{{- $w := index (where .Page.Params.walks "id" $id) 0 -}}
+{{- if not $w }}{{ errorf "pm/walk: no walk %q in %s's walks" $id .Page.File.Path }}{{ end -}}
+<div class="walk" data-walk="{{ $id }}">
+<h3 class="walk-title">{{ $w.label }}</h3>
+{{ .Inner | .Page.RenderString (dict "display" "block") }}
+</div>

@@ -121,8 +121,8 @@ def blocks(el):
                 out.append(clean(str(c)).strip())
             continue
         cls = c.get("class") or []
-        if c.name in ("script", "style", "svg") or "print-only" in cls:
-            continue
+        if c.name in ("script", "style", "svg") or "print-only" in cls or "walk-toggle" in cls:
+            continue   # The Compass's buttons: each version of its call follows under its own title (spec S21)
         if c.get("data-voice"):   # a voice slot as a paragraph of its own (spec X4); its block follows it
             PENDING.append(c["data-voice"])
         if c.name in ("h2", "h3", "h4"):
