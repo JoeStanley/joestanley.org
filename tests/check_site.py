@@ -33,7 +33,7 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/change-safely/", ["/pm/cards/error-budgets/"]),
            ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/"]),
            ("/pm/decide-and-set-direction/", ["/pm/cards/agency-and-coherence/"]),
-           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/"]),
+           ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/", "/pm/cards/mission-excuse/"]),
            ("/pm/notice-when-you-are-wrong/", ["/pm/cards/double-loop-learning/"]),
            ("/pm/bring-people-with-you/", ["/pm/cards/trust-equation/"])]
 # The closing unit, The Compass (spec S21), after the last module.
@@ -48,8 +48,10 @@ DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reason
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
                  # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
+RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so: six on its full path (S11), and a game's
+                                            # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 93   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 97   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -1873,12 +1875,14 @@ def unit_page_checks(pdf_path, n_pages):
     units.sort(key=lambda u: u[0])
     mods_ = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
     with_game = {f"Module {m['num']}: {m['title']}" for m in mods_ if m["id"] in GAMES.values()}
+    long_ = {f"Module {m['num']}: {m['title']}" for m in mods_ if m["id"] in RUNS_LONG}
     for (pg, kind, title, deeper), nxt in zip(units, units[1:] + [(n_pages, "", "", None)]):
         n = nxt[0] - pg
         # a module's full path prints outside its three pages: it starts within them, and may take two more
         share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
         # the website first: a module's extra page is noted, not failed, and a module with a game may run further
-        grace = (GAME_GRACE if _plain_title(title) in with_game else MODULE_GRACE) if kind == "module" else 0
+        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else 0
+        why_ = "since it runs long on purpose" if _plain_title(title) in long_ else "since it carries a game"
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
@@ -1887,13 +1891,13 @@ def unit_page_checks(pdf_path, n_pages):
         elif n > share + grace:
             fail("P1", said)
         elif n > share:
-            NOTE["P1"].append(said + (", and may run further, since it carries a game, until a PDF is published" if grace == GAME_GRACE else ", and may run one page over until the site goes live"))
+            NOTE["P1"].append(said + (f", and may run further, {why_}, until a PDF is published" if grace == GAME_GRACE else ", and may run one page over until the site goes live"))
         if kind == "module" and deeper is not None and deeper - pg >= UNIT_SHARE["module"]:
             said = f"'{title}' starts its full path on its page {deeper - pg + 1}, so the module itself runs past its {UNIT_SHARE['module']} pages"
             if deeper - pg >= UNIT_SHARE["module"] + grace:
                 fail("P1", said)
             else:
-                NOTE["P1"].append(said + (", which a module with a game may do until a PDF is published" if grace == GAME_GRACE else ", which it may do by one page until the site goes live"))
+                NOTE["P1"].append(said + (f", which it may do, {why_}, until a PDF is published" if grace == GAME_GRACE else ", which it may do by one page until the site goes live"))
 
 
 def _plain_title(t):
@@ -2547,6 +2551,7 @@ def source_checks(out_dir):
     voice_checks(sd, soup, mods, tab_of, by_name)
     # S5, E1 to E3: every unit, built or draft, as its tab shows it
     built_tabs = {f"{m['num']} {m['title']}" for m in mods if m.get("page")}
+    long_tabs = {f"{m['num']} {m['title']}" for m in mods if m["id"] in RUNS_LONG}
     own_words = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "own-words.yaml"), encoding="utf-8")) or []
     for o in own_words:
         if o.get("unit") not in by_name:
@@ -2585,6 +2590,12 @@ def source_checks(out_dir):
         # you'll get and carries no "Why trust it" (a documentary may). S11: a built module's full path
         # recommends five things at most, the story included.
         paths = _sections(text, {"Go deeper: the full path"})
+        if name in long_tabs and name in built_tabs:
+            # S11: a module that runs long on purpose says so, and why, at the start of its Why this matters
+            wtm_ = _sections(text, {"Why this matters"})
+            first_ = wtm_[0].strip().split("\n\n")[0] if wtm_ else ""
+            if not re.search(r"\blonger\b", first_):
+                fail("S11", f"{name} runs longer than the other modules, and the first paragraph of its Why this matters doesn't say so")
         if name not in ("About",) and re.match(r"\d+ ", name) and not paths:
             fail("S10", f"{name} has no full path, so it carries no story")
         for sec in paths:
@@ -2617,8 +2628,9 @@ def source_checks(out_dir):
                 fail("S10", f"{name}: the full path carries {len(stories)} stories, and one is the most: {'; '.join(stories)}")
             if not stories:
                 fail("S10", f"{name}: the full path carries no story, and every full path carries one")
-            if name in built_tabs and count > 5:
-                fail("S11", f"{name}: the full path recommends {count} things, and five is the most")
+            most = 6 if name in long_tabs else 5
+            if name in built_tabs and count > most:
+                fail("S11", f"{name}: the full path recommends {count} things, and {'six' if most == 6 else 'five'} is the most")
             if name in built_tabs and name not in S12_PENDING and books < 2:
                 fail("S12", f"{name}: the full path holds {books} book{'' if books == 1 else 's'} beside its story, and two is the least")
         own = _own_words(text)

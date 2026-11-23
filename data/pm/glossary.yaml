@@ -135,6 +135,9 @@ consequence-scanning:
 problem-of-many-hands:
   term: Problem of many hands
   text: Dennis Thompson's name for harm that comes from so many small contributions that it's hard to say who's responsible.
+moral-justification:
+  term: Moral justification
+  text: Albert Bandura's name for making harm feel acceptable by casting it as serving a worthy or moral purpose, such as a company's mission.
 right-to-erasure:
   term: Right to erasure
   text: A person's right, under the General Data Protection Regulation (GDPR) in the EU and the UK, to ask an organization to delete their personal data, in some circumstances.
