@@ -11,7 +11,7 @@ deeper:
   by: Daniel Kahneman (2002)
   url: https://www.nobelprize.org/prizes/economic-sciences/2002/kahneman/biographical/
   where: His Nobel autobiography. Free at nobelprize.org. Read from the flight instructors to the small numbers paper, about 5 minutes.
-  trust: "It's his own account, published by the Nobel Foundation: a memoir, not a study."
+  trust: "Experience. It's his own account, a memoir published by the Nobel Foundation."
   only: The whole flight instructors story, and how the small numbers paper began, with a questionnaire built from his own failed replications.
 ---
 

@@ -11,7 +11,7 @@ deeper:
   by: Google SRE Workbook (Appendix B)
   url: https://sre.google/workbook/error-budget-policy/
   where: An appendix, about 5 minutes. Free at sre.google.
-  trust: "Google's site reliability engineers wrote it as a template: one company's policy, for an example game service, ready for you to adapt."
+  trust: "Experience. Google's site reliability engineers wrote it as a template: one company's policy, for an example game service, ready for you to adapt."
   only: What a team agrees to do once the budget is spent, and the exceptions, such as security fixes.
 ---
 

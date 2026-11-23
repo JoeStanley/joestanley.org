@@ -11,7 +11,7 @@ deeper:
   by: Kim Clark, Bruce Chew and Takahiro Fujimoto (1987)
   url: https://www.brookings.edu/wp-content/uploads/1987/12/1987c_bpea_clark_chew_fujimoto_meyer_scherer.pdf
   where: A paper. Read pages 751 to 756, about 10 minutes. Free at brookings.edu.
-  trust: "A field study, but small and from one industry: only 4 of the 29 projects had a heavyweight."
+  trust: "A study. It's small and from one industry: only 4 of the 29 projects had a heavyweight."
   only: Where the term comes from, with both kinds of manager side by side.
 ---
 

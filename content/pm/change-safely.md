@@ -3,6 +3,7 @@ title: Change Safely
 layout: module
 module: change-safely
 question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
+setting: a ticketing app for concerts
 one_thing: Write a one-page rollout plan for your next change, and include how you'd switch it off.
 do_minutes: 30
 
@@ -22,7 +23,7 @@ steps:
       - text: "Embracing Risk"
         url: https://sre.google/sre-book/embracing-risk/
     look: Why 100 percent is the wrong target, and who sets the reliability target, the service level objective (SLO).
-    trust: Google's site reliability engineers describe their own practice. It's a practitioner's account, not an independent study.
+    trust: "Experience. Google's site reliability engineers describe their own practice."
     only: One shared number to settle arguments between product and reliability.
   - id: hodgson
     kind: read
@@ -33,7 +34,7 @@ steps:
       - text: "Feature Toggles (aka Feature Flags)"
         url: https://martinfowler.com/articles/feature-toggles.html
     look: "How deploying a change differs from releasing it: one puts it into production switched off, the other turns it on for customers, a few at first. Then how an ops toggle switches it off fast."
-    trust: Hodgson is a software delivery consultant who spent years at Thoughtworks, and he writes from his work with teams. He's frank that every toggle adds complexity.
+    trust: "Experience. Hodgson is a software delivery consultant who spent years at Thoughtworks, and he writes from his work with teams. He's frank that every toggle adds complexity."
     only: The mechanics behind "released to 1 percent of customers," enough to ask your engineers sharp questions.
   - id: dora
     kind: read
@@ -44,7 +45,7 @@ steps:
       - text: "DORA's software delivery performance metrics"
         url: https://dora.dev/guides/dora-metrics/
     look: Which of the five measures show throughput and which show instability, and why smaller changes help both. If you read *Accelerate* on Find the Constraint's full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
-    trust: DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade, and the guide sums up what it keeps finding. The answers are self-reported, and the evidence is in the yearly reports.
+    trust: "A review of studies. DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade, and the guide sums up what it keeps finding. The answers are self-reported, and the evidence is in the yearly reports."
     only: The measures as DORA uses them today, so you can ask for your own team's numbers.
   - id: card-error-budgets
     kind: card
@@ -55,33 +56,33 @@ steps:
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
-  - q: Design for Change said a payments ledger moves slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for the ledger?
+  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of who holds which seat?
     against: design-for-change
-    a: Both, at different layers. Ship the code around the ledger in small steps, behind a toggle. Change the ledger's data and its contracts slowly, since every balance depends on them and a toggle can't switch a wrong balance back.
-  - q: On a marketplace, a new search ranking raises orders per visit in a test. Why might you still stop the test?
-    a: A guardrail metric got worse, such as returns, late deliveries or page load time, overall or for one group of customers.
+    a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and the contracts that read it slowly, since every sale depends on them and a toggle can't switch a seat sold twice back.
+  - q: On your ticketing app, a new seat map raises orders per visit in a test. Why might you still stop the test?
+    a: A guardrail metric got worse, such as refunds, complaints about seats or page load time, overall or for one group of customers.
   - q: "**Beyond this module.** Everything here guards against honest mistakes. What about someone breaking your product on purpose?"
-    a: Abuse and attack, where a feature works as designed for someone you never designed it for. Adam Shostack's *Threat Modeling*, on the full path below, starts there.
+    a: Abuse and attack, where a feature works as designed for someone you never designed it for, like a bot that buys the best seats to resell. Adam Shostack's *Threat Modeling*, on the full path below, starts there.
 
 deeper:
   - title: Trustworthy Online Controlled Experiments
     by: Ron Kohavi, Diane Tang and Ya Xu
     where: A book.
     note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion,\" then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk.\""
-    trust: Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and a university press published it. It's a practical guide, written from inside large online businesses.
+    trust: "Experience. Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and a university press published their practical guide, written from inside large online businesses."
     only: How to choose the measures an experiment answers to, guardrails among them, and how to combine the ones you want to move into one overall evaluation criterion. Then how to ramp a change from a few users to everyone without trading safety for speed.
   - title: Threat Modeling
     by: Adam Shostack
     where: A book.
     note: "Read Part I, \"Getting Started.\" Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
-    trust: Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool.
+    trust: "Experience. Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool."
     only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
   - title: Hidden Technical Debt in Machine Learning Systems
     by: D. Sculley and colleagues (NeurIPS, 2015)
     url: https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html
     where: A conference paper.
     note: Free at proceedings.neurips.cc. It's dense, so read it slowly. Section 4, on feedback loops, and section 7, on changes in the outside world, matter most here.
-    trust: Engineers at Google wrote it from the systems they ran, and NeurIPS, a leading machine learning conference, published it. It argues from experience, and from before today's large language models.
+    trust: "Experience. Engineers at Google wrote it from the systems they ran, and NeurIPS, a leading machine learning conference, published it. It's from before today's large language models."
     only: "Names to ask your engineers about for the ways a model in production goes quietly wrong, such as feedback loops, where its choices shape the data it learns from next, and \"changing anything changes everything.\""
   - title: Ford v Ferrari
     by: directed by James Mangold (20th Century Fox, 2019)
@@ -92,11 +93,11 @@ deeper:
 
 ## Why this matters
 
-When a failure would be expensive, as on a payments service or an insurance claims system, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
+When a failure would be expensive, as on a ticketing app the morning a big tour goes on sale, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
 
 Richard Cook, from See the System, gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
-Before you change anything, know how good the service has to be, in words engineers can test: "When 500 students submit their exams in the same minute at the deadline, the submission service confirms 99 in 100 within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
+Before you change anything, know how good the service has to be, in words engineers can test: "When 50,000 fans try to buy in the first minute of an on-sale, checkout confirms 99 in 100 orders within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 
 [//]: # (short-path)
 
@@ -114,10 +115,10 @@ Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand th
 
 **For your decision log.** Write whether you expect the rollout to reach everyone without being switched off, and how sure you are. You'll know when the last group has it.
 
-**Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a player waits for a match, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
+**Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
 
 ## Questions to bring to engineers
 
 - Do we measure this quality today, and what's its 99th percentile?
 - What can go wrong, and what are we going to do about it?
-- If a ranking or recommendation model in this release were quietly wrong next month, what would tell us?
+- If the model that spots bots in this release were quietly wrong next month, what would tell us?

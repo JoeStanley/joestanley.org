@@ -11,7 +11,7 @@ deeper:
   by: Trusted Advisor Associates
   url: https://trustedadvisor.com/build-trust/trust-equation
   where: A web page, about 5 minutes. Free at trustedadvisor.com.
-  trust: It's from the firm founded by Charles Green, one of the book's three authors, so read it as an advocate's account of its own model.
+  trust: "An argument. It's from the firm founded by Charles Green, one of the book's three authors: an advocate's account of its own model."
   only: The model in its makers' words, with short videos.
 ---
 

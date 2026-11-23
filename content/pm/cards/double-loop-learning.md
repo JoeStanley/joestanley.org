@@ -11,7 +11,7 @@ deeper:
   by: Chris Argyris (1991)
   url: https://hbr.org/1991/05/teaching-smart-people-how-to-learn
   where: A Harvard Business Review article, about 30 minutes. Paywalled at hbr.org.
-  trust: It's Argyris on his own idea, from 15 years of studying management consultants, so its evidence is field cases from one profession.
+  trust: "An argument. It's Argyris on his own idea, from 15 years of studying management consultants, so its cases come from one profession."
   only: Why smart people get defensive when they're wrong, with a meeting rewritten line by line.
 ---
 

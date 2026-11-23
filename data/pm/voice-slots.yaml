@@ -26,6 +26,56 @@ slots:
     brief: "Say in your own voice what you believe a grocery app's incentive is with the shoppers who pick and deliver its orders, and why it should matter to a PM designing their side of the flow. The paragraph before it gives only what the sources support: waiting time, mostly unpaid, and a pool of waiting workers (New York's study), shifts below minimum wage (an MIT audit), and Dubal's argument, as hers. No source opened says a company wants workers to need the work, or that low prices were paid for by investors with the cost on shoppers, so that view is yours to state. Your words from the session are below. Suggestion: raise them into the main text here, in your voice."
     old: "Their jobs are usually brutal, the companies subsidized by VC money are putting most of their cost on this marginalized group, and it creates an incentive for the company to preserve the conditions that create an ample, desperate workforce."
     interim: "Who gains from that, and who pays for it? Answer for What You Build takes up the question."
+  - id: human-existence
+    unit: 0 Own Your Role
+    brief: "Say what this sentence must carry for the reader: that the person in the work is why it matters. The cold read found your voice at full volume here, in a main text that's otherwise a notch below, and readers felt you arrive and leave. Suggestion: move it to your margin, beside this paragraph, where your register is the point, and let the main text end on how one mind reaches another. It's an \"I\" sentence of yours, so it left data/pm/own-words.yaml while it waits. For now the site leaves it out."
+    old: "I'm not exaggerating when I tell you it's what the entirety of human existence is about, in one way or another."
+    interim: ""
+  - id: symphony
+    unit: 0 Own Your Role
+    brief: "The paragraph before it already lands the point, that the people you work with aren't resources. A one-line close after it reads as a moral, a habit VOICE.md asks the syllabus to spend sparingly, and the cold read named it among your looser lines. Suggestion: cut it, or move it to your margin. For now the site leaves it out."
+    old: "And if you work together, you'll play a symphony."
+    interim: ""
+  - id: chernobyl
+    unit: 2 See the System
+    brief: "A story's entry says what it is and points to the part that carries the lesson (S10), in the voice of the entries around it. The cold read found \"terrifyingly gripping\" looser than its neighbors. Suggestion: raise it, keeping your three stages and the incentives, as the interim does, or name the episode you'd start with."
+    old: "A terrifyingly gripping narrative of the Chernobyl disaster, split in three main stages: the event, the brilliance and sacrifice needed to solve it, and the investigation after. And through it all, the structural incentives that not only led to the original problem, but informed all that followed."
+    interim: "The disaster in three stages: the explosion, the brilliance and sacrifice it took to contain it, and the investigation after. Through all three run the structural incentives that caused it and shaped everything that followed."
+  - id: brand-trust
+    unit: 5 Design for Change
+    brief: "A \"Why trust it\" now opens with its kind of evidence (S17) and says only what's particular to the source. The cold read found \"whose message has resonated for decades at this point\" looser than the lines around it, and it says more about the idea's reach than about why to trust the chapter. Suggestion: raise it, as the interim does."
+    old: "It's Brand's own, a chapter from his book whose message has resonated for decades at this point, refined through constructive feedback along the way."
+    interim: "It's Brand's own, a lightly edited chapter of his 1999 book, refined since through feedback."
+  - id: scott-trust
+    unit: 5 Design for Change
+    brief: "The cold read found \"an industry classic for a reason\" read as your full-path bar showing through, and Scott's isn't an industry book. Your closing clause, that even the smartest and wisest keep assuming a predictable world, is a view of your own, and a strong one. Suggestion: cut \"an industry classic,\" and move the closing clause to your margin beside the entry, where you can say it in your voice."
+    old: "This is an industry classic for a reason. Scott was a political scientist and anthropologist at Yale. He builds his case from real schemes, from a planned capital city to collectivized farms, showing how in complex dynamics even the smartest and wisest continue to assume an overly predictable world."
+    interim: "Scott was a political scientist and anthropologist at Yale, and he builds his case from real schemes, from a planned capital city to collectivized farms."
+  - id: oceans-eleven
+    unit: 8 Decide and Set Direction
+    brief: "Your model entry (VOICE.md). The cold read found \"get the money and the girl\" the line most likely to make a reader wince in a course that asks who's overlooked, since it makes Tess the prize, and named \"competence porn\" with it. Suggestion: raise the first, keeping the spoiler joke if you like and saying Danny's second aim another way, and move \"competence porn\" to your margin beside the entry, where a crude aside is the point. For now the site stops before the spoiler, and What you'll get opens on the specialists."
+    old: "Because everyone knows the bigger picture, everyone can confidently adapt on the fly to (spoiler alert for a decades-old movie) get the money and the girl. [What you'll get:] To put it crudely, competence porn."
+    interim: "Because everyone knows the bigger picture, everyone can confidently adapt on the fly when the job goes wrong."
+  - id: eye-doctor
+    unit: 9 Answer for What You Build
+    brief: "The image needs the eye exam's \"Better, one or two?\" to land: the cold read's early-career reader had to work it out. Suggestion: raise it, as the interim does, or put the moment in your own words."
+    old: "like getting fitted for a prescription at the eye doctor"
+    interim: "like an eye exam's \"Better, one or two?\" asked again and again"
+  - id: own-line
+    unit: 9 Answer for What You Build
+    brief: "The cold read found this disclaimer at odds with what surrounds it: the cases, and your margin note beside \"So ask two things,\" take clear positions. Either own the stance, in your voice, or drop the disclaimer. Suggestion: drop it, and keep \"find your own line,\" as the interim does. It's an \"I\" sentence of yours, so it left data/pm/own-words.yaml while it waits."
+    old: "I will not tell you here what's right or wrong per se. That's for you to work out, and to find your own line."
+    interim: "Where your own line falls is for you to work out."
+  - id: own-way
+    unit: 11 Bring People With You
+    brief: "This sentence does two jobs. It says practitioners, not research, back the two kinds of update, which you agreed on 22 November, and it says what follows is your own way of thinking, the one \"I\" in a paragraph of advice. Suggestion: keep the first job in the main text, as the interim does, and move \"my own way of thinking about it\" to your margin. It left data/pm/own-words.yaml while it waits."
+    old: "Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places."
+    interim: "That advice comes from practitioners, not research, and you'll find much the same in many places."
+  - id: cadence
+    unit: 11 Bring People With You
+    brief: "Say what the reader should do: pick a rhythm, say what has happened and what comes next, and why the people inside the company want it. The cold read found this paragraph reading as a draft, and both outside readers asked who \"I\" is in a module that otherwise says \"you.\" Your own practice, your teams' sprints, is worth keeping as yours. Suggestion: raise the paragraph, as the interim does, and move your sprint sentence to your margin, where your note beside this paragraph already sits. Your \"I\" sentence left data/pm/own-words.yaml while it waits."
+    old: "Many businesses operate off of a business work week or month, though I try to anchor my communications to the sprint schedule of my teams. Whatever rhythm you pick, say what has happened and what will happen next. People inside it, like your peers and your management chain especially, want to be brought along, both to learn and to avoid surprises."
+    interim: "Many teams use the work week or the month, and a team's sprints make a rhythm too. Whatever you pick, say what has happened and what will happen next. The people inside your company, your peers and your management chain above all, want to be brought along, both to learn and to avoid surprises."
 
 moved:
   - what: moved
@@ -64,3 +114,27 @@ moved:
     to: nowhere
     why: Design and Reality takes its place, as you picked (card v1-map).
     when: 22 November 2026
+  - what: changed
+    words: "Meadows was a systems scientist and lead author of The Limits to Growth (1972). The ranking is her own judgment from experience, and she calls it tentative herself."
+    from: "See the System, the short path, Meadows's \"Leverage Points,\" Why trust it, as you reworded it"
+    to: "The same place, now \"Experience. Meadows was a systems scientist and lead author of The Limits to Growth (1972). The ranking is her own judgment, and she calls it tentative herself.\""
+    why: "Every \"Why trust it\" now opens with its kind of evidence (S17, your card evidence-tags), so \"from experience\" went to the tag."
+    when: 23 November 2026
+  - what: changed
+    words: "Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California. These are the collected insights of that experience."
+    from: "Mind the Seams, the full path, Maier and Rechtin, Why trust it, as you reworded it"
+    to: "The same place, now \"Experience. Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California, and the book collects what that work taught.\""
+    why: "The tag now says experience (S17), so the last sentence would have said it twice."
+    when: 23 November 2026
+  - what: changed
+    words: "Ousterhout taught a software design course at Stanford, and the book grew out of it. It's one designer's view, argued from experience, and another industry classic."
+    from: "Design for Change, the full path, Ousterhout, Why trust it, as you reworded it"
+    to: "The same place, now \"An argument. Ousterhout taught a software design course at Stanford, and the book grew out of it, so it's one designer's view, made from experience.\""
+    why: "The tag opens it now (S17), and the cold read found \"industry classic\" read as your full-path bar showing through. Scott's line is a voice slot."
+    when: 23 November 2026
+  - what: changed
+    words: "Your \"Why trust it\" lines for Cook's \"How Complex Systems Fail,\" Thinking in Systems and Team Topologies, as you reworded them."
+    from: "See the System and Mind the Seams, their short and full paths"
+    to: "The same places, each now opening with its tag, \"Experience.\", and otherwise word for word."
+    why: "Every \"Why trust it\" opens with its kind of evidence (S17, your card evidence-tags)."
+    when: 23 November 2026

@@ -71,7 +71,7 @@ run_bg "the scratch drawn in one ink for light and dark" H2 "sed -i '/^  :root {
 run_bg "the hand-written correction pushing the words beside it apart" H2 "sed -i 's/ contain: inline-size;//' assets/css/base.css"
 run_bg "the hand-written correction written level" H2 "sed -i 's/transform: rotate(-4deg);/transform: none;/' assets/css/base.css"
 run_bg "the hand-written correction running past the end of its line" H2 "sed -i 's/if (over > 0) ins.style.translate/if (false) ins.style.translate/' assets/js/pm.js"
-run_bg "a retired setting back in an example" S5 "sed -i 's/a tweak to checkout/a change to a contact frequency rule/' content/pm/find-the-constraint.md"
+run_bg "a retired setting back in an example" S5 "sed -i 's/a tweak to sign-up/a change to a contact frequency rule/' content/pm/find-the-constraint.md"
 run_bg "a source linked from Substack" S9 "printf '\n- [A newsletter post](https://example.substack.com/p/a-post), 5 minutes.\n' >> content/pm/notice-when-you-are-wrong.md"
 run_bg "two stories on one full path" S10 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: A Film About Change\n    by: Someone\n    where: A film.\n    only: The lesson again, on screen.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e, 1))\""
 run_bg "a full path with no story" S10 "sed -i '/^  - title: Ocean.s Eleven\$/,/^    only: /d' content/pm/decide-and-set-direction.md"
@@ -101,7 +101,7 @@ run_bg "link easing ignores reduced motion" D5 "sed -i '/@media (prefers-reduced
 wait
 
 # Joe's editing pass of 21 November 2026: his own sentences, simpler source entries, rounded times, notes beside a paragraph
-run_bg "the owner's own sentence reworded" E3 "sed -i \"s/I'm not exaggerating when I tell you/I'm not joking when I say/\" content/pm/own-your-role.md"
+run_bg "the owner's own sentence reworded" E3 "sed -i \"s/It's the variant I use of/It's the version I use of/\" content/pm/bring-people-with-you.md"
 run_bg "borrow or buy back on a built full path" S13 "sed -i 's/^    where: A book\.$/    where: A book. Borrow it or buy it./' content/pm/see-the-system.md"
 run_bg "a page count on a built full path" S13 "sed -i 's/^    where: A book\.$/    where: A book of about 240 pages./' content/pm/see-the-system.md"
 run_bg "a full-path entry that hides its kind" S12 "sed -i 's/^    where: A journal article\.$/    where: Free online./' content/pm/own-your-role.md"
@@ -111,7 +111,7 @@ run_bg "a note naming words its paragraph lost" M4 "sed -i 's/beside: \"Two vers
 run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"noted\" data-beside=\"%s\">%s%s</div>\` \$id . \$aside)|(printf \`<div class=\"noted\" data-beside=\"%s\">%s%s</div>\` \$id \$aside .)|' layouts/partials/pm/prose-slots.html"
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
 wait
-run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('And if you work together', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nAnd if you work together', 1))\""
+run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('Now with all this said', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nNow with all this said', 1))\""
 run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/design-for-change.md'; s=open(p).read(); open(p, 'w').write(s.replace('Slow isn\\'t the enemy, though.', 'A sentence that runs on to fill the page. ' * 90 + 'Slow isn\\'t the enemy, though.', 1))\""
 run_bg "a module with a game that runs past even a game's allowance" P1 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); open(p, 'w').write(s.replace('Start with what people do, not what they say', 'A sentence that runs on to fill the page. ' * 120 + 'Start with what people do, not what they say', 1))\""
 wait
@@ -167,4 +167,12 @@ run_bg "the waiting game's recorded orders hidden without JavaScript" D1 "echo '
 run_bg "the waiting game animated with reduced motion" D5 "sed -i 's/if (still()) { while (step()) {} return; }//' assets/js/pm.js"
 run_bg "the waiting game playing past a pick left open" A8 "sed -i 's/if (rule === \"stop\" || rule === \"test\") {/if (true) {/' assets/js/pm.js"
 run_bg "the ranking game's trial miscounting the fixed stores among the worst" A8 "sed -i 's/var n_ = worst.filter(function (i) { return i < F; }).length,/var n_ = worst.filter(function (i) { return i < F; }).length + 1,/' assets/js/pm.js"
+wait
+
+# Job 34, the mechanics pass (23 November 2026): one main setting a module (S6), and every source's kind of evidence
+# named first in its "Why trust it" (S17)
+run_bg "a module that names no main setting" S6 "sed -i '/^setting: a fitness app$/d' content/pm/find-the-constraint.md"
+run_bg "one setting leading three modules" S6 "sed -i 's/^setting: a ride-hailing app$/setting: a grocery delivery app/' content/pm/see-the-system.md"
+run_bg "a Why trust it that hides its kind of evidence" S17 "sed -i 's/^    trust: \"Experience. Forte runs/    trust: \"Forte runs/' content/pm/find-the-constraint.md"
+run_bg "the reflexive not a study back in a card" S17 "sed -i 's/on the limits of her own field\./on the limits of her own field, not a study./' content/pm/cards/stocks-flows-feedback.md"
 wait

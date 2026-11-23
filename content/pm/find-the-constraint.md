@@ -3,6 +3,7 @@ title: Find the Constraint
 layout: module
 module: find-the-constraint
 question: Where is the work actually stuck, and are we measuring the right thing?
+setting: a fitness app
 one_thing: Play the dice game below to get the key point, then identify where your team's work waits.
 game: dice
 do_minutes: 35
@@ -33,7 +34,7 @@ steps:
       - text: "108: Identifying the Constraint"
         url: https://fortelabs.com/blog/theory-of-constraints-108-optimizing-the-constraint/
     look: Post 102 shows why keeping everyone busy makes delivery slower. Post 108 shows why a rule or a policy can be the most damaging constraint, and the easiest to change.
-    trust: Forte runs a productivity training firm, so this is a practitioner retelling Goldratt, not Goldratt. You can check it against the novel on the full path.
+    trust: "Experience. Forte runs a productivity training firm, so this is a practitioner retelling Goldratt, not Goldratt. You can check it against the novel on the full path."
     only: It carries the idea from the factory floor into knowledge work, a few minutes at a time.
   - id: card-steps
     kind: card
@@ -52,7 +53,7 @@ check:
   - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Which is it?
     against: see-the-system
     a: Each answers its own question. When something has gone wrong, look for the several causes that lined up. When work is slow, look for the one step that sets its pace, and once you've helped it, look at the whole flow again, since the constraint moves.
-  - q: Your team hits its target for reviews completed per day, yet releases are no faster. Give two explanations from this module.
+  - q: Your fitness app's team hits its target for reviews completed per day, yet new workouts reach users no faster. Give two explanations from this module.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
     a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. Mind the Seams looks at what falls between teams."
@@ -62,14 +63,14 @@ deeper:
     by: Donald Reinertsen
     where: A book.
     note: "Read chapter 2, \"The Economic View,\" on putting a price on delay, then chapter 3, \"Managing Queues,\" and chapter 4, \"Exploiting Variability.\""
-    trust: A consultant's argument, set out as numbered principles drawn from queueing theory and economics, not a study.
+    trust: "An argument. A consultant's, set out as numbered principles drawn from queueing theory and economics."
     only: Why queues are the hidden cost in product work, and why cutting variability, a lesson taken from factories, can cost more than it saves. Watch where he parts with Goldratt.
   - title: "Accelerate: The Science of Lean Software and DevOps"
     by: Nicole Forsgren, Jez Humble and Gene Kim
     url: https://itrevolution.com/wp-content/uploads/2022/06/ACC_excerpt.pdf
     where: A book.
     note: Read chapter 1, "Accelerate," and chapter 2, "Measuring Performance." Both are free in the publisher's excerpt.
-    trust: It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software.
+    trust: "A review of studies. It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software."
     only: "Goodhart's Law in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
@@ -90,7 +91,7 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 
 ## Do
 
-**Map one flow (25 minutes).** Pick one kind of change your team ships again and again: a pricing update, a new report, a tweak to checkout. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Then ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
+**Map one flow (25 minutes).** Pick one kind of change your team ships again and again. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Outside the 25 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
 
 **For your decision log.** Name your candidate constraint and what you expect delivery to do if it gets help. Say how sure you are, and when you'll find out.
 

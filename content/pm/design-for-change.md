@@ -3,6 +3,7 @@ title: Design for Change
 layout: module
 module: design-for-change
 question: What will change, how fast, and what should be easy to change?
+setting: a school's learning platform
 one_thing: Before your next request is estimated, write down the slowest layer you think it touches.
 do_minutes: 35
 
@@ -22,7 +23,7 @@ steps:
       - text: "Pace Layering: How Complex Systems Learn and Keep Learning"
         url: https://longnow.org/ideas/pace-layers/
     look: "Two points: slow layers control fast ones, and a layer forced to another's pace ends badly, whichever way the push goes. One of his examples is the Soviet Union forcing a five-year-plan pace on commerce and art."
-    trust: It's Brand's own, a chapter from his book whose message has resonated for decades at this point, refined through constructive feedback along the way.
+    trust: "An argument. {{< pm/voice \"brand-trust\" >}}"
     only: Why each layer needs its own pace, from the person who drew the layers.
   - id: card-coupling
     kind: card
@@ -43,13 +44,13 @@ steps:
       - text: "Reporting Database"
         url: https://martinfowler.com/bliki/ReportingDatabase.html
     look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
-    trust: "He's a software developer who's written about design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
+    trust: "Experience. He's a software developer who's written about design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
 
 check:
   - q: Letting a student join two classes at once looks small on screen. Why might it take a quarter?
     a: The slowest layer it touches sets the cost. If it reaches into the data model, a core system or a contract, it moves at that layer's pace.
-  - q: An engineer says search and the inventory system are tightly coupled. What do you ask?
+  - q: An engineer says the gradebook and the course calendar are tightly coupled. What do you ask?
     a: For which change? Parts are coupled only with respect to a particular change, so name the one you expect and ask whether it would make both move.
   - q: Know Who It's For put a price on every week of waiting. This module asks you to spend weeks making likely changes cheap. When does each win?
     against: know-who-its-for
@@ -62,25 +63,25 @@ deeper:
     by: Martin Kleppmann and Chris Riccomini
     where: A book.
     note: "Read chapter 1, especially \"Operational Versus Analytical Systems\" and \"Systems of Record and Derived Data,\" then chapters 11 and 12, on batch and stream processing."
-    trust: Kleppmann built large-scale data infrastructure at LinkedIn before he became a professor at Cambridge.
+    trust: "Experience. Kleppmann built large-scale data infrastructure at LinkedIn before he became a professor at Cambridge."
     only: The whole picture of where data lives and how it moves, and what each choice trades away.
   - title: Seeing Like a State
     by: James C. Scott
     where: A book.
     note: "Read the introduction, then chapter 1, \"Nature and Space,\" on the scientific forestry of eighteenth-century Prussia and Saxony, and chapter 10, \"Conclusion.\" It's dense in places, so take your time as needed."
-    trust: This is an industry classic for a reason. Scott was a political scientist and anthropologist at Yale. He builds his case from real schemes, from a planned capital city to collectivized farms, showing how in complex dynamics even the smartest and wisest continue to assume an overly predictable world.
+    trust: "An argument. {{< pm/voice \"scott-trust\" >}}"
     only: "Why planners sure of one future build what can't change, and four rules for doing better that are applicable to our own work: \"Take small steps.\" \"Favor reversibility.\" \"Plan on surprises.\" \"Plan on human inventiveness.\""
   - title: A Philosophy of Software Design
     by: John Ousterhout
     where: A book.
     note: Read it whole. Chapters 2 and 3, on complexity and on tactical against strategic work, are the heart of it for this module.
-    trust: Ousterhout taught a software design course at Stanford, and the book grew out of it. It's one designer's view, argued from experience, and another industry classic.
+    trust: "An argument. Ousterhout taught a software design course at Stanford, and the book grew out of it, so it's one designer's view, made from experience."
     only: The three symptoms of complexity in full, and the difference between tactical work, which gets this feature out, and strategic work, which keeps the next one cheap. That difference is the case you can make for engineering time.
   - title: On the Criteria To Be Used in Decomposing Systems into Modules
     by: David Parnas (Communications of the ACM, 1972)
     where: A journal article.
     note: It's short and dense, so read it slowly. The argument is in his comparison of two ways to split the same program, and you can skim the technical detail.
-    trust: It's the classic case for information hiding, keeping each decision likely to change inside one module. He argues it from a single worked example.
+    trust: "An argument. It's the classic case for information hiding, keeping each decision likely to change inside one module, made from a single worked example."
     only: Why a system's boundaries go around the decisions likely to change. Engineers can draw them only as well as they know what's coming, and often you're the one who knows.
   - title: Yes Minister
     by: written by Antony Jay and Jonathan Lynn (BBC, 1980)
@@ -93,7 +94,7 @@ deeper:
 
 Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap. Mind the Seams asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
 
-Slow isn't the enemy, though. A payments ledger moves slowly on purpose, because every balance depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Some slow layers aren't yours. Your customers' phones change at their own pace, so retiring an old app version saves your team the upkeep and hands the bill to people who can't update, often those on the oldest or cheapest phones.
+Slow isn't the enemy, though. A school's record of grades moves slowly on purpose, because every transcript depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Some slow layers aren't yours. Students' phones change at their own pace, so retiring an old app version saves your team the upkeep and hands the bill to students who can't update, often those on the oldest or cheapest phones.
 
 Data is often the slowest layer of all, because so much reads it, and the data a feature creates outlives the feature. Its shape follows the questions people will ask of it: each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because they come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds. And when two reports disagree, there's usually a copy behind it: reports, caches and other teams read copies of the {{< pm/term "system-of-record" "system of record" >}}, each for its own {{< pm/term "operational-analytical" "operational or analytical" >}} use, and every copy is one more place a change has to reach.
 
@@ -107,7 +108,7 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 
 **For your decision log.** Write how long you expect the next request that touches your slowest layer to take, and how sure you are. You'll know when it ships.
 
-**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as a second currency at checkout, and trace the parts it would touch. Then ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
+**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace the parts it would touch. Outside the 10 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 
 ## Questions to bring to engineers
 

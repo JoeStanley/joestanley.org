@@ -11,7 +11,7 @@ deeper:
   by: Dennis Thompson (2017)
   url: https://dash.harvard.edu/server/api/core/bitstreams/7312037e-b8fa-6bd4-e053-0100007fdf3b/content
   where: A book chapter. Free at dash.harvard.edu, as a preprint.
-  trust: "It's Thompson's own return to the idea he named, in *Designing in Ethics* (Cambridge University Press, 2017)."
+  trust: "An argument. It's Thompson's own return to the idea he named, in *Designing in Ethics* (Cambridge University Press, 2017)."
   only: A worked argument for why you stay responsible inside an organization, and which structures help.
 ---
 
