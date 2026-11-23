@@ -88,6 +88,10 @@ run_bg "a module with no source" X1 "sed -i '/^  page: decide-and-set-direction$
 run_bg "a draft left behind after its module is built" X1 "mkdir -p drafts/pm; cp content/pm/see-the-system.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
 run_bg "the tab drops what to look for" X2 "sed -i 's/paras += look(b) + reasons(b) + note_of(li)/paras += reasons(b) + note_of(li)/' tools-pm/source-doc.py"
 run_bg "a word changed without reaching the working doc" X3 "sed -i 's/Nothing is sent anywhere./Nothing leaves your browser./' content/pm/_index.md"
+run_bg "the ReadMe's tab drops its later sections" X2 "sed -i 's/README_NOTE\] + blocks(art.select_one(\".prose\"))/README_NOTE] + blocks(art.select_one(\".prose\"))[:5]/' tools-pm/source-doc.py"
+run_bg "the ReadMe's tab runs its lines together" X2 "sed -i 's/br.replace_with(BREAK)/br.replace_with(\" \")/' tools-pm/source-doc.py"
+run_bg "the ReadMe's tab before About" X2 "sed -i 's/out = \[(\"About\", about_tab(mods, synced or today())), (README_TAB, readme_tab(site)),/out = [(README_TAB, readme_tab(site)), (\"About\", about_tab(mods, synced or today())),/' tools-pm/source-doc.py"
+run_bg "a word of the ReadMe changed without reaching the working doc" X3 "sed -i 's/and avoiding exercise./and avoiding the gym./' content/page/readme.md"
 # X4: a voice slot on Start, placed as a paragraph of its own, added first in the list whatever slots are open. The
 # mutations below each place it, then break one thing.
 SLOT="sed -i 's/^slots:.*$/slots:\\n  - id: t\\n    unit: Start\\n    brief: Say what judgment is, in your own words.\\n    interim: Judgment is what you bring when the map runs out./' data/pm/voice-slots.yaml; printf '\\n{{< pm/voice \\\"t\\\" \\\"paragraph\\\" >}}\\n' >> content/pm/_index.md"

@@ -2262,6 +2262,23 @@ def source_checks(out_dir):
             fail("X2", f"{name}: the page says \"{w}\" and the tab does not")
         if len(missing) > 4:
             fail("X2", f"{name}: and {len(missing) - 4} more passages are on the page and not in the tab")
+    # X2: the ReadMe's tab, after About, holds every word of its page, so the owner can revise it there
+    readme = os.path.join(out_dir, "page", "readme", "index.html")
+    names = [n_ for n_, _ in tabs]
+    if sd.README_TAB not in by_name:
+        fail("X2", "the ReadMe has no tab")
+    elif names.index(sd.README_TAB) != 1 or names[0] != "About":
+        fail("X2", f"the ReadMe's tab is number {names.index(sd.README_TAB) + 1} of the doc's, and it's the second, right after About")
+    if sd.README_TAB in by_name and os.path.exists(readme):
+        art = BeautifulSoup(open(readme, encoding="utf-8").read(), "html.parser").select_one("main article")
+        have = norm(by_name[sd.README_TAB])
+        missing = [str(n_).strip()[:60] for n_ in art.find_all(string=True) if len(norm(str(n_)).split()) >= 2 and norm(str(n_)) not in have]
+        for w in missing[:4]:
+            fail("X2", f"{sd.README_TAB}: the page says \"{w}\" and the tab does not")
+        if len(missing) > 4:
+            fail("X2", f"{sd.README_TAB}: and {len(missing) - 4} more passages are on the page and not in the tab")
+        if len(art.find_all("br")) != by_name[sd.README_TAB].count("\\\n"):
+            fail("X2", f"{sd.README_TAB}: the page breaks {len(art.find_all('br'))} lines inside its paragraphs and the tab {by_name[sd.README_TAB].count(chr(92) + chr(10))}, so the owner wouldn't see its lines as they stand")
     # X3: the doc is in step with the repository
     lock = {t_["name"]: t_ for t_ in lock_all.get("tabs", [])}
     if not lock:
@@ -2284,7 +2301,7 @@ def source_checks(out_dir):
             fail("E3", f"data/pm/own-words.yaml lists a sentence for {o.get('unit')}, which has no tab")
     retired = [l.strip().lower() for l in open(os.path.join(TESTS, "retired-settings.txt"), encoding="utf-8") if l.strip() and not l.startswith("#")]
     for name, text in tabs:
-        if name in ("About", sd.VOICE_TAB):
+        if name in ("About", sd.README_TAB, sd.VOICE_TAB):   # the ReadMe is the owner's own words, not the syllabus's (X2)
             continue
         low = text.lower()
         for phrase in retired:
