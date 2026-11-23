@@ -61,18 +61,18 @@ check:
     a: What it costs to be wrong, and whether you can undo the call. Decide and Set Direction sorts out the decisions worth slowing down for.
 
 deeper:
-  - title: The Tyranny of Metrics
-    by: Jerry Z. Muller
+  - title: Superforecasting
+    by: Philip E. Tetlock and Dan Gardner
     where: A book.
-    note: "Read the introduction, the first two chapters, the case chapter nearest your work (medicine, policing, business and finance), and the last, \"When and How to Use Metrics: A Checklist.\""
-    trust: "An argument. Muller is a historian working from cases. Expect one side of it."
-    only: Thursday's mistake in field after field, what he calls metric fixation, and a checklist for using numbers alongside judgment, not in place of it.
+    note: "Read chapter 1, \"An Optimistic Skeptic,\" and chapter 3, \"Keeping Score,\" then the appendix, \"Ten Commandments for Aspiring Superforecasters.\""
+    trust: "A study. It reports the Good Judgment Project, Tetlock's years-long study of tens of thousands of ordinary people forecasting world events."
+    only: "Your hunch, given a number and scored against what happened: how people whose forecasts were scored got better at them, and why Tetlock calls forecasting \"a skill that can be cultivated.\""
   - title: The Art of Statistics
     by: David Spiegelhalter
     where: A book.
     note: "Read chapter 3, \"Why Are We Looking at Data Anyway? Populations and Measurement,\" then chapter 5, \"Modelling Relationships Using Regression,\" where regression to the mean starts with Galton's heights of fathers and sons, and chapter 9, \"Putting Probability and Statistics Together,\" whose funnel plot of death rates by district shows why small places swing more than large ones."
     trust: "Experience. Spiegelhalter is a Cambridge statistician and a past president of the Royal Statistical Society, writing for readers who don't want equations. Its examples lean on British medicine and public health."
-    only: "The card's ideas at full length: small samples, chance and regression to the mean. Then how to read a number well. It balances a list that's mostly warnings about numbers."
+    only: "The card's ideas at full length: small samples, chance and regression to the mean. Then how to read a number well."
   - title: Data Feminism
     by: Catherine D'Ignazio and Lauren F. Klein
     url: https://doi.org/10.7551/mitpress/11805.001.0001

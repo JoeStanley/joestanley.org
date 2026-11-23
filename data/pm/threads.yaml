@@ -1,0 +1,34 @@
+# The course's two threads, AI and data (spec S22, the owner's picks of 22 November 2026, cards v1-ai and
+# data-compass). Each runs as a line where a module's idea already fits, not as a module of its own. The AI thread is
+# about where non-deterministic logic and machine-learning models belong beside deterministic systems, and how to
+# blend them, not about any one tool or price (the owner's caution). Each entry names a unit by its page under
+# content/pm/ and a few words of its line, exactly as the built page shows them; the check (S22) finds them there.
+# Reword a line and keep these words, or change them here in the same change.
+ai:
+  - unit: know-who-its-for
+    words: where a plain rule should stay in charge
+  - unit: own-your-role
+    words: call their tests evaluations
+  - unit: find-the-constraint
+    words: That goes for a model, too.
+  - unit: change-safely
+    words: decide what the model judges and what stays a plain rule
+  - unit: change-safely
+    words: a model's choices can shape the data it learns from next
+  - unit: change-safely
+    words: Errors + Graceful Failure
+  - unit: change-safely
+    words: AI Engineering
+  - unit: cards/many-hands
+    words: A model passes through many hands, too.
+data:
+  - unit: know-who-its-for
+    words: Your data shows what people did, but not why.
+  - unit: design-for-change
+    words: the data a feature creates outlives the feature
+  - unit: cards/many-hands
+    words: One team gathers its data
+# The Compass gathers the data thread into three questions to carry.
+compass:
+  unit: the-compass
+  questions: what data does this create, who depends on it, and what would it take to change it?

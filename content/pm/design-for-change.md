@@ -62,7 +62,7 @@ deeper:
   - title: Designing Data-Intensive Applications
     by: Martin Kleppmann and Chris Riccomini
     where: A book.
-    note: "Read chapter 1, especially \"Operational Versus Analytical Systems\" and \"Systems of Record and Derived Data,\" then chapters 11 and 12, on batch and stream processing."
+    note: "Read chapter 1, especially \"Operational Versus Analytical Systems,\" with its part on systems of record and derived data, then chapters 11 and 12, on batch and stream processing."
     trust: "Experience. Kleppmann built large-scale data infrastructure at LinkedIn before he became a professor at Cambridge."
     only: The whole picture of where data lives and how it moves, and what each choice trades away.
   - title: Seeing Like a State

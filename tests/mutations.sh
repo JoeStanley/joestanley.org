@@ -81,7 +81,7 @@ run_bg "a pair counted as one thing on a built full path" S11 "python3 -c \"p='c
 run_bg "a short article on a built full path" S12 "python3 -c \"p='content/pm/see-the-system.md'; s=open(p).read(); e='  - title: A Short Post\n    by: Someone\n    where: A blog post, about 5 minutes.\n    trust: A practitioner.\n    only: A summary.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e, 1))\""
 run_bg "Find the Constraint back to one book beside its story" S12 "sed -i '/^  - title: \\\"Accelerate/,/^    only: \\\"Goodhart/d' content/pm/find-the-constraint.md"
 run_bg "an unchecked source on a built page" S7 "printf '\n*To check: nobody has opened this source yet.*\n' >> content/pm/see-the-system.md"
-run_bg "a module that stops talking to the reader" E1 "sed -i 's/The danger while you work on it is/The danger in working on it is/; s/Before you trust a stand-in, ask/Before trusting a stand-in, ask/; s/a stock like the one you drew in See the System/a stock like the one drawn in See the System/' content/pm/find-the-constraint.md"
+run_bg "a module that stops talking to the reader" E1 "sed -i 's/The danger while you work on it is/The danger in working on it is/; s/Before you trust a stand-in, ask/Before trusting a stand-in, ask/; s/a stock like the one you drew in See the System/a stock like the one drawn in See the System/; s/, you get more drafts piled up/, more drafts pile up/' content/pm/find-the-constraint.md"
 run_bg "a module with its contractions spelled out" E2 "sed -i 's/\([Dd]\)on\x27t/\1o not/g; s/isn\x27t/is not/g; s/\([Ii]\)t\x27s/\1t is/g; s/doesn\x27t/does not/g; s/didn\x27t/did not/g; s/won\x27t/will not/g; s/can\x27t/cannot/g; s/you\x27re/you are/g; s/there\x27s/there is/g' content/pm/find-the-constraint.md content/pm/cards/five-focusing-steps.md content/pm/cards/goodharts-law.md layouts/partials/pm/dicegame.html data/pm/dicegame.yaml"
 run_bg "an experience invented for the owner" E3 "printf '\nI learned this the hard way on my second team.\n' >> content/pm/see-the-system.md"
 run_bg "a module with no source" X1 "sed -i '/^  page: decide-and-set-direction$/d' data/pm/modules.yaml"
@@ -151,7 +151,7 @@ run_bg "a card's quoted sentence left uncredited" S16 "sed -i '/<figcaption clas
 run_bg "the header's hour back in digits" S14 "sed -i 's/{{- else if eq \$h 1 }}an hour/{{- else if eq \$h 1 }}1 hour/' layouts/partials/pm/duration.html"
 run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 's/    continues: meadows-1/    continues: card-stocks/' content/pm/see-the-system.md"
 run_bg "a comma back outside a closing quotation mark" T9 "sed -i 's/\"Leverage Points,\" first half/\"Leverage Points\", first half/' content/pm/see-the-system.md"
-run_bg "a period back outside a quoted title in a source's note" T9 "sed -i 's/Backward Design.\\\\\"/Backward Design\\\\\"./' content/pm/own-your-role.md"
+run_bg "a period back outside a quoted title in a source's note" T9 "sed -i 's/Aspiring Superforecasters.\\\\\"/Aspiring Superforecasters\\\\\"./' content/pm/weigh-the-evidence.md"
 run_bg "an em dash in the voice guide, which lives in pm-sources" T3 "mkdir .pm-sources && cp \"\${PM_SOURCES:-\$SRC/../pm-sources}/VOICE.md\" .pm-sources/ && printf '\\nA line \\xe2\\x80\\x94 with an em dash.\\n' >> .pm-sources/VOICE.md"
 run_bg "a Check that doesn't end beyond its module" J1 "sed -i 's/\*\*Beyond this module\.\*\* Once you.ve chosen/Once you have chosen/' content/pm/decide-and-set-direction.md"
 run_bg "a collision with no against" J2 "sed -i '/^    against: see-the-system$/d' content/pm/find-the-constraint.md"
@@ -208,4 +208,9 @@ run_bg "The Compass without a tab" X2 "sed -i 's/    if closing and closing in a
 run_bg "The Compass not on the checks' list" X1 "sed -i 's/ + \\[CLOSING\\]$//' tests/check_site.py"
 run_bg "The Compass's call walked once, the platform gone" S21 "python3 -c \"p='content/pm/the-compass.md'; s=open(p).read(); a=s.index('{{< pm/walk \\\"platform\\\" >}}'); b=s.index('{{< /pm/walk >}}', a) + 16; open(p, 'w').write(s[:a] + s[b:])\""
 run_bg "The Compass's buttons pick nothing" S21 "sed -i 's/w.hidden = w.getAttribute(\"data-walk\") !== id;/w.hidden = false;/' assets/js/pm.js"
+# Job 32, AI and the new readings (23 November 2026): the AI and data threads, in the course's own frames (S22)
+run_bg "Change Safely's model-and-rule line cut" S22 "sed -i '/^That.s harder to say when the output varies/d' content/pm/change-safely.md"
+run_bg "the Many Hands card's model bullet cut" S22 "sed -i '/A model passes through many hands, too/d' content/pm/cards/many-hands.md"
+run_bg "The Compass without the data thread's questions" S22 "sed -i '/^Data ran through the course/d' content/pm/the-compass.md"
+run_bg "the threads' list gone" S22 "rm data/pm/threads.yaml"
 wait

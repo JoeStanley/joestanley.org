@@ -29,10 +29,10 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "3b8a9971af11a5b0390b87c56cb1b8ea1b257376adcccd0644385ecff9034509",
+   "sha256": "0f877ab0c3dd8dbbc257a5cad161ee35a97142ebca2d69da66bc36a4af692f87",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1955
+   "rev": 1956
   },
   {
    "name": "1 Know Who It's For",
@@ -53,42 +53,42 @@
   {
    "name": "3 Find the Constraint",
    "file": "3-find-the-constraint.md",
-   "sha256": "fbf1f9ce4199d1ee4a1d3db0bb312bc3800c9f892e9eb7500a583436f16c32bd",
+   "sha256": "87969aa2726f238bb441695731f013dffceccd7d626fdab1eba7ec487a600ad4",
    "doc_tab": "2a162ad5-e7b3",
    "doc_node": "8b268877-78f7",
-   "rev": 88
+   "rev": 89
   },
   {
    "name": "4 Mind the Seams",
    "file": "4-mind-the-seams.md",
-   "sha256": "76b74c2009ec3a6393e80aaee9bfc39fbbac0dcce03361b253fd24d92fdca01b",
+   "sha256": "da0cf3838b184eb940be6ef664de54c5beb12f9b0220dcf72b08080aa3363716",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 402
+   "rev": 403
   },
   {
    "name": "5 Design for Change",
    "file": "5-design-for-change.md",
-   "sha256": "dba54d44daae17e1ac7134db4e9dd8e9b5b8e4bf506ea20b31be0396b161746f",
+   "sha256": "d8965c98de711a3d2b1752f7aa783c8ab994edbc77be8160dedebda818c3dadf",
    "doc_tab": "44b87ab3-6013",
    "doc_node": "9f43767b-ca8d",
-   "rev": 394
+   "rev": 395
   },
   {
    "name": "6 Change Safely",
    "file": "6-change-safely.md",
-   "sha256": "b0990c6b637e3856ad68a2ee0f9632d4eb019ad1d337fd579d487dd0018a124b",
+   "sha256": "16cf7561444e36bf5553f696c1064d9de04fb14c2c497a1e365addbacf00288e",
    "doc_tab": "9317d9d1-2129",
    "doc_node": "a29f117c-7f2e",
-   "rev": 62
+   "rev": 64
   },
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "c4aef3b0656070b94765f3abf43733a8cca94339f91c43317989edb64e846a8a",
+   "sha256": "1f2bf7340ce099f786f9bae4438a4bd2cc8c43dcc2df99095e31b7f5596b9af7",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 49
+   "rev": 55
   },
   {
    "name": "8 Decide and Set Direction",
@@ -101,10 +101,10 @@
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "54415730140b7526428bf4b30dd91055a73e7bccabc09fb4d5519a0639503e9a",
+   "sha256": "a28e47b309ac97e6d4e36a905cd975e99bcf08df22e9f837bf7648de2bebe920",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 455
+   "rev": 458
   },
   {
    "name": "10 Notice When You Are Wrong",
@@ -125,10 +125,10 @@
   {
    "name": "The Compass",
    "file": "the-compass.md",
-   "sha256": "c6f8c7cce120616016a7d3ab8f5bae17caf77056d667c33afb3965c304e5c867",
+   "sha256": "e3b2c1946c4c53490752b18a6f5e58acd36c9b1ca27e6ab96d52a19dfffade9d",
    "doc_tab": "68f6f34d-b06c",
    "doc_node": "347f5a8a-09fe",
-   "rev": 1
+   "rev": 2
   },
   {
    "name": "Glossary",

@@ -51,12 +51,14 @@ Last, decide who hears it, and when (Bring People With You): each calling team, 
 
 ## Do
 
-**Review your decision log (20 minutes).** Notice When You Are Wrong had you mark each call right or wrong. Now read them all back, from Know Who It's For on. For each one, write what you predicted, how sure you were, and what happened. Mark the ones you can't judge yet, and look again in a month. Where were you sure and wrong? Where were you right for a reason that turned out not to matter? For each miss, find the module whose question would have changed the call, and write that question beside it.
+**Review your decision log (20 minutes).** Notice When You Are Wrong had you mark each call right or wrong. Now read them all back, from Know Who It's For on. For each one, write what you predicted, how sure you were, and what happened. This time, judge each call by what you knew when you made it, not by how it turned out: a good call can end badly, and poker players have a word for mixing up the two, "resulting" (Annie Duke, [*Thinking in Bets*](https://www.penguinrandomhouse.com/books/552885/thinking-in-bets-by-annie-duke/9780735216372/excerpt), chapter 1). Philip Tetlock, who studies forecasting, puts the next step in a line: ["make explicit probability judgments, score them against reality."](https://www.edge.org/conversation/philip_tetlock-how-to-win-at-forecasting) Of five calls you were 80 percent sure of, about four should have held. Mark the ones you can't judge yet, and look again in a month. Where were you sure and wrong? Where were you right for a reason that turned out not to matter? For each miss, find the module whose question would have changed the call, and write that question beside it.
 
 **Walk one call of your own (10 minutes).** Walk a call in front of you now, the way the call above was walked. Which questions does it need, and where do two of them collide? Log it, with what you expect.
 
 ## Where to go from here
 
 Come back to a module when its question keeps coming up in your work, and take its full path then.
+
+Data ran through the course well beyond Weigh the Evidence. It shows what people did but not why (Know Who It's For), it outlives the feature that made it (Design for Change), and a model learns from data someone else gathered (the Many Hands card). So carry three questions to any call that touches it: what data does this create, who depends on it, and what would it take to change it?
 
 One judgment came back under several names: where to draw the line. Rule Zero drew it around your own job. See the System drew it around a system, and asked whose costs fall outside it. Mind the Seams drew it between teams and between the categories people are sorted into, and Design for Change around what's likely to change. Wherever you draw a line, ask what it leaves out.
