@@ -482,6 +482,38 @@ def license_checks(out_dir):
             fail("L1", f"{rel}: the syllabus page does not link its license")
 
 
+def start_checks(out_dir):
+    """S19: Start invites the reader to write to the owner, in a paragraph after How it works, its link's text
+    the address itself, so a reader whose browser opens no mail app can still copy it."""
+    from bs4 import BeautifulSoup
+    checked("S19")
+    links = (yaml.safe_load(open(os.path.join(ROOT, "hugo.yaml"))).get("params") or {}).get("links") or []
+    mail = next((str(l["url"]) for l in links if str(l.get("url", "")).startswith("mailto:")), "")
+    if not mail:
+        fail("S19", "hugo.yaml's footer links no email address, so Start has none to give")
+        return
+    addr = mail[len("mailto:"):]
+    soup = BeautifulSoup(open(os.path.join(out_dir, "pm", "index.html"), encoding="utf-8").read(), "html.parser")
+    intro = soup.select_one('[data-slot="intro"]')
+    how = intro.find("h2", id="how-it-works") if intro else None
+    if not how:
+        fail("S19", "Start has no \"How it works\" for its invitation to follow")
+        return
+    found = intro.find_all("a", href=mail)
+    if not found:
+        fail("S19", f"Start doesn't invite the reader to write: nothing in its opening links {addr}")
+        return
+    if not any(a.get_text(strip=True) == addr for a in found):
+        fail("S19", f"Start links {addr} under other words, so a reader whose browser opens no mail app can't copy it")
+        return
+    a = next(a for a in found if a.get_text(strip=True) == addr)
+    p = a.find_parent("p")
+    if how not in a.find_all_previous("h2"):
+        fail("S19", "Start's invitation to write comes before \"How it works\", not after it")
+    elif not p or p.find_parent("li") or p.parent is not intro:
+        fail("S19", "Start's invitation to write isn't a paragraph of its own after How it works' list")
+
+
 def check_static():
     checked("T1", "T3", "S1", "S2", "S3", "C4", "D4")
     css_dir = os.path.join(ROOT, "assets", "css")
@@ -3005,6 +3037,11 @@ def main():
     tokens = check_static()
     if run_for("L1"):
         license_checks(out_dir)
+    if run_for("S19"):
+        try:
+            start_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("S19", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S15", "S16"):
         try:
             kind_checks(out_dir)

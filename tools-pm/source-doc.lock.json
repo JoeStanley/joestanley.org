@@ -21,10 +21,10 @@
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "38335672bfc9d1b865db60c8c4cef869e4b60adc10d9a090afe7f74eb5eae8b3",
+   "sha256": "ea894f9d51734e286878f632dab337f35aad6fa1926b3e2376908319386cedea",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 214
+   "rev": 213
   },
   {
    "name": "0 Own Your Role",
@@ -101,10 +101,10 @@
   {
    "name": "9 Answer for What You Build",
    "file": "9-answer-for-what-you-build.md",
-   "sha256": "54415730140b7526428bf4b30dd91055a73e7bccabc09fb4d5519a0639503e9a",
+   "sha256": "de7b9c671f07e773b03a5407aee70b236bc8ea884c9cb442b1c7478e6db01dcf",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 455
+   "rev": 450
   },
   {
    "name": "10 Notice When You Are Wrong",
@@ -125,18 +125,18 @@
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "4c39315475730aa0ae8de3a5e0f343ee105f72986681e048bcc65529ea2a7dac",
+   "sha256": "905748b3880faaafaa56407650db8c8580566c729c7dc2b73174eca6860c9fbf",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 13
+   "rev": 12
   },
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "5d4f46a084053dcd0b4d9bc339b7607702bdb20d6a4b1cddce6a5e1707bc5448",
+   "sha256": "9e8f1f5c76260c8b1938bd676cb52d2caf65c2a18a843a562c8121b18e97a220",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 7
+   "rev": 6
   }
  ]
 }
