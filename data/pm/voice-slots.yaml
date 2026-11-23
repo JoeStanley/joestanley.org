@@ -63,7 +63,7 @@ slots:
     interim: "like an eye exam's \"Better, one or two?\" asked again and again"
   - id: own-line
     unit: 9 Answer for What You Build
-    brief: "The cold read found this disclaimer at odds with what surrounds it: the cases, and your margin note beside \"So ask two things,\" take clear positions. Either own the stance, in your voice, or drop the disclaimer. Suggestion: drop it, and keep \"find your own line,\" as the interim does. It's an \"I\" sentence of yours, so it left data/pm/own-words.yaml while it waits."
+    brief: "The cold read found this disclaimer at odds with what surrounds it: the cases, and your margin note beside the paragraph on the pull from inside, take clear positions. Either own the stance, in your voice, or drop the disclaimer. Suggestion: drop it, and keep \"find your own line,\" as the interim does. It's an \"I\" sentence of yours, so it left data/pm/own-words.yaml while it waits."
     old: "I will not tell you here what's right or wrong per se. That's for you to work out, and to find your own line."
     interim: "Where your own line falls is for you to work out."
   - id: own-way
@@ -143,4 +143,10 @@ moved:
     from: "Mind the Seams, the Conway's Law card, Go deeper, The Mirroring Hypothesis, Why trust it, as you reworded it"
     to: "the same place, which now reads: A review of studies. It's peer-reviewed, and it analyzes more than a hundred"
     why: "Every \"Why trust it\" opens with its kind of evidence (S17), so \"studies\" went to the tag."
+    when: 23 November 2026
+  - what: moved
+    words: "And know, no matter how replaceable you may feel, that's not a justification for doing the unethical thing. In tech especially, this is also where the value of organized labor shows."
+    from: "Answer for What You Build, Why this matters, your margin note beside \"So ask two things\""
+    to: "the same section, word for word, beside the new paragraph on the pull from inside, \"The hardest place to hold fast may be inside,\" which now follows \"hold fast\""
+    why: "The new paragraph, your direction of 23 November, is about the same justification, so your note now sits beside it."
     when: 23 November 2026

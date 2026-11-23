@@ -5,7 +5,7 @@ module: answer-for-what-you-build
 question: Who benefits and who is harmed by what we build, and what's our share of the responsibility?
 setting: a video-sharing app
 one_thing: Run a consequence scan on one feature you own, and write down one change you'd propose.
-do_minutes: 35
+do_minutes: 40
 
 last_time:
   - q: Your team still sends a weekly report nobody seems to read. Before you stop it, what do you find out?
@@ -41,6 +41,22 @@ steps:
     card: cards/many-hands
     minutes: 5
     look: The phrases people reach for to feel less responsible.
+  - id: card-mission-excuse
+    kind: card
+    card: cards/mission-excuse
+    minutes: 5
+    look: The signs that a mission has started to excuse its costs, and the question to carry.
+  - id: cheung
+    kind: read
+    title: 'Erika Cheung, "Theranos, whistleblowing and speaking truth to power"'
+    minutes: 20
+    where: A talk, with a transcript. Free at ted.com.
+    links:
+      - text: "Theranos, whistleblowing and speaking truth to power"
+        url: https://www.ted.com/talks/erika_cheung_theranos_whistleblowing_and_speaking_truth_to_power/transcript?language=en
+    look: "What she's told when she raises her doubts, and the question she asks after: what happens when \"the vision is so compelling and the desire to believe is so strong that it starts to cloud your judgment about what reality is?\""
+    trust: "Experience. Cheung joined Theranos's lab as an entry-level associate, a recent graduate, and raised her concerns inside. It's her side of it, told years later."
+    only: What the pull feels like from inside, told by someone who met it early in her career.
   - id: schneier
     kind: read
     title: 'Bruce Schneier, "Data Is a Toxic Asset, So Why Not Throw It Out?"'
@@ -72,6 +88,8 @@ check:
     a: "See the System, when you ask why it happened and how to stop it: change the targets. This module, when you're the one asked to hit them: a target explains a choice, but it doesn't make it for you."
   - q: A teammate wants a new sign-up field "in case we need it." What do you ask?
     a: Which decision will it change? If none does yet, leave it out. Every field you keep is something to secure, and something to find when a customer asks you to erase it.
+  - q: Your CEO calls the new feed the company's future. To make the launch date, your lead asks you to leave one failing test out of the launch review, just this once. It's the test that checks adults can't message teenagers they don't know. Everyone else is excited. What do you do?
+    a: "Keep the test in the review, marked as failing, so whoever decides to ship anyway puts their name on it, as the Many Hands card asks. Tell your lead what you see: a big goal making a real risk look small. If the room won't hear it, take it to someone outside it, such as your trust and safety or legal team. Being the only one with doubts doesn't make you wrong."
   - q: "**Beyond this module.** Your own line is yours to draw. Which line isn't?"
     a: The one the law draws. Ask your legal or privacy team which rules your product has to meet. Your own line sits beyond them.
 
@@ -101,6 +119,12 @@ deeper:
     where: A journal article.
     trust: "Experience. Gioia was Ford's recall coordinator in the early 1970s, and he writes about his own part in the Pinto case."
     only: A first-person account of how an ethical question never came up, because it wasn't part of how he understood the job.
+  - title: More Everything Forever
+    by: Adam Becker
+    where: A book.
+    note: Read the introduction, then the chapter on effective altruism and longtermism.
+    trust: "An argument. Becker is a science journalist with a doctorate in astrophysics, and he tests Silicon Valley's grand visions against the science they lean on. He writes as a critic, so read it as the case against."
+    only: "AI, Mars, living forever and effective altruism in one book, and his summary of where longtermism leads: \"For a strong longtermist, investing in a Silicon Valley AI company is a more worthwhile humanitarian endeavor than saving lives in the tropics.\""
   - title: The Good Place
     by: created by Michael Schur (NBC)
     where: A TV series.
@@ -109,6 +133,8 @@ deeper:
 ---
 
 ## Why this matters
+
+This module runs longer than the others, on purpose. It ties together threads you've met in earlier modules, and it still has new ground to cover.
 
 What you build reaches people you'll never meet. On a video-sharing app, small rules decide which video plays next, who can send a teenager a message, and what counts as a view.
 
@@ -119,6 +145,8 @@ You've met parts of this question already. Know Who It's For asked whose problem
 So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
 
 In life, ethical matters rarely come to you as clear cases of good and bad. Instead, it's a thousand small choices of degree, {{< pm/voice "eye-doctor" >}}. {{< pm/voice "own-line" >}} But wherever you land, hold fast.
+
+The hardest place to hold fast may be inside, in a mission you believe in. Some tech leaders talk about their products the way prophets talk about salvation. Marc Andreessen writes that deaths an AI held back could have prevented are ["a form of murder,"](https://a16z.com/the-techno-optimist-manifesto/) and lists "trust and safety" and "tech ethics" under the heading "The Enemy." Bryan Johnson says of his longevity project, ["Don't Die is a religion."](https://www.npr.org/transcripts/1263527103) Scholars hear older stories in this. Mary-Jane Rubenstein, who studies religion, finds in the billionaires' race to space ["a barely-disguised doomsday prophecy."](https://nextbigideaclub.com/magazine/astrotopia-dangerous-religion-corporate-space-race-bookbite/37624/) The historian Jason Resnikoff hears in today's AI talk an echo of last century's talk of automation, which made its outcomes ["seem natural, even inevitable."](https://www.equaltimes.org/jason-resnikoff-us-labour) On a video app it's quieter: the new feed is the company's future, so the launch can't slip. The pull works because the mission is often real, and that's what makes its costs look small. The Mission Excuse card says how to spot it, and Erika Cheung's talk shows how it feels from inside.
 
 [//]: # (short-path)
 
@@ -131,6 +159,8 @@ In life, ethical matters rarely come to you as clear cases of good and bad. Inst
 3. Which do you want to mitigate? Beside each one, write who'd own the fix.
 
 End with one change you'd propose. Outside the 25 minutes, show it to someone in support or in trust and safety, and ask what you missed.
+
+**Write your lines first (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week.
 
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
 
