@@ -49,13 +49,13 @@ steps:
   - id: cheung
     kind: read
     title: 'Erika Cheung, "Theranos, whistleblowing and speaking truth to power"'
-    minutes: 15
+    minutes: 20
     where: A talk, with a transcript. Free at ted.com.
     links:
       - text: "Theranos, whistleblowing and speaking truth to power"
-        url: CHEUNG_URL
+        url: https://www.ted.com/talks/erika_cheung_theranos_whistleblowing_and_speaking_truth_to_power/transcript?language=en
     look: "When her doubts begin, what she's told when she raises them, and the question she asks after: what happens when \"the vision is so compelling and the desire to believe is so strong that it starts to cloud your judgment about what reality is?\""
-    trust: "Experience. Cheung joined Theranos straight out of college, raised her concerns inside, and was told to do what she was paid to do. It's her own account."
+    trust: "Experience. Cheung joined Theranos's lab as an entry-level associate, a recent graduate, and raised her concerns inside. It's her own account."
     only: What the pull feels like from the inside, for someone early in her career, down to the moment she wonders if she's the crazy one.
   - id: schneier
     kind: read
@@ -119,6 +119,12 @@ deeper:
     where: A journal article.
     trust: "Experience. Gioia was Ford's recall coordinator in the early 1970s, and he writes about his own part in the Pinto case."
     only: A first-person account of how an ethical question never came up, because it wasn't part of how he understood the job.
+  - title: More Everything Forever
+    by: Adam Becker
+    where: A book.
+    note: Read the introduction, then the chapter on effective altruism and longtermism.
+    trust: "An argument. Becker is a science journalist with a doctorate in astrophysics, and he tests Silicon Valley's grand visions against the science they lean on. Reviewers praise it and find it relentless: not every technologist is as blinkered as he sometimes suggests."
+    only: "AI, Mars, living forever and effective altruism in one book, and the arithmetic that sends money to the future's elite before today's poor: \"For a strong longtermist, investing in a Silicon Valley AI company is a more worthwhile humanitarian endeavor than saving lives in the tropics.\""
   - title: The Good Place
     by: created by Michael Schur (NBC)
     where: A TV series.
@@ -138,7 +144,7 @@ You've met parts of this question already. Know Who It's For asked whose problem
 
 So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
 
-The hardest pressure may come from inside, from a mission you believe in. Tech leaders often talk about their products the way prophets talk about salvation. Marc Andreessen calls AI that's held back ["a form of murder,"](ANDREESSEN_URL) and names "tech ethics" and "trust and safety" among his enemies. Bryan Johnson says of his longevity project, ["Don't Die is a religion."](JOHNSON_URL) Mary-Jane Rubenstein, a scholar of religion, hears in the billionaires' race to space ["a barely-disguised doomsday prophecy."](RUBENSTEIN_URL) The historian Jason Resnikoff hears last century's talk of automation, which made its outcomes ["seem natural, even inevitable."](RESNIKOFF_URL) A story that big makes any cost in its way look small, and any doubt look like disloyalty. The Mission Excuse card says how to spot it, and Erika Cheung's talk shows how it feels from inside.
+The hardest pressure may come from inside, from a mission you believe in. Tech leaders often talk about their products the way prophets talk about salvation. Marc Andreessen calls AI that's held back ["a form of murder,"](https://a16z.com/the-techno-optimist-manifesto/) and lists "trust and safety" and "tech ethics" under the heading "The Enemy." Bryan Johnson says of his longevity project, ["Don't Die is a religion."](https://www.npr.org/transcripts/1263527103) Mary-Jane Rubenstein, a scholar of religion, hears in the billionaires' race to space ["a barely-disguised doomsday prophecy."](https://nextbigideaclub.com/magazine/astrotopia-dangerous-religion-corporate-space-race-bookbite/37624/) The historian Jason Resnikoff hears last century's talk of automation, which made its outcomes ["seem natural, even inevitable."](https://www.equaltimes.org/jason-resnikoff-us-labour) A story that big makes any cost in its way look small, and any doubt look like disloyalty. The Mission Excuse card says how to spot it, and Erika Cheung's talk shows how it feels from inside.
 
 In life, ethical matters rarely come to you as clear cases of good and bad. Instead, it's a thousand small choices of degree, {{< pm/voice "eye-doctor" >}}. {{< pm/voice "own-line" >}} But wherever you land, hold fast.
 

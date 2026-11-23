@@ -35,10 +35,16 @@ step-reichheld-markey: ""
 # Short path, step 3: Many Hands
 step-card-many-hands: ""
 
-# Short path, step 4: Bruce Schneier, “Data Is a Toxic Asset, So Why Not Throw It Out?”
+# Short path, step 4: The Mission Excuse
+step-card-mission-excuse: ""
+
+# Short path, step 5: Erika Cheung, “Theranos, whistleblowing and speaking truth to power”
+step-cheung: ""
+
+# Short path, step 6: Bruce Schneier, “Data Is a Toxic Asset, So Why Not Throw It Out?”
 step-schneier: ""
 
-# Short path, step 5: GOV.UK Service Manual, “Making your service more inclusive”
+# Short path, step 7: GOV.UK Service Manual, “Making your service more inclusive”
 step-inclusive: ""
 
 # Do
@@ -61,6 +67,9 @@ deeper-your-face-belongs-to-us: ""
 
 # Full path: Pinto Fires and Personal Ethics: A Script Analysis of Missed Opportunities, Dennis Gioia (Journal of Business Ethics, 1992)
 deeper-pinto-fires-and-personal-ethics-a-script-analysis-of-missed-opportunities: ""
+
+# Full path: More Everything Forever, Adam Becker
+deeper-more-everything-forever: ""
 
 # Full path: The Good Place, created by Michael Schur (NBC)
 deeper-the-good-place: "If you must, this is the shtick in one episode, but I strongly encourage you to watch the whole thing from start to finish. Great cast, great premise, great message. Doesn't overstay its welcome."
