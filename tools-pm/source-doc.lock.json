@@ -1,14 +1,14 @@
 {
  "doc": "https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ",
- "synced": "22 November 2026",
+ "synced": "23 November 2026",
  "tabs": [
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "96ae5e0206729f6e23cb05577c9020cd5a03b511aa62f816d6583a328c9933e4",
+   "sha256": "1ff9c28540d92dac7fa0a20d9026b2213eedebb39b1664aeb8554610926d5bfd",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 46
+   "rev": 47
   },
   {
    "name": "Start",
@@ -29,10 +29,10 @@
   {
    "name": "1 Know Who It's For",
    "file": "1-know-who-it-s-for.md",
-   "sha256": "cf356f6d6c4ae6de3b64d50900ec8542fceb684e38808ff6975078a574b34508",
+   "sha256": "84243788027eb2bc87a665d98b75d10d4631acb89a5c11ea0b2dc813152dc014",
    "doc_tab": "81ce484c-5d49",
    "doc_node": "12526a95-0a50",
-   "rev": 4
+   "rev": 6
   },
   {
    "name": "2 See the System",
@@ -77,10 +77,10 @@
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "459e8b73e3ff98aa8ecb13781f6b1accfe0211fcef1a52b082e1a75a51850665",
+   "sha256": "78fe08a4a1c7f1a47855dc7363b82ea156b24f4297cb8095bae6fed8b91d79a6",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 33
+   "rev": 38
   },
   {
    "name": "8 Decide and Set Direction",
