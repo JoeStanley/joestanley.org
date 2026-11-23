@@ -181,4 +181,9 @@ run_bg "the preview leaves ids as they were, so two pages' ids meet" X5 "sed -i 
 run_bg "the preview ignores a dark theme picked in claude.ai" X5 "sed -i 's/{{{explicit}}}/{{}}/' tools/preview.py"
 run_bg "the preview shows each page with the other page's stylesheet" X5 "sed -i 's/? \"all\" : \"not all\"; });/? \"not all\" : \"all\"; });/' tools/preview.py"
 run_bg "a link to a page the preview doesn't hold" X5 "printf '\nThe [archive](/pm/archive/) holds the rest.\n' >> content/pm/find-the-constraint.md"
+# The pull from inside (23 November 2026): Answer for What You Build runs longer on purpose, says so first, and may
+# recommend six on its full path (S11), with a game's allowance in print (P1)
+run_bg "the long module no longer says it runs longer" S11 "sed -i '/^This module runs longer than the others, on purpose/d' content/pm/answer-for-what-you-build.md"
+run_bg "a seventh thing on the long module's full path" S11 "python3 -c \"p='content/pm/answer-for-what-you-build.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: An argument. Someone.\n    only: More of the same.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e, 1))\""
+run_bg "the long module running past even its longer allowance" P1 "for i in \$(seq 60); do printf 'A filler paragraph that says nothing and only takes up room on the printed page.\n\n' >> content/pm/answer-for-what-you-build.md; done"
 wait
