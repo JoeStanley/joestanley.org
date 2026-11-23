@@ -1,0 +1,42 @@
+{{- /* The modules, part by part along the course's arc (spec S20, data/pm/arc.yaml): each part's name and line in the
+       small label type, then its modules as Start has always listed them. On Start each built module shows its
+       status, which the script turns into progress, and the closing unit ends the list; The Compass lists the
+       questions alone. Call with p (the page), all (the single document) and start (true on Start). */ -}}
+{{- $all := .all -}}{{- $start := .start -}}
+{{- $mods := site.Data.pm.modules -}}
+{{- range site.Data.pm.arc.parts }}
+<p class="arc-part"><strong>{{ .title }}.</strong> {{ .line }}</p>
+<ol class="modules">
+  {{- range .modules }}
+  {{- $m := index (where $mods "id" .) 0 }}
+  {{- $page := "" }}
+  {{- with $m.page }}{{ $page = site.GetPage (printf "/pm/%s" .) }}{{ end }}
+  {{- $ids := slice }}
+  {{- with $page }}{{ range .Params.steps }}{{ $ids = $ids | append .id }}{{ end }}{{ end }}
+  <li class="mod{{ if not $page }} is-pending{{ end }}"
+      {{- if $start }}{{ with $page }} data-map-unit="{{ .File.ContentBaseName }}" data-map-steps="{{ len $ids }}" data-map-ids="{{ delimit $ids " " }}"{{ end }}{{ end }}>
+    <span class="mod-num" aria-hidden="true">{{ $m.num }}</span>
+    <div class="mod-body">
+      <h3><span class="sr">Module {{ $m.num }}: </span>{{ with $page }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ $m.title }}</a>{{ else }}{{ $m.title }}{{ end }}</h3>
+      <p class="mod-question">{{ $m.question }}</p>
+      {{- if $start }}
+      <p class="mod-status">{{ with $page }}<span data-map-status>Ready</span>{{ else }}Not built yet{{ end }}</p>
+      {{- end }}
+    </div>
+  </li>
+  {{- end }}
+</ol>
+{{- end }}
+{{- if $start }}{{ with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}
+{{- $c := . }}
+<p class="arc-part"><strong>{{ site.Data.pm.arc.closing.label }}.</strong> {{ site.Data.pm.arc.closing.line }}</p>
+<ol class="modules">
+  <li class="mod mod-closing">
+    <span class="mod-num" aria-hidden="true"></span>
+    <div class="mod-body">
+      <h3><a href="{{ partial "pm/href.html" (dict "p" $c "all" $all) }}">{{ $c.Title }}</a></h3>
+      <p class="mod-question">{{ $c.Params.question }}</p>
+    </div>
+  </li>
+</ol>
+{{- end }}{{ end }}{{ end -}}

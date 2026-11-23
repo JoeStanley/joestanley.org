@@ -35,6 +35,7 @@ def clean(s):
 
 # ---------- voice slots (spec X4) ----------
 VOICE_TAB = "Your voice pass"
+CLOSING_TAB = "The Compass"   # the closing unit's tab (spec S21), after the last module
 SLOT_HEAD = "> **Voice slot, waiting for your pass:**"
 PENDING = []   # slots met in the text since the last block was written, so each one's block follows its paragraph
 
@@ -120,8 +121,8 @@ def blocks(el):
                 out.append(clean(str(c)).strip())
             continue
         cls = c.get("class") or []
-        if c.name in ("script", "style", "svg") or "print-only" in cls:
-            continue
+        if c.name in ("script", "style", "svg") or "print-only" in cls or "walk-toggle" in cls:
+            continue   # The Compass's buttons: each version of its call follows under its own title (spec S21)
         if c.get("data-voice"):   # a voice slot as a paragraph of its own (spec X4); its block follows it
             PENDING.append(c["data-voice"])
         if c.name in ("h2", "h3", "h4"):
@@ -193,14 +194,48 @@ def start_tab(art):
     wrap = art.find("section", class_="modules-wrap")
     out.append("## " + inline(wrap.find("h2")))
     out += note_of(wrap) + [inline(p) for p in wrap.find_all("p", class_="hint", recursive=False)]
+    # the arc's parts (spec S20), each name and line before its modules, in the page's order
+    for el in wrap.find_all(["p", "ol"], recursive=False):
+        if "arc-part" in (el.get("class") or []):
+            out.append(inline(el))
+        elif "modules" in (el.get("class") or []):
+            out.append(module_items(el))
+    return out
+
+
+def module_items(ol):
+    """A list of modules as Start and The Compass show them: number, title, question and, on Start, its status."""
     items = []
-    for li in wrap.select("ol.modules > li"):
+    for li in ol.find_all("li", recursive=False):
         num = clean(li.find(class_="mod-num").get_text()).strip()
         h3 = li.find("h3")
         for sr in h3.find_all(class_="sr"):
             sr.extract()
-        items.append(f"- **{num} {inline(h3)}.** {inline(li.find(class_='mod-question'))} *{inline(li.find(class_='mod-status'))}.*")
-    out.append("\n".join(items))
+        status = li.find(class_="mod-status")
+        items.append(f"- **{(num + ' ') if num else ''}{inline(h3)}.** {inline(li.find(class_='mod-question'))}"
+                     + (f" *{inline(status)}.*" if status else ""))
+    return "\n".join(items)
+
+
+def closing_tab(art):
+    """The Compass (spec S21): its header, its prose, and every module's question by the arc's parts."""
+    head = art.find(class_="unit-head")
+    out = [f"# {inline(head.select_one('.kicker .tag'))}: {inline(head.find('h1'))}", "*Built, and on the site.*"] + note_of(head)
+    out.append("**The question:** " + inline(head.find(class_="question")))
+    out.append(inline(head.find(class_="meta")))
+    body = art.find(class_="unit-body")
+    for sec in body.find_all("section", recursive=False):
+        cls = sec.get("class") or []
+        if "compass" in cls:
+            out.append("## " + inline(sec.find("h2")))
+            out += note_of(sec) + [inline(p) for p in sec.find_all("p", class_="hint", recursive=False)]
+            for el in sec.find_all(["p", "ol"], recursive=False):
+                if "arc-part" in (el.get("class") or []):
+                    out.append(inline(el))
+                elif "modules" in (el.get("class") or []):
+                    out.append(module_items(el))
+        else:
+            out += note_of(sec) + blocks(sec)
     return out
 
 
@@ -372,10 +407,10 @@ def about_tab(mods, synced):
     return "\n\n".join([
         "# On Product Judgment: Working Source",
         f"Last put here from the repository on {synced}.",
-        "This doc mirrors the syllabus as it stands in the joestanley.org repository, and your ReadMe. The next tab, ReadMe, is your own words as the site shows them: revise anything there, its structure too, and a session carries your edits into the site as you made them, fixing only a house rule and telling you. Each tab after it is one unit: the Start page, each module with its concept cards, and the glossary. What you read here is what the repository holds, word for word.",
+        "This doc mirrors the syllabus as it stands in the joestanley.org repository, and your ReadMe. The next tab, ReadMe, is your own words as the site shows them: revise anything there, its structure too, and a session carries your edits into the site as you made them, fixing only a house rule and telling you. Each tab after it is one unit: the Start page, each module with its concept cards, The Compass, which closes the course, and the glossary. What you read here is what the repository holds, word for word.",
         "Comment on any line, or edit it. A Claude Code session carries your comments and edits into the repository, then puts the result back here, so the two stay the same. The checks in the repository fail if a tab falls out of step.",
         "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| ReadMe | On the site, in your own words. | `content/page/readme.md` |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
-        + "\n".join(rows) + "\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
+        + "\n".join(rows) + f"\n| {CLOSING_TAB} | Built, and on the site. | `content/pm/the-compass.md`, with the arc from `data/pm/arc.yaml` |\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
         f"The last tab, {VOICE_TAB}, lists every passage that waits for your voice and every word of yours a session cut, moved or changed, so your final pass starts from one list. A passage that waits shows a block in its own tab too, where you read it.",
         "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes from before 20 November 2026, kept as history. Decisions for you now wait on the [Decisions page](https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq), and what comes next is in `PLAN.md` in the private pm-sources repository.",
     ])
@@ -418,6 +453,10 @@ def tabs(site, synced=None):
             out.append((name, "\n\n".join(parts)))
         else:
             out.append((name, draft_tab(m)))
+    arc = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "arc.yaml"), encoding="utf-8")) or {}
+    closing = (arc.get("closing") or {}).get("page")
+    if closing and closing in arts:
+        out.append((CLOSING_TAB, "\n\n".join(closing_tab(arts[closing]) + flush())))
     out.append(("Glossary", "\n\n".join(glossary_tab(arts["glossary"]) + flush())))
     out.append((VOICE_TAB, voice_tab()))
     return [(n, re.sub(r"\n{3,}", "\n\n", t.translate(QUOTES)).strip() + "\n") for n, t in out]

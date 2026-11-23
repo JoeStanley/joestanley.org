@@ -21,6 +21,15 @@
 # The list stays until his pass has been through it.
 
 slots:
+  - id: what-judgment-is
+    unit: Start
+    brief: "Say what you mean by product judgment, in a sentence or two after the compass line, since the course is named for it and no page defines it (card v1-start). Your comment on Start of 20 November 2026 is the first draft, below, and the site shows it as one sentence for now. Suggestion: keep it, in your voice, or put it your own way."
+    old: "a blend of lived experience, industry best practices, and situation context that turns into intuition"
+    interim: "Judgment is a blend of lived experience, industry best practices and the context of the situation, turned into intuition."
+  - id: why-now
+    unit: Start
+    brief: "Say why judgment matters more now (card v1-start). The course's thesis, as job 25 put it: as AI makes building cheap, knowing what's worth building becomes the constraint. It's an opinion, so it's yours to say, and the site shows nothing here until you do. Your caution on card v1-ai may belong in it: agentic workflows will last, but at what price and sophistication is open, so the lasting skill is placing non-deterministic logic well beside deterministic systems."
+    interim: ""
   - id: shopper-incentive
     unit: 1 Know Who It's For
     brief: "Say in your own voice what you believe a grocery app's incentive is with the shoppers who pick and deliver its orders, and why it should matter to a PM designing their side of the flow. The paragraph before it gives only what the sources support: waiting time, mostly unpaid, and a pool of waiting workers (New York's study), shifts below minimum wage (an MIT audit), and Dubal's argument, as hers. No source opened says a company wants workers to need the work, or that low prices were paid for by investors with the cost on shoppers, so that view is yours to state. Your words from the session are below. Suggestion: raise them into the main text here, in your voice."
@@ -36,6 +45,15 @@ slots:
     brief: "The paragraph before it already lands the point, that the people you work with aren't resources. A one-line close after it reads as a moral, a habit VOICE.md asks the syllabus to spend sparingly, and the cold read named it among your looser lines. Suggestion: cut it, or move it to your margin. For now the site leaves it out."
     old: "And if you work together, you'll play a symphony."
     interim: ""
+  - id: rule-zero
+    unit: 0 Own Your Role
+    brief: "Pay Rule Zero off. The cold read found the analogy set up and never paid off: the text jumped from the table bending its rules to \"Module Zero lays out what it means to be an actual product manager.\" The step it missed is that a job description serves the product's intent, and you may reshape the job when following it would cost the product what it's for. That step is also what the next paragraph, on growing the role, now stands on. Suggestion: say it in your voice, keeping why the module is numbered zero, as the interim does."
+    old: "In the same way, Module Zero lays out what it means to be an actual product manager."
+    interim: "A job description works the same way. It's there to serve the product's intent, and where following its letter would cost the product what it's for, you may reshape the job. That's why this module is numbered zero: it's about the frame you work in, before the work itself."
+  - id: compass-framing
+    unit: The Compass
+    brief: "Open the closing page in your voice, in a few lines: what you hope the reader carries out of the course, and why a compass and not a map. Start promises \"an internal compass to navigate situations for which you have no map,\" and your margin note in Decide and Set Direction reads \"Compasses over Maps.\" The interim only says what the page holds. Suggestion: write it as you wrote Start's opening, first person and all."
+    interim: "Start promised a compass for the situations no map covers. Here it is: every module's question in one place, and one call walked through several of them, where two of the questions pull against each other."
   - id: chernobyl
     unit: 2 See the System
     brief: "A story's entry says what it is and points to the part that carries the lesson (S10), in the voice of the entries around it. The cold read found \"terrifyingly gripping\" looser than its neighbors. Suggestion: raise it, keeping your three stages and the incentives, as the interim does, or name the episode you'd start with."
@@ -149,4 +167,10 @@ moved:
     from: "Answer for What You Build, Why this matters, your margin note beside \"So ask two things\""
     to: "the same section, word for word, beside the new paragraph on the pull from inside, \"The hardest place to hold fast may be inside,\" which now follows \"hold fast\""
     why: "The new paragraph, your direction of 23 November, is about the same justification, so your note now sits beside it."
+    when: 23 November 2026
+  - what: moved
+    words: "In the same way, Module Zero lays out what it means to be an actual product manager."
+    from: Own Your Role, Why this matters, the paragraph after Rule Zero
+    to: "the voice slot rule-zero, in the same place, as your old words. The site shows interim words that pay the analogy off: a job description serves the product's intent, and you may reshape the job"
+    why: The cold read found Rule Zero set up and never paid off, and the rebuild (card v1-module-0) needs the step it missed.
     when: 23 November 2026

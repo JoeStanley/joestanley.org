@@ -1,0 +1,36 @@
+{{- /* The closing unit, The Compass (spec S21), made from a module's parts and styles: "To close" where a module
+       names its number, the title, its question and a time (the rounded sum of do_minutes, spec S14). Then its prose
+       up to the marker "[//]: # (compass)", every module's question grouped by the arc (S20), and the rest of its
+       prose: one call walked through, the Do and where to go from here. No short path, Check or full path. */ -}}
+{{- $p := .p -}}{{- $all := .all -}}
+{{- $key := $p.File.ContentBaseName -}}
+{{- $parts := split $p.RawContent "[//]: # (compass)" -}}
+<article class="unit closing" id="{{ $key }}" data-unit="{{ $key }}">
+  <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
+    <p class="kicker"><span class="tag">{{ site.Data.pm.arc.closing.label }}</span></p>
+    <h1>{{ $p.Title | markdownify }}</h1>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
+    <p class="question">{{ $p.Params.question }}</p>
+    <p class="meta">About {{ partial "pm/duration.html" ($p.Params.do_minutes | default 0) }}.</p>
+  </div></div></header>
+  <div class="frame"><div class="unit-body reading">
+
+  <section class="why prose" data-slot="intro">
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "intro") }}
+    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" ($p.RenderString (dict "display" "block") (index $parts 0))) | safeHTML }}
+  </section>
+
+  <section class="modules-wrap compass" data-slot="the-compass">
+    <h2>The compass</h2>
+    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "the-compass") }}
+    <p class="hint">Every module's question, by the part of the course it comes from. Keep it near your work, and when a call feels hard, find the questions it needs.</p>
+    {{- partial "pm/arc-list.html" (dict "p" $p "all" $all "start" false) }}
+  </section>
+
+  {{ if gt (len $parts) 1 }}
+  <section class="do prose">
+    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" ($p.RenderString (dict "display" "block") (index $parts 1))) | safeHTML }}
+  </section>
+  {{ end }}
+</div></div>
+</article>

@@ -3,7 +3,8 @@
    1. Progress: ticks on the short path, saved in this browser only.
    2. Single-document view: show one unit at a time (used by the preview and the print page).
    3. The games: the dice game, the waiting game and the ranking game.
-   4. A line edit stays on its line. */
+   4. A line edit stays on its line.
+   5. The Compass's two walks: two buttons pick which version of the call shows. */
 (function () {
   "use strict";
   var doc = document, body = doc.body;
@@ -537,5 +538,19 @@
     if (kind === "waiting") waitingGame(game);
     else if (kind === "ranking") rankingGame(game);
     else diceGame(game);
+  });
+
+  /* ---- 5. The Compass's two walks (spec S21). Without this, both versions show, one after the other. ---- */
+  all("[data-walk-toggle]").forEach(function (box) {
+    var buttons = all("[data-walk-show]", box);
+    var walks = all("[data-walk]", box.parentNode);
+    if (!buttons.length || !walks.length) return;
+    function show(id) {
+      buttons.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-walk-show") === id ? "true" : "false"); });
+      walks.forEach(function (w) { w.hidden = w.getAttribute("data-walk") !== id; });
+    }
+    buttons.forEach(function (b) { b.addEventListener("click", function () { show(b.getAttribute("data-walk-show")); }); });
+    box.hidden = false;
+    show(buttons[0].getAttribute("data-walk-show"));
   });
 })();

@@ -36,12 +36,14 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/", "/pm/cards/mission-excuse/"]),
            ("/pm/notice-when-you-are-wrong/", ["/pm/cards/double-loop-learning/"]),
            ("/pm/bring-people-with-you/", ["/pm/cards/trust-equation/"])]
-UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards]
+# The closing unit, The Compass (spec S21), after the last module.
+CLOSING = "/pm/the-compass/"
+UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards] + [CLOSING]
 PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # PRINT_PAGES is a record kept with the spec: a change in the count is noted in the report, not failed.
-UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "glossary": 3}
+UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "closing": 3, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
 MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
@@ -49,7 +51,7 @@ GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run i
 RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so: six on its full path (S11), and a game's
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 93   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 97   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -512,6 +514,223 @@ def start_checks(out_dir):
         fail("S19", "Start's invitation to write comes before \"How it works\", not after it")
     elif not p or p.find_parent("li") or p.parent is not intro:
         fail("S19", "Start's invitation to write isn't a paragraph of its own after How it works' list")
+
+
+JS_WALKS = """() => ({ toggle: (() => { const t = document.querySelector('[data-walk-toggle]'); return !!t && t.getClientRects().length > 0; })(),
+  shown: [...document.querySelectorAll('[data-walk]')].filter(w => w.getClientRects().length > 0).map(w => w.dataset.walk),
+  pressed: [...document.querySelectorAll('[data-walk-show]')].filter(b => b.getAttribute('aria-pressed') === 'true').map(b => b.dataset.walkShow),
+  focus: document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.walkShow || '' : '' })"""
+
+
+def walk_browser_checks(out_dir, path, walks):
+    """S21 in a browser: the first version shows, a button swaps it and keeps focus; without the script, and in
+    print, both versions show and the buttons don't."""
+    if len(walks) != 2:
+        return
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            for js in (True, False):
+                ctx = b.new_context(viewport={"width": 390, "height": 900}, java_script_enabled=js)
+                pg = ctx.new_page()
+                pg.goto(srv.base + path)
+                r = pg.evaluate(JS_WALKS) if js else None
+                if js:
+                    if not r["toggle"] or r["shown"] != walks[:1] or r["pressed"] != walks[:1]:
+                        fail("S21", f"{path}: with the script, the buttons and the first version should show, and only it: {r}")
+                    pg.click(f"button[data-walk-show={walks[1]}]")
+                    r = pg.evaluate(JS_WALKS)
+                    if r["shown"] != walks[1:] or r["pressed"] != walks[1:]:
+                        fail("S21", f"{path}: the second button doesn't swap the versions: {r}")
+                    if r["focus"] != walks[1]:
+                        fail("S21", f"{path}: focus left the button that was pressed (A9)")
+                    pg.emulate_media(media="print")
+                    r = pg.evaluate(JS_WALKS)
+                    if r["shown"] != walks or r["toggle"]:
+                        fail("S21", f"{path}: in print both versions should show, and no buttons: {r}")
+                else:
+                    shown = pg.evaluate("() => [...document.querySelectorAll('[data-walk]')].filter(w => w.getClientRects().length > 0).map(w => w.dataset.walk)")
+                    tog = pg.evaluate("() => { const t = document.querySelector('[data-walk-toggle]'); return !!t && t.getClientRects().length > 0; }")
+                    if shown != walks or tog:
+                        fail("S21", f"{path}: without the script both versions should show, and no buttons: {shown}")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
+def arc_checks(out_dir):
+    """S20: the arc's four parts on Start, each name and line above its modules, every module in one part in reading
+    order, The Compass last under "To close". S21: The Compass, made from a module's parts, closes the course."""
+    from bs4 import BeautifulSoup
+    checked("S20", "S21")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    arc = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "arc.yaml"), encoding="utf-8")) or {}
+    parts, closing = arc.get("parts") or [], arc.get("closing") or {}
+    order = [m["id"] for m in mods]
+    placed = [i for p_ in parts for i in (p_.get("modules") or [])]
+    if len(parts) != 4:
+        fail("S20", f"data/pm/arc.yaml has {len(parts)} parts, and the arc has four")
+    if placed != order:
+        missing = [i for i in order if placed.count(i) != 1]
+        fail("S20", "data/pm/arc.yaml doesn't hold every module on the map once, in reading order"
+             + (f": {', '.join(missing)}" if missing else ""))
+    for p_ in parts:
+        if not str(p_.get("title", "")).strip() or not str(p_.get("line", "")).strip():
+            fail("S20", f"an arc part has no name or no line: {p_.get('title') or p_.get('modules')}")
+    title = {m["id"]: m["title"] for m in mods}
+    question = {m["id"]: m["question"] for m in mods}
+    norm = lambda t: " ".join(str(t).replace("\u2019", "'").split())
+
+    def groups(wrap, where, start):
+        """The labels and lists in a wrap, as (label, [(num, title, question, href)]), in the page's order."""
+        out = []
+        for el in wrap.find_all(["p", "ol"], recursive=False):
+            cls = el.get("class") or []
+            if "arc-part" in cls:
+                out.append((norm(el.get_text(" ")), []))
+            elif "modules" in cls:
+                if not out:
+                    fail("S20", f"{where}: a list of modules comes before any part's name")
+                    out.append(("", []))
+                for li in el.find_all("li", recursive=False):
+                    h3 = li.find("h3")
+                    for sr in h3.find_all(class_="sr"):
+                        sr.extract()
+                    a = h3.find("a")
+                    out[-1][1].append((norm(li.find(class_="mod-num").get_text()), norm(h3.get_text(" ")),
+                                       norm(li.find(class_="mod-question").get_text(" ")), a.get("href") if a else None))
+        return out
+
+    want = [(f"{p_['title']}. {p_['line']}", [title[i] for i in p_.get("modules") or [] if i in title]) for p_ in parts]
+    start = BeautifulSoup(open(os.path.join(out_dir, "pm", "index.html"), encoding="utf-8").read(), "html.parser")
+    wrap = start.find("section", class_="modules-wrap")
+    if not wrap:
+        fail("S20", "Start has no list of modules"); return
+    got = groups(wrap, "Start", True)
+    for k, (label, items) in enumerate(want):
+        if k >= len(got):
+            fail("S20", f"Start doesn't show the part \"{label}\""); continue
+        if got[k][0] != norm(label):
+            fail("S20", f"Start's part {k + 1} reads \"{got[k][0]}\", not \"{norm(label)}\"")
+        if [t for _, t, _, _ in got[k][1]] != items:
+            fail("S20", f"Start's part {k + 1}, {label.split('.')[0]}, lists {[t for _, t, _, _ in got[k][1]]}, not {items}")
+    page = closing.get("page")
+    label = f"{closing.get('label')}. {closing.get('line')}"
+    if len(got) != len(want) + 1 or got[-1][0] != norm(label):
+        fail("S20", f"Start's list doesn't end with the closing unit under \"{closing.get('label')}.\"")
+    else:
+        items = got[-1][1]
+        if len(items) != 1 or items[0][0] or not (items[0][3] or "").rstrip("/").endswith(f"/pm/{page}"):
+            fail("S20", "Start's last entry should be The Compass alone, unnumbered and linked")
+    if wrap.find("span", class_="mod-num", string=re.compile(r"\d")) is None:
+        fail("S20", "Start's modules lost their numbers")
+    for el in wrap.find_all("p", class_="arc-part"):
+        if el.find_parent("li"):
+            fail("S20", "a part's name sits inside a module's entry, not above its modules")
+    # S21: The Compass itself
+    path = os.path.join(out_dir, "pm", str(page), "index.html")
+    if not page or not os.path.exists(path):
+        fail("S21", f"The Compass isn't built: no page at /pm/{page}/"); return
+    if os.path.exists(os.path.join(ROOT, "drafts", "pm", f"{page}.md")):
+        fail("S21", f"The Compass has a draft, drafts/pm/{page}.md, and it's built: one source only (X1)")
+    art = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser").select_one("main article.unit")
+    where = "The Compass"
+    if not art or "closing" not in (art.get("class") or []):
+        fail("S21", f"{where}'s page isn't a closing unit (article class \"unit closing\")"); return
+    head = art.find(class_="unit-head")
+    tag = head.select_one(".kicker .tag") if head else None
+    if not tag or norm(tag.get_text()) != closing.get("label"):
+        fail("S21", f"{where} should say \"{closing.get('label')}\" where a module names its number")
+    if not head or not head.find(class_="question") or not head.find(class_="meta"):
+        fail("S21", f"{where} has no question or no time under its title")
+    else:
+        fm = open(os.path.join(ROOT, "content", "pm", f"{page}.md"), encoding="utf-8").read().split("---", 2)[1]
+        mins = int((yaml.safe_load(fm) or {}).get("do_minutes") or 0)
+        t = norm(head.find(class_="meta").get_text())
+        if not re.fullmatch(r"About (\d+ minutes|an hour.*|\d.*hours?)\.", t):
+            fail("S21", f"{where}'s time reads \"{t}\"")
+        if mins and str(mins) not in t and "hour" not in t:
+            fail("S21", f"{where}'s time, \"{t}\", isn't its Do's {mins} minutes")
+    body = art.find(class_="unit-body")
+    if body.select(".steps, .check, .deeper, .path, .last-time"):
+        fail("S21", f"{where} carries a short path, a Check or a full path, and it has none")
+    intro = body.find("section", attrs={"data-slot": "intro"})
+    if not intro or not intro.find(attrs={"data-voice": True}):
+        fail("S21", f"{where} doesn't open with the owner's framing in a voice slot")
+    h2s = [norm(h.get_text(" ")) for h in body.find_all("h2")]
+    for h in ("The compass", "One call, walked through", "Do", "Where to go from here"):
+        if h not in h2s:
+            fail("S21", f"{where} has no section \"{h}\"")
+    if h2s[:1] != ["The compass"]:
+        fail("S21", f"{where}'s first section should be \"The compass\", the questions, and it's \"{h2s[:1]}\"")
+    cw = body.find("section", class_="compass")
+    if cw:
+        cg = groups(cw, where, False)
+        if [(l, [t for _, t, _, _ in it]) for l, it in cg] != [(norm(l), it) for l, it in want]:
+            fail("S21", f"{where}'s questions aren't grouped by the arc as Start shows it (S20)")
+        for l, it in cg:
+            for num_, t, q, href in it:
+                mid = next((m["id"] for m in mods if m["title"] == t), None)
+                if mid and norm(question[mid]) != q:
+                    fail("S21", f"{where}: {t}'s question reads \"{q}\", not the map's")
+                if mid and not href:
+                    fail("S21", f"{where}: {t} isn't linked")
+    else:
+        fail("S21", f"{where} doesn't list the modules' questions")
+
+    def section(name):
+        h = next((h for h in body.find_all("h2") if norm(h.get_text(" ")) == name), None)
+        out = []
+        for sib in (h.find_all_next() if h else []):
+            if sib.name == "h2":
+                break
+            if sib.name == "p":
+                out.append(norm(sib.get_text(" ")))
+        return out
+    # the call, walked twice: a customer-facing product and an internal platform, picked with two buttons
+    fm_ = yaml.safe_load(open(os.path.join(ROOT, "content", "pm", f"{page}.md"), encoding="utf-8").read().split("---", 2)[1]) or {}
+    want_walks = [w_.get("id") for w_ in fm_.get("walks") or []]
+    walks = body.select("div.walk[data-walk]")
+    if [w_["data-walk"] for w_ in walks] != want_walks or len(walks) != 2:
+        fail("S21", f"{where}'s call should be walked twice, a customer-facing product and an internal platform: it has {[w_.get('data-walk') for w_ in walks]}")
+    for w_ in walks:
+        t_ = w_.find(class_="walk-title")
+        text_ = norm(w_.get_text(" "))
+        named = [t for t in title.values() if t in text_]
+        label_ = norm(t_.get_text()) if t_ else w_["data-walk"]
+        if not t_:
+            fail("S21", f"{where}: the walk {w_['data-walk']} has no title, so without the script or in print nothing names it")
+        if len(named) < 6:
+            fail("S21", f"{where}: the walk \"{label_}\" names {len(named)} modules by title, and each names at least six")
+        if not re.search(r"\bcollide", text_):
+            fail("S21", f"{where}: the walk \"{label_}\" doesn't say where two questions collide, and how to weigh them")
+        if w_.has_attr("hidden"):
+            fail("S21", f"{where}: the walk \"{label_}\" is hidden in the page itself, so without the script nobody reads it")
+    tog = body.select_one("[data-walk-toggle]")
+    btns = tog.select("button[data-walk-show]") if tog else []
+    if not tog or [b_["data-walk-show"] for b_ in btns] != want_walks:
+        fail("S21", f"{where} has no buttons to pick a version of its call, one for each")
+    elif not tog.has_attr("hidden"):
+        fail("S21", f"{where}'s buttons show without the script, where they'd do nothing")
+    elif [b_.get("aria-pressed") for b_ in btns] != ["true"] + ["false"] * (len(btns) - 1):
+        fail("S21", f"{where}'s first button should start pressed, and only it")
+    elif any("setup" not in (b_.get("class") or []) for b_ in btns):
+        fail("S21", f"{where}'s buttons should take the games' setup style, so they bring no new look")
+    do = section("Do")
+    if not do or not do[0].startswith("Review your decision log"):
+        fail("J3", f"{where}'s Do should open \"Review your decision log.\" in bold, and review the log whole")
+    elif not body.find("strong", string=re.compile(r"^Review your decision log")):
+        fail("J3", f"{where}'s Do should open \"Review your decision log.\" in bold")
+    if not re.search(r"where to draw (the|a) line", " ".join(section("Where to go from here")), re.I):
+        fail("S21", f"{where}'s last section doesn't name the judgment that recurs, where to draw the line")
+    walk_browser_checks(out_dir, f"/pm/{page}/", want_walks)
+    how = start.find("h2", id="how-it-works")
+    ul = how.find_next("ul") if how else None
+    if not ul or "closing page" not in norm(ul.get_text(" ")) or "The Compass" not in norm(ul.get_text(" ")):
+        fail("S21", "Start's \"How it works\" doesn't name the closing page, The Compass")
 
 
 def check_static():
@@ -1603,6 +1822,8 @@ def _expected_outline(out_dir):
             u["label"] = f"Module {num}: {h1}"
         elif kind == "card":
             u["label"] = f"Card: {h1}"
+        elif kind == "closing":
+            u["label"] = f"To close: {h1}"
         else:
             u["label"] = h1
         if kind == "glossary":
@@ -1644,7 +1865,8 @@ def unit_page_checks(pdf_path, n_pages):
         units = []
         with pdf.open_outline() as ol:
             for top in ol.root:
-                kind = "start" if top.title.startswith("Start:") else "module" if top.title.startswith("Module ") else "glossary"
+                kind = ("start" if top.title.startswith("Start:") else "module" if top.title.startswith("Module ")
+                        else "closing" if top.title.startswith("To close:") else "glossary")
                 deeper = next((first_page(k) for k in top.children if k.title.startswith("Go deeper: the full path")), None)
                 units.append((first_page(top), kind, top.title, deeper))
                 units += [(first_page(k), "card", k.title, None) for k in top.children if k.title.startswith("Card: ")]
@@ -2258,6 +2480,9 @@ def source_checks(out_dir):
         for c in card_of.get(m["id"], []):
             if c not in listed[url]:
                 fail("X1", f"the card {c} is built, and the checks don't visit it: add it to its module in MODULES")
+    closing_page = ((yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "arc.yaml"), encoding="utf-8")) or {}).get("closing") or {}).get("page")
+    if closing_page and os.path.exists(os.path.join(ROOT, "content", "pm", f"{closing_page}.md")) and f"/pm/{closing_page}/" not in UNIT_PAGES:
+        fail("X1", f"the closing unit /pm/{closing_page}/ is built, and the checks don't visit it: set CLOSING in tests/check_site.py")
     if FAIL.get("X1"):
         return
     sd = _source_doc()
@@ -2273,7 +2498,7 @@ def source_checks(out_dir):
     # X2: a built unit's tab holds every word a reader meets on its page
     soup = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
     norm = lambda s: " ".join(re.findall(r"[a-z0-9']+", s.translate(sd.QUOTES).lower()))
-    tab_of = {"start": "Start", "glossary": "Glossary"}
+    tab_of = {"start": "Start", "glossary": "Glossary", CLOSING.strip("/").split("/")[-1]: getattr(sd, "CLOSING_TAB", "The Compass")}
     for m in mods:
         if m.get("page"):
             tab_of[m["page"]] = f"{m['num']} {m['title']}"
@@ -2353,6 +2578,11 @@ def source_checks(out_dir):
         s14_checks(name, text)
         if name in ("Start", "Glossary"):
             continue
+        if name == getattr(sd, "CLOSING_TAB", None):   # The Compass: every section speaks to the reader (S21)
+            heads = set(re.findall(r"(?m)^## (.+)$", text)) - {"The compass"}
+            for sec in _sections(text, heads):
+                if not re.search(r"\byou(r|'re|'ll|'ve|'d)?\b", sec, re.I):
+                    fail("E1", f"{name}: a section that should speak to the reader never says \"you\": {sec.strip()[:50]}")
         for sec in _sections(text, {"Why this matters", "Why a PM cares", "Why a PM should care"}):
             if not re.search(r"\byou(r|'re|'ll|'ve|'d)?\b", sec, re.I):
                 fail("E1", f"{name}: a section that should speak to the reader never says \"you\": {sec.strip()[:50]}")
@@ -3042,6 +3272,12 @@ def main():
             start_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("S19", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("S20", "S21", "J3"):
+        try:
+            arc_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rules, not stop the suite
+            for r in ("S20", "S21"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S15", "S16"):
         try:
             kind_checks(out_dir)

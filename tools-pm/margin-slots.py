@@ -74,6 +74,8 @@ for art in soup.select("main article.unit"):
         title = f"{art.select_one('.kicker .tag').get_text(strip=True)}, {title}"
     elif kind == "card":
         title = f"the concept card {title}"
+    elif kind == "closing":
+        title = f"the closing unit, {title}"
     slots = [(el["data-slot"], label(el, el["data-slot"])) for el in art.select("[data-slot]")]
     path = os.path.join(out_dir, f"{unit}.yaml")
     old = (yaml.safe_load(open(path, encoding="utf-8")) or {}) if os.path.exists(path) else {}
