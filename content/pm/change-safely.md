@@ -56,12 +56,12 @@ steps:
     kind: read
     title: 'People + AI Research, "Errors + Graceful Failure"'
     minutes: 10
-    where: A chapter of Google's People + AI Guidebook. Free at pair.withgoogle.com. Read from "Define 'errors' & 'failure'" through "Weigh situational stakes & error risk," then "Provide paths forward from failure."
+    where: A chapter of Google's People + AI Guidebook. Free at pair.withgoogle.com. Read from "What's new when working with AI" through "Weigh situational stakes & error risk," then "Provide paths forward from failure."
     links:
       - text: "Errors + Graceful Failure"
         url: https://pair.withgoogle.com/chapter/errors-failing/
-    look: Why a feature that's right 60 percent of the time can be a success or a failure, and the errors that neither the user nor the system notices.
-    trust: "Experience. Google's People + AI Research team wrote it from the company's user research, whose details it keeps private."
+    look: Why a feature that's useful 60 percent of the time can be a success or a failure, and the errors that neither the user nor the system notices.
+    trust: "Experience. Google's People + AI Research team wrote it from dozens of the company's user research studies, which it doesn't publish."
     only: How good a feature built on a model has to be, asked from the user's side, and what it should do when it's wrong.
 
 check:
@@ -72,7 +72,7 @@ check:
     a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and its contracts slowly, since every sale depends on them, and a toggle can't undo a seat sold twice.
   - q: On your ticketing app, a new seat map raises orders per visit in a test. Why might you still stop the test?
     a: A guardrail metric got worse, such as refunds, complaints about seats or page load time, overall or for one group of customers.
-  - q: "**Beyond this module.** Everything here guards against honest mistakes. What about someone breaking your product on purpose?"
+  - q: "**Beyond this module.** Most of this module guards against honest mistakes. What about someone breaking your product on purpose?"
     a: Abuse and attack, where a feature works as designed for someone you never designed it for, like a bot that buys the best seats to resell. Adam Shostack's *Threat Modeling*, on the full path below, starts there.
 
 deeper:
@@ -92,8 +92,8 @@ deeper:
     by: Chip Huyen
     where: A book.
     note: "Read chapter 3, \"Evaluation Methodology,\" its sections \"Challenges of Evaluating Foundation Models,\" \"Exact Evaluation\" and \"AI as a Judge,\" then chapter 4, \"Evaluate AI Systems,\" its sections \"Evaluation Criteria\" and \"Design Your Evaluation Pipeline.\""
-    trust: "Experience. Huyen taught machine learning systems design at Stanford and writes from real cases, many of them her own. She sticks to the fundamentals, not any one tool, and says a real system often blends today's models with older machine learning."
-    only: "How to tell whether output that varies is good enough, and keep telling: graded examples, models used as judges and where they fall short, and a pipeline that checks every part of the system on every change."
+    trust: "Experience. Huyen taught machine learning systems design at Stanford and writes from real cases, many of them her own. She sticks to the fundamentals rather than any one tool."
+    only: "How to tell whether output that varies is good enough, and stays so: graded examples, models used as judges and where they fall short, and a pipeline that checks each part of the system."
   - title: Ford v Ferrari
     by: directed by James Mangold (20th Century Fox, 2019)
     where: A film.
@@ -109,7 +109,7 @@ Richard Cook, from See the System, gives part of the reason: "Change introduces 
 
 Before you change anything, know how good the service has to be, in words engineers can test: "When 50,000 fans try to buy in the first minute of an on-sale, checkout confirms 99 in 100 orders within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 
-That's harder to say when the output varies, as a model's does. So decide which part of the call a model makes and which part stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can check the cases in between. The model sees patterns nobody could write down, and the rule keeps what happens to a fan predictable and easy to explain. Keep checking after launch, too: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
+That's harder to say when the output varies, as a model's does. So decide what the model judges and what stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can review the orders it holds back. The model sees patterns nobody could write down, and the rule keeps what happens to a fan predictable and easy to explain. Keep checking after launch, too: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
 
 [//]: # (short-path)
 

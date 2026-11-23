@@ -65,8 +65,8 @@ deeper:
     by: Philip E. Tetlock and Dan Gardner
     where: A book.
     note: "Read chapter 1, \"An Optimistic Skeptic,\" and chapter 3, \"Keeping Score,\" then the appendix, \"Ten Commandments for Aspiring Superforecasters.\""
-    trust: "A study. It reports the Good Judgment Project, Tetlock's years-long study of tens of thousands of ordinary people forecasting world events, each forecast scored against what happened."
-    only: "Your hunch, given a number and scored against what happened: how people who kept score on their forecasts got better at them, and why Tetlock calls forecasting \"a skill that can be cultivated.\""
+    trust: "A study. It reports the Good Judgment Project, Tetlock's years-long study of tens of thousands of ordinary people forecasting world events."
+    only: "Your hunch, given a number and scored against what happened: how people whose forecasts were scored got better at them, and why Tetlock calls forecasting \"a skill that can be cultivated.\""
   - title: The Art of Statistics
     by: David Spiegelhalter
     where: A book.

@@ -10,9 +10,9 @@ ai:
   - unit: own-your-role
     words: call their tests evaluations
   - unit: find-the-constraint
-    words: An AI assistant that writes code faster helps only if writing code is where the work waits
+    words: That goes for a model, too.
   - unit: change-safely
-    words: decide which part of the call a model makes and which part stays a plain rule
+    words: decide what the model judges and what stays a plain rule
   - unit: change-safely
     words: a model's choices can shape the data it learns from next
   - unit: change-safely
@@ -20,14 +20,14 @@ ai:
   - unit: change-safely
     words: AI Engineering
   - unit: cards/many-hands
-    words: A model has many hands, too.
+    words: A model passes through many hands, too.
 data:
   - unit: know-who-its-for
     words: Your data shows what people did, but not why.
   - unit: design-for-change
     words: the data a feature creates outlives the feature
   - unit: cards/many-hands
-    words: It learns from data someone else gathered
+    words: One team gathers its data
 # The Compass gathers the data thread into three questions to carry.
 compass:
   unit: the-compass

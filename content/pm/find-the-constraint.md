@@ -81,7 +81,7 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in See the System. Find it, since speeding up anywhere else won't help. That goes for tools, too. An AI assistant that writes code faster helps only if writing code is where the work waits. If it waits on review or a decision, you get more code piled up in front of it.
+When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in See the System. Find it, since speeding up anywhere else won't help. That goes for a model, too. One that drafts new workouts in minutes helps only if drafting is where the work waits. If the wait is a coach checking each one, you get more drafts piled up in front of the coach.
 
 The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can improve while value delivery doesn't.
 

@@ -210,7 +210,7 @@ run_bg "The Compass's call walked once, the platform gone" S21 "python3 -c \"p='
 run_bg "The Compass's buttons pick nothing" S21 "sed -i 's/w.hidden = w.getAttribute(\"data-walk\") !== id;/w.hidden = false;/' assets/js/pm.js"
 # Job 32, AI and the new readings (23 November 2026): the AI and data threads, in the course's own frames (S22)
 run_bg "Change Safely's model-and-rule line cut" S22 "sed -i '/^That.s harder to say when the output varies/d' content/pm/change-safely.md"
-run_bg "the Many Hands card's model bullet cut" S22 "sed -i '/A model has many hands, too/d' content/pm/cards/many-hands.md"
+run_bg "the Many Hands card's model bullet cut" S22 "sed -i '/A model passes through many hands, too/d' content/pm/cards/many-hands.md"
 run_bg "The Compass without the data thread's questions" S22 "sed -i '/^Data ran through the course/d' content/pm/the-compass.md"
 run_bg "the threads' list gone" S22 "rm data/pm/threads.yaml"
 wait

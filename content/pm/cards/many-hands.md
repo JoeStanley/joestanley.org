@@ -22,7 +22,7 @@ In a large organization, harm often comes from many small contributions, and no 
 ## Why a PM cares
 
 - **You're a hand, not a bystander.** Thompson asks whether your act was a cause, and whether you could have acted otherwise. "I had no choice" is often a poor excuse, and so is not having noticed.
-- **A model has many hands, too.** It learns from data someone else gathered, then others train, prompt and ship it. Thompson's questions apply to each, the choice to use a model at all included.
+- **A model passes through many hands, too.** One team gathers its data, others train it, prompt it and ship it. Ask Thompson's two questions at each step, starting with the choice to use a model at all.
 - **Responsibility can be designed in.** Thompson proposes naming who's responsible for the structure before anything fails. Do the same for each harm you can foresee: name its owner in the decision's record.
 
 ## How to spot it
