@@ -17,12 +17,12 @@ deeper:
 
 ## The idea
 
-Work many people do at once needs two things that pull against each other: agency, room to decide, and coherence, pieces that fit. "Variety can destroy variety," as Ross Ashby put it in 1956, so a team needs as many ways to respond as the world has ways to surprise it. In [a 2022 talk](https://www.youtube.com/watch?v=WmtjQZCIsqY), the philosopher Alicia Juarrero describes constraints that depend on context as enabling: they don't only limit, they open up new alternatives. So be strict about a few things, and loose about the rest.
+Agree what "delivered" means, and a marketplace's teams can each build their part without meeting about it. Work many people do at once needs two things that pull against each other: agency, room to decide, and coherence, pieces that fit. A team needs as many ways to respond as the world has ways to surprise it, as Ross Ashby argued in 1956. And in [a 2022 talk](https://www.youtube.com/watch?v=WmtjQZCIsqY), the philosopher Alicia Juarrero argues that constraints that depend on context can enable as well as limit: they open up new alternatives. So be strict about a few things, and loose about the rest.
 
 ## Why a PM cares
 
-- **You often write the strict list.** Agree what "delivered" means, and a marketplace's teams can build without meeting about it. Take a decision from a team only for a benefit "that the organization could not otherwise achieve," as Ruth Malan and Dana Bredemeyer put it.
-- **Give the intent, not only the task.** The Marine Corps' doctrine, MCDP 1, seeks unity "not principally through imposed control, but through harmonious initiative." Knowing why, a team can adapt when the plan goes stale.
+- **You often write the strict list.** Keep it to what has to fit, such as what "delivered" means or how one team's service calls another's. Take a decision from a team only for a benefit "that the organization could not otherwise achieve," as Ruth Malan and Dana Bredemeyer put it.
+- **When the list isn't yours,** ask for it. "What has to fit, and what's ours to decide?" is a fair question for a lead or an architect, and the answer tells you where you're free.
 - **Agency needs feedback.** A team has to see what its choice did, so make sure it can see the numbers its own change moved.
 
 ## How to spot it

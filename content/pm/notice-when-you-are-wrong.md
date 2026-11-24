@@ -22,7 +22,7 @@ steps:
     links:
       - text: "Racing Up the Ladder of Inference"
         url: https://www.edbatista.com/2014/02/racing-up-the-ladder-of-inference.html
-    look: "Each rung, and the simplest way back down: find the rung you're on, pause and drop a step. At a belief, say, you'd \"clarify the meaning we're imposing upon the data at hand.\" Judgments feel like facts because you climb so fast."
+    look: "The simplest way back down: find the rung you're on, pause and drop a step. At a belief, say, you'd \"clarify the meaning we're imposing upon the data at hand.\" Judgments feel like facts because you climb so fast."
     trust: "Experience. Batista is an executive coach who taught for years at Stanford's business school. The ladder is Chris Argyris's, so this is a practitioner retelling it."
     only: Questions to ask yourself in a meeting before you act on a conclusion.
   - id: card-double-loop-learning
@@ -43,15 +43,15 @@ steps:
     only: What lets bad news reach you, from the researcher behind the idea.
 
 check:
-  - q: A planning doc says, "Field technicians don't trust the new alerts." Where is that on the ladder of inference, and what takes it back down?
-    a: Near the top, since it's a belief. Ask what was seen, by whom and how often. It may come down to two technicians at one site muting alerts through a week of false alarms.
+  - q: The dashboard shows alerts at one plant taking twice as long to clear as anywhere else, and the planning doc now says, "That plant's technicians don't take the alerts seriously." Which rung is that sentence on, and what takes it back down?
+    a: "The third rung, a belief. Go back down to the data: which alerts, on which shifts, and what else is different there. It may come down to two technicians covering a whole shift, through a week of false alarms."
   - q: Technicians' time to clear alerts is flat. One lead coaches them to clear alerts faster. Another asks whether clearing fast is what keeps the machines running. Which is the double loop?
     a: The second. The first changes the method to hit the same goal. Only the second asks whether the goal is right.
   - q: Decide and Set Direction asks you to decide on purpose and keep to a not-doing list. Here you keep looking for how you're wrong. When do you hold a call, and when do you reopen it?
     against: decide-and-set-direction
-    a: Hold it until a signal you named in advance shows up, then reopen it. Doubt written down before the bet is part of the plan. Doubt after every bad day is drift.
-  - q: "**Beyond this module.** A premortem finds the ways a plan fails. What does it miss?"
-    a: The plan that never quite fails and never quite works, and drifts on for a year. Before you start, write in your decision log the date you'll look and the result below which you'd stop.
+    a: Hold it until a signal you named before the bet shows up, then reopen it. A bad day that isn't that signal is no reason to.
+  - q: "**Beyond this module.** You've found out a call was wrong, but it's your manager's call, or your team's. What now?"
+    a: Say so in a way they can weigh, and if they still go the other way, commit to it. Bring People With You takes that up, with disagreeing and committing.
 
 deeper:
   - title: The Fearless Organization
@@ -77,16 +77,20 @@ deeper:
 
 Every plan rests on assumptions, and some of yours are probably wrong today: that technicians will trust a new alert, say, or that a sensor's readings mean what you think. You don't know which yet, and you won't find out by feel. As the writer [Kathryn Schulz puts it](https://www.ted.com/talks/kathryn_schulz_on_being_wrong), being wrong "feels like being right." So stop asking how to show you're right, and ask how you'd find out you're wrong.
 
-Silence isn't proof, either. Low numbers can mean people stopped telling you. US colleges publish their counts of sexual assault on campus, under a law called the Clery Act. When students set those counts beside anonymous surveys, Catherine D'Ignazio and Lauren Klein write in *Data Feminism*, the truth was "closer to the reverse" of what the counts suggested. Many of the colleges with higher counts were the ones putting more into support for survivors, where survivors had more reason to come forward. Weigh the Evidence's full path recommends the book.
+The cheapest way is to decide what wrong looks like before you start. Change Safely had you name a guardrail and the level at which you'd stop, before a rollout. Do the same for every bet. Before the new alert ships, write down the result you expect and by when, say technicians acting on most alerts within a month, and the result that would make you stop or change course. That's a stop rule. Once the bet is live you'll want to be right, so a line drawn afterward tends to move. A stop rule also catches the bet that never quite fails and never quite works, and drifts on for a year.
 
-Finding out takes habits, in your thinking and your team's: climbing down from a conclusion to what you saw, questioning the goal as well as the method, and making it safe for bad news to reach you, which researchers call {{< pm/term "psychological-safety" "psychological safety" >}}. Once you've found something, telling the people who decide is the next module, Bring People With You.
+Silence isn't proof that you're right. Low numbers can mean people stopped telling you. US colleges publish their counts of sexual assault on campus, under a law called the Clery Act. When students set those counts beside anonymous surveys, Catherine D'Ignazio and Lauren Klein write in *Data Feminism*, the truth was "closer to the reverse" of what the counts suggested. Many of the colleges with higher counts were the ones putting more into support for survivors, where survivors had more reason to come forward. So when technicians stop reporting false alarms, ask them why before you count it as good news.
+
+Finding out also takes habits, in your thinking and your team's. Start by climbing down from a conclusion to what you saw. Chris Argyris's {{< pm/term "ladder-of-inference" "ladder of inference" >}} has four rungs, as Ed Batista tells it: you select some of the data, interpret it, form beliefs from it, and act. Say the dashboard shows technicians dismissing a third of the new alerts. By lunch someone has read that as warnings nobody acted on, decided the technicians don't trust the alerts, and proposed pulling the feature. Climbing down means asking which alerts were dismissed, at which sites, and what happened to the machines afterward.
+
+Question the goal as well as the method. The thermostat on See the System's card is a balancing loop, and single-loop learning is the same loop at work: it corrects the method and never asks about the goal. And make it safe for bad news to reach you, which researchers call {{< pm/term "psychological-safety" "psychological safety" >}}: thank whoever brings it before you ask what they'd do about it. Once you've found something, telling the people who decide is the next module, Bring People With You.
 
 [//]: # (short-path)
 
 ## Do
 
-**Run a {{< pm/term "premortem" >}} on your own work (20 minutes).** It's a technique of Gary Klein's, whose advice on hunches you met in Weigh the Evidence. Imagine your main initiative has failed, badly: say, a new alert meant to warn technicians before a machine breaks down. Asking what did go wrong, not what might, turns doubting the plan into helping with it. Write down every plausible reason why, especially the ones you'd usually keep to yourself. If you run it with your team, have everyone write alone before anyone talks, so nobody's list shapes anyone else's. Rate each one low, medium or high, for how likely it is and how much damage it would do, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, name a signal to watch for this month. Outside the 20 minutes, ask the people who'd see it break first, such as a field technician, and the support lead who'd hear from the customers it failed: "If this failed, what would you bet the reason was?"
+**Run a {{< pm/term "premortem" >}} on your own work (20 minutes).** It's a technique of Gary Klein's, whose advice on hunches you met in Weigh the Evidence. Imagine your main initiative has failed, badly: say, a new alert meant to warn technicians before a machine breaks down. Write down every plausible reason it failed, especially the ones you'd usually keep to yourself. Asking what did go wrong, not what might, turns doubting the plan into helping with it. If you run it with your team, have everyone write alone before anyone talks, so nobody's list shapes anyone else's. Rate each one low, medium or high, for how likely it is and how much damage it would do, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, write a stop rule, and agree it with whoever can stop the work: the signal you'll watch, the date you'll look, and the result that would make you stop or change course. Outside the 20 minutes, ask the people who'd see it break first, such as a field technician, and the support lead who'd hear from the customers it failed: "If this failed, what would you bet the reason was?"
 
-**Review your decision log.** Read back the calls you've logged since Know Who It's For, and mark each one right, wrong or not known yet. Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with the signal you'll watch for.
+**Review your decision log.** Read back the calls you've logged since Know Who It's For, and mark each one right, wrong or not known yet. Where a date has passed, did you look when you said you would? Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with its stop rule.
 
-**Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the {{< pm/term "ladder-of-inference" "ladder" >}}, and rewrite it as a sentence you could have said, starting from what you saw.
+**Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the ladder, and rewrite it as a sentence you could have said, starting from what you saw.

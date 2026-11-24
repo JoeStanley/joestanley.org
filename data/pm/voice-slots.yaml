@@ -174,3 +174,15 @@ moved:
     to: "the voice slot rule-zero, in the same place, as your old words. The site shows interim words that pay the analogy off: a job description serves the product's intent, and you may reshape the job"
     why: The cold read found Rule Zero set up and never paid off, and the rebuild (card v1-module-0) needs the step it missed.
     when: 23 November 2026
+  - what: changed
+    words: "First, think about the milestones and outcomes you'd want to tell people about: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, are likely the most interested in these, though they may come irregularly, with long gaps in between."
+    from: "Bring People With You, Why this matters, your paragraph on the milestones external readers want"
+    to: "the same place, which now reads: Some news has a moment of its own: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, care most about these, though they may come irregularly, with long gaps in between"
+    why: "The cold read found \"First, think about... So second\" reading as a draft (job 33). Your list and your point stay; only the frame and \"are likely the most interested in\" changed."
+    when: 24 November 2026
+  - what: changed
+    words: "So second, think about a regular cadence of updates."
+    from: "Bring People With You, Why this matters, the sentence that opens your cadence paragraph, before the voice slot cadence"
+    to: "the same place, which now reads: The rest goes out on a regular cadence. Your margin note beside the paragraph moved with it, word for word"
+    why: "The same reason, so the two paragraphs read as one person explaining two kinds of news (job 33)."
+    when: 24 November 2026
