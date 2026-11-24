@@ -213,4 +213,17 @@ run_bg "Change Safely's model-and-rule line cut" S22 "sed -i '/^That.s harder to
 run_bg "the Many Hands card's model bullet cut" S22 "sed -i '/A model passes through many hands, too/d' content/pm/cards/many-hands.md"
 run_bg "The Compass without the data thread's questions" S22 "sed -i '/^Data ran through the course/d' content/pm/the-compass.md"
 run_bg "the threads' list gone" S22 "rm data/pm/threads.yaml"
+# Job 16, launch plumbing (24 November 2026): no placeholder (N1), the 404 page (N2), link previews (N3), Writing out of the
+# menu (R9), and P1's allowances, which hold until a PDF is published
+run_bg "the front door's placeholder note back" N1 "sed -i 's/^I.m based in Richmond/<!-- Placeholder: rewrite these in your own voice. -->\\nI.m based in Richmond/' content/_index.md"
+run_bg "Writing built again, empty" N2 "sed -i '/^build:/,/^  list: never/d' content/writing/_index.md"
+run_bg "Writing built again, saying it has nothing yet" N1 "sed -i '/^build:/,/^  list: never/d' content/writing/_index.md"
+run_bg "the old site's /page/ built again" N2 "rm content/page/_index.md"
+run_bg "a missing page that stays put" N2 "sed -i '/http-equiv=\"refresh\"/d' layouts/_default/baseof.html"
+run_bg "a missing page that points to the ReadMe" N2 "sed -i 's|<a href=\"{{ \"/\" \| relURL }}\">Go to the front door.</a>|<a href=\"/page/readme/\">Read the ReadMe.</a>|' layouts/404.html"
+run_bg "the photo in every page's preview" N3 "sed -i 's/{{- if or .IsHome (eq .RelPermalink \"\/page\/readme\/\") }}/{{- if true }}/' layouts/_default/baseof.html"
+run_bg "no summary card for other sites" N3 "sed -i '/twitter:card/d' layouts/_default/baseof.html"
+run_bg "a preview's address off the site" N3 "sed -i 's/<meta property=\"og:url\" content=\"{{ .Permalink }}\">/<meta property=\"og:url\" content=\"{{ .RelPermalink }}\">/' layouts/_default/baseof.html"
+run_bg "Writing back in the menu" R9 "sed -i 's/^    - identifier: games$/    - identifier: writing\\n      name: Writing\\n      url: \\/writing\\/\\n      weight: 30\\n    - identifier: games/' hugo.yaml"
+run_bg "a module's allowance in print gone before a PDF is published" P1 "sed -i 's/^MODULE_GRACE = 1 /MODULE_GRACE = 0 /' tests/check_site.py"
 wait

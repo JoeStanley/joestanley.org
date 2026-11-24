@@ -26,7 +26,7 @@ params:
       icon: linkedin
       url: "https://www.linkedin.com/in/josephstanley/"
 
-# The four sections. "blurb" is the line under each one on the home page.
+# The three sections (Writing waits for its first post, spec R9). "blurb" is the line under each one on the home page.
 menu:
   main:
     - identifier: readme
@@ -41,12 +41,6 @@ menu:
       weight: 20
       params:
         blurb: Twelve questions for early-career product managers, with free reading for each.
-    - identifier: writing
-      name: Writing
-      url: /writing/
-      weight: 30
-      params:
-        blurb: Essays and notes. Nothing here yet.
     - identifier: games
       name: Games
       url: /games/

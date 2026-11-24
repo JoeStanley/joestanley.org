@@ -1,0 +1,11 @@
+{{ define "main" }}
+{{- /* A missing page (spec N2): the head sends the browser to the front door at once; this link is for one that doesn't. */ -}}
+<article class="page">
+  <header class="band page-band">
+    <div class="frame"><div class="page-head reading"><h1>Page not found</h1></div></div>
+  </header>
+  <div class="frame"><div class="reading">
+    <div class="prose"><p>This page isn't here. <a href="{{ "/" | relURL }}">Go to the front door.</a></p></div>
+  </div></div>
+</article>
+{{ end }}
