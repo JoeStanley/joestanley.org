@@ -15,6 +15,23 @@
 <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ if and $pm (not (eq . .FirstSection)) }}{{ .FirstSection.Title }} | {{ end }}{{ site.Title }}{{ end }}</title>
 {{ with .Description | default (cond $pm .FirstSection.Params.description site.Params.description) }}<meta name="description" content="{{ . }}">{{ end }}
 {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+{{- if eq .Kind "404" }}
+{{- /* A missing page sends the visitor straight to the front door (spec N2). */}}
+<meta http-equiv="refresh" content="0; url={{ "/" | relURL }}">
+<meta name="robots" content="noindex">
+{{- else }}
+{{- /* Link previews (spec N3): the photo on the front door and the ReadMe only; the syllabus is text only. */}}
+<meta property="og:title" content="{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }}{{ end }}">
+{{ with .Description | default (cond $pm .FirstSection.Params.description site.Params.description) }}<meta property="og:description" content="{{ . }}">{{ end }}
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="{{ site.Title }}">
+<meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+<meta name="twitter:card" content="summary">
+{{- if or .IsHome (eq .RelPermalink "/page/readme/") }}{{ with site.Params.photo }}
+<meta property="og:image" content="{{ . | absURL }}">
+<meta property="og:image:alt" content="{{ site.Params.photo_alt }}">
+{{- end }}{{ end }}
+{{- end }}
 {{- if $all }}
 <meta name="robots" content="noindex">
 {{- /* The PDF printed from this page takes its title, subject and keywords from here (spec P6). */}}

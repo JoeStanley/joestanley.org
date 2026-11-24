@@ -39,18 +39,18 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
 # The closing unit, The Compass (spec S21), after the last module.
 CLOSING = "/pm/the-compass/"
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards] + [CLOSING]
-PAGES = ["/", "/page/readme/", "/writing/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
+PAGES = ["/", "/page/readme/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # PRINT_PAGES is a record kept with the spec: a change in the count is noted in the report, not failed.
 UNIT_SHARE = {"start": 2, "module": 3, "card": 1, "closing": 3, "glossary": 3}
 DEEPER_PAGES = 2   # the pages a module's full path, answers and sources' reasons may run onto past its three
-MODULE_GRACE = 1   # until launch, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
+MODULE_GRACE = 1   # until a PDF is published, a module may run one page past either limit: noted, not failed (the owner, 22 November 2026)
 GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run its own text onto a fifth page, its full path
                  # starting on the sixth, and print on eight pages in all: noted, not failed (the owner, 22 November 2026)
 RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so: six on its full path (S11), and a game's
                                             # allowance in print (P1) (the owner, 23 November 2026)
-GLOSSARY_GRACE = None   # until launch, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
+GLOSSARY_GRACE = None   # until a PDF is published, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
 PRINT_PAGES = 97   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
@@ -482,6 +482,87 @@ def license_checks(out_dir):
             continue
         if rel.startswith("/pm/") and not foot.select_one(f'a[href="{lic["url"]}"][rel~="license"]'):
             fail("L1", f"{rel}: the syllabus page does not link its license")
+
+
+# N2: the old site's addresses that must land on the 404 page, and the pages that wait (R9) and so aren't built.
+NOT_BUILT = ["/tags/", "/categories/", "/page/", "/writing/"]
+# N3: the pages whose link preview shows the owner's photo; every other page is text only.
+PREVIEW_PHOTO = {"/", "/page/readme/"}
+
+
+def arrival_checks(out_dir):
+    """N1 to N3: no placeholder reaches a reader, a missing page goes to the front door, and every page has a link
+    preview, with the photo on the front door and the ReadMe only. R9's part here: the menu names only built sections."""
+    from bs4 import BeautifulSoup
+    checked("N1", "N2", "N3")
+    cfg = yaml.safe_load(open(os.path.join(ROOT, "hugo.yaml")))
+    base = cfg["baseURL"].rstrip("/")
+    params = cfg.get("params") or {}
+    # N1: no note marked as a placeholder in the content, and no built page that says it has nothing yet
+    for f in glob.glob(os.path.join(ROOT, "content", "**", "*.md"), recursive=True):
+        if re.search(r"<!--[^>]*placeholder", open(f, encoding="utf-8").read(), re.I):
+            fail("N1", f"{os.path.relpath(f, ROOT)} carries a placeholder note")
+    pages = {}
+    for f in glob.glob(os.path.join(out_dir, "**", "index.html"), recursive=True):
+        rel = os.path.relpath(os.path.dirname(f), out_dir).replace(os.sep, "/")
+        rel = "/" if rel == "." else f"/{rel}/"
+        pages[rel] = BeautifulSoup(open(f, encoding="utf-8").read(), "html.parser")
+    for rel, soup in sorted(pages.items()):
+        main = soup.select_one("main")
+        if main and (main.select_one(".empty") or re.search(r"nothing here yet", main.get_text(), re.I)):
+            fail("N1", f"{rel} says it has nothing yet")
+    # N2: the 404 page sends the browser home at once, links home, and nowhere else in its main content
+    nf = os.path.join(out_dir, "404.html")
+    if not os.path.exists(nf):
+        fail("N2", "no 404.html is built")
+    else:
+        soup = BeautifulSoup(open(nf, encoding="utf-8").read(), "html.parser")
+        ref = soup.select_one('meta[http-equiv="refresh"]')
+        m = re.match(r"\s*0\s*;\s*url=(\S+)\s*$", ref.get("content", "")) if ref else None
+        if not m or m.group(1) not in ("/", base + "/"):
+            fail("N2", "404.html does not send the browser to the front door at once")
+        robots = soup.select_one('meta[name="robots"]')
+        if not robots or "noindex" not in robots.get("content", ""):
+            fail("N2", "404.html may be indexed")
+        main = soup.select_one("main")
+        links = [a.get("href") for a in main.select("a[href]")] if main else []
+        if "/" not in links:
+            fail("N2", "404.html gives no plain link to the front door")
+        if any(h != "/" for h in links):
+            fail("N2", f"404.html links elsewhere than the front door: {', '.join(h for h in links if h != '/')}")
+    # R9: the menu names only sections that are built, so Writing stays out of it until it has a post
+    for item in (cfg.get("menu") or {}).get("main") or []:
+        url = item.get("url", "")
+        if url in NOT_BUILT or not os.path.exists(os.path.join(out_dir, url.strip("/"), "index.html")):
+            fail("R9", f"the menu names {item.get('name')}, at {url}, which isn't built")
+    for rel in NOT_BUILT:
+        if os.path.exists(os.path.join(out_dir, rel.strip("/"), "index.html")):
+            fail("N2", f"{rel} is built, so a visitor there doesn't land on the 404 page")
+    # N3: every page's link preview, and the photo only where it belongs
+    photo = params.get("photo", "")
+    for rel, soup in sorted(pages.items()):
+        meta = {}
+        for t in soup.select("head meta[property], head meta[name]"):
+            meta[t.get("property") or t.get("name")] = t.get("content", "")
+        for k in ("og:title", "og:description", "og:site_name", "og:type"):
+            if not meta.get(k, "").strip():
+                fail("N3", f"{rel}: no {k}")
+        if meta.get("og:url") != base + rel:
+            fail("N3", f"{rel}: og:url is {meta.get('og:url')!r}, not its address {base + rel}")
+        if meta.get("og:site_name") and meta["og:site_name"] != cfg.get("title"):
+            fail("N3", f"{rel}: og:site_name is not the site's name")
+        if meta.get("twitter:card") != "summary":
+            fail("N3", f"{rel}: no summary card for other sites")
+        img = meta.get("og:image")
+        if rel in PREVIEW_PHOTO:
+            if img != base + photo:
+                fail("N3", f"{rel}: the preview does not show the owner's photo at its full address")
+            elif not os.path.exists(os.path.join(out_dir, photo.lstrip("/"))):
+                fail("N3", f"{rel}: the preview's photo is not built")
+            if meta.get("og:image:alt") != params.get("photo_alt"):
+                fail("N3", f"{rel}: the preview's photo lacks its alt text")
+        elif img:
+            fail("N3", f"{rel}: names an image for its preview, though only the front door and the ReadMe do")
 
 
 def start_checks(out_dir):
@@ -1929,17 +2010,17 @@ def unit_page_checks(pdf_path, n_pages):
         if n < 1:
             fail("P1", f"'{title}' starts on PDF page {pg + 1}, which it shares with another unit")
         elif kind == "glossary" and GLOSSARY_GRACE is None and n > share:
-            NOTE["P1"].append(said + ", and may run past them until the site goes live, so every term goes in")
+            NOTE["P1"].append(said + ", and may run past them until a PDF is published, so every term goes in")
         elif n > share + grace:
             fail("P1", said)
         elif n > share:
-            NOTE["P1"].append(said + (f", and may run further, {why_}, until a PDF is published" if grace == GAME_GRACE else ", and may run one page over until the site goes live"))
+            NOTE["P1"].append(said + (f", and may run further, {why_}, until a PDF is published" if grace == GAME_GRACE else ", and may run one page over until a PDF is published"))
         if kind == "module" and deeper is not None and deeper - pg >= UNIT_SHARE["module"]:
             said = f"'{title}' starts its full path on its page {deeper - pg + 1}, so the module itself runs past its {UNIT_SHARE['module']} pages"
             if deeper - pg >= UNIT_SHARE["module"] + grace:
                 fail("P1", said)
             else:
-                NOTE["P1"].append(said + (f", which it may do, {why_}, until a PDF is published" if grace == GAME_GRACE else ", which it may do by one page until the site goes live"))
+                NOTE["P1"].append(said + (f", which it may do, {why_}, until a PDF is published" if grace == GAME_GRACE else ", which it may do by one page until a PDF is published"))
 
 
 def _plain_title(t):
@@ -3309,6 +3390,12 @@ def main():
     tokens = check_static()
     if run_for("L1"):
         license_checks(out_dir)
+    if run_for("N1", "N2", "N3", "R9"):
+        try:
+            arrival_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rules, not stop the suite
+            for r in ("N1", "N2", "N3"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S19"):
         try:
             start_checks(out_dir)
