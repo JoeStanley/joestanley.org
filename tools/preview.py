@@ -279,7 +279,8 @@ def themed(css):
         prelude, inner = m.group(1).strip(), css[m.end():end - 1]
         rest = re.sub(r"\s*and\s*\(\s*prefers-color-scheme\s*:\s*dark\s*\)|\(\s*prefers-color-scheme\s*:\s*dark\s*\)\s*(and\s*)?", "", prelude).strip()
         out += css[i:m.start()]
-        out += f"@media {prelude}{{{_guard(inner, ':root:not([data-theme=\"light\"])')}}}"
+        implicit = _guard(inner, ':root:not([data-theme="light"])')   # outside the f-string: Python 3.11 allows no backslash there
+        out += f"@media {prelude}{{{implicit}}}"
         explicit = _guard(inner, ':root[data-theme="dark"]')
         out += f"@media {rest}{{{explicit}}}" if rest else explicit
         i = end
