@@ -131,10 +131,39 @@ del::after, s::after { content: ") "; }
    is marked with a thick orange line, the one bold mark in the header. */
 .masthead-row { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: var(--sp-2) var(--sp-5); padding-top: var(--sp-4); padding-bottom: 0; }
 .site-name { font: var(--w-title) var(--fs-body)/var(--lh-head) var(--head); color: var(--ink); text-decoration: none; letter-spacing: -0.02em; }
-.site-nav { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.masthead { position: relative; z-index: 6; }   /* the menu's list drops over the page and the course bar */
+.site-nav { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 var(--sp-4); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.nav-list { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); }
+.nav-list a, .nav-here { white-space: nowrap; }   /* a section's name never breaks; the line wraps instead */
 .site-nav a { color: var(--muted); text-decoration: none; padding: var(--sp-2) 0; border-bottom: 3px solid transparent; }  /* about 40px tall, comfortable to tap */
 .site-nav a:hover { color: var(--ink); }
 .site-nav a[aria-current] { color: var(--ink); font-weight: var(--w-strong); border-bottom-color: var(--orange); }
+/* On a phone (spec R9): the current section, over its orange line, and a Menu button, each 44px tall with the line at
+   its foot as on a wide screen; the button opens the other sections in a list under them. site.js marks the menu
+   .has-menu; without it, or from 46rem up, the sections sit on the line, wrapping where they must. */
+.nav-here, .nav-open { display: none; }
+.nav-open { align-items: flex-end; min-height: 2.75rem; margin: 0; padding: 0 0 var(--sp-2); border: 0; border-bottom: 3px solid transparent; background: none; color: var(--muted); font: inherit; white-space: nowrap; cursor: pointer; transition: color 180ms ease-out; }
+.nav-open:hover, .nav-open[aria-expanded="true"] { color: var(--ink); }
+/* The chevron is the course bar's (pm.css), drawn here too since the header is on every page. */
+.nav-open-in { display: inline-flex; align-items: center; gap: var(--sp-2); }
+.nav-chev { display: inline-block; flex: none; width: 0.45em; height: 0.45em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.15em) rotate(45deg); }
+.nav-open[aria-expanded="true"] .nav-chev { transform: translateY(0.1em) rotate(-135deg); }
+@media (max-width: 45.99rem) {
+  .has-menu .nav-here { display: inline-flex; align-items: flex-end; min-height: 2.75rem; padding: 0 0 var(--sp-2); }
+  .has-menu .nav-open { display: inline-flex; }
+  .has-menu .nav-list { display: none; }
+  /* The list hangs from the header's right edge and reaches left only a step past where the menu starts, so its
+     sections line up under the current one and the finger stays where the menu is (the owner, 25 November 2026).
+     The current section is beside the button already, so the list leaves it out. On the front door, which is no
+     section, it is as wide as its words need. A thin rule edges it, on its left and at its foot. */
+  .has-menu { position: relative; }
+  .has-menu .nav-list.is-open { position: absolute; top: 100%; right: calc(-1 * var(--pad)); width: max-content; min-width: calc(100% + var(--pad) + var(--sp-4)); display: flex; flex-direction: column; align-items: stretch; gap: 0; padding: var(--sp-2) 0 var(--sp-3); background: var(--paper); border-left: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+  /* Each row is its link, the list's full width, so a tap beside the words still lands (the owner, 25 November 2026). */
+  .has-menu .nav-list.is-open a { display: flex; align-items: center; min-height: 2.75rem; padding: 0 var(--pad) 0 var(--sp-4); border-bottom: 0; }
+  .has-menu .nav-list.is-open a[aria-current] { display: none; }
+}
+/* Below 384px the gaps tighten a step, so the name and the menu share a line at 320 too. */
+@media (max-width: 23.99rem) { .masthead-row { column-gap: var(--sp-4); } .site-nav { column-gap: var(--sp-3); } }
 
 /* Footer: quiet, no rule; space does the separating. */
 .site-foot { margin-top: var(--sp-8); }
@@ -269,7 +298,7 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
 
 /* Links ease to orange, in CSS alone. With reduced motion requested the change is instant (spec D5). */
 a, .recall summary::after, .why > summary { transition: color 180ms ease-out, text-decoration-color 180ms ease-out, text-decoration-thickness 180ms ease-out; }
-@media (prefers-reduced-motion: reduce) { a, .recall summary::after, .why > summary { transition: none; } }
+@media (prefers-reduced-motion: reduce) { a, .recall summary::after, .why > summary, .nav-open { transition: none; } }
 
 /* Print: the same steps on a smaller unit and a paper scale of four sizes. Always light. */
 @media print {

@@ -61,6 +61,10 @@
 {{ block "main" . }}{{ end }}
 </main>
 {{ if not .IsHome }}{{ partial "footer.html" . }}{{ end }}
+{{- /* The site's menu on a phone (spec R9), on every page but the single document, which has no menu. */}}
+{{- if not $all }}{{ with resources.Get "js/site.js" | minify | fingerprint }}
+<script src="{{ .RelPermalink }}" defer></script>
+{{- end }}{{ end }}
 {{- if $pm }}
 {{ partial "pm/glossary-dialogs.html" . }}
 {{- $js := resources.Get "js/pm.js" | minify }}

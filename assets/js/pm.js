@@ -559,7 +559,7 @@
 
   /* ---- 6. The course bar (spec G1 to G4). Without this, its place is a plain link to Start's list of modules.
      With it, the place is a button that opens the list in place, at once (G2). Escape closes it and gives focus
-     back to the button; a click or focus outside the bar closes it too. ---- */
+     back to the button; a click or focus outside the bar closes it too, the site's Menu button included (R9). ---- */
   all("[data-course-bar]").forEach(function (bar) {
     var link = bar.querySelector("a.cb-place"), btn = bar.querySelector("button.cb-place"), menu = bar.querySelector(".cb-menu");
     if (!btn || !menu) return;
@@ -571,8 +571,20 @@
       if (on) fit();
       if (!on && refocus) btn.focus();
     }
-    window.addEventListener("resize", function () { if (!menu.hidden) fit(); });
-    window.addEventListener("scroll", function () { if (!menu.hidden) fit(); }, { passive: true });
+    /* Once the bar sticks at the top of the window, the text that scrolls under it fades short of its edge (G1). It
+       appears and goes at once: nothing in the bar moves (G2). */
+    var queued = false;
+    function stuck() {
+      queued = false;
+      bar.classList.toggle("is-stuck", window.scrollY > 0 && bar.getBoundingClientRect().top <= 0.5);
+    }
+    function onScroll() {
+      if (!menu.hidden) fit();
+      if (!queued) { queued = true; window.requestAnimationFrame(stuck); }
+    }
+    window.addEventListener("resize", function () { if (!menu.hidden) fit(); onScroll(); });
+    window.addEventListener("scroll", onScroll, { passive: true });
+    stuck();
     btn.addEventListener("click", function () { open(btn.getAttribute("aria-expanded") !== "true"); });
     bar.addEventListener("keydown", function (e) {
       if ((e.key === "Escape" || e.key === "Esc") && !menu.hidden) { e.preventDefault(); open(false, true); }
