@@ -19,9 +19,9 @@ Instead, it's a set of lessons intended to strengthen your **product judgment**,
 
 ## How it works
 
-- **Twelve modules, each built on one question, then a closing page.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work. Answer for What You Build runs longer, on purpose.
-- **From Know Who It's For on, you'll keep a decision log:** one call a module, what you expect to happen, how sure you are and when you'll know. Intuition earns trust where a situation has patterns you can learn and you get clear feedback on your calls ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)). Product calls can take months to play out, so the log gives you some of that feedback. The closing page, The Compass, has you look back over it.
-- **Some exercises end with a question for a colleague.** That part sits outside the module's time. Save them up for a month, and ask each person theirs in one conversation.
+- **Twelve modules, each built on one question, then a closing page.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work. Answer for What You Build runs longer, on purpose. Reading each module's own page takes about 10 minutes more. At about a module a week, the whole course takes a quarter.
+- **From Know Who It's For on, you'll keep a decision log:** one call a module, what you expect to happen, how sure you are as a percentage, and when you'll know. Intuition earns trust where a situation has patterns you can learn and you get clear feedback on your calls ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)). Product calls can take months to play out, so the log gives you some of that feedback. The closing page, The Compass, has you look back over it.
+- **Some exercises end with a question for a colleague.** That part sits outside the module's time. Where the answers can wait, save them up for a month, and ask each person theirs in one conversation.
 - **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
 - **Every source but a story says why to trust it,** starting with its kind of evidence: a study, a review of studies, experience or an argument. It says what you'll get from it, too, so you can decide what's worth your time.
 - **Each idea worth keeping gets a concept card, one page long.** Keep them near your work.

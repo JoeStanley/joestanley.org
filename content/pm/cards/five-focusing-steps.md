@@ -39,4 +39,4 @@ Every system has one part that limits what the whole can deliver, and that part 
 
 ## What it does not say
 
-It does not say the other steps don't matter. It says their pace should follow the constraint's. And it's a lens, not a proven law.
+It does not say the other steps don't matter. It says their pace should follow the constraint's. And treat it as a lens: nobody has proven it.

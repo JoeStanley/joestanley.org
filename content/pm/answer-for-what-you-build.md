@@ -142,7 +142,7 @@ Some of them live a world away. In 2017, Myanmar's military killed and raped Roh
 
 You've met parts of this question already. Know Who It's For asked whose problem you hear, and whose work an order rests on. See the System asked whose costs fall outside a system's edge, Find the Constraint whom a stand-in measure misses, and Mind the Seams who falls between two categories. Design for Change asked who pays for a change, and Change Safely and Weigh the Evidence whom an average hides. Here it's the whole module.
 
-So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making them hard to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
+So ask two things of what you build. Who gains, and who pays? A product can earn by helping people or by making it hard for them to leave. It can cut a cost by designing it away, or by passing it to parts of the system that are less visible or have less say. For a while, each pair looks the same on a dashboard.
 
 In life, ethical matters rarely come to you as clear cases of good and bad. Instead, it's a thousand small choices of degree, {{< pm/voice "eye-doctor" >}}. {{< pm/voice "own-line" >}} But wherever you land, hold fast.
 

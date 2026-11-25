@@ -92,7 +92,7 @@ deeper:
 
 When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues that a failure in a complex system never has just one cause.
 
-Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around a ride-hailing app's support queue, and the riders who gave up before they ever filed a ticket fall outside it: the ones Know Who It's For said you most need to hear. In another essay, "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
+Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around a ride-hailing app's support queue, and the riders who gave up before they ever filed a ticket fall outside it: the ones Know Who It's For said you most need to hear. In her essay "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
 
 [//]: # (short-path)
 

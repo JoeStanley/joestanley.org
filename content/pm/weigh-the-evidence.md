@@ -36,7 +36,7 @@ steps:
         url: https://researchonline.lse.ac.uk/id/eprint/88108/1/Munro_Decision%20Making_Accepted.pdf
     look: How a tool that's often more accurate than professionals can still carry their bias, now "out of sight in an apparently neutral scientific instrument."
     trust: "An argument. It's a peer-reviewed paper by the professor of social policy who led England's 2011 review of child protection."
-    only: Bias hidden in a number that looks neutral, put sharply. Your product's data, too, carries the judgment of whoever collected it.
+    only: A sharp account of bias hidden in a number that looks neutral. Your product's data, too, carries the judgment of whoever collected it.
   - id: cartwright
     kind: read
     title: 'Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, "Can I make this policy work here?"'
@@ -98,11 +98,11 @@ deeper:
 
 You'll meet both mistakes in the same week. On Monday, one vivid story from a customer, or one angry call from a partner store, turns your grocery app's roadmap. On Thursday, a dashboard settles an argument because it has decimals in it, though nobody can say who's in the data or who isn't. Both feel responsible at the time. Adam Mosseri, then a designer at Facebook, put the aim in the title of [a 2010 talk](https://www.youtube.com/watch?v=bKZiXAFeBeY): be {{< pm/term "data-informed" >}}, not data-driven. Use the numbers and the stories for what each can tell you, and keep the decision yours.
 
-Numbers tell you how much and how often, across many people, but only about what someone chose to measure. Forget that, and what's hard to measure gets left out, then called unimportant, then treated as if it isn't there: the {{< pm/term "mcnamara-fallacy" "McNamara fallacy" >}}, as the market researcher Daniel Yankelovich named it in 1971. It's a sibling of Goodhart's Law from Find the Constraint: there a number is gamed once it's a target, and here it's trusted because it can be counted. Stories tell you why, and what nobody thought to measure, but only about the people who told them, which is why Know Who It's For asked whose problem you hear. When the numbers and the stories disagree, look into why before you pick a side.
+Numbers tell you how much and how often, across many people, but only about what someone chose to measure. Forget that, and what's hard to measure gets left out, then called unimportant, then treated as if it isn't there: the {{< pm/term "mcnamara-fallacy" "McNamara fallacy" >}}, as the market researcher Daniel Yankelovich named it in 1971. Set it beside Goodhart's Law from Find the Constraint: there a number is gamed once it's a target, and here it's trusted because it can be counted. Stories tell you why, and what nobody thought to measure, but only about the people who told them, which is why Know Who It's For asked whose problem you hear. An AI summary of your interviews chooses what to keep, too, so check it against your notes before you lean on it. When the numbers and the stories disagree, look into why before you pick a side.
 
 When you break a number down, break it down by more than one thing at once. In [Gender Shades](https://proceedings.mlr.press/v81/buolamwini18a.html), a 2018 paper, Joy Buolamwini and Timnit Gebru tested face analysis from three companies on gender and skin type together. It got darker-skinned women's gender wrong up to a third of the time, and lighter-skinned men's almost never. The word for looking where two such lines cross is {{< pm/term "intersectional" >}}, from Kimberlé Crenshaw, whom you met in Mind the Seams. The groups there are small, so they swing, as the card warns: get more data there, not less attention.
 
-Your own hunch is evidence too. Gary Klein, a psychologist who studies how experts decide, calls it "an important data point," and you check it like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right (Kahneman and Klein, 2010).
+Your own hunch is evidence too. Gary Klein, a psychologist who studies how experts decide, calls it "an important data point" in a 2010 interview alongside Daniel Kahneman, and you check it like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)).
 
 [//]: # (short-path)
 

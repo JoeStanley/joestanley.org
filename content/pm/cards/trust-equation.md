@@ -39,4 +39,4 @@ The model first appeared in *The Trusted Advisor* (2000), by David Maister, Char
 
 ## What it does not say
 
-It's a consultants' model, not a measured law. Researchers split trustworthiness differently, into ability, benevolence and integrity, and treat trust itself as a willingness to be vulnerable (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.
+It's a consultants' model, drawn from their own practice. Researchers split trustworthiness differently, into ability, benevolence and integrity, and treat trust itself as a willingness to be vulnerable (Mayer, Davis and Schoorman, 1995). Use the equation as a checklist for one relationship.
