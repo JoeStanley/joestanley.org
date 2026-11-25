@@ -186,3 +186,9 @@ moved:
     to: "the same place, which now reads: The rest goes out on a regular cadence. Your margin note beside the paragraph moved with it, word for word"
     why: "The same reason, so the two paragraphs read as one person explaining two kinds of news (job 33)."
     when: 24 November 2026
+  - what: changed
+    words: "so a target on the constraint's output can improve while value delivery doesn't."
+    from: "Find the Constraint, Why this matters, the sentence on Goodhart's Law, where you had changed \"climb while delivery doesn't\" to this"
+    to: "the same place, which now reads: so the constraint's number can hit its target while nothing more reaches users"
+    why: "The second cold read (job 35) found \"value delivery\" the one phrase in the module that reads as management-speak, and a reader noted a target doesn't improve, its number does. Your point stays: the number moves and the users get nothing more."
+    when: 25 November 2026
