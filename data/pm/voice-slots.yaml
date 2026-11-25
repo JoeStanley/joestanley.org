@@ -23,7 +23,7 @@
 slots:
   - id: what-judgment-is
     unit: Start
-    brief: "Say what you mean by product judgment, in a sentence or two after the compass line, since the course is named for it and no page defines it (card v1-start). Your comment on Start of 20 November 2026 is the first draft, below, and the site shows it as one sentence for now. Suggestion: keep it, in your voice, or put it your own way."
+    brief: "Say what you mean by product judgment, in a sentence or two after the compass line, since the course is named for it and no page defines it (card v1-start). Your comment on Start of 20 November 2026 is the first draft, below, and the site shows it as one sentence for now. Suggestion: keep it, in your voice, or put it your own way. The second cold read (25 November 2026) found the course's clearest account of the skill only at its end: The Compass's question, \"Which question does the call in front of you need?\" and its last section, where to draw the line. Its readers would name that here, so the reader knows from the start what they're practicing."
     old: "a blend of lived experience, industry best practices, and situation context that turns into intuition"
     interim: "Judgment is a blend of lived experience, industry best practices and the context of the situation, turned into intuition."
   - id: why-now

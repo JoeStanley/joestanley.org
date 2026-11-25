@@ -9,7 +9,7 @@ do_minutes: 30
 
 last_time:
   - q: Autoplay lifts hours watched on a video app. Before you call it a win, who do you look for?
-    a: Whoever pays for it, such as the viewer up later than they meant to be. A product can earn by helping people, or cut a cost by passing it to people with less say.
+    a: Whoever pays for it, such as the viewer up later than they meant to be. A product can earn by helping people or by making them hard to leave, and autoplay may be doing the second.
   - q: Everyone on a launch could say "the business asked for it." What's your share?
     a: You're one of the many hands. If what you did was a cause, and you could have done otherwise, part of it is yours. Name who owns each harm you can foresee before it lands.
 
@@ -79,7 +79,7 @@ Every plan rests on assumptions, and some of yours are probably wrong today: tha
 
 The cheapest way is to decide what wrong looks like before you start. Change Safely had you name a guardrail and the level at which you'd stop, before a rollout. Do the same for every bet. Before the new alert ships, write down the result you expect and by when, say technicians acting on most alerts within a month, and the result that would make you stop or change course. That's a stop rule. Once the bet is live you'll want to be right, so a line drawn afterward tends to move. A stop rule also catches the bet that never quite fails and never quite works, and drifts on for a year.
 
-Silence isn't proof that you're right. Low numbers can mean people stopped telling you. US colleges publish their counts of sexual assault on campus, under a law called the Clery Act. When students set those counts beside anonymous surveys, Catherine D'Ignazio and Lauren Klein write in *Data Feminism*, the truth was "closer to the reverse" of what the counts suggested. Many of the colleges with higher counts were the ones putting more into support for survivors, where survivors had more reason to come forward. So when technicians stop reporting false alarms, ask them why before you count it as good news.
+Silence isn't proof that you're right. Low numbers can mean people stopped telling you. US colleges publish their counts of sexual assault on campus, under a law called the Clery Act. When students set those counts beside anonymous surveys, as *Data Feminism* tells it on Weigh the Evidence's full path, the truth was "closer to the reverse" of what the counts suggested. Many of the colleges with higher counts were the ones putting more into support for survivors, where survivors had more reason to come forward. So when technicians stop reporting false alarms, ask them why before you count it as good news.
 
 Finding out also takes habits, in your thinking and your team's. Start by climbing down from a conclusion to what you saw. Chris Argyris's {{< pm/term "ladder-of-inference" "ladder of inference" >}} has four rungs, as Ed Batista tells it: you select some of the data, interpret it, form beliefs from it, and act. Say the dashboard shows technicians dismissing a third of the new alerts. By lunch someone has read that as warnings nobody acted on, decided the technicians don't trust the alerts, and proposed pulling the feature. Climbing down means asking which alerts were dismissed, at which sites, and what happened to the machines afterward.
 

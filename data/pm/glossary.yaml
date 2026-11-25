@@ -35,7 +35,7 @@ job-crafting:
   text: Reshaping your own job from the inside, by changing its tasks, your working relationships or how you see its purpose. Amy Wrzesniewski and Jane Dutton named it in 2001.
 glue-work:
   term: Glue work
-  text: Tanya Reilly's name for the work that holds a team together and rarely shows on a roadmap.
+  text: Tanya Reilly's name for the work that holds a team together and rarely gets anyone promoted.
 discovery:
   term: Discovery
   text: The work of learning whether a problem is real, whose it is and what solving it is worth, before and while you build.
@@ -77,7 +77,7 @@ complexity:
   text: In John Ousterhout's sense, anything in a system's structure that makes it hard to understand and change. Its symptoms are change amplification, cognitive load and unknown unknowns.
 cognitive-load:
   term: Cognitive load
-  text: How much someone has to know to make a change safely.
+  text: How much someone has to know to make a change safely. *Team Topologies* uses it for how much a team has to hold in its head.
 percentile:
   term: Percentile
   text: Where a case falls when all of them are ranked. If the 99th percentile wait is 3 seconds, 99 in 100 wait 3 seconds or less.

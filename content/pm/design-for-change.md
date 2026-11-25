@@ -55,7 +55,7 @@ check:
   - q: Know Who It's For put a price on every week of waiting. This module asks you to spend weeks making likely changes cheap. When does each win?
     against: know-who-its-for
     a: Price both. When a change is likely and soon, making it cheap pays for itself in the weeks it saves later. When it's a guess, ship the value now, and count the rework in the price of the decision.
-  - q: "**Beyond this module.** Your list stops at what you build and the phones it runs on. What slow layer lives in your customers' heads?"
+  - q: "**Beyond this module.** Your list stops at what you build and the rules it must meet. What slow layer lives in your customers' heads?"
     a: Their habits, and what they've learned to do on your screens. A redesign that's quick for you can be slow for them. After your next change to a screen people use every day, read your support queue for a week.
 
 deeper:
@@ -96,7 +96,7 @@ Ask how your product will change over time: which parts, how often, and at what 
 
 Slow isn't the enemy, though. A school's record of grades moves slowly on purpose, because every transcript depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Some slow layers aren't yours. Students' phones change at their own pace, so retiring an old app version saves your team the upkeep and hands the bill to students who can't update, often those on the oldest or cheapest phones.
 
-Data is often the slowest layer of all, because so much reads it, and the data a feature creates outlives the feature. Its shape follows the questions people will ask of it: each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because they come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds. And when two reports disagree, there's usually a copy behind it: reports, caches and other teams read copies of the {{< pm/term "system-of-record" "system of record" >}}, each for its own {{< pm/term "operational-analytical" "operational or analytical" >}} use, and every copy is one more place a change has to reach.
+Data is often the slowest layer of all, because so much reads it, and the data a feature creates outlives the feature. Its shape follows the questions people will ask of it: each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because they come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds. And when two reports disagree, there's usually a copy behind it. Reports, caches and other teams each read their own copy of the {{< pm/term "system-of-record" "system of record" >}}, for {{< pm/term "operational-analytical" "operational or analytical" >}} use, and a change has to reach every copy.
 
 There's a precise word for what makes a change costly: {{< pm/term "complexity" >}}. John Ousterhout uses it for anything in a system's structure that makes it hard to understand and change, and names three symptoms. Change amplification is a simple change that needs edits in many places. {{< pm/term "cognitive-load" "Cognitive load" >}} is how much you must know to make a change safely. And with unknown unknowns, nobody can tell in advance what a change will touch. With those words, you can say why a small request took a month without blaming anyone.
 
@@ -105,6 +105,8 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 ## Do
 
 **List your product's layers (25 minutes).** Take one product or journey you own and list its parts from fastest-changing to slowest: wording, screens, business rules, APIs, the data model, core systems of record, the contracts and laws it must meet. Note how often each changed in the last year. Then take the last request that ran long. Which layers did it touch, and which symptom of complexity showed?
+
+**Trace one piece of data (10 minutes).** Pick one thing your product shows, such as a student's final grade. Find where it's first written, its system of record, then list every copy you know of, in reports, caches, other teams' systems or a vendor's, and who depends on each. For each copy, ask: if it were wrong tomorrow, who would notice first, and who would fix it?
 
 **For your decision log.** Write how long you expect the next request that touches your slowest layer to take, and how sure you are. You'll know when it ships.
 

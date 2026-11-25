@@ -7,6 +7,10 @@
 ai:
   - unit: know-who-its-for
     words: where a plain rule should stay in charge
+  - unit: know-who-its-for
+    words: A model asked to play your customer gives you a forecast too
+  - unit: weigh-the-evidence
+    words: A model's summary of your interviews selects again
   - unit: own-your-role
     words: call their tests evaluations
   - unit: find-the-constraint

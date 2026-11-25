@@ -62,7 +62,7 @@ check:
   - q: Your team's strategy reads "Delight travelers with a fast, reliable app," and nobody objects. What's wrong with it?
     a: Nobody would argue for the opposite, so it isn't a choice. It's a goal, with no diagnosis or guiding policy behind it.
   - q: "**Beyond this module.** You've said no and logged it. What would make you change your mind?"
-    a: A result you name now, before you want to be right. Notice When You Are Wrong calls it a stop rule, and starts from your decision log.
+    a: A result you name now, before you want to be right. Notice When You Are Wrong calls it a stop rule, and has you review your decision log.
 
 deeper:
   - title: What Is Strategy?

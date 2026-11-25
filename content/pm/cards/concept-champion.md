@@ -11,7 +11,7 @@ deeper:
   by: Kim Clark, Bruce Chew and Takahiro Fujimoto (1987)
   url: https://www.brookings.edu/wp-content/uploads/1987/12/1987c_bpea_clark_chew_fujimoto_meyer_scherer.pdf
   where: A paper. Read pages 751 to 756, about 10 minutes. Free at brookings.edu.
-  trust: "A study. It's small and from one industry: only 4 of the 29 projects had a heavyweight."
+  trust: "A study. It's small and from one industry: only 4 of the 29 projects had a heavyweight, most of them Japanese."
   only: Where the term comes from, with both kinds of manager side by side.
 ---
 
@@ -24,7 +24,7 @@ Set the vision as a destination, keep it current as engineers and customers teac
 ## Why a PM cares
 
 - **Product management isn't project management.** A project can be on time and on budget and still be the wrong product.
-- **You facilitate, but you aren't a facilitator.** Groups don't pool what they know on their own: they picked the best candidate 18 percent of the time when its facts were spread among them, 83 percent when everyone had them (Stasser and Titus, 1985).
+- **You facilitate, but you aren't a facilitator.** A facilitator stays out of the content, and you can't, because groups don't pool what they know on their own: they picked the best candidate 18 percent of the time when its facts were spread among them, 83 percent when everyone had them (Stasser and Titus, 1985).
 - **The vision needs a voice of its own.** People respond to the person in the work. A product made by averaging every request can be right in every detail and still say nothing.
 
 ## How to spot it
