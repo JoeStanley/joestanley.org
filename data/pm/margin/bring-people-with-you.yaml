@@ -20,7 +20,7 @@ last-time: ""
 
 # Why this matters
 why-this-matters:
-  - beside: "So second, think about a regular cadence"
+  - beside: "The rest goes out on a regular cadence"
     note: "And if something starts to go sideways you may not yet see, they can help you identify and correct for it before you end up having to share news that the new major outcome has been delayed. In my experience most managers actually do want to help, they just need to see how."
 
 # The short path
@@ -35,7 +35,13 @@ step-card-trust-equation: ""
 # Short path, step 3: Will Larson, “Staying aligned with authority”
 step-larson: ""
 
-# Short path, step 4: George Gopen and Judith Swan, “The Science of Scientific Writing”
+# Short path, step 4: Jeff Bezos, “2016 Letter to Shareholders”
+step-bezos-2016: ""
+
+# Short path, step 5: Pete Resnick, “On Consensus and Humming in the IETF”
+step-resnick: ""
+
+# Short path, step 6: George Gopen and Judith Swan, “The Science of Scientific Writing”
 step-gopen-swan: ""
 
 # Do

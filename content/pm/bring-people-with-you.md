@@ -41,6 +41,28 @@ steps:
     look: "His first two tactics: never surprise your manager, and don't let your sponsor, the senior person backing your work, surprise you. For the second he suggests a weekly email, or a Slack thread with your focus for the week."
     trust: "Experience. It's a chapter of his book *Staff Engineer*, by an engineering leader writing for staff engineers rather than PMs, so read it with your own role in mind."
     only: The case for updating upward as a habit, for people who lead without formal authority.
+  - id: bezos-2016
+    kind: read
+    title: 'Jeff Bezos, "2016 Letter to Shareholders"'
+    minutes: 5
+    where: A shareholder letter. Free at aboutamazon.com. Read the section headed "High-Velocity Decision Making."
+    links:
+      - text: "2016 Letter to Shareholders"
+        url: https://www.aboutamazon.com/news/company-news/2016-letter-to-shareholders
+    look: "His third point, \"disagree and commit,\" and his fourth: escalate early when teams truly aren't aligned, or \"the default dispute resolution mechanism for this scenario is exhaustion.\""
+    trust: "Experience. It's a chief executive on his own habit, a year after the letter you read in Decide and Set Direction."
+    only: What to do once the call is made and you still disagree, from someone who says the boss should do it too.
+  - id: resnick
+    kind: read
+    title: 'Pete Resnick, "On Consensus and Humming in the IETF"'
+    minutes: 10
+    where: A guidance document, RFC 7282. Free at rfc-editor.org. Read section 2, "Lack of disagreement is more important than agreement."
+    links:
+      - text: "On Consensus and Humming in the IETF"
+        url: https://www.rfc-editor.org/rfc/rfc7282.html
+    look: "Why a chair who asks \"Can anyone not live with choice A?\" learns more than one who asks whether everyone's fine with it, and how to tell agreement from people who've given up."
+    trust: "Experience. It's how the Internet Engineering Task Force, which sets many of the internet's technical standards, reaches decisions, written up by one of its members and published after public review."
+    only: How peers decide with no boss to break the tie, and why a minority that says "Forget it, do what you want" hasn't agreed.
   - id: gopen-swan
     kind: read
     title: 'George Gopen and Judith Swan, "The Science of Scientific Writing"'
@@ -54,13 +76,15 @@ steps:
     only: A reason, not just a rule, for why some sentences are hard to read.
 
 check:
-  - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation first. When does each hold?
+  - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation in the opening lines. When does each hold?
     against: decide-and-set-direction
     a: SCR is for when someone else makes the call. They need your view from the first line, so they can weigh it. Speaking last is for when the call is yours, and you need the room's views more than its agreement.
   - q: Your update lists only wins. Which parts of the trust equation does it work against?
     a: Two. Self-orientation goes up, because it reads as being about you, and credibility goes down, because nobody believes nothing's wrong.
   - q: Your update opens with two paragraphs of background and asks for a decision in its last line. What would SCR change?
     a: It puts the ask in the opening, as the resolution, after one line the reader already accepts and one on what changed.
+  - q: Your tech lead wanted the new booking screen to wait for a rewrite, and the call went the other way. What do you owe them, so they can disagree and commit?
+    a: A real hearing before the call, their concern written into the decision record, and a date when you'll look again. Then committing isn't the same as giving up.
   - q: "**Beyond this module.** Whose trust will you need in a year that you haven't started to earn?"
     a: Someone your work will soon depend on, such as a team you'll need next year or a leader two levels up. Name one, and ask your manager how that person likes to hear news.
 
@@ -96,18 +120,20 @@ People who decide about your work, or rely on it, can't see inside your team. Go
 
 Once you've found something, say it. You build trust by being clear when there's news and predictable when there isn't. {{< pm/voice "own-way" >}}
 
-First, think about the milestones and outcomes you'd want to tell people about: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, are likely the most interested in these, though they may come irregularly, with long gaps in between.
+Some news has a moment of its own: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, care most about these, though they may come irregularly, with long gaps in between.
 
-So second, think about a regular cadence of updates. {{< pm/voice "cadence" >}}
+The rest goes out on a regular cadence. {{< pm/voice "cadence" >}}
 
-Credibility isn't handed out evenly, though. In a [2014 report on women in science](https://worklifelaw.org/publication/double-jeopardy-gender-bias-against-women-of-color-in-science/), about two thirds said they'd had to prove their competence again and again, and Black women said so most often. It's a survey of one association's members, not a peer-reviewed study, but it's one of the few that breaks the pattern down by race. So notice whose updates you take on trust, and whose you check: it's Weigh the Evidence's question, how much weight a piece of evidence deserves, asked of the people who bring it.
+Credibility isn't handed out evenly, though. In a [2014 report on women in science](https://worklifelaw.org/publication/double-jeopardy-gender-bias-against-women-of-color-in-science/), about two thirds said they'd had to prove their competence again and again, and Black women said so most often. It's a survey of one association's members, not a peer-reviewed study, but it's one of the few that breaks the pattern down by race. If you're the one asked to prove it again, the fault isn't in your work, and fixing it isn't yours alone. Meanwhile, this module's habits work harder for you: updates on the promised day, and a decision log anyone can check against what happened. Ask a sponsor, someone senior who backs your work, to say what they've seen you do in rooms you aren't in, and if you don't have one yet, ask your manager who could be. And when the update is someone else's, notice whose you take on trust and whose you check: it's Weigh the Evidence's question, asked of the people who bring the evidence.
+
+Bringing people along is harder when they don't agree, and the people you most need are often peers with no reason to follow you: a tech lead, a designer, another team's PM. Disagreeing about the work isn't the danger. Pooling more than a hundred studies, Frank de Wit, Lindred Greer and Karen Jehn found that conflict about the task didn't clearly hurt how teams did, while conflict about each other, or about who does what, did ([2012](https://doi.org/10.1037/a0024844)). When a view makes no sense to you, get curious about why someone holds it, as Gary Klein advises. Decide and Set Direction's named decider settles who makes the call, not whether people come with it. Among peers, ask whether anyone can't live with a choice. That isn't a veto: every objection gets an answer, and the decider still decides. When the call goes against you, say so once, plainly, then commit. Jeff Bezos calls it "disagree and commit," and expects a boss to do it too.
 
 [//]: # (short-path)
 
 ## Do
 
-**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Let's start the pilot on Thursday, once the retry is fixed." Keep the update to a few lines, include one item that isn't on track, and end its line on what you need, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
+**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Once the retry is fixed, let's start the pilot on Thursday." Keep the update to a few lines, include one item that isn't on track, and end that item's line on what you need, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
 
 **For your decision log.** Write how you expect your senior reader to take the item that isn't on track, and how sure you are. You'll know by their reply.
 
-**Optional: one story at three sizes (15 minutes).** Turn that item into an ask of your manager. Write it as one sentence, then as an SCR paragraph of under 100 words, then as the outline of a one-page memo: the problem, two or three approaches, your recommendation and the open questions. Write each size fresh, with the ask in it. SCR puts the ask at the top of the message. Inside each sentence, end on what you most want noticed.
+**Optional: argue the other side (15 minutes).** Pick a call where you and a peer, such as a tech lead or a designer, disagree. Write their case well enough that they'd sign it. Then write yours as an SCR paragraph of under 100 words. Last, write what would let you commit if the call goes their way, and the date you'd look again.
