@@ -593,5 +593,27 @@
     bar.addEventListener("focusout", function (e) { if (!menu.hidden && e.relatedTarget && !bar.contains(e.relatedTarget)) open(false); });
     btn.hidden = false;
     if (link) link.hidden = true;
+    /* On Start, Continue, from saved progress, in place of Next (G1): the first module, in the map's order, that's
+       started and not done; failing that, the first not done after the furthest one done, or else the first not
+       done; once every module is done, The Compass. With nothing saved, no Continue. */
+    var cont = bar.querySelector("[data-continue]");
+    if (!cont) return;
+    var mods = all(".cb-list [data-map-unit]", bar).map(function (li) {
+      var unit = li.getAttribute("data-map-unit"), ids = (li.getAttribute("data-map-ids") || "").split(" ").filter(Boolean);
+      var n = ids.filter(function (id) { return get("pm:" + unit + ":" + id) === "1"; }).length;
+      return { a: li.querySelector("a"), n: n, done: ids.length > 0 && n >= ids.length };
+    });
+    var to = null, last = -1;
+    mods.forEach(function (m, i) { if (m.done) last = i; if (!to && m.n > 0 && !m.done) to = m.a; });
+    if (!to && last >= 0) {
+      mods.slice(last + 1).concat(mods).some(function (m) { if (!m.done) { to = m.a; return true; } return false; });
+      if (!to) to = bar.querySelector(".cb-more a");
+    }
+    if (!to) return;
+    cont.setAttribute("href", to.getAttribute("href"));
+    cont.querySelector("[data-continue-to]").textContent = ": " + to.getAttribute("data-label");
+    cont.hidden = false;
+    var next = bar.querySelector(".cb-next");
+    if (next) next.hidden = true;
   });
 })();

@@ -273,8 +273,9 @@
 .cb-chev { display: inline-block; flex: none; width: 0.45em; height: 0.45em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
 .cb-down { transform: translateY(-0.15em) rotate(45deg); }
 .cb-open[aria-expanded="true"] .cb-down { transform: translateY(0.1em) rotate(-135deg); }
-/* On a phone the bar is its place alone; previous and next wait at the foot and in the list (G1). */
-@media (max-width: 45.99rem) { .cb-steps { display: none; } }
+/* On a phone the bar is its place alone: the next step waits at the foot and every module in its list. On Start,
+   Continue shows at every width (G1). */
+@media (max-width: 45.99rem) { .cb-steps > :not(.cb-continue) { display: none; } }
 /* The list drops under the bar, over the page, and scrolls inside itself when the window is short (G3). */
 .cb-menu { position: absolute; z-index: 1; left: 0; right: 0; top: 100%; max-height: calc(100svh - 4rem); overflow-y: auto; overscroll-behavior: contain; background: var(--paper); border-bottom: 1px solid var(--rule); }
 .cb-list, .cb-more { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
@@ -291,17 +292,12 @@
 /* A heading or a stop reached by its address lands below the bar, not under it (G2). */
 .has-course-bar main [id] { scroll-margin-top: calc(2.75rem + var(--sp-4)); }
 
-/* The foot of a unit (spec G5): the next step by name, in the heading face, on a rule, as Start lists the modules. */
-.unit-foot { display: grid; gap: var(--sp-4); margin-top: var(--sp-7); padding-top: var(--sp-5); border-top: 1px solid var(--rule); }
+/* The foot of a unit (spec G5): one step onward by name, in the heading face, on a rule, at the left where the
+   column starts, as Start lists the modules. */
+.unit-foot { margin-top: var(--sp-7); padding-top: var(--sp-5); border-top: 1px solid var(--rule); }
 .unit-foot p { margin: 0; }
 .uf-label { display: block; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
-.unit-foot .uf-prev a, .unit-foot .uf-next a { font: var(--w-head) var(--fs-body)/var(--lh-head) var(--head); }
-.uf-all { font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
-@media (min-width: 46rem) {
-  .unit-foot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--sp-5); }
-  .uf-next { grid-column: 2; text-align: right; }
-  .uf-all { grid-column: 1 / -1; }
-}
+.unit-foot .uf-step a { font: var(--w-head) var(--fs-body)/var(--lh-head) var(--head); }
 
 /* Single-document preview: one unit at a time. */
 .pm-all.js .unit:not(.is-current) { display: none; }

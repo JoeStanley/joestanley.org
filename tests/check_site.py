@@ -689,9 +689,16 @@ def walk_browser_checks(out_dir, path, walks):
 
 
 # ---------- getting around: the course bar and the foot (G1 to G5) ----------
-# The pages that carry the bar and the foot. The owner sees them on one module and one card first (25 November
-# 2026, job 40); when he says they spread, this becomes every syllabus page but the single document.
-BAR_PAGES = ["/pm/find-the-constraint/", "/pm/cards/five-focusing-steps/"]
+# The pages that carry the bar: every syllabus page but the single document (the owner, 25 November 2026, job 40).
+# The foot is on the modules and the cards. In a browser, one page of each kind, the pilot's two among them, and the
+# last module, whose place is the longest.
+BAR_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/"]
+BAR_BROWSER_PAGES = ["/pm/", "/pm/find-the-constraint/", "/pm/cards/five-focusing-steps/", MODULES[-1][0], CLOSING, "/pm/glossary/"]
+
+
+def _bar_kind(path, cards_of):
+    """What a page is to the bar: Start, a module, a card, The Compass or the glossary."""
+    return "start" if path == "/pm/" else "closing" if path == CLOSING else "glossary" if path == "/pm/glossary/" else "card" if path in cards_of else "module"
 
 
 def _course_order(out_dir):
@@ -731,13 +738,17 @@ def course_bar_checks(out_dir):
             fail("G1", f"{path}: the course bar isn't between the site header and the page's main content")
         if bar.get("aria-label") != course:
             fail("G2", f"{path}: the bar's landmark is named '{bar.get('aria-label')}', not '{course}'")
+        kind = _bar_kind(path, cards_of)
         mod_path = cards_of.get(path, path)
-        slug = mod_path.strip("/").split("/")[-1]
-        m = next((x for x in mods if x.get("page") == slug), None)
-        if not m:
-            fail("G1", f"{path}: no module on the map for this page")
-            continue
-        want = f"{course}, Module {m['num']} of {len(mods)}"
+        if kind in ("module", "card"):
+            slug = mod_path.strip("/").split("/")[-1]
+            m = next((x for x in mods if x.get("page") == slug), None)
+            if not m:
+                fail("G1", f"{path}: no module on the map for this page")
+                continue
+            want = f"{course}, Module {m['num']} of {len(mods)}"
+        else:
+            want = f"{course}, " + {"start": "Start", "closing": "The Compass", "glossary": "Glossary"}[kind]
         link, btn = bar.select_one("a.cb-place"), bar.select_one("button.cb-place")
         for el, what in ((link, "plain link"), (btn, "button")):
             if not el:
@@ -763,8 +774,8 @@ def course_bar_checks(out_dir):
             menu = soup.find(id=ctl) if ctl else None
             if not menu or not menu.has_attr("hidden") or not bar.find(id=ctl):
                 fail("G2", f"{path}: the bar's button controls no list inside the bar, or the list doesn't start hidden")
-        i = paths.index(mod_path)
-        for rel, j in (("prev", i - 1), ("next", i + 1)):
+        i = paths.index(mod_path) if mod_path in paths else None
+        for rel, j in (("prev", -1 if i is None else i - 1), ("next", -1 if i is None else i + 1)):
             a = bar.select_one(f"a.cb-step[rel={rel}]")
             exp = paths[j] if 0 <= j < len(paths) else None
             got = a.get("href") if a else None
@@ -784,30 +795,48 @@ def course_bar_checks(out_dir):
             if str(x["num"]) not in li.get_text(" ", strip=True):
                 fail("G1", f"{path}: the bar's list doesn't number {x['title']}")
         cur = bar.select(".cb-list a[aria-current]")
-        if [a.get("href") for a in cur] != [mod_path]:
-            fail("G2", f"{path}: the place in the bar's list is marked on {[a.get('href') for a in cur]}, not {mod_path}")
-        elif cur[0].get("aria-current") != ("page" if path == mod_path else "true"):
-            fail("G2", f"{path}: the place is marked aria-current='{cur[0].get('aria-current')}'")
+        if kind in ("module", "card"):
+            if [a.get("href") for a in cur] != [mod_path]:
+                fail("G2", f"{path}: the place in the bar's list is marked on {[a.get('href') for a in cur]}, not {mod_path}")
+            elif cur[0].get("aria-current") != ("page" if path == mod_path else "true"):
+                fail("G2", f"{path}: the place is marked aria-current='{cur[0].get('aria-current')}'")
+        elif cur:
+            fail("G2", f"{path}: the bar's list marks a module, {[a.get('href') for a in cur]}, as the place")
         more = [a.get("href") for a in bar.select(".cb-more a")]
         if more != [CLOSING, "/pm/glossary/"]:
             fail("G1", f"{path}: after the modules the bar's list goes to {more}, not The Compass and the glossary")
-        # G5: the foot
+        marked = [a.get("href") for a in bar.select(".cb-more a[aria-current=page]")]
+        if marked != ([path] if kind in ("closing", "glossary") else []):
+            fail("G2", f"{path}: after the modules the bar's list marks {marked} as the place")
+        # G1: what Start's Continue names for a screen reader, each place it can go
+        labels = [(a.get("href"), a.get("data-label")) for a in bar.select(".cb-list a, .cb-more a") if a.get("href") != "/pm/glossary/"]
+        if labels != [(p_, l_) for p_, l_ in order[1:]]:
+            fail("G1", f"{path}: the bar's list doesn't label each module and The Compass for Continue to name: {labels[:3]}")
+        # G1, G4: Continue, on Start only, hidden until the script fills it from saved progress
+        cont = bar.select("a[data-continue]")
+        if kind == "start":
+            if len(cont) != 1 or not cont[0].has_attr("hidden") or "cb-step" not in (cont[0].get("class") or []) or not cont[0].find_parent(class_="cb-steps") or not cont[0].select_one("[data-continue-to]"):
+                fail("G1", f"{path}: the bar has no Continue, hidden among its steps until the script fills it")
+        elif cont:
+            fail("G1", f"{path}: the bar offers Continue, which is Start's alone")
+        # G5: the foot, one step onward: on a module its next unit, on a card its stop; none on Start, The Compass or the glossary
         foot = soup.select("main nav.unit-foot")
+        if kind not in ("module", "card"):
+            if foot:
+                fail("G5", f"{path}: carries a foot; Start, The Compass and the glossary have none")
+            continue
         if len(foot) != 1:
             fail("G5", f"{path}: {len(foot)} feet, not one")
             continue
         foot = foot[0]
         if "screen-only" not in (foot.get("class") or []):
             fail("G4", f"{path}: the foot isn't kept out of print")
-        if path == mod_path:
-            for rel, j in (("prev", i - 1), ("next", i + 1)):
-                a = foot.select_one(f"a[rel={rel}]")
-                exp = (paths[j], order[j][1]) if 0 <= j < len(paths) else None
-                got = (a.get("href"), a.get_text(" ", strip=True)) if a else None
-                if got != exp:
-                    fail("G5", f"{path}: the foot's {rel} is {got}, not {exp}")
-            if not foot.find("a", href="/pm/#modules", string="All modules"):
-                fail("G5", f"{path}: the foot has no \"All modules\" to Start's list")
+        links = foot.find_all("a")
+        if kind == "module":
+            exp = (paths[i + 1], order[i + 1][1], "next")
+            got = [(a.get("href"), a.get_text(" ", strip=True), " ".join(a.get("rel") or [])) for a in links]
+            if got != [exp]:
+                fail("G5", f"{path}: the foot holds {got}, not its next step alone, {exp}")
         else:
             mod = page(mod_path)
             stops = mod.select("li.step")
@@ -815,20 +844,20 @@ def course_bar_checks(out_dir):
             back = foot.find("a", href=f"{mod_path}#stop-{card_step}")
             if not card_step or not back or f"stop {card_step}" not in back.get_text(" ", strip=True):
                 fail("G5", f"{path}: the foot doesn't go back to its stop on {mod_path}'s short path")
-            others = [c for c in dict(MODULES)[mod_path] if c != path]
-            got = [a.get("href") for a in foot.find_all("a") if a is not back]
-            if got != others:
-                fail("G5", f"{path}: the foot goes to {got}, not its module's other card {others}")
+            elif len(links) != 1:
+                fail("G5", f"{path}: the foot holds {[a.get('href') for a in links]}, not the way back to its stop alone")
+        if not links or links[0].find_parent("p", class_="uf-step") is None:
+            fail("G5", f"{path}: the foot's step isn't set as its one named step (.uf-step)")
     # G5: every stop has an address of its own, on every module
     for m, _ in MODULES:
         stops = page(m).select("li.step")
         if [li.get("id") for li in stops] != [f"stop-{n}" for n in range(1, len(stops) + 1)]:
             fail("G5", f"{m}: its stops have no addresses of their own (#stop-1 and on)")
-    # Until the owner says it spreads, no other page carries the bar or the foot (G1's pilot)
+    # Outside the syllabus, and in the single document, neither the bar nor the foot (G1)
     for path in [p for p in PAGES if p not in BAR_PAGES]:
         f_ = os.path.join(out_dir, path.strip("/"), "index.html")
         if os.path.exists(f_) and re.search(r'<nav class="(course-bar|unit-foot)', open(f_, encoding="utf-8").read()):
-            fail("G1", f"{path} carries the bar or the foot before the owner has said it spreads")
+            fail("G1", f"{path} carries the bar or the foot, which are the syllabus's pages' alone, and not the single document's")
     course_bar_browser_checks(out_dir)
 
 
@@ -868,15 +897,22 @@ JS_BAND = """() => { const bar = document.querySelector('.course-bar'), head = d
 
 def course_bar_browser_checks(out_dir):
     """G1 to G4 in a browser: the bar stays in view, keeps to one line and to the page, opens and closes as a
-    disclosure should, shows saved progress, never covers what an address lands on, and without scripts is three
-    plain links; neither it nor the foot prints."""
+    disclosure should, shows saved progress, never covers what an address lands on, and without scripts is plain
+    links; neither it nor the foot prints. On Start, Continue goes where saved progress says."""
     checked("G3")
     chrome = os.environ.get("CHROME")
+    mods, order = _course_order(out_dir)
+    paths = [p_ for p_, _ in order]
+    cards_of = {c: m for m, cards in MODULES for c in cards}
     srv = Server(out_dir)
     try:
         with sync_playwright() as p:
             b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
-            for path in BAR_PAGES:
+            for path in BAR_BROWSER_PAGES:
+                kind = _bar_kind(path, cards_of)
+                at = cards_of.get(path, path)
+                i = paths.index(at) if at in paths else None
+                words = (["Previous"] if i else []) + (["Next"] if i is not None and i + 1 < len(paths) else [])
                 for w, h in ((390, 844), (1280, 900)):
                     ctx = b.new_context(viewport={"width": w, "height": h})
                     pg = ctx.new_page()
@@ -914,10 +950,10 @@ def course_bar_browser_checks(out_dir):
                         fail("G1", f"{where}: the band draws a rule under it ({k['rule']}); the band is the surface")
                     if k["chevs"] != 1:
                         fail("G1", f"{where}: the bar shows {k['chevs']} chevrons, not one")
-                    if w < 736 and (k["steps"] or "Module" not in k["place"]):
+                    if w < 736 and (k["steps"] or (kind in ("module", "card") and "Module" not in k["place"])):
                         fail("G1", f"{where}: on a phone the bar should be its place alone, \"Module\" spelled out: {k['steps']}, '{k['place']}'")
-                    if w >= 736 and k["steps"] != ["Previous", "Next"]:
-                        fail("G1", f"{where}: from 46rem up the bar's previous and next should read \"Previous\" and \"Next\": {k['steps']}")
+                    if w >= 736 and k["steps"] != words:
+                        fail("G1", f"{where}: from 46rem up the bar's steps should read {words}: {k['steps']}")
                     if k["fade"]:
                         fail("G1", f"{where}: at rest, before it sticks, the bar shows its fade")
                     pg.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)"); pg.wait_for_timeout(150)
@@ -1011,12 +1047,41 @@ def course_bar_browser_checks(out_dir):
                     pg.goto(srv.base + path); pg.wait_for_load_state("load")
                     r = pg.evaluate("""() => { const vis = e => !!e && e.getClientRects().length > 0; const bar = document.querySelector('.course-bar');
                       return {links: [...bar.querySelectorAll('a')].filter(vis).map(a => a.getAttribute('href')), btn: vis(bar.querySelector('button')), menu: vis(bar.querySelector('.cb-menu')), chevs: [...bar.querySelectorAll('.cb-chev')].filter(vis).length}; }""")
-                    if r["btn"] or r["menu"] or r["chevs"] or not r["links"] or r["links"][0] != "/pm/#modules" or len(r["links"]) != (1 if w < 736 else 3):
+                    if r["btn"] or r["menu"] or r["chevs"] or not r["links"] or r["links"][0] != "/pm/#modules" or len(r["links"]) != (1 if w < 736 else 1 + len(words)):
                         fail("G4", f"{path} at {w}px: without scripts the bar should be plain links, its place to Start's list, with previous and next from 46rem up: {r}")
                     ctx.close()
+            # G1: Start's Continue goes where the reader left off, at every width, in place of Next
+            built = [m["page"] for m in mods if m.get("page")]
+            label = dict(order)
+            cases = [({built[2]: "part", built[5]: "part", built[0]: "done"}, f"/pm/{built[2]}/", "the first module started and not done"),
+                     ({built[0]: "done", built[1]: "done"}, f"/pm/{built[2]}/", "the module after the last one done"),
+                     ({built[3]: "done"}, f"/pm/{built[4]}/", "the first not done after the furthest one done"),
+                     ({built[-1]: "done"}, f"/pm/{built[0]}/", "the first not done, when none follows the one done"),
+                     ({m_: "done" for m_ in built}, CLOSING, "The Compass, every module done")]
+            for w, h in ((390, 844), (1280, 900)):
+                ctx = b.new_context(viewport={"width": w, "height": h}); pg = ctx.new_page()
+                pg.goto(srv.base + "/pm/"); pg.wait_for_load_state("load")
+                for plan, exp, what in (cases if w == 390 else cases[:1]):
+                    pg.evaluate(JS_SAVE, plan); pg.reload(); pg.wait_for_load_state("load"); pg.evaluate("document.fonts.ready")
+                    c = pg.evaluate(JS_CONTINUE)
+                    if c["steps"] != ["Continue"] or c["href"] != exp or c["sr"] != f"Continue: {label[exp]}":
+                        fail("G1", f"/pm/ at {w}px, with {what} saved: the bar's steps are {c['steps']}, Continue to {c['href']} ('{c['sr']}'), not Continue alone to {exp} ('Continue: {label[exp]}')")
+                    if w == 390 and (c["height"] > 44.5 or c["size"][0] < 43.5 or c["size"][1] < 43.5):
+                        fail("G3", f"/pm/ at {w}px with Continue: the bar is {c['height']:.0f}px tall, Continue {c['size'][0]:.0f} by {c['size'][1]:.0f}; one line, and 44 by 44")
+                pg.evaluate("localStorage.clear()")
+                ctx.close()
             b.close()
     finally:
         srv.close()
+
+
+JS_SAVE = """(plan) => { localStorage.clear(); for (const [unit, how] of Object.entries(plan)) {
+  const li = document.querySelector('.cb-list [data-map-unit="' + unit + '"]'); const ids = li.getAttribute('data-map-ids').split(' ').filter(Boolean);
+  (how === 'done' ? ids : ids.slice(0, 1)).forEach(id => localStorage.setItem('pm:' + unit + ':' + id, '1')); } }"""
+JS_CONTINUE = """() => { const vis = e => !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden';
+  const bar = document.querySelector('.course-bar'), c = bar.querySelector('[data-continue]'), r = c.getBoundingClientRect();
+  return {steps: [...bar.querySelectorAll('.cb-step')].filter(vis).map(e => [...e.childNodes].filter(n => !(n.classList && n.classList.contains('sr'))).map(n => n.textContent).join('').trim()),
+    href: vis(c) ? c.getAttribute('href') : null, sr: c.textContent.trim(), height: bar.getBoundingClientRect().height, size: [r.width, r.height]}; }"""
 
 
 # ---------- the site's menu (R9) ----------

@@ -117,8 +117,8 @@
   </section>
   {{ end }}
 
-  {{- /* The foot (spec G5): previous, next and Start's list. Screen only, and not in the single document. */}}
-  {{ if not $all }}{{ if partial "pm/nav-pilot.html" $p }}{{ partial "pm/unit-foot.html" $p }}{{ end }}{{ end }}
+  {{- /* The foot (spec G5): the next unit, by name. Screen only, and not in the single document. */}}
+  {{ if not $all }}{{ partial "pm/unit-foot.html" $p }}{{ end }}
 
   {{- /* Print only. On screen it is not displayed, so screen readers skip it there; in print it must stay readable, so it reaches the tagged PDF (spec P4). */}}
   <section class="answers print-only">

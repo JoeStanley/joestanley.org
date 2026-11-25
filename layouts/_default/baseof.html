@@ -50,8 +50,8 @@
 {{ with $css | fingerprint }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
 {{- end }}
 </head>
-{{- /* The course bar (spec G1): on the pages that carry it, under the header, for now one module and one card. */}}
-{{- $bar := and $pm (partial "pm/nav-pilot.html" .) }}
+{{- /* The course bar (spec G1): under the header on every syllabus page but the single document. */}}
+{{- $bar := and $pm (not $all) }}
 {{- $cls := slice }}{{ if .IsHome }}{{ $cls = $cls | append "is-home" }}{{ end }}{{ if $pm }}{{ $cls = $cls | append "pm" }}{{ end }}{{ if $all }}{{ $cls = $cls | append "pm-all" }}{{ end }}{{ if $bar }}{{ $cls = $cls | append "has-course-bar" }}{{ end }}
 <body{{ with delimit $cls " " }} class="{{ . }}"{{ end }}>
 <a class="skip" href="#main">Skip to content</a>

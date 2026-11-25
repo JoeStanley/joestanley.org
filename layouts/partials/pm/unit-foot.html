@@ -1,32 +1,24 @@
-{{- /* The foot of a unit (spec G5): on a module, the previous and next unit by number and title, and Start's list;
-       on a card, back to its stop on its module's short path, and its module's other card. Screen only. */ -}}
+{{- /* The foot of a unit (spec G5): one step onward, named. On a module, the next unit by number and title; on a card,
+       back to its stop on its module's short path, where the stop is ticked and the next one waits. The course bar,
+       which stays with the reader to the page's end, holds the rest: every module, and from 46rem up previous and
+       next (the owner, 25 November 2026, who found the foot cluttered once the bar stuck). Screen only. */ -}}
 {{- $p := . -}}
-{{- $home := site.GetPage "/pm" -}}
 {{- if eq $p.Layout "card" }}
 {{- $m := index (where site.Data.pm.modules "id" $p.Params.module) 0 -}}
 {{- $mod := site.GetPage (printf "/pm/%s" $m.page) -}}
 {{- $stop := 0 -}}
 {{- range $n, $s := $mod.Params.steps }}{{ with $s.card }}{{ if eq (site.GetPage (printf "/pm/%s" .)) $p }}{{ $stop = add $n 1 }}{{ end }}{{ end }}{{ end -}}
-{{- $others := slice -}}
-{{- range where (where $home.RegularPagesRecursive "Layout" "card") "Params.module" $p.Params.module }}{{ if ne . $p }}{{ $others = $others | append . }}{{ end }}{{ end }}
 <nav class="unit-foot screen-only" aria-label="Back to the module">
-  <p class="uf-prev"><span class="uf-label">Back to the short path</span> <a href="{{ $mod.RelPermalink }}{{ if $stop }}#stop-{{ $stop }}{{ end }}">{{ $mod.Title }}{{ if $stop }}, stop {{ $stop }}{{ end }}</a></p>
-  {{- range $others }}
-  <p class="uf-next"><span class="uf-label">Its other card</span> <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></p>
-  {{- end }}
+  <p class="uf-step"><span class="uf-label">Back to the short path</span> <a href="{{ $mod.RelPermalink }}{{ if $stop }}#stop-{{ $stop }}{{ end }}">{{ $mod.Title }}{{ if $stop }}, stop {{ $stop }}{{ end }}</a></p>
 </nav>
 {{- else }}
 {{- $order := partial "pm/course-order.html" . -}}
 {{- $here := $p.Params.module | default $p.File.ContentBaseName -}}
 {{- $i := -1 -}}
 {{- range $n, $s := $order }}{{ if eq $s.id $here }}{{ $i = $n }}{{ end }}{{ end }}
-<nav class="unit-foot screen-only" aria-label="Previous and next">
-  {{- if gt $i 0 }}{{ with index $order (sub $i 1) }}
-  <p class="uf-prev"><span class="uf-label">Previous</span> <a href="{{ .page.RelPermalink }}" rel="prev">{{ .label }}</a></p>
-  {{- end }}{{ end }}
-  {{- if and (ge $i 0) (lt (add $i 1) (len $order)) }}{{ with index $order (add $i 1) }}
-  <p class="uf-next"><span class="uf-label">Next</span> <a href="{{ .page.RelPermalink }}" rel="next">{{ .label }}</a></p>
-  {{- end }}{{ end }}
-  <p class="uf-all"><a href="{{ $home.RelPermalink }}#modules">All modules</a></p>
+{{- if and (ge $i 0) (lt (add $i 1) (len $order)) }}{{ with index $order (add $i 1) }}
+<nav class="unit-foot screen-only" aria-label="Next">
+  <p class="uf-step"><span class="uf-label">Next</span> <a href="{{ .page.RelPermalink }}" rel="next">{{ .label }}</a></p>
 </nav>
+{{- end }}{{ end }}
 {{- end }}
