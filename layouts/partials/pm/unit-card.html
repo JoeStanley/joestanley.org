@@ -47,7 +47,7 @@
   </section>
   {{ end }}
 
-  {{- /* The foot (spec G5): back to its stop, and its module's other card. Screen only, and not in the single document. */}}
-  {{ if not $all }}{{ if partial "pm/nav-pilot.html" $p }}{{ partial "pm/unit-foot.html" $p }}{{ end }}{{ end }}
+  {{- /* The foot (spec G5): back to its stop. Screen only, and not in the single document. */}}
+  {{ if not $all }}{{ partial "pm/unit-foot.html" $p }}{{ end }}
 </div></div>
 </article>

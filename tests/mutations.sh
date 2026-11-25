@@ -233,12 +233,14 @@ run_bg "no summary card for other sites" N3 "sed -i '/twitter:card/d' layouts/_d
 run_bg "a preview's address off the site" N3 "sed -i 's/<meta property=\"og:url\" content=\"{{ .Permalink }}\">/<meta property=\"og:url\" content=\"{{ .RelPermalink }}\">/' layouts/_default/baseof.html"
 run_bg "Writing back in the menu" R9 "sed -i 's/^    - identifier: games$/    - identifier: writing\\n      name: Writing\\n      url: \\/writing\\/\\n      weight: 30\\n    - identifier: games/' hugo.yaml"
 run_bg "a module's allowance in print gone before a PDF is published" P1 "sed -i 's/^MODULE_GRACE = 1 /MODULE_GRACE = 0 /' tests/check_site.py"
-# Job 40's pilot, the course bar and the foot (25 November 2026): on Find the Constraint and its card The Five
-# Focusing Steps until the owner says it spreads (G1 to G5), and the bar's links are controls, not running text (C5)
+# Job 40, the course bar and the foot (25 November 2026): first on Find the Constraint and its card The Five Focusing
+# Steps, then on every syllabus page once the owner spread them (G1 to G5); the bar's links are controls, not running
+# text (C5)
 run_bg "the bar scrolls away with the page" G1 "sed -i 's/^.course-bar { position: sticky;/.course-bar { position: relative;/' assets/css/pm.css"
 run_bg "the bar counts the wrong number of modules" G1 "sed -i 's/%v of %d\" .num (len site.Data.pm.modules)/%v of %d\" .num 11/' layouts/partials/pm/course-bar.html"
 run_bg "the bar's list without its progress" G1 "sed -i 's/ data-map-short{{ end }}>/{{ end }}>/; s/<span class=\"cb-status\" data-map-status><\/span>//' layouts/partials/pm/course-bar.html"
-run_bg "the bar on a module the owner hasn't seen it on" G1 "sed -i 's/slice \"find-the-constraint\" \"five-focusing-steps\"/slice \"find-the-constraint\" \"five-focusing-steps\" \"see-the-system\"/' layouts/partials/pm/nav-pilot.html"
+run_bg "a syllabus page without the bar" G1 "sed -i 's/{{- \$bar := and \$pm (not \$all) }}/{{- \$bar := and \$pm (not \$all) (ne .Layout \"glossary\") }}/' layouts/_default/baseof.html"
+run_bg "the bar on the single document" G1 "sed -i 's/{{- \$bar := and \$pm (not \$all) }}/{{- \$bar := \$pm }}/' layouts/_default/baseof.html"
 run_bg "Escape closes the list and drops focus" G2 "sed -i 's/if (!on \&\& refocus) btn.focus();//' assets/js/pm.js"
 # A phone's bar is its place alone since card bar-arrows (25 November 2026), so the small target is the place
 run_bg "the bar's place too small to tap on a phone" G2 "echo '.course-bar .cb-place { min-height: 2rem; }' >> assets/css/pm.css"
@@ -248,7 +250,7 @@ run_bg "the bar on two lines on a phone" G3 "echo '.cb-here::after { content: \"
 run_bg "the bar's list runs past a short window" G3 "sed -i 's/if (on) fit();//' assets/js/pm.js; sed -i 's/ max-height: calc(100svh - 4rem); overflow-y: auto;//' assets/css/pm.css"
 run_bg "without scripts the bar's place goes nowhere useful" G4 "sed -i 's|#modules\"><span class=\"cb-label\">|\"><span class=\"cb-label\">|' layouts/partials/pm/course-bar.html"
 run_bg "the bar prints" G4 "sed -i 's/, .tick input, .course-bar { display: none !important; }/, .tick input { display: none !important; }/' assets/css/pm.css"
-run_bg "a module's foot without All modules" G5 "sed -i '/All modules<\/a><\/p>/d' layouts/partials/pm/unit-foot.html"
+run_bg "a module's foot with All modules back" G5 "sed -i 's|<nav class=\"unit-foot screen-only\" aria-label=\"Next\">|<nav class=\"unit-foot screen-only\" aria-label=\"Next\"><p><a href=\"/pm/#modules\">All modules</a></p>|' layouts/partials/pm/unit-foot.html"
 run_bg "a card's foot back to the module's top, not its stop" G5 "sed -i 's/{{ if \$stop }}#stop-{{ \$stop }}{{ end }}//' layouts/partials/pm/unit-foot.html"
 run_bg "stops without addresses" G5 "sed -i 's/{{ if not \$all }} id=\"stop-{{ add \$i 1 }}\"{{ end }}//' layouts/partials/pm/unit-module.html"
 run_bg "the foot's links without their underline" C5 "echo '.unit-foot a { text-decoration: none; }' >> assets/css/pm.css"
@@ -274,10 +276,20 @@ run_bg "a gap between the menu's line and the band" G1 "echo '.course-bar { marg
 run_bg "the course as dark as the place" G1 "sed -i '/^.cb-course { color: var(--muted); }$/d' assets/css/pm.css"
 run_bg "a rule under the band" G1 "echo '.course-bar { border-bottom: 1px solid var(--rule); }' >> assets/css/pm.css"
 run_bg "arrows back on previous and next" G1 "sed -i 's|rel=\"prev\">Previous|rel=\"prev\"><span class=\"cb-chev cb-left\" aria-hidden=\"true\"></span>Previous|' layouts/partials/pm/course-bar.html"
-run_bg "previous and next back in the bar on a phone" G1 "sed -i '/^@media (max-width: 45.99rem) { .cb-steps { display: none; } }$/d' assets/css/pm.css"
+run_bg "previous and next back in the bar on a phone" G1 "sed -i '/^@media (max-width: 45.99rem) { .cb-steps > :not(.cb-continue) { display: none; } }$/d' assets/css/pm.css"
 run_bg "no fade once the bar sticks" G1 "sed -i 's/^.course-bar.is-stuck::after/.course-bar.never-stuck::after/' assets/css/pm.css"
 run_bg "the fade in the band's tint, not the page's paper" G1 "sed -i 's/background: linear-gradient(var(--paper), transparent)/background: linear-gradient(var(--tint), transparent)/' assets/css/pm.css"
 run_bg "the fade showing at rest" G1 "sed -i 's/bar.classList.toggle(\"is-stuck\", window.scrollY > 0 \&\& bar.getBoundingClientRect().top <= 0.5);/bar.classList.add(\"is-stuck\");/' assets/js/pm.js"
 run_bg "the fade eases in" G2 "echo '.course-bar::after { transition: opacity 300ms ease-out; }' >> assets/css/pm.css"
 run_bg "without scripts the bar's place shows a chevron" G4 "sed -i 's|<span class=\"cb-here\">{{ \$place }}</span></span></a>|<span class=\"cb-here\">{{ \$place }}</span></span><span class=\"cb-chev cb-down\" aria-hidden=\"true\"></span></a>|' layouts/partials/pm/course-bar.html"
+wait
+# Job 40's spread (25 November 2026): the foot trimmed to one step onward, the owner's pick in the session (G5), and
+# Start's Continue, from saved progress, in place of Next (G1); The Compass and the glossary mark their place (G2)
+run_bg "a card's foot with its other card back" G5 "sed -i 's|stop {{ \$stop }}{{ end }}</a></p>|stop {{ \$stop }}{{ end }}</a></p><p><a href=\"/pm/glossary/\">Its other card</a></p>|' layouts/partials/pm/unit-foot.html"
+run_bg "a module's foot steps back, not on" G5 "sed -i 's/{{ with index \$order (add \$i 1) }}/{{ with index \$order (sub \$i 1) }}/' layouts/partials/pm/unit-foot.html"
+run_bg "Start's bar without Continue" G1 "sed -i '/data-continue hidden>/d' layouts/partials/pm/course-bar.html"
+run_bg "Continue only for a module half done" G1 "sed -i 's/if (!to \&\& last >= 0) {/if (false) {/' assets/js/pm.js"
+run_bg "Continue beside Next, not in its place" G1 "sed -i 's/if (next) next.hidden = true;//' assets/js/pm.js"
+run_bg "Continue hidden on a phone" G1 "sed -i 's/^@media (max-width: 45.99rem) { .cb-steps > :not(.cb-continue) { display: none; } }$/@media (max-width: 45.99rem) { .cb-steps { display: none; } }/' assets/css/pm.css"
+run_bg "The Compass not marked as the place in the bar's list" G2 "sed -i 's/ data-label=\"{{ .Title }}\"{{ if eq \$p . }} aria-current=\"page\"{{ end }}/ data-label=\"{{ .Title }}\"/' layouts/partials/pm/course-bar.html"
 wait
