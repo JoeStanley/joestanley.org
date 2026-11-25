@@ -746,6 +746,16 @@ def course_bar_checks(out_dir):
                 fail("G1", f"{path}: the bar's {what} reads '{' '.join(el.get_text().split())}', not '{want}'")
         if link and link.get("href") != "/pm/#modules":
             fail("G4", f"{path}: without scripts the bar's place goes to {link.get('href')}, not Start's list (/pm/#modules)")
+        # G1: the course and the place are two spans, the course quiet and the place bold; one chevron, on the button
+        for el, what in ((link, "plain link"), (btn, "button")):
+            if el and ([x.get_text(" ", strip=True) for x in el.select(".cb-course")] != [course + ","] or [x.get_text(" ", strip=True) for x in el.select(".cb-here")] != [want[len(course) + 2:]]):
+                fail("G1", f"{path}: the bar's {what} doesn't set the course and the place apart (.cb-course, .cb-here)")
+        if link and link.select(".cb-chev"):
+            fail("G4", f"{path}: without scripts the bar's place shows a chevron, though it opens nothing")
+        if btn and len(btn.select(".cb-chev")) != 1:
+            fail("G1", f"{path}: the bar's place has {len(btn.select('.cb-chev'))} chevrons, not one")
+        if bar.select(".cb-steps .cb-chev"):
+            fail("G1", f"{path}: the bar's previous and next carry arrows; they're words (the owner, card bar-arrows)")
         if btn:
             if btn.get("type") != "button" or btn.get("aria-expanded") != "false" or not btn.has_attr("hidden"):
                 fail("G2", f"{path}: the bar's button should start hidden (the script shows it), closed, with aria-expanded")
@@ -839,6 +849,23 @@ JS_BAR = """() => { const bar = document.querySelector('.course-bar'); if (!bar)
       return s.animationName !== 'none' || props.some((x, i) => durs[i % durs.length] > 0 && !/^(color|text-decoration-color|text-decoration-thickness)$/.test(x)); }).map(e => e.className) }; }"""
 
 
+JS_BAND = """() => { const bar = document.querySelector('.course-bar'), head = document.querySelector('header.masthead');
+  const probe = v => { const d = document.createElement('div'); d.style.color = 'var(' + v + ')'; document.body.appendChild(d); const c = getComputedStyle(d).color; d.remove(); return c; };
+  const vis = e => !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden';
+  const r = bar.getBoundingClientRect(), s = getComputedStyle(bar), a = getComputedStyle(bar, '::after');
+  const cur = [...document.querySelectorAll('.site-nav[aria-label=Sections] a[aria-current]')].find(vis);
+  const place = [...bar.querySelectorAll('.cb-place')].find(vis), word = e => e ? getComputedStyle(e) : null;
+  const c = place && word(place.querySelector('.cb-course')), h = place && word(place.querySelector('.cb-here'));
+  const tint = probe('--tint');
+  return {bg: s.backgroundColor, tint: tint, paper: probe('--paper'), muted: probe('--muted'), ink: probe('--ink'), orange: probe('--orange'),
+    left: r.left, width: r.width, top: r.top, winW: innerWidth, head: head.getBoundingClientRect().bottom,
+    line: cur ? cur.getBoundingClientRect().bottom : null, rule: parseFloat(s.borderBottomWidth) ? s.borderBottomColor : '',
+    course: c ? [c.color, c.fontWeight] : null, here: h ? [h.color, h.fontWeight] : null, place: place ? place.innerText : '',
+    chevs: [...bar.querySelectorAll('.cb-chev')].filter(vis).length, steps: [...bar.querySelectorAll('.cb-step')].filter(vis).map(e => [...e.childNodes].filter(n => !(n.classList && n.classList.contains('sr'))).map(n => n.textContent).join('').trim()),
+    fade: a.content && a.content !== 'none' && a.display !== 'none' ? {grad: a.backgroundImage.replace(/^linear-gradient\\((?:[^,]*deg, )?/, ''), h: parseFloat(a.height),
+      moves: a.animationName !== 'none' || a.transitionDuration.split(',').some(x => parseFloat(x) > 0)} : null}; }"""
+
+
 def course_bar_browser_checks(out_dir):
     """G1 to G4 in a browser: the bar stays in view, keeps to one line and to the page, opens and closes as a
     disclosure should, shows saved progress, never covers what an address lands on, and without scripts is three
@@ -860,8 +887,8 @@ def course_bar_browser_checks(out_dir):
                         fail("G1", f"{where}: no course bar"); ctx.close(); continue
                     if not r["btn"] or r["link"]:
                         fail("G2", f"{where}: with the script the place should be its button, and the plain link gone")
-                    if max(r["tops"]) - min(r["tops"]) > 2:
-                        fail("G3", f"{where}: the bar takes more than one line")
+                    if max(r["tops"]) - min(r["tops"]) > 2 or r["height"] > 46:
+                        fail("G3", f"{where}: the bar takes more than one line ({r['height']:.0f}px tall)")
                     if r["scrollW"] > r["clientW"] + 1:
                         fail("G3", f"{where}: something in the bar runs past the page's edge")
                     if w == 390:
@@ -874,14 +901,40 @@ def course_bar_browser_checks(out_dir):
                         r = pg.evaluate(JS_BAR)
                         if abs(r["top"]) > 1:
                             fail("G1", f"{where}: scrolled down, the bar is at {r['top']:.0f}px, not in view at the top")
+                    # G1: the band, its words, its steps and its fade (the owner's cards bar-tie, bar-arrows, band-edge)
+                    pg.evaluate("window.scrollTo(0, 0)"); pg.wait_for_timeout(100)
+                    k = pg.evaluate(JS_BAND)
+                    if k["bg"] != k["tint"] or abs(k["left"]) > 0.5 or abs(k["width"] - k["winW"]) > 0.5:
+                        fail("G1", f"{where}: the bar isn't a band on the page's tint across the window ({k['bg']}, {k['left']:.0f} to {k['left'] + k['width']:.0f})")
+                    if k["line"] is None or abs(k["line"] - k["top"]) > 1 or abs(k["head"] - k["top"]) > 1:
+                        fail("G1", f"{where}: the menu's orange line doesn't rest on the band's top edge (line {k['line']}, header {k['head']}, band {k['top']})")
+                    if k["course"] != [k["muted"], "400"] or k["here"] != [k["ink"], "600"]:
+                        fail("G1", f"{where}: the bar's words aren't the course in the menu's grey and the place in bold ink: {k['course']}, {k['here']}")
+                    if k["rule"]:
+                        fail("G1", f"{where}: the band draws a rule under it ({k['rule']}); the band is the surface")
+                    if k["chevs"] != 1:
+                        fail("G1", f"{where}: the bar shows {k['chevs']} chevrons, not one")
+                    if w < 736 and (k["steps"] or "Module" not in k["place"]):
+                        fail("G1", f"{where}: on a phone the bar should be its place alone, \"Module\" spelled out: {k['steps']}, '{k['place']}'")
+                    if w >= 736 and k["steps"] != ["Previous", "Next"]:
+                        fail("G1", f"{where}: from 46rem up the bar's previous and next should read \"Previous\" and \"Next\": {k['steps']}")
+                    if k["fade"]:
+                        fail("G1", f"{where}: at rest, before it sticks, the bar shows its fade")
+                    pg.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)"); pg.wait_for_timeout(150)
+                    k = pg.evaluate(JS_BAND)
+                    if not k["fade"] or not k["fade"]["grad"].startswith(k["paper"]) or not 14 <= k["fade"]["h"] <= 28:
+                        fail("G1", f"{where}: stuck at the top, the bar should fade the text under it into the page's paper over about 20px: {k['fade']}")
+                    elif k["fade"]["moves"]:
+                        fail("G2", f"{where}: the fade under the stuck bar eases in or out; it appears and goes at once")
+                    pg.evaluate("window.scrollTo(0, 0)"); pg.wait_for_timeout(150)
                     # G1: the place turns orange on hover, as previous and next do (the owner, 25 November 2026)
                     color = "(s) => getComputedStyle(document.querySelector(s)).color"
-                    rest = pg.evaluate(color, "button.cb-place")
-                    pg.hover("button.cb-place"); pg.wait_for_timeout(300); over = pg.evaluate(color, "button.cb-place")
-                    pg.hover(".cb-step"); pg.wait_for_timeout(300); step = pg.evaluate(color, ".cb-step")
+                    rest = [pg.evaluate(color, "button.cb-place"), pg.evaluate(color, "button.cb-place .cb-course")]
+                    pg.hover("button.cb-place"); pg.wait_for_timeout(300)
+                    over = [pg.evaluate(color, "button.cb-place"), pg.evaluate(color, "button.cb-place .cb-course")]
                     pg.mouse.move(w // 2, h - 20)
-                    if over == rest or over != step:
-                        fail("G1", f"{where}: the bar's place is {over} on hover, not orange as previous and next are ({step})")
+                    if over != [k["orange"], k["orange"]] or rest[0] == over[0]:
+                        fail("G1", f"{where}: the bar's place is {over} on hover, not orange as previous and next are ({k['orange']})")
                     # G2: Enter opens, Escape closes and gives focus back; a click outside closes
                     pg.focus("button.cb-place"); pg.keyboard.press("Enter")
                     r = pg.evaluate(JS_BAR)
@@ -952,18 +1005,163 @@ def course_bar_browser_checks(out_dir):
                 if shown:
                     fail("G4", f"{path}: {shown} shows in print")
                 ctx.close()
-                # G4: without scripts, three plain links
-                ctx = b.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
-                pg.goto(srv.base + path); pg.wait_for_load_state("load")
-                r = pg.evaluate("""() => { const vis = e => !!e && e.getClientRects().length > 0; const bar = document.querySelector('.course-bar');
-                  return {links: [...bar.querySelectorAll('a')].filter(vis).map(a => a.getAttribute('href')), btn: vis(bar.querySelector('button')), menu: vis(bar.querySelector('.cb-menu'))}; }""")
-                if r["btn"] or r["menu"] or len(r["links"]) < 2 or r["links"][0] != "/pm/#modules":
-                    fail("G4", f"{path}: without scripts the bar should be plain links, its place to Start's list: {r}")
-                ctx.close()
+                # G4: without scripts, plain links: the place, and from 46rem up previous and next
+                for w in (390, 1280):
+                    ctx = b.new_context(viewport={"width": w, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
+                    pg.goto(srv.base + path); pg.wait_for_load_state("load")
+                    r = pg.evaluate("""() => { const vis = e => !!e && e.getClientRects().length > 0; const bar = document.querySelector('.course-bar');
+                      return {links: [...bar.querySelectorAll('a')].filter(vis).map(a => a.getAttribute('href')), btn: vis(bar.querySelector('button')), menu: vis(bar.querySelector('.cb-menu')), chevs: [...bar.querySelectorAll('.cb-chev')].filter(vis).length}; }""")
+                    if r["btn"] or r["menu"] or r["chevs"] or not r["links"] or r["links"][0] != "/pm/#modules" or len(r["links"]) != (1 if w < 736 else 3):
+                        fail("G4", f"{path} at {w}px: without scripts the bar should be plain links, its place to Start's list, with previous and next from 46rem up: {r}")
+                    ctx.close()
             b.close()
     finally:
         srv.close()
 
+
+# ---------- the site's menu (R9) ----------
+MENU_WIDE = 736   # 46rem: from here up the name and every section share one line; below it, a Menu button (R9)
+JS_MENU = """() => { const nav = document.querySelector('nav.site-nav[aria-label=Sections]'); if (!nav) return null;
+  const vis = e => !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden';
+  const box = e => { const r = e.getBoundingClientRect(); return [r.left, r.top, r.right, r.bottom]; };
+  const name = document.querySelector('.site-name'), here = nav.querySelector('.nav-here'), btn = nav.querySelector('.nav-open'), list = nav.querySelector('.nav-list');
+  const links = [...list.querySelectorAll('a')];
+  return {name: box(name), here: vis(here) ? box(here) : null, hereLine: vis(here) ? getComputedStyle(here).borderBottomColor : null,
+    btn: vis(btn) ? box(btn) : null, expanded: btn && btn.getAttribute('aria-expanded'), list: vis(list) ? box(list) : null,
+    links: links.filter(vis).map(a => [a.textContent.trim(), ...box(a)]), focus: document.activeElement === btn,
+    winH: innerHeight, docW: document.documentElement.scrollWidth, winW: innerWidth}; }"""
+
+
+def site_menu_checks(out_dir):
+    """R9: the menu's label, its markup on every page, and in a browser its one line from 46rem up, and below it the
+    current section beside a Menu button whose list opens, stays open and closes as the spec says."""
+    from bs4 import BeautifulSoup
+    checked("R9")
+    cfg = yaml.safe_load(open(os.path.join(ROOT, "hugo.yaml"), encoding="utf-8"))
+    items = (cfg.get("menu") or {}).get("main") or []
+    pm_item = next((i for i in items if i.get("url") == "/pm/"), None)
+    if not pm_item or pm_item.get("name") != "On Judgment":
+        fail("R9", f"the menu calls the syllabus {pm_item and pm_item.get('name')!r}, not 'On Judgment'")
+    names = [i.get("name") for i in sorted(items, key=lambda i: i.get("weight", 0))]
+    for path in PAGES:
+        if path == "/pm/all/":
+            continue
+        f_ = os.path.join(out_dir, path.strip("/"), "index.html")
+        soup = BeautifulSoup(open(f_, encoding="utf-8").read(), "html.parser")
+        nav = soup.select_one("header nav.site-nav[aria-label=Sections]")
+        if not nav:
+            fail("R9", f"{path}: no menu in the header"); continue
+        listed = nav.select(".nav-list a")
+        if [a.get_text(strip=True) for a in listed] != names:
+            fail("R9", f"{path}: the menu lists {[a.get_text(strip=True) for a in listed]}, not {names}")
+        cur = [a for a in listed if a.has_attr("aria-current")]
+        here = nav.select(".nav-here")
+        want = "/" if path == "/" else next((i.get("url") for i in items if path.startswith(i.get("url", "-"))), None)
+        if path == "/":
+            if cur or here:
+                fail("R9", "/: the front door marks a section as current, though it is none")
+        elif len(cur) != 1 or cur[0].get("href") != want or len(here) != 1 or here[0].get("href") != want or here[0].get("aria-current") != cur[0].get("aria-current"):
+            fail("R9", f"{path}: the menu doesn't mark its section ({want}) both in its list and beside the Menu button")
+        btn = nav.select_one("button.nav-open")
+        lst = nav.select_one(".nav-list")
+        if not btn or btn.get("type") != "button" or btn.get("aria-expanded") != "false" or not btn.has_attr("hidden") or "Menu" not in btn.get_text() or not lst or btn.get("aria-controls") != lst.get("id"):
+            fail("R9", f"{path}: the Menu button should be a real button, start hidden (the script shows it) and closed, and control the menu's list")
+    srv = Server(out_dir)
+    chrome = os.environ.get("CHROME")
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            # From 46rem up: the name and every section on one line, with room for a fourth, Writing
+            ctx = b.new_context(viewport={"width": MENU_WIDE, "height": 700}); pg = ctx.new_page()
+            pg.goto(srv.base + "/pm/find-the-constraint/"); pg.wait_for_load_state("load"); pg.evaluate("document.fonts.ready")
+            pg.evaluate("() => { const l = document.querySelector('.nav-list'); const a = l.lastElementChild.cloneNode(true); a.textContent = 'Writing'; a.removeAttribute('aria-current'); l.insertBefore(a, l.lastElementChild); }")
+            r = pg.evaluate(JS_MENU)
+            n = r["name"]
+            if r["btn"] or r["here"] or len(r["links"]) != len(names) + 1 or any(t[4] <= n[1] or t[2] >= n[3] for t in r["links"]) or max(t[2] for t in r["links"]) - min(t[2] for t in r["links"]) > 2:
+                fail("R9", f"at {MENU_WIDE}px, with a fourth section, the name and the sections don't share one line: {r['links']}")
+            ctx.close()
+            # Below 46rem: the current section and the button share the name's line; the list opens and closes
+            for w in (320, 390):
+                ctx = b.new_context(viewport={"width": w, "height": 844}); pg = ctx.new_page()
+                for path in ("/", "/page/readme/", "/pm/find-the-constraint/"):
+                    pg.goto(srv.base + path); pg.wait_for_load_state("load"); pg.evaluate("document.fonts.ready")
+                    where = f"{path} at {w}px"
+                    r = pg.evaluate(JS_MENU)
+                    n = r["name"]
+                    if not r["btn"] or r["list"]:
+                        fail("R9", f"{where}: with the script, the sections should wait behind a Menu button"); continue
+                    if (path == "/") != (r["here"] is None):
+                        fail("R9", f"{where}: the current section {'shows on the front door' if path == '/' else 'is missing beside the Menu button'}")
+                    row = [r["btn"]] + ([r["here"]] if r["here"] else [])
+                    if any(x[3] <= n[1] or x[1] >= n[3] for x in row):
+                        fail("R9", f"{where}: the current section and the Menu button don't share the name's line")
+                    if r["here"] and r["hereLine"] != pg.evaluate("() => { const d = document.createElement('div'); d.style.color = 'var(--orange)'; document.body.appendChild(d); const c = getComputedStyle(d).color; d.remove(); return c; }"):
+                        fail("R9", f"{where}: the current section has no orange line beside the Menu button")
+                    if w == 390:
+                        for x, what in [(r["btn"], "Menu button")] + ([(r["here"], "current section")] if r["here"] else []):
+                            if x[3] - x[1] < 43.5:
+                                fail("R9", f"{where}: the {what} is {x[3] - x[1]:.0f}px tall, under 44")
+                    # It opens on a tap and stays open; the list sits over the page, every section in it
+                    pg.click("button.nav-open"); pg.wait_for_timeout(50)
+                    r = pg.evaluate(JS_MENU)
+                    if r["expanded"] != "true" or not r["list"] or [t[0] for t in r["links"]] != names:
+                        fail("R9", f"{where}: the Menu button doesn't open a list of every section: {r['links']}"); continue
+                    if w == 390 and any(t[4] - t[2] < 43.5 for t in r["links"]):
+                        fail("R9", f"{where}: a section in the menu's list is under 44px tall")
+                    top = pg.evaluate("() => [...document.querySelectorAll('.nav-list a')].every(a => { const l = a.getBoundingClientRect(); const e = document.elementFromPoint(l.left + 2, l.top + l.height / 2); return !!e && !!e.closest('.nav-list'); })")
+                    if not top:
+                        fail("R9", f"{where}: the menu's list sits under the page or the course bar, not over it")
+                    pg.wait_for_timeout(400)
+                    if pg.evaluate(JS_MENU)["expanded"] != "true":
+                        fail("R9", f"{where}: the menu's list closes on its own")
+                    pg.click("button.nav-open")
+                    if pg.evaluate(JS_MENU)["list"]:
+                        fail("R9", f"{where}: pressing the Menu button again doesn't close its list")
+                    pg.focus("button.nav-open"); pg.keyboard.press("Enter"); pg.keyboard.press("Escape")
+                    r = pg.evaluate(JS_MENU)
+                    if r["list"] or not r["focus"]:
+                        fail("R9", f"{where}: Escape doesn't close the menu's list and give focus back to its button")
+                    pg.click("button.nav-open"); pg.mouse.click(w // 2, 800)
+                    if pg.evaluate(JS_MENU)["list"]:
+                        fail("R9", f"{where}: a tap outside the menu leaves its list open")
+                    if pg.evaluate("document.documentElement.scrollHeight - innerHeight") > 300:
+                        pg.click("button.nav-open"); pg.evaluate("window.scrollBy(0, 200)"); pg.wait_for_timeout(100)
+                        if pg.evaluate(JS_MENU)["list"]:
+                            fail("R9", f"{where}: scrolling the page leaves the menu's list open")
+                        pg.evaluate("window.scrollTo(0, 0)"); pg.wait_for_timeout(50)
+                        pg.click("button.nav-open"); pg.keyboard.press("Tab"); pg.evaluate("window.scrollBy(0, 200)"); pg.wait_for_timeout(100)
+                        if not pg.evaluate(JS_MENU)["list"]:
+                            fail("R9", f"{where}: a scroll closes the menu's list while focus is inside it")
+                        pg.keyboard.press("Escape")
+                    if path == "/pm/find-the-constraint/":
+                        # The menu and the course bar's list never show together (R9, G2)
+                        pg.evaluate("window.scrollTo(0, 0)"); pg.wait_for_timeout(50)
+                        pg.click("button.cb-place"); pg.click("button.nav-open")
+                        if pg.evaluate("() => !document.querySelector('.cb-menu').hidden") or not pg.evaluate(JS_MENU)["list"]:
+                            fail("R9", f"{where}: opening the menu leaves the course bar's list open")
+                        # the open menu covers the bar, so a reader reaches the bar's button by moving focus to it
+                        pg.focus("button.cb-place"); pg.keyboard.press("Enter")
+                        if pg.evaluate(JS_MENU)["list"] or pg.evaluate("() => document.querySelector('.cb-menu').hidden"):
+                            fail("R9", f"{where}: opening the course bar's list leaves the menu's open")
+                        pg.keyboard.press("Escape")
+                ctx.close()
+            # A window too short for the list: a scroll leaves it open, so a reader can reach every section
+            ctx = b.new_context(viewport={"width": 390, "height": 160}); pg = ctx.new_page()
+            pg.goto(srv.base + "/page/readme/"); pg.wait_for_load_state("load")
+            pg.click("button.nav-open"); pg.evaluate("window.scrollBy(0, 60)"); pg.wait_for_timeout(100)
+            if not pg.evaluate(JS_MENU)["list"]:
+                fail("R9", "in a window shorter than the menu's list, a scroll closes the list before the reader can reach it")
+            ctx.close()
+            # Without scripts: every section shows, wrapping where it must, and no button
+            ctx = b.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
+            pg.goto(srv.base + "/pm/find-the-constraint/"); pg.wait_for_load_state("load")
+            r = pg.evaluate(JS_MENU)
+            if r["btn"] or r["here"] or [t[0] for t in r["links"]] != names or r["docW"] > r["winW"]:
+                fail("R9", f"without scripts, every section should show in the header, and no Menu button: {r}")
+            ctx.close()
+            b.close()
+    finally:
+        srv.close()
 
 def arc_checks(out_dir):
     """S20: the arc's four parts on Start, each name and line above its modules, every module in one part in reading
@@ -3301,10 +3499,14 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                                 fail("R4", f"{where}: photo is not beside the name")
                             if w < 1024 and not (i[3] <= h_[1] + 1):
                                 fail("R4", f"{where}: photo is not above the name")
-                        # R9: the menu on one line at phone width
-                        tops = pg.evaluate("() => [...document.querySelectorAll('.site-nav[aria-label=Sections] a')].map(a => Math.round(a.getBoundingClientRect().top))")
-                        if tops and max(tops) - min(tops) > 2:
-                            fail("R9", f"{where}: the menu takes more than one line")
+                        # R9: on every page, the name and the menu on one line: the sections from 46rem up, and below it the
+                        # current section and the Menu button (site_menu_checks has the rest)
+                        r = pg.evaluate(JS_MENU)
+                        if r:
+                            n = r["name"]
+                            row = [t[1:] for t in r["links"]] if w >= MENU_WIDE else [x for x in (r["here"], r["btn"]) if x]
+                            if not row or any(x[3] <= n[1] or x[1] >= n[3] for x in row) or max(x[1] for x in row) - min(x[1] for x in row) > 2:
+                                fail("R9", f"{where}: the menu doesn't share the name's line")
                         # R5
                         small_targets = pg.evaluate("""() => [...document.querySelectorAll('button, input, summary, .door-links a, .site-nav a, .tick')].filter(e => { const r = e.getBoundingClientRect(); const s = getComputedStyle(e); if (!r.width || s.display === 'none') return false; if (e.matches('input') && e.closest('.tick')) return false; if (e.matches('button.term, a.term')) return false; const t = (e.matches('input') && e.closest('label')) ? e.closest('label').getBoundingClientRect() : r; const min = e.matches('.door-links a') ? 44 : 24; return t.width < min - 0.5 || t.height < min - 0.5; }).map(e => e.tagName + '.' + e.className + ' ' + Math.round(e.getBoundingClientRect().width) + 'x' + Math.round(e.getBoundingClientRect().height))""")
                         for s in small_targets:
@@ -3698,6 +3900,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("S20", "S21"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("R9"):
+        try:
+            site_menu_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("R9", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("G1", "G2", "G3", "G4", "G5"):
         try:
             course_bar_checks(out_dir)

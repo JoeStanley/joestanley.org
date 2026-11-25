@@ -26,7 +26,7 @@ params:
       icon: linkedin
       url: "https://www.linkedin.com/in/josephstanley/"
 
-# The three sections (Writing waits for its first post, spec R9). "blurb" is the line under each one on the home page.
+# The three sections (Writing waits for its first post, spec R9). The syllabus is "On Judgment" in the menu, and "On Product Judgment" in its course bar. "blurb" is the line under each one on the home page.
 menu:
   main:
     - identifier: readme
@@ -36,7 +36,7 @@ menu:
       params:
         blurb: Who I am, and the work I have done.
     - identifier: pm
-      name: Product Judgment
+      name: On Judgment
       url: /pm/
       weight: 20
       params:

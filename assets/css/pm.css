@@ -252,29 +252,31 @@
 .gloss-list dt span { font-weight: var(--w-regular); color: var(--muted); }
 .gloss-list dd { margin: var(--sp-1) 0 0; }
 
-/* The course bar (spec G1 to G4): under the site header, on the page's paper, with a thin rule under it, so the text
-   scrolls away beneath it. Its words are the small label type; the place is marked with the menu's orange line. Each
-   control is a 44px target. Without the script its place is a plain link; with it, a button opens the list, at once. */
-.course-bar { position: sticky; top: 0; z-index: 5; margin-top: var(--sp-3); background: var(--paper); border-bottom: 1px solid var(--rule); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+/* The course bar (spec G1 to G4): a band on the page's tint, the window's full width, right under the site header, so
+   the menu's orange line rests on its top edge. Its words are the small label type: the course in the menu's grey,
+   the place in bold ink. It stays a band when it sticks, and once stuck (pm.js marks it) the text that scrolls under
+   it fades into the page's paper short of its edge. Each control is a 44px target. Without the script its place is
+   a plain link; with it, a button opens the list, at once. */
+.course-bar { position: sticky; top: 0; z-index: 5; background: var(--tint); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
 .course-bar [hidden] { display: none !important; }
+.course-bar.is-stuck::after { content: ""; position: absolute; left: 0; right: 0; top: 100%; height: 1.25rem; background: linear-gradient(var(--paper), transparent); pointer-events: none; }
 .cb-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 var(--sp-3); }
-.cb-place { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: 2.75rem; margin: 0; padding: 0; border: 0; background: none; color: var(--ink); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); text-align: left; text-decoration: none; cursor: pointer; }
-.cb-steps { display: flex; gap: var(--sp-1); margin-left: auto; }
-.cb-step { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); min-width: 2.75rem; min-height: 2.75rem; color: var(--ink); text-decoration: none; }
+.cb-place { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: 2.75rem; margin: 0; padding: 0; border: 0; background: none; color: var(--ink); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); text-align: left; text-decoration: none; cursor: pointer; }
+.cb-course { color: var(--muted); }
+.cb-here { font-weight: var(--w-strong); }
+.cb-steps { display: flex; gap: var(--sp-4); margin-left: auto; }
+.cb-step { display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; color: var(--ink); text-decoration: none; }
 /* The place turns orange on hover, its chevron with it, easing as previous and next do (a and a:hover in base.css). */
-.cb-open { transition: color 180ms ease-out; }
-.cb-open:hover { color: var(--orange); }
-/* The chevrons are the "Why this source" mark, turned to point the way. */
+.cb-open, .cb-course { transition: color 180ms ease-out; }
+.cb-open:hover, .cb-place:hover .cb-course { color: var(--orange); }
+/* One chevron, the "Why this source" mark turned down: the place opens. */
 .cb-chev { display: inline-block; flex: none; width: 0.45em; height: 0.45em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
 .cb-down { transform: translateY(-0.15em) rotate(45deg); }
 .cb-open[aria-expanded="true"] .cb-down { transform: translateY(0.1em) rotate(-135deg); }
-.cb-left { transform: rotate(135deg); }
-.cb-right { transform: rotate(-45deg); }
-/* On a phone the steps are their arrows alone; their words stay for screen readers. */
-@media (max-width: 45.99rem) { .cb-word { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
-@media (min-width: 46rem) { .cb-steps { gap: var(--sp-4); } }
+/* On a phone the bar is its place alone; previous and next wait at the foot and in the list (G1). */
+@media (max-width: 45.99rem) { .cb-steps { display: none; } }
 /* The list drops under the bar, over the page, and scrolls inside itself when the window is short (G3). */
-.cb-menu { position: absolute; left: 0; right: 0; top: 100%; max-height: calc(100svh - 4rem); overflow-y: auto; overscroll-behavior: contain; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.cb-menu { position: absolute; z-index: 1; left: 0; right: 0; top: 100%; max-height: calc(100svh - 4rem); overflow-y: auto; overscroll-behavior: contain; background: var(--paper); border-bottom: 1px solid var(--rule); }
 .cb-list, .cb-more { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
 .cb-list { padding-top: var(--sp-2); }
 .cb-more { margin-top: var(--sp-2); padding: var(--sp-2) 0 var(--sp-3); border-top: 1px solid var(--rule); }
@@ -347,7 +349,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pile, .rk-dot, .cb-open, .deeper > details > summary::after { transition: none; }
+  .pile, .rk-dot, .cb-open, .cb-course, .deeper > details > summary::after { transition: none; }
 }
 
 /* Print: the PDF is made from this. One unit starts a new page; a card fits on one page. Always light.
