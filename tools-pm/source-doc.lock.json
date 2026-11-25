@@ -1,14 +1,14 @@
 {
  "doc": "https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ",
- "synced": "23 November 2026",
+ "synced": "24 November 2026",
  "tabs": [
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "98e572e790a45131f439d5aa33d7c915bb98de95aeb3aa45fa9d6f9bfe00020d",
+   "sha256": "547f3c0a6b0cc2c58536d2dde2a20f163a20b4f640c83b519f2d715fa328da02",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 49
+   "rev": 50
   },
   {
    "name": "ReadMe",
@@ -93,10 +93,10 @@
   {
    "name": "8 Decide and Set Direction",
    "file": "8-decide-and-set-direction.md",
-   "sha256": "d54226b4ac15afcce93d3bc9365c68c12dcc05f4a76138382f0fb13a0acea430",
+   "sha256": "e8fd4bbfc8328eb1e6fe17294a0ed05b880167a3b49839b0af2b03823de136b0",
    "doc_tab": "6b4b2d5a-04f4",
    "doc_node": "3d32b854-eca3",
-   "rev": 226
+   "rev": 231
   },
   {
    "name": "9 Answer for What You Build",
@@ -109,18 +109,18 @@
   {
    "name": "10 Notice When You Are Wrong",
    "file": "10-notice-when-you-are-wrong.md",
-   "sha256": "c2a79f1c87080d0e7931d4341e96145d29ac96cd1a887a7720aec3fc9a88b6ad",
+   "sha256": "e4a6268fd91179d7b998527d6f641f6ddb6e52a57a973a4b86b5e48fdc51be01",
    "doc_tab": "73278a69-a68a",
    "doc_node": "0e614323-8b2d",
-   "rev": 41
+   "rev": 52
   },
   {
    "name": "11 Bring People With You",
    "file": "11-bring-people-with-you.md",
-   "sha256": "2286885b7d075821c03ce49bcf7e2a64fe0a726c967db3e2438685c30f3d501d",
+   "sha256": "9d696b29a0cafba8e4e733b2a780683d16a49334ec2eacd76b431fdaf3410e49",
    "doc_tab": "8bbdca60-921f",
    "doc_node": "2f658fd4-20e8",
-   "rev": 1002
+   "rev": 1011
   },
   {
    "name": "The Compass",
@@ -141,10 +141,10 @@
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "363d49df5f2ae8c035f218219882d2eb850e5b9ab98808bd81ab5e62e612bb59",
+   "sha256": "e2763cd25b81f83fa09d811913c305f39210ed95c68a4817b10b5a7c17fd9941",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 8
+   "rev": 9
   }
  ]
 }
