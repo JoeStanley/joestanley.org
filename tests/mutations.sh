@@ -37,7 +37,9 @@ run_bg "type scale in pixels" T7 "sed -i 's/--fs-small: 0.9375rem;/--fs-small: 1
 run_bg "a color named to find something, though capitalized" A12 "printf '\\nTap the Green button to start the game.\\n' >> content/pm/find-the-constraint.md"
 run_bg "a stray gap" T8 "echo '.hint { margin-bottom: 0.7rem; }' >> assets/css/pm.css"
 run_bg "section heading smaller than a step title" W4 "echo '.card-body h2 { font-size: var(--fs-small); }' >> assets/css/pm.css"
-run_bg "a menu label too long for a phone" R9 "sed -i 's/      name: Product Judgment/      name: Product Judgment Syllabus/' hugo.yaml"
+# The label must outrun the menu's own row: since the menu sits on a row of its own under the name, "Product Judgment
+# Syllabus" still fits there, and the mutation broke nothing (found 25 November 2026)
+run_bg "a menu label too long for a phone" R9 "sed -i 's/      name: Product Judgment/      name: On Product Judgment, the Syllabus/' hugo.yaml"
 run_bg "header that cannot wrap" R7 "echo '.site-nav { flex-wrap: nowrap; white-space: nowrap; }' >> assets/css/base.css"
 run_bg "a line box that clips its text" A13 "echo '.meta-line { max-height: 1.5em; overflow: hidden; }' >> assets/css/pm.css"
 run_bg "a stray gap in Firefox only" T8 "echo '@supports (-moz-appearance: none) { .hint { margin-bottom: 0.7rem; } }' >> assets/css/pm.css"
@@ -134,7 +136,12 @@ wait
 # Joe's answers of 21 November 2026: the full path's label kept to its own heading (R10), and his notes labeled
 # "Sidenote:" wherever they fold in, in his hand in print on Start, the cards and the glossary (M1, M3)
 run_bg "the full path's label reaching every Why this source" R10 "sed -i 's/^\.deeper > details > summary::after {/.deeper summary::after {/; s/^\.deeper > details\[open\] > summary::after {/.deeper details[open] summary::after {/' assets/css/pm.css"
-run_bg "the full path's label floating over the first source" R10 "sed -i 's/display: block; margin-top: var(--sp-1); text-align: right;/float: right; margin-top: var(--sp-1);/' assets/css/pm.css"
+run_bg "the full path's label floating over the first source" R10 "sed -i 's/display: block; margin-top: var(--sp-1); text-align: left;/float: right; margin-top: var(--sp-1);/' assets/css/pm.css"
+# Joe's notes of 25 November 2026 on the course bar's card: the full path's label at the left (R10), and the bar's
+# place orange on hover, as previous and next are (G1)
+run_bg "the full path's label back at the right of the column" R10 "sed -i 's/display: block; margin-top: var(--sp-1); text-align: left;/display: block; margin-top: var(--sp-1); text-align: right;/' assets/css/pm.css"
+run_bg "the full path's label orange at rest" C1 "sed -i 's/text-align: left; font: var(--w-strong) var(--fs-small)\/var(--lh-text) var(--ui); color: var(--ink);/text-align: left; font: var(--w-strong) var(--fs-small)\/var(--lh-text) var(--ui); color: var(--orange);/' assets/css/pm.css"
+run_bg "the bar's place staying ink on hover" G1 "sed -i '/^.cb-open:hover { color: var(--orange); }$/d' assets/css/pm.css"
 run_bg "a note folded in on a phone without its label" M1 "echo '@media (max-width: 63.99rem) { .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }' >> assets/css/base.css"
 run_bg "a card's note printed typeset, not in the owner's hand" M1 "sed -i '/^  .note { font-family: \"Shantell Sans\", var(--ui); font-variation-settings: \"INFM\" 100; }$/d' assets/css/pm.css"
 run_bg "a note read aloud as a plain note again" M3 "sed -i 's/>Sidenote: </>Note: </g' layouts/partials/pm/margin.html layouts/partials/pm/prose-slots.html"

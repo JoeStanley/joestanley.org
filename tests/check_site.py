@@ -291,7 +291,7 @@ JS_FULL_PATH = """() => { const sec = document.querySelector('.deeper'); if (!se
   sum.scrollIntoView({block: 'center'}); const s = sum.getBoundingClientRect(), first = ul.firstElementChild.getBoundingClientRect();
   return {inner: r.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), ul: ul.getBoundingClientRect().width,
           lis: [...ul.children].map(li => li.getBoundingClientRect().width), stray: stray.length,
-          gap: first.top - s.bottom, left: r.left, width: r.width, bottom: s.bottom}; }"""
+          gap: first.top - s.bottom, left: r.left, width: r.width, bottom: s.bottom, sl: s.left, st: s.top, sw: s.width, sh: s.height}; }"""
 
 
 def full_path_checks(ctx, base, fix_base):
@@ -317,11 +317,15 @@ def full_path_checks(ctx, base, fix_base):
                 if abs(f["gap"]) > 1:
                     fail("R10", f"{where}: the first source starts {f['gap']:.0f}px below the full path's heading, pushed down by its label")
                 clip = {"x": f["left"], "y": f["bottom"], "width": f["width"], "height": 40}
-                shown = pg.screenshot(clip=clip)
+                # the heading's right half, where the label must not draw: it sits at the left (the owner, 25 November 2026)
+                right = {"x": f["sl"] + f["sw"] / 2, "y": f["st"], "width": f["sw"] / 2, "height": f["sh"]}
+                shown, shown_r = pg.screenshot(clip=clip), pg.screenshot(clip=right)
                 pg.add_style_tag(content=".deeper > details > summary::after { visibility: hidden !important; }")
-                hidden = pg.screenshot(clip=clip)
+                hidden, hidden_r = pg.screenshot(clip=clip), pg.screenshot(clip=right)
                 if shown != hidden:
                     fail("R10", f"{where}: the Open and Close label draws below its heading, over the first source")
+                if shown_r != hidden_r:
+                    fail("R10", f"{where}: the Open and Close label sits at the right of the column, not at the left under its heading")
             c.close()
 
 
@@ -829,7 +833,10 @@ JS_BAR = """() => { const bar = document.querySelector('.course-bar'); if (!bar)
     menuBottom: mr.bottom, menuOverflow: ms.overflowY, menuScroll: menu.scrollHeight > menu.clientHeight + 1,
     rows: [...menu.querySelectorAll('a')].filter(vis).map(a => [a.textContent.trim().slice(0, 20), a.getBoundingClientRect().height]),
     focus: document.activeElement === btn,
-    moves: [bar, menu, btn, ...bar.querySelectorAll('.cb-chev, .cb-list, .cb-item')].filter(Boolean).filter(e => { const s = getComputedStyle(e); return s.animationName !== 'none' || s.transitionDuration.split(',').some(d => parseFloat(d) > 0); }).map(e => e.className) }; }"""
+    moves: [bar, menu, btn, ...bar.querySelectorAll('.cb-chev, .cb-list, .cb-item')].filter(Boolean).filter(e => { const s = getComputedStyle(e);
+      const props = s.transitionProperty.split(',').map(x => x.trim()), durs = s.transitionDuration.split(',').map(parseFloat);
+      // a color easing on hover, as on every link, is not motion (G2); anything else that eases or animates is
+      return s.animationName !== 'none' || props.some((x, i) => durs[i % durs.length] > 0 && !/^(color|text-decoration-color|text-decoration-thickness)$/.test(x)); }).map(e => e.className) }; }"""
 
 
 def course_bar_browser_checks(out_dir):
@@ -867,6 +874,14 @@ def course_bar_browser_checks(out_dir):
                         r = pg.evaluate(JS_BAR)
                         if abs(r["top"]) > 1:
                             fail("G1", f"{where}: scrolled down, the bar is at {r['top']:.0f}px, not in view at the top")
+                    # G1: the place turns orange on hover, as previous and next do (the owner, 25 November 2026)
+                    color = "(s) => getComputedStyle(document.querySelector(s)).color"
+                    rest = pg.evaluate(color, "button.cb-place")
+                    pg.hover("button.cb-place"); pg.wait_for_timeout(300); over = pg.evaluate(color, "button.cb-place")
+                    pg.hover(".cb-step"); pg.wait_for_timeout(300); step = pg.evaluate(color, ".cb-step")
+                    pg.mouse.move(w // 2, h - 20)
+                    if over == rest or over != step:
+                        fail("G1", f"{where}: the bar's place is {over} on hover, not orange as previous and next are ({step})")
                     # G2: Enter opens, Escape closes and gives focus back; a click outside closes
                     pg.focus("button.cb-place"); pg.keyboard.press("Enter")
                     r = pg.evaluate(JS_BAR)
@@ -1416,6 +1431,16 @@ JS_TEXT_COLORS = """(orange) => {
     const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
     const s = getComputedStyle(el); if (s.visibility === 'hidden' || s.display === 'none') continue;
     if (s.color === orange) out.push({tag: el.tagName, cls: el.className && el.className.baseVal === undefined ? el.className : '', inH1: !!el.closest('h1'), text: t.textContent.trim().slice(0, 40)});
+  }
+  // words the stylesheet draws, as a control's label ("Open", "Show answer") is: text too, held to the same rule
+  for (const el of document.body.querySelectorAll('*')) {
+    if (el.closest('script,style,svg,[hidden],.sr')) continue;
+    const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
+    for (const pe of ['::before', '::after']) {
+      const s = getComputedStyle(el, pe), m = /"([^"]*[A-Za-z][^"]*)"/.exec(s.content || '');
+      if (m && s.display !== 'none' && s.visibility !== 'hidden' && s.color === orange)
+        out.push({tag: el.tagName + pe, cls: el.className && el.className.baseVal === undefined ? el.className : '', inH1: !!el.closest('h1'), text: m[1].slice(0, 40)});
+    }
   }
   return out;
 }"""
