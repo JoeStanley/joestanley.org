@@ -17,7 +17,7 @@ deeper:
 
 ## The idea
 
-Ask about the last time it happened, not whether they'd want it. A forecast of your own behavior is a guess, and last Tuesday is evidence. Teresa Torres puts it plainly: "Our past behavior is much more predictive of our future behavior than any prediction we might make ourselves about our future behavior." Then ask what they did about it and what it cost them, which sets a ceiling on what a fix is worth to them.
+Ask about the last time it happened, not whether they'd want it. A forecast of your own behavior is a guess, and last Tuesday is evidence. Teresa Torres puts it plainly: "Our past behavior is much more predictive of our future behavior than any prediction we might make ourselves about our future behavior." Then ask what they did about it and what it cost them.
 
 ## Why a PM cares
 
