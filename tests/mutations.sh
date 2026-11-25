@@ -37,7 +37,9 @@ run_bg "type scale in pixels" T7 "sed -i 's/--fs-small: 0.9375rem;/--fs-small: 1
 run_bg "a color named to find something, though capitalized" A12 "printf '\\nTap the Green button to start the game.\\n' >> content/pm/find-the-constraint.md"
 run_bg "a stray gap" T8 "echo '.hint { margin-bottom: 0.7rem; }' >> assets/css/pm.css"
 run_bg "section heading smaller than a step title" W4 "echo '.card-body h2 { font-size: var(--fs-small); }' >> assets/css/pm.css"
-run_bg "a menu label too long for a phone" R9 "sed -i 's/      name: Product Judgment/      name: Product Judgment Syllabus/' hugo.yaml"
+# The label must outrun the menu's own row: since the menu sits on a row of its own under the name, "Product Judgment
+# Syllabus" still fits there, and the mutation broke nothing (found 25 November 2026)
+run_bg "a menu label too long for a phone" R9 "sed -i 's/      name: Product Judgment/      name: On Product Judgment, the Syllabus/' hugo.yaml"
 run_bg "header that cannot wrap" R7 "echo '.site-nav { flex-wrap: nowrap; white-space: nowrap; }' >> assets/css/base.css"
 run_bg "a line box that clips its text" A13 "echo '.meta-line { max-height: 1.5em; overflow: hidden; }' >> assets/css/pm.css"
 run_bg "a stray gap in Firefox only" T8 "echo '@supports (-moz-appearance: none) { .hint { margin-bottom: 0.7rem; } }' >> assets/css/pm.css"
