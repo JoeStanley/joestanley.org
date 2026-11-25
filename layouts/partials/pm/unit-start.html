@@ -13,7 +13,7 @@
   </div>
 
   <section class="modules-wrap" data-slot="the-modules">
-    <h2>The modules</h2>
+    <h2 id="modules">The modules</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-modules") }}
     {{- partial "pm/arc-list.html" (dict "p" $p "all" $all "start" true) }}
   </section>

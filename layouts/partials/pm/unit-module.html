@@ -45,7 +45,7 @@
       {{- $s := $step }}
       {{- $card := "" }}
       {{- with .card }}{{ $card = site.GetPage (printf "/pm/%s" .) }}{{ end }}
-      <li class="step" data-step="{{ $key }}:{{ .id }}" data-slot="step-{{ .id }}">
+      <li class="step"{{ if not $all }} id="stop-{{ add $i 1 }}"{{ end }} data-step="{{ $key }}:{{ .id }}" data-slot="step-{{ .id }}">
         <label class="tick"><input type="checkbox">{{ partial "pm/step-mark.html" (add $i 1) }}<span class="sr">Mark done: {{ with $card }}{{ .Title }}{{ else }}{{ $s.title }}{{ end }}</span></label>
         <div class="step-body">
           {{- if $card }}
@@ -116,6 +116,9 @@
     </details>
   </section>
   {{ end }}
+
+  {{- /* The foot (spec G5): previous, next and Start's list. Screen only, and not in the single document. */}}
+  {{ if not $all }}{{ if partial "pm/nav-pilot.html" $p }}{{ partial "pm/unit-foot.html" $p }}{{ end }}{{ end }}
 
   {{- /* Print only. On screen it is not displayed, so screen readers skip it there; in print it must stay readable, so it reaches the tagged PDF (spec P4). */}}
   <section class="answers print-only">

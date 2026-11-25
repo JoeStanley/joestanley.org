@@ -1,0 +1,59 @@
+{{- /* The course bar (spec G1 to G4): under the site header, it names the course and the place, steps to the
+       previous and next unit, and stays in view as the page scrolls. Without scripts its place is a plain link to
+       Start's list of modules; pm.js swaps in the button, which opens the list with saved progress. A card's place is
+       its module. Not in print. */ -}}
+{{- $p := . -}}
+{{- $home := site.GetPage "/pm" -}}
+{{- $order := partial "pm/course-order.html" . -}}
+{{- $here := "start" -}}
+{{- if $p.Params.module }}{{ $here = $p.Params.module }}{{ else if ne $p $home }}{{ $here = $p.File.ContentBaseName }}{{ end -}}
+{{- $i := -1 -}}
+{{- range $n, $s := $order }}{{ if eq $s.id $here }}{{ $i = $n }}{{ end }}{{ end -}}
+{{- $place := "" -}}
+{{- /* On a phone the word "Module" is heard, not seen, so the bar keeps to one line (G3). */ -}}
+{{- with index (where site.Data.pm.modules "id" $here) 0 }}{{ $place = printf "<span class=\"cb-word\">Module </span>%v of %d" .num (len site.Data.pm.modules) }}{{ else }}{{ $place = cond (eq $here "start") "Start" $p.Title }}{{ end -}}
+{{- $isPage := not $p.Params.module | or (eq $p.Layout "module") -}}
+<nav class="course-bar" aria-label="{{ $home.Title }}" data-course-bar>
+  <div class="frame cb-row">
+    <a class="cb-place" href="{{ $home.RelPermalink }}#modules"><span class="cb-label">{{ $home.Title }}, {{ $place | safeHTML }}</span></a>
+    <button class="cb-place cb-open" type="button" aria-expanded="false" aria-controls="course-list" hidden><span class="cb-label">{{ $home.Title }}, {{ $place | safeHTML }}</span><span class="cb-chev cb-down" aria-hidden="true"></span></button>
+    <div class="cb-menu" id="course-list" hidden>
+      <div class="frame">
+        <ol class="cb-list">
+          {{- range site.Data.pm.modules }}
+          {{- $m := . }}
+          {{- $page := "" }}
+          {{- with $m.page }}{{ $page = site.GetPage (printf "/pm/%s" .) }}{{ end }}
+          {{- $ids := slice }}
+          {{- with $page }}{{ range .Params.steps }}{{ $ids = $ids | append .id }}{{ end }}{{ end }}
+          <li class="cb-item"{{ with $page }} data-map-unit="{{ .File.ContentBaseName }}" data-map-steps="{{ len $ids }}" data-map-ids="{{ delimit $ids " " }}" data-map-short{{ end }}>
+            <span class="cb-num" aria-hidden="true">{{ $m.num }}</span>
+            {{- with $page }}
+            <a href="{{ .RelPermalink }}"{{ if eq $m.id $here }} aria-current="{{ if $isPage }}page{{ else }}true{{ end }}"{{ end }}><span class="sr">Module {{ $m.num }}: </span>{{ $m.title }}</a>
+            <span class="cb-status" data-map-status></span>
+            {{- else }}
+            <span class="cb-pending">{{ $m.title }}</span>
+            {{- end }}
+          </li>
+          {{- end }}
+        </ol>
+        <ul class="cb-more">
+          {{- with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}
+          <li><a href="{{ .RelPermalink }}"{{ if eq $p . }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+          {{- end }}{{ end }}
+          {{- with site.GetPage "/pm/glossary" }}
+          <li><a href="{{ .RelPermalink }}"{{ if eq $p . }} aria-current="page"{{ end }}>Glossary</a></li>
+          {{- end }}
+        </ul>
+      </div>
+    </div>
+    <span class="cb-steps">
+      {{- if gt $i 0 }}{{ with index $order (sub $i 1) }}
+      <a class="cb-step cb-prev" href="{{ .page.RelPermalink }}" rel="prev"><span class="cb-chev cb-left" aria-hidden="true"></span><span class="cb-word">Previous</span><span class="sr">: {{ .label }}</span></a>
+      {{- end }}{{ end }}
+      {{- if and (ge $i 0) (lt (add $i 1) (len $order)) }}{{ with index $order (add $i 1) }}
+      <a class="cb-step cb-next" href="{{ .page.RelPermalink }}" rel="next"><span class="cb-word">Next</span><span class="sr">: {{ .label }}</span><span class="cb-chev cb-right" aria-hidden="true"></span></a>
+      {{- end }}{{ end }}
+    </span>
+  </div>
+</nav>
