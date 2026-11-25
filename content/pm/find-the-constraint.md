@@ -83,7 +83,7 @@ deeper:
 
 When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in See the System. Find it, since speeding up anywhere else won't help. That goes for a model, too. One that drafts new workouts in minutes helps only if drafting is where the work waits. If the wait is a coach checking each one, you get more drafts piled up in front of the coach.
 
-The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so a target on the constraint's output can improve while what reaches users doesn't.
+The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so the constraint's number can hit its target while nothing more reaches users.
 
 A number can mislead with nobody gaming it, too. An algorithm a US hospital used to pick patients for extra care took the cost of their care as a stand-in for how sick they were. Less had been spent on Black patients who were just as sick, so at any given score they were sicker than White patients, and too few of them were picked (Obermeyer and colleagues, 2019). Before you trust a stand-in, ask whether it tracks the real thing equally well for everyone.
 
