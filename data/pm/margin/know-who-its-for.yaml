@@ -35,13 +35,7 @@ step-milkshake: ""
 # Short path, step 3: The Last Time
 step-card-last-time: ""
 
-# Short path, step 4: GOV.UK Service Manual, “Learning about users and their needs”
-step-govuk: ""
-
-# Short path, step 5: Joshua Arnold, “Cost of Delay”
-step-arnold: ""
-
-# Short path, step 6: Play the waiting game
+# Short path, step 4: Play the waiting game
 step-waiting: ""
 
 # The waiting game

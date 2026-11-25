@@ -37,10 +37,10 @@
   {
    "name": "1 Know Who It's For",
    "file": "1-know-who-it-s-for.md",
-   "sha256": "a498791b13b33fb4a4da9d77831e602225d2ec7491b5c26c04695e144690f2f7",
+   "sha256": "dc23ab6293891be021b8df8dd3a2c7b53544bd1cfa7ae00912004650cf6bf12a",
    "doc_tab": "81ce484c-5d49",
    "doc_node": "12526a95-0a50",
-   "rev": 20
+   "rev": 32
   },
   {
    "name": "2 See the System",
@@ -141,10 +141,10 @@
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "c19f895a1d92fd53af8d7dc2b1d34e12e58f0f8bdf79d86695d9011b925f9a82",
+   "sha256": "afbc285a314fceafc184a260980dbec9661210c3fcba538f64ba0c343781c44c",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 10
+   "rev": 11
   }
  ]
 }

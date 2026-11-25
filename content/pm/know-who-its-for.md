@@ -35,35 +35,13 @@ steps:
       - text: "Clay Christensen's Milkshake Marketing"
         url: https://www.library.hbs.edu/working-knowledge/clay-christensens-milkshake-marketing
     look: "What watching the restaurant found that asking never did: 40 percent of the milkshakes went first thing in the morning, to commuters."
-    trust: "Experience. It's on Harvard Business School's own site: a short account for managers, retelling a case from Christensen's research."
+    trust: "Experience. It's Harvard Business School's own short account for managers, retelling a case from Christensen's research."
     only: What Christensen called the job a product is hired to do, in one memorable case.
   - id: card-last-time
     kind: card
     card: cards/the-last-time
     minutes: 5
     look: The two questions, what each brings back, and why the second shows you the price ceiling.
-  - id: govuk
-    kind: read
-    title: GOV.UK Service Manual, "Learning about users and their needs"
-    minutes: 5
-    where: A guide. Free at gov.uk.
-    links:
-      - text: "Learning about users and their needs"
-        url: https://www.gov.uk/service-manual/user-research/start-by-learning-user-needs
-    look: "Who counts as a user, staff included, and a need named as a problem: \"needing a reminder rather than needing an email or letter.\""
-    trust: "Experience. The UK government wrote it for its own digital teams, from practice on services that have to work for everyone."
-    only: "A rule for every opinion that doesn't come from users: treat it as an assumption to prove."
-  - id: arnold
-    kind: read
-    title: Joshua Arnold, "Cost of Delay"
-    minutes: 5
-    where: A short article. Free at blackswanfarming.com.
-    links:
-      - text: "Cost of Delay"
-        url: https://blackswanfarming.com/cost-of-delay/
-    look: Why urgency and value are hard to tell apart, and what a week of waiting costs.
-    trust: "Experience. Arnold was one of the people who ran the cost-of-delay work at Maersk Line, so it comes from inside the change."
-    only: A way to put a price on waiting that a finance team will follow.
   - id: waiting
     kind: play
     title: Play the waiting game
@@ -77,7 +55,7 @@ check:
     a: The shoppers, in time, and unpaid unless the pay model counts it. You'd find out from the shoppers themselves, not from the customers, who only see the faster checkout.
   - q: Own Your Role asked you to make the vision your own. Yours says customers want one thing, and three interviews in a row describe doing another. When does the vision win, and when do the interviews?
     against: own-your-role
-    a: The interviews win on what the problem is, since they're evidence of what people did. The vision wins on where you're going, as long as its "in order to" still names a problem those people have. When it doesn't, rewrite the sentence, not the interviews.
+    a: The interviews win on what the problem is, since they're evidence of what people did. The vision wins on where you're going, as long as its "in order to" still names a problem those people have. When it doesn't, rewrite the sentence.
   - q: "**Beyond this module.** This module shows you how to learn about a problem. What does judging it well take that no course can give you?"
     a: "Product sense: a working knowledge of your own product's domain, what it does and who uses it. You build it in your product, with its people and its data."
 
@@ -116,27 +94,25 @@ deeper:
 
 ## Why this matters
 
-Own Your Role had you finish "We're building this in order to ...," a sentence that names someone the work is for. This module asks whether that person really has the problem, what it's worth to them, and how you'd know. Teams call this work {{< pm/term "discovery" >}}. When enough people like them keep using and paying for what you build, you'll hear that called product-market fit.
+Own Your Role had you finish "We're building this in order to ...," a sentence that names someone the work is for. Does that person really have the problem, and what's it worth to them? Finding out is what teams call {{< pm/term "discovery" >}}. When enough people like them keep using and paying for what you build, you'll hear that called product-market fit.
 
-Start with what people do, not what they say they'd want. People are poor forecasters of their own behavior and good witnesses to their last week. Ask a woman what matters most when she buys jeans and she'll say the fit. Ask about the last pair she bought, and it came from Amazon, on sale, from a brand she knew. She thinks she buys on fit, and she bought on brand and price. Ask an AI model to play your customer and you get a forecast too, with no last week behind it. Your data shows what people did, but not why. So ask about the last time it happened, what they did about it, and what it cost them. The workaround is your real competition, and what it cost them is a ceiling on what your fix is worth.
+Start with what people do, not what they say they'd want. People are poor forecasters of their own behavior and good witnesses to their last week. Ask a woman what matters most when she buys jeans and she'll say the fit, but her last pair came from Amazon, on sale, from a brand she knew. Ask an AI model to play your customer and you get a forecast too, with no last week behind it. Your data shows what people did, but not why. So ask about the last time it happened, what they did about it, and what it cost them. That cost caps what a fix is worth to them. And the people you hear from aren't a fair sample: your keenest users speak up, while the ones who left, or never came, are the ones you most need to hear.
 
-Then ask whose problem it is. Say an adult child orders groceries for an aging parent: one person pays, another eats, and the app hears mostly from the one who pays. A gap like that pulls a team toward the buyer. Economists call a version of it the principal-agent problem: whoever acts for someone else can drift toward their own interests. On a platform team the gap is built in. If you run the service that picks substitutions, your immediate customer is the app team. Their problem is real, and GOV.UK's Service Manual counts the staff who run a service among its users. Still, the app team's problem is borrowed from the parent whose milk was swapped for oat milk, so trace each request back to the experience it shows up in.
-
-Value alone doesn't order the work, because waiting costs money too. {{< pm/term "cost-of-delay" "Cost of delay" >}} is what a week of waiting costs, and once you price it, the urgent and the merely valuable stop looking alike. At Maersk Line, one feature took 82 hours to build and 46 weeks to reach customers, at a cost of delay of roughly $210,000 a week. Find the Constraint shows you where work piles up, and this is the price of the pile.
-
-AI makes some kinds of building cheap, which puts more of the job in knowing what's worth building. Google's [People + AI Guidebook](https://pair.withgoogle.com/chapter/user-needs/) asks first whether AI is the right tool at all: "Often a rule or heuristic-based solution will work just as well, if not better, than an AI version." Deciding where a model's judgment helps, and where a plain rule should stay in charge, is a product decision.
-
-The people you hear from aren't a fair sample, either. Interview your keenest users and you'll hear from people like them, a trap Weigh the Evidence comes back to, while the ones who left, or never came, have the problem you most need to hear.
+Then ask whose problem it is. Say an adult child orders groceries for an aging parent: one person pays, another eats, and the app hears mostly from the one who pays. A gap like that pulls a team toward the buyer. On a platform team the gap is built in: your customer is another team, and the person with the problem is at the far end of its app.
 
 An order has a third person in it, too: the shopper who picks it and brings it to the door. The price and the delivery window rest on their work, yet they're not the customer, so their side of the flow is easy to design without ever hearing from them. For restaurant delivery, New York City studied the apps' own records and [found](https://www.nyc.gov/assets/dca/downloads/pdf/workers/Delivery-Worker-Study-November-2022.pdf) that workers spent about two fifths of their working time waiting for the next offer, mostly unpaid. A large pool of waiting workers, the study said, helps an app promise short windows and keep pay per trip low. Grocery shoppers sent their own pay screenshots to [an MIT audit](https://dspace.mit.edu/handle/1721.1/147669) of one app, and more than a quarter of them had worked at least one shift below their state's minimum wage. Veena Dubal, a legal scholar who spent years with ride-hail drivers, [argues](https://columbialawreview.org/wp-content/uploads/2023/11/Dubal-On_Algorithmic_Wage_discrimination.pdf) that on-demand companies design their pay systems to keep that pool large and its pay low.
 
 {{< pm/voice "shopper-incentive" "paragraph" >}}
 
+AI makes some kinds of building cheap, which puts more of the job in knowing what's worth building. Google's [People + AI Guidebook](https://pair.withgoogle.com/chapter/user-needs/) asks first whether AI is the right tool at all: "Often a rule or heuristic-based solution will work just as well, if not better, than an AI version." Deciding where a model's judgment helps, and where a plain rule should stay in charge, is a product decision.
+
+Value alone doesn't order the work, because waiting costs money too. What a fix is worth to each person, times how many hit the problem in a week, is roughly what a week without it costs: its {{< pm/term "cost-of-delay" "cost of delay" >}}. Once you price it, the urgent and the merely valuable stop looking alike.
+
 [//]: # (short-path)
 
 ## Do
 
-**Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three support tickets, sales notes or session recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Tickets seldom say what it cost, so write your best guess and mark it as one. Then put a rough price on a week of waiting: what's a fix worth to them each week, and what would a three-month slip cost? If you're on a platform team, trace one request your platform serves to the experience it shows up in, and name the person at the end. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in a support queue or a forum of their own.
+**Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three support tickets, sales notes or session recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Tickets seldom say what it cost, so write your best guess and mark it as one. Then put a rough price on a week of waiting: how often the problem comes up in a week, times what it costs each time. On a platform team, trace one request to the experience it shows up in, and name the person at the end. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in a support queue or a forum of their own.
 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 
