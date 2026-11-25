@@ -887,7 +887,7 @@ def course_bar_browser_checks(out_dir):
                         fail("G1", f"{where}: no course bar"); ctx.close(); continue
                     if not r["btn"] or r["link"]:
                         fail("G2", f"{where}: with the script the place should be its button, and the plain link gone")
-                    if max(r["tops"]) - min(r["tops"]) > 2 or r["height"] > 46:
+                    if max(r["tops"]) - min(r["tops"]) > 2 or r["height"] > 44.5:
                         fail("G3", f"{where}: the bar takes more than one line ({r['height']:.0f}px tall)")
                     if r["scrollW"] > r["clientW"] + 1:
                         fail("G3", f"{where}: something in the bar runs past the page's edge")
@@ -1028,7 +1028,7 @@ JS_MENU = """() => { const nav = document.querySelector('nav.site-nav[aria-label
   const links = [...list.querySelectorAll('a')];
   return {name: box(name), here: vis(here) ? box(here) : null, hereLine: vis(here) ? getComputedStyle(here).borderBottomColor : null,
     btn: vis(btn) ? box(btn) : null, expanded: btn && btn.getAttribute('aria-expanded'), list: vis(list) ? box(list) : null,
-    links: links.filter(vis).map(a => [a.textContent.trim(), ...box(a)]), focus: document.activeElement === btn,
+    links: links.filter(vis).map(a => { const g = document.createRange(); g.selectNodeContents(a); return [a.textContent.trim(), ...box(a), g.getBoundingClientRect().left]; }), focus: document.activeElement === btn,
     winH: innerHeight, docW: document.documentElement.scrollWidth, winW: innerWidth}; }"""
 
 
@@ -1101,14 +1101,28 @@ def site_menu_checks(out_dir):
                         for x, what in [(r["btn"], "Menu button")] + ([(r["here"], "current section")] if r["here"] else []):
                             if x[3] - x[1] < 43.5:
                                 fail("R9", f"{where}: the {what} is {x[3] - x[1]:.0f}px tall, under 44")
-                    # It opens on a tap and stays open; the list sits over the page, every section in it
+                    # It opens on a tap and stays open; the list sits over the page and holds every section but the
+                    # current one, which is beside the button already
+                    cur_name = pg.evaluate("() => { const h = document.querySelector('.nav-here'); return h ? h.textContent.trim() : null; }")
                     pg.click("button.nav-open"); pg.wait_for_timeout(50)
                     r = pg.evaluate(JS_MENU)
-                    if r["expanded"] != "true" or not r["list"] or [t[0] for t in r["links"]] != names:
-                        fail("R9", f"{where}: the Menu button doesn't open a list of every section: {r['links']}"); continue
+                    others = [x for x in names if x != cur_name]
+                    if r["expanded"] != "true" or not r["list"] or [t[0] for t in r["links"]] != others:
+                        fail("R9", f"{where}: the Menu button doesn't open a list of {others}: {[t[0] for t in r['links']]}"); continue
+                    # It hangs from the header's right edge and reaches left a step past where the menu starts, its
+                    # sections lined up under the current one (the owner, 25 November 2026)
+                    lst, nav_left = r["list"], pg.evaluate("document.querySelector('nav.site-nav[aria-label=Sections]').getBoundingClientRect().left")
+                    if abs(lst[2] - w) > 1:
+                        fail("R9", f"{where}: the menu's list doesn't hang from the header's right edge (it ends at {lst[2]:.0f})")
+                    if r["here"] and not (nav_left - 24.5 <= lst[0] <= nav_left - 7.5):
+                        fail("R9", f"{where}: the menu's list reaches left to {lst[0]:.0f}, not a step past where the menu starts ({nav_left:.0f})")
+                    if r["here"] and any(abs(t[5] - r["here"][0]) > 1 for t in r["links"]):
+                        fail("R9", f"{where}: the menu's sections don't line up under the current one")
+                    if any(t[1] > lst[0] + 1.5 or t[3] < lst[2] - 0.5 for t in r["links"]):
+                        fail("R9", f"{where}: a row of the menu's list is a link only across its words, not the list's full width")
                     if w == 390 and any(t[4] - t[2] < 43.5 for t in r["links"]):
                         fail("R9", f"{where}: a section in the menu's list is under 44px tall")
-                    top = pg.evaluate("() => [...document.querySelectorAll('.nav-list a')].every(a => { const l = a.getBoundingClientRect(); const e = document.elementFromPoint(l.left + 2, l.top + l.height / 2); return !!e && !!e.closest('.nav-list'); })")
+                    top = pg.evaluate("() => [...document.querySelectorAll('.nav-list a')].filter(a => a.getClientRects().length).every(a => { const l = a.getBoundingClientRect(); const e = document.elementFromPoint(l.left + 2, l.top + l.height / 2); return !!e && !!e.closest('.nav-list'); })")
                     if not top:
                         fail("R9", f"{where}: the menu's list sits under the page or the course bar, not over it")
                     pg.wait_for_timeout(400)
@@ -1117,7 +1131,7 @@ def site_menu_checks(out_dir):
                     pg.click("button.nav-open")
                     if pg.evaluate(JS_MENU)["list"]:
                         fail("R9", f"{where}: pressing the Menu button again doesn't close its list")
-                    pg.focus("button.nav-open"); pg.keyboard.press("Enter"); pg.keyboard.press("Escape")
+                    pg.focus("button.nav-open"); pg.keyboard.press("Enter"); pg.keyboard.press("Tab"); pg.keyboard.press("Escape")
                     r = pg.evaluate(JS_MENU)
                     if r["list"] or not r["focus"]:
                         fail("R9", f"{where}: Escape doesn't close the menu's list and give focus back to its button")
@@ -1136,7 +1150,8 @@ def site_menu_checks(out_dir):
                     if path == "/pm/find-the-constraint/":
                         # The menu and the course bar's list never show together (R9, G2)
                         pg.evaluate("window.scrollTo(0, 0)"); pg.wait_for_timeout(50)
-                        pg.click("button.cb-place"); pg.click("button.nav-open")
+                        # on a phone a tap leaves no focus on a button (Safari), so the tap itself must close the other list
+                        pg.click("button.cb-place"); pg.evaluate("document.activeElement.blur()"); pg.click("button.nav-open")
                         if pg.evaluate("() => !document.querySelector('.cb-menu').hidden") or not pg.evaluate(JS_MENU)["list"]:
                             fail("R9", f"{where}: opening the menu leaves the course bar's list open")
                         # the open menu covers the bar, so a reader reaches the bar's button by moving focus to it
