@@ -42,7 +42,7 @@
 /* Why this source: a source's reasons, folded until asked for (spec S4). The same move as "Show answer";
    the drawn chevron turns to say open or closed, and is not read aloud. */
 .why > summary { display: block; width: fit-content; padding: var(--sp-1) 0; cursor: pointer; list-style: none; font-weight: var(--w-strong); color: var(--ink); text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
-.recall summary:hover::after, .why > summary:hover { text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
+.recall summary:hover::after, .why > summary:hover, .deeper > details > summary:hover::after { text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
 .why > summary::-webkit-details-marker { display: none; }
 .why > summary::after { content: ""; display: inline-block; width: 0.4em; height: 0.4em; margin-left: 0.5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.2em) rotate(45deg); }
 .why[open] > summary::after { transform: translateY(0.05em) rotate(-135deg); }
@@ -179,7 +179,7 @@
 .deeper > details > summary { list-style: none; cursor: pointer; padding: 0 0 var(--sp-4); }
 .deeper > details > summary::-webkit-details-marker { display: none; }
 .deeper > details > summary h2 { display: inline; margin: 0; }
-.deeper > details > summary::after { content: "Open"; content: "Open" / ""; display: block; margin-top: var(--sp-1); text-align: right; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--orange); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+.deeper > details > summary::after { content: "Open"; content: "Open" / ""; display: block; margin-top: var(--sp-1); text-align: left; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; transition: text-decoration-color 180ms ease-out, text-decoration-thickness 180ms ease-out; }
 .deeper > details[open] > summary::after { content: "Close"; content: "Close" / ""; }
 .deeper-hint { display: block; margin-top: var(--sp-1); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
 .deeper-list { list-style: none; margin: 0; padding: 0; }
@@ -261,6 +261,9 @@
 .cb-place { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: 2.75rem; margin: 0; padding: 0; border: 0; background: none; color: var(--ink); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); text-align: left; text-decoration: none; cursor: pointer; }
 .cb-steps { display: flex; gap: var(--sp-1); margin-left: auto; }
 .cb-step { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); min-width: 2.75rem; min-height: 2.75rem; color: var(--ink); text-decoration: none; }
+/* The place turns orange on hover, its chevron with it, easing as previous and next do (a and a:hover in base.css). */
+.cb-open { transition: color 180ms ease-out; }
+.cb-open:hover { color: var(--orange); }
 /* The chevrons are the "Why this source" mark, turned to point the way. */
 .cb-chev { display: inline-block; flex: none; width: 0.45em; height: 0.45em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
 .cb-down { transform: translateY(-0.15em) rotate(45deg); }
@@ -344,7 +347,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pile, .rk-dot { transition: none; }
+  .pile, .rk-dot, .cb-open, .deeper > details > summary::after { transition: none; }
 }
 
 /* Print: the PDF is made from this. One unit starts a new page; a card fits on one page. Always light.
