@@ -1,0 +1,7 @@
+{{- /* Whether a page carries the course bar and the foot (spec G1 to G5). The owner sees them on one module and one
+       card first (25 November 2026, job 40): when he says they spread, this returns true on every syllabus page but
+       the single document, and the list below goes. */ -}}
+{{- $pilot := slice "find-the-constraint" "five-focusing-steps" -}}
+{{- $on := false -}}
+{{- if and (eq .Section "pm") (ne .Layout "all") .File }}{{ $on = in $pilot .File.ContentBaseName }}{{ end -}}
+{{- return $on -}}

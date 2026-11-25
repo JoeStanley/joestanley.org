@@ -684,6 +684,272 @@ def walk_browser_checks(out_dir, path, walks):
         srv.close()
 
 
+# ---------- getting around: the course bar and the foot (G1 to G5) ----------
+# The pages that carry the bar and the foot. The owner sees them on one module and one card first (25 November
+# 2026, job 40); when he says they spread, this becomes every syllabus page but the single document.
+BAR_PAGES = ["/pm/find-the-constraint/", "/pm/cards/five-focusing-steps/"]
+
+
+def _course_order(out_dir):
+    """The course's order (G1): Start, each built module on the map, then the closing unit, as (path, label)."""
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml")))
+    order = [("/pm/", "Start")]
+    order += [(f"/pm/{m['page']}/", f"Module {m['num']}, {m['title']}") for m in mods if m.get("page")]
+    order.append((CLOSING, "The Compass"))
+    return mods, order
+
+
+def course_bar_checks(out_dir):
+    """G1 to G5 in the built pages: the bar's place, its previous and next, its list, its plain links for a reader
+    without scripts, and the foot. Then course_bar_browser_checks, in a browser."""
+    from bs4 import BeautifulSoup
+    checked("G1", "G2", "G4", "G5")
+    mods, order = _course_order(out_dir)
+    paths = [p for p, _ in order]
+    page = lambda path: BeautifulSoup(open(os.path.join(out_dir, path.strip("/"), "index.html"), encoding="utf-8").read(), "html.parser")
+    start = page("/pm/")
+    course = start.select_one("h1").get_text(" ", strip=True)
+    if not start.find(id="modules") or start.find(id="modules").name != "h2":
+        fail("G4", "Start's list of modules has no address (#modules) for the bar's plain link to land on")
+    cards_of = {}
+    for m, cards in MODULES:
+        for c in cards:
+            cards_of[c] = m
+    for path in BAR_PAGES:
+        soup = page(path)
+        bars = soup.select("nav.course-bar")
+        if len(bars) != 1:
+            fail("G1", f"{path}: {len(bars)} course bars, not one")
+            continue
+        bar = bars[0]
+        head = soup.select_one("header.masthead")
+        if not head or bar.find_previous("header") is not head or bar.find_parent("main") or not bar.find_next("main"):
+            fail("G1", f"{path}: the course bar isn't between the site header and the page's main content")
+        if bar.get("aria-label") != course:
+            fail("G2", f"{path}: the bar's landmark is named '{bar.get('aria-label')}', not '{course}'")
+        mod_path = cards_of.get(path, path)
+        slug = mod_path.strip("/").split("/")[-1]
+        m = next((x for x in mods if x.get("page") == slug), None)
+        if not m:
+            fail("G1", f"{path}: no module on the map for this page")
+            continue
+        want = f"{course}, Module {m['num']} of {len(mods)}"
+        link, btn = bar.select_one("a.cb-place"), bar.select_one("button.cb-place")
+        for el, what in ((link, "plain link"), (btn, "button")):
+            if not el:
+                fail("G4" if what == "plain link" else "G2", f"{path}: the bar's place has no {what}")
+            elif " ".join(el.get_text().split()) != want:
+                fail("G1", f"{path}: the bar's {what} reads '{' '.join(el.get_text().split())}', not '{want}'")
+        if link and link.get("href") != "/pm/#modules":
+            fail("G4", f"{path}: without scripts the bar's place goes to {link.get('href')}, not Start's list (/pm/#modules)")
+        if btn:
+            if btn.get("type") != "button" or btn.get("aria-expanded") != "false" or not btn.has_attr("hidden"):
+                fail("G2", f"{path}: the bar's button should start hidden (the script shows it), closed, with aria-expanded")
+            ctl = btn.get("aria-controls")
+            menu = soup.find(id=ctl) if ctl else None
+            if not menu or not menu.has_attr("hidden") or not bar.find(id=ctl):
+                fail("G2", f"{path}: the bar's button controls no list inside the bar, or the list doesn't start hidden")
+        i = paths.index(mod_path)
+        for rel, j in (("prev", i - 1), ("next", i + 1)):
+            a = bar.select_one(f"a.cb-step[rel={rel}]")
+            exp = paths[j] if 0 <= j < len(paths) else None
+            got = a.get("href") if a else None
+            if got != exp:
+                fail("G1", f"{path}: the bar's {rel} goes to {got}, not {exp}")
+            elif a and order[j][1] not in a.get_text(" ", strip=True):
+                fail("G2", f"{path}: the bar's {rel} doesn't name '{order[j][1]}' for a screen reader")
+        items = bar.select(".cb-list > li")
+        got = [re.sub(r"\s+", " ", li.get_text(" ", strip=True)) for li in items]
+        if len(items) != len(mods):
+            fail("G1", f"{path}: the bar's list has {len(items)} modules, not the map's {len(mods)}")
+        for li, x in zip(items, mods):
+            a = li.find("a")
+            if x.get("page"):
+                if not a or a.get("href") != f"/pm/{x['page']}/" or x["title"] not in a.get_text(" ", strip=True) or not li.find(attrs={"data-map-status": True}) or li.get("data-map-unit") != x["page"]:
+                    fail("G1", f"{path}: the bar's list doesn't link Module {x['num']}, {x['title']}, with its progress")
+            if str(x["num"]) not in li.get_text(" ", strip=True):
+                fail("G1", f"{path}: the bar's list doesn't number {x['title']}")
+        cur = bar.select(".cb-list a[aria-current]")
+        if [a.get("href") for a in cur] != [mod_path]:
+            fail("G2", f"{path}: the place in the bar's list is marked on {[a.get('href') for a in cur]}, not {mod_path}")
+        elif cur[0].get("aria-current") != ("page" if path == mod_path else "true"):
+            fail("G2", f"{path}: the place is marked aria-current='{cur[0].get('aria-current')}'")
+        more = [a.get("href") for a in bar.select(".cb-more a")]
+        if more != [CLOSING, "/pm/glossary/"]:
+            fail("G1", f"{path}: after the modules the bar's list goes to {more}, not The Compass and the glossary")
+        # G5: the foot
+        foot = soup.select("main nav.unit-foot")
+        if len(foot) != 1:
+            fail("G5", f"{path}: {len(foot)} feet, not one")
+            continue
+        foot = foot[0]
+        if "screen-only" not in (foot.get("class") or []):
+            fail("G4", f"{path}: the foot isn't kept out of print")
+        if path == mod_path:
+            for rel, j in (("prev", i - 1), ("next", i + 1)):
+                a = foot.select_one(f"a[rel={rel}]")
+                exp = (paths[j], order[j][1]) if 0 <= j < len(paths) else None
+                got = (a.get("href"), a.get_text(" ", strip=True)) if a else None
+                if got != exp:
+                    fail("G5", f"{path}: the foot's {rel} is {got}, not {exp}")
+            if not foot.find("a", href="/pm/#modules", string="All modules"):
+                fail("G5", f"{path}: the foot has no \"All modules\" to Start's list")
+        else:
+            mod = page(mod_path)
+            stops = mod.select("li.step")
+            card_step = next((n for n, li in enumerate(stops, 1) if li.select_one(f'h3 a[href="{path}"]')), None)
+            back = foot.find("a", href=f"{mod_path}#stop-{card_step}")
+            if not card_step or not back or f"stop {card_step}" not in back.get_text(" ", strip=True):
+                fail("G5", f"{path}: the foot doesn't go back to its stop on {mod_path}'s short path")
+            others = [c for c in dict(MODULES)[mod_path] if c != path]
+            got = [a.get("href") for a in foot.find_all("a") if a is not back]
+            if got != others:
+                fail("G5", f"{path}: the foot goes to {got}, not its module's other card {others}")
+    # G5: every stop has an address of its own, on every module
+    for m, _ in MODULES:
+        stops = page(m).select("li.step")
+        if [li.get("id") for li in stops] != [f"stop-{n}" for n in range(1, len(stops) + 1)]:
+            fail("G5", f"{m}: its stops have no addresses of their own (#stop-1 and on)")
+    # Until the owner says it spreads, no other page carries the bar or the foot (G1's pilot)
+    for path in [p for p in PAGES if p not in BAR_PAGES]:
+        f_ = os.path.join(out_dir, path.strip("/"), "index.html")
+        if os.path.exists(f_) and re.search(r'<nav class="(course-bar|unit-foot)', open(f_, encoding="utf-8").read()):
+            fail("G1", f"{path} carries the bar or the foot before the owner has said it spreads")
+    course_bar_browser_checks(out_dir)
+
+
+JS_BAR = """() => { const bar = document.querySelector('.course-bar'); if (!bar) return null;
+  const r = bar.getBoundingClientRect(); const vis = e => e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden';
+  const row = [...bar.querySelectorAll('.cb-row > *, .cb-steps > *')].filter(e => vis(e) && !e.matches('.cb-steps'));
+  const menu = bar.querySelector('.cb-menu'); const mr = menu.getBoundingClientRect(); const btn = bar.querySelector('button.cb-place');
+  const ms = getComputedStyle(menu);
+  return {top: r.top, bottom: r.bottom, height: r.height, scrollW: bar.scrollWidth, clientW: bar.clientWidth, docW: document.documentElement.scrollWidth, winW: innerWidth, winH: innerHeight,
+    tops: row.map(e => Math.round(e.getBoundingClientRect().top)), sizes: row.map(e => [e.className, e.getBoundingClientRect().width, e.getBoundingClientRect().height]),
+    link: vis(bar.querySelector('a.cb-place')), btn: vis(btn), expanded: btn && btn.getAttribute('aria-expanded'), menu: vis(menu),
+    menuBottom: mr.bottom, menuOverflow: ms.overflowY, menuScroll: menu.scrollHeight > menu.clientHeight + 1,
+    rows: [...menu.querySelectorAll('a')].filter(vis).map(a => [a.textContent.trim().slice(0, 20), a.getBoundingClientRect().height]),
+    focus: document.activeElement === btn,
+    moves: [bar, menu, btn, ...bar.querySelectorAll('.cb-chev, .cb-list, .cb-item')].filter(Boolean).filter(e => { const s = getComputedStyle(e); return s.animationName !== 'none' || s.transitionDuration.split(',').some(d => parseFloat(d) > 0); }).map(e => e.className) }; }"""
+
+
+def course_bar_browser_checks(out_dir):
+    """G1 to G4 in a browser: the bar stays in view, keeps to one line and to the page, opens and closes as a
+    disclosure should, shows saved progress, never covers what an address lands on, and without scripts is three
+    plain links; neither it nor the foot prints."""
+    checked("G3")
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            for path in BAR_PAGES:
+                for w, h in ((390, 844), (1280, 900)):
+                    ctx = b.new_context(viewport={"width": w, "height": h})
+                    pg = ctx.new_page()
+                    pg.goto(srv.base + path); pg.wait_for_load_state("load"); pg.evaluate("document.fonts.ready")
+                    where = f"{path} at {w}px"
+                    r = pg.evaluate(JS_BAR)
+                    if not r:
+                        fail("G1", f"{where}: no course bar"); ctx.close(); continue
+                    if not r["btn"] or r["link"]:
+                        fail("G2", f"{where}: with the script the place should be its button, and the plain link gone")
+                    if max(r["tops"]) - min(r["tops"]) > 2:
+                        fail("G3", f"{where}: the bar takes more than one line")
+                    if r["scrollW"] > r["clientW"] + 1:
+                        fail("G3", f"{where}: something in the bar runs past the page's edge")
+                    if w == 390:
+                        for cls, tw, th in r["sizes"]:
+                            if tw < 43.5 or th < 43.5:
+                                fail("G2", f"{where}: the bar's {cls} is {tw:.0f} by {th:.0f}, under 44 by 44")
+                    # G1: it stays in view as the page scrolls
+                    for y in ("document.body.scrollHeight / 2", "document.body.scrollHeight"):
+                        pg.evaluate(f"window.scrollTo(0, {y})")
+                        r = pg.evaluate(JS_BAR)
+                        if abs(r["top"]) > 1:
+                            fail("G1", f"{where}: scrolled down, the bar is at {r['top']:.0f}px, not in view at the top")
+                    # G2: Enter opens, Escape closes and gives focus back; a click outside closes
+                    pg.focus("button.cb-place"); pg.keyboard.press("Enter")
+                    r = pg.evaluate(JS_BAR)
+                    if r["expanded"] != "true" or not r["menu"]:
+                        fail("G2", f"{where}: Enter on the bar's button doesn't open its list")
+                    if r["moves"]:
+                        fail("G2", f"{where}: parts of the bar move on their own: {r['moves']}")
+                    if r["menuBottom"] > r["winH"] + 1:
+                        fail("G3", f"{where}: the open list runs past the window's foot")
+                    if w == 390:
+                        for name, th in r["rows"]:
+                            if th < 43.5:
+                                fail("G2", f"{where}: '{name}' in the bar's list is {th:.0f}px tall, under 44")
+                    pg.keyboard.press("Tab"); pg.keyboard.press("Escape")
+                    r = pg.evaluate(JS_BAR)
+                    if r["expanded"] != "false" or r["menu"] or not r["focus"]:
+                        fail("G2", f"{where}: Escape doesn't close the bar's list and give focus back to its button")
+                    pg.keyboard.press(" ")
+                    if pg.evaluate(JS_BAR)["expanded"] != "true":
+                        fail("G2", f"{where}: Space on the bar's button doesn't open its list")
+                    pg.mouse.click(w // 2, h - 20)
+                    if pg.evaluate(JS_BAR)["menu"]:
+                        fail("G2", f"{where}: a click outside the bar leaves its list open")
+                    ctx.close()
+                # G3: a short window, a narrow one and enlarged text
+                for kw, what in (({"viewport": {"width": 390, "height": 420}}, "a short window"), ({"viewport": {"width": 320, "height": 700}}, "320px")):
+                    ctx = b.new_context(**kw); pg = ctx.new_page(); pg.goto(srv.base + path); pg.wait_for_load_state("load")
+                    pg.click("button.cb-place")
+                    r = pg.evaluate(JS_BAR)
+                    if r["scrollW"] > r["clientW"] + 1 or r["docW"] > r["winW"]:
+                        fail("G3", f"{path} in {what}: the bar runs past the page's edge")
+                    if r["menuBottom"] > r["winH"] + 1 or (r["menuScroll"] and r["menuOverflow"] not in ("auto", "scroll")):
+                        fail("G3", f"{path} in {what}: the open list doesn't fit the window or scroll inside itself")
+                    ctx.close()
+                big = b.new_context(viewport={"width": 390, "height": 844}); pg = big.new_page()
+                pg.goto(srv.base + path); pg.wait_for_load_state("load")
+                pg.add_style_tag(content="html { font-size: 32px !important; }")
+                r = pg.evaluate(JS_BAR)
+                if r["scrollW"] > r["clientW"] + 1 or r["docW"] > r["winW"]:
+                    fail("G3", f"{path} with enlarged text: the bar runs past the page's edge rather than wrap")
+                big.close()
+                # G2: what an address lands on sits below the bar
+                ctx = b.new_context(viewport={"width": 390, "height": 844}); pg = ctx.new_page()
+                targets = ["#stop-3", "#do"] if path in dict(MODULES) else []
+                for t in targets:
+                    pg.goto(srv.base + path + t); pg.wait_for_load_state("load"); pg.wait_for_timeout(100)
+                    gap = pg.evaluate("(t) => { const e = document.querySelector(t); const b = document.querySelector('.course-bar'); return e && b ? e.getBoundingClientRect().top - b.getBoundingClientRect().bottom : null; }", t)
+                    if gap is None or gap < 0:
+                        fail("G2", f"{path}{t}: what the address lands on sits under the bar ({gap})")
+                # G1: saved progress shows in the list
+                if path in dict(MODULES):
+                    pg.goto(srv.base + path); pg.wait_for_load_state("load")
+                    pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_load_state("load")
+                    pg.locator(".step .tick").first.click()
+                    status = pg.evaluate(f"() => document.querySelector('.cb-list [data-map-unit=\"{path.strip('/').split('/')[-1]}\"] [data-map-status]').textContent.trim()")
+                    n = pg.locator(".step").count()
+                    if status != f"1 of {n} stops":
+                        fail("G1", f"{path}: one stop ticked, the bar's list says '{status}', not '1 of {n} stops'")
+                    for k in range(1, n):
+                        pg.locator(".step .tick").nth(k).click()
+                    status = pg.evaluate(f"() => document.querySelector('.cb-list [data-map-unit=\"{path.strip('/').split('/')[-1]}\"] [data-map-status]').textContent.trim()")
+                    if status != "Done":
+                        fail("G1", f"{path}: every stop ticked, the bar's list says '{status}', not 'Done'")
+                    pg.evaluate("localStorage.clear()")
+                # G4: in print neither the bar nor the foot shows
+                pg.emulate_media(media="print")
+                shown = pg.evaluate("() => [...document.querySelectorAll('.course-bar, .unit-foot')].filter(e => e.getClientRects().length).map(e => e.className)")
+                if shown:
+                    fail("G4", f"{path}: {shown} shows in print")
+                ctx.close()
+                # G4: without scripts, three plain links
+                ctx = b.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
+                pg.goto(srv.base + path); pg.wait_for_load_state("load")
+                r = pg.evaluate("""() => { const vis = e => !!e && e.getClientRects().length > 0; const bar = document.querySelector('.course-bar');
+                  return {links: [...bar.querySelectorAll('a')].filter(vis).map(a => a.getAttribute('href')), btn: vis(bar.querySelector('button')), menu: vis(bar.querySelector('.cb-menu'))}; }""")
+                if r["btn"] or r["menu"] or len(r["links"]) < 2 or r["links"][0] != "/pm/#modules":
+                    fail("G4", f"{path}: without scripts the bar should be plain links, its place to Start's list: {r}")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
 def arc_checks(out_dir):
     """S20: the arc's four parts on Start, each name and line above its modules, every module in one part in reading
     order, The Compass last under "To close". S21: The Compass, made from a module's parts, closes the course."""
@@ -2975,7 +3241,7 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                         for b in bad:
                             fail("C3", f"{where}: yellow fill on {b}")
                         # C5
-                        bad = pg.evaluate("""() => [...document.querySelectorAll('a')].filter(a => !a.matches('.site-name, .site-nav a, .door-links a, .skip, .unit-nav a') && a.getBoundingClientRect().width && !getComputedStyle(a).textDecorationLine.includes('underline')).map(a => a.textContent.trim().slice(0, 30))""")
+                        bad = pg.evaluate("""() => [...document.querySelectorAll('a')].filter(a => !a.matches('.site-name, .site-nav a, .door-links a, .skip, .unit-nav a, .course-bar a') && a.getBoundingClientRect().width && !getComputedStyle(a).textDecorationLine.includes('underline')).map(a => a.textContent.trim().slice(0, 30))""")
                         for b in bad:
                             fail("C5", f"{where}: link without underline: '{b}'")
                         for b in pg.evaluate(JS_LINK_LINES):
@@ -3406,6 +3672,12 @@ def main():
             arc_checks(out_dir)
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("S20", "S21"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("G1", "G2", "G3", "G4", "G5"):
+        try:
+            course_bar_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rules, not stop the suite
+            for r in ("G1", "G2", "G3", "G4", "G5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S22"):
         try:

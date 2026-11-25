@@ -252,6 +252,52 @@
 .gloss-list dt span { font-weight: var(--w-regular); color: var(--muted); }
 .gloss-list dd { margin: var(--sp-1) 0 0; }
 
+/* The course bar (spec G1 to G4): under the site header, on the page's paper, with a thin rule under it, so the text
+   scrolls away beneath it. Its words are the small label type; the place is marked with the menu's orange line. Each
+   control is a 44px target. Without the script its place is a plain link; with it, a button opens the list, at once. */
+.course-bar { position: sticky; top: 0; z-index: 5; margin-top: var(--sp-3); background: var(--paper); border-bottom: 1px solid var(--rule); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.course-bar [hidden] { display: none !important; }
+.cb-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 var(--sp-3); }
+.cb-place { display: inline-flex; align-items: center; gap: var(--sp-2); min-height: 2.75rem; margin: 0; padding: 0; border: 0; background: none; color: var(--ink); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); text-align: left; text-decoration: none; cursor: pointer; }
+.cb-steps { display: flex; gap: var(--sp-1); margin-left: auto; }
+.cb-step { display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2); min-width: 2.75rem; min-height: 2.75rem; color: var(--ink); text-decoration: none; }
+/* The chevrons are the "Why this source" mark, turned to point the way. */
+.cb-chev { display: inline-block; flex: none; width: 0.45em; height: 0.45em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; }
+.cb-down { transform: translateY(-0.15em) rotate(45deg); }
+.cb-open[aria-expanded="true"] .cb-down { transform: translateY(0.1em) rotate(-135deg); }
+.cb-left { transform: rotate(135deg); }
+.cb-right { transform: rotate(-45deg); }
+/* On a phone the steps are their arrows alone; their words stay for screen readers. */
+@media (max-width: 45.99rem) { .cb-word { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } }
+@media (min-width: 46rem) { .cb-steps { gap: var(--sp-4); } }
+/* The list drops under the bar, over the page, and scrolls inside itself when the window is short (G3). */
+.cb-menu { position: absolute; left: 0; right: 0; top: 100%; max-height: calc(100svh - 4rem); overflow-y: auto; overscroll-behavior: contain; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.cb-list, .cb-more { list-style: none; margin: 0; padding: 0; max-width: var(--measure); }
+.cb-list { padding-top: var(--sp-2); }
+.cb-more { margin-top: var(--sp-2); padding: var(--sp-2) 0 var(--sp-3); border-top: 1px solid var(--rule); }
+.cb-item { display: grid; grid-template-columns: 2rem minmax(0, 1fr) auto; align-items: center; column-gap: var(--sp-2); }
+.cb-num { color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.cb-item > a, .cb-more a, .cb-pending { display: flex; align-items: center; min-height: 2.75rem; }
+.cb-item > a, .cb-more a { color: var(--ink); text-decoration: none; }
+.cb-pending { color: var(--muted); }
+.cb-status { color: var(--muted); font-weight: var(--w-strong); }
+.cb-item.is-done .cb-status { color: var(--ink); }
+.cb-menu a[aria-current] { font-weight: var(--w-strong); text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 3px; text-underline-offset: 0.45em; }
+/* A heading or a stop reached by its address lands below the bar, not under it (G2). */
+.has-course-bar main [id] { scroll-margin-top: calc(2.75rem + var(--sp-4)); }
+
+/* The foot of a unit (spec G5): the next step by name, in the heading face, on a rule, as Start lists the modules. */
+.unit-foot { display: grid; gap: var(--sp-4); margin-top: var(--sp-7); padding-top: var(--sp-5); border-top: 1px solid var(--rule); }
+.unit-foot p { margin: 0; }
+.uf-label { display: block; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.unit-foot .uf-prev a, .unit-foot .uf-next a { font: var(--w-head) var(--fs-body)/var(--lh-head) var(--head); }
+.uf-all { font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+@media (min-width: 46rem) {
+  .unit-foot { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: var(--sp-5); }
+  .uf-next { grid-column: 2; text-align: right; }
+  .uf-all { grid-column: 1 / -1; }
+}
+
 /* Single-document preview: one unit at a time. */
 .pm-all.js .unit:not(.is-current) { display: none; }
 
@@ -305,7 +351,7 @@
    Sizes and space come from the print values of the scales in base.css; only layout differs here. */
 @page { size: Letter; margin: 0.65in 0.8in 0.75in; }
 @media print {
-  .gloss, .game-live, .progress, .tick input { display: none !important; }
+  .gloss, .game-live, .progress, .tick input, .course-bar { display: none !important; }
   .print-only { display: block; }
   .screen-only { display: none !important; }
   .reading { padding-right: 0; }

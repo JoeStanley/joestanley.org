@@ -226,4 +226,22 @@ run_bg "no summary card for other sites" N3 "sed -i '/twitter:card/d' layouts/_d
 run_bg "a preview's address off the site" N3 "sed -i 's/<meta property=\"og:url\" content=\"{{ .Permalink }}\">/<meta property=\"og:url\" content=\"{{ .RelPermalink }}\">/' layouts/_default/baseof.html"
 run_bg "Writing back in the menu" R9 "sed -i 's/^    - identifier: games$/    - identifier: writing\\n      name: Writing\\n      url: \\/writing\\/\\n      weight: 30\\n    - identifier: games/' hugo.yaml"
 run_bg "a module's allowance in print gone before a PDF is published" P1 "sed -i 's/^MODULE_GRACE = 1 /MODULE_GRACE = 0 /' tests/check_site.py"
+# Job 40's pilot, the course bar and the foot (25 November 2026): on Find the Constraint and its card The Five
+# Focusing Steps until the owner says it spreads (G1 to G5), and the bar's links are controls, not running text (C5)
+run_bg "the bar scrolls away with the page" G1 "sed -i 's/^.course-bar { position: sticky;/.course-bar { position: relative;/' assets/css/pm.css"
+run_bg "the bar counts the wrong number of modules" G1 "sed -i 's/%v of %d\" .num (len site.Data.pm.modules)/%v of %d\" .num 11/' layouts/partials/pm/course-bar.html"
+run_bg "the bar's list without its progress" G1 "sed -i 's/ data-map-short{{ end }}>/{{ end }}>/; s/<span class=\"cb-status\" data-map-status><\/span>//' layouts/partials/pm/course-bar.html"
+run_bg "the bar on a module the owner hasn't seen it on" G1 "sed -i 's/slice \"find-the-constraint\" \"five-focusing-steps\"/slice \"find-the-constraint\" \"five-focusing-steps\" \"see-the-system\"/' layouts/partials/pm/nav-pilot.html"
+run_bg "Escape closes the list and drops focus" G2 "sed -i 's/if (!on \&\& refocus) btn.focus();//' assets/js/pm.js"
+run_bg "the bar's arrows too small to tap on a phone" G2 "echo '.cb-step { min-width: 2rem; min-height: 2rem; }' >> assets/css/pm.css"
+run_bg "the bar's list fades in" G2 "echo '.cb-menu { transition: opacity 200ms ease-out; }' >> assets/css/pm.css"
+run_bg "an address lands under the bar" G2 "sed -i '/^.has-course-bar main \[id\] { scroll-margin-top/d' assets/css/pm.css"
+run_bg "the bar on two lines on a phone" G3 "echo '.cb-place { min-width: 18rem; }' >> assets/css/pm.css"
+run_bg "the bar's list runs past a short window" G3 "sed -i 's/if (on) fit();//' assets/js/pm.js; sed -i 's/ max-height: calc(100svh - 4rem); overflow-y: auto;//' assets/css/pm.css"
+run_bg "without scripts the bar's place goes nowhere useful" G4 "sed -i 's|#modules\"><span class=\"cb-label\">|\"><span class=\"cb-label\">|' layouts/partials/pm/course-bar.html"
+run_bg "the bar prints" G4 "sed -i 's/, .tick input, .course-bar { display: none !important; }/, .tick input { display: none !important; }/' assets/css/pm.css"
+run_bg "a module's foot without All modules" G5 "sed -i '/All modules<\/a><\/p>/d' layouts/partials/pm/unit-foot.html"
+run_bg "a card's foot back to the module's top, not its stop" G5 "sed -i 's/{{ if \$stop }}#stop-{{ \$stop }}{{ end }}//' layouts/partials/pm/unit-foot.html"
+run_bg "stops without addresses" G5 "sed -i 's/{{ if not \$all }} id=\"stop-{{ add \$i 1 }}\"{{ end }}//' layouts/partials/pm/unit-module.html"
+run_bg "the foot's links without their underline" C5 "echo '.unit-foot a { text-decoration: none; }' >> assets/css/pm.css"
 wait

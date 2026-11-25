@@ -4,7 +4,8 @@
    2. Single-document view: show one unit at a time (used by the preview and the print page).
    3. The games: the dice game, the waiting game and the ranking game.
    4. A line edit stays on its line.
-   5. The Compass's two walks: two buttons pick which version of the call shows. */
+   5. The Compass's two walks: two buttons pick which version of the call shows.
+   6. The course bar: its place opens the list of modules, with saved progress. */
 (function () {
   "use strict";
   var doc = document, body = doc.body;
@@ -35,7 +36,9 @@
       var n = ids.filter(function (id) { return get("pm:" + unit + ":" + id) === "1"; }).length;
       var out = el.querySelector("[data-map-status]");
       if (!out || !total) return;
-      out.textContent = n === 0 ? "Ready. Not started." : n >= total ? "Done." : "Started: " + n + " of " + total + " stops done.";
+      /* The course bar's list says it in a few words (G1): nothing until a stop is ticked. */
+      if (el.hasAttribute("data-map-short")) out.textContent = n === 0 ? "" : n >= total ? "Done" : n + " of " + total + " stops";
+      else out.textContent = n === 0 ? "Ready. Not started." : n >= total ? "Done." : "Started: " + n + " of " + total + " stops done.";
       el.classList.toggle("is-done", n >= total);
     });
   }
@@ -552,5 +555,31 @@
     buttons.forEach(function (b) { b.addEventListener("click", function () { show(b.getAttribute("data-walk-show")); }); });
     box.hidden = false;
     show(buttons[0].getAttribute("data-walk-show"));
+  });
+
+  /* ---- 6. The course bar (spec G1 to G4). Without this, its place is a plain link to Start's list of modules.
+     With it, the place is a button that opens the list in place, at once (G2). Escape closes it and gives focus
+     back to the button; a click or focus outside the bar closes it too. ---- */
+  all("[data-course-bar]").forEach(function (bar) {
+    var link = bar.querySelector("a.cb-place"), btn = bar.querySelector("button.cb-place"), menu = bar.querySelector(".cb-menu");
+    if (!btn || !menu) return;
+    /* The list fits the room under the bar, wherever the bar is, and scrolls inside itself when that's short (G3). */
+    function fit() { menu.style.maxHeight = Math.max(120, window.innerHeight - bar.getBoundingClientRect().bottom) + "px"; }
+    function open(on, refocus) {
+      btn.setAttribute("aria-expanded", on ? "true" : "false");
+      menu.hidden = !on;
+      if (on) fit();
+      if (!on && refocus) btn.focus();
+    }
+    window.addEventListener("resize", function () { if (!menu.hidden) fit(); });
+    window.addEventListener("scroll", function () { if (!menu.hidden) fit(); }, { passive: true });
+    btn.addEventListener("click", function () { open(btn.getAttribute("aria-expanded") !== "true"); });
+    bar.addEventListener("keydown", function (e) {
+      if ((e.key === "Escape" || e.key === "Esc") && !menu.hidden) { e.preventDefault(); open(false, true); }
+    });
+    doc.addEventListener("click", function (e) { if (!menu.hidden && !bar.contains(e.target)) open(false); });
+    bar.addEventListener("focusout", function (e) { if (!menu.hidden && e.relatedTarget && !bar.contains(e.relatedTarget)) open(false); });
+    btn.hidden = false;
+    if (link) link.hidden = true;
   });
 })();
