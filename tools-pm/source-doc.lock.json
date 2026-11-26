@@ -37,10 +37,10 @@
   {
    "name": "1 Know Who It's For",
    "file": "1-know-who-it-s-for.md",
-   "sha256": "4eaf758b1ad79ac2f07f8e54fb4b6c37c0eed6311d6d6fa6720e7a2b622d02ae",
+   "sha256": "fbebf546349c77eb47472d1a932533e7aca8da5bb1e45406921e5d8db662b228",
    "doc_tab": "81ce484c-5d49",
    "doc_node": "12526a95-0a50",
-   "rev": 36
+   "rev": 37
   },
   {
    "name": "2 See the System",
@@ -53,10 +53,10 @@
   {
    "name": "3 Find the Constraint",
    "file": "3-find-the-constraint.md",
-   "sha256": "cc681af4f276cbdf6a54bcead60b8db49be96155a666d515aae1fdf07539adc7",
+   "sha256": "3bd0e6eb8fd8a50c9dba30a99e061e15361443db340504c34d05ad6da3a0505f",
    "doc_tab": "2a162ad5-e7b3",
    "doc_node": "8b268877-78f7",
-   "rev": 94
+   "rev": 95
   },
   {
    "name": "4 Mind the Seams",
@@ -85,10 +85,10 @@
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "42730947bb9a172b30e8dcf018ff788fedcff323f8da3a4e36ccab871a427b7c",
+   "sha256": "125a4a3481f006258986b4f93f6e4934df19ad65f2a26feff4693e6d12201931",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 62
+   "rev": 63
   },
   {
    "name": "8 Decide and Set Direction",

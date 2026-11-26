@@ -153,6 +153,29 @@
 .example th:first-child { text-align: left; font-weight: var(--w-strong); }
 .example thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
 
+/* Playing a game (spec J8): the next move beside the result, the reader's runs in the example's table style, the
+   line that holds the takeaway's place, and the board brought into view under the bar. */
+.next-move { margin: 0 0 var(--sp-3); }
+.next-move p { font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
+.runs { width: 100%; border-collapse: collapse; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); margin: var(--sp-2) 0 var(--sp-3); font-variant-numeric: tabular-nums; }
+.runs caption { text-align: left; font-weight: var(--w-strong); padding-bottom: var(--sp-1); }
+.runs th, .runs td { padding: var(--sp-1); border-bottom: 1px solid var(--rule); text-align: right; vertical-align: top; }
+.runs th:first-child { text-align: left; }
+.runs thead th { font-weight: var(--w-strong); border-bottom: 2px solid var(--ink); }
+.runs tbody th { font-weight: var(--w-regular); }
+.takeaway-hold { margin-top: var(--sp-5); font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.has-course-bar .game .board { scroll-margin-top: calc(2.75rem + var(--sp-2)); }
+.play-status { margin: var(--sp-2) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
+.play-status:empty { display: none; }
+.pick-meta { display: block; color: var(--muted); }
+.pause .pick-list { margin-top: var(--sp-2); }
+.wk-ruler .wk-name { visibility: hidden; }
+.wk-n { grid-column: span 2; font: var(--w-regular) var(--fs-small)/var(--lh-tight) var(--ui); color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+.tally.tally-line { display: block; }
+@media (max-width: 45.99rem) {
+  .guess label { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }
+  .wk-ruler .wk-name { display: none; }
+}
 /* The waiting game and the ranking game (spec J5) share the dice game's panel, guess, tally, setups and takeaway. */
 .game .jobs { margin: var(--sp-2) 0 var(--sp-3); padding-left: 1.25rem; }
 .game .jobs li { margin: var(--sp-1) 0; }
@@ -327,6 +350,55 @@
 .gloss-more { display: inline-flex; align-items: center; min-height: 2.75rem; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
 .gloss-list dd.gloss-used { margin-top: var(--sp-2); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
 .gloss-list > div:target > dt { text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 3px; text-underline-offset: 0.45em; }
+/* Finding a term by name (spec G6): an A to Z rail along the screen's right edge, below the bar, as a phone's
+   contacts have, each letter with terms a link and each without one plain and muted; a heading over each letter's
+   terms that sticks under the bar; and the text kept clear of the rail. A term reached from "Used in" carries the
+   same orange line where its unit first marks it. On a screen too short for the rail, it lies flat above the list. */
+.az { position: fixed; z-index: 4; top: 7rem; bottom: var(--sp-3); right: max(0.125rem, env(safe-area-inset-right)); margin: 0; font: var(--w-strong) var(--fs-small)/var(--lh-tight) var(--ui); touch-action: none; user-select: none; -webkit-user-select: none; }
+.az-list { display: flex; flex-direction: column; height: 100%; margin: 0; padding: 0; list-style: none; }
+.az-list li { flex: 1 1 0; min-height: 0; display: flex; }
+.az-list a, .az-list span { flex: 1; display: flex; align-items: center; justify-content: center; width: 1.75rem; text-decoration: none; }
+.az-list span { color: var(--muted); font-weight: var(--w-regular); }
+/* On the rail, orange means only where the reader is: a letter keeps its color on hover, and after a tap. */
+.az-list a:hover { color: inherit; }
+.az-list a.is-here { color: var(--orange); }
+.gloss-letter { position: sticky; top: 2.75rem; z-index: 1; margin: var(--sp-5) 0 var(--sp-2); padding: var(--sp-1) 0; background: var(--paper); }
+.has-course-bar .gloss-group [id] { scroll-margin-top: calc(2.75rem + 4.5rem); }
+/* On a wider screen the rail stands inside the column, just right of the list, sticking below the bar and ending
+   with the list, above the foot. */
+@media (min-width: 46rem) and (min-height: 36.01rem) {
+  .gloss-index { display: grid; grid-template-columns: minmax(0, 1fr) 1.75rem; column-gap: var(--sp-5); align-items: start; }
+  .gloss-index > .az { grid-column: 2; grid-row: 1; position: sticky; top: calc(2.75rem + var(--sp-4)); bottom: auto; right: auto; height: min(calc(100svh - 2.75rem - 2 * var(--sp-4)), 45rem); }
+  .gloss-index > .gloss-groups { grid-column: 1; grid-row: 1; min-width: 0; }
+}
+/* With the margin beside the column, the rail takes room from the text, not the margin: an entry's note moves out by
+   the rail's width and its gap, so it still sits in the margin, level with its entry. */
+@media (min-width: 64rem) and (min-height: 36.01rem) {
+  .reading .gloss-groups .note { margin-right: calc(-1 * (var(--margin) + var(--gutter) + 1.75rem + var(--sp-5))); }
+  .reading .gloss-groups .noted > .note { right: calc(-1 * (var(--margin) + var(--gutter) + 1.75rem + var(--sp-5))); margin: 0; }
+}
+/* Where the letters don't fit the rail, as with a reader's text set large, the script lays it flat as the short screen
+   does. */
+.glossary.has-flat-az .gloss-index { display: block; }
+.gloss-index > .az.az-flat, .az.az-flat { position: static; height: auto; margin: var(--sp-4) 0 var(--sp-5); touch-action: auto; }
+.az.az-flat .az-list { flex-direction: row; flex-wrap: wrap; height: auto; gap: 0 var(--sp-1); }
+.az.az-flat .az-list a, .az.az-flat .az-list span { min-height: 2.75rem; min-width: 2.75rem; width: auto; }
+.glossary.has-flat-az .unit-body.reading { padding-right: 0; }
+@media (min-width: 64rem) {
+  .glossary.has-flat-az .unit-body.reading { padding-right: calc(var(--margin) + var(--gutter)); }
+  .has-flat-az .reading .gloss-groups .note { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
+  .has-flat-az .reading .gloss-groups .noted > .note { right: calc(-1 * (var(--margin) + var(--gutter))); }
+}
+/* On a phone the text keeps clear of the rail along the screen's edge. */
+@media (max-width: 45.99rem) and (min-height: 36.01rem) {
+  .glossary .unit-body { padding-right: 2rem; }
+}
+@media (max-height: 36rem) {
+  .az { position: static; margin: var(--sp-4) 0 var(--sp-5); touch-action: auto; }
+  .az-list { flex-direction: row; flex-wrap: wrap; height: auto; gap: 0 var(--sp-1); }
+  .az-list a, .az-list span { min-height: 2.75rem; min-width: 2.75rem; width: auto; }
+}
+a.term:target { text-decoration-style: solid; text-decoration-color: var(--orange); text-decoration-thickness: 3px; }
 .ci-module { padding: var(--sp-4) 0; border-top: 1px solid var(--rule); }
 .ci-module h2 { margin: 0; }
 .ci-list { margin: var(--sp-2) 0 0; padding: 0; list-style: none; }

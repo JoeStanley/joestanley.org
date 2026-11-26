@@ -1,0 +1,14 @@
+{{- /* One glossary entry: its term, its definition, its margin slot and, on the site, where it's used (spec G6). */ -}}
+{{- $p := .p -}}{{- $key := .key -}}{{- $g := .g -}}
+    <div id="g-{{ $key }}" data-slot="{{ $key }}">
+      <dt>{{ $g.term }}{{ with $g.also }} <span>({{ . }})</span>{{ end }}</dt>
+      <dd>{{ partial "pm/margin.html" (dict "p" $p "unit" "glossary" "slot" $key) }}{{ $g.text | markdownify }}</dd>
+      {{- if not .all }}
+      {{- $raw := printf "pm/term \"%s\"" $key }}{{ $json := printf "pm/term \\\"%s\\\"" $key }}
+      {{- $used := slice }}
+      {{- range .units }}{{ $hay := print .p.RawContent (jsonify .p.Params) }}{{ if or (in $hay $raw) (in $hay $json) }}{{ $used = $used | append . }}{{ end }}{{ end }}
+      {{- with $used }}
+      <dd class="gloss-used screen-only">Used in {{ range $n, $u := . }}{{ if $n }}, {{ end }}<a href="{{ $u.p.RelPermalink }}#use-{{ $key }}">{{ $u.label | markdownify }}</a>{{ end }}.</dd>
+      {{- end }}
+      {{- end }}
+    </div>

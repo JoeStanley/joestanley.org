@@ -1,8 +1,9 @@
-{{- /* The waiting game (spec J5), in Know Who It's For. The jobs, their estimates and every plan's cost live in
-       data/pm/waitgame.yaml, which tools-pm/game-numbers.py holds to the arithmetic. The reader picks an estimate to
-       test while the team builds, picks the first job, and picks the next when it falls due, or takes a plan. What
-       each job is really worth is drawn fresh for every run. Without JavaScript, and in print, the reader gets the
-       jobs, what each plan costs in each outcome and the takeaway. */ -}}
+{{- /* The waiting game (spec J5, J8), in Know Who It's For. The jobs, their estimates and every plan's cost live in
+       data/pm/waitgame.yaml, which tools-pm/game-numbers.py holds to the arithmetic. The reader's own call comes
+       first, with nothing chosen: the guess is the estimate the first run tests, then the first job, and the next
+       when the team needs it, asked where the run stops. The four plans follow the first run. What each job is really
+       worth is drawn fresh for every run. Without JavaScript, and in print, the reader gets the jobs, what each plan
+       costs in each outcome and the takeaway. */ -}}
 {{- $d := site.Data.pm.waitgame -}}
 {{- $bet := index (where $d.jobs "id" "swaps") 0 -}}
 {{- $flop := index (where $bet.outcomes "id" "flop") 0 -}}
@@ -11,70 +12,79 @@
 <section class="game" id="waiting-game" data-game="waiting" data-slot="waiting-game">
   <h2>The waiting game</h2>
   {{- partial "pm/margin.html" (dict "p" .p "unit" .unit "slot" "waiting-game") }}
-  <p>Your grocery app's team builds one job at a time, and three are waiting. Until a job is live, each week costs what it would have earned that week: its cost of delay. The weeks it's being built count too. No one knows those costs, so each is an estimate, only as sure as the way it was made.</p>
+  <p>Your grocery app's team builds one job at a time, and three are waiting. Each week a job isn't live, the weeks it's being built included, costs what it would have earned: its cost of delay. Nobody knows those costs for sure, so each is an estimate.</p>
   <ul class="jobs">
-    {{- range $d.jobs }}
+    {{- range $i, $j := $d.jobs }}
     {{- if .values }}
-    <li><strong>{{ .name }}:</strong> {{ .weeks }} weeks to build. Each week it isn't live costs ${{ lang.FormatNumber 0 (index .values 0) }} to ${{ lang.FormatNumber 0 (index (last 1 .values) 0) }}: {{ .how }}.</li>
+    <li><strong>{{ .name }}.</strong> {{ .weeks }} weeks{{ if not $i }} to build{{ end }}. ${{ lang.FormatNumber 0 (index .values 0) }} to ${{ lang.FormatNumber 0 (index (last 1 .values) 0) }} a week, {{ .how }}.</li>
     {{- else }}
-    <li><strong>{{ .name }}:</strong> {{ .weeks }} weeks to build. Each week it isn't live costs ${{ lang.FormatNumber 0 $flop.value }} if it flops and ${{ lang.FormatNumber 0 $works.value }} if it works, at even odds, since {{ .how }}. Its estimate, ${{ lang.FormatNumber 0 .estimate }} a week, is the average.</li>
+    <li><strong>{{ .name }}.</strong> {{ .weeks }} weeks{{ if not $i }} to build{{ end }}. ${{ lang.FormatNumber 0 $flop.value }} a week if it flops, ${{ lang.FormatNumber 0 $works.value }} if it works, at even odds: {{ .how }}. Its estimate, ${{ lang.FormatNumber 0 .estimate }}, is the average.</li>
     {{- end }}
     {{- end }}
   </ul>
   <p>In any order the three take {{ $d.weeks }} weeks. While the team builds, you can test one estimate. Its answer comes in at the end of week {{ $d.test_weeks }}.</p>
 
   <div class="game-live">
+    {{- /* The guess is the first run's test (J8); after that run the same group sets the test. */}}
     <fieldset class="guess">
-      <legend>Before you play, guess. Which estimate is worth testing?</legend>
+      <legend data-test-legend>1. Before you play, guess. Which estimate is worth testing while the team builds? Your guess is what your first run tests.</legend>
       {{- range $d.jobs }}
-      <label><input type="radio" name="waiting-guess" value="{{ .short }}"> {{ .tag }}</label>
+      <label><input type="radio" name="waiting-guess" value="{{ .id }}"> {{ strings.FirstUpper .short }}</label>
       {{- end }}
-      <label><input type="radio" name="waiting-guess" value="none of them"> None of them</label>
+      <label><input type="radio" name="waiting-guess" value="none"> None: build on the estimates</label>
     </fieldset>
 
     <div class="setups order">
-      <p class="setups-label">Pick what to test while the team builds.</p>
+      <p class="setups-label">2. Which job goes first? You can pick the second now, or wait: the run stops when the team needs it.</p>
       <ul class="pick-list">
         {{- range $d.jobs }}
-        <li><button type="button" class="setup test" data-test="{{ .id }}" aria-pressed="false">Test {{ .short }}</button></li>
-        {{- end }}
-        <li><button type="button" class="setup test" data-test="none" aria-pressed="true">Test nothing</button></li>
-      </ul>
-      <p class="setups-label">Pick the job to build first. Pick the next now, or when the first is live.</p>
-      <ul class="pick-list">
-        {{- range $d.jobs }}
-        <li><button type="button" class="setup pick" data-pick="{{ .id }}" aria-pressed="false"><span class="pick-place" data-place></span>{{ .name }}</button></li>
+        <li><button type="button" class="setup pick" data-pick="{{ .id }}" aria-pressed="false"><span class="pick-place" data-place></span>{{ .name }}<span class="pick-meta">{{ .weeks }} weeks, {{ if .values }}${{ lang.FormatNumber 0 (index .values 0) }} to ${{ lang.FormatNumber 0 (index (last 1 .values) 0) }}{{ else }}${{ lang.FormatNumber 0 $flop.value }} or ${{ lang.FormatNumber 0 $works.value }}{{ end }} a week</span></button></li>
         {{- end }}
       </ul>
-      <p class="setups-label">Or take a plan.</p>
-      <ol class="setup-list">
-        {{- range $i, $k := $rules }}
-        <li><button type="button" class="setup" data-setup="{{ $k }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ (index $d.rules $k).label }}</button></li>
-        {{- end }}
-      </ol>
-      <p class="setup-note" data-setup-note aria-live="polite"></p>
     </div>
 
     {{- /* The board and its key are hidden from screen readers; the result after each run says what it shows. */}}
     <div class="board board-waiting" aria-hidden="true" style="--weeks: {{ $d.board }}">
-      <div class="wk-row" data-row="test"><span class="wk-name">Test</span>{{ range seq $d.board }}<span class="wk"></span>{{ end }}</div>
+      <div class="wk-row" data-row="test"><span class="wk-name" data-name="Test">Test</span>{{ range seq $d.board }}<span class="wk"></span>{{ end }}</div>
       {{- range $d.jobs }}
-      <div class="wk-row" data-row="{{ .id }}"><span class="wk-name">{{ .tag }}</span>{{ range seq $d.board }}<span class="wk"></span>{{ end }}</div>
+      <div class="wk-row" data-row="{{ .id }}"><span class="wk-name" data-name="{{ .tag }}">{{ .tag }}</span>{{ range seq $d.board }}<span class="wk"></span>{{ end }}</div>
       {{- end }}
+      <div class="wk-row wk-ruler"><span class="wk-name">Week</span>{{ range seq (div $d.board 2) }}<span class="wk-n">{{ mul . 2 }}</span>{{ end }}</div>
     </div>
-    <p class="board-key" aria-hidden="true">Each row is a job, and the top row the test. Each square is a week, from week 1 at the left. An outlined square is a week of work, a yellow one a week of waiting, and an empty one a week live.</p>
+    <p class="board-key" aria-hidden="true">Each square is a week, week 1 at the left. Outlined: being built. Yellow: waiting its turn. Every week before a job is live costs its cost of delay.</p>
 
     <p class="tally" aria-live="off">
       <span>Week <b data-week>0</b><span class="sr">.</span></span>
       <span>Live <b data-live>0</b> of {{ len $d.jobs }}<span class="sr">.</span></span>
-      <span>Waiting has cost <b data-cost>$0</b><span class="sr">.</span></span>
+      <span>Cost of delay so far <b data-cost>$0</b><span class="sr">.</span></span>
     </p>
     <p class="setup-note" data-report aria-live="polite"></p>
 
     <div class="controls">
       <button type="button" class="btn" data-play>Play</button>
+      <p class="play-status" data-play-status role="status"></p>
+    </div>
+    {{- /* Where the run stops for a pick (J8): the question and a button for each job left, in Play's place. */}}
+    <div class="pause" data-pause hidden>
+      <p class="setups-label">Which job next?</p>
+      <ul class="pick-list" data-pause-list></ul>
     </div>
     <p class="result" data-result role="status"></p>
+    <table class="runs" data-runs hidden>
+      <caption>Your runs</caption>
+      <thead><tr><th scope="col">Test</th><th scope="col">Order</th><th scope="col">Swap approvals</th><th scope="col">Cost of delay</th><th scope="col">Above the cheapest</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="setups plans" data-plans hidden>
+      <p class="setups-label">Now compare four plans. Each plays at once.</p>
+      <ol class="setup-list">
+        {{- range $k := $rules }}
+        <li><button type="button" class="setup" data-setup="{{ $k }}" aria-pressed="false">{{ (index $d.rules $k).label }}</button></li>
+        {{- end }}
+      </ol>
+      <p class="setup-note" data-setup-note aria-live="polite"></p>
+    </div>
     <script type="application/json" data-game-setups>{{ dict "jobs" $d.jobs "rules" $d.rules "weeks" $d.weeks "board" $d.board "test_weeks" $d.test_weeks "best" $d.best | jsonify | safeJS }}</script>
   </div>
 
@@ -92,14 +102,15 @@
     <p>Knowing every number from the start would also cost ${{ lang.FormatNumber 0 $d.best.average }} on average, so testing swap approvals while the fix is built does as well as knowing everything.</p>
   </div>
 
+  <p class="takeaway-hold" data-takeaway-hold hidden>Play your own call and a plan, then read what to take away.</p>
   <div class="takeaway" data-takeaway>
     <h3>What to take away</h3>
     <ol>
       <li>Order the work by the estimates: divide each job's cost of delay by its weeks of work, and build the highest first.</li>
       <li>Test only an estimate whose answer could change that order. The checkout fix's range and reorder's are too narrow. Swap approvals' could go either way: if it flops it should go last, and if it works, right after the fix.</li>
-      <li>Test while the team builds, and make each pick when it falls due: its last responsible moment, the latest you can make it without losing an option. Here, stopping the team to find out cost more than any answer saved.</li>
+      <li>Test while the team builds, and make each pick when the team needs it: its last responsible moment, the latest you can make it without losing an option. Here, stopping the team to find out cost more than any answer saved.</li>
     </ol>
-    <p class="limits"><strong>What the game leaves out.</strong> It gives you the odds, and a free test that settles the question just as the next pick falls due. At work you guess the odds, and tests cost time and answer less. And here a week of waiting costs the same all year. A job for the holidays earns little until the season, so it can wait for its own last responsible moment, but not a week past it. Real calls seldom come this tidy: when the answer is obvious, someone has usually made the call before it reaches you.</p>
+    <p class="limits"><strong>What the game leaves out.</strong> It gives you the odds, and a free test that settles the question just as the team needs the next pick. At work you guess the odds, and tests cost time and answer less. And here a week of waiting costs the same all year. A job for the holidays earns little until the season, so it can wait for its own last responsible moment, but not a week past it. Real calls seldom come this tidy: when the answer is obvious, someone has usually made the call before it reaches you.</p>
     <p class="credit">Black Swan Farming, whose paper on the shipping company Maersk Line is on the full path, calls the rule <a href="https://blackswanfarming.com/cost-of-delay-divided-by-duration/">CD3</a>, cost of delay divided by duration. The last responsible moment, a term from the Lean Construction Institute, is <a href="https://www.leanessays.com/2003/08/concurrent-development.html">"the moment at which failing to make a decision eliminates an important alternative,"</a> in Mary and Tom Poppendieck's <cite>Lean Software Development</cite> (2003).</p>
   </div>
 </section>
