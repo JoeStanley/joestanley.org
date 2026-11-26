@@ -51,7 +51,7 @@ steps:
   - id: do
     kind: do
     title: Find the last time, and start your log
-    where: The Do, on this page, below.
+    where: The Do, on this page, below. The two conversations can come later.
     look: What people did about it, not what they say they'd want.
 example:
   body: |
