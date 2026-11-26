@@ -3954,7 +3954,7 @@ def setting_evidence_checks():
 
 def source_checks(out_dir):
     from bs4 import BeautifulSoup
-    checked("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9")
+    checked("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "S23", "T9")
     # S9: no source from Substack, by name or by link, in a unit, a draft or the site's data
     for base in ("content", "drafts", "data"):
         for dirpath, _, files in os.walk(os.path.join(ROOT, base)):
@@ -4123,6 +4123,21 @@ def source_checks(out_dir):
             fail("S10", f"{name} has no full path, so it carries no story")
         for sec in paths:
             stories, count, books = [], 0, 0
+            # S23: a built module's full path opens with one line, "If you read one:", naming one of its own
+            # entries that isn't its story.
+            ones = re.findall(r"(?m)^\*\*If you read one:\*\* \*(.+?)\*\. \S", sec)
+            entries_ = {}
+            for entry in re.split(r"\n(?=- \*\*)", sec):
+                m_ = re.match(r"- \*\*\*?(.+?)\*?(?:, .*)?\*\*(?!\*)\s*(.*)", entry, re.S)
+                if m_:
+                    entries_[re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1)).strip()] = bool(STORY.match(m_.group(2)))
+            if name in built_tabs:
+                if len(ones) != 1:
+                    fail("S23", f"{name}: the full path has {len(ones)} \"If you read one\" lines, and it opens with one")
+                elif ones[0] not in entries_:
+                    fail("S23", f"{name}: \"If you read one\" names {ones[0]}, which isn't on its full path")
+                elif entries_[ones[0]]:
+                    fail("S23", f"{name}: \"If you read one\" names its story, {ones[0]}, and the line is for a book or an article")
             for entry in re.split(r"\n(?=- \*\*)", sec):
                 m_ = re.match(r"- \*\*(.+?)\*\*(?!\*)\s*(.*)", entry, re.S)
                 if not m_:
@@ -4147,6 +4162,13 @@ def source_checks(out_dir):
                         fail("S10", f"{name}: the story {title} carries a \"Why trust it\", and a story is there to make the lesson stick, not as evidence")
                     if "What you'll get:" not in entry:
                         fail("S10", f"{name}: the story {title} doesn't say what you'll get")
+                    # S10: its credit ends with who made it and when, a year or a first and last: "(HBO, 2014 to 2019)";
+                    # a pair gives each of its two the same way
+                    years_ = re.findall(r"\([^()]*, (\d{4})(?: to (\d{4}))?\)", m_.group(1))
+                    want_ = 2 if re.match(r"(?:A pair of|Two) ", m_.group(2)) else 1
+                    screen_ = not re.match(r"(?:An? )?(?:novel|play)\b", m_.group(2), re.I)
+                    if screen_ and (len(years_) < want_ or not re.search(r"\([^()]*, \d{4}(?: to \d{4})?\)$", m_.group(1).strip())):
+                        fail("S10", f"{name}: the story {title}'s credit doesn't end with who made it and when, as \"(HBO, 2014 to 2019)\" or \"(Paramount, 2016)\": \"{m_.group(1)[-60:]}\"")
             if len(stories) > 1:
                 fail("S10", f"{name}: the full path carries {len(stories)} stories, and one is the most: {'; '.join(stories)}")
             if not stories:
@@ -4853,11 +4875,11 @@ def main():
             slot_checks(out_dir)
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("M4", f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
+    if run_for("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "S23", "T9"):
         try:
             source_checks(out_dir)
         except Exception as e:  # a broken tool must fail its rules, not stop the suite
-            for r in ("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "T9"):
+            for r in ("X1", "X2", "X3", "X4", "E1", "E2", "E3", "S5", "S7", "S9", "S10", "S11", "S12", "S13", "S14", "S23", "T9"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S6", "S17"):
         try:

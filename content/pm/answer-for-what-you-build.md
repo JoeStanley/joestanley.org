@@ -130,6 +130,9 @@ check:
   - q: "**Beyond this module.** Your own line is yours to draw. Which line isn't?"
     a: The one the law draws. Ask your legal or privacy team which rules your product has to meet. Your own line sits beyond them.
 
+deeper_one:
+  title: "Automating Inequality"
+  why: "Family by family, it shows who carries a system's mistakes, the question this module asks you to keep asking."
 deeper:
   - title: Automating Inequality
     by: Virginia Eubanks
@@ -163,7 +166,7 @@ deeper:
     trust: "An argument. Becker is a science journalist with a doctorate in astrophysics, and he tests Silicon Valley's grand visions against the science they lean on. He writes as a critic, so read it as the case against."
     only: "AI, Mars, living forever and effective altruism in one book, and his summary of where longtermism leads: \"For a strong longtermist, investing in a Silicon Valley AI company is a more worthwhile humanitarian endeavor than saving lives in the tropics.\""
   - title: The Good Place
-    by: created by Michael Schur (NBC)
+    by: created by Michael Schur (NBC, 2016 to 2020)
     where: A TV series.
     note: "A sitcom about moral philosophy. Watch \"The Book of Dougs,\" in season 3. Nobody has gotten into the Good Place in more than 500 years. Long ago, one Doug gives his grandmother flowers and earns 145 points. A modern Doug does the same and loses four, because his phone, his roses and the companies he paid each hurt someone he'll never see."
     only: "The [Many Hands](/pm/cards/many-hands/) card's problem, with jokes: harm spread so thin across a supply chain that nobody in it feels responsible."
@@ -175,7 +178,7 @@ This module runs longer than the others, on purpose. It ties together threads yo
 
 What you build reaches people you'll never meet. On a video-sharing app, small rules decide which video plays next, who can send a teenager a message, and what counts as a view.
 
-Some of them live a world away. In 2017, Myanmar's military killed and raped Rohingya by the thousands and drove hundreds of thousands into Bangladesh. [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide, and found that Facebook had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook agreed it should do more. In 2022, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. And in 2023, Amnesty International found that Meta, as Facebook's owner is now called, had contributed to abuses again, against Tigrayans in Ethiopia's war.
+Some of them live a world away. In 2017, Myanmar's military killed and raped Rohingya by the thousands and drove hundreds of thousands into Bangladesh. [UN investigators](https://www.ohchr.org/sites/default/files/Documents/HRBodies/HRCouncil/FFM-Myanmar/A_HRC_39_64.pdf) called for its generals to be tried for genocide, and found that Facebook had been "a useful instrument for those seeking to spread hate, in a context where, for most users, Facebook is the Internet." An assessment Facebook commissioned said it hadn't done enough, and Facebook agreed it should do more. In 2022, [Global Witness](https://globalwitness.org/en/campaigns/digital-threats/facebook-approves-adverts-containing-hate-speech-inciting-violence-and-genocide-against-the-rohingya/) submitted eight real examples of that hate speech to it as ads, in Burmese, and Facebook approved all eight. And in 2023, [Amnesty International found](https://www.amnesty.org/en/documents/afr25/7292/2023/en/) that Meta, as Facebook's owner is now called, had contributed to abuses again, against Tigrayans in Ethiopia's war.
 
 You've met parts of this question already. [Know Who It's For](/pm/know-who-its-for/) asked whose problem you hear, and whose work an order rests on. [See the System](/pm/see-the-system/) asked whose costs fall outside a system's edge, [Find the Constraint](/pm/find-the-constraint/) whom a stand-in measure misses, and [Mind the Seams](/pm/mind-the-seams/) who falls between two categories. [Design for Change](/pm/design-for-change/) asked who pays for a change, and [Change Safely](/pm/change-safely/) and [Weigh the Evidence](/pm/weigh-the-evidence/) whom an average hides. Here it's the whole module.
 

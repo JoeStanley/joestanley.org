@@ -21,7 +21,7 @@ deeper:
 
 ## The idea
 
-The word in Conway's sentence that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. The software architect Ruth Malan puts it in one line: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins" (workshop notes, February 2025, p. 314).
+The word in Conway's sentence that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. The software architect Ruth Malan puts it in one line: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins" (unpublished workshop notes, February 2025).
 
 ## Why a PM cares
 

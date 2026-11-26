@@ -108,6 +108,9 @@ kernel-of-a-strategy: ""
 # Ladder of inference
 ladder-of-inference: ""
 
+# Last responsible moment
+last-responsible-moment: ""
+
 # Left-hand column
 left-hand-column: ""
 
@@ -161,6 +164,9 @@ slo: ""
 
 # Stock
 stock: ""
+
+# Stop rule
+stop-rule: ""
 
 # Straddling
 straddling: ""

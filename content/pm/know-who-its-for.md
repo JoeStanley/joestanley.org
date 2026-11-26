@@ -87,6 +87,9 @@ check:
   - q: "**Beyond this module.** This module shows you how to learn about a problem. What does judging it well take that no course can give you?"
     a: "Product sense: a working knowledge of your own product's domain, what it does and who uses it. You build it in your product, with its people and its data."
 
+deeper_one:
+  title: "The Mom Test"
+  why: "It's short, and it trains the skill this module leans on most, asking about what people did so their answers can't flatter you."
 deeper:
   - title: The Mom Test
     by: Rob Fitzpatrick

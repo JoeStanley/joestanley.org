@@ -90,6 +90,9 @@ check:
   - q: "**Beyond this module.** Your bathtub shows what piles up, and why. What can't a drawing tell you?"
     a: Where to act first. A drawing shows the structure, not which step holds the rest back, and finding that takes timing how long work waits at each one. [Find the Constraint](/pm/find-the-constraint/) has you do it.
 
+deeper_one:
+  title: "Thinking in Systems"
+  why: "Stocks, flows and loops from the scientist who taught a generation to see them, and the traps that keep a system stuck."
 deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright

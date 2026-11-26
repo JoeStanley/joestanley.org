@@ -86,6 +86,9 @@ check:
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
     a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. [Mind the Seams](/pm/mind-the-seams/) looks at what falls between teams."
 
+deeper_one:
+  title: "Accelerate: The Science of Lean Software and DevOps"
+  why: "Its two chapters are free, and they take both halves of this module's question: why judging a team by how much it finishes backfires, and what to measure instead."
 deeper:
   - title: The Principles of Product Development Flow
     by: Donald Reinertsen
@@ -99,7 +102,7 @@ deeper:
     where: A book.
     note: Read chapter 1, "Accelerate," and chapter 2, "Measuring Performance." Both are free in the publisher's excerpt.
     trust: "A review of studies. It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software."
-    only: "[Goodhart's Law](/pm/cards/goodharts-law/) in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
+    only: "[Goodhart's Law](/pm/cards/goodharts-law/) in practice: velocity, the work a team counts as done each sprint, gets gamed once it's used to judge the team. Then why near-full utilization, everyone busy nearly all the time, sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel.
@@ -113,7 +116,7 @@ When delivery is slow, as when a fitness app's new workouts take months to reach
 
 The danger while you work on it is [Goodhart's Law](/pm/cards/goodharts-law/). Once a number becomes a target, people find the cheapest way to hit it, so the constraint's number can hit its target while nothing more reaches users.
 
-A number can mislead with nobody gaming it, too. An algorithm a US hospital used to pick patients for extra care took the cost of their care as a stand-in for how sick they were. Less had been spent on Black patients who were just as sick, so at any given score they were sicker than White patients, and too few of them were picked (Obermeyer and colleagues, 2019). Before you trust a stand-in, ask whether it tracks the real thing equally well for everyone.
+A number can mislead with nobody gaming it, too. An algorithm a US hospital used to pick patients for extra care took the cost of their care as a stand-in for how sick they were. Less had been spent on Black patients who were just as sick, so at any given score they were sicker than White patients, and too few of them were picked ([Obermeyer and colleagues, 2019](https://doi.org/10.1126/science.aax2342)). Before you trust a stand-in, ask whether it tracks the real thing equally well for everyone.
 
 [//]: # (short-path)
 

@@ -84,6 +84,9 @@ check:
     a: Talk with your manager now, not after the review. Ask which of that work counts toward it, keep the glue the team really needs, and push back on doing more than your share of the rest.
   - q: "**Beyond this module.** What can't any course tell you about the job you have?"
     a: What your company means by it. The same title covers very different work from one company to the next, so ask your manager and the leads you work with what they'd miss if you stopped doing it, and what they wish you'd start.
+deeper_one:
+  title: "Working Backwards"
+  why: "One owner for one initiative, the role at its fullest, and a habit you can start this week: write the press release before anything is built."
 deeper:
   - title: Product Development Performance
     by: Kim Clark and Takahiro Fujimoto
@@ -123,7 +126,7 @@ In the tabletop role-playing community, there's the concept of Rule Zero: The ga
 
 So take the job as described first, and do it well enough that people trust you with more. Then, once you see the system around you, grow the role toward value nobody assigned, like the gap at your team's edge that nobody owns. Researchers call reshaping a job from the inside {{< pm/term "job-crafting" >}}: changing its tasks, who you work with, or how you see its purpose (Wrzesniewski and Dutton, 2001).
 
-Much of what you'll find in those gaps is {{< pm/term "glue-work" >}}, Tanya Reilly's name for the work that holds a team together, like noticing when someone's blocked and helping them out. The team needs it, and it rarely counts when promotions are decided, so watch how much of your week it takes, and talk with your manager about how it counts before your review, not after. Her warning is the one to carry: "If you only do glue, you will only get better at glue." Notice, too, who on your team does most of it. Economists have found that women volunteer for work that does little for a promotion more often than men do, are asked more often, and say yes more often (Babcock and colleagues, 2017).
+Much of what you'll find in those gaps is {{< pm/term "glue-work" >}}, Tanya Reilly's name for the work that holds a team together, like noticing when someone's blocked and helping them out. The team needs it, and it rarely counts when promotions are decided, so watch how much of your week it takes, and talk with your manager about how it counts before your review, not after. Her warning is the one to carry: "If you only do glue, you will only get better at glue." Notice, too, who on your team does most of it. Economists have found that women volunteer for work that does little for a promotion more often than men do, are asked more often, and say yes more often ([Babcock and colleagues, 2017](https://doi.org/10.1257/aer.20141734)).
 
 Two versions of the job look real and aren't. In one, you run the project: dates, status, who's blocked. In the other, you run the room and average what everyone wants. You'll do plenty of both, but the job is the product's vision: what it's for and where it's going. Cultivate it, share it until the team can say it too, and work back from it.
 

@@ -91,6 +91,9 @@ check:
   - q: "**Beyond this module.** You've weighed the evidence you have. What decides how much more to gather?"
     a: What it costs to be wrong, and whether you can undo the call. [Decide and Set Direction](/pm/decide-and-set-direction/) sorts out the decisions worth slowing down for.
 
+deeper_one:
+  title: "The Art of Statistics"
+  why: "Reading a number well, with no equations, is the habit under every step of this module."
 deeper:
   - title: Superforecasting
     by: Philip E. Tetlock and Dan Gardner
@@ -133,7 +136,7 @@ Numbers tell you how much and how often, across many people, but only about what
 
 When you break a number down, break it down by more than one thing at once. In [Gender Shades](https://proceedings.mlr.press/v81/buolamwini18a.html), a 2018 paper, Joy Buolamwini and Timnit Gebru tested face analysis from three companies on gender and skin type together. It got darker-skinned women's gender wrong up to a third of the time, and lighter-skinned men's almost never. The word for looking where two such lines cross is {{< pm/term "intersectional" >}}, from Kimberlé Crenshaw, whom you met in [Mind the Seams](/pm/mind-the-seams/). The groups there are small, so they swing, as the card warns: get more data there, not less attention.
 
-Your own hunch is evidence too. Gary Klein, a psychologist who studies how experts decide, calls it "an important data point" in a 2010 interview alongside Daniel Kahneman, and you check it like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)).
+Your own hunch is evidence too. Gary Klein, a psychologist who studies how experts decide, calls it "an important data point" in [a 2010 interview alongside Daniel Kahneman](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut), and you check it like any other. It deserves more weight when the situation has patterns you can learn, and you've made this kind of call often and found out each time whether you were right ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)).
 
 [//]: # (short-path)
 
