@@ -5,19 +5,19 @@ module: design-for-change
 question: What will change, how fast, and what should be easy to change?
 setting: a school's learning platform
 one_thing: Before your next request is estimated, write down the slowest layer you think it touches.
-do_minutes: 35
+do_minutes: 30
 
 last_time:
-  - q: A weather station's reading from Friday arrives on Monday. Who decides which day it counts in?
-    a: It's a product call as much as an engineering one. By event time it's Friday's, and by processing time Monday's, and the right one depends on what the people reading the total will do with it.
-  - q: A caller depends on something your API never promised. Whose problem is it when you change it?
-    a: Yours as much as theirs. With enough callers, every behavior they can see gets depended on, which is Hyrum's Law, so count who calls it and tell them before you change it.
+  - q: Parents see grades in an app that copies them from the gradebook each night. What do you find out before promising they're current?
+    a: Who reads the copy, how fresh they need it, and what breaks if it's a day old. Freshness has a price, so promise only what they need.
+  - q: Three teams read the gradebook's tables directly, and one breaks whenever a column changes. What would make that data a product for them?
+    a: "An owner, and a promise they can count on: how fresh it is, and which changes they hear about first."
 
 steps:
   - id: brand
     kind: read
     title: 'Stewart Brand, "Pace Layering: How Complex Systems Learn and Keep Learning"'
-    minutes: 10
+    minutes: 15
     where: An essay. Free at longnow.org.
     links:
       - text: "Pace Layering: How Complex Systems Learn and Keep Learning"
@@ -103,7 +103,7 @@ deeper:
 
 ## Why this matters
 
-Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap. [Mind the Seams](/pm/mind-the-seams/) asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
+Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly and have a case for the work that makes likely changes cheap. [Mind the Seams](/pm/mind-the-seams/) asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
 
 Slow isn't the enemy, though. A school's record of grades moves slowly on purpose, because every transcript depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Data is often the slowest layer you own, because so much reads it, and the data a feature creates outlives the feature. [Map the Domain](/pm/map-the-domain/) traced its copies, and each copy is one more place a change has to reach. Some slow layers aren't yours at all. Students' phones change at their own pace, so retiring an old app version saves your team the upkeep and hands the bill to students who can't update, often those on the oldest or cheapest phones.
 
@@ -113,13 +113,13 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 
 ## Do
 
-**List your product's layers (25 minutes).** Take one product or journey you own and list its parts from fastest-changing to slowest: wording, screens, business rules, APIs, the data model, core systems of record, the contracts and laws it must meet. Note how often each changed in the last year. Then take the last request that ran long. Which layers did it touch, and which symptom of complexity showed?
+**List your product's layers (30 minutes).** Take one product or journey you own and list its parts from fastest-changing to slowest: wording, screens, business rules, APIs, the data model, core systems of record, the contracts and laws it must meet. Count roughly how often each changed in the last year. Then take the last request that ran long. Which layers did it touch, and which symptom of complexity showed?
 
-**For your decision log.** Write how long you expect the next request that touches your slowest layer to take, and how sure you are. You'll know when it ships.
+**For your decision log.** Pick the slowest layer your team changes, and write how long you expect the next request that touches it to take, and how sure you are. You'll know when it ships.
 
 {{< pm/example >}}
 
-**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's unpublished workshop notes (February 2025): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace the parts it would touch. Outside the 10 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
+**Optional: walk a likely change (15 minutes).** This walk comes from Ruth Malan's unpublished workshop notes (February 2025): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace what it would touch. Outside the 15 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 
 ## Questions to bring to engineers
 

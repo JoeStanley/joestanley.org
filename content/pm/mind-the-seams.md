@@ -5,11 +5,11 @@ module: mind-the-seams
 question: How does the way we're organized shape what we build, and what falls between the parts?
 setting: a marketplace for secondhand goods
 one_thing: Sketch who talks to whom in your area, then how the system's parts connect, and mark where the two pictures disagree.
-do_minutes: 35
+do_minutes: 30
 
 last_time:
-  - q: Put the five focusing steps in order. Which two cost little?
-    a: Identify the constraint, exploit it, subordinate everything else to it, elevate it, then start again. Exploiting and subordinating cost little, and both come before any spending.
+  - q: Review is your fitness app's constraint. Before anyone hires more coaches, what do you try?
+    a: Getting more from the coaches you have, so they never wait for work, and making every other step serve their pace. Both are cheap.
   - q: A team is judged on reviews completed per day. What does Goodhart's Law warn you about?
     a: Once the number is a target, people find the cheapest way to raise it, so it stops telling you whether the work flows any faster.
 
@@ -18,22 +18,22 @@ steps:
     kind: card
     card: cards/conways-law
     minutes: 5
-    look: Why the system follows who actually talks to whom.
+    look: Which word in Conway's sentence matters, and what the org chart misses.
   - id: conway
     kind: read
     title: Melvin Conway, "How Do Committees Invent?"
-    minutes: 15
+    minutes: 20
     where: A magazine article from 1968. Free at melconway.com.
     links:
       - text: "How Do Committees Invent?"
         url: https://www.melconway.com/Home/pdf/committees.pdf
-    look: "His advice for living with his law: since the first design is rarely the best, \"flexibility of organization is important to effective design.\""
+    look: "His advice: since the first design is rarely the best, \"flexibility of organization is important to effective design.\""
     trust: "An argument. It's the original."
     only: The law in its author's words, with the reasoning a one-line summary leaves out.
   - id: kelly
     kind: read
     title: Allan Kelly, "Conway's Law v. Software Architecture"
-    minutes: 5
+    minutes: 10
     where: A blog post. Free at allankelly.net.
     links:
       - text: "Conway's Law v. Software Architecture"
@@ -44,7 +44,7 @@ steps:
   - id: bottcher
     kind: read
     title: Evan Bottcher, "What I Talk About When I Talk About Platforms"
-    minutes: 15
+    minutes: 20
     where: An article. Free at martinfowler.com.
     links:
       - text: "What I Talk About When I Talk About Platforms"
@@ -61,7 +61,7 @@ steps:
       - text: "Bounded Context"
         url: https://martinfowler.com/bliki/BoundedContext.html
     look: The word "meter," which meant different things to different parts of an electricity utility.
-    trust: "Experience. Fowler is a software developer who's written about design for decades, and this is his retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business."
+    trust: "Experience. Fowler, a software developer who's written about design for decades, retells a pattern from Eric Evans's domain-driven design, which builds software around the business's language."
     only: A way to hear a boundary in how people talk.
   - id: do
     kind: do
@@ -138,7 +138,7 @@ deeper:
 
 ## Why this matters
 
-Much of the friction you fight as a PM looks like people being slow: the dependency, the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. The longest wait you mapped in [Find the Constraint](/pm/find-the-constraint/) may well sit at one of them. Every team can do its own part well and the product can still fail, because the trouble sits between the parts. So treat the organization as a system you can read and help design, not as fixed scenery around your product.
+Much of the friction you fight as a PM looks like people being slow: the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. The longest wait you mapped in [Find the Constraint](/pm/find-the-constraint/) may well sit at one of them. Every team can do its part well and the product still fail, because the trouble sits between them. So treat the organization as a system you can read and help design, not as fixed scenery.
 
 Some seams run through words. When two teams use one word for two things, the bug ships between them. On a secondhand marketplace, "approved" can mean to one team that a listing passed review, and to another that the seller can be paid. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
 
@@ -148,13 +148,13 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 ## Do
 
-**Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, and lay the two side by side. Where do the boundaries line up, and where do they cross? Outside the 25 minutes, ask a tech lead to correct your second picture.
+**Draw the two pictures (30 minutes).** Sketch two pictures of your area, the part you and your nearest teams build. Lists will do. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then lay them side by side. Where do the boundaries line up, and where do they cross? Outside the 30 minutes, ask a tech lead to correct your second picture.
 
-**For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
+**For your decision log.** Pick the seam you'd fix first, where most customers or money wait, and roughly how much waits. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 
 {{< pm/example >}}
 
-**Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
+**Optional: walk one seam (15 minutes).** Pick a place where a customer's journey crosses between two teams. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 
 ## Questions to bring to engineers
 
