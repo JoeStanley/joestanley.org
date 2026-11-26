@@ -48,6 +48,11 @@ steps:
     look: "The question to ask in place of \"did it work there?\": \"How would the policy lead to the intended outcome here?\""
     trust: "An argument. Cartwright is a philosopher of science at Durham who studies how evidence gets used, and Munro co-wrote it. It's the short version of their 2026 book from Cambridge University Press, and not peer-reviewed itself."
     only: A way to read a competitor's case study step by step before you copy it.
+  - id: card-riskiest-assumption
+    kind: card
+    card: cards/riskiest-assumption
+    minutes: 5
+    look: How to pick the one thing to test first, and what a cheap test can't show.
   - id: do
     kind: do
     title: Weigh the evidence for one decision, and log your call

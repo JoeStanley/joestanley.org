@@ -63,11 +63,17 @@ discovery: ""
 # Double-loop learning
 double-loop-learning: ""
 
+# Error analysis
+error-analysis: ""
+
 # Error budget
 error-budget: ""
 
 # Event time and processing time
 event-time: ""
+
+# Fake door
+fake-door: ""
 
 # Feature toggle (feature flag)
 feature-toggle: ""

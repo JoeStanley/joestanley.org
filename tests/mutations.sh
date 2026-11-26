@@ -376,4 +376,12 @@ run_bg "Last time's line links the module before" G8 "sed -i 's|Two questions on
 run_bg "a module that links its own name" G8 "printf '\\nThat is the question [Find the Constraint](/pm/find-the-constraint/) asks.\\n' >> content/pm/find-the-constraint.md"
 run_bg "the single document links a unit's page" G8 "sed -i '/^{{- range \$to }}/d' layouts/pm/all.html"
 run_bg "the single document's Do step lands on the first module's Do" G8 "sed -i 's/#{{ if \$all }}{{ \$key }}-{{ end }}{{ .kind }}/#{{ .kind }}/' layouts/partials/pm/unit-module.html"
+# Job 44, two cards and what the course leaves out (26 November 2026): The Compass names what the course leaves out,
+# each with a free place to start, linked, and Start points there (S21); the model card is on the AI thread (S22)
+run_bg "The Compass without what the course leaves out" S21 "sed -i '/^### What the course leaves out/d' content/pm/the-compass.md"
+run_bg "a left-out area with no free place linked" S21 "sed -i 's|\[the W3C.s introduction to web accessibility\](https://www.w3.org/WAI/fundamentals/accessibility-intro/)|the W3C introduction|' content/pm/the-compass.md"
+run_bg "The Compass leaving regulation unnamed" S21 "sed -i 's|^- \*\*Regulation:\*\* for privacy|- **Rules:** for privacy|; s|UK law but close|UK rules but close|; s|the UK regulator.s guide|the UK watchdog guide|; s|ask your own lawyers early|ask early|' content/pm/the-compass.md"
+run_bg "Start not pointing to what the course leaves out" S21 "sed -i 's|(/pm/the-compass/#what-the-course-leaves-out)|(/pm/the-compass/)|' content/pm/_index.md"
+run_bg "the single document leaving Start's pointer on The Compass's page" G8 "sed -i '/(printf \"href=\\\\\"%s#\" .RelPermalink)/d' layouts/pm/all.html"
+run_bg "the model card off the AI thread" S22 "sed -i 's|So before you trust one, read its mistakes|So read its mistakes before you rely on it|' content/pm/cards/read-the-errors.md"
 wait

@@ -23,6 +23,8 @@ ai:
     words: Errors + Graceful Failure
   - unit: change-safely
     words: AI Engineering
+  - unit: cards/read-the-errors
+    words: before you trust one, read its mistakes
   - unit: cards/many-hands
     words: A model passes through many hands, too.
 data:
