@@ -99,7 +99,7 @@
   {{- /* A game's way back to its own step on the short path (spec G7), where its round ticked it. */}}
   {{- $g := . }}
   {{- if not $all }}{{ range $n, $s := $p.Params.steps }}{{ if eq $s.kind "play" }}
-  <p class="game-back screen-only"><a href="#step-{{ add $n 1 }}" data-back-from="{{ $g }}-game">Back to the short path</a></p>
+  <p class="game-back screen-only"><span class="game-ticked" role="status" data-ticked></span> <a href="#step-{{ add $n 1 }}" data-back-from="{{ $g }}-game">Back to the short path</a></p>
   {{- end }}{{ end }}{{ end }}
   {{- end }}
 

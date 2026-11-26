@@ -134,13 +134,15 @@
   /* While a run plays, Play is marked busy rather than disabled, so it keeps keyboard and screen reader focus. */
   var busyOn = function (btn, on) { if (on) btn.setAttribute("aria-disabled", "true"); else btn.removeAttribute("aria-disabled"); };
 
-  /* A finished round ticks the game's own step on the short path, as ticking it by hand would (spec G7). */
+  /* A finished round ticks the game's own step on the short path, as ticking it by hand would, and says so beside
+     the way back, so a reader landing on the step doesn't untick it by tapping it again (spec G7). */
   function played(game) {
     var a = game.id ? doc.querySelector('[data-step] h3 a[href="#' + game.id + '"]') : null;
     var box = a ? a.closest("[data-step]").querySelector("input[type=checkbox]") : null;
-    if (!box || box.checked) return;
-    box.checked = true;
-    box.dispatchEvent(new Event("change"));
+    if (!box) return;
+    if (!box.checked) { box.checked = true; box.dispatchEvent(new Event("change")); }
+    var back = doc.querySelector('[data-back-from="' + game.id + '"]'), said = back ? back.parentNode.querySelector("[data-ticked]") : null;
+    if (said) said.textContent = "Its step on the short path is ticked.";
   }
 
   function diceGame(game) {

@@ -940,6 +940,20 @@ def doors_checks(out_dir):
         fail("G6", f"{CARDS_INDEX}: carries a foot or margin slots, which are a unit's")
     if whole.select(".cards-index"):
         fail("G6", "the single document carries the concept cards' page, which is the site's alone")
+    # G6: from Start and from each card, plain links to the lists a reader without scripts can't reach by the bar
+    start = page("/pm/")
+    more = start.select("main section.modules-wrap nav.start-more")
+    if len(more) != 1 or [a.get("href") for a in more[0].select("a")] != [CARDS_INDEX, "/pm/glossary/"] or more[0].get("aria-label") != "Look up" or "screen-only" not in (more[0].get("class") or []):
+        fail("G6", "Start's list of modules doesn't end with 'Look up', plain links to the concept cards and the glossary")
+    elif more[0].find_previous_sibling() is None or more[0].find_next_sibling() is not None:
+        fail("G6", "Start's 'Look up' line isn't the last thing under its list of modules")
+    for c in [c for _, cards in MODULES for c in cards]:
+        tag = page(c).select_one("main .kicker .tag")
+        if not tag or tag.name != "a" or tag.get("href") != CARDS_INDEX or flat(tag) != "Concept card":
+            fail("G6", f"{c}: its label 'Concept card' doesn't link to the concept cards' page")
+            break
+    if whole.select(f'a[href="{CARDS_INDEX}"], nav.start-more'):
+        fail("G6", "the single document links the concept cards' page, which isn't in it (P5)")
     # G6: each term's pop-up ends with its way to the glossary; in the single document, to the entry in it (P5)
     gl = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "glossary.yaml")))
     for path, soup in (("/pm/find-the-constraint/", page("/pm/find-the-constraint/")), ("/pm/glossary/", page("/pm/glossary/")), ("/pm/all/", whole)):
@@ -1055,9 +1069,11 @@ def doors_browser_checks(out_dir):
             pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_load_state("load")
             n = pg.locator(".step").count()
             pg.click("#dice-game [data-play]"); pg.wait_for_timeout(200)
-            r = pg.evaluate("() => ({tick: document.querySelector('#step-1 input').checked, said: document.querySelector('[data-progress]').textContent.trim(), kept: Object.keys(localStorage).filter(k => k.startsWith('pm:find-the-constraint:')).length})")
+            r = pg.evaluate("() => ({tick: document.querySelector('#step-1 input').checked, said: document.querySelector('[data-progress]').textContent.trim(), kept: Object.keys(localStorage).filter(k => k.startsWith('pm:find-the-constraint:')).length, told: (document.querySelector('.game-back [role=status][data-ticked]') || {}).textContent})")
             if not r["tick"] or r["kept"] != 1 or r["said"] != f"1 of {n} steps done.":
                 fail("G7", f"{mod}: a finished round of the dice game doesn't tick and count its step: {r}")
+            if r["told"] != "Its step on the short path is ticked.":
+                fail("G7", f"{mod}: a finished round doesn't say, beside the way back, that its step is ticked: {r['told']!r}")
             pg.evaluate("localStorage.clear()")
             # G7: the line's addresses land below the bar, and "Go deeper" opens the full path
             for w, t in ON_PAGE:
@@ -1072,7 +1088,7 @@ def doors_browser_checks(out_dir):
             pg.goto(srv.base + mod); pg.wait_for_load_state("load")
             hs = pg.evaluate("() => [...document.querySelectorAll('nav.on-page a, .game-back a, details.why > summary')].filter(e => e.getClientRects().length).map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
             pg.goto(srv.base + MODULES[3][1][0]); pg.wait_for_load_state("load")
-            hs += pg.evaluate("() => [...document.querySelectorAll('.kicker a')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
+            hs += pg.evaluate("() => [...document.querySelectorAll('.kicker a, .unit-foot a')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
             short = [x for x in hs if x[1] < 43.5]
             if short or len(hs) < 8:
                 fail("G7", f"at 390px, targets under 44 pixels tall: {short[:4]}")

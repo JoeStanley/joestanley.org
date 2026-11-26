@@ -305,6 +305,7 @@
 .op-label { color: var(--muted); }
 .op-list { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); margin: 0; padding: 0; list-style: none; }
 .op-list a, .game-back a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.start-more { margin: var(--sp-5) 0 0; }
 .game-back { margin: var(--sp-3) 0 0; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
 
 /* The doors (spec G6): the pop-up's way to the glossary, where each term is used, the entry a link lands on, marked
@@ -322,7 +323,7 @@
 
 /* A thumb's target on a phone (spec G7): a card's way to its module, and each "Why this source". */
 @media (max-width: 45.99rem) {
-  .card .kicker a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+  .card .kicker a, .unit-foot .uf-step a { display: inline-flex; align-items: center; min-height: 2.75rem; }
   .why > summary { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }
 }
 
