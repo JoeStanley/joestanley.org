@@ -297,4 +297,23 @@ run_bg "The Compass not marked as the place in the bar's list" G2 "sed -i 's/ da
 run_bg "a card's foot names the stop's number again" G5 "sed -i 's|{{ \$mod.Title }}</a></p>|{{ \$mod.Title }}, stop {{ \$step }}</a></p>|' layouts/partials/pm/unit-foot.html"
 run_bg "the line above the short path says stops" G5 "sed -i 's/ steps. Tick each one off as you go./ stops. Tick each one off as you go./' assets/js/pm.js"
 run_bg "Start's list says stops" G5 "sed -i 's/total + \" steps done./total + \" stops done./' assets/js/pm.js"
+# Job 40's doors and the ways around inside a module (the owner's picks of 25 November 2026, from job 36's review):
+# the concept cards' page, the pop-up's way to the glossary, where a term is used and the entry landed on (G6); a
+# module's line of links, its headings' addresses, a game's way back and its tick, and a phone's targets (G7)
+run_bg "the concept cards' page drops a module's second card" G6 "sed -i 's/      {{- range . }}/      {{- range first 1 . }}/' layouts/partials/pm/unit-cards.html"
+run_bg "the concept cards' page without each card's question" G6 "sed -i 's|{{ with .Params.question }}<p class=\"ci-question\">{{ . }}</p>{{ end }}||' layouts/partials/pm/unit-cards.html"
+run_bg "the concept cards' page left out of the bar's list" G1 "sed -i '/site.GetPage \"\/pm\/concept-cards\"/,+2d' layouts/partials/pm/course-bar.html"
+run_bg "a term's pop-up with no way to the glossary" G6 "sed -i '/<a class=\"gloss-more\"/d' layouts/partials/pm/glossary-dialogs.html"
+run_bg "the pop-up's way to the glossary leaves the single document" G6 "sed -i 's/{{ if \$all }}{{ else }}/{{ if false }}{{ else }}/' layouts/partials/pm/glossary-dialogs.html"
+run_bg "where a term is used leaves out the cards" G6 "sed -i '/RegularPagesRecursive/s/{{ \$units = \$units | append (dict \"p\" . \"label\" .Title) }}//' layouts/partials/pm/unit-glossary.html"
+run_bg "the entry a link lands on is unmarked" G6 "sed -i '/^.gloss-list > div:target > dt/d' assets/css/pm.css"
+run_bg "the line of links names a part wrongly" G7 "sed -i 's|<a href=\"#short-path\">Short path</a>|<a href=\"#short-path\">The path</a>|' layouts/partials/pm/unit-module.html"
+run_bg "a section heading without an address" G7 "sed -i 's/{{ if not \$all }} id=\"check\"{{ end }}//' layouts/partials/pm/unit-module.html"
+run_bg "a game without its way back" G7 "sed -i '/<p class=\"game-back screen-only\">/d' layouts/partials/pm/unit-module.html"
+run_bg "a finished round ticks nothing" G7 "sed -i '/^      played(game);$/d' assets/js/pm.js"
+# "Go deeper" opens the full path two ways, by its click and by arriving at its address: take both away
+run_bg "Go deeper lands on the full path shut" G7 "sed -i '/all(\"\[data-open-deeper\]\")/d; s/if (location.hash === \"#go-deeper\") openDeeper();//' assets/js/pm.js"
+run_bg "a phone's Why this source under 44 pixels" G7 "sed -i '/^  .why > summary { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }$/d' assets/css/pm.css"
+run_bg "a card's way to its module under 44 pixels on a phone" G7 "sed -i '/^  .card .kicker a { display: inline-flex;/d' assets/css/pm.css"
+run_bg "Start silent on what Done means" G7 "sed -i 's/ Tick each step of a short path as you finish it: a module reads Done once every step is ticked. The Do and the Check are yours to judge, since no tick can say how well you did them.//' content/pm/_index.md"
 wait

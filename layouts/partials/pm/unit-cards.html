@@ -1,0 +1,29 @@
+{{- /* The concept cards, listed (spec G6): every card by module, in the map's order, each with the question it asks
+       you to carry. It's made from the cards' own titles and questions, so it adds no words of its own to the doc.
+       Not a unit: it has no margin slots, no foot and no place in the single document. */ -}}
+{{- $p := . -}}
+{{- $home := site.GetPage "/pm" -}}
+<article class="cards-index" id="cards">
+  <header class="band unit-band"><div class="frame"><div class="unit-head reading">
+    <h1>{{ $p.Title }}</h1>
+  </div></div></header>
+  <div class="frame"><div class="unit-body reading">
+  {{- range site.Data.pm.modules }}
+  {{- $m := . }}
+  {{- with $m.page }}{{ with site.GetPage (printf "/pm/%s" .) }}
+  {{- $mod := . }}
+  {{- $cards := where (where $home.RegularPagesRecursive "Layout" "card") "Params.module" $m.id }}
+  {{- with $cards }}
+  <section class="ci-module">
+    <h2><a href="{{ $mod.RelPermalink }}">Module {{ $m.num }}, {{ $mod.Title | markdownify }}</a></h2>
+    <ul class="ci-list">
+      {{- range . }}
+      <li><h3><a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></h3>{{ with .Params.question }}<p class="ci-question">{{ . }}</p>{{ end }}</li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
+  {{- end }}{{ end }}
+  {{- end }}
+</div></div>
+</article>

@@ -39,7 +39,9 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
 # The closing unit, The Compass (spec S21), after the last module.
 CLOSING = "/pm/the-compass/"
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards] + [CLOSING]
-PAGES = ["/", "/page/readme/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", "/pm/all/"]
+# The concept cards' page (G6) lists every card; it's an index, not a unit, so it has no tab, slots or foot.
+CARDS_INDEX = "/pm/cards/"
+PAGES = ["/", "/page/readme/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", CARDS_INDEX, "/pm/all/"]
 WIDTHS = [320, 390, 768, 1024, 1280, 1920]
 # P1: the most pages each kind of unit may print on, and what the rebuilt units print on in all.
 # PRINT_PAGES is a record kept with the spec: a change in the count is noted in the report, not failed.
@@ -692,13 +694,13 @@ def walk_browser_checks(out_dir, path, walks):
 # The pages that carry the bar: every syllabus page but the single document (the owner, 25 November 2026, job 40).
 # The foot is on the modules and the cards. In a browser, one page of each kind, the pilot's two among them, and the
 # last module, whose place is the longest.
-BAR_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/"]
+BAR_PAGES = ["/pm/"] + UNIT_PAGES + ["/pm/glossary/", CARDS_INDEX]
 BAR_BROWSER_PAGES = ["/pm/", "/pm/find-the-constraint/", "/pm/cards/five-focusing-steps/", MODULES[-1][0], CLOSING, "/pm/glossary/"]
 
 
 def _bar_kind(path, cards_of):
-    """What a page is to the bar: Start, a module, a card, The Compass or the glossary."""
-    return "start" if path == "/pm/" else "closing" if path == CLOSING else "glossary" if path == "/pm/glossary/" else "card" if path in cards_of else "module"
+    """What a page is to the bar: Start, a module, a card, The Compass, the concept cards or the glossary."""
+    return "start" if path == "/pm/" else "closing" if path == CLOSING else "glossary" if path == "/pm/glossary/" else "cards" if path == CARDS_INDEX else "card" if path in cards_of else "module"
 
 
 def _course_order(out_dir):
@@ -748,7 +750,7 @@ def course_bar_checks(out_dir):
                 continue
             want = f"{course}, Module {m['num']} of {len(mods)}"
         else:
-            want = f"{course}, " + {"start": "Start", "closing": "The Compass", "glossary": "Glossary"}[kind]
+            want = f"{course}, " + {"start": "Start", "closing": "The Compass", "glossary": "Glossary", "cards": "Concept cards"}[kind]
         link, btn = bar.select_one("a.cb-place"), bar.select_one("button.cb-place")
         for el, what in ((link, "plain link"), (btn, "button")):
             if not el:
@@ -803,13 +805,13 @@ def course_bar_checks(out_dir):
         elif cur:
             fail("G2", f"{path}: the bar's list marks a module, {[a.get('href') for a in cur]}, as the place")
         more = [a.get("href") for a in bar.select(".cb-more a")]
-        if more != [CLOSING, "/pm/glossary/"]:
-            fail("G1", f"{path}: after the modules the bar's list goes to {more}, not The Compass and the glossary")
+        if more != [CLOSING, CARDS_INDEX, "/pm/glossary/"]:
+            fail("G1", f"{path}: after the modules the bar's list goes to {more}, not The Compass, the concept cards and the glossary")
         marked = [a.get("href") for a in bar.select(".cb-more a[aria-current=page]")]
-        if marked != ([path] if kind in ("closing", "glossary") else []):
+        if marked != ([path] if kind in ("closing", "glossary", "cards") else []):
             fail("G2", f"{path}: after the modules the bar's list marks {marked} as the place")
         # G1: what Start's Continue names for a screen reader, each place it can go
-        labels = [(a.get("href"), a.get("data-label")) for a in bar.select(".cb-list a, .cb-more a") if a.get("href") != "/pm/glossary/"]
+        labels = [(a.get("href"), a.get("data-label")) for a in bar.select(".cb-list a, .cb-more a") if a.get("href") not in ("/pm/glossary/", CARDS_INDEX)]
         if labels != [(p_, l_) for p_, l_ in order[1:]]:
             fail("G1", f"{path}: the bar's list doesn't label each module and The Compass for Continue to name: {labels[:3]}")
         # G1, G4: Continue, on Start only, hidden until the script fills it from saved progress
@@ -823,7 +825,7 @@ def course_bar_checks(out_dir):
         foot = soup.select("main nav.unit-foot")
         if kind not in ("module", "card"):
             if foot:
-                fail("G5", f"{path}: carries a foot; Start, The Compass and the glossary have none")
+                fail("G5", f"{path}: carries a foot; Start, The Compass, the concept cards and the glossary have none")
             continue
         if len(foot) != 1:
             fail("G5", f"{path}: {len(foot)} feet, not one")
@@ -895,6 +897,196 @@ JS_BAND = """() => { const bar = document.querySelector('.course-bar'), head = d
     chevs: [...bar.querySelectorAll('.cb-chev')].filter(vis).length, steps: [...bar.querySelectorAll('.cb-step')].filter(vis).map(e => [...e.childNodes].filter(n => !(n.classList && n.classList.contains('sr'))).map(n => n.textContent).join('').trim()),
     fade: a.content && a.content !== 'none' && a.display !== 'none' ? {grad: a.backgroundImage.replace(/^linear-gradient\\((?:[^,]*deg, )?/, ''), h: parseFloat(a.height),
       moves: a.animationName !== 'none' || a.transitionDuration.split(',').some(x => parseFloat(x) > 0)} : null}; }"""
+
+
+ON_PAGE = [("Why", "why-this-matters"), ("Short path", "short-path"), ("Do", "do"), ("Check", "check"), ("Go deeper", "go-deeper")]
+DONE_LINE = ["a module reads Done once every step is ticked", "The Do and the Check are yours to judge"]
+
+
+def doors_checks(out_dir):
+    """G6 and G7 in the built pages: the concept cards' page, the pop-up's way to the glossary, where each term is
+    used, a module's line of links and its headings' addresses, a game's way back to its step, and what Done means
+    on Start. Then doors_browser_checks, in a browser."""
+    from bs4 import BeautifulSoup
+    checked("G6", "G7")
+    page = lambda path: BeautifulSoup(open(os.path.join(out_dir, path.strip("/"), "index.html"), encoding="utf-8").read(), "html.parser")
+    flat = lambda el: " ".join(el.get_text(" ", strip=True).replace("\u2019", "'").replace("\u201c", '"').replace("\u201d", '"').split()) if el else ""
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml")))
+    num = {f"/pm/{m['page']}/": m["num"] for m in mods if m.get("page")}
+    whole = page("/pm/all/")
+    # G6: the concept cards' page lists every card by module, in the map's order, with its question to carry
+    idx = page(CARDS_INDEX)
+    secs = idx.select("main section.ci-module")
+    want = [(m, cards) for m, cards in MODULES if cards]
+    if [s_.select_one("h2 a").get("href") if s_.select_one("h2 a") else None for s_ in secs] != [m for m, _ in want]:
+        fail("G6", f"{CARDS_INDEX}: its modules are {[s_.select_one('h2 a').get('href') if s_.select_one('h2 a') else None for s_ in secs]}, not every module with a card, in the map's order")
+    for sec, (m, cards) in zip(secs, want):
+        mod = page(m)
+        head = f"Module {num.get(m)}, {flat(mod.select_one('h1'))}"
+        if flat(sec.select_one("h2")) != head:
+            fail("G6", f"{CARDS_INDEX}: a module reads '{flat(sec.select_one('h2'))}', not '{head}'")
+        items = sec.select("ul.ci-list > li")
+        if [li.select_one("h3 a").get("href") if li.select_one("h3 a") else None for li in items] != cards:
+            fail("G6", f"{CARDS_INDEX}: under {m} it lists {[li.select_one('h3 a').get('href') if li.select_one('h3 a') else None for li in items]}, not {cards}")
+            continue
+        for li, c in zip(items, cards):
+            card = page(c)
+            if flat(li.select_one("h3")) != flat(card.select_one("h1")):
+                fail("G6", f"{CARDS_INDEX}: {c} is listed as '{flat(li.select_one('h3'))}', not its title")
+            carry = card.select_one(".carry mark")
+            if not carry or flat(li.select_one(".ci-question")) != flat(carry):
+                fail("G6", f"{CARDS_INDEX}: {c}'s question to carry isn't beneath its title, word for word")
+    if idx.select("main nav.unit-foot") or idx.select("main [data-slot]"):
+        fail("G6", f"{CARDS_INDEX}: carries a foot or margin slots, which are a unit's")
+    if whole.select(".cards-index"):
+        fail("G6", "the single document carries the concept cards' page, which is the site's alone")
+    # G6: each term's pop-up ends with its way to the glossary; in the single document, to the entry in it (P5)
+    gl = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "glossary.yaml")))
+    for path, soup in (("/pm/find-the-constraint/", page("/pm/find-the-constraint/")), ("/pm/glossary/", page("/pm/glossary/")), ("/pm/all/", whole)):
+        dlgs = soup.select("dialog.gloss")
+        for d in dlgs:
+            key = d.get("id", "")[len("term-"):]
+            a = d.select("a.gloss-more")
+            exp = f"#g-{key}" if path == "/pm/all/" else f"/pm/glossary/#g-{key}"
+            if len(a) != 1 or a[0].get("href") != exp or flat(a[0]) != "In the glossary":
+                fail("G6", f"{path}: the pop-up for '{key}' has no 'In the glossary' link to {exp}")
+                break
+        if len(dlgs) != len(gl):
+            fail("G6", f"{path}: {len(dlgs)} pop-ups for {len(gl)} terms")
+    # G6: where each term is used, in the map's order, a module before its cards, on the glossary page alone
+    order = ["/pm/"] + UNIT_PAGES
+    used = {}
+    for path in order:
+        for a in page(path).select("main a.term[data-term]"):
+            used.setdefault(a["data-term"], [])
+            if path not in used[a["data-term"]]:
+                used[a["data-term"]].append(path)
+    gloss = page("/pm/glossary/")
+    for d in gloss.select("dl.gloss-list > div"):
+        key = d.get("id", "")[2:]
+        u = d.select("dd.gloss-used")
+        got = [a.get("href") for a in u[0].select("a")] if u else []
+        if got != used.get(key, []):
+            fail("G6", f"/pm/glossary/: '{key}' says it's used in {got}, not {used.get(key, [])}")
+        elif u and (not flat(u[0]).startswith("Used in ") or "screen-only" not in (u[0].get("class") or [])):
+            fail("G6", f"/pm/glossary/: '{key}''s line of where it's used doesn't open 'Used in', or prints")
+    if whole.select(".gloss-used"):
+        fail("G6", "the single document says where each term is used, which is the site's alone")
+    # G7: a module's line of links, under its header, to parts that each have an address
+    for m, _ in MODULES:
+        soup = page(m)
+        body = soup.select_one("main .unit-body")
+        nav = soup.select("main nav.on-page")
+        first = next((c for c in body.children if getattr(c, "name", None)), None) if body else None
+        if len(nav) != 1 or nav[0] is not first:
+            fail("G7", f"{m}: no line of links ('On this page') first in the module's body")
+            continue
+        nav = nav[0]
+        if nav.get("aria-label") != "On this page" or "screen-only" not in (nav.get("class") or []) or flat(nav.select_one(".op-label")) != "On this page":
+            fail("G7", f"{m}: the line of links isn't a landmark named 'On this page', labeled and kept out of print")
+        got = [(flat(a), a.get("href", "")) for a in nav.select("a")]
+        exp = [(w, "#" + t) for w, t in ON_PAGE]
+        if got != exp:
+            fail("G7", f"{m}: the line of links reads {got}, not {exp}")
+        for _, h in got:
+            el = soup.find(id=h[1:])
+            if not el or el.name != "h2":
+                fail("G7", f"{m}: the line's link {h} lands on no section heading")
+        # G7: every heading has an address: its own, or for a game's, its section's
+        for h in soup.select("main h2, main .prose h3"):
+            if h.find_parent(class_="print-only"):
+                continue
+            sec = h.find_parent("section")
+            if not h.get("id") and not (h.name == "h2" and sec and sec.get("id") and sec.find("h2") is h):
+                fail("G7", f"{m}: the heading '{flat(h)[:40]}' has no address")
+        # G7: a game ends with its way back to its own step
+        game = soup.select_one("main section.game[id]")
+        back = soup.select("main p.game-back a")
+        if game:
+            step = next((n for n, li in enumerate(soup.select("li.step"), 1) if li.select_one(f'h3 a[href="#{game["id"]}"]')), None)
+            if not step or len(back) != 1 or back[0].get("href") != f"#step-{step}" or flat(back[0]) != "Back to the short path":
+                fail("G7", f"{m}: the game doesn't end with 'Back to the short path' to its own step (#step-{step})")
+            elif "screen-only" not in (back[0].find_parent("p").get("class") or []) or back[0].find_previous("section", class_="game") is not game:
+                fail("G7", f"{m}: the game's way back prints, or doesn't follow the game")
+        elif back:
+            fail("G7", f"{m}: a way back from a game it doesn't have")
+        if not soup.select_one("main section.path p.progress[data-progress]"):
+            fail("G7", f"{m}: the short path has no place for its count")
+    if whole.select("nav.on-page, .game-back"):
+        fail("G7", "the single document carries a module's line of links or a game's way back, which are the site's alone")
+    # G7: Start says what Done means
+    said = flat(page("/pm/").select_one("main .prose"))
+    for w in DONE_LINE:
+        if w not in said:
+            fail("G7", f"Start's How it works doesn't say what Done means ('{w}')")
+    doors_browser_checks(out_dir)
+
+
+def doors_browser_checks(out_dir):
+    """G6 and G7 in a browser: the entry a link lands on is marked, the pop-up keeps focus as it gains a link, a
+    finished round ticks its step and counts it, "Go deeper" opens the full path, the line's addresses land below
+    the bar, and a phone's targets are 44 pixels tall."""
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    mod = "/pm/find-the-constraint/"
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            ctx = b.new_context(viewport={"width": 390, "height": 844}, reduced_motion="reduce"); pg = ctx.new_page()
+            # G6: the entry a link lands on carries the orange line under its term; the others don't
+            pg.goto(srv.base + "/pm/glossary/#g-constraint"); pg.wait_for_load_state("load")
+            r = pg.evaluate("""() => { const st = e => getComputedStyle(e); const t = document.querySelector('#g-constraint dt'), o = document.querySelector('#g-wip dt');
+              const orange = getComputedStyle(document.documentElement).getPropertyValue('--orange').trim();
+              const probe = document.createElement('i'); probe.style.color = orange; document.body.append(probe); const want = st(probe).color; probe.remove();
+              return {on: st(t).textDecorationLine.includes('underline') && st(t).textDecorationColor === want, off: st(o).textDecorationLine.includes('underline')}; }""")
+            if not r["on"] or r["off"]:
+                fail("G6", f"/pm/glossary/#g-constraint: the entry landed on isn't marked with the orange line under its term, or another is: {r}")
+            # G6: the pop-up's way to the glossary, reached by Tab, and focus stays inside
+            pg.goto(srv.base + mod); pg.wait_for_load_state("load")
+            pg.locator("a.term").first.click()
+            seen = []
+            for _ in range(4):
+                pg.keyboard.press("Tab")
+                seen.append(pg.evaluate("() => { const a = document.activeElement; return a === document.body ? 'browser' : (a.closest('dialog[open]') ? 'in:' : 'out:') + (a.className || a.tagName); }"))  # the browser's own step, as for every modal (A5)
+            if not any("gloss-more" in x for x in seen) or any(x.startswith("out:") for x in seen):
+                fail("G6", f"{mod}: Tab in a term's pop-up doesn't reach 'In the glossary', or leaves the pop-up: {seen}")
+            pg.keyboard.press("Escape")
+            # G7: a finished round ticks the game's step and counts it; its way back lands on that step
+            pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_load_state("load")
+            n = pg.locator(".step").count()
+            pg.click("#dice-game [data-play]"); pg.wait_for_timeout(200)
+            r = pg.evaluate("() => ({tick: document.querySelector('#step-1 input').checked, said: document.querySelector('[data-progress]').textContent.trim(), kept: Object.keys(localStorage).filter(k => k.startsWith('pm:find-the-constraint:')).length})")
+            if not r["tick"] or r["kept"] != 1 or r["said"] != f"1 of {n} steps done.":
+                fail("G7", f"{mod}: a finished round of the dice game doesn't tick and count its step: {r}")
+            pg.evaluate("localStorage.clear()")
+            # G7: the line's addresses land below the bar, and "Go deeper" opens the full path
+            for w, t in ON_PAGE:
+                pg.goto(srv.base + mod); pg.wait_for_load_state("load")
+                pg.locator("nav.on-page a", has_text=w).first.click(); pg.wait_for_timeout(100)
+                gap = pg.evaluate("(t) => { const e = document.getElementById(t); const b = document.querySelector('.course-bar'); return e && b ? e.getBoundingClientRect().top - b.getBoundingClientRect().bottom : null; }", t)
+                if gap is None or gap < 0:
+                    fail("G7", f"{mod}: '{w}' lands its heading under the bar ({gap})")
+            if not pg.evaluate("() => document.querySelector('.deeper details').open"):
+                fail("G7", f"{mod}: 'Go deeper' doesn't open the full path it lands on")
+            # G7: a phone's targets: the line's links, a card's way to its module and each "Why this source"
+            pg.goto(srv.base + mod); pg.wait_for_load_state("load")
+            hs = pg.evaluate("() => [...document.querySelectorAll('nav.on-page a, .game-back a, details.why > summary')].filter(e => e.getClientRects().length).map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
+            pg.goto(srv.base + MODULES[3][1][0]); pg.wait_for_load_state("load")
+            hs += pg.evaluate("() => [...document.querySelectorAll('.kicker a')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
+            short = [x for x in hs if x[1] < 43.5]
+            if short or len(hs) < 8:
+                fail("G7", f"at 390px, targets under 44 pixels tall: {short[:4]}")
+            ctx.close()
+            # G7, G4: without scripts the line and the way back are plain links that land
+            ctx = b.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
+            pg.goto(srv.base + mod + "#check"); pg.wait_for_load_state("load")
+            vis = pg.evaluate("() => [...document.querySelectorAll('nav.on-page a, .game-back a')].filter(e => e.getClientRects().length).length")
+            if vis != len(ON_PAGE) + 1:
+                fail("G7", f"{mod}: without scripts the line of links and the game's way back don't all show ({vis})")
+            ctx.close()
+            b.close()
+    finally:
+        srv.close()
 
 
 def course_bar_browser_checks(out_dir):
@@ -4002,6 +4194,12 @@ def main():
             course_bar_checks(out_dir)
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("G1", "G2", "G3", "G4", "G5"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("G6", "G7"):
+        try:
+            doors_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rules, not stop the suite
+            for r in ("G6", "G7"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S22"):
         try:

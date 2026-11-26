@@ -25,6 +25,6 @@ Instead, it's a set of lessons intended to strengthen your **product judgment**,
 - **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
 - **Every source but a story says why to trust it,** starting with its kind of evidence: a study, a review of studies, experience or an argument. It says what you'll get from it, too, so you can decide what's worth your time.
 - **Each idea worth keeping gets a concept card, one page long.** Keep them near your work.
-- **On the site, your progress stays in your browser.** Nothing is sent anywhere.
+- **On the site, your progress stays in your browser.** Nothing is sent anywhere. Tick each step of a short path as you finish it: a module reads Done once every step is ticked. The Do and the Check are yours to judge, since no tick can say how well you did them.
 
 If you disagree with any of this, good. Tell me why at [mail@joestanley.org](mailto:mail@joestanley.org). The same goes for a broken link, or a part that lost you.
