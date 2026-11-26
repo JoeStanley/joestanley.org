@@ -92,7 +92,7 @@ check:
 
 deeper_one:
   title: "Thinking in Systems"
-  why: "It's by the author behind the Stocks, Flows and Feedback card, and it's the place to start if systems thinking is new to you."
+  why: "It's by the author behind the [Stocks, Flows and Feedback](/pm/cards/stocks-flows-feedback/) card, and it's the place to start if systems thinking is new to you."
 deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright

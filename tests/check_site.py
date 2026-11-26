@@ -60,7 +60,7 @@ RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until a PDF is published, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
 CLOSING_GRACE = 1   # until a PDF is published, The Compass may print on a fourth page: noted, not failed (the owner, 26 November 2026)
-PRINT_PAGES = 101   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 102   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -144,13 +144,14 @@ SAMPLE = ["Sample note. Ask where work waits before you read this.",
 def build_fixture():
     """A copy of the site with a sample note in every empty margin slot, beside the owner's own notes, so the margin
     rules (M1 to M3, R3) are checked with notes present, his among them. Every full path's heading gets the longest
-    sample, so R10 always meets a note there that runs past the heading. Returns the built output directory."""
+    sample and a short one, so R10 always meets a note there that runs past the heading and the If you read one line under it
+    (S23). Returns the built output directory."""
     tmp = tempfile.mkdtemp(prefix="fixture-")
     src = os.path.join(tmp, "src"); out = os.path.join(tmp, "out")
     shutil.copytree(ROOT, src, ignore=shutil.ignore_patterns(".git", "public", "node_modules", "baseline", "resources", "report.md"))
     for f in glob.glob(os.path.join(src, "data", "pm", "margin", "*.yaml")):
         data = yaml.safe_load(open(f, encoding="utf-8")) or {}
-        filled = {k: (v if v else SAMPLE[1] if k == "go-deeper" else SAMPLE[i % len(SAMPLE)]) for i, k in enumerate(data) for v in [data[k]]}
+        filled = {k: (v if v else SAMPLE[1] + " " + SAMPLE[3] if k == "go-deeper" else SAMPLE[i % len(SAMPLE)]) for i, k in enumerate(data) for v in [data[k]]}
         open(f, "w", encoding="utf-8").write(yaml.safe_dump(filled, sort_keys=False, allow_unicode=True))
     hugo = os.environ.get("HUGO", "hugo")
     r = subprocess.run([hugo, "--quiet", "-s", src, "-d", out], capture_output=True, text=True)
@@ -299,10 +300,13 @@ JS_FULL_PATH = """() => { const sec = document.querySelector('.deeper'); if (!se
   const cs = getComputedStyle(sec), r = sec.getBoundingClientRect();
   const stray = [...d.querySelectorAll('summary')].filter(x => x !== sum).filter(x => /Open|Close/.test(getComputedStyle(x, '::after').content));
   sum.scrollIntoView({block: 'center'}); const s = sum.getBoundingClientRect(), one = sec.querySelector('.deeper-one'),
-        first = (one || ul.firstElementChild).getBoundingClientRect();  // If you read one (S23) is the first thing under the heading
+        first = (one || ul.firstElementChild).getBoundingClientRect(),  // If you read one (S23) is the first thing under the heading
+        li = ul.firstElementChild.getBoundingClientRect(),
+        // and under it, the first source starts where the line's own margin ends, pushed down by nothing beside the heading
+        gap2 = one ? li.top - one.getBoundingClientRect().bottom - Math.max(parseFloat(getComputedStyle(one).marginBottom), parseFloat(getComputedStyle(ul.firstElementChild).marginTop), parseFloat(getComputedStyle(ul).marginTop)) : 0;
   return {inner: r.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), ul: ul.getBoundingClientRect().width,
           lis: [...ul.children].map(li => li.getBoundingClientRect().width), stray: stray.length,
-          gap: first.top - s.bottom, left: r.left, width: r.width, bottom: s.bottom, sl: s.left, st: s.top, sw: s.width, sh: s.height}; }"""
+          gap: first.top - s.bottom, gap2, left: r.left, width: r.width, bottom: s.bottom, sl: s.left, st: s.top, sw: s.width, sh: s.height}; }"""
 
 
 def full_path_checks(ctx, base, fix_base):
@@ -327,6 +331,8 @@ def full_path_checks(ctx, base, fix_base):
                     fail("R10", f"{where}: {f['stray']} control(s) inside the full path show its Open or Close label")
                 if abs(f["gap"]) > 1:
                     fail("R10", f"{where}: the first source starts {f['gap']:.0f}px below the full path's heading, pushed down by its label")
+                if abs(f["gap2"]) > 1:
+                    fail("R10", f"{where}: the first source starts {f['gap2']:.0f}px below the If you read one line, pushed down by something beside the heading")
                 clip = {"x": f["left"], "y": f["bottom"], "width": f["width"], "height": 40}
                 # the heading's right half, where the label must not draw: it sits at the left (the owner, 25 November 2026)
                 right = {"x": f["sl"] + f["sw"] / 2, "y": f["st"], "width": f["sw"] / 2, "height": f["sh"]}
@@ -4130,9 +4136,10 @@ def source_checks(out_dir):
             ones = re.findall(r"(?m)^\*\*If you read one:\*\* \*(.+?)\*\. \S", sec)
             entries_ = {}
             for entry in re.split(r"\n(?=- \*\*)", sec):
-                m_ = re.match(r"- \*\*\*?(.+?)\*?(?:, .*)?\*\*(?!\*)\s*(.*)", entry, re.S)
-                if m_:
-                    entries_[re.sub(r"[*\[\]]|\(http[^)]*\)", "", m_.group(1)).strip()] = bool(STORY.match(m_.group(2)))
+                m_ = re.match(r"- \*\*(.+?)\*\*(?!\*)\s*(.*)", entry, re.S)
+                t_ = re.match(r"\[?\*(.+?)\*", m_.group(1)) if m_ else None   # the entry's title, in italics
+                if t_:
+                    entries_[t_.group(1).strip()] = bool(STORY.match(m_.group(2)))
             if name in built_tabs:
                 if len(ones) != 1:
                     fail("S23", f"{name}: the full path has {len(ones)} \"If you read one\" lines, and it opens with one")
