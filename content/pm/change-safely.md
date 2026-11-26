@@ -78,16 +78,16 @@ example:
   body: |
     **Change:** bank transfer at checkout.
 
-    1. **Cohort:** a random 1 percent, off big on-sale days; then 10, 50 and 100 percent, a week each.
+    1. **Cohort:** 1 percent at random, off on-sale days; then 10, 50, 100, a week each.
     2. **Goal:** more carts checked out, from 62 percent.
-    3. **Guardrails,** each overall and for buyers in social apps' browsers: failed payments per thousand checkouts, now 8, stop above 15; money taken with no ticket, stop at the first.
-    4. **Off switch:** payments on-call, by toggle, five minutes, any hour.
-    5. **Error budget:** checkout's 99.9 percent leaves 43 minutes a month; this may spend 10: five to notice, five to switch off.
+    3. **Guardrails,** overall and for buyers in apps' built-in browsers, where bank redirects break: failed payments, now 8 per thousand, stop at double; money taken with no ticket, stop at one.
+    4. **Off switch:** payments on-call, by toggle, five minutes.
+    5. **Error budget:** 43 minutes a month at 99.9 percent. A full break spends 10, five to notice, five to switch off; at 1 percent, a tenth of one.
 
-    **Decision log:** reaches everyone without a switch-off. 65 percent sure: the bank's never been tested at on-sale load. Know by June 10.
+    **Decision log:** reaches everyone, never switched off. 65 percent sure: the provider's untested at on-sale load. Know by June 10.
   good:
     - Every guardrail has a level to stop at, checked for the buyers this change could fail as well as on average.
-    - The goal and the guardrail start from today's numbers, so each stop level reads as a change.
+    - Its error budget shrinks with the cohort, so the first step can spend almost none.
     - The cohorts grow in steps, and the first stays off big on-sale days.
 
 check:
@@ -154,6 +154,8 @@ Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand th
 **For your decision log.** Write whether you expect the rollout to reach everyone without being switched off, and how sure you are. You'll know when the last group has it.
 
 {{< pm/example >}}
+
+
 
 
 

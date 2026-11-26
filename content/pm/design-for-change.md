@@ -59,23 +59,23 @@ steps:
 
 example:
   body: |
-    **Journey:** handing in homework. Changes last year, fastest layer first:
+    **Journey:** handing in homework. Changes last year, fastest first:
 
     - **Wording:** about 30.
     - **Screens:** 8.
-    - **Rules,** late penalties and resubmits: 4.
+    - **Rules,** late penalties and resubmits before grading: 4.
     - **Gradebook API:** 1.
     - **Data model:** 1, group projects.
     - **District student records:** none.
     - **Contract and privacy law:** none.
 
-    **Last long request:** group projects, one file for a team. Asked in September for October, shipped in February. It ran from screens down to the data model. Change amplification: the gradebook, the plagiarism check and parent emails each assumed one student.
+    **Last long request:** group projects. Asked in September for October, shipped in February. It touched screens, rules, the gradebook API and the data model. Change amplification: the gradebook, the plagiarism check and parent emails each assumed one student.
 
-    **Decision log:** the next request into the data model, the slowest layer the team changes, is resubmitting after grading: about 20 weeks, as group projects took. 50 percent sure: code nobody has listed may assume one grade. Know when it ships.
+    **Decision log:** the next data-model request, the slowest layer the team changes, is keeping both grades on a resubmit: about five months, as group projects took. 50 percent sure: a changed grade may have to reach district records. Check in May.
   good:
-    - "Its counts and its long request agree: the data model's one change all year took five months."
-    - The long request is traced from screens down to the slowest layer it touched, and the symptom is named in the module's words.
-    - The estimate comes from the last request into the same layer, and its doubt names what nobody can see yet.
+    - It picks the slowest layer the team itself changes, so its estimate is one the team can check.
+    - The long request names every layer it touched, down to the slowest, and its symptom in the module's words.
+    - The estimate comes from the last request into the same layer, and its doubt names the slower layer this one might reach.
 
 check:
   - q: Letting a student join two classes at once looks small on screen. Why might it take a quarter?
@@ -141,6 +141,8 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 **For your decision log.** Write how long you expect the next request that touches your slowest layer to take, and how sure you are. You'll know when it ships.
 
 {{< pm/example >}}
+
+
 
 
 

@@ -62,20 +62,18 @@ example:
     **Flow:** a new workout plan, last five, average days.
 
     - **Draft,** writer: 3 waiting, 2 worked.
-    - **Coach review:** 9 waiting, 1 worked.
-    - **Filming,** studio: 14 waiting, 2 worked. It books one week a month.
+    - **Review,** coach: 9 waiting, 1 worked.
+    - **Filming,** studio: 14 waiting, 2 worked. Books one week a month.
     - **Edit,** editor: 2 waiting, 3 worked.
     - **Publish,** app team: 4 waiting, half a day worked.
 
-    About 40 days in all: 32 waiting, 8.5 worked. Ticket dates, studio calendar; publish from memory.
+    About 40 days: 32 waiting, 8.5 worked. Ticket dates, studio calendar; publish from memory.
 
-    **Candidate constraint:** filming.
-
-    **Decision log:** split the studio's week into two half-weeks a month, same cost. Expect new plans live in about 33 days, not 40. 50 percent sure: five is a small sample, and one waited a month on a reshoot. Find out after the next five, about May 15.
+    **Decision log:** filming is the candidate constraint. Split the studio's week into two half-weeks a month, same studio days: its wait should halve, so plans go live in about 33 days, not 40. 50 percent sure: five is a small sample, and one waited a month on a reshoot. Find out after the next five, about May 15.
   good:
     - Each step's days are split into waiting and worked, so filming's wait stands out though editing takes longer to do.
     - The help changes a rule, the studio's calendar, before spending anything, as the five steps' order asks.
-    - The log expects the whole flow to speed up, not the step's own number, and says when you'll know.
+    - The log expects the whole flow to speed up, not filming's own number, and its doubt comes from its own data.
 
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
@@ -126,6 +124,8 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 **For your decision log.** Name your candidate constraint and what you expect delivery to do if it gets help. Say how sure you are, and when you'll find out.
 
 {{< pm/example >}}
+
+
 
 
 

@@ -94,22 +94,24 @@ example:
   body: |
     **Feature:** autoplay.
 
-    **Intended:** more watch time for the app; fewer taps through a series, worth keeping.
+    **Intended:** fewer taps through a series; more watch time.
 
     **Unintended:** teens up late; flashing videos reaching people with photosensitive epilepsy; prepaid data spent.
 
-    **Overlap:** teens on prepaid plans. Data saver stops autoplay, but only a parent can turn it on for a teen. Neither group shows it alone.
+    **Overlap:** teens on prepaid plans. Data saver stops autoplay, but only a parent can turn it on for a teen.
+
+    **Focus on:** fewer taps, not watch time.
 
     **Mitigate:**
 
-    - Flashing videos don't autoplay. Trust and safety has it.
+    - Flashing videos don't autoplay. Trust and safety.
     - Off after 11 p.m. for teens. Teen team.
 
-    **To propose:** teens on mobile data asked once: turn on data saver? Settings team.
+    **To propose:** let teens turn on data saver, asked once on mobile data. Settings team.
 
-    **Decision log:** expect a fifth less mobile data per teen, costing the app about 2 percent of teens' watch time. 55 percent sure: many may tap no. Know by March 31.
+    **Decision log:** the data saver prompt. Expect a fifth less mobile data per teen, costing the app about 2 percent of teens' watch time. 55 percent sure: many may tap no. Know by March 31.
   good:
-    - Every harm it mitigates has an owner, and the change it proposes is a plain choice, asked once.
+    - It focuses on what viewers gain, fewer taps, not the watch time the app gains.
     - The overlap is a harm neither group shows alone, found by asking who's in both.
     - "The log says who gains and who pays: teens save data, and the app gives up watch time."
 
@@ -198,6 +200,8 @@ End with one change you'd propose. Outside the 25 minutes, show it to someone in
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
 
 {{< pm/example >}}
+
+
 
 
 

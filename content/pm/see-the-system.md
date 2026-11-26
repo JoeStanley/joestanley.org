@@ -65,19 +65,19 @@ example:
     **Stock:** drivers waiting for a background check, about 2,400 now.
 
     - **In:** about 900 a week finish their documents.
-    - **Out:** about 750 a week cleared, and 50 give up. Net: up 100 a week.
+    - **Out:** about 750 a week cleared, and 50 give up. Up 100 a week.
 
     Three months of vendor reports; give-ups guessed.
 
-    **Who sees it:** ops, in the vendor's Monday report, a week late. Drivers see "pending." Riders see fewer cars, weeks later.
+    **Who sees it:** ops, in the vendor's Monday report, a week late. Drivers see "pending." Riders see fewer cars later.
 
-    **Last fix:** 100 more checks a week, paid for. A number, 12th of 12. Still growing.
+    **Last fix:** 100 more checks a week, paid for. A number, 12th of 12.
 
-    **Decision log:** drivers moving cities keep a clear check under a year old: about 150 a week. Expect the level to fall 50 a week, to about 1,800 by March 1. 60 percent sure: some cities may require one. Look again then.
+    **Decision log:** a rule, 5th of 12: drivers moving cities, 150 of the 900, keep a clear check under a year old. Then 750 in, 800 out: down 50 a week, to 1,800 by March 1. 60 percent sure: some cities may require one. Look again then.
   good:
-    - The flows in and out have counts and a source, so the level's rise follows from the arithmetic.
+    - The flows in and out have counts and a source, so both the rise now and the fall ahead follow from the arithmetic.
     - It says who sees the level and how late, out to the riders who only feel it.
-    - The change aims at a rule, higher on the list than the last fix, and its forecast is the new inflow less the outflow.
+    - The change aims at a rule, higher on the list than the last fix, and its 60 percent says what could prove it wrong.
 
 check:
   - q: Your app clears more drivers' background checks each month than it did last year, yet the queue waiting for one keeps growing. What does that tell you?
@@ -134,5 +134,7 @@ Where you draw the system's edge matters too, because it decides whose costs you
 **For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, and how sure you are. Add the date you'll look again.
 
 {{< pm/example >}}
+
+
 
 

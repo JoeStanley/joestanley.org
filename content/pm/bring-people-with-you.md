@@ -89,17 +89,17 @@ example:
   body: |
     **Readers:**
 
-    - Director of clinic operations: Mondays.
-    - Manager and tech lead: Mondays, the same note.
+    - Director of clinic operations, the sponsor: Mondays.
+    - Manager and tech lead: the same note.
     - Twelve clinic managers: when a release changes their morning list.
     - Hospital IT: when the feed or a release date changes.
 
-    **Monday, to the director:** "The waitlist is live at three clinics, as planned. Two more asked to join early. Let's say yes: five clinics by the 15th. Reminder texts: on track for May 2. The cardiology feed still drops overnight cancellations, so those slots stay empty. Can you get us an hour of IT's lead this week?"
+    **Monday, to the director:** "The waitlist is live at three clinics, as planned. Two more, neither in cardiology, asked to join early. Let's say yes: five clinics by May 15. The cardiology feed still drops overnight cancellations, so those slots stay empty. This week, can you get us an hour with IT's lead?"
 
-    **Decision log:** expect the director to find IT's hour, not hold the two new clinics. 80 percent sure: cardiology isn't one of them. Know by Tuesday's reply.
+    **Decision log:** expect the director to get IT's hour, not hold the two new clinics. 80 percent sure: she runs the clinics losing those slots. Know by Tuesday's reply.
   good:
-    - The update opens on what the director already accepts, then what changed, then the recommendation.
-    - The item that isn't on track ends on what's needed, from whom and by when.
+    - The map gives Mondays to the people steering the work, and a trigger to those who only need its news.
+    - It opens with the situation, the change and the call, and ends on the need, asked of the one person who can meet it.
     - The log line gives a reason for its 80 percent, which the director's reply will test.
 
 check:
@@ -164,6 +164,8 @@ Bringing people along is harder when they don't agree, and the people you most n
 **For your decision log.** Write how you expect your senior reader to take the item that isn't on track, and how sure you are. You'll know by their reply.
 
 {{< pm/example >}}
+
+
 
 
 

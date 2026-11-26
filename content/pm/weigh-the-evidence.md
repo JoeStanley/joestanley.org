@@ -63,15 +63,15 @@ example:
   body: |
     **Decision:** batch two orders a trip in the suburbs?
 
-    - **Number.** Pilot city: late orders flat at 6 percent, shoppers' hourly pay up 8 percent. Missing: shoppers who quit. Collected: app logs, six weeks. Carries over if drives are as short.
+    - **Number.** Pilot city: late orders flat at 6 percent, shoppers' hourly pay up 8 percent. Missing: shoppers who quit. Collected: logs, six weeks. Carries over if drives are as short.
     - **Story.** A manager's call: batches crowd the pickup shelf. Missing: the other 29 managers. Collected: one call. Carries over where shelves are small.
-    - **Number.** Survey: 70 percent fine waiting longer. Missing: 96 percent never replied. Collected: email. Carries over if repliers are typical.
+    - **Number.** Survey: 70 percent fine waiting longer. Missing: 96 percent never replied. Collected: email. Carries over if suburbs are as patient.
 
-    **Would change our mind:** late orders 2 points above the unbatched suburbs.
+    **Would change our mind:** late orders 2 points above unbatched suburbs.
 
-    **Decision log:** two suburbs batched, three not. Expect late orders within a point of theirs. 60 percent sure: drives are longer. Know by September 30.
+    **Decision log:** two random suburbs batched, three not. Expect late orders within a point of theirs. 60 percent sure: drives are longer. Know by September 30.
   good:
-    - Every piece, number or story, gets the same three questions, so neither gets waved through.
+    - Each "Carries over" names one thing to check here, like drive length or shelf size.
     - "\"Missing\" names the people each piece can't hear from, like the shoppers who quit."
     - The call compares batched suburbs with unbatched ones, and its doubt comes from what differs here.
 
@@ -139,6 +139,8 @@ Your own hunch is evidence too. Gary Klein, a psychologist who studies how exper
 **For your decision log.** Write the call you'd make on that decision now, what you expect to happen, how sure you are, and when you'll know.
 
 {{< pm/example >}}
+
+
 
 
 

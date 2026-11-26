@@ -65,22 +65,22 @@ steps:
 
 example:
   body: |
-    **Diagnosis:** families quit at fare rules written for business travelers; half their calls are about bags.
+    **Diagnosis:** families quit at business travelers' fare rules; half their calls are about bags.
 
-    **Guiding policy:** families first: one price with bags and seats in it.
+    **Guiding policy:** families first, with bags and seats in one price.
 
     **Actions:** one family price; families seated together; fare rules behind "Details."
 
-    **Not this quarter:**
+    **Won't do this quarter:**
 
-    - Corporate travel policies: for business travelers. Sales would argue for them, so it's a real no; sales hears Monday.
-    - Loyalty redesign: it doesn't change what families pay. The lead tells marketing.
-    - Stopping the expense export: business travelers only. The fence: built for one corporate account, still its main user. Sales asks it first.
+    - Build corporate travel policies for two business accounts: nothing for families. Sales would argue for them: a real no, told in person Monday.
+    - Redesign loyalty: families pay the same. The lead tells marketing.
+    - Keep the expense export: business travelers only. Fence: built for one corporate account, still its main user. Sales asks that account first.
 
-    **Decision log:** no corporate policies. Expect two business accounts to ask again, none to leave. 70 percent sure: one renews in May. Check June 30.
+    **Decision log:** no corporate policies. Expect both accounts to ask again, neither to leave. 70 percent sure: one renews in May. Check June 30.
   good:
-    - Each no ties back to the diagnosis in a clause, so the list reads as one choice.
-    - It names who each no leaves waiting, and who tells them.
+    - Each no ties back to the diagnosis or the policy in a clause, so the list reads as one choice.
+    - "The no to something the team runs now checks the fence first: why it was built, and who still uses it."
     - The log bets on what the no will cost, and checks after the one renewal that could prove it wrong.
 
 check:
@@ -142,6 +142,8 @@ Handing a decision out works only when the person deciding sees the situation as
 **For your decision log.** Pick one line from your not-doing list. Write what you expect to happen because you said no, how sure you are, and the date you'll check.
 
 {{< pm/example >}}
+
+
 
 
 

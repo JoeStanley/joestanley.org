@@ -76,19 +76,19 @@ steps:
 
 example:
   body: |
-    **Who talks:** listings and trust (review), daily. Payments and support, weekly, by ticket. Shipping, mostly to the carrier.
+    **Who talks:** listings and review, daily. Payments and support, weekly, by ticket. Shipping, to the carrier, never to payments.
 
-    **Parts, from memory:** listings feed review, then search. Checkout writes the order; payouts and shipping's labels read it. Disputes live in support's ticket tool. Buyers see only the order page.
+    **Parts, from memory:** listings feed review. Checkout writes the order; payouts and shipping's labels read it. Disputes live in support's tool. After checkout, buyers see only the order page.
 
     **Lines up:** listings and review.
 
-    **Crosses:** a "not as described" dispute. Support opens it, payments freezes the payout, shipping labels the return. Nothing tells payments the item is back, so refunds wait: 300 open, the oldest 40 days.
+    **Crosses:** a "not as described" dispute. Support opens it, payments freezes the payout, shipping labels the return. The return scan stays with shipping, so refunds wait: 300 open, the oldest 40 days since arrival.
 
-    **Decision log:** this seam first: the most money waits there. Once someone owns "returned," expect refunds within a week of the scan. 50 percent sure: some returns go unscanned. Check July 1.
+    **Decision log:** this seam first, where the most money waits. Once someone owns the handoff, expect refunds within a week of arrival. 50 percent sure: some returns go unscanned. Check July 1.
   good:
     - The first picture shows who actually talks, and how often, rather than the org chart.
-    - The seam it picks is one journey, with where each team's part stops and what waits there.
-    - It counts what waits at the seam, so the change it expects for buyers has a baseline.
+    - "The seam it picks is where the pictures disagree: payouts and returns share the order, but payments and shipping never talk."
+    - It counts what waits at the seam from a stated start, so the change it expects for buyers has a baseline.
 
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
@@ -150,6 +150,8 @@ A category is a boundary of meaning too, and people fall between categories the 
 **For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 
 {{< pm/example >}}
+
+
 
 
 
