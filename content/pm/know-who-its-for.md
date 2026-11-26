@@ -48,19 +48,24 @@ steps:
     minutes: 10
     where: It's on this page, just below this list.
     look: Which estimate is worth testing while the team builds, and when each pick falls due.
+  - id: do
+    kind: do
+    title: Find the last time, and start your log
+    where: The Do, on this page, below.
+    look: What people did about it, not what they say they'd want.
 example:
   body: |
     **Problem:** unwanted swaps.
 
-    - **Tuesday.** Oat milk swapped for dairy. She poured it out, bought her own: $5, maybe 20 minutes.
-    - **Thursday.** "Wrong bread, refund pls." His profile says gluten-free, so a second trip: maybe 45 minutes.
-    - **Saturday.** Cheaper diapers, kept. She now watches swaps live: maybe 10 minutes an order.
+    - **Tuesday.** Oat milk swapped for dairy. She bought her own: $5, maybe 20 minutes.
+    - **Thursday.** "Wrong bread, refund pls." His profile says gluten-free: likely a second trip, maybe 45 minutes.
+    - **Saturday.** Cheaper diapers, kept. Now she watches swaps live: maybe 10 minutes an order.
 
-    **Shoppers:** their forum says waiting on answers is unpaid.
+    **Shoppers:** their forum says waiting on customers' answers is unpaid.
 
-    **A week of waiting:** support tags 400 a week; most never write in. At about $10 each, time at $15 an hour: $4,000 to customers, before anyone who leaves.
+    **A week of waiting:** about 400 tagged tickets; most never write in. At about $10 each, time at $15 an hour: at least $4,000 to customers, before anyone who leaves.
 
-    **Decision log:** test first, in one city, on dietary swaps, two minutes to answer. Expect over half to answer. 60 percent sure: a wrong one costs a meal. Know by April 30.
+    **Decision log:** test in one city, dietary swaps only, two minutes to answer. Expect over half to answer. 60 percent sure: customers may be at work. Know by April 30.
   good:
     - "Each line is one specific time: its day, what the person did, and what it cost, with every guess marked."
     - The week's price says where its count came from and whose cost it adds up, which is where most go wrong.
