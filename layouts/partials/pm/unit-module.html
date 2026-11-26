@@ -10,7 +10,7 @@
 {{- range site.Data.pm.modules }}{{ if and .page (lt (int .num) (int $m.num)) }}{{ $prev = . }}{{ end }}{{ end -}}
 {{- $parts := split $p.RawContent "[//]: # (short-path)" -}}
 {{- $readMin := 0 -}}
-{{- range $p.Params.steps }}{{ $readMin = add $readMin .minutes }}{{ end -}}
+{{- range $p.Params.steps }}{{ $readMin = add $readMin (.minutes | default 0) }}{{ end -}}
 {{- $doMin := $p.Params.do_minutes | default 0 -}}
 <article class="unit module" id="{{ $key }}" data-unit="{{ $key }}">
   <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
@@ -72,10 +72,13 @@
           <h3><a href="{{ partial "pm/href.html" (dict "p" $card "all" $all) }}">{{ $card.Title | markdownify }}</a></h3>
           {{- else if eq .kind "play" }}
           <h3><a href="#{{ $p.Params.game }}-game">{{ .title }}</a></h3>
+          {{- else if eq .kind "do" }}
+          {{- /* The Do's step (spec J7): a link down the page, with no minutes of its own, since the Do shows them. */}}
+          <h3><a href="#do">{{ .title }}</a></h3>
           {{- else }}
           <h3>{{ .title | $p.RenderString }}</h3>
           {{- end }}
-          <p class="meta-line">{{ .minutes }} minutes. {{ if $card }}One page.{{ else }}{{ .where }}{{ end }}</p>
+          <p class="meta-line">{{ with .minutes }}{{ . }} minutes. {{ end }}{{ if $card }}One page.{{ else }}{{ .where }}{{ end }}</p>
           {{- with .links }}
           <ul class="step-links">
             {{- range . }}

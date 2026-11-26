@@ -146,6 +146,9 @@ def blocks(el):
         elif c.name == "details" and "recall" in cls:
             out.append(inline(c.find("summary")))
             out.append("**Answer:** " + inline(c.find(class_="answer")))
+        elif c.name == "details" and "example" in cls:   # What a good one looks like (spec J7): folded on the site, whole here
+            out.append(f"**{inline(c.find('summary'))}**")
+            out.append("\n>\n".join("> " + b.replace("\n", "\n> ") for b in blocks(c.find(class_="example-body"))))
         elif c.name == "hr":
             out.append("---")
         else:

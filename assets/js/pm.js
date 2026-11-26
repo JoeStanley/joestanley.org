@@ -66,6 +66,23 @@
   window.addEventListener("hashchange", deeperByHash);
   deeperByHash();
 
+  /* What a good one looks like waits for the reader's own try (J7). Where the Do is a step of the short path, opening
+     the example before that step is ticked shows a message and a button that ticks it; once it's ticked, by the button
+     or on the short path, the example. Without this script the line opens the example. */
+  all("details.example[data-gate]").forEach(function (det) {
+    var gate = det.querySelector("[data-example-gate]"), body = det.querySelector(".example-body");
+    var li = (det.closest("[data-unit]") || doc).querySelector('[data-step="' + det.getAttribute("data-gate") + '"]');
+    var box = li ? li.querySelector("input[type=checkbox]") : null, btn = gate ? gate.querySelector("[data-example-ungate]") : null;
+    if (!body || !box || !btn) return;
+    function show() { gate.hidden = box.checked; body.hidden = !box.checked; }
+    show();
+    box.addEventListener("change", show);
+    btn.addEventListener("click", function () {
+      if (!box.checked) { box.checked = true; box.dispatchEvent(new Event("change")); }
+      show(); body.focus();
+    });
+  });
+
   /* ---- glossary terms: links to the glossary that open a modal dialog in place where dialogs are supported.
      The browser keeps focus inside the dialog and returns it to the term when the dialog closes. ---- */
   if (window.HTMLDialogElement && HTMLDialogElement.prototype.showModal) {

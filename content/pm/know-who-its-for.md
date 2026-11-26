@@ -48,6 +48,29 @@ steps:
     minutes: 10
     where: It's on this page, just below this list.
     look: Which estimate is worth testing while the team builds, and when each pick falls due.
+  - id: do
+    kind: do
+    title: Find the last time, and start your log
+    where: The Do, on this page, below. The two conversations can come later.
+    look: What people did about it, not what they say they'd want.
+example:
+  body: |
+    **Problem:** unwanted swaps.
+
+    - **Tuesday.** Oat milk swapped for dairy. She bought her own: $5, maybe 20 minutes.
+    - **Thursday.** "Wrong bread, refund pls." His profile says gluten-free: likely a second trip, maybe 45 minutes.
+    - **Saturday.** Cheaper diapers, kept. Now she watches swaps live: maybe 10 minutes an order.
+
+    **Shoppers:** their forum says waiting on customers' answers is unpaid.
+
+    **A week of waiting:** about 400 tagged tickets; most never write in. At about $10 each, time at $15 an hour: at least $4,000 to customers, before anyone who leaves.
+
+    **Decision log:** test in one city, dietary swaps only, two minutes to answer. Expect over half to answer. 60 percent sure: customers may be at work. Know by April 30.
+  good:
+    - "Each line is one specific time: its day, what the person did, and what it cost, with every guess marked."
+    - The week's price says where its count came from and whose cost it adds up, which is where most go wrong.
+    - The call expects one thing you can count, by a date, and says why you're only that sure.
+
 check:
   - q: A user says they'd pay $10 a month for a feature. What do you ask next, and why?
     a: "What they pay now, in money or time, for the workaround. As Teresa Torres puts it, \"What did you pay for that service?\" tells you more than any price for a service that doesn't exist yet."
@@ -117,6 +140,8 @@ Value alone doesn't order the work, because waiting costs money too. What a fix 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 
 **Start a decision log.** Write down the call you'd make on this problem now, what you expect to happen, how sure you are as a percentage, and when you'll know. Keep the page: each module from here adds a line.
+
+{{< pm/example >}}
 
 ## Questions to bring to designers and researchers
 

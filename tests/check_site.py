@@ -1089,6 +1089,15 @@ def doors_browser_checks(out_dir):
             hs = pg.evaluate("() => [...document.querySelectorAll('nav.on-page a, .game-back a, details.why > summary')].filter(e => e.getClientRects().length).map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
             pg.goto(srv.base + MODULES[3][1][0]); pg.wait_for_load_state("load")
             hs += pg.evaluate("() => [...document.querySelectorAll('.kicker a, .unit-foot a')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
+            # each "What a good one looks like" (J7), on every module that has one
+            for m_, _ in MODULES:
+                built = os.path.join(out_dir, m_.strip("/"), "index.html")
+                if os.path.exists(built) and 'class="example' in open(built, encoding="utf-8").read():
+                    pg.goto(srv.base + m_); pg.wait_for_load_state("load")
+                    # where it waits for the Do's tick, tick it first, as a reader would
+                    if pg.evaluate("() => { const d = document.querySelector('details.example[data-gate]'); if (d) localStorage.setItem('pm:' + d.dataset.gate, '1'); return !!d; }"):
+                        pg.reload(); pg.wait_for_load_state("load")
+                    hs += pg.evaluate("() => [...document.querySelectorAll('details.example > summary')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
             short = [x for x in hs if x[1] < 43.5]
             if short or len(hs) < 8:
                 fail("G7", f"at 390px, targets under 44 pixels tall: {short[:4]}")
@@ -1776,7 +1785,7 @@ def check_static():
             before = earlier.get(step.get("continues")) if step.get("continues") else None
             if step.get("continues") and not (before and before.get("trust") and list(earlier)[-1] == step.get("continues")):
                 fail("S2", f"{rel}: step {step.get('id')} continues {step.get('continues')}, which isn't the step just before it with a trust line")
-            if step.get("kind") not in ("card", "play") and not ((step.get("trust") or before) and step.get("only")):
+            if step.get("kind") not in ("card", "play", "do") and not ((step.get("trust") or before) and step.get("only")):
                 fail("S2", f"{rel}: step {step.get('id')} lacks trust or only")
             earlier[step.get("id")] = step
         deeper = fm.get("deeper")
@@ -3293,6 +3302,162 @@ def practice_checks(out_dir):
         fail("J5", line[:200])
 
 
+EXAMPLE_LINE = "What a good one looks like"
+EXAMPLE_GOOD = "What makes it good:"
+EXAMPLE_WORDS = 120   # "under about 120 words" (the owner, 25 November 2026)
+EXAMPLE_GATE = "Try yours first: an example is easier to copy than to judge."
+EXAMPLE_UNGATE = "I've done mine"
+
+
+def example_checks(out_dir):
+    """J7: a module's Do shows one finished example of its main exercise, folded shut under "What a good one looks
+    like", after the main exercise and its decision log line and before any optional exercise; under about 120
+    words, then "What makes it good:" and three lines of one sentence each; left out of print, and in the single
+    document as in the module. Where the Do is a step of the short path, a link down the page with no minutes of its
+    own, the example opens to a gate until that step is ticked. Until the rest are written, a built module with none is
+    noted, not failed."""
+    from bs4 import BeautifulSoup
+    checked("J7")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    count = lambda t: len(re.findall(r"[A-Za-z0-9$][A-Za-z0-9$,'’-]*", t))
+    whole = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
+    without, gated = [], []
+    for m in mods:
+        if not m.get("page"):
+            continue
+        where = f"Module {m['num']}, {m['title']}"
+        _, fm, body = open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)
+        d_fm = yaml.safe_load(fm) or {}
+        ex = d_fm.get("example")
+        dos = [s_ for s_ in d_fm.get("steps") or [] if s_.get("kind") == "do"]
+        placed = len(re.findall(r"\{\{<\s*pm/example\s*>\}\}", body))
+        if not ex and not placed:
+            without.append(m["title"]); continue
+        if not ex or placed != 1:
+            fail("J7", f"{where}: an example: in the front matter and one {{{{< pm/example >}}}} in the Do go together, and it has {'no example:' if not ex else f'{placed} placed'}")
+            continue
+        text = str(ex.get("body") or "") if isinstance(ex, dict) else ""
+        good = ex.get("good") if isinstance(ex, dict) else None
+        if not text.strip():
+            fail("J7", f"{where}: its example has no body"); continue
+        n = count(re.sub(r"[*_#>`]", " ", re.sub(r"(?m)^\s*[-*] ", " ", text)))
+        if n > EXAMPLE_WORDS:
+            fail("J7", f"{where}: its example runs {n} words, and keeps under about {EXAMPLE_WORDS}")
+        if not isinstance(good, list) or len(good) != 3 or not all(isinstance(g, str) and g.strip() for g in good):
+            fail("J7", f"{where}: what makes its example good is three lines, and it has {len(good) if isinstance(good, list) else 'none'}")
+        else:
+            for g in good:
+                if len(re.findall(r"[.!?](?=\s+[A-Z\u201c\"])", g.strip())) or not g.strip().endswith("."):
+                    fail("J7", f"{where}: each line on what makes its example good is one sentence: \"{g.strip()[:50]}\"")
+        # where it sits in the Do: after the main exercise and its decision log line, before any optional exercise
+        rest = body.split("[//]: # (short-path)")[-1]
+        do = re.split(r"\n## ", rest.split("## Do", 1)[1])[0] if "## Do" in rest else ""
+        paras = [p_.strip() for p_ in do.split("\n\n") if p_.strip()]
+        i_ex = next((i for i, p_ in enumerate(paras) if re.fullmatch(r"\{\{<\s*pm/example\s*>\}\}", p_)), None)
+        i_log = next((i for i, p_ in enumerate(paras) if re.match(r"\*\*(Start a decision log|For your decision log|Review your decision log)\.\*\*", p_)), None)
+        i_opt = next((i for i, p_ in enumerate(paras) if p_.startswith("**Optional")), len(paras))
+        if i_ex is None or i_log is None or not i_log < i_ex < i_opt or i_ex != i_log + 1:
+            fail("J7", f"{where}: its example sits right after the Do's decision log line, on a line of its own, and before any optional exercise")
+        # on the built page and in the single document
+        page = BeautifulSoup(open(os.path.join(out_dir, "pm", m["page"], "index.html"), encoding="utf-8").read(), "html.parser")
+        art = whole.select_one(f'article[data-unit="{m["page"]}"]')
+        for doc_, what in ((page, "its page"), (art, "the single document")):
+            dets = doc_.select("details.example") if doc_ else []
+            if len(dets) != 1:
+                fail("J7", f"{where}: {what} shows {len(dets)} examples, and should show one"); continue
+            d_ = dets[0]
+            summ = d_.find("summary", recursive=False)
+            if not d_.find_parent("section", class_="do"):
+                fail("J7", f"{where}: on {what}, its example isn't in the Do")
+            if not summ or clean_text(summ.get_text()) != EXAMPLE_LINE:
+                fail("J7", f"{where}: on {what}, its example opens under \"{clean_text(summ.get_text()) if summ else ''}\", not \"{EXAMPLE_LINE}\"")
+            if d_.has_attr("open"):
+                fail("J7", f"{where}: on {what}, its example isn't folded shut")
+            if "screen-only" not in (d_.get("class") or []):
+                fail("J7", f"{where}: on {what}, its example prints, and is for the screen alone")
+            lab = d_.select_one(".example-body > .example-good-label")
+            items = d_.select(".example-body > ul.example-good > li")
+            if not lab or clean_text(lab.get_text()) != EXAMPLE_GOOD or len(items) != 3 or lab.find_next_sibling() is not items[0].parent:
+                fail("J7", f"{where}: on {what}, its example doesn't end \"{EXAMPLE_GOOD}\" in bold and three lines")
+            # the example waits for the Do's tick, where the Do is a step of the short path (the pilot); in the markup it
+            # shows, so a reader without scripts has it
+            want = f"{m['page']}:{dos[0].get('id')}" if dos else None
+            if d_.get("data-gate") != want:
+                fail("J7", f"{where}: on {what}, its example waits on {d_.get('data-gate')!r}, and should wait on {want!r}, the Do's step")
+            gate = d_.select_one("[data-example-gate]")
+            body_ = d_.select_one(".example-body")
+            if d_.has_attr("hidden") or (body_ and body_.has_attr("hidden")):
+                fail("J7", f"{where}: on {what}, its example is hidden in the markup, so a reader without scripts never has it")
+            if want and (not gate or not gate.has_attr("hidden") or clean_text(gate.find("p").get_text() if gate.find("p") else "") != EXAMPLE_GATE
+                         or not gate.select_one("button[data-example-ungate]") or clean_text(gate.select_one("button").get_text()) != EXAMPLE_UNGATE):
+                fail("J7", f"{where}: on {what}, its example's gate isn't \"{EXAMPLE_GATE}\" and a button, \"{EXAMPLE_UNGATE}\", hidden until the script shows it")
+            if not want and gate:
+                fail("J7", f"{where}: on {what}, its example has a gate, and its Do isn't a step to tick")
+        # the Do's step: a link down the page to the Do, with no minutes of its own
+        if len(dos) > 1:
+            fail("J7", f"{where}: {len(dos)} steps lead to the Do, and one should")
+        for s_ in dos:
+            li = page.select_one(f'[data-step="{m["page"]}:{s_.get("id")}"]')
+            if s_.get("minutes") or (li and "minutes" in clean_text(li.select_one(".meta-line").get_text() if li.select_one(".meta-line") else "")):
+                fail("J7", f"{where}: the Do's step shows minutes of its own, and the Do's exercise shows them")
+            if not li or not li.select_one('h3 a[href="#do"]'):
+                fail("J7", f"{where}: the Do's step doesn't lead down the page to the Do")
+            elif "conversations can come later" not in clean_text(li.select_one(".meta-line").get_text()):
+                fail("J7", f"{where}: the Do's step doesn't say the two conversations can come later")
+            else:
+                gated.append(f"/pm/{m['page']}/")
+    if without:
+        NOTE["J7"].append(f"{len(without)} built module{'s' if len(without) != 1 else ''} without an example yet, until the rest are written: {', '.join(without)}")
+    if not gated:
+        return
+    # in a browser: before the Do is ticked, the line opens to its gate; the button ticks the step and shows the example;
+    # once ticked, the line opens the example; unticked, the gate is back; without scripts, the example opens as it is
+    from playwright.sync_api import sync_playwright
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    state = """() => { const d = document.querySelector('details.example'), g = d.querySelector('[data-example-gate]'), b = d.querySelector('.example-body');
+      const box = document.querySelector('[data-step="' + d.dataset.gate + '"] input');
+      return {line: d.getClientRects().length > 0, open: d.open, gate: g.getClientRects().length > 0, body: b.getClientRects().length > 0, ticked: box.checked, focus: b.contains(document.activeElement)}; }"""
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            for url in gated:
+                ctx = b.new_context(viewport={"width": 390, "height": 844}); pg = ctx.new_page()
+                pg.goto(srv.base + url); pg.wait_for_load_state("load")
+                if not pg.evaluate(state)["line"]:
+                    fail("J7", f"{url}: the example's line should show before the Do is ticked")
+                pg.locator("details.example > summary").click()
+                r = pg.evaluate(state)
+                if not (r["open"] and r["gate"] and not r["body"] and not r["ticked"]):
+                    fail("J7", f"{url}: before the Do is ticked, opening the example should show only its gate: {r}")
+                else:
+                    pg.locator("[data-example-ungate]").click()
+                    r = pg.evaluate(state)
+                    if not (r["ticked"] and r["body"] and not r["gate"] and r["focus"]):
+                        fail("J7", f"{url}: \"{EXAMPLE_UNGATE}\" should tick the Do's step, show the example and move focus to it: {r}")
+                    pg.reload(); pg.wait_for_load_state("load")
+                    pg.locator("details.example > summary").click()
+                    r = pg.evaluate(state)
+                    if not (r["body"] and not r["gate"]):
+                        fail("J7", f"{url}: once the Do is ticked, the example should open at once: {r}")
+                    key = pg.evaluate("() => document.querySelector('details.example').dataset.gate")
+                    pg.locator(f'[data-step="{key}"] .tick').click()
+                    r = pg.evaluate(state)
+                    if not (r["gate"] and not r["body"] and not r["ticked"]):
+                        fail("J7", f"{url}: unticking the Do should bring the gate back: {r}")
+                ctx.close()
+                ctx = b.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
+                pg.goto(srv.base + url); pg.wait_for_load_state("load")
+                pg.locator("details.example > summary").click()
+                r = pg.evaluate("() => { const d = document.querySelector('details.example'); return {gate: d.querySelector('[data-example-gate]').getClientRects().length > 0, body: d.querySelector('.example-body').getClientRects().length > 0}; }")
+                if r["gate"] or not r["body"]:
+                    fail("J7", f"{url}: without scripts the example should open as it is, with no gate: {r}")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
 EVIDENCE_TAGS = ("A study.", "A review of studies.", "Experience.", "An argument.")
 
 
@@ -4251,6 +4416,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("J1", "J2", "J3", "J4", "J5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("J7"):
+        try:
+            example_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("J7", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("X5"):
         try:
             preview_checks(out_dir)

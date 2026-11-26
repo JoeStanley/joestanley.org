@@ -38,6 +38,9 @@ step-card-last-time: ""
 # Short path, step 4: Play the waiting game
 step-waiting: ""
 
+# Short path, step 5: Find the last time, and start your log
+step-do: ""
+
 # The waiting game
 waiting-game: ""
 

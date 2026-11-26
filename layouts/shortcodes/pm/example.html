@@ -1,0 +1,30 @@
+{{- /* What a good one looks like (spec J7): one finished example of the Do's main exercise, folded shut under one
+       line that opens in place, as "Why this source" does, and left out of print. Its words are the module's front
+       matter, example: {body, good}, where body is the example in Markdown and good is three lines on what makes
+       it good. Placed with {{< pm/example >}} on a line of its own, after the Do's decision log line. */ -}}
+{{- $p := .Page -}}
+{{- $e := $p.Params.example -}}
+{{- if not $e }}{{ errorf "pm/example: %s places an example and has no example: in its front matter" $p.File.Path }}{{ end -}}
+{{- /* Where the module's Do is a step of its short path, the example waits for it to be ticked (J7): the script shows
+       the message and the button until then. Without the script they stay hidden and the line opens the example. */ -}}
+{{- $gate := "" -}}
+{{- range $p.Params.steps }}{{ if eq .kind "do" }}{{ $gate = printf "%s:%s" $p.File.ContentBaseName .id }}{{ end }}{{ end -}}
+<details class="example screen-only"{{ with $gate }} data-gate="{{ . }}"{{ end }}>
+<summary>What a good one looks like</summary>
+{{- with $gate }}
+<div class="example-gate" data-example-gate hidden>
+<p>Try yours first: an example is easier to copy than to judge.</p>
+<button type="button" class="btn quiet" data-example-ungate>I’ve done mine</button>
+</div>
+{{- end }}
+<div class="example-body" tabindex="-1">
+{{ $p.RenderString (dict "display" "block") $e.body }}
+<p class="example-good-label"><strong>What makes it good:</strong></p>
+<ul class="example-good">
+{{- range $e.good }}
+<li>{{ . | $p.RenderString }}</li>
+{{- end }}
+</ul>
+</div>
+</details>
+{{- /**/ -}}
