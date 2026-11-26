@@ -95,6 +95,9 @@ feature-toggle:
 guardrail-metric:
   term: Guardrail metric
   text: A measure that must not get worse while you try to move another. You agree in advance the level at which you'd stop.
+error-analysis:
+  term: Error analysis
+  text: Reading a sample of what a model got wrong, writing a line on each mistake, then sorting the mistakes into kinds and counting them, before you decide what to test or change.
 data-informed:
   term: Data-informed
   text: Using numbers and stories for what each can tell you, while the decision stays yours. Adam Mosseri set it against being data-driven in a 2010 talk.
@@ -107,6 +110,9 @@ intersectional:
 regression-to-the-mean:
   term: Regression to the mean
   text: An extreme result tends to be followed by a less extreme one, whatever you did in between.
+fake-door:
+  term: Fake door
+  text: A button or link for a feature that isn't built yet, shown to some customers to count how many tap it. Those who do are told right away that it isn't ready.
 one-way-doors:
   term: One-way and two-way doors
   text: Jeff Bezos's terms for decisions you can't easily undo, and decisions you can.

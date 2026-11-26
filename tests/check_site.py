@@ -30,8 +30,8 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
            ("/pm/find-the-constraint/", ["/pm/cards/five-focusing-steps/", "/pm/cards/goodharts-law/"]),
            ("/pm/mind-the-seams/", ["/pm/cards/conways-law/"]),
            ("/pm/design-for-change/", ["/pm/cards/coupling/", "/pm/cards/access-patterns/"]),
-           ("/pm/change-safely/", ["/pm/cards/error-budgets/"]),
-           ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/"]),
+           ("/pm/change-safely/", ["/pm/cards/error-budgets/", "/pm/cards/read-the-errors/"]),
+           ("/pm/weigh-the-evidence/", ["/pm/cards/law-of-small-numbers/", "/pm/cards/riskiest-assumption/"]),
            ("/pm/decide-and-set-direction/", ["/pm/cards/agency-and-coherence/"]),
            ("/pm/answer-for-what-you-build/", ["/pm/cards/many-hands/", "/pm/cards/mission-excuse/"]),
            ("/pm/notice-when-you-are-wrong/", ["/pm/cards/double-loop-learning/"]),
@@ -39,6 +39,12 @@ MODULES = [("/pm/own-your-role/", ["/pm/cards/concept-champion/"]),
 # The closing unit, The Compass (spec S21), after the last module.
 CLOSING = "/pm/the-compass/"
 UNIT_PAGES = [p for m, cards in MODULES for p in [m] + cards] + [CLOSING]
+# What the course leaves out, which The Compass names under its last section with the best free place to start for
+# each (S21, the owner, 25 November 2026), and how the check knows each area by name.
+LEAVES_OUT_ID = "what-the-course-leaves-out"
+LEAVES_OUT = [("discovery method", r"\bdiscovery\b"), ("pricing and go-to-market", r"\bpricing\b.*\bgo-to-market\b"),
+              ("experiments", r"\bexperiment"), ("design craft", r"\bdesign\b"), ("accessibility", r"\baccessib"),
+              ("regulation", r"\bregulat|\blaw\b")]
 # The concept cards' page (G6) lists every card; it's an index, not a unit, so it has no tab, slots or foot.
 CARDS_INDEX = "/pm/cards/"
 PAGES = ["/", "/page/readme/", "/games/", "/pm/"] + UNIT_PAGES + ["/pm/glossary/", CARDS_INDEX, "/pm/all/"]
@@ -53,7 +59,8 @@ GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run i
 RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so: six on its full path (S11), and a game's
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until a PDF is published, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
-PRINT_PAGES = 98   # a record: the check notes a change in the count, and does not fail on it
+CLOSING_GRACE = 1   # until a PDF is published, The Compass may print on a fourth page: noted, not failed (the owner, 26 November 2026)
+PRINT_PAGES = 101   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -1889,11 +1896,26 @@ def arc_checks(out_dir):
         fail("J3", f"{where}'s Do should open \"Review your decision log.\" in bold")
     if not re.search(r"where to draw (the|a) line", " ".join(section("Where to go from here")), re.I):
         fail("S21", f"{where}'s last section doesn't name the judgment that recurs, where to draw the line")
+    # ... and then what the course leaves out, each with the best free place to start, linked (the owner, 25 November 2026)
+    out_h = body.find("h3", id=LEAVES_OUT_ID)
+    last_h2 = next((h for h in body.find_all("h2") if norm(h.get_text(" ")) == "Where to go from here"), None)
+    if not out_h or not last_h2 or out_h.find_previous("h2") is not last_h2:
+        fail("S21", f"{where}'s last section has no heading for what the course leaves out (#{LEAVES_OUT_ID})")
+    else:
+        items = out_h.find_next("ul").find_all("li") if out_h.find_next("ul") else []
+        for area, pat in LEAVES_OUT:
+            hit = [li for li in items if re.search(pat, norm(li.get_text(" ")), re.I)]
+            if not hit:
+                fail("S21", f"{where} doesn't say the course leaves out {area}")
+            elif not any(a.get("href", "").startswith("https://") for li in hit for a in li.find_all("a")):
+                fail("S21", f"{where} names {area} as left out, with no free place to start, linked")
     walk_browser_checks(out_dir, f"/pm/{page}/", want_walks)
     how = start.find("h2", id="how-it-works")
     ul = how.find_next("ul") if how else None
     if not ul or "closing page" not in norm(ul.get_text(" ")) or "The Compass" not in norm(ul.get_text(" ")):
         fail("S21", "Start's \"How it works\" doesn't name the closing page, The Compass")
+    elif not ul.find("a", href=re.compile(rf"/pm/{page}/#{LEAVES_OUT_ID}$")):
+        fail("S21", f"Start's \"How it works\" doesn't point to what The Compass says the course leaves out (#{LEAVES_OUT_ID})")
 
 
 def check_static():
@@ -3234,7 +3256,7 @@ def unit_page_checks(pdf_path, n_pages):
         # a module's full path prints outside its three pages: it starts within them, and may take two more
         share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
         # the website first: a module's extra page is noted, not failed, and a module with a game may run further
-        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else 0
+        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else CLOSING_GRACE if kind == "closing" else 0
         why_ = "since it runs long on purpose" if _plain_title(title) in long_ else "since it carries a game"
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:

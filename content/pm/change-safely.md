@@ -63,6 +63,11 @@ steps:
     look: Why a feature that's useful 60 percent of the time can be a success or a failure, and the errors that neither the user nor the system notices.
     trust: "Experience. Google's People + AI Research team wrote it from dozens of the company's user research studies, which it doesn't publish."
     only: How good a feature built on a model has to be, asked from the user's side, and what it should do when it's wrong.
+  - id: card-read-the-errors
+    kind: card
+    card: cards/read-the-errors
+    minutes: 5
+    look: Why you read a model's mistakes before you trust it, and how to tell what a change did.
   - id: do
     kind: do
     title: Plan one rollout, and log it
