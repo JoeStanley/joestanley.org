@@ -65,18 +65,18 @@ steps:
     links:
       - text: "Data Is a Toxic Asset, So Why Not Throw It Out?"
         url: https://www.schneier.com/essays/archives/2016/03/data_is_a_toxic_asse.html
-    look: "Why he treats stored data as a liability, and one test to put to every field you collect: which decision will it change?"
+    look: "Why he treats stored data as a liability: everyone from thieves to governments wants it, and it stays dangerous as long as you keep it."
     trust: "An argument. Schneier is a security technologist, and CNN first published the essay."
     only: "His fix, in one line: \"there's no better security than deleting the data.\""
   - id: inclusive
     kind: read
     title: GOV.UK Service Manual, "Making your service more inclusive"
-    minutes: 5
+    minutes: 10
     where: A guide for the UK government's digital teams. Free at gov.uk.
     links:
       - text: "Making your service more inclusive"
         url: https://www.gov.uk/service-manual/design/making-your-service-more-inclusive
-    look: Why "Is this your first child?" is hard for some people to answer, and the fix, "Focus on what your service really needs to know." It's Schneier's test from the service side.
+    look: Why "Is this your first child?" is hard for some people to answer, and the fix, "Focus on what your service really needs to know." It's Schneier's point from the service side.
     trust: "Experience. It's the UK government's guidance for its own services, which have to work for everyone, since people usually have no alternative to using them. Parts are written for a public service's legal duties."
     only: A test for every field you ask people to fill in, and the common reasons people get shut out, from time and trust to the evidence they're asked for.
   - id: do
@@ -174,7 +174,7 @@ deeper:
 
 ## Why this matters
 
-This module runs longer than the others, on purpose. It ties together threads you've met in earlier modules, and it still has new ground to cover.
+This module runs longer than the others, on purpose: it ties together earlier threads and breaks new ground.
 
 What you build reaches people you'll never meet. On a video-sharing app, small rules decide which video plays next, who can send a teenager a message, and what counts as a view.
 
@@ -192,7 +192,7 @@ The hardest place to hold fast may be inside, in a mission you believe in. Some 
 
 ## Do
 
-**Scan one feature you own (25 minutes).** Pick a feature, such as autoplay or the way the feed ranks videos, and run a {{< pm/term "consequence-scanning" "consequence scan" >}} on it. On one page, answer the method's three questions in order:
+**Scan one feature you own (25 minutes).** Pick a feature, such as how the feed ranks videos or who can comment, and run a {{< pm/term "consequence-scanning" "consequence scan" >}} on it. On one page, answer the method's three questions in order:
 
 1. What are the intended and unintended consequences? Name everyone affected, including the easiest to overlook, like the person in the background of someone else's video. Then look where groups overlap. A harm can be invisible in each group alone and plain for the people in both: the overlap Kimberlé Crenshaw called {{< pm/term "intersectional" >}}, as you saw in [Mind the Seams](/pm/mind-the-seams/).
 2. Which positive consequences do you want to focus on?
@@ -200,7 +200,7 @@ The hardest place to hold fast may be inside, in a mission you believe in. Some 
 
 End with one change you'd propose. Outside the 25 minutes, show it to someone in support or in trust and safety, and ask what you missed.
 
-**Write your lines first (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week.
+**Write your lines (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week. They're yours: no example shows them.
 
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
 

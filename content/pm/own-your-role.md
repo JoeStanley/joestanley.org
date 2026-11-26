@@ -12,11 +12,11 @@ steps:
     kind: card
     card: cards/concept-champion
     minutes: 5
-    look: What the two look-alike jobs leave undone, and how to work back from a destination.
+    look: What the two look-alike jobs leave undone, and where the job starts instead, a destination.
   - id: brooks
     kind: read
     title: Fred Brooks, "Aristocracy, Democracy, and System Design"
-    minutes: 15
+    minutes: 20
     where: Chapter 4 of The Mythical Man-Month. Free as the publisher's sample chapter.
     links:
       - text: "Aristocracy, Democracy, and System Design"
@@ -38,7 +38,7 @@ steps:
   - id: reilly
     kind: read
     title: Tanya Reilly, "Being Glue"
-    minutes: 20
+    minutes: 25
     where: A talk, as text beside its slides. Free at noidea.dog.
     links:
       - text: "Being Glue"
@@ -77,8 +77,8 @@ example:
 
 check:
   - q: It's Thursday, and your week on the streaming app has gone to standup, two status reports and a meeting where you split the next sprint so each squad gets something. Your lead set the destination last quarter. Which versions of the job filled your week, and what's yours to add?
-    a: Both look-alikes. The standup and the status reports are running the project, and splitting the sprint so everyone gets something is running the room. Yours to add is the vision's part in your slice. Finish its "in order to" for your own work, check it against your team's and your lead's, and say where they don't fit.
-  - q: The date for your streaming app's new playlists is slipping, and someone suggests each squad write its own part of the spec to save time. What does Brooks's story warn it costs?
+    a: "Both look-alikes. The standup and the status reports are running the project, and splitting the sprint so everyone gets something is running the room. Yours to add is the vision's part in your slice: finish its \"in order to,\" check it against your team's and your lead's, and say where they don't fit."
+  - q: The date for your streaming app's new playlists is slipping, and someone suggests each squad write its own part of the spec to save time. What could that cost, and does it even save the date?
     a: Its conceptual integrity, one set of design ideas throughout, and maybe not even the date. When Brooks let 150 implementers write the specifications to save the schedule, the specifications came out late anyway, and the lost integrity cost his system, by his estimate, a year of debugging time.
   - q: Half your last month went to onboarding two engineers, writing up every meeting and chasing the teams the playlists depend on. Your review is next month. What would Reilly have you do?
     a: Talk with your manager now, not after the review. Ask which of that work counts toward it, keep the glue the team really needs, and push back on doing more than your share of the rest.
@@ -140,7 +140,7 @@ Now with all this said, a word of caution: you champion the vision, but you're n
 
 ## Do
 
-**Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Teams building AI features do the same, and call their tests evaluations. Finish "We're building this in order to ..." for your slice of the work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? Outside the 25 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled, and bringing that to your team, or to whoever sets direction, is your job.
+**Finish the sentence (25 minutes).** Engineers often write the test before the code. Borrow the move. Teams building AI features do the same, and call their tests evaluations. Finish "We're building this in order to ..." for the work you own. Then write your tests: three things that would be true if you got there, each with how you'd check it, and a target if you have one. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? Outside the 25 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled: take that to your team, or to whoever sets direction.
 
 {{< pm/example >}}
 

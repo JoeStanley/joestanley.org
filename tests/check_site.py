@@ -3680,6 +3680,8 @@ def voice_checks(sd, soup, mods, tab_of, by_name):
 GAMES = {"dice": "find-the-constraint", "waiting": "know-who-its-for", "ranking": "weigh-the-evidence"}
 BEYOND = "**Beyond this module.**"
 LOG_LABEL = {"know-who-its-for": "Start a decision log", "notice-when-you-are-wrong": "Review your decision log"}
+LOG_TIMED = {"notice-when-you-are-wrong"}  # the one log line with its minutes (J3)
+LOG_RE = r"\*\*(Start a decision log|For your decision log|Review your decision log)( \(\d+ minutes\))?\.\*\*"
 
 
 def practice_checks(out_dir):
@@ -3694,6 +3696,7 @@ def practice_checks(out_dir):
     num = {m["id"]: int(m["num"]) for m in mods}
     title = {m["id"]: m["title"] for m in mods}
     carried = {}
+    wins_count = 0
     for m in mods:
         if not m.get("page"):
             continue
@@ -3720,6 +3723,10 @@ def practice_checks(out_dir):
                 fail("J2", f"{where}: a Check question is set against {title[a]}, which doesn't come earlier on the map")
             elif title[a] not in str(c.get("q", "")):
                 fail("J2", f"{where}: the question set against {title[a]} doesn't name it by its title")
+            if c.get("wins") is not None:
+                wins_count += 1
+                if c["wins"] not in (a, m["id"]):
+                    fail("J2", f"{where}: the collision says {c['wins']} wins, and should name {title.get(a, a)} or this module")
         parts = body.split("[//]: # (short-path)")
         why = parts[0]
         rest = parts[1] if len(parts) > 1 else ""
@@ -3729,9 +3736,14 @@ def practice_checks(out_dir):
         # J3: the decision log's line, after the timed exercises and before any optional one
         want = LOG_LABEL.get(m["id"], "For your decision log")
         paras = [p_.strip() for p_ in do.split("\n\n") if p_.strip()]
-        labels = [p_ for p_ in paras if re.match(r"\*\*(Start a decision log|For your decision log|Review your decision log)\.\*\*", p_)]
-        if len(labels) != 1 or not labels[0].startswith(f"**{want}.**"):
+        labels = [p_ for p_ in paras if re.match(LOG_RE, p_)]
+        timed_log = bool(labels) and bool(re.match(r"\*\*[^*]*\(\d+ minutes\)\.\*\*", labels[0]))
+        if len(labels) != 1 or not re.match(re.escape(f"**{want}") + r"( \(\d+ minutes\))?\.\*\*", labels[0]):
             fail("J3", f"{where}: its Do should hold one line for the decision log, opening \"{want}.\" in bold")
+        elif timed_log != (m["id"] in LOG_TIMED):
+            fail("J3", f"{where}: " + (f"its log review should show its minutes, \"{want} (10 minutes).\", since reading back a module's worth of calls takes real time" if m["id"] in LOG_TIMED else "its decision log line is a sentence or two and shows no time; only Notice When You Are Wrong's review does"))
+        elif m["id"] in LOG_TIMED and not re.search(r"Outside the \d+ minutes, show it to your manager or a mentor", labels[0]):
+            fail("J3", f"{where}: its log review should end, outside its minutes, by showing the log to a manager or a mentor")
         else:
             i_log = paras.index(labels[0])
             i_opt = next((i for i, p_ in enumerate(paras) if p_.startswith("**Optional")), len(paras))
@@ -3744,6 +3756,8 @@ def practice_checks(out_dir):
         # J5: the module's game
         if d.get("game"):
             carried[d["game"]] = m["id"]
+    if wins_count < 3:
+        fail("J2", f"{wins_count} collisions carry wins:, and at least three should give one case and say which side wins in it")
     for g, mid in GAMES.items():
         where = f"the {g} game"
         if carried.get(g) != mid:
@@ -3824,7 +3838,7 @@ def example_checks(out_dir):
         do = re.split(r"\n## ", rest.split("## Do", 1)[1])[0] if "## Do" in rest else ""
         paras = [p_.strip() for p_ in do.split("\n\n") if p_.strip()]
         i_ex = next((i for i, p_ in enumerate(paras) if re.fullmatch(r"\{\{<\s*pm/example\s*>\}\}", p_)), None)
-        i_log = next((i for i, p_ in enumerate(paras) if re.match(r"\*\*(Start a decision log|For your decision log|Review your decision log)\.\*\*", p_)), None)
+        i_log = next((i for i, p_ in enumerate(paras) if re.match(LOG_RE, p_)), None)
         i_opt = next((i for i, p_ in enumerate(paras) if p_.startswith("**Optional")), len(paras))
         if i_log is None and m["num"] < first_log:
             i_log = 0  # Own Your Role's Do comes before the log starts (J3): the example follows its main exercise

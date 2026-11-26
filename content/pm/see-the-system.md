@@ -22,7 +22,7 @@ steps:
   - id: meadows-1
     kind: read
     title: Donella Meadows, "Leverage Points," first half
-    minutes: 25
+    minutes: 30
     where: An essay. Free at donellameadows.org. Stop at the section headed "6. The structure of information flows," which opens with a story about an electricity meter.
     links:
       - text: "Leverage Points: Places to Intervene in a System"
@@ -41,8 +41,8 @@ steps:
   - id: cook
     kind: read
     title: Richard Cook, "How Complex Systems Fail"
-    minutes: 10
-    where: A short paper of key points. Free at how.complexsystems.fail.
+    minutes: 5
+    where: A short paper of key points. Free at how.complexsystems.fail. Read points 3, 7 and 8.
     links:
       - text: "How Complex Systems Fail"
         url: https://how.complexsystems.fail/
@@ -122,7 +122,7 @@ deeper:
 
 ## Why this matters
 
-When something keeps going wrong, the first move is usually to find who caused it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues that a failure in a complex system never has just one cause.
+When something keeps going wrong, the first move is usually to find who did it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues a failure in a complex system never has just one cause.
 
 Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around a ride-hailing app's support queue, and the riders who gave up before they ever filed a ticket fall outside it: the ones [Know Who It's For](/pm/know-who-its-for/) said you most need to hear. In her essay "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
 
@@ -130,10 +130,10 @@ Where you draw the system's edge matters too, because it decides whose costs you
 
 ## Do
 
-**Draw one stock (20 minutes).** Pick one thing that piles up in your team's work. On a ride-hailing app it might be drivers waiting for their background checks, lost-item reports or disputed fares. Draw it as a bathtub, with what flows in and what flows out. Three months of counts from your ticket tool will do, and estimates are fine if that's all you have. Note who sees the level, and how late they see it. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve, near the top of her essay. Was it aimed at a number, or at something higher up?
+**Draw one stock (20 minutes).** Pick one thing that piles up in your team's work. On a ride-hailing app it might be lost-item reports or disputed fares. Draw it as a bathtub, or note the level and what flows in and out. Three months of counts will do, or estimates if that's all you have. Note who sees the level, and how late they see it. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve. Was it aimed at a number, or at something higher up?
 
 **Reread one failure (10 minutes).** Take a missed date or a failed release on your team that got pinned on one cause. List three other things that had to be true for it to happen.
 
-**For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, and how sure you are. Add the date you'll look again.
+**For your decision log.** Write the change you'd make to the stock you drew, aimed above a number if you can, what you expect its level to do, and how sure you are. Add the date you'll look again.
 
 {{< pm/example >}}

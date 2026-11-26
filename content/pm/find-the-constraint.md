@@ -9,8 +9,8 @@ game: dice
 do_minutes: 35
 
 last_time:
-  - q: In Meadows's list of places to intervene in a system, which has more leverage, changing a number such as a price, or changing the goal?
-    a: The goal. Meadows ranks numbers lowest of her twelve, because they rarely change how a system behaves. The goal sits third from the top.
+  - q: Drivers run short every Friday night, and each week the ride-hailing app raises the surge price a little more. What change would last longer?
+    a: One aimed higher than a number, such as a goal, a rule, or who sees the feedback. Meadows ranks numbers lowest of her twelve, because they rarely change how a system behaves.
   - q: Richard Cook says a major failure never has one root cause. Why not?
     a: It takes several small faults lining up, each of which looked harmless alone. Naming one cause says more about the need to blame than about how the failure happened.
 
@@ -24,7 +24,7 @@ steps:
   - id: forte
     kind: read
     title: Tiago Forte, "Theory of Constraints 101"
-    minutes: 15
+    minutes: 20
     where: Three short posts. Free at fortelabs.com.
     links:
       - text: "101: Applying the Principles of Flow to Knowledge Work"
@@ -81,7 +81,7 @@ check:
   - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Which is it?
     against: see-the-system
     a: Each answers its own question. When something has gone wrong, look for the several causes that lined up. When work is slow, look for the one step that sets its pace, and once you've helped it, look at the whole flow again, since the constraint moves.
-  - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations from this module.
+  - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is [Goodhart's Law](/pm/cards/goodharts-law/).
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
     a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. [Mind the Seams](/pm/mind-the-seams/) looks at what falls between teams."
@@ -122,10 +122,10 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 
 ## Do
 
-**Map one flow (25 minutes).** Pick one kind of change your team ships again and again. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Outside the 25 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
+**Map one flow (25 minutes).** Pick a kind of change your team ships often. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from the first ask to live for everyone, and who does each one. For your last five such changes, estimate the calendar days spent waiting and being worked on at each step, on average. Ticket dates will do, and memory for a first pass. Mark the step with the longest wait as your candidate constraint. Outside the 25 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
 
 **For your decision log.** Name your candidate constraint and what you expect delivery to do if it gets help. Say how sure you are, and when you'll find out.
 
 {{< pm/example >}}
 
-**Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed up the whole flow or only that step.
+**Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed the whole flow or only that step.

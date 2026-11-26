@@ -29,12 +29,12 @@ steps:
     kind: card
     card: cards/trust-equation
     minutes: 5
-    look: Why self-orientation sits under the other three.
+    look: What self-orientation does to the other three.
   - id: larson
     kind: read
     title: 'Will Larson, "Staying aligned with authority"'
     minutes: 5
-    where: A guide. Free at staffeng.com.
+    where: A guide. Free at staffeng.com. Read the section "Serving at the pleasure of the President."
     links:
       - text: "Staying aligned with authority"
         url: https://staffeng.com/guides/staying-aligned-with-authority/
@@ -66,7 +66,7 @@ steps:
   - id: gopen-swan
     kind: read
     title: 'George Gopen and Judith Swan, "The Science of Scientific Writing"'
-    minutes: 20
+    minutes: 25
     where: An article. Free at human.libretexts.org, where you may need to click to open the article on the page. Read up to the end of the section "The Stress Position."
     links:
       - text: "The Science of Scientific Writing"
@@ -103,13 +103,14 @@ example:
     - The log line gives a reason for its 80 percent, which the director's reply will test.
 
 check:
-  - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation in the opening lines. When does each hold?
+  - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation in the opening lines. The director decides Friday whether two more clinics join, and has asked your view. Which holds?
     against: decide-and-set-direction
-    a: SCR is for when someone else makes the call. They need your view from the first line, so they can weigh it. Speaking last is for when the call is yours, and you need the room's views more than its agreement.
+    wins: bring-people-with-you
+    a: SCR. The call is the director's, so your view goes in the first line, where it can be weighed. Speaking last is for a call that's yours.
   - q: Your update lists only wins. Which parts of the trust equation does it work against?
     a: Two. Self-orientation goes up, because it reads as being about you, and credibility goes down, because nobody believes nothing's wrong.
-  - q: Your update opens with two paragraphs of background and asks for a decision in its last line. What would SCR change?
-    a: It puts the ask in the opening, as the resolution, after one line the reader already accepts and one on what changed.
+  - q: Your update opens with two paragraphs of background and asks for a decision in its last line. Your director reads three lines. What do you move?
+    a: The ask, to the opening, as the resolution, after one line the reader already accepts and one on what changed. That's SCR.
   - q: Your tech lead wanted the new booking screen to wait for a rewrite, and the call went the other way. What do you owe them, so they can disagree and commit?
     a: A real hearing before the call, their concern written into the decision record, and a date when you'll look again. Then committing isn't the same as giving up.
   - q: "**Beyond this module.** Whose trust will you need in a year that you haven't started to earn?"
@@ -156,13 +157,13 @@ The rest goes out on a regular cadence. {{< pm/voice "cadence" >}}
 
 Credibility isn't handed out evenly, though. In a [2014 report on women in science](https://worklifelaw.org/publication/double-jeopardy-gender-bias-against-women-of-color-in-science/), about two thirds said they'd had to prove their competence again and again, and Black women said so most often. It's a survey of one association's members, not a peer-reviewed study, but it's one of the few that breaks the pattern down by race. If you're the one asked to prove it again, the fault isn't in your work, and fixing it isn't yours alone. Meanwhile, this module's habits work harder for you: updates on the promised day, and a decision log anyone can check against what happened. Ask a sponsor, someone senior who backs your work, to say what they've seen you do in rooms you aren't in, and if you don't have one yet, ask your manager who could be. And when the update is someone else's, notice whose you take on trust and whose you check: it's [Weigh the Evidence](/pm/weigh-the-evidence/)'s question, asked of the people who bring the evidence.
 
-Bringing people along is harder when they don't agree, and the people you most need are often peers with no reason to follow you: a tech lead, a designer, another team's PM. Disagreeing about the work isn't the danger. Pooling more than a hundred studies, Frank de Wit, Lindred Greer and Karen Jehn found that conflict about the task didn't clearly hurt how teams did, while conflict about each other, or about who does what, did ([2012](https://doi.org/10.1037/a0024844)). When a view makes no sense to you, get curious about why someone holds it, as Gary Klein advises. [Decide and Set Direction](/pm/decide-and-set-direction/)'s named decider settles who makes the call, not whether people come with it. Among peers, ask whether anyone can't live with a choice. That isn't a veto: every objection gets an answer, and the decider still decides. When the call goes against you, say so once, plainly, then commit. Jeff Bezos calls it "disagree and commit," and expects a boss to do it too. The one exception to committing is a line you drew in [Answer for What You Build](/pm/answer-for-what-you-build/): hold it, and take it outside the room if you have to.
+Bringing people along is harder when they don't agree, and the people you most need are often peers with no reason to follow you: a tech lead, a designer, another team's PM. Disagreeing about the work isn't the danger. Pooling more than a hundred studies, Frank de Wit, Lindred Greer and Karen Jehn found that conflict about the task didn't clearly hurt how teams did, while conflict about each other, or about who does what, did ([2012](https://doi.org/10.1037/a0024844)). [Decide and Set Direction](/pm/decide-and-set-direction/)'s named decider settles who makes the call, not whether people come with it. Among peers, ask whether anyone can't live with a choice. That isn't a veto: every objection gets an answer, and the decider still decides. When the call goes against you, say so once, plainly, then commit. Jeff Bezos calls it "disagree and commit," and expects a boss to do it too. The one exception to committing is a line you drew in [Answer for What You Build](/pm/answer-for-what-you-build/): hold it, and take it outside the room if you have to.
 
 [//]: # (short-path)
 
 ## Do
 
-**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Once the retry is fixed, let's start the pilot on Thursday." Keep the update to a few lines, include one item that isn't on track, and end that item's line on what you need, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
+**Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day, a trigger or both, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader, often your sponsor (15 minutes). Open the update with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Once the retry is fixed, let's start the pilot on Thursday." Keep the update to five or six lines, include one item that isn't on track, and end that item's line on your ask, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
 
 **For your decision log.** Write how you expect your senior reader to take the item that isn't on track, and how sure you are. You'll know by their reply.
 

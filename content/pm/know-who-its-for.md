@@ -12,13 +12,13 @@ last_time:
   - q: Who does your "in order to" leave out?
     a: Someone your work touches but the sentence never names, like the musicians whose songs a streaming app plays. Read the sentence as them, and ask whether they'd want you to get there.
   - q: What does Rule Zero say about the job you were handed?
-    a: That a rule can bend where following it would cost the table what it came for. So take the job as described first, and once you see the system around you, grow it toward value nobody assigned.
+    a: That a rule can bend where following it would cost the table what it came for. So do the job as described first, then grow it toward value nobody assigned.
 
 steps:
   - id: torres
     kind: read
     title: Teresa Torres, "Why You Are Asking the Wrong Customer Interview Questions"
-    minutes: 10
+    minutes: 15
     where: A blog post. Free at producttalk.org.
     links:
       - text: "Why You Are Asking the Wrong Customer Interview Questions"
@@ -45,7 +45,7 @@ steps:
   - id: waiting
     kind: play
     title: Play the waiting game
-    minutes: 10
+    minutes: 15
     where: It's on this page, just below this list.
     look: Which estimate is worth testing while the team builds, and when each pick falls due.
   - id: do
@@ -137,17 +137,17 @@ An order has a third person in it, too: the shopper who picks it and brings it t
 
 AI makes some kinds of building cheap, which puts more of the job in knowing what's worth building. Google's [People + AI Guidebook](https://pair.withgoogle.com/chapter/user-needs/) asks first whether AI is the right tool at all: "Often a rule or heuristic-based solution will work just as well, if not better, than an AI version." Deciding where a model's judgment helps, and where a plain rule should stay in charge, is a product decision.
 
-Value alone doesn't order the work, because waiting costs money too. What a fix is worth to each person, times how many hit the problem in a week, is roughly what a week without it costs: its {{< pm/term "cost-of-delay" "cost of delay" >}}. Once you price it, the urgent and the merely valuable stop looking alike.
+Value alone doesn't order the work, because waiting costs money too. What a fix is worth to each person, times how many hit the problem in a week, is roughly what a week without it costs: its {{< pm/term "cost-of-delay" "cost of delay" >}}.
 
 [//]: # (short-path)
 
 ## Do
 
-**Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three support tickets, sales notes or session recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Tickets seldom say what it cost, so write your best guess and mark it as one. Then put a rough price on a week of waiting: how often the problem comes up in a week, times what it costs each time. On a platform team, trace one request to the experience it shows up in, and name the person at the end. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in a support queue or a forum of their own.
+**Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three tickets, sales notes or recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Where they don't say, guess, and mark it as a guess. Then put a rough price on a week of waiting: how often it comes up in a week, counting those who never write in, times what it typically costs, with time at an hourly rate you name. On a platform team, trace one request to the experience it shows up in, and name the person at the end by their role. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in their own support queue or forum.
 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 
-**Start a decision log.** Write down the call you'd make on this problem now, what you expect to happen, how sure you are as a percentage, and when you'll know. Keep the page: each module from here adds a line.
+**Start a decision log.** Write down the call you'd make on this problem now, such as what to test first, what you expect to happen, how sure you are as a percentage and why not surer, and when you'll know. Keep the page: each module from here adds an entry of a few sentences.
 
 {{< pm/example >}}
 

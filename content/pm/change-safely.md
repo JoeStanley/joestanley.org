@@ -18,7 +18,7 @@ steps:
     kind: read
     title: 'Google SRE book, "Embracing Risk"'
     minutes: 10
-    where: A chapter. Free at sre.google. Read "Managing Risk"; then, under "Identifying the Risk Tolerance of Consumer Services," "Target level of availability" and "Types of failures"; then "Motivation for Error Budgets."
+    where: A chapter. Free at sre.google. Read "Managing Risk," then "Motivation for Error Budgets."
     links:
       - text: "Embracing Risk"
         url: https://sre.google/sre-book/embracing-risk/
@@ -28,7 +28,7 @@ steps:
   - id: hodgson
     kind: read
     title: 'Pete Hodgson, "Feature Toggles (aka Feature Flags)"'
-    minutes: 10
+    minutes: 15
     where: An article from 2016. Free at martinfowler.com. Read "A Toggling Tale," then, under "Categories of toggles," "Release Toggles," "Experiment Toggles" and "Ops Toggles."
     links:
       - text: "Feature Toggles (aka Feature Flags)"
@@ -55,7 +55,7 @@ steps:
   - id: pair
     kind: read
     title: 'People + AI Research, "Errors + Graceful Failure"'
-    minutes: 10
+    minutes: 15
     where: A chapter of Google's People + AI Guidebook. Free at pair.withgoogle.com. Read from "What's new when working with AI" through "Weigh situational stakes & error risk," then "Provide paths forward from failure."
     links:
       - text: "Errors + Graceful Failure"
@@ -98,9 +98,10 @@ example:
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
-  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of which fan has which seat?
+  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Your team wants to move the seat record to a new format in small daily steps, behind a toggle. Which wins?
     against: design-for-change
-    a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and its contracts slowly, since every sale depends on them, and a toggle can't undo a seat sold twice.
+    wins: design-for-change
+    a: Design for Change. A toggle can't undo a seat sold twice, and every sale depends on that record. Move it slowly, old and new side by side until they agree, and keep small, frequent steps for the code around it.
   - q: On your ticketing app, a new seat map raises orders per visit in a test. Why might you still stop the test?
     a: A guardrail metric got worse, such as refunds, complaints about seats or page load time, overall or for one group of customers.
   - q: "**Beyond this module.** Most of this module guards against honest mistakes. What about someone breaking your product on purpose?"
@@ -137,29 +138,29 @@ deeper:
 
 ## Why this matters
 
-When a failure would be expensive, as on a ticketing app the morning a big tour goes on sale, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve their changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't trade-offs. Its top performers do well on both.
+When a failure would be expensive, as on a ticketing app the morning a big tour goes on sale, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't a trade-off: its top performers do well on both.
 
-Richard Cook, from [See the System](/pm/see-the-system/), gives part of the reason: "Change introduces new forms of failure." Take that one step further, and a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can work out ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
+Richard Cook, from [See the System](/pm/see-the-system/), gives part of the reason: "Change introduces new forms of failure." So a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can tell ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
 Before you change anything, know how good the service has to be, in words engineers can test: "When 50,000 fans try to buy in the first minute of an on-sale, checkout confirms 99 in 100 orders within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 
-That's harder to say when the output varies, as a model's does. So decide what the model judges and what stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can review the orders it holds back. The model sees patterns nobody could write down, and the rule keeps what happens to a fan predictable and easy to explain. Keep checking after launch, too: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
+That's harder to say when the output varies, as a model's does. So decide what the model judges and what stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can review the orders it holds back. The model sees patterns nobody could write down, and the rule keeps a fan's outcome predictable and easy to explain. Keep checking after launch: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
 
 [//]: # (short-path)
 
 ## Do
 
-**Plan one rollout (20 minutes).** Pick a change that's coming up on your product, such as a new way to pay at checkout. Write a one-page plan that answers five things.
+**Plan one rollout (20 minutes).** Pick a change coming up on your product, such as fans reselling tickets to each other. Write a one-page plan that answers five things.
 
 1. The cohort: who gets it first, and how many.
-2. The goal measure you hope it raises.
-3. The {{< pm/term "guardrail-metric" "guardrail metrics" >}}, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop. Break each down for the customers the change could hurt most, such as people on older phones or using a screen reader: a guardrail can hold on average while it fails them.
+2. The goal measure you hope it moves.
+3. The {{< pm/term "guardrail-metric" "guardrail metrics" >}}, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop, or a hard line, where one case stops it. Break each down for the customers the change could hurt most, such as people on older phones or using a screen reader: a guardrail can hold on average while it fails them.
 4. Who can switch it off with a {{< pm/term "feature-toggle" "feature toggle" >}}, and how fast.
-5. The error budget it might spend.
+5. The error budget it might spend. No target yet? Ask who sets one.
 
-Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
+Outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
 
-**For your decision log.** Write whether you expect the rollout to reach everyone without being switched off, and how sure you are. You'll know when the last group has it.
+**For your decision log.** Write whether you expect the rollout to reach all your users, never switched off, and how sure you are. You'll know when the last group has it.
 
 {{< pm/example >}}
 

@@ -33,7 +33,7 @@ steps:
   - id: dehghani
     kind: read
     title: 'Zhamak Dehghani, "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh"'
-    minutes: 10
+    minutes: 15
     where: An article from 2019. Read its parts "Domain data as a product" and "Domain data cross-functional teams." Free at martinfowler.com.
     links:
       - text: "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh"
@@ -49,7 +49,7 @@ steps:
   - id: leach
     kind: read
     title: 'Brandur Leach, "APIs as infrastructure: future-proofing Stripe with versioning"'
-    minutes: 10
+    minutes: 15
     where: A blog post from 2017. Free at stripe.com. You can skip the code.
     links:
       - text: "APIs as infrastructure: future-proofing Stripe with versioning"
