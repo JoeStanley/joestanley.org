@@ -1,0 +1,20 @@
+{{- /* What a good one looks like (spec J7): one finished example of the Do's main exercise, folded shut under one
+       line that opens in place, as "Why this source" does, and left out of print. Its words are the module's front
+       matter, example: {body, good}, where body is the example in Markdown and good is three lines on what makes
+       it good. Placed with {{< pm/example >}} on a line of its own, after the Do's decision log line. */ -}}
+{{- $p := .Page -}}
+{{- $e := $p.Params.example -}}
+{{- if not $e }}{{ errorf "pm/example: %s places an example and has no example: in its front matter" $p.File.Path }}{{ end -}}
+<details class="example screen-only">
+<summary>What a good one looks like</summary>
+<div class="example-body">
+{{ $p.RenderString (dict "display" "block") $e.body }}
+<p class="example-good-label"><strong>What makes it good:</strong></p>
+<ul class="example-good">
+{{- range $e.good }}
+<li>{{ . | $p.RenderString }}</li>
+{{- end }}
+</ul>
+</div>
+</details>
+{{- /**/ -}}

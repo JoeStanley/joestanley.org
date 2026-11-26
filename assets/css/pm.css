@@ -40,13 +40,18 @@
    only it gives you, in small type. The margin is kept for the owner's notes. */
 .source-note { margin: var(--sp-1) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
 /* Why this source: a source's reasons, folded until asked for (spec S4). The same move as "Show answer";
-   the drawn chevron turns to say open or closed, and is not read aloud. */
-.why > summary { display: block; width: fit-content; padding: var(--sp-1) 0; cursor: pointer; list-style: none; font-weight: var(--w-strong); color: var(--ink); text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
-.recall summary:hover::after, .why > summary:hover, .deeper > details > summary:hover::after { text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
-.why > summary::-webkit-details-marker { display: none; }
-.why > summary::after { content: ""; display: inline-block; width: 0.4em; height: 0.4em; margin-left: 0.5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.2em) rotate(45deg); }
-.why[open] > summary::after { transform: translateY(0.05em) rotate(-135deg); }
-.why .notes { margin-top: var(--sp-1); padding-left: var(--sp-3); border-left: 2px solid var(--rule); }
+   the drawn chevron turns to say open or closed, and is not read aloud. What a good one looks like (spec J7) folds
+   the same way, its line in the control type, since it sits in the Do's reading text rather than a source's note. */
+.why > summary, .example > summary { display: block; width: fit-content; padding: var(--sp-1) 0; cursor: pointer; list-style: none; font-weight: var(--w-strong); color: var(--ink); text-decoration: underline; text-decoration-color: var(--link-line); text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+.recall summary:hover::after, .why > summary:hover, .example > summary:hover, .deeper > details > summary:hover::after { text-decoration-color: var(--orange); text-decoration-thickness: 2px; }
+.why > summary::-webkit-details-marker, .example > summary::-webkit-details-marker { display: none; }
+.why > summary::after, .example > summary::after { content: ""; display: inline-block; width: 0.4em; height: 0.4em; margin-left: 0.5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.2em) rotate(45deg); }
+.why[open] > summary::after, .example[open] > summary::after { transform: translateY(0.05em) rotate(-135deg); }
+.why .notes, .example-body { margin-top: var(--sp-1); padding-left: var(--sp-3); border-left: 2px solid var(--rule); }
+.example { margin: 0 0 var(--sp-4); }
+.example > summary { font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
+.example-body > :last-child { margin-bottom: 0; }
+.example-body > .example-good-label { margin-bottom: 0; }
 @supports selector(:has(a)) { .source-note:not(:has(dl)) { display: none; } }
 .meta-line { margin: var(--sp-1) 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
 
@@ -321,10 +326,11 @@
 .ci-list h3 { margin: 0; }
 .ci-question { margin: var(--sp-1) 0 0; color: var(--muted); }
 
-/* A thumb's target on a phone (spec G7): a card's way to its module, and each "Why this source". */
+/* A thumb's target on a phone (spec G7): a card's way to its module, each "Why this source" and each "What a good
+   one looks like". */
 @media (max-width: 45.99rem) {
   .card .kicker a, .unit-foot .uf-step a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-  .why > summary { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }
+  .why > summary, .example > summary { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }
 }
 
 /* Single-document preview: one unit at a time. */

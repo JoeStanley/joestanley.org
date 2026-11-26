@@ -320,4 +320,11 @@ run_bg "Go deeper lands on the full path shut" G7 "sed -i '/all(\"\[data-open-de
 run_bg "a phone's Why this source under 44 pixels" G7 "sed -i '/^  .why > summary { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }$/d' assets/css/pm.css"
 run_bg "a card's way to its module under 44 pixels on a phone" G7 "sed -i '/^  .card .kicker a { display: inline-flex;/d' assets/css/pm.css"
 run_bg "Start silent on what Done means" G7 "sed -i 's/ Tick each step of a short path as you finish it: a module reads Done once every step is ticked. The Do and the Check are yours to judge, since no tick can say how well you did them.//' content/pm/_index.md"
+# What a good one looks like (J7): its form, its place, its length and the screen alone; its phone target (G7) and its tab (X2)
+run_bg "an example with four lines on what makes it good" J7 "sed -i 's/^    - The call could turn out wrong, and the entry says how sure you are and when you.ll know\.$/&\n    - One more line./' content/pm/know-who-its-for.md"
+run_bg "an example that prints" J7 "sed -i 's/<details class=\"example screen-only\">/<details class=\"example\">/' layouts/shortcodes/pm/example.html"
+run_bg "an example above the decision log line" J7 "sed -i '/^{{< pm\/example >}}$/d; s/^\*\*Start a decision log\.\*\*/{{< pm\/example >}}\n\n&/' content/pm/know-who-its-for.md"
+run_bg "an example run long" J7 "sed -i 's/Know a month after launch\.$/Know a month after launch, and look again then at what the tickets and the shoppers say, so the next call starts from what happened rather than from what was hoped./' content/pm/know-who-its-for.md"
+run_bg "a phone's What a good one looks like under 44 pixels" G7 "sed -i 's/^  .why > summary, .example > summary { display: flex;/  .why > summary { display: flex;/' assets/css/pm.css"
+run_bg "an example left out of its module's tab" X2 "sed -i 's/or \"walk-toggle\" in cls:/or \"walk-toggle\" in cls or \"example\" in cls:/' tools-pm/source-doc.py"
 wait

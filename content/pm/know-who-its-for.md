@@ -48,6 +48,22 @@ steps:
     minutes: 10
     where: It's on this page, just below this list.
     look: Which estimate is worth testing while the team builds, and when each pick falls due.
+example:
+  body: |
+    **The problem:** unwanted swaps.
+
+    - **Tuesday evening.** Oat milk swapped for dairy. She poured it out and bought her own: $5, and 20 minutes by her account.
+    - **Thursday.** Gluten-free bread swapped for regular. He can't eat gluten, so he took a refund and drove to the store: 45 minutes, a guess.
+    - **Saturday.** A cheaper brand of diapers. She kept them, and now watches each swap as it's picked: a guessed 10 minutes an order.
+
+    **A week of waiting:** support tags about 400 a week, at a guessed $5 each, time included. Roughly $2,000, before anyone who quietly leaves.
+
+    **Decision log:** this quarter, ask before every swap. Expect unwanted-swap tickets to halve. 60 percent sure. Know a month after launch.
+  good:
+    - "Each line is one real time, with its day: what the person did, and what it cost them."
+    - "Costs are in dollars or minutes, guesses say so, and the week's price is rough on purpose: close enough to set beside another problem's."
+    - The call could turn out wrong, and the entry says how sure you are and when you'll know.
+
 check:
   - q: A user says they'd pay $10 a month for a feature. What do you ask next, and why?
     a: "What they pay now, in money or time, for the workaround. As Teresa Torres puts it, \"What did you pay for that service?\" tells you more than any price for a service that doesn't exist yet."
@@ -117,6 +133,8 @@ Value alone doesn't order the work, because waiting costs money too. What a fix 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 
 **Start a decision log.** Write down the call you'd make on this problem now, what you expect to happen, how sure you are as a percentage, and when you'll know. Keep the page: each module from here adds a line.
+
+{{< pm/example >}}
 
 ## Questions to bring to designers and researchers
 

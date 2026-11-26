@@ -1089,6 +1089,12 @@ def doors_browser_checks(out_dir):
             hs = pg.evaluate("() => [...document.querySelectorAll('nav.on-page a, .game-back a, details.why > summary')].filter(e => e.getClientRects().length).map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
             pg.goto(srv.base + MODULES[3][1][0]); pg.wait_for_load_state("load")
             hs += pg.evaluate("() => [...document.querySelectorAll('.kicker a, .unit-foot a')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
+            # each "What a good one looks like" (J7), on every module that has one
+            for m_, _ in MODULES:
+                built = os.path.join(out_dir, m_.strip("/"), "index.html")
+                if os.path.exists(built) and 'class="example' in open(built, encoding="utf-8").read():
+                    pg.goto(srv.base + m_); pg.wait_for_load_state("load")
+                    hs += pg.evaluate("() => [...document.querySelectorAll('details.example > summary')].map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
             short = [x for x in hs if x[1] < 43.5]
             if short or len(hs) < 8:
                 fail("G7", f"at 390px, targets under 44 pixels tall: {short[:4]}")
@@ -3293,6 +3299,81 @@ def practice_checks(out_dir):
         fail("J5", line[:200])
 
 
+EXAMPLE_LINE = "What a good one looks like"
+EXAMPLE_GOOD = "What makes it good:"
+EXAMPLE_WORDS = 120   # "under about 120 words" (the owner, 25 November 2026)
+
+
+def example_checks(out_dir):
+    """J7: a module's Do shows one finished example of its main exercise, folded shut under "What a good one looks
+    like", after the main exercise and its decision log line and before any optional exercise; under about 120
+    words, then "What makes it good:" and three lines of one sentence each; left out of print, and in the single
+    document as in the module. Until the owner has seen the first, a built module with none is noted, not failed."""
+    from bs4 import BeautifulSoup
+    checked("J7")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    count = lambda t: len(re.findall(r"[A-Za-z0-9$][A-Za-z0-9$,'’-]*", t))
+    whole = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
+    without = []
+    for m in mods:
+        if not m.get("page"):
+            continue
+        where = f"Module {m['num']}, {m['title']}"
+        _, fm, body = open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)
+        ex = (yaml.safe_load(fm) or {}).get("example")
+        placed = len(re.findall(r"\{\{<\s*pm/example\s*>\}\}", body))
+        if not ex and not placed:
+            without.append(m["title"]); continue
+        if not ex or placed != 1:
+            fail("J7", f"{where}: an example: in the front matter and one {{{{< pm/example >}}}} in the Do go together, and it has {'no example:' if not ex else f'{placed} placed'}")
+            continue
+        text = str(ex.get("body") or "") if isinstance(ex, dict) else ""
+        good = ex.get("good") if isinstance(ex, dict) else None
+        if not text.strip():
+            fail("J7", f"{where}: its example has no body"); continue
+        n = count(re.sub(r"[*_#>`]", " ", re.sub(r"(?m)^\s*[-*] ", " ", text)))
+        if n > EXAMPLE_WORDS:
+            fail("J7", f"{where}: its example runs {n} words, and keeps under about {EXAMPLE_WORDS}")
+        if not isinstance(good, list) or len(good) != 3 or not all(isinstance(g, str) and g.strip() for g in good):
+            fail("J7", f"{where}: what makes its example good is three lines, and it has {len(good) if isinstance(good, list) else 'none'}")
+        else:
+            for g in good:
+                if len(re.findall(r"[.!?](?=\s+[A-Z\u201c\"])", g.strip())) or not g.strip().endswith("."):
+                    fail("J7", f"{where}: each line on what makes its example good is one sentence: \"{g.strip()[:50]}\"")
+        # where it sits in the Do: after the main exercise and its decision log line, before any optional exercise
+        rest = body.split("[//]: # (short-path)")[-1]
+        do = re.split(r"\n## ", rest.split("## Do", 1)[1])[0] if "## Do" in rest else ""
+        paras = [p_.strip() for p_ in do.split("\n\n") if p_.strip()]
+        i_ex = next((i for i, p_ in enumerate(paras) if re.fullmatch(r"\{\{<\s*pm/example\s*>\}\}", p_)), None)
+        i_log = next((i for i, p_ in enumerate(paras) if re.match(r"\*\*(Start a decision log|For your decision log|Review your decision log)\.\*\*", p_)), None)
+        i_opt = next((i for i, p_ in enumerate(paras) if p_.startswith("**Optional")), len(paras))
+        if i_ex is None or i_log is None or not i_log < i_ex < i_opt or i_ex != i_log + 1:
+            fail("J7", f"{where}: its example sits right after the Do's decision log line, on a line of its own, and before any optional exercise")
+        # on the built page and in the single document
+        page = BeautifulSoup(open(os.path.join(out_dir, "pm", m["page"], "index.html"), encoding="utf-8").read(), "html.parser")
+        art = whole.select_one(f'article[data-unit="{m["page"]}"]')
+        for doc_, what in ((page, "its page"), (art, "the single document")):
+            dets = doc_.select("details.example") if doc_ else []
+            if len(dets) != 1:
+                fail("J7", f"{where}: {what} shows {len(dets)} examples, and should show one"); continue
+            d_ = dets[0]
+            summ = d_.find("summary", recursive=False)
+            if not d_.find_parent("section", class_="do"):
+                fail("J7", f"{where}: on {what}, its example isn't in the Do")
+            if not summ or clean_text(summ.get_text()) != EXAMPLE_LINE:
+                fail("J7", f"{where}: on {what}, its example opens under \"{clean_text(summ.get_text()) if summ else ''}\", not \"{EXAMPLE_LINE}\"")
+            if d_.has_attr("open"):
+                fail("J7", f"{where}: on {what}, its example isn't folded shut")
+            if "screen-only" not in (d_.get("class") or []):
+                fail("J7", f"{where}: on {what}, its example prints, and is for the screen alone")
+            lab = d_.select_one(".example-body > .example-good-label")
+            items = d_.select(".example-body > ul.example-good > li")
+            if not lab or clean_text(lab.get_text()) != EXAMPLE_GOOD or len(items) != 3 or lab.find_next_sibling() is not items[0].parent:
+                fail("J7", f"{where}: on {what}, its example doesn't end \"{EXAMPLE_GOOD}\" in bold and three lines")
+    if without:
+        NOTE["J7"].append(f"{len(without)} built module{'s' if len(without) != 1 else ''} without an example yet, until the owner has seen the first: {', '.join(without)}")
+
+
 EVIDENCE_TAGS = ("A study.", "A review of studies.", "Experience.", "An argument.")
 
 
@@ -4251,6 +4332,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("J1", "J2", "J3", "J4", "J5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("J7"):
+        try:
+            example_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("J7", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("X5"):
         try:
             preview_checks(out_dir)
