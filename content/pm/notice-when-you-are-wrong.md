@@ -123,8 +123,4 @@ Question the goal as well as the method. The thermostat on [See the System](/pm/
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the ladder, and rewrite it as a sentence you could have said, starting from what you saw.

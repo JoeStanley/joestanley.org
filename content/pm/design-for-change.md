@@ -142,10 +142,6 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace the parts it would touch. Outside the 10 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 
 ## Questions to bring to engineers

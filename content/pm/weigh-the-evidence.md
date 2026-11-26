@@ -140,8 +140,4 @@ Your own hunch is evidence too. Gary Klein, a psychologist who studies how exper
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: find the stories behind one number (10 minutes).** Pick a number on your dashboard that moved last month, such as the share of orders missing an item. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.

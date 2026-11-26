@@ -125,8 +125,4 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed up the whole flow or only that step.

@@ -62,10 +62,10 @@ steps:
 
 example:
   body: |
-    **Stock:** drivers waiting for a background check, about 2,400 now.
+    **Stock:** drivers waiting for a background check, 2,400 now.
 
     - **In:** about 900 a week finish their documents.
-    - **Out:** about 750 a week cleared, and 50 give up. Up 100 a week.
+    - **Out:** 750 a week cleared, and 50 give up. Up 100 a week.
 
     Three months of vendor reports; give-ups guessed.
 
@@ -73,7 +73,7 @@ example:
 
     **Last fix:** 100 more checks a week, paid for. A number, 12th of 12.
 
-    **Decision log:** a rule, 5th of 12: drivers moving cities, 150 of the 900, keep a clear check under a year old. Then 750 in, 800 out: down 50 a week, to 1,800 by March 1. 60 percent sure: some cities may require one. Look again then.
+    **Decision log:** a rule, 5th of 12: drivers moving cities, 150 of the 900, keep a clear check under a year old. Then 750 in, 800 out: down 50 a week, to 1,800 by March 1. 60 percent sure: some cities may require a new check. Look again then.
   good:
     - The flows in and out have counts and a source, so both the rise now and the fall ahead follow from the arithmetic.
     - It says who sees the level and how late, out to the riders who only feel it.
@@ -134,7 +134,3 @@ Where you draw the system's edge matters too, because it decides whose costs you
 **For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, and how sure you are. Add the date you'll look again.
 
 {{< pm/example >}}
-
-
-
-

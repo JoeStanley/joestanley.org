@@ -155,10 +155,6 @@ Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand th
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
 
 ## Questions to bring to engineers

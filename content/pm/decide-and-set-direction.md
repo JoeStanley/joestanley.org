@@ -143,8 +143,4 @@ Handing a decision out works only when the person deciding sees the situation as
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: take apart a stalled decision (10 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.

@@ -151,10 +151,6 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 
 ## Questions to bring to engineers

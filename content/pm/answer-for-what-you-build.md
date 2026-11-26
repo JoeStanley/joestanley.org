@@ -201,8 +201,4 @@ End with one change you'd propose. Outside the 25 minutes, show it to someone in
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?

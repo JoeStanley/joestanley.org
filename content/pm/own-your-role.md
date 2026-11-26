@@ -141,8 +141,4 @@ Now with all this said, a word of caution: you champion the vision, but you're n
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Then look back over last week. How much of it went to glue work, and what did that crowd out?

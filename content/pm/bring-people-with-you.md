@@ -165,8 +165,4 @@ Bringing people along is harder when they don't agree, and the people you most n
 
 {{< pm/example >}}
 
-
-
-
-
 **Optional: argue the other side (15 minutes).** Pick a call where you and a peer, such as a tech lead or a designer, disagree. Write their case well enough that they'd sign it. Then write yours as an SCR paragraph of under 100 words. Last, write what would let you commit if the call goes their way, and the date you'd look again.
