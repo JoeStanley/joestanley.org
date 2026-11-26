@@ -118,7 +118,7 @@ run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"n
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
 wait
 run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('Now with all this said', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nNow with all this said', 1))\""
-run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/design-for-change.md'; s=open(p).read(); open(p, 'w').write(s.replace('Slow isn\\'t the enemy, though.', 'A sentence that runs on to fill the page. ' * 90 + 'Slow isn\\'t the enemy, though.', 1))\""
+run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/map-the-domain.md'; s=open(p).read(); open(p, 'w').write(s.replace('The API\\'s shape follows', 'A sentence that runs on to fill the page. ' * 90 + 'The API\\'s shape follows', 1))\""
 run_bg "a module with a game that runs past even a game's allowance" P1 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); open(p, 'w').write(s.replace('Start with what people do, not what they say', 'A sentence that runs on to fill the page. ' * 120 + 'Start with what people do, not what they say', 1))\""
 wait
 
@@ -237,7 +237,8 @@ run_bg "a module's allowance in print gone before a PDF is published" P1 "sed -i
 # Steps, then on every syllabus page once the owner spread them (G1 to G5); the bar's links are controls, not running
 # text (C5)
 run_bg "the bar scrolls away with the page" G1 "sed -i 's/^.course-bar { position: sticky;/.course-bar { position: relative;/' assets/css/pm.css"
-run_bg "the bar counts the wrong number of modules" G1 "sed -i 's/%v of %d\" .num (len site.Data.pm.modules)/%v of %d\" .num 11/' layouts/partials/pm/course-bar.html"
+# The count comes from the map, so it followed Map the Domain's return from twelve to thirteen (26 November 2026).
+run_bg "the bar counts twelve modules, not the map's" G1 "sed -i 's/\$suf (len site.Data.pm.modules) }}/\$suf 12 }}/' layouts/partials/pm/course-bar.html"
 run_bg "the bar's list without its progress" G1 "sed -i 's/ data-map-short{{ end }}>/{{ end }}>/; s/<span class=\"cb-status\" data-map-status><\/span>//' layouts/partials/pm/course-bar.html"
 run_bg "a syllabus page without the bar" G1 "sed -i 's/{{- \$bar := and \$pm (not \$all) }}/{{- \$bar := and \$pm (not \$all) (ne .Layout \"glossary\") }}/' layouts/_default/baseof.html"
 run_bg "the bar on the single document" G1 "sed -i 's/{{- \$bar := and \$pm (not \$all) }}/{{- \$bar := \$pm }}/' layouts/_default/baseof.html"
