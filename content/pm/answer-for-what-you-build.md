@@ -100,7 +100,7 @@ example:
 
     **Easiest to overlook:** people with photosensitive epilepsy, shown flashing videos.
 
-    **Overlap:** teens on prepaid plans. Adults turn on data saver to stop autoplay; for teens, only a parent can.
+    **Overlap:** teens on prepaid plans. Adults use data saver to stop autoplay; teens' data saver sits in parent controls.
 
     **Focus on:** fewer taps, not watch time.
 
@@ -109,13 +109,13 @@ example:
     - Flashing videos don't autoplay. Trust and safety.
     - Off after 11 p.m. for teens. Teen team.
 
-    **To propose:** let teens turn on data saver, offered once on mobile data. Settings team.
+    **To propose:** a one-time prompt, on mobile data, letting teens turn on data saver. Settings team.
 
-    **Decision log:** the prompt. Expect a fifth less mobile data per teen, costing the app about 2 percent of teens' total watch time. 55 percent sure: many may tap no. Know by March 31.
+    **Decision log:** the prompt. Expect a fifth less mobile data per prepaid teen, costing the app 2 percent of teens' watch time. 55 percent sure: many may tap no. Know by March 31.
   good:
     - It focuses on what viewers gain, fewer taps, not the watch time the app gains.
-    - "The overlap shows where an existing fix fails: data saver protects prepaid adults, but not teens, who can't turn it on."
-    - "The log says who gains and who pays: teens save data, and the app gives up watch time."
+    - "The overlap shows where an existing fix fails: data saver protects prepaid adults, but not prepaid teens, who can't turn it on."
+    - Every harm it names gets a fix and an owner, as the Many Hands card asks.
 
 check:
   - q: A change lifts hours watched on your video app by starting the next video without asking. Has it created value?

@@ -78,17 +78,17 @@ example:
   body: |
     **Change:** bank transfer at checkout.
 
-    1. **Cohort:** 1 percent at random, no on-sales; first on-sale at 10; then 50, 100, weekly.
+    1. **Cohort:** 1 percent at random, no on-sales; first on-sale at 10 percent; then 50, 100, weekly.
     2. **Goal:** more carts checked out, from 62 percent.
-    3. **Guardrails,** overall and for buyers in social apps' browsers, where bank redirects break: failed or abandoned payments, now 8 per thousand, stop at double; money taken with no ticket, stop at one.
+    3. **Guardrails,** overall and for buyers in social apps' browsers, where bank redirects can break: failed payments, now 8 per thousand, stop at double; money taken with no ticket, stop at one.
     4. **Off switch:** payments on-call, toggle, five minutes.
-    5. **Error budget:** 99.9 percent: 43 minutes a month. A full break spends 10, five to notice, five to switch off; at 1 percent, six seconds.
+    5. **Error budget:** checkout up 99.9 percent, 43 minutes a month. A full break spends 10, five to notice, five to switch off: six seconds at 1 percent.
 
-    **Decision log:** reaches everyone, never switched off. 65 percent sure: the transfer provider's untested at on-sale load. Know by June 10.
+    **Decision log:** reaches everyone, never switched off. 65 percent sure: the provider's untested at on-sale load. Know by June 10.
   good:
-    - Every guardrail has a level to stop at, checked for the buyers this change could fail as well as on average.
+    - "Its guardrails come from how this change breaks: bank redirects in social apps' browsers, and money taken with no ticket, a hard line at one."
     - "What a break would spend shrinks with the cohort: six seconds of the 43 minutes at 1 percent."
-    - "Its doubt, on-sale load, gets a small step of its own: the first on-sale at 10 percent."
+    - "Its doubt, on-sale load, gets a step of its own: the first on-sale, at 10 percent."
 
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
