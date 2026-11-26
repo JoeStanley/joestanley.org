@@ -89,7 +89,7 @@ check:
 
 deeper_one:
   title: "The Mom Test"
-  why: "It's short, and it trains the skill this module leans on most, asking about what people did so their answers can't flatter you."
+  why: "It's short, and it trains the skill you'll use most here: asking about what people did, so their answers can't flatter you."
 deeper:
   - title: The Mom Test
     by: Rob Fitzpatrick

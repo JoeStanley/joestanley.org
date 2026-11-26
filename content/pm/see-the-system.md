@@ -92,7 +92,7 @@ check:
 
 deeper_one:
   title: "Thinking in Systems"
-  why: "Stocks, flows and loops from the scientist who taught a generation to see them, and the traps that keep a system stuck."
+  why: "It's by the author behind the Stocks, Flows and Feedback card, and it's the place to start if systems thinking is new to you."
 deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright

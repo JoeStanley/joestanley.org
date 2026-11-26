@@ -44,7 +44,7 @@ steps:
       - text: "Reporting Database"
         url: https://martinfowler.com/bliki/ReportingDatabase.html
     look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
-    trust: "Experience. It's Fowler again, from [Mind the Seams](/pm/mind-the-seams/), and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
+    trust: "Experience. Fowler, from [Mind the Seams](/pm/mind-the-seams/), has written about software design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
   - id: do
     kind: do
@@ -90,7 +90,7 @@ check:
 
 deeper_one:
   title: "A Philosophy of Software Design"
-  why: "Its line between tactical and strategic work is the case you'll make for engineering time."
+  why: "It gives you the words for why a feature that ships fast can make every later one slower."
 deeper:
   - title: Designing Data-Intensive Applications
     by: Martin Kleppmann and Chris Riccomini

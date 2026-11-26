@@ -88,7 +88,7 @@ check:
 
 deeper_one:
   title: "Accelerate: The Science of Lean Software and DevOps"
-  why: "Its two chapters are free, and they take both halves of this module's question: why judging a team by how much it finishes backfires, and what to measure instead."
+  why: "The two chapters you need are free, and they show why judging a team by how much it finishes backfires, and what to measure instead."
 deeper:
   - title: The Principles of Product Development Flow
     by: Donald Reinertsen
@@ -102,7 +102,7 @@ deeper:
     where: A book.
     note: Read chapter 1, "Accelerate," and chapter 2, "Measuring Performance." Both are free in the publisher's excerpt.
     trust: "A review of studies. It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software."
-    only: "[Goodhart's Law](/pm/cards/goodharts-law/) in practice: velocity, the work a team counts as done each sprint, gets gamed once it's used to judge the team. Then why near-full utilization, everyone busy nearly all the time, sends lead times toward infinity, and the four delivery measures the authors picked instead."
+    only: "[Goodhart's Law](/pm/cards/goodharts-law/) in practice: velocity, the work a team counts as done each sprint, gets gamed once it's used to judge the team. Then why near-full utilization, everyone busy all the time, sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel.

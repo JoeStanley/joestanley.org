@@ -96,7 +96,7 @@ check:
 
 deeper_one:
   title: "Warfighting (MCDP 1)"
-  why: "It's free, it's written to be read whole, and commander's intent, the why that outlasts the task, starts here."
+  why: "It's free, and its chapter 4 sets out commander's intent, the why that outlasts the task, as doctrine a whole service works by."
 deeper:
   - title: What Is Strategy?
     by: Michael Porter (Harvard Business Review, 1996)
@@ -132,7 +132,7 @@ A roadmap is a set of decisions, and on most teams many of them get made by defa
 
 Saying no to something your team already does has a catch. Find out first why it started and what leans on it. G. K. Chesterton made the point in 1929 with a fence across a road: don't clear it away until you can say why someone put it up.
 
-Then ask whose decision it is. A few need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide, and if that isn't your call, ask who decides. Input shapes a decision, but it isn't a veto. If the call is yours, give your view last: Daniel Kahneman warns, in [a 2010 interview with Gary Klein](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut), that a leader's opinion sways a room the way the first guess at the coins in a jar sways the next. And think of the people it lands on who'll never be in the room. Werner Ulrich, from [See the System](/pm/see-the-system/)'s full path, asks: "Who is witness to the interests of those affected but not involved?"
+Then ask whose decision it is. A few need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide, and if that isn't your call, ask who decides. Input shapes a decision, but it isn't a veto. If the call is yours, give your view last: Daniel Kahneman warns, in [a 2010 interview alongside Gary Klein](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut), that a leader's opinion sways a room the way the first guess at the coins in a jar sways the next. And think of the people it lands on who'll never be in the room. Werner Ulrich, from [See the System](/pm/see-the-system/)'s full path, asks: "Who is witness to the interests of those affected but not involved?"
 
 Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot turned strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster, but Boyd put the weight on orientation, the picture you act from. A team that shares yours can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale, without stopping to ask. It's the "in order to" of [Own Your Role](/pm/own-your-role/), given with each task. And when you're the one handed a task, ask what it's in order to.
 

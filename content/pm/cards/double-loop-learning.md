@@ -28,7 +28,7 @@ In "Double Loop Learning in Organizations" (*Harvard Business Review*, 1977), he
 
 ## How to spot it
 
-- Every retro, the team's look back at the last few weeks, ends with a process tweak, and none asks "should we be doing this at all?"
+- Every retro (the team's regular look back at its work) ends with a process tweak, and none asks "should we be doing this at all?"
 - The real reason a project is struggling gets said in the corridor afterward.
 
 ## What it does not say

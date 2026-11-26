@@ -103,7 +103,7 @@ check:
 
 deeper_one:
   title: "Team Topologies"
-  why: "You'll reach for its words whenever someone asks a team to own one more thing, and for cognitive load most of all."
+  why: "When someone asks a team to own one more thing, its words, cognitive load above all, are the ones you'll reach for."
 deeper:
   - title: Team Topologies
     by: Matthew Skelton and Manuel Pais

@@ -138,7 +138,7 @@ deeper:
     trust: "An argument. It's a peer-reviewed paper, a research model of trust to set beside the trust equation."
     only: Trustworthiness split into ability, benevolence and integrity, and trust defined as a willingness to be vulnerable to someone else's actions.
   - title: Ted Lasso
-    by: "developed by Jason Sudeikis, Bill Lawrence, Brendan Hunt and Joe Kelly (Apple TV+, 2020 to 2023), with *Succession*, created by Jesse Armstrong (HBO, 2018 to 2023)"
+    by: "developed by Jason Sudeikis, Bill Lawrence, Brendan Hunt and Joe Kelly (Apple TV, from 2020), with *Succession*, created by Jesse Armstrong (HBO, 2018 to 2023)"
     where: A pair of TV series.
     note: "Watch them side by side: *Ted Lasso*'s first season, and *Succession* through season 1, episode 6. In *Ted Lasso*, the owner who hired Ted to fail confesses it in episode 9, and he forgives her. In *Succession*'s episode 6, a son calls a board vote to oust his father, over the phone, and loses it: his father won't leave the room, and the people he counted on don't speak up."
     only: Trust earned and trust spent. Ted is predictable and plainly on everyone's side while his club keeps losing. In the Roy family every update is a maneuver, so nobody believes anyone, and the vote goes to whoever looks stronger in the room.

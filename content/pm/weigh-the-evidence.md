@@ -93,7 +93,7 @@ check:
 
 deeper_one:
   title: "The Art of Statistics"
-  why: "Reading a number well, with no equations, is the habit under every step of this module."
+  why: "It's written for readers who don't want equations, and it teaches the habit every step here leans on: reading a number well."
 deeper:
   - title: Superforecasting
     by: Philip E. Tetlock and Dan Gardner

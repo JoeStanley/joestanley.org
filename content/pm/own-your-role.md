@@ -86,7 +86,7 @@ check:
     a: What your company means by it. The same title covers very different work from one company to the next, so ask your manager and the leads you work with what they'd miss if you stopped doing it, and what they wish you'd start.
 deeper_one:
   title: "Working Backwards"
-  why: "One owner for one initiative, the role at its fullest, and a habit you can start this week: write the press release before anything is built."
+  why: "It shows the press release written before anything is built, a habit you can try this week, as Amazon runs it."
 deeper:
   - title: Product Development Performance
     by: Kim Clark and Takahiro Fujimoto

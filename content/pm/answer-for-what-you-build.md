@@ -132,7 +132,7 @@ check:
 
 deeper_one:
   title: "Automating Inequality"
-  why: "Family by family, it shows who carries a system's mistakes, the question this module asks you to keep asking."
+  why: "Family by family, it shows who pays when an automated system gets someone wrong."
 deeper:
   - title: Automating Inequality
     by: Virginia Eubanks

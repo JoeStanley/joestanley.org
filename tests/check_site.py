@@ -4164,10 +4164,10 @@ def source_checks(out_dir):
                         fail("S10", f"{name}: the story {title} doesn't say what you'll get")
                     # S10: its credit ends with who made it and when, a year or a first and last: "(HBO, 2014 to 2019)";
                     # a pair gives each of its two the same way
-                    years_ = re.findall(r"\([^()]*, (\d{4})(?: to (\d{4}))?\)", m_.group(1))
+                    years_ = re.findall(r"\([^()]*, (?:from )?(\d{4})(?: to (\d{4}))?\)", m_.group(1))
                     want_ = 2 if re.match(r"(?:A pair of|Two) ", m_.group(2)) else 1
                     screen_ = not re.match(r"(?:An? )?(?:novel|play)\b", m_.group(2), re.I)
-                    if screen_ and (len(years_) < want_ or not re.search(r"\([^()]*, \d{4}(?: to \d{4})?\)$", m_.group(1).strip())):
+                    if screen_ and (len(years_) < want_ or not re.search(r"\([^()]*, (?:from )?\d{4}(?: to \d{4})?\)$", m_.group(1).strip())):
                         fail("S10", f"{name}: the story {title}'s credit doesn't end with who made it and when, as \"(HBO, 2014 to 2019)\" or \"(Paramount, 2016)\": \"{m_.group(1)[-60:]}\"")
             if len(stories) > 1:
                 fail("S10", f"{name}: the full path carries {len(stories)} stories, and one is the most: {'; '.join(stories)}")
