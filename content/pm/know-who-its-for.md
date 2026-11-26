@@ -53,6 +53,11 @@ steps:
     title: Find the last time, and start your log
     where: The Do, on this page, below. The two conversations can come later.
     look: What people did about it, not what they say they'd want.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 example:
   body: |
     **Problem:** unwanted swaps.

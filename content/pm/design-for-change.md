@@ -46,6 +46,16 @@ steps:
     look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
     trust: "Experience. He's a software developer who's written about design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
+  - id: do
+    kind: do
+    title: List your layers, and trace one piece of data
+    where: The Do, on this page, below.
+    look: Which layers the last long request touched.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Letting a student join two classes at once looks small on screen. Why might it take a quarter?

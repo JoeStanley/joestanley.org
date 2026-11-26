@@ -295,7 +295,7 @@ run_bg "The Compass not marked as the place in the bar's list" G2 "sed -i 's/ da
 # The short path's items are its steps wherever a reader sees them, and a card's foot names its module alone (the owner,
 # 25 November 2026, on seeing "stop 3" in a card's foot, a word the site had never taught) (G5)
 run_bg "a card's foot names the stop's number again" G5 "sed -i 's|{{ \$mod.Title }}</a></p>|{{ \$mod.Title }}, stop {{ \$step }}</a></p>|' layouts/partials/pm/unit-foot.html"
-run_bg "the line above the short path says stops" G5 "sed -i 's/ steps. Tick each one off as you go./ stops. Tick each one off as you go./' assets/js/pm.js"
+run_bg "the line above the short path says stops" G5 "sed -i 's/ steps. Tap a step/ stops. Tap a step/' assets/js/pm.js"
 run_bg "Start's list says stops" G5 "sed -i 's/total + \" steps done./total + \" stops done./' assets/js/pm.js"
 # Job 40's doors and the ways around inside a module (the owner's picks of 25 November 2026, from job 36's review):
 # the concept cards' page, the pop-up's way to the glossary, where a term is used and the entry landed on (G6); a
@@ -319,7 +319,7 @@ run_bg "a card's foot too small to tap on a phone" G7 "sed -i 's/  .card .kicker
 run_bg "Go deeper lands on the full path shut" G7 "sed -i '/all(\"\[data-open-deeper\]\")/d; s/if (location.hash === \"#go-deeper\") openDeeper();//' assets/js/pm.js"
 run_bg "a phone's Why this source under 44 pixels" G7 "sed -i '/^  .why > summary { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }$/d' assets/css/pm.css"
 run_bg "a card's way to its module under 44 pixels on a phone" G7 "sed -i '/^  .card .kicker a { display: inline-flex;/d' assets/css/pm.css"
-run_bg "Start silent on what Done means" G7 "sed -i 's/ Tick each step of a short path as you finish it: a module reads Done once every step is ticked. The Do and the Check are yours to judge, since no tick can say how well you did them.//' content/pm/_index.md"
+run_bg "Start silent on what Done means" G7 "sed -i 's/ Its last two are the Do and the Check, so a module reads Done once you.ve done everything in it but the full path. How well you did them is yours to judge.//' content/pm/_index.md"
 # What a good one looks like (J7): its form, its place, its length and the screen alone; its phone target (G7) and its tab (X2)
 run_bg "an example with four lines on what makes it good" J7 "sed -i 's/^    - The call expects one thing you can count, by a date, and says why you.re only that sure\.$/&\n    - One more line./' content/pm/know-who-its-for.md"
 run_bg "an example that prints" J7 "sed -i 's/<details class=\"example screen-only\"/<details class=\"example\"/' layouts/shortcodes/pm/example.html"
@@ -331,6 +331,23 @@ run_bg "an example left out of its module's tab" X2 "sed -i 's/or \"walk-toggle\
 run_bg "an example that opens before the Do is ticked" J7 "sed -i 's/function show() { gate.hidden = box.checked; body.hidden = !box.checked; }/function show() { gate.hidden = true; body.hidden = false; }/' assets/js/pm.js"
 run_bg "a gate whose button ticks nothing" J7 "sed -i '/^      if (!box.checked) { box.checked = true; box.dispatchEvent(new Event(\"change\")); }$/d' assets/js/pm.js"
 run_bg "an example hidden from a reader without scripts" J7 "sed -i 's/<div class=\"example-body\" tabindex=\"-1\">/<div class=\"example-body\" tabindex=\"-1\" hidden>/' layouts/shortcodes/pm/example.html"
-run_bg "the Do's step leading nowhere" J7 "sed -i 's|<h3><a href=\"#do\">{{ .title }}</a></h3>|<h3>{{ .title }}</h3>|' layouts/partials/pm/unit-module.html"
-run_bg "the Do's minutes shown on its step too" J7 "sed -i 's/^    kind: do$/&\n    minutes: 30/' content/pm/know-who-its-for.md"
+run_bg "the Do's and the Check's steps leading nowhere" G7 "sed -i 's|<h3><a href=\"#{{ .kind }}\">{{ .title }}</a></h3>|<h3>{{ .title }}</h3>|' layouts/partials/pm/unit-module.html"
+run_bg "the Do's minutes shown on its step too" G7 "sed -i 's/^    kind: do$/&\n    minutes: 30/' content/pm/know-who-its-for.md"
+wait
+# Job 50 (the owner's answers of 26 November 2026): the Do and the Check as the short path's last two steps, Continue
+# to the next unticked step, a card's bar without Previous and Next, the bar's count, a game's way back past its own
+# step, the tick's faint check and its phone target, and a card's step named a concept card (G1, G6, G7, D5)
+run_bg "a module without its Check step" G7 "sed -i '/^  - id: check$/,/^    look: The answers you missed/d' content/pm/see-the-system.md"
+run_bg "the Do's step silent on what can come later" G7 "sed -i 's/ Asking whoever tracks delivery can come later\.//' content/pm/find-the-constraint.md"
+run_bg "the Do's step promising later asks the Do never makes" G7 "sed -i 's/^    where: The Do, on this page, below\.$/    where: The Do, on this page, below. The conversations can come later./' content/pm/see-the-system.md"
+run_bg "the bar's count with a wrong ordinal" G1 "sed -i 's/\"3\" \"rd\"/\"3\" \"th\"/' layouts/partials/pm/course-bar.html"
+run_bg "a card's bar with Previous and Next again" G1 "sed -i '/^{{- if not \$isPage }}{{ \$i = -1 }}{{ end -}}$/d' layouts/partials/pm/course-bar.html"
+run_bg "Continue lands on the module's top" G1 "sed -i 's/ + (step ? \"#step-\" + step : \"\")//' assets/js/pm.js"
+run_bg "a game's way back stays on its own step" G7 "sed -i 's/^  function onward() {$/  function onward() { return;/' assets/js/pm.js"
+run_bg "a step's number stays on hover" G7 "sed -i '/^.tick:hover input:not(:checked) + .tick-mark .tick-num/d' assets/css/pm.css"
+run_bg "the hover check snaps in" G7 "sed -i 's/tick-num { transition: opacity 180ms ease-out; }/tick-num { transition: none; }/' assets/css/pm.css"
+run_bg "the hover check eases for a reader who asks for less motion" D5 "sed -i 's/, .tick-check, .tick-num { transition: none !important; }/ { transition: none; }/' assets/css/pm.css"
+run_bg "a step's tick under 44 pixels on a phone" G7 "sed -i '/^@media (max-width: 45.99rem) { .tick input { inset:/d' assets/css/pm.css"
+run_bg "the Do's and the Check's steps print" G7 "sed -i '/^  .step-down { display: none !important; }$/d' assets/css/pm.css"
+run_bg "a card's step says only One page" G6 "sed -i 's/A concept card, one page\./One page./' layouts/partials/pm/unit-module.html"
 wait

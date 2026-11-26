@@ -79,6 +79,16 @@ steps:
     look: Why "Is this your first child?" is hard for some people to answer, and the fix, "Focus on what your service really needs to know." It's Schneier's test from the service side.
     trust: "Experience. It's the UK government's guidance for its own services, which have to work for everyone, since people usually have no alternative to using them. Parts are written for a public service's legal duties."
     only: A test for every field you ask people to fill in, and the common reasons people get shut out, from time and trust to the evidence they're asked for.
+  - id: do
+    kind: do
+    title: Scan one feature, and write your lines
+    where: The Do, on this page, below. Showing it to support or trust and safety can come later.
+    look: Who's easiest to overlook, and where groups overlap.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: A change lifts hours watched on your video app by starting the next video without asking. Has it created value?

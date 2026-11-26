@@ -52,6 +52,16 @@ steps:
     look: "DEC's senior team in 1992, asked for a consensus, settling on a sentence that chose nothing. Then his kernel of a strategy: a diagnosis, a guiding policy, and coherent actions."
     trust: "An argument. Rumelt is a strategy professor at UCLA, and he was in DEC's room himself. It's the short form of his book."
     only: "Two questions for any strategy you're handed: does it say what's going on, and does it rule anything out?"
+  - id: do
+    kind: do
+    title: Write a kernel and a not-doing list, and log one no
+    where: The Do, on this page, below. A conversation to check a fence can come later.
+    look: Whether a reasonable colleague would argue for the opposite.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Weigh the Evidence asked who's missing from your evidence before you lean on it. Here you decide on purpose, with what you have. When do you stop gathering and decide?
@@ -95,7 +105,7 @@ deeper:
 
 ## Why this matters
 
-A roadmap is a set of decisions, and on most teams many of them get made by default: by adding, by deferring, or by never deciding. Make them on purpose. Cost of delay, from Know Who It's For, tells you what to do first. This module is about the rest: which decisions deserve care, such as the {{< pm/term "one-way-doors" "one-way doors" >}} that are hard to undo, and what you're choosing not to do at all. "The essence of strategy is choosing what not to do," as Michael Porter puts it. A travel app built both for business travelers who want every fare rule and for families who want one simple price serves neither well. Porter calls that {{< pm/term "straddling" >}}, and it's expensive.
+A roadmap is a set of decisions, and on most teams many of them get made by default: by adding, by deferring, or by never deciding. Make them on purpose. {{< pm/term "cost-of-delay" "Cost of delay" >}}, from Know Who It's For, tells you what to do first. This module is about the rest: which decisions deserve care, such as the {{< pm/term "one-way-doors" "one-way doors" >}} that are hard to undo, and what you're choosing not to do at all. "The essence of strategy is choosing what not to do," as Michael Porter puts it. A travel app built both for business travelers who want every fare rule and for families who want one simple price serves neither well. Porter calls that {{< pm/term "straddling" >}}, and it's expensive.
 
 Saying no to something your team already does has a catch. Find out first why it started and what leans on it. G. K. Chesterton made the point in 1929 with a fence across a road: don't clear it away until you can say why someone put it up.
 

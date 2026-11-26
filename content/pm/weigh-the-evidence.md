@@ -48,6 +48,16 @@ steps:
     look: "The question to ask in place of \"did it work there?\": \"How would the policy lead to the intended outcome here?\""
     trust: "An argument. Cartwright is a philosopher of science at Durham who studies how evidence gets used, and Munro co-wrote it. It's the short version of their 2026 book from Cambridge University Press, and not peer-reviewed itself."
     only: A way to read a competitor's case study step by step before you copy it.
+  - id: do
+    kind: do
+    title: Weigh the evidence for one decision, and log your call
+    where: The Do, on this page, below.
+    look: Who's missing from each piece, and what would change your mind.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Your grocery app's dashboard ranks twenty cities by on-time delivery, and the bottom three are called in for a review. What do you check first?

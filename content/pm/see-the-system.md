@@ -49,6 +49,16 @@ steps:
     look: Points 3, 7 and 8. A failure needs several small faults to line up, so one root cause explains little, and hindsight makes it all look obvious.
     trust: "Experience. Cook was a physician and safety researcher at the University of Chicago. He gives you the points without the evidence behind them."
     only: "A better question to ask after a failure: \"what had to line up?\""
+  - id: do
+    kind: do
+    title: Draw one stock, and log a change
+    where: The Do, on this page, below.
+    look: Who sees the level, and how late they see it.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Your app clears more drivers' background checks each month than it did last year, yet the queue waiting for one keeps growing. What does that tell you?

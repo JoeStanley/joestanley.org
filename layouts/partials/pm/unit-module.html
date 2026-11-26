@@ -65,20 +65,21 @@
       {{- $s := $step }}
       {{- $card := "" }}
       {{- with .card }}{{ $card = site.GetPage (printf "/pm/%s" .) }}{{ end }}
-      <li class="step"{{ if not $all }} id="step-{{ add $i 1 }}"{{ end }} data-step="{{ $key }}:{{ .id }}" data-slot="step-{{ .id }}">
+      <li class="step{{ if or (eq .kind "do") (eq .kind "check") }} step-down{{ end }}"{{ if not $all }} id="step-{{ add $i 1 }}"{{ end }} data-step="{{ $key }}:{{ .id }}" data-slot="step-{{ .id }}">
         <label class="tick"><input type="checkbox">{{ partial "pm/step-mark.html" (add $i 1) }}<span class="sr">Mark done: {{ with $card }}{{ .Title }}{{ else }}{{ $s.title }}{{ end }}</span></label>
         <div class="step-body">
           {{- if $card }}
           <h3><a href="{{ partial "pm/href.html" (dict "p" $card "all" $all) }}">{{ $card.Title | markdownify }}</a></h3>
           {{- else if eq .kind "play" }}
           <h3><a href="#{{ $p.Params.game }}-game">{{ .title }}</a></h3>
-          {{- else if eq .kind "do" }}
-          {{- /* The Do's step (spec J7): a link down the page, with no minutes of its own, since the Do shows them. */}}
-          <h3><a href="#do">{{ .title }}</a></h3>
+          {{- else if or (eq .kind "do") (eq .kind "check") }}
+          {{- /* The Do's and the Check's steps, the short path's last two (spec G7): links down the page, with no minutes
+                 of their own, since the Do's exercises show them and the Check isn't timed. */}}
+          <h3><a href="#{{ .kind }}">{{ .title }}</a></h3>
           {{- else }}
           <h3>{{ .title | $p.RenderString }}</h3>
           {{- end }}
-          <p class="meta-line">{{ with .minutes }}{{ . }} minutes. {{ end }}{{ if $card }}One page.{{ else }}{{ .where }}{{ end }}</p>
+          <p class="meta-line">{{ with .minutes }}{{ . }} minutes. {{ end }}{{ if $card }}A concept card, one page.{{ else }}{{ .where }}{{ end }}</p>
           {{- with .links }}
           <ul class="step-links">
             {{- range . }}

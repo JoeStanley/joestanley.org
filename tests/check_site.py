@@ -748,7 +748,9 @@ def course_bar_checks(out_dir):
             if not m:
                 fail("G1", f"{path}: no module on the map for this page")
                 continue
-            want = f"{course}, Module {m['num']} of {len(mods)}"
+            k = mods.index(m) + 1   # its place in the map's order, from 1 (the owner, 26 November 2026)
+            nth = f"{k}{'th' if 10 <= k % 100 <= 20 else {1: 'st', 2: 'nd', 3: 'rd'}.get(k % 10, 'th')}"
+            want = f"{course}, Module {m['num']}, {nth} of {len(mods)}"
         else:
             want = f"{course}, " + {"start": "Start", "closing": "The Compass", "glossary": "Glossary", "cards": "Concept cards"}[kind]
         link, btn = bar.select_one("a.cb-place"), bar.select_one("button.cb-place")
@@ -776,7 +778,8 @@ def course_bar_checks(out_dir):
             menu = soup.find(id=ctl) if ctl else None
             if not menu or not menu.has_attr("hidden") or not bar.find(id=ctl):
                 fail("G2", f"{path}: the bar's button controls no list inside the bar, or the list doesn't start hidden")
-        i = paths.index(mod_path) if mod_path in paths else None
+        # a concept card keeps its module's place and list, with no previous or next (the owner, 26 November 2026)
+        i = paths.index(mod_path) if mod_path in paths and kind != "card" else None
         for rel, j in (("prev", -1 if i is None else i - 1), ("next", -1 if i is None else i + 1)):
             a = bar.select_one(f"a.cb-step[rel={rel}]")
             exp = paths[j] if 0 <= j < len(paths) else None
@@ -900,7 +903,9 @@ JS_BAND = """() => { const bar = document.querySelector('.course-bar'), head = d
 
 
 ON_PAGE = [("Why", "why-this-matters"), ("Short path", "short-path"), ("Do", "do"), ("Check", "check"), ("Go deeper", "go-deeper")]
-DONE_LINE = ["a module reads Done once every step is ticked", "The Do and the Check are yours to judge"]
+DO_LINE = "The Do, on this page, below."
+CHECK_STEP = ("Check yourself", "The Check, on this page, below.")
+DONE_LINE = ["Its last two are the Do and the Check", "a module reads Done once you've done everything in it but the full path", "How well you did them is yours to judge"]
 
 
 def doors_checks(out_dir):
@@ -914,6 +919,40 @@ def doors_checks(out_dir):
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml")))
     num = {f"/pm/{m['page']}/": m["num"] for m in mods if m.get("page")}
     whole = page("/pm/all/")
+    # G7: the Do and the Check are the short path's last two steps, links down the page with no minutes of their own;
+    # the Do's line says what can come later where the Do asks a colleague outside its timed exercise
+    for m in mods:
+        if not m.get("page"):
+            continue
+        where = f"Module {m['num']}, {m['title']}"
+        _, fm, body = open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)
+        steps = (yaml.safe_load(fm) or {}).get("steps") or []
+        kinds = [s_.get("kind") for s_ in steps]
+        if kinds[-2:] != ["do", "check"] or kinds.count("do") != 1 or kinds.count("check") != 1:
+            fail("G7", f"{where}: the short path's last two steps aren't the Do and then the Check, one each: {kinds}")
+            continue
+        soup = page(f"/pm/{m['page']}/")
+        # G6: a card's step on the short path says it's a concept card
+        for s_ in steps:
+            li = soup.select_one(f'li.step[data-step="{m["page"]}:{s_.get("id")}"]')
+            if s_.get("kind") == "card" and (not li or not flat(li.select_one(".meta-line")).endswith("A concept card, one page.")):
+                fail("G6", f"{where}: the card's step '{s_.get('id')}' doesn't say \"A concept card, one page.\"")
+        do_text = body.split("[//]: # (short-path)")[-1].split("\n## ")[1] if "\n## " in body.split("[//]: # (short-path)")[-1] else ""
+        for s_, sec in ((steps[-2], "do"), (steps[-1], "check")):
+            li = soup.select_one(f'li.step[data-step="{m["page"]}:{s_.get("id")}"]')
+            line = flat(li.select_one(".meta-line")) if li else ""
+            if s_.get("minutes") or "minutes" in line:
+                fail("G7", f"{where}: the {sec.title()}'s step shows minutes of its own")
+            if not li or not li.select_one(f'h3 a[href="#{sec}"]') or not soup.find(id=sec):
+                fail("G7", f"{where}: the {sec.title()}'s step doesn't lead down the page to the {sec.title()} (#{sec})")
+        if (steps[-1].get("title"), steps[-1].get("where")) != CHECK_STEP:
+            fail("G7", f"{where}: the Check's step reads {(steps[-1].get('title'), steps[-1].get('where'))}, not {CHECK_STEP}")
+        w_ = steps[-2].get("where") or ""
+        if not w_.startswith(DO_LINE):
+            fail("G7", f"{where}: the Do's step line doesn't open \"{DO_LINE}\": {w_!r}")
+        asks = re.search(r"\b(outside|after) the \d+ minutes\b", do_text.split("**Optional")[0], re.I) is not None
+        if asks != ("can come later" in w_):
+            fail("G7", f"{where}: the Do {'asks a colleague outside its timed exercise' if asks else 'asks nobody outside its time'}, and its step's line {'does' if not asks else 'does not'} say what can come later: {w_!r}")
     # G6: the concept cards' page lists every card by module, in the map's order, with its question to carry
     idx = page(CARDS_INDEX)
     secs = idx.select("main section.ci-module")
@@ -1046,6 +1085,23 @@ def doors_browser_checks(out_dir):
     try:
         with sync_playwright() as p:
             b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            # G7: on hover and keyboard focus a step's number gives way to a faint check, easing as a link's color does,
+            # and at once for a reader who asks for less motion (D5)
+            probe = """() => { const m = document.querySelector('.step .tick-mark'), st = e => getComputedStyle(e);
+              return {num: +st(m.querySelector('.tick-num')).opacity, check: +st(m.querySelector('.tick-check')).opacity,
+                      ease: st(m.querySelector('.tick-check')).transitionDuration, ticked: m.previousElementSibling.checked}; }"""
+            for motion in ("no-preference", "reduce"):
+                ctx = b.new_context(viewport={"width": 1280, "height": 900}, reduced_motion=motion); pg = ctx.new_page()
+                pg.goto(srv.base + mod); pg.wait_for_load_state("load"); pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_load_state("load")
+                rest = pg.evaluate(probe)
+                pg.hover(".step .tick"); pg.wait_for_timeout(400)
+                hover = pg.evaluate(probe)
+                pg.mouse.move(0, 0); pg.locator(".step .tick input").first.focus(); pg.keyboard.press("Shift+Tab"); pg.keyboard.press("Tab"); pg.wait_for_timeout(400)
+                focus = pg.evaluate(probe)
+                ease = "0s" if motion == "reduce" else "0.18s"
+                if not (rest["num"] == 1 and rest["check"] == 0 and hover["num"] == 0 and 0 < hover["check"] and focus["num"] == 0 and focus["check"] > 0 and not hover["ticked"] and rest["ease"] == ease):
+                    fail("G7" if motion != "reduce" else "D5", f"{mod}, {motion} motion: a step's number should give way to a faint check on hover and focus, easing over {ease}: rest {rest}, hover {hover}, focus {focus}")
+                ctx.close()
             ctx = b.new_context(viewport={"width": 390, "height": 844}, reduced_motion="reduce"); pg = ctx.new_page()
             # G6: the entry a link lands on carries the orange line under its term; the others don't
             pg.goto(srv.base + "/pm/glossary/#g-constraint"); pg.wait_for_load_state("load")
@@ -1074,7 +1130,29 @@ def doors_browser_checks(out_dir):
                 fail("G7", f"{mod}: a finished round of the dice game doesn't tick and count its step: {r}")
             if r["told"] != "Its step on the short path is ticked.":
                 fail("G7", f"{mod}: a finished round doesn't say, beside the way back, that its step is ticked: {r['told']!r}")
+            # G7: the way back goes on to the first step still waiting after the game's: the next step, then the Do,
+            # then the Check, and with every step ticked the game's own step
+            back = "() => { const a = document.querySelector('.game-back a'); return [a.textContent.trim(), a.getAttribute('href')]; }"
+            seen = [pg.evaluate(back)]
+            for k in range(1, n - 2):
+                pg.locator(".step .tick").nth(k).click()
+            seen.append(pg.evaluate(back))
+            pg.locator(".step .tick").nth(n - 2).click(); seen.append(pg.evaluate(back))
+            pg.locator(".step .tick").nth(n - 1).click(); seen.append(pg.evaluate(back))
+            want = [["Back to the short path", "#step-2"], ["Next: Do", "#do"], ["Next: Check", "#check"], ["Back to the short path", "#step-1"]]
+            if seen != want:
+                fail("G7", f"{mod}: after a round, the game's way back reads {seen}, not {want}")
             pg.evaluate("localStorage.clear()")
+            # G7: a step's tick is 44 pixels to tap on a phone
+            sz = pg.evaluate("() => { const r = document.querySelector('.step .tick input').getBoundingClientRect(); return [r.width, r.height]; }")
+            if min(sz) < 43.5:
+                fail("G7", f"{mod} at 390px: a step's tick is {sz[0]:.0f} by {sz[1]:.0f} to tap, not 44 by 44")
+            # G7: in print, where the Do and the Check follow, their steps are left out
+            pg.emulate_media(media="print")
+            shown = pg.evaluate("() => [...document.querySelectorAll('li.step')].filter(e => e.getClientRects().length).map(e => e.querySelector('h3 a') ? e.querySelector('h3 a').getAttribute('href') : '')")
+            pg.emulate_media(media="screen")
+            if len(shown) != n - 2 or any(h in ("#do", "#check") for h in shown):
+                fail("G7", f"{mod}: in print the short path shows {shown}, and should leave out the Do's and the Check's steps")
             # G7: the line's addresses land below the bar, and "Go deeper" opens the full path
             for w, t in ON_PAGE:
                 pg.goto(srv.base + mod); pg.wait_for_load_state("load")
@@ -1130,7 +1208,7 @@ def course_bar_browser_checks(out_dir):
             for path in BAR_BROWSER_PAGES:
                 kind = _bar_kind(path, cards_of)
                 at = cards_of.get(path, path)
-                i = paths.index(at) if at in paths else None
+                i = paths.index(at) if at in paths and kind != "card" else None
                 words = (["Previous"] if i else []) + (["Next"] if i is not None and i + 1 < len(paths) else [])
                 for w, h in ((390, 844), (1280, 900)):
                     ctx = b.new_context(viewport={"width": w, "height": h})
@@ -1245,8 +1323,8 @@ def course_bar_browser_checks(out_dir):
                     pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_load_state("load")
                     n = pg.locator(".step").count()
                     said = pg.evaluate("() => document.querySelector('[data-progress]').textContent.trim()")
-                    if said != f"{n} steps. Tick each one off as you go.":
-                        fail("G5", f"{path}: above the short path, '{said}', not '{n} steps. Tick each one off as you go.'")
+                    if said != f"{n} steps. Tap a step's number to tick it off.":
+                        fail("G5", f"{path}: above the short path, '{said}', not '{n} steps. Tap a step's number to tick it off.'")
                     pg.locator(".step .tick").first.click()
                     status = pg.evaluate(f"() => document.querySelector('.cb-list [data-map-unit=\"{path.strip('/').split('/')[-1]}\"] [data-map-status]').textContent.trim()")
                     said = pg.evaluate("() => document.querySelector('[data-progress]').textContent.trim()")
@@ -1278,7 +1356,9 @@ def course_bar_browser_checks(out_dir):
             # G1: Start's Continue goes where the reader left off, at every width, in place of Next
             built = [m["page"] for m in mods if m.get("page")]
             label = dict(order)
-            cases = [({built[2]: "part", built[5]: "part", built[0]: "done"}, f"/pm/{built[2]}/", "the first module started and not done"),
+            # in a module started, Continue lands on its next unticked step; one not yet started opens at its top
+            cases = [({built[2]: "part", built[5]: "part", built[0]: "done"}, f"/pm/{built[2]}/#step-2", "the first module started and not done"),
+                     ({built[0]: "done", built[1]: "gap"}, f"/pm/{built[1]}/#step-3", "a module with its third step unticked and the rest ticked"),
                      ({built[0]: "done", built[1]: "done"}, f"/pm/{built[2]}/", "the module after the last one done"),
                      ({built[3]: "done"}, f"/pm/{built[4]}/", "the first not done after the furthest one done"),
                      ({built[-1]: "done"}, f"/pm/{built[0]}/", "the first not done, when none follows the one done"),
@@ -1289,8 +1369,8 @@ def course_bar_browser_checks(out_dir):
                 for plan, exp, what in (cases if w == 390 else cases[:1]):
                     pg.evaluate(JS_SAVE, plan); pg.reload(); pg.wait_for_load_state("load"); pg.evaluate("document.fonts.ready")
                     c = pg.evaluate(JS_CONTINUE)
-                    if c["steps"] != ["Continue"] or c["href"] != exp or c["sr"] != f"Continue: {label[exp]}":
-                        fail("G1", f"/pm/ at {w}px, with {what} saved: the bar's steps are {c['steps']}, Continue to {c['href']} ('{c['sr']}'), not Continue alone to {exp} ('Continue: {label[exp]}')")
+                    if c["steps"] != ["Continue"] or c["href"] != exp or c["sr"] != f"Continue: {label[exp.split('#')[0]]}":
+                        fail("G1", f"/pm/ at {w}px, with {what} saved: the bar's steps are {c['steps']}, Continue to {c['href']} ('{c['sr']}'), not Continue alone to {exp} ('Continue: {label[exp.split('#')[0]]}')")
                     if w == 390 and plan.get(built[2]) == "part":
                         said = pg.evaluate("(u) => { const li = document.querySelector('main [data-map-unit=\"' + u + '\"]'); return [li.querySelector('[data-map-status]').textContent.trim(), +li.getAttribute('data-map-steps')]; }", built[2])
                         if said[0] != f"Started: 1 of {said[1]} steps done.":
@@ -1306,7 +1386,7 @@ def course_bar_browser_checks(out_dir):
 
 JS_SAVE = """(plan) => { localStorage.clear(); for (const [unit, how] of Object.entries(plan)) {
   const li = document.querySelector('.cb-list [data-map-unit="' + unit + '"]'); const ids = li.getAttribute('data-map-ids').split(' ').filter(Boolean);
-  (how === 'done' ? ids : ids.slice(0, 1)).forEach(id => localStorage.setItem('pm:' + unit + ':' + id, '1')); } }"""
+  (how === 'done' ? ids : how === 'gap' ? ids.slice(0, 2).concat(ids.slice(3)) : ids.slice(0, 1)).forEach(id => localStorage.setItem('pm:' + unit + ':' + id, '1')); } }"""
 JS_CONTINUE = """() => { const vis = e => !!e && e.getClientRects().length > 0 && getComputedStyle(e).visibility !== 'hidden';
   const bar = document.querySelector('.course-bar'), c = bar.querySelector('[data-continue]'), r = c.getBoundingClientRect();
   return {steps: [...bar.querySelectorAll('.cb-step')].filter(vis).map(e => [...e.childNodes].filter(n => !(n.classList && n.classList.contains('sr'))).map(n => n.textContent).join('').trim()),
@@ -1785,7 +1865,7 @@ def check_static():
             before = earlier.get(step.get("continues")) if step.get("continues") else None
             if step.get("continues") and not (before and before.get("trust") and list(earlier)[-1] == step.get("continues")):
                 fail("S2", f"{rel}: step {step.get('id')} continues {step.get('continues')}, which isn't the step just before it with a trust line")
-            if step.get("kind") not in ("card", "play", "do") and not ((step.get("trust") or before) and step.get("only")):
+            if step.get("kind") not in ("card", "play", "do", "check") and not ((step.get("trust") or before) and step.get("only")):
                 fail("S2", f"{rel}: step {step.get('id')} lacks trust or only")
             earlier[step.get("id")] = step
         deeper = fm.get("deeper")
@@ -3393,19 +3473,9 @@ def example_checks(out_dir):
                 fail("J7", f"{where}: on {what}, its example's gate isn't \"{EXAMPLE_GATE}\" and a button, \"{EXAMPLE_UNGATE}\", hidden until the script shows it")
             if not want and gate:
                 fail("J7", f"{where}: on {what}, its example has a gate, and its Do isn't a step to tick")
-        # the Do's step: a link down the page to the Do, with no minutes of its own
-        if len(dos) > 1:
-            fail("J7", f"{where}: {len(dos)} steps lead to the Do, and one should")
-        for s_ in dos:
-            li = page.select_one(f'[data-step="{m["page"]}:{s_.get("id")}"]')
-            if s_.get("minutes") or (li and "minutes" in clean_text(li.select_one(".meta-line").get_text() if li.select_one(".meta-line") else "")):
-                fail("J7", f"{where}: the Do's step shows minutes of its own, and the Do's exercise shows them")
-            if not li or not li.select_one('h3 a[href="#do"]'):
-                fail("J7", f"{where}: the Do's step doesn't lead down the page to the Do")
-            elif "conversations can come later" not in clean_text(li.select_one(".meta-line").get_text()):
-                fail("J7", f"{where}: the Do's step doesn't say the two conversations can come later")
-            else:
-                gated.append(f"/pm/{m['page']}/")
+        # the example's gate waits on the Do's step, which G7 holds to its form
+        if ex and dos:
+            gated.append(f"/pm/{m['page']}/")
     if without:
         NOTE["J7"].append(f"{len(without)} built module{'s' if len(without) != 1 else ''} without an example yet, until the rest are written: {', '.join(without)}")
     if not gated:
@@ -4376,7 +4446,7 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("G1", "G2", "G3", "G4", "G5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
-    if run_for("G6", "G7"):
+    if run_for("G6", "G7", "D5"):
         try:
             doors_checks(out_dir)
         except Exception as e:  # a broken page must fail its rules, not stop the suite

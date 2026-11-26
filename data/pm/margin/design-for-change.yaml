@@ -36,6 +36,12 @@ step-card-access: ""
 # Short path, step 4: Martin Fowler, “Reporting Database”
 step-reporting: ""
 
+# Short path, step 5: List your layers, and trace one piece of data
+step-do: ""
+
+# Short path, step 6: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

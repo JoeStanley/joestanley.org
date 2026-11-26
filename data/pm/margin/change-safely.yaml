@@ -41,6 +41,12 @@ step-card-error-budgets: ""
 # Short path, step 5: People + AI Research, “Errors + Graceful Failure”
 step-pair: ""
 
+# Short path, step 6: Plan one rollout, and log it
+step-do: ""
+
+# Short path, step 7: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

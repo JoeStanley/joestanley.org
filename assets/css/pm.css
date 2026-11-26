@@ -77,8 +77,16 @@
 .tick-num { font: 700 19.2px var(--ui); font-variant-numeric: tabular-nums; text-anchor: middle; fill: var(--ink); }
 .tick-blob { fill: var(--orange); }
 .tick-check { fill: none; stroke: var(--paper); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; }
-.tick-blob, .tick-check, .tick input:checked + .tick-mark .tick-ring, .tick input:checked + .tick-mark .tick-num { display: none; }
-.tick input:checked + .tick-mark .tick-blob, .tick input:checked + .tick-mark .tick-check { display: inline; }
+.tick-blob, .tick input:checked + .tick-mark .tick-ring, .tick input:checked + .tick-mark .tick-num { display: none; }
+.tick input:checked + .tick-mark .tick-blob { display: inline; }
+/* Unticked, the check waits unseen; on hover and keyboard focus the number gives way to it, faint, easing in and out
+   as a link's color does, and at once for a reader who asks for less motion (spec G7, D5). Ticking shows it at once. */
+.tick input:not(:checked) + .tick-mark .tick-check { opacity: 0; stroke: var(--muted); }
+.tick input:not(:checked) + .tick-mark .tick-check, .tick input:not(:checked) + .tick-mark .tick-num { transition: opacity 180ms ease-out; }
+.tick:hover input:not(:checked) + .tick-mark .tick-check, .tick input:not(:checked):focus-visible + .tick-mark .tick-check { opacity: 1; }
+.tick:hover input:not(:checked) + .tick-mark .tick-num, .tick input:not(:checked):focus-visible + .tick-mark .tick-num { opacity: 0; }
+/* On a phone the tap target reaches 44 pixels around the drawn mark (spec G7). */
+@media (max-width: 45.99rem) { .tick input { inset: calc((var(--tick) - 2.75rem) / 2); width: 2.75rem; height: 2.75rem; } }
 .tick input:focus-visible + .tick-mark { outline: 3px solid var(--orange); outline-offset: calc(3px - 0.2rem); }
 /* A list of links to open: each link is a full tap row, about 44px tall on screen. */
 .step-links { list-style: none; margin: 0; padding: 0; }
@@ -379,7 +387,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .pile, .rk-dot, .cb-open, .cb-course, .deeper > details > summary::after { transition: none; }
+  .pile, .rk-dot, .cb-open, .cb-course, .deeper > details > summary::after, .tick-check, .tick-num { transition: none !important; }
 }
 
 /* Print: the PDF is made from this. One unit starts a new page; a card fits on one page. Always light.
@@ -387,6 +395,8 @@
 @page { size: Letter; margin: 0.65in 0.8in 0.75in; }
 @media print {
   .gloss, .game-live, .progress, .tick input, .course-bar { display: none !important; }
+  /* The Do's and the Check's steps lead down the page, where in print the Do and the Check already follow (G7). */
+  .step-down { display: none !important; }
   .print-only { display: block; }
   .screen-only { display: none !important; }
   .reading { padding-right: 0; }

@@ -41,6 +41,9 @@ step-waiting: ""
 # Short path, step 5: Find the last time, and start your log
 step-do: ""
 
+# Short path, step 6: Check yourself
+step-check: ""
+
 # The waiting game
 waiting-game: ""
 

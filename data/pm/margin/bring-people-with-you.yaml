@@ -44,6 +44,12 @@ step-resnick: ""
 # Short path, step 6: George Gopen and Judith Swan, “The Science of Scientific Writing”
 step-gopen-swan: ""
 
+# Short path, step 7: Map your readers, and send the first update
+step-do: ""
+
+# Short path, step 8: Check yourself
+step-check: ""
+
 # Do
 do: ""
 
