@@ -1,0 +1,9 @@
+{{- /* The first marked use of each term in a unit's page gets an address of its own, #use-<term>, so the glossary's
+       "Used in" lands on it (spec G6). Given the unit's finished HTML; the single document doesn't use it, since its
+       units share one page. */ -}}
+{{- $h := string . -}}
+{{- range $key, $_ := site.Data.pm.glossary }}
+  {{- $at := printf "data-term=\"%s\">" $key }}
+  {{- if in $h $at }}{{ $h = replace $h $at (printf "data-term=\"%s\" id=\"use-%s\">" $key $key) 1 }}{{ end }}
+{{- end -}}
+{{- return $h -}}

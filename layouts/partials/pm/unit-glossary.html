@@ -1,8 +1,9 @@
-{{- /* The shared glossary, listed in full. */ -}}
+{{- /* The shared glossary, listed in full, in name order. */ -}}
 {{- $p := .p -}}{{- $all := .all -}}
 {{- /* Where each term is used (spec G6): the units that mark it, in the map's order, a module before its cards.
        The site's alone, so the single document, the PDF and the doc leave it out. A term shows in a unit's text,
-       or in its front matter, rendered on the page, so both are searched for the term's shortcode. */ -}}
+       or in its front matter, rendered on the page, so both are searched for the term's shortcode. Each link lands
+       on the term where the unit first marks it (partials/pm/mark-uses.html). */ -}}
 {{- $home := site.GetPage "/pm" -}}
 {{- $units := slice (dict "p" $home "label" "Start") -}}
 {{- range site.Data.pm.modules }}{{ $m := . }}{{ with .page }}{{ with site.GetPage (printf "/pm/%s" .) }}
@@ -10,6 +11,14 @@
   {{- range where (where $home.RegularPagesRecursive "Layout" "card") "Params.module" $m.id }}{{ $units = $units | append (dict "p" . "label" .Title) }}{{ end }}
 {{- end }}{{ end }}{{ end -}}
 {{- with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}{{ $units = $units | append (dict "p" . "label" .Title) }}{{ end }}{{ end -}}
+{{- /* Finding a term by name (spec G6): on the site, an A to Z rail of all 26 letters along the screen's right
+       edge, as a phone's contacts have, and the terms under a heading for each letter that has any. */ -}}
+{{- $letters := split "ABCDEFGHIJKLMNOPQRSTUVWXYZ" "" -}}
+{{- $groups := slice -}}
+{{- range $letters }}{{ $l := . }}{{ $keys := slice }}
+  {{- range $key, $g := site.Data.pm.glossary }}{{ if eq (upper (substr $g.term 0 1)) $l }}{{ $keys = $keys | append $key }}{{ end }}{{ end }}
+  {{- $groups = $groups | append (dict "letter" $l "keys" $keys) }}
+{{- end -}}
 <article class="unit glossary" id="glossary" data-unit="glossary">
   <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
     <h1>{{ $p.Title }}</h1>
@@ -17,21 +26,31 @@
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
   <div class="prose">{{ with $p.Params.screen_line }}{{ replace $p.Content "</p>" (printf " <span class=\"screen-only\">%s</span></p>" .) 1 | safeHTML }}{{ else }}{{ $p.Content }}{{ end }}</div>
+  {{- if $all }}
   <dl class="gloss-list">
-    {{- range $key, $g := site.Data.pm.glossary }}
-    <div id="g-{{ $key }}" data-slot="{{ $key }}">
-      <dt>{{ $g.term }}{{ with $g.also }} <span>({{ . }})</span>{{ end }}</dt>
-      <dd>{{ partial "pm/margin.html" (dict "p" $p "unit" "glossary" "slot" $key) }}{{ $g.text | markdownify }}</dd>
-      {{- if not $all }}
-      {{- $raw := printf "pm/term \"%s\"" $key }}{{ $json := printf "pm/term \\\"%s\\\"" $key }}
-      {{- $used := slice }}
-      {{- range $units }}{{ $hay := print .p.RawContent (jsonify .p.Params) }}{{ if or (in $hay $raw) (in $hay $json) }}{{ $used = $used | append . }}{{ end }}{{ end }}
-      {{- with $used }}
-      <dd class="gloss-used screen-only">Used in {{ range $n, $u := . }}{{ if $n }}, {{ end }}<a href="{{ $u.p.RelPermalink }}">{{ $u.label | markdownify }}</a>{{ end }}.</dd>
-      {{- end }}
-      {{- end }}
-    </div>
-    {{- end }}
+    {{- range $key, $g := site.Data.pm.glossary }}{{ partial "pm/gloss-entry.html" (dict "p" $p "key" $key "g" $g "all" true "units" $units) }}{{ end }}
   </dl>
+  {{- else }}
+  {{- /* The rail and the list share a box, so on a wider screen the rail sticks beside the list, inside the column. */}}
+  <div class="gloss-index">
+  <nav class="az" aria-label="A to Z" data-az>
+    <ul class="az-list">
+      {{- range $groups }}
+      <li>{{ if .keys }}<a href="#l-{{ lower .letter }}" draggable="false">{{ .letter }}</a>{{ else }}<span>{{ .letter }}</span>{{ end }}</li>
+      {{- end }}
+    </ul>
+  </nav>
+  <div class="gloss-groups">
+  {{- range $groups }}{{ if .keys }}
+  <section class="gloss-group" id="l-{{ lower .letter }}">
+    <h2 class="gloss-letter">{{ .letter }}</h2>
+    <dl class="gloss-list">
+      {{- range .keys }}{{ partial "pm/gloss-entry.html" (dict "p" $p "key" . "g" (index site.Data.pm.glossary .) "all" false "units" $units) }}{{ end }}
+    </dl>
+  </section>
+  {{- end }}{{ end }}
+  </div>
+  </div>
+  {{- end }}
 </div></div>
 </article>

@@ -104,6 +104,7 @@ run_bg "the tab drops a voice slot's block" X4 "$SLOT; sed -i 's/    out = \\[sl
 run_bg "a voice slot as a paragraph, placed without saying so" X4 "$SLOT; sed -i 's/ \\\"paragraph\\\" >}}/ >}}/' content/pm/_index.md"
 run_bg "a word of the owner's moved and not listed for his pass" X4 "sed -i 's/^  - what: moved$/  - what: shifted/' data/pm/voice-slots.yaml"
 run_bg "link easing ignores reduced motion" D5 "sed -i '/@media (prefers-reduced-motion: reduce) { a, .recall/d' assets/css/base.css"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 
 # Joe's editing pass of 21 November 2026: his own sentences, simpler source entries, rounded times, notes beside a paragraph
@@ -116,10 +117,12 @@ run_bg "the header split into reading and doing again" S14 "sed -i 's|About {{ p
 run_bg "a note naming words its paragraph lost" M4 "sed -i 's/beside: \"Two versions of the job look real\"/beside: \"Three versions of the job\"/' data/pm/margin/own-your-role.yaml"
 run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"noted\" data-beside=\"%s\">%s%s</div>\` \$id . \$aside)|(printf \`<div class=\"noted\" data-beside=\"%s\">%s%s</div>\` \$id \$aside .)|' layouts/partials/pm/prose-slots.html"
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('Now with all this said', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nNow with all this said', 1))\""
 run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/design-for-change.md'; s=open(p).read(); open(p, 'w').write(s.replace('Slow isn\\'t the enemy, though.', 'A sentence that runs on to fill the page. ' * 90 + 'Slow isn\\'t the enemy, though.', 1))\""
 run_bg "a module with a game that runs past even a game's allowance" P1 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); open(p, 'w').write(s.replace('Start with what people do, not what they say', 'A sentence that runs on to fill the page. ' * 120 + 'Start with what people do, not what they say', 1))\""
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 
 # The print layout at two thirds (job 10, 21 November 2026): notes in a module's print margin, notes that run on
@@ -131,6 +134,7 @@ run_bg "a full-path note holding room open again" M1 "echo '.reading .deeper-lis
 run_bg "stacked notes nearly touching in print" M2 "sed -i '/  .module .reading .note p { margin-bottom: var(--sp-2); }/d; /  .module .reading .note > :last-child { margin-bottom: 0; }/d' assets/css/pm.css"
 run_bg "a full-path note running into the next one" M2 "sed -i 's/@supports (anchor-scope: --a)/@supports (anchor-scope: --a) and (not (display: block))/' assets/css/pm.css"
 run_bg "a highlight reaching past the printed page" P7 "sed -i '/  .hl-line { margin-right: 0; }/d' assets/css/base.css"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 
 # Joe's answers of 21 November 2026: the full path's label kept to its own heading (R10), and his notes labeled
@@ -148,6 +152,7 @@ run_bg "a note read aloud as a plain note again" M3 "sed -i 's/>Sidenote: </>Not
 run_bg "a step's note out of line with the margin" M1 "echo '@media (min-width: 64rem) { .reading .step > .note { margin-left: var(--sp-5) !important; } }' >> assets/css/pm.css"
 run_bg "a long note beside the full path's heading pushing the first source down" R10 "sed -i '/^    .deeper-list > li:has(> .note) { clear: none; }$/d' assets/css/pm.css"
 run_bg "See the System back to one book beside its story" S12 "sed -i '/^  - title: The Field Guide/,/^    only: Cook.s point/d' content/pm/see-the-system.md"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 
 # Joe's picks of 22 November 2026: the kind as an icon on the full path (S15), Conway's sentence in his card's
@@ -171,13 +176,14 @@ run_bg "an average the waiting game's jobs don't give" J5 "sed -i 's/^    averag
 run_bg "a narrow estimate said to move the waiting game's order" J5 "sed -i 's/^moves: \\[swaps\\]$/moves: [fix, swaps]/' data/pm/waitgame.yaml"
 run_bg "the ranking game's trial odds off the exact numbers" J5 "sed -i 's/trial_better_one: 80,/trial_better_one: 90,/' data/pm/rankgame.yaml"
 run_bg "the waiting game off the short path" J5 "sed -i '/^  - id: waiting$/,/^    look: Which estimate is worth testing/d' content/pm/know-who-its-for.md"
-run_bg "the waiting game's result a week off its board" A8 "sed -i 's/ after week \") + p\[id\]\.live; });/ after week \") + (p[id].live + 1); });/' assets/js/pm.js"
+run_bg "the waiting game's result a week off its board" A8 "sed -i 's/ + \" after week \" + p\[id\]\.live; });/ + \" after week \" + (p[id].live + 1); });/' assets/js/pm.js"
 run_bg "the ranking game's board hiding the small stores among the worst" A8 "sed -i 's/dot.classList.toggle(\"is-worst\", has \&\& worst.indexOf(i) >= 0);/dot.classList.toggle(\"is-worst\", has \&\& worst.indexOf(i) >= 0 \&\& group[i] > 0);/' assets/js/pm.js"
 run_bg "the waiting game's Play disabled during a run" A9 "sed -i 's/running = true; busyOn(el.play, true);/running = true; el.play.disabled = true;/' assets/js/pm.js"
 run_bg "the waiting game's recorded orders hidden without JavaScript" D1 "echo '.game[data-game=waiting] .example { display: none; }' >> assets/css/pm.css"
 run_bg "the waiting game animated with reduced motion" D5 "sed -i 's/if (still()) { while (step()) {} return; }//' assets/js/pm.js"
 run_bg "the waiting game playing past a pick left open" A8 "sed -i 's/if (rule === \"stop\" || rule === \"test\") {/if (true) {/' assets/js/pm.js"
-run_bg "the ranking game's trial miscounting the fixed stores among the worst" A8 "sed -i 's/var n_ = worst.filter(function (i) { return i < F; }).length,/var n_ = worst.filter(function (i) { return i < F; }).length + 1,/' assets/js/pm.js"
+run_bg "the ranking game's trial miscounting the fixed stores among the worst" A8 "sed -i 's/var n_ = worst.filter(function (i) { return i < F; }).length;/var n_ = worst.filter(function (i) { return i < F; }).length + 1;/' assets/js/pm.js"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 
 # Job 34, the mechanics pass (23 November 2026): one main setting a module (S6), and every source's kind of evidence
@@ -282,6 +288,7 @@ run_bg "the fade in the band's tint, not the page's paper" G1 "sed -i 's/backgro
 run_bg "the fade showing at rest" G1 "sed -i 's/bar.classList.toggle(\"is-stuck\", window.scrollY > 0 \&\& bar.getBoundingClientRect().top <= 0.5);/bar.classList.add(\"is-stuck\");/' assets/js/pm.js"
 run_bg "the fade eases in" G2 "echo '.course-bar::after { transition: opacity 300ms ease-out; }' >> assets/css/pm.css"
 run_bg "without scripts the bar's place shows a chevron" G4 "sed -i 's|<span class=\"cb-here\">{{ \$place }}</span></span></a>|<span class=\"cb-here\">{{ \$place }}</span></span><span class=\"cb-chev cb-down\" aria-hidden=\"true\"></span></a>|' layouts/partials/pm/course-bar.html"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 # Job 40's spread (25 November 2026): the foot trimmed to one step onward, the owner's pick in the session (G5), and
 # Start's Continue, from saved progress, in place of Next (G1); The Compass and the glossary mark their place (G2)
@@ -333,6 +340,7 @@ run_bg "a gate whose button ticks nothing" J7 "sed -i '/^      if (!box.checked)
 run_bg "an example hidden from a reader without scripts" J7 "sed -i 's/<div class=\"example-body\" tabindex=\"-1\">/<div class=\"example-body\" tabindex=\"-1\" hidden>/' layouts/shortcodes/pm/example.html"
 run_bg "the Do's and the Check's steps leading nowhere" G7 "sed -i 's|<h3><a href=\"#{{ .kind }}\">{{ .title }}</a></h3>|<h3>{{ .title }}</h3>|' layouts/partials/pm/unit-module.html"
 run_bg "the Do's minutes shown on its step too" G7 "sed -i 's/^    kind: do$/&\n    minutes: 30/' content/pm/know-who-its-for.md"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait
 # Job 50 (the owner's answers of 26 November 2026): the Do and the Check as the short path's last two steps, Continue
 # to the next unticked step, a card's bar without Previous and Next, the bar's count, a game's way back past its own
@@ -350,4 +358,17 @@ run_bg "the hover check eases for a reader who asks for less motion" D5 "sed -i 
 run_bg "a step's tick under 44 pixels on a phone" G7 "sed -i '/^@media (max-width: 45.99rem) { .tick input { inset:/d' assets/css/pm.css"
 run_bg "the Do's and the Check's steps print" G7 "sed -i '/^  .step-down { display: none !important; }$/d' assets/css/pm.css"
 run_bg "a card's step says only One page" G6 "sed -i 's/A concept card, one page\./One page./' layouts/partials/pm/unit-module.html"
+# J8, playing a game (26 November 2026)
+run_bg "the dice game's takeaway after its first run" J8 "sed -i 's/holdTakeaway(game, seen\[keys\[keys.length - 1\]\] || runs >= 3);/holdTakeaway(game, true);/' assets/js/pm.js"
+run_bg "the dice game with no Next under its result" J8 "sed -i '/if (nk) el.next.textContent = \"Next: \" + (i + 2) + \". \" + setups\[nk\].label;/d' assets/js/pm.js"
+run_bg "a dice run that leaves the board off the screen" J8 "sed -i 's/el.move.hidden = true; busy(true); toBoard(game);/el.move.hidden = true; busy(true);/' assets/js/pm.js"
+run_bg "the waiting game's plans before the reader's own call" J8 "sed -i 's/<div class=\"setups plans\" data-plans hidden>/<div class=\"setups plans\" data-plans>/' layouts/partials/pm/waitinggame.html"
+run_bg "the waiting game's pause without its question" J8 "sed -i 's/ showState(); askNext(); return false; }/ showState(); return false; }/' assets/js/pm.js"
+run_bg "the ranking game's trial with no end" J8 "sed -i 's/if (current === \"trial\") return week >= W ? \"Play the trial again\" : \"Play week \" + (week + 1) + \" of \" + W;/if (current === \"trial\") return \"Play a week\";/' assets/js/pm.js"
+run_bg "a guess's options under 44 pixels on a phone" J8 "sed -i '/^  .guess label { display: flex; align-items: center; min-height: 2.75rem; padding: 0; }$/d' assets/css/pm.css"
+# G6, the glossary found by name, and Used in landing on the term (26 November 2026)
+run_bg "Used in lands on the unit's top" G6 "sed -i 's/{{ \$u.p.RelPermalink }}#use-{{ \$key }}/{{ \$u.p.RelPermalink }}/' layouts/partials/pm/gloss-entry.html"
+run_bg "no address on a term's first use" G6 "sed -i '/if in \$h \$at/d' layouts/partials/pm/mark-uses.html"
+run_bg "an empty letter linked in the A to Z row" G6 "sed -i 's/{{ if .keys }}<a href=\"#l-/{{ if true }}<a href=\"#l-/' layouts/partials/pm/unit-glossary.html"
+run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 wait

@@ -1019,10 +1019,44 @@ def doors_checks(out_dir):
         key = d.get("id", "")[2:]
         u = d.select("dd.gloss-used")
         got = [a.get("href") for a in u[0].select("a")] if u else []
-        if got != used.get(key, []):
-            fail("G6", f"/pm/glossary/: '{key}' says it's used in {got}, not {used.get(key, [])}")
+        want = [f"{p_}#use-{key}" for p_ in used.get(key, [])]
+        if got != want:
+            fail("G6", f"/pm/glossary/: '{key}' says it's used in {got}, not {want}")
         elif u and (not flat(u[0]).startswith("Used in ") or "screen-only" not in (u[0].get("class") or [])):
             fail("G6", f"/pm/glossary/: '{key}''s line of where it's used doesn't open 'Used in', or prints")
+    # G6: each "Used in" lands on the term where its unit first marks it, an address on the unit's page alone
+    for path in order:
+        terms = page(path).select("main a.term[data-term]")
+        first = {}
+        for a in terms:
+            first.setdefault(a["data-term"], a)
+        for key, a in first.items():
+            if a.get("id") != f"use-{key}":
+                fail("G6", f"{path}: the first marked use of '{key}' has no address #use-{key}, so \"Used in\" can't land on it"); break
+        if any(a.get("id") for a in terms if first.get(a["data-term"]) is not a):
+            fail("G6", f"{path}: a later use of a term carries the address of its first")
+    if whole.select('a.term[id^="use-"]'):
+        fail("G6", "the single document gives its terms the addresses of a unit's page, which repeat in it")
+    # G6: finding a term by name: an A to Z rail of all 26 letters, a heading over each letter's terms
+    az = gloss.select("main nav.az")
+    letters = sorted({str(v["term"])[0].upper() for v in gl.values()})
+    if len(az) != 1 or az[0].get("aria-label") != "A to Z":
+        fail("G6", "/pm/glossary/: no A to Z rail, a nav named \"A to Z\"")
+    else:
+        items = az[0].select("li")
+        links = {flat(a): a.get("href") for a in az[0].select("li > a")}
+        plain = [flat(sp) for sp in az[0].select("li > span")]
+        if [flat(li) for li in items] != list("ABCDEFGHIJKLMNOPQRSTUVWXYZ"):
+            fail("G6", f"/pm/glossary/: the A to Z rail doesn't hold the 26 letters in order: {[flat(li) for li in items]}")
+        if sorted(links) != letters or sorted(plain) != sorted(set("ABCDEFGHIJKLMNOPQRSTUVWXYZ") - set(letters)):
+            fail("G6", f"/pm/glossary/: the A to Z rail links {sorted(links)}, and only letters with terms should link: {letters}")
+        for l_, href in links.items():
+            grp = gloss.select_one(f"section.gloss-group{href}")
+            h = grp.select_one("h2") if grp else None
+            if not grp or not h or flat(h) != l_ or any(flat(dt)[0].upper() != l_ for dt in grp.select("dt")):
+                fail("G6", f"/pm/glossary/: the letter {l_} doesn't lead to its heading over its own terms"); break
+    if whole.select("nav.az, .gloss-group"):
+        fail("G6", "the single document carries the glossary's A to Z rail or its letters, which are the site's alone")
     if whole.select(".gloss-used"):
         fail("G6", "the single document says where each term is used, which is the site's alone")
     # G7: a module's line of links, under its header, to parts that each have an address
@@ -2235,6 +2269,8 @@ def a11y_checks(browser, ctx, base, out_dir):
                         if said.get(i) != n:
                             fail("A8", f"the dice game, setup {setup}: the result says {said.get(i)} waiting at station {i}; the board shows {n}")
             elif g == "waiting":
+                # the reader's own call first: the plans show after it (J8)
+                pg.click("[data-pick=fix]"); pg.click("[data-pick=reorder]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
                 for setup in ("biggest", "stop", "test"):
                     pg.click(f"[data-setup={setup}]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
                     res = pg.evaluate("""() => ({text: document.querySelector('[data-result]').textContent, cost: document.querySelector('[data-cost]').textContent,
@@ -2250,7 +2286,8 @@ def a11y_checks(browser, ctx, base, out_dir):
                         if not re.search(re.escape(j["short"]) + r"(?: \w+)? (?:was worth|\$[\d,]+)|" + re.escape(j["tag"]) + r" \w+: it was worth", res["text"], re.I):
                             fail("A8", f"the waiting game, {setup}: the result doesn't say what {j['short']} turned out to be worth")
                 # a pick left for later: the run waits when it falls due, and says so
-                pg.click("[data-test=swaps]"); pg.click("[data-pick=fix]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
+                pg.goto(base + f"/pm/{mid}/")
+                pg.check("input[name=waiting-guess][value=swaps]"); pg.click("[data-pick=fix]"); pg.click("[data-play]"); pg.wait_for_timeout(100)
                 st = pg.evaluate("""() => ({week: document.querySelector('[data-week]').textContent, report: document.querySelector('[data-report]').textContent, result: document.querySelector('[data-result]').textContent})""")
                 if st["week"] != "2" or "answer is in" not in st["report"] or st["result"]:
                     fail("A8", f"the waiting game: with the next pick left open, the run doesn't wait at week 2 and give the test's answer in words ({st})")
@@ -2283,6 +2320,8 @@ def a11y_checks(browser, ctx, base, out_dir):
         c = ctx(viewport={"width": 1280, "height": 900}); pg = c.new_page(); pg.set_default_timeout(8000)
         for g, mid in GAMES.items():
             pg.goto(base + f"/pm/{mid}/")
+            if g == "waiting":
+                pg.click("[data-pick=fix]"); pg.click("[data-pick=reorder]")
             pg.focus("[data-play]"); pg.keyboard.press("Enter"); pg.wait_for_timeout(500)
             if not pg.evaluate("document.activeElement.matches('[data-play]')"):
                 fail("A9", f"the {g} game: pressing Play drops focus while the game runs")
@@ -2553,6 +2592,174 @@ def _margin_overlaps(pg, rule, where):
             fail(rule, f"{where}: margin notes overlap at y={b_['top']:.0f}")
 
 
+def play_checks(ctx, base):
+    """J8: playing a game. One layout in the order of play; the next move beside the result; the board brought into
+    view when a run starts; the guess answered; a row for each run; the takeaway held until the setups are played; and
+    each game's own changes from the designer's review, all at 390 by 844 with reduced motion, as a phone plays it."""
+    checked("J8")
+    order_js = """(sels) => { const els = sels.map(s => document.querySelector('.game ' + s));
+        if (els.some(e => !e)) return 'missing ' + sels[els.findIndex(e => !e)];
+        for (let i = 1; i < els.length; i++) if (!(els[i - 1].compareDocumentPosition(els[i]) & Node.DOCUMENT_POSITION_FOLLOWING)) return sels[i - 1] + ' comes after ' + sels[i];
+        return ''; }"""
+    in_view = """() => { const b = document.querySelector('.game .board').getBoundingClientRect(), bar = document.querySelector('[data-course-bar]');
+        const top = bar ? bar.getBoundingClientRect().bottom : 0; return b.top >= top - 2 && b.top < innerHeight / 2; }"""
+    shown = "(s) => { const e = document.querySelector(s); return !!e && !e.closest('[hidden]') && e.getClientRects().length > 0; }"
+    c = ctx(viewport={"width": 390, "height": 844}, reduced_motion="reduce"); pg = c.new_page(); pg.set_default_timeout(8000)
+    for g, mid in GAMES.items():
+        where = f"the {g} game"
+        try:
+            pg.goto(base + f"/pm/{mid}/")
+            after = "[data-plans]" if g == "waiting" else "[data-next-move]"
+            bad = pg.evaluate(order_js, [".guess", ".board", "[data-play]", "[data-result]", after, "[data-setup]"])
+            if bad:
+                fail("J8", f"{where}: its parts aren't in the order of play ({bad})")
+            short = pg.evaluate("[...document.querySelectorAll('.guess label')].filter(l => l.getBoundingClientRect().height < 43.5).length")
+            if short:
+                fail("J8", f"{where}: on a phone {short} of the guess's options are shorter than 44 pixels")
+            if pg.evaluate(shown, "[data-takeaway]") or not pg.evaluate(shown, "[data-takeaway-hold]"):
+                fail("J8", f"{where}: the takeaway shows before any run, or nothing holds its place")
+            if g == "dice":
+                pg.check("input[name=dice-guess] >> nth=1"); pg.click("[data-play]"); pg.wait_for_timeout(150)
+                res = pg.text_content("[data-result]")
+                if not pg.evaluate(in_view):
+                    fail("J8", f"{where}: a run doesn't bring the board into view under the bar")
+                if not res.startswith("Finished ") or not re.search(r"You guessed [^;.]+; over 400,000 runs", res) or not re.search(r"Left waiting: [^.]+\.$", res):
+                    fail("J8", f"{where}: the result doesn't lead with what finished, answer the guess with the long run, and end with where work waits: {res[:160]}")
+                if pg.text_content("[data-next]") != "Next: 2. Station 3 is slower" or not pg.evaluate(shown, "[data-next]"):
+                    fail("J8", f"{where}: after the first run there's no \"Next: 2. Station 3 is slower\" under the result")
+                if pg.evaluate(shown, "[data-takeaway]"):
+                    fail("J8", f"{where}: the takeaway shows after the first run")
+                pg.click("[data-next]"); pg.wait_for_timeout(150)
+                st = pg.evaluate("""() => ({pressed: document.querySelector('[data-setup][aria-pressed=true]').getAttribute('data-setup'), round: document.querySelector('[data-round]').textContent,
+                    focus: document.activeElement.matches('[data-play]'), rows: document.querySelectorAll('[data-runs] tbody tr').length})""")
+                if st != {"pressed": "slow3", "round": "20", "focus": True, "rows": 2}:
+                    fail("J8", f"{where}: Next doesn't pick the next line and play it, keeping focus on Play, with a row for each run ({st})")
+                pg.click("[data-next]"); pg.click("[data-next]"); pg.wait_for_timeout(150)
+                if not pg.evaluate(shown, "[data-next-done]") or not pg.evaluate(shown, "[data-takeaway]"):
+                    fail("J8", f"{where}: after the fourth line it doesn't say that's all four, or the takeaway stays hidden")
+            elif g == "waiting":
+                st = pg.evaluate("""() => ({pressed: document.querySelectorAll('.game [aria-pressed=true]').length, checked: document.querySelectorAll('.game input:checked').length,
+                    plans: !!document.querySelector('[data-plans]').closest('[hidden]'), tally: document.querySelector('.tally').textContent})""")
+                if st["pressed"] or st["checked"]:
+                    fail("J8", f"{where}: something is chosen before the reader chooses it ({st['pressed']} pressed, {st['checked']} checked)")
+                if not st["plans"]:
+                    fail("J8", f"{where}: the plans show before the reader's own call")
+                if "Cost of delay so far" not in st["tally"]:
+                    fail("J8", f"{where}: the tally doesn't read \"Cost of delay so far\"")
+                pg.click("[data-play]"); pg.wait_for_timeout(100)
+                if "Pick the job to build first" not in (pg.text_content("[data-play-status]") or "") or pg.text_content("[data-week]") != "0":
+                    fail("J8", f"{where}: Play with no first job doesn't say so beside Play")
+                pg.check("input[name=waiting-guess][value=swaps]"); pg.click("[data-pick=fix]"); pg.click("[data-play]"); pg.wait_for_timeout(150)
+                st = pg.evaluate("""() => ({buttons: document.querySelectorAll('[data-pause]:not([hidden]) [data-pause-list] button').length, focus: !!document.activeElement.closest('[data-pause]'),
+                    play: !!document.querySelector('.game [data-play]').closest('[hidden]') || document.querySelector('.game [data-play]').hidden,
+                    ask: document.querySelector('[data-pause]').textContent.includes('Which job next?'), report: document.querySelector('[data-report]').textContent})""")
+                if st["buttons"] != 2 or not st["focus"] or not st["play"] or not st["ask"] or "is live" not in st["report"]:
+                    fail("J8", f"{where}: where the run stops it doesn't ask \"Which job next?\" under the week's report, one button for each job left, focus on the first, in Play's place ({st})")
+                pg.click("[data-pause-list] button"); pg.wait_for_timeout(150)
+                res = pg.text_content("[data-result]")
+                if not re.match(r"(No order could have done better|Your order cost \$[\d,]+ more than the cheapest)", res) or "You guessed swap approvals" not in res:
+                    fail("J8", f"{where}: the first result doesn't lead with the cost above the cheapest and answer the guess: {res[:160]}")
+                if not pg.evaluate(shown, "[data-plans]") or pg.evaluate(shown, "[data-takeaway]"):
+                    fail("J8", f"{where}: after the reader's own call the plans don't show, or the takeaway already does")
+                pg.click("[data-setup=est]"); pg.wait_for_timeout(150)
+                if pg.text_content("[data-week]") == "0" or not pg.evaluate(shown, "[data-takeaway]") or pg.evaluate("document.querySelectorAll('[data-runs] tbody tr').length") != 2:
+                    fail("J8", f"{where}: a plan doesn't play at once, keep a row for its run, and show the takeaway after the reader's own call")
+                if pg.evaluate("document.querySelectorAll('.wk-ruler .wk-n').length") < 1 or "live after week" not in pg.evaluate("[...document.querySelectorAll('.wk-name')].map(n => n.textContent).join(' ')"):
+                    fail("J8", f"{where}: no ruler counts the weeks, or a row doesn't say when its job went live")
+            else:
+                labels = pg.evaluate("[...document.querySelectorAll('[data-setup]')].map(b => b.textContent)")
+                if len(labels) != 4 or labels[0] != "Every store the same":
+                    fail("J8", f"{where}: its setups should be four, the first \"Every store the same\": {labels}")
+                pg.check("input[name=ranking-guess] >> nth=0"); pg.click("[data-play]"); pg.wait_for_timeout(150)
+                res = pg.text_content("[data-result]")
+                if not pg.evaluate(in_view):
+                    fail("J8", f"{where}: a week doesn't bring the board into view under the bar")
+                if not re.search(r"You guessed [^.]+\. Over many weeks about \d of the five worst are small", res) or pg.evaluate(shown, "[data-next]"):
+                    fail("J8", f"{where}: the first week doesn't answer the guess with the long run, or offers the next setup before a second week")
+                if not re.match(r"Week 1\. Five worst: \d small\. Five best: \d small\.$", pg.text_content("[data-tally]")):
+                    fail("J8", f"{where}: the tally isn't a line of short sentences: {pg.text_content('[data-tally]')}")
+                pg.click("[data-play]"); pg.wait_for_timeout(150)
+                st = pg.evaluate("""() => ({rings: document.querySelectorAll('.rk-dot.was-worst').length, key: document.querySelector('.board-key').textContent, next: document.querySelector('[data-next]').textContent})""")
+                if st["rings"] != 5 or "Ringed: last week's five worst" not in st["key"] or not pg.evaluate(shown, "[data-next]"):
+                    fail("J8", f"{where}: from the second week the first setup doesn't ring last week's five worst, name the ring in its key, and offer the next setup ({st})")
+                if "Ringed" in pg.evaluate("(() => { document.querySelector('[data-setup=worse]').click(); return document.querySelector('.board-key').textContent; })()"):
+                    fail("J8", f"{where}: the key names a ring the board doesn't show")
+                pg.click("[data-setup=trial]")
+                if pg.text_content("[data-play]") != "Play week 1 of 8":
+                    fail("J8", f"{where}: the trial's Play doesn't read \"Play week 1 of 8\"")
+                for _ in range(8):
+                    pg.click("[data-play]")
+                pg.wait_for_timeout(150)
+                if "After eight weeks" not in pg.text_content("[data-result]") or not pg.text_content("[data-tally]").startswith("Week 8 of 8.") or not pg.evaluate(shown, "[data-takeaway]"):
+                    fail("J8", f"{where}: the trial doesn't end at week 8 with what eight weeks show, or the takeaway stays hidden")
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("J8", f"{where}: check could not finish: {str(e).splitlines()[0][:160]}")
+    c.close()
+
+
+def rail_checks(ctx, base):
+    """G6: the glossary's A to Z rail, as a phone's contacts have: on the screen's right edge, below the bar, while the
+    page scrolls; each letter a target of 24 pixels or more; the text clear of it; a tap or a drag landing on the
+    letter's heading below the bar; and, on a screen too short for it, a row above the list."""
+    checked("G6")
+    for w, h in ((390, 844), (1280, 900)):
+        where = f"/pm/glossary/ {w}px"
+        c = ctx(viewport={"width": w, "height": h}, reduced_motion="reduce"); pg = c.new_page(); pg.set_default_timeout(8000)
+        try:
+            pg.goto(base + "/pm/glossary/")
+            pg.evaluate("window.scrollTo(0, document.body.scrollHeight / 2)"); pg.wait_for_timeout(100)
+            st = pg.evaluate("""() => { const n = document.querySelector('nav.az'), r = n.getBoundingClientRect(), bar = document.querySelector('[data-course-bar]').getBoundingClientRect();
+                const lis = [...n.querySelectorAll('li')].map(l => l.getBoundingClientRect().height);
+                const text = Math.max(...[...document.querySelectorAll('.gloss-list dd, .gloss-list dt')].map(e => e.getBoundingClientRect().right));
+                const col = document.querySelector('main .unit-body').getBoundingClientRect().right;
+                return {fixed: getComputedStyle(n).position === 'fixed', pos: getComputedStyle(n).position, column: col, top: r.top, bottom: r.bottom, right: r.right, left: r.left, bar: bar.bottom, min: Math.min(...lis), text}; }""")
+            if w < 700 and (not st["fixed"] or st["top"] < st["bar"] or st["bottom"] > h or st["right"] < w - 24):
+                fail("G6", f"{where}: on a phone the A to Z rail doesn't stand on the screen's right edge, below the bar, as the page scrolls ({st})")
+            if w >= 700 and (st["pos"] != "sticky" or st["top"] < st["bar"] or st["bottom"] > h or st["right"] > st["column"] + 1):
+                fail("G6", f"{where}: on a wide screen the A to Z rail doesn't stick in view inside the column, just right of the list ({st})")
+            if st["min"] < 24:
+                fail("G6", f"{where}: a letter on the rail is {st['min']:.0f} pixels tall, under the 24 a target needs (R5)")
+            if st["text"] > st["left"] + 1:
+                fail("G6", f"{where}: the glossary's text runs under the rail")
+            pg.click('nav.az a[href="#l-o"]'); pg.wait_for_timeout(150)
+            t = pg.evaluate("() => { const r = document.querySelector('#l-o .gloss-letter').getBoundingClientRect(), bar = document.querySelector('[data-course-bar]').getBoundingClientRect(); return [r.top, bar.bottom]; }")
+            if t[0] < t[1] - 1 or t[0] > h / 3:
+                fail("G6", f"{where}: tapping O on the rail doesn't bring its heading to the top, below the bar ({t})")
+            a, s_ = pg.locator("nav.az li").nth(0).bounding_box(), pg.locator("nav.az li").nth(18).bounding_box()
+            pg.mouse.move(a["x"] + a["width"] / 2, a["y"] + 4); pg.mouse.down()
+            pg.mouse.move(s_["x"] + s_["width"] / 2, s_["y"] + s_["height"] / 2, steps=8); pg.mouse.up(); pg.wait_for_timeout(150)
+            top = pg.evaluate("() => { const bar = document.querySelector('[data-course-bar]').getBoundingClientRect().bottom; const h = [...document.querySelectorAll('.gloss-letter')].find(e => { const r = e.getBoundingClientRect(); return r.top >= bar - 1 && r.bottom > bar; }); return h ? h.textContent.trim() : ''; }")
+            if top != "S":
+                fail("G6", f"{where}: dragging along the rail from A to S doesn't bring S's heading to the top (it shows {top or 'none'})")
+            pg.wait_for_timeout(300)
+            mark = pg.evaluate("() => { const a = document.querySelector('nav.az a.is-here'), o = document.querySelector('nav.az a[href=\"#l-a\"]'); return [a ? a.textContent.trim() : '', a ? getComputedStyle(a).color : '', getComputedStyle(o).color]; }")
+            if mark[0] != "S" or mark[1] == mark[2]:
+                fail("G6", f"{where}: with S's terms under the bar, S isn't the letter marked on the rail in its own color ({mark})")
+            pg.click('nav.az a[href="#l-w"]'); pg.wait_for_timeout(300)
+            lit = pg.evaluate("() => { const ink = getComputedStyle(document.querySelector('nav.az span')).color; const a0 = getComputedStyle(document.querySelector('nav.az a[href=\"#l-b\"]')).color; return [...document.querySelectorAll('nav.az a')].filter(a => getComputedStyle(a).color !== a0 || a.classList.contains('is-here')).map(a => a.textContent.trim()); }")
+            if lit != ["W"]:
+                fail("G6", f"{where}: after tapping W at the page's end, the rail lights {lit}, not W alone")
+            if w >= 700:
+                pg.evaluate("window.scrollTo(0, document.body.scrollHeight)"); pg.wait_for_timeout(100)
+                e = pg.evaluate("() => [document.querySelector('nav.az').getBoundingClientRect().bottom, document.querySelector('footer').getBoundingClientRect().top]")
+                if e[0] > e[1]:
+                    fail("G6", f"{where}: at the page's end the rail runs into the foot ({e})")
+            pg.goto(base + "/pm/glossary/#g-constraint"); pg.wait_for_timeout(150)
+            t = pg.evaluate("() => { const e = document.querySelector('#g-constraint dt').getBoundingClientRect(), hd = document.querySelector('#l-c .gloss-letter').getBoundingClientRect(); return [e.top, hd.bottom]; }")
+            if t[0] < t[1] - 1:
+                fail("G6", f"{where}: an entry reached by its address lands under its letter's heading ({t})")
+            c.close()
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("G6", f"{where}: rail check could not finish: {str(e).splitlines()[0][:160]}"); c.close()
+    c = ctx(viewport={"width": 844, "height": 390}); pg = c.new_page()
+    try:
+        pg.goto(base + "/pm/glossary/")
+        if pg.evaluate("getComputedStyle(document.querySelector('nav.az')).position") == "fixed":
+            fail("G6", "/pm/glossary/ 844 by 390: on a screen too short for the rail, it doesn't lie flat above the list")
+    finally:
+        c.close()
+
+
 def scale_checks(ctx, base):
     checked("T2", "T4", "T5", "T6", "T7", "T8", "W4", "R7", "A13")
     normal = {}
@@ -2565,7 +2772,7 @@ def scale_checks(ctx, base):
             if path == "/pm/find-the-constraint/":
                 normal[w] = tok
                 _judge_tokens(f"screen {w}px", tok, False)
-                pg.click("[data-play]"); pg.wait_for_timeout(100)               # the result and takeaway show after a run
+                pg.click("[data-setup=fast3]"); pg.click("[data-play]"); pg.wait_for_timeout(100)   # the result and takeaway show once the last line is played (J8)
                 pg.evaluate("document.querySelector('dialog.gloss').show()")   # a glossary definition, as it opens in place
             _scale_scan(pg, where, tok)
         c.close()
@@ -3999,7 +4206,7 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
                         for b in bad:
                             fail("C3", f"{where}: yellow fill on {b}")
                         # C5
-                        bad = pg.evaluate("""() => [...document.querySelectorAll('a')].filter(a => !a.matches('.site-name, .site-nav a, .door-links a, .skip, .unit-nav a, .course-bar a') && a.getBoundingClientRect().width && !getComputedStyle(a).textDecorationLine.includes('underline')).map(a => a.textContent.trim().slice(0, 30))""")
+                        bad = pg.evaluate("""() => [...document.querySelectorAll('a')].filter(a => !a.matches('.site-name, .site-nav a, .door-links a, .skip, .unit-nav a, .course-bar a, nav.az a') && a.getBoundingClientRect().width && !getComputedStyle(a).textDecorationLine.includes('underline')).map(a => a.textContent.trim().slice(0, 30))""")
                         for b in bad:
                             fail("C5", f"{where}: link without underline: '{b}'")
                         for b in pg.evaluate(JS_LINK_LINES):
@@ -4136,6 +4343,10 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
 
         if run_for("A5", "A6", "A7", "A8", "A9", "A10", "A11", "A12"):
             a11y_checks(browser, ctx, base, out_dir)
+        if run_for("J8"):
+            play_checks(ctx, base)
+        if run_for("G6"):
+            rail_checks(ctx, base)
         if fix_base and run_for("M1", "M2", "M3", "R3", "R7", "A13", "A1"):
             try:
                 margin_checks(ctx, fix_base, axe_src)
@@ -4196,7 +4407,7 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
             if pg.evaluate("getComputedStyle(document.querySelector('.pile')).transitionDuration") not in ("0s", ""):
                 fail("D5", "with reduced motion the piles still animate")
             weeks = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "waitgame.yaml"), encoding="utf-8"))["weeks"]
-            pg.goto(base + f"/pm/{GAMES['waiting']}/"); pg.click("[data-play]")
+            pg.goto(base + f"/pm/{GAMES['waiting']}/"); pg.click("[data-pick=fix]"); pg.click("[data-pick=reorder]"); pg.click("[data-play]")
             if pg.evaluate("document.querySelector('[data-week]').textContent") != str(weeks):
                 fail("D5", "with reduced motion the waiting game does not finish at once")
             pg.goto(base + f"/pm/{GAMES['ranking']}/"); pg.click("[data-play]")

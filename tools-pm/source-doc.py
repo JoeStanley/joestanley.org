@@ -246,34 +246,58 @@ def game(sec):
     """A game (spec J5): its rules, then the words of its live part, its recorded run and its takeaway."""
     out = ["## " + inline(sec.find("h2"))] + note_of(sec)
     for c in sec.find_all(["p", "table", "ul"], recursive=False):
+        if c.has_attr("data-takeaway-hold"):
+            continue
         wrap = BeautifulSoup("<div></div>", "html.parser").div
         wrap.append(copy.copy(c))
         out += blocks(wrap)
     live = sec.find(class_="game-live")
     if live:
-        out.append("*On the site the playable game sits here. Its words:*")
+        out.append("*On the site the playable game sits here. Its words, in the order of play (spec J8):*")
         choices = " / ".join(clean(l.get_text()).strip() for l in live.select("fieldset label"))
         out.append(f"{inline(live.find('legend'))} {choices}.")
-        labels = live.select(".setups-label")
-        tests = live.select("[data-test]")
-        picks = live.select("[data-pick]")
         data = json.loads(live.find("script", attrs={"data-game-setups": True}).string)
-        if tests:   # the waiting game: the reader picks an estimate to test while the team builds
-            out.append(f"{inline(labels[0])} " + " / ".join(inline(b) for b in tests) + ".")
+        picks = live.select("[data-pick]")
+        if picks:   # the waiting game: the reader's own call, the first job, and the next when the team needs it
+            lab = live.select_one(".setups.order .setups-label")
+            names = []
+            for b in picks:
+                meta = b.find(class_="pick-meta")
+                names.append(f"{clean(b.get_text().replace(meta.get_text(), '') if meta else b.get_text()).strip()} ({clean(meta.get_text()).strip()})" if meta else inline(b))
+            out.append(f"{inline(lab)} " + " / ".join(names) + ".")
             said = []
             for j in data["jobs"]:
                 for r in ([j["report"]] if j.get("report") else [o["report"] for o in j.get("outcomes", [])]):
                     said.append(clean(r).replace("{value}", "*its value*"))
             out.append(f"*A test's answer, at the end of week {data['test_weeks']}:* " + " / ".join(said))
-        if picks:   # the waiting game: the reader puts the jobs in any order, picking the next when it falls due
-            out.append(f"{inline(labels[1 if tests else 0])} " + " / ".join(inline(b) for b in picks) + ".")
-        out.append(f"{inline(live.find('button', attrs={'data-play': True}))}. {inline(labels[-1])}")
+        out.append(f"*Then:* {inline(live.find('button', attrs={'data-play': True}))}.")
+        pause = live.find(attrs={"data-pause": True})
+        if pause:
+            out.append(f"*Where the run stops for a pick:* {inline(pause.find(class_='setups-label'))} *A button for each job left.*")
+        move = live.find(attrs={"data-next-move": True})
+        if move:
+            done = move.find(attrs={"data-next-done": True})
+            out.append("*After a run, under the result:* \"Next:\" *and the next setup's name, or once the last is played:* " + inline(done))
+        runs = live.find(attrs={"data-runs": True})
+        if runs:
+            cols = " / ".join(inline(th) for th in runs.select("thead th"))
+            out.append(f"*A table of the reader's runs:* {inline(runs.find('caption'))} *Its columns:* {cols}.")
+        plans = live.find(attrs={"data-plans": True})
+        lab = (plans or live).select(".setups-label")
+        if plans:
+            out.append(f"*After the first run:* {inline(lab[0])}")
+        elif lab:
+            out.append(inline(lab[-1]))
         setups = data.get("setups") or data.get("rules") or data
         items = []
         for k in [b["data-setup"] for b in live.select("button.setup[data-setup]")]:
             note = f" {clean(setups[k]['note'])}" if setups[k].get("note") else ""
-            items.append(f"- **{clean(setups[k]['label'])}.**{note} *After a run:* {clean(setups[k]['after'])}")
+            again = f" *From its second week:* {clean(setups[k]['again'])}" if setups[k].get("again") else ""
+            items.append(f"- **{clean(setups[k]['label'])}.**{note} *After a run:* {clean(setups[k]['after'])}{again}")
         out.append("\n".join(items))
+    hold = sec.find(attrs={"data-takeaway-hold": True})
+    if hold:
+        out.append(f"*Until the setups are played, in the takeaway's place:* {inline(hold)}")
     for part in sec.select(".example, .takeaway"):
         out += blocks(part)
     return out

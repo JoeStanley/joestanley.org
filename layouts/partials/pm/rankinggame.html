@@ -3,12 +3,12 @@
        print, the reader gets the rules, one recorded week, the averages and the takeaway. */ -}}
 {{- $d := site.Data.pm.rankgame -}}
 {{- $a := $d.averages -}}
-{{- $setups := slice "equal" "next" "worse" "funnel" "trial" -}}
+{{- $setups := slice "equal" "worse" "funnel" "trial" -}}
 {{- $stores := 0 -}}{{- range $d.sizes }}{{ $stores = add $stores .stores }}{{ end -}}
 <section class="game" id="ranking-game" data-game="ranking" data-slot="ranking-game">
   <h2>The ranking game</h2>
   {{- partial "pm/margin.html" (dict "p" .p "unit" .unit "slot" "ranking-game") }}
-  <p>A grocery app ranks its {{ $stores }} stores every week by the share of their orders that were late. Every store is late on 1 order in 10, so none is better run than another. They differ only in size. Each week, {{ range $i, $g := $d.sizes }}{{ if $i }}{{ if eq $i (sub (len $d.sizes) 1) }}, and {{ else }}, {{ end }}{{ end }}each of the {{ $g.stores }} {{ lower $g.label }} stores fills {{ lang.FormatNumber 0 $g.orders }}{{ if not $i }} orders{{ end }}{{ end }}.</p>
+  <p>A grocery app ranks its {{ $stores }} stores every week by the share of their orders that were late. Every store is late on 1 order in 10, so none is better run than another. They differ only in size: {{ range $i, $g := $d.sizes }}{{ if $i }}{{ if eq $i (sub (len $d.sizes) 1) }}, and {{ else }}, {{ end }}{{ end }}{{ $g.stores }} {{ lower $g.label }} stores{{ if not $i }} fill {{ lang.FormatNumber 0 $g.orders }} orders a week{{ else }} {{ lang.FormatNumber 0 $g.orders }}{{ end }}{{ end }}.</p>
 
   <div class="game-live">
     <fieldset class="guess">
@@ -32,21 +32,28 @@
       </div>
       {{- end }}
     </div>
-    <p class="board-key" aria-hidden="true">Each dot is a store, as high as its late rate. A yellow dot is one of the week's five worst, and a ringed one was among the five worst the week before or, in the trial, has the fix. The square is the store that really is worse, and the band, once drawn, is the range chance allows for that size.</p>
+    <p class="board-key" aria-hidden="true" data-key>{{ $d.setups.equal.key }}</p>
 
-    <p class="tally" aria-live="off">
-      <span>Week <b data-week>0</b><span class="sr">.</span></span>
-      <span>Small stores in the five worst <b data-small>0</b><span class="sr">.</span></span>
-      <span>In the five best <b data-best>0</b><span class="sr">.</span></span>
-    </p>
+    {{- /* A line of short sentences (J8); the script fills it after each week. */}}
+    <p class="tally tally-line" aria-live="off" data-tally>Week 0.</p>
 
     <div class="controls">
       <button type="button" class="btn" data-play>Play a week</button>
     </div>
     <p class="result" data-result role="status"></p>
+    {{- /* The next move beside the result (spec J8): the next setup, once this one has shown its point. */}}
+    <div class="next-move" data-next-move hidden>
+      <button type="button" class="btn" data-next></button>
+      <p data-next-done hidden>That's all four setups. What to take away is below.</p>
+    </div>
+    <table class="runs" data-runs hidden>
+      <caption>Your runs</caption>
+      <thead><tr><th scope="col">Setup</th><th scope="col">Week</th><th scope="col">Small in the five worst</th><th scope="col">Also</th></tr></thead>
+      <tbody></tbody>
+    </table>
 
     <div class="setups">
-      <p class="setups-label">Then change one thing at a time, and play again.</p>
+      <p class="setups-label">The four setups, one change at a time. Pick one, then play it.</p>
       <ol class="setup-list">
         {{- range $i, $k := $setups }}
         <li><button type="button" class="setup" data-setup="{{ $k }}" aria-pressed="{{ if eq $i 0 }}true{{ else }}false{{ end }}">{{ (index $d.setups $k).label }}</button></li>
@@ -71,6 +78,7 @@
     <p>Simulated 200,000 times, the five worst hold {{ $a.small_worst }} small stores on average, and the five best {{ $a.small_best }}. Of one week's five worst, {{ $a.stay }} are there again the next week. A large store that really is late on 13 orders in 100 comes about {{ $r }}{{ if eq $r 1 }}st{{ else if eq $r 2 }}nd{{ else if eq $r 3 }}rd{{ else }}th{{ end }}, and in the five worst only {{ $a.worse_in_worst }} weeks in 100. The funnel picks it out alone in {{ $a.worse_alone }}. Tried in five small stores, a fix cuts their late orders from 10 in 100 to {{ math.Round (mul $d.trial.late 100) }} in 100. Run that trial many times, and after one week the five look better than the ten small stores without it in {{ $a.trial_better_one }} runs in 100, and worse in {{ $a.trial_worse_one }}. After eight weeks they look better in {{ $a.trial_better_eight }}.</p>
   </div>
 
+  <p class="takeaway-hold" data-takeaway-hold hidden>Play the four setups, then read what to take away.</p>
   <div class="takeaway" data-takeaway>
     <h3>What to take away</h3>
     <ol>

@@ -81,8 +81,80 @@
   function openDeeper() { var d = doc.querySelector(".deeper details"); if (d) d.open = true; }
   all("[data-open-deeper]").forEach(function (a) { a.addEventListener("click", openDeeper); });
   function deeperByHash() { if (location.hash === "#go-deeper") openDeeper(); }
-  window.addEventListener("hashchange", deeperByHash);
-  deeperByHash();
+  /* A term reached from the glossary's "Used in" (spec G6) may sit in a fold, such as a source's reasons or the full
+     path: open each fold around it, so the reader lands on the term itself. */
+  function foldsByHash() {
+    var t = location.hash.indexOf("#use-") === 0 ? doc.getElementById(location.hash.slice(1)) : null;
+    for (var d = t ? t.closest("details") : null; d; d = d.parentElement && d.parentElement.closest("details")) d.open = true;
+    if (t && t.closest("details")) t.scrollIntoView();
+  }
+  window.addEventListener("hashchange", function () { deeperByHash(); foldsByHash(); });
+  deeperByHash(); foldsByHash();
+
+  /* The glossary's A to Z rail (spec G6): a drag along it jumps to the letter under the finger or pointer, as a
+     phone's contacts do, or to the nearest letter with terms where that one has none. A tap follows the link. */
+  all("[data-az]").forEach(function (rail) {
+    var items = all("li", rail), last = null, down = false; // down: the pointer pressed on the rail, or false
+    /* Where the screen is too short for 26 letters at the reader's text size (36 root ems, as the short-screen rule in
+       pm.css says), the rail lies flat. Checked again whenever the rail's size changes, as it does when the reader
+       sets their text larger. */
+    function fit() {
+      var unit = rail.closest(".glossary"), rem = parseFloat(getComputedStyle(doc.documentElement).fontSize) || 16;
+      var flat = window.innerHeight / rem < 36;
+      if (rail.classList.contains("az-flat") !== flat) { rail.classList.toggle("az-flat", flat); if (unit) unit.classList.toggle("has-flat-az", flat); }
+    }
+    fit(); window.addEventListener("resize", fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(rail);
+    function jump(y) {
+      var i = -1;
+      items.forEach(function (li, k) { var r = li.getBoundingClientRect(); if (y >= r.top && y < r.bottom) i = k; });
+      if (i < 0) return;
+      for (var d = 0; d < items.length; d++) {
+        var a = (items[i + d] || {}).querySelector ? items[i + d].querySelector("a") : null;
+        if (!a && items[i - d]) a = items[i - d].querySelector("a");
+        if (a) {
+          if (a !== last) { last = a; var t = doc.getElementById(a.getAttribute("href").slice(1)); if (t) t.scrollIntoView({ block: "start" }); choose(a); }
+          return;
+        }
+      }
+    }
+    rail.addEventListener("pointerdown", function (e) {
+      if (getComputedStyle(rail).position === "static") return;
+      down = e.pointerId; last = null;
+    });
+    // Captured only once the finger moves, so a plain tap still follows its letter's link.
+    rail.addEventListener("pointermove", function (e) {
+      if (down === false || down !== e.pointerId) return;
+      if (rail.setPointerCapture && !rail.hasPointerCapture(e.pointerId)) rail.setPointerCapture(e.pointerId);
+      e.preventDefault(); jump(e.clientY);
+    });
+    // The letter whose terms are under the bar turns orange on the rail as the list scrolls: where the reader is.
+    var marks = items.map(function (li) { return li.querySelector("a"); }).filter(Boolean)
+      .map(function (a) { return [a, doc.getElementById(a.getAttribute("href").slice(1))]; }), ticking = false;
+    /* A letter tapped or dragged to stays marked until the reader scrolls on, even where the page ends before its
+       heading can reach the top. */
+    var chosen = null, at = 0;
+    function choose(a) { chosen = a; at = window.scrollY; here(); }
+    rail.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a"); if (a) setTimeout(function () { choose(a); }, 60);
+    });
+    function here() {
+      if (chosen && Math.abs(window.scrollY - at) < 24) { marks.forEach(function (m) { m[0].classList.toggle("is-here", m[0] === chosen); }); return; }
+      chosen = null;
+      // The group that fills the line just under the bar: the first whose end is below it, once the list has begun.
+      var bar = doc.querySelector("[data-course-bar]"), y = (bar ? bar.getBoundingClientRect().bottom : 0) + 1, cur = null;
+      for (var i = 0; i < marks.length; i++) {
+        var r = marks[i][1] && marks[i][1].getBoundingClientRect();
+        if (r && r.bottom > y) { if (r.top <= y + 48 || i > 0) cur = marks[i][0]; break; }
+      }
+      marks.forEach(function (m) { m[0].classList.toggle("is-here", m[0] === cur); });
+    }
+    window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(function () { ticking = false; here(); }); } }, { passive: true });
+    here();
+    rail.addEventListener("dragstart", function (e) { e.preventDefault(); });
+    rail.addEventListener("pointerup", function () { down = false; });
+    rail.addEventListener("pointercancel", function () { down = false; });
+  });
 
   /* What a good one looks like waits for the reader's own try (J7). Where the Do is a step of the short path, opening
      the example before that step is ticked shows a message and a button that ticks it; once it's ticked, by the button
@@ -180,16 +252,39 @@
     if (said) said.textContent = "Its step on the short path is ticked.";
   }
 
+  /* Playing a game (spec J8): the board brought into view under the bar when a run starts, at once with reduced
+     motion; a row for each run in "Your runs"; and the takeaway held until the setups are played. */
+  function toBoard(game) {
+    var b = game.querySelector(".board"); if (!b) return;
+    var bar = doc.querySelector("[data-course-bar]"), top = bar ? bar.getBoundingClientRect().bottom : 0, r = b.getBoundingClientRect();
+    if (r.top >= top - 1 && r.top <= top + 24) return;
+    b.scrollIntoView({ block: "start", behavior: still() ? "auto" : "smooth" });
+  }
+  function addRun(game, cells) {
+    var t = game.querySelector("[data-runs]"); if (!t) return;
+    var tr = doc.createElement("tr");
+    cells.forEach(function (c, i) { var td = doc.createElement(i ? "td" : "th"); if (!i) td.setAttribute("scope", "row"); td.textContent = c; tr.appendChild(td); });
+    var body = t.querySelector("tbody"); body.appendChild(tr);
+    while (body.children.length > 12) body.removeChild(body.firstChild);
+    t.hidden = false;
+  }
+  function holdTakeaway(game, open) {
+    var t = game.querySelector("[data-takeaway]"), h = game.querySelector("[data-takeaway-hold]");
+    if (t) t.hidden = !open;
+    if (h) h.hidden = !!open;
+  }
+
   function diceGame(game) {
     var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
     var setups; try { setups = JSON.parse(dataEl.textContent); } catch (e) { return; }
-    var ROUNDS = 20, current = "equal", timer = null, state, running = false;
+    var ROUNDS = 20, current = "equal", timer = null, state, running = false, runs = 0, seen = {};
     var el = {
       stations: all(".st", game), round: game.querySelector("[data-round]"), finished: game.querySelector("[data-finished]"),
       waiting: game.querySelector("[data-waiting]"), promise: game.querySelector("[data-promise]"), note: game.querySelector("[data-setup-note]"),
-      result: game.querySelector("[data-result]"), play: game.querySelector("[data-play]"), takeaway: game.querySelector("[data-takeaway]"),
-      setupButtons: all("[data-setup]", game)
+      result: game.querySelector("[data-result]"), play: game.querySelector("[data-play]"),
+      setupButtons: all("[data-setup]", game), move: game.querySelector("[data-next-move]"), next: game.querySelector("[data-next]"), done: game.querySelector("[data-next-done]")
     };
+    var keys = el.setupButtons.map(function (b) { return b.getAttribute("data-setup"); });
     var playedOnce = false;
 
     function fresh() { return { round: 0, out: 0, inbox: [0, 0, 0, 0, 0], roll: [null, null, null, null, null] }; }
@@ -232,7 +327,7 @@
 
     function reset() {
       clearTimeout(timer); state = fresh(); draw(); busy(false);
-      el.result.textContent = "";
+      el.result.textContent = ""; el.move.hidden = true;
       el.play.textContent = playedOnce ? "Play 20 rounds again" : "Play 20 rounds";
     }
 
@@ -243,58 +338,70 @@
       return parts.slice(0, -1).join(", ") + " and " + parts[parts.length - 1];
     }
 
+    /* The result leads with what finished against the promise, answers the guess with the long run, then the lesson,
+       and ends with where the work waits (J8, A8). */
     function finish() {
-      var s = setups[current], picked = game.querySelector("input[name=dice-guess]:checked"), text = "", w = waitingTotal();
-      if (!playedOnce && current === "equal" && picked) text = "You guessed " + picked.value + ". ";
-      text += "This run finished " + state.out + ", against the " + s.promise + " the averages promised. "
-        + (w === 1 ? "1 item was" : w + " items were") + " still waiting in the line: " + wherePiled() + ". Over 400,000 simulated runs this setup averages " + s.average + ". " + s.after;
+      var s = setups[current], picked = game.querySelector("input[name=dice-guess]:checked"), i = keys.indexOf(current);
+      var text = "Finished " + state.out + " of the " + s.promise + " the averages promised. ";
+      text += (!playedOnce && picked ? "You guessed " + picked.value + "; over" : "Over") + " 400,000 runs this line finishes " + s.average + " on average. ";
+      text += s.after + " Left waiting: " + wherePiled() + ".";
       el.result.textContent = text;
-      playedOnce = true;
+      playedOnce = true; runs++; seen[current] = true;
       busy(false); el.play.textContent = "Play 20 rounds again";
-      if (el.takeaway) el.takeaway.hidden = false;
+      addRun(game, [(i + 1) + ". " + s.label, String(state.out), String(s.promise), String(waitingTotal()), String(s.average)]);
+      var nk = keys[i + 1];
+      el.move.hidden = false; el.next.hidden = !nk; el.done.hidden = !!nk;
+      if (nk) el.next.textContent = "Next: " + (i + 2) + ". " + setups[nk].label;
+      holdTakeaway(game, seen[keys[keys.length - 1]] || runs >= 3);
       played(game);
     }
 
     function play() {
       if (running) return;
-      clearTimeout(timer); state = fresh(); draw(); el.result.textContent = ""; busy(true);
-      var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (still) { while (state.round < ROUNDS) round(); draw(); finish(); return; }
+      clearTimeout(timer); state = fresh(); draw(); el.result.textContent = ""; el.move.hidden = true; busy(true); toBoard(game);
+      if (still()) { while (state.round < ROUNDS) round(); draw(); finish(); return; }
       (function tick() { round(); draw(); if (state.round < ROUNDS) timer = setTimeout(tick, 180); else finish(); })();
     }
 
-    el.setupButtons.forEach(function (b) {
-      b.addEventListener("click", function () {
-        current = b.getAttribute("data-setup");
-        el.setupButtons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-        el.note.textContent = setups[current].note;
-        reset();
-      });
-    });
+    function choose(k) {
+      current = k;
+      el.setupButtons.forEach(function (x) { x.setAttribute("aria-pressed", x.getAttribute("data-setup") === k ? "true" : "false"); });
+      el.note.textContent = setups[current].note;
+      reset();
+    }
+    el.setupButtons.forEach(function (b) { b.addEventListener("click", function () { choose(b.getAttribute("data-setup")); }); });
     el.play.addEventListener("click", play);
+    // Next picks the next line and plays it. Focus moves to Play first, which keeps it while the run plays (A9).
+    el.next.addEventListener("click", function () {
+      var nk = keys[keys.indexOf(current) + 1]; if (!nk || running) return;
+      el.play.focus(); choose(nk); play();
+    });
 
     game.classList.add("is-live");
-    if (el.takeaway) el.takeaway.hidden = true;
+    holdTakeaway(game, false);
     reset();
   }
 
   /* The waiting game: three jobs built one at a time. Each week a job isn't live costs what it's really worth, the
      weeks it's being built included. What each is worth is drawn fresh for every run: the reader sees only estimates,
-     and may test one while the team builds. Its answer comes in at the end of week test_weeks. A pick that isn't made
-     yet falls due when the job before it goes live, and the run waits there. */
+     and may test one while the team builds. Its answer comes in at the end of week test_weeks. The reader's own call
+     comes first, with nothing chosen: the guess is what the first run tests. A pick that isn't made yet is asked for
+     when the team needs it, where the run stops, and the four plans follow the first run (spec J8). */
   function waitingGame(game) {
     var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
     var d; try { d = JSON.parse(dataEl.textContent); } catch (e) { return; }
     var jobs = d.jobs, T = d.test_weeks, by = {}, places = ["1st", "2nd", "3rd"];
     jobs.forEach(function (j) { by[j.id] = j; });
     var el = {
-      tests: all("[data-test]", game), picks: all("[data-pick]", game), rules: all("[data-setup]", game), note: game.querySelector("[data-setup-note]"),
+      radios: all("input[name=waiting-guess]", game), legend: game.querySelector("[data-test-legend]"),
+      picks: all("[data-pick]", game), rules: all("[data-setup]", game), note: game.querySelector("[data-setup-note]"), plans: game.querySelector("[data-plans]"),
       report: game.querySelector("[data-report]"), week: game.querySelector("[data-week]"), live: game.querySelector("[data-live]"), cost: game.querySelector("[data-cost]"),
-      play: game.querySelector("[data-play]"), result: game.querySelector("[data-result]"), takeaway: game.querySelector("[data-takeaway]"), rows: {}
+      play: game.querySelector("[data-play]"), status: game.querySelector("[data-play-status]"), pause: game.querySelector("[data-pause]"), pauseList: game.querySelector("[data-pause-list]"),
+      result: game.querySelector("[data-result]"), rows: {}, names: {}
     };
-    all("[data-row]", game).forEach(function (r) { el.rows[r.getAttribute("data-row")] = all(".wk", r); });
-    var rule = "est", test = "none", order = d.rules.est.order.slice();
-    var wk = 0, worth = null, outcome = null, started = false, paused = false, running = false, timer = null, playedOnce = false, pickedAt = [];
+    all("[data-row]", game).forEach(function (r) { var k = r.getAttribute("data-row"); el.rows[k] = all(".wk", r); el.names[k] = r.querySelector(".wk-name"); });
+    var rule = "", test = "none", order = [];
+    var wk = 0, worth = null, outcome = null, started = false, paused = false, running = false, timer = null, playedOnce = false, pickedAt = [], ownDone = false, planDone = false;
 
     function start() { return test === "all" ? T : 0; }
     function complete() { return order.length === jobs.length; }
@@ -329,12 +436,15 @@
     function draw() {
       var p = plan();
       el.rows.test.forEach(function (cell, i) { cell.className = "wk" + (started && test !== "none" && i < Math.min(wk, T) ? " is-build" : ""); });
+      el.names.test.textContent = test === "none" ? "Test" : "Test, answer" + (test === "all" ? "s" : "") + " at the end of week " + T;
       jobs.forEach(function (j) {
+        var q = p[j.id];
         el.rows[j.id].forEach(function (cell, i) {
-          var w = i + 1, s = "", q = p[j.id];
+          var w = i + 1, s = "";
           if (started && w <= wk) s = !q || w <= q.start ? " is-wait" : w <= q.live ? " is-build" : " is-live";
           cell.className = "wk" + s;
         });
+        el.names[j.id].textContent = j.tag + (started && q && q.live <= wk ? ", live after week " + q.live : "");
       });
       el.week.textContent = wk;
       el.live.textContent = started ? order.filter(function (id) { return p[id].live <= wk; }).length : 0;
@@ -343,22 +453,26 @@
     function said(ids) { return ids.map(function (id) { return by[id].short; }).join(", then "); }
     function cap(t) { return t.charAt(0).toUpperCase() + t.slice(1); }
     function showState() {
-      el.tests.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-test") === test ? "true" : "false"); });
+      // A plan sets the test group to its test; otherwise it shows the reader's own choice, nothing on landing.
+      if (rule) el.radios.forEach(function (r) { r.checked = r.value === test; });
       el.picks.forEach(function (b) {
         var i = order.indexOf(b.getAttribute("data-pick"));
         b.setAttribute("aria-pressed", i >= 0 ? "true" : "false");
         b.querySelector("[data-place]").textContent = i >= 0 ? places[i] : "";
       });
       el.rules.forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-setup") === rule ? "true" : "false"); });
-      var what = test === "none" ? "No test. " : test === "all" ? "" : "Testing " + by[test].short + ". ";
-      if (rule) el.note.textContent = d.rules[rule].label + ". " + (rule === "stop" ? "The team waits for all three answers, then builds the cheapest order."
-        : rule === "test" ? "First " + by[order[0]].short + ", then the next pick, made on the test's answer." : cap(said(order)) + ".");
-      else if (paused) el.note.textContent = what + cap(by[order[order.length - 1]].short) + " went live after week " + wk + ". Pick the next job, then play on.";
-      else el.note.textContent = what + (!order.length ? "Pick the job to build first." : complete() ? "Your order: " + said(order) + "." : "First, " + said(order) + ". Pick the next now, or play and pick it when it falls due.");
+      if (rule) {
+        el.note.textContent = d.rules[rule].label + ". " + (rule === "stop" ? "The team waits for all three answers, then builds the cheapest order."
+          : rule === "test" ? "First " + by[order[0]].short + ", then the next pick, made on the test's answer." : cap(said(order)) + ".");
+        el.status.textContent = "";
+      } else {
+        el.status.textContent = paused || !order.length ? "" : complete() ? "Your order: " + said(order) + "."
+          : "First, " + by[order[0]].short + ". Pick the second now, or play: the run stops when the team needs it.";
+      }
     }
     function reset() {
       clearTimeout(timer); wk = 0; started = false; paused = false; running = false; worth = null; pickedAt = [];
-      busyOn(el.play, false); el.result.textContent = ""; el.report.textContent = "";
+      busyOn(el.play, false); el.result.textContent = ""; el.report.textContent = ""; el.pause.hidden = true; el.play.hidden = false;
       showState(); draw();
       el.play.textContent = playedOnce ? "Play again" : "Play";
     }
@@ -370,113 +484,144 @@
       });
     }
     function bet() { return jobs.filter(function (j) { return !j.values; })[0]; }
+    /* The week's report: the week, the job that just went live where the run stops, and the test's answer once it's in. */
     function report() {
-      if (test === "none") return;
-      var ids = test === "all" ? jobs.map(function (j) { return j.id; }) : [test];
-      el.report.textContent = "Week " + T + ": " + (test === "all" ? "all three answers are in. " : "the test's answer is in. ") + ids.map(function (id) {
-        var j = by[id], line = j.values ? j.report : outcome.report;
-        return line.replace("{value}", money(worth[id]));
-      }).join(" ");
+      var p = plan(), text = "Week " + wk + ".", now = order.filter(function (id) { return p[id].live === wk; });
+      if (now.length) text += " " + cap(by[now[0]].short) + " is live.";
+      if (test !== "none" && wk >= T) {
+        var ids = test === "all" ? jobs.map(function (j) { return j.id; }) : [test];
+        text += (test === "all" ? " All three answers are in. " : " The test's answer is in. ") + ids.map(function (id) {
+          var j = by[id], line = j.values ? j.report : outcome.report;
+          return line.replace("{value}", money(worth[id]));
+        }).join(" ");
+      }
+      el.report.textContent = text;
     }
     function known(id) { return test === "all" || id === test ? (wk >= T ? worth[id] : estimate(id)) : estimate(id); }
+    function ideal() {
+      var keep = order, keepTest = test; order = []; test = "none";
+      order = bestRest(function (id) { return worth[id]; }); var c = costTo(Infinity);
+      order = keep; test = keepTest; return c;
+    }
+    /* The result leads with what the order cost above the cheapest for these numbers, then the facts, then the lesson. */
     function finish() {
-      var p = plan(), total = costTo(wk), best = d.best, text = "";
-      var picked = game.querySelector("input[name=waiting-guess]:checked"), b = bet();
-      if (!playedOnce && picked) text = "You guessed " + picked.value + ". ";
+      var p = plan(), total = costTo(wk), best = d.best, text = "", b = bet(), low = ideal(), guess = game.querySelector("input[name=waiting-guess]:checked");
+      text += total === low ? "No order could have done better with these numbers. "
+        : (rule ? "This plan" : "Your order") + " cost " + money(total - low) + " more than the cheapest order for these numbers. ";
+      if (!playedOnce) text += guess && guess.value !== "none" ? "You guessed " + by[guess.value].short + ", and your run tested it. " : "You guessed none of them, so your run tested nothing. ";
       var others = jobs.filter(function (j) { return j.values; });
       text += b.tag + " " + outcome.said + ": it was worth " + money(worth[b.id]) + " a week. "
         + others.map(function (j, i) { return (i === 0 ? cap(by[j.id].short) + " was worth " : by[j.id].short + " ") + money(worth[j.id]) + (i === 0 ? " a week" : ""); }).join(" and ") + ". ";
-      var when = order.map(function (id, i) { return by[id].short + (i === 0 ? " went live after week " : " after week ") + p[id].live; });
-      text += "In this order, " + when.slice(0, -1).join(", ") + " and " + when[when.length - 1] + ". The waiting cost " + money(total) + ". ";
-      var ideal = (function () { var keep = order, keepTest = test; order = []; test = "none"; var o = bestRest(function (id) { return worth[id]; }); order = o; var c = costTo(Infinity); order = keep; test = keepTest; return c; })();
-      text += total === ideal ? "Had you known every number from the start, you couldn't have done better. "
-        : "Knowing every number from the start, the cheapest order would have cost " + money(ideal) + ", so this one cost " + money(total - ideal) + " more. ";
-      if (rule) text += d.rules[rule].after + " Over every outcome this plan averages " + money(d.rules[rule].average) + (d.rules[rule].average === best.average ? ", as little as knowing everything would." : ".");
+      var when = order.map(function (id) { return by[id].short + " after week " + p[id].live; });
+      text += "Live: " + when.slice(0, -1).join(", ") + " and " + when[when.length - 1] + ". Cost of delay: " + money(total) + ". ";
+      if (rule) text += d.rules[rule].after + " Over both outcomes this plan averages " + money(d.rules[rule].average) + (d.rules[rule].average === best.average ? ", as little as knowing everything would." : ".");
       else if (test === "none") text += "Nothing was tested, so every pick rested on the estimates.";
       else if (by[test].values) text += "Testing " + by[test].short + " told you little the estimate hadn't: no answer inside its range could change the order.";
       else if (order[0] === test) text += "The test's answer came in while " + by[test].short + " was already being built, too late for the pick it could have changed.";
-      else if (pickedAt[1] >= T) text += "The test's answer was in by the time the next pick fell due, so the pick could use it.";
+      else if (pickedAt[1] >= T) text += "The test's answer was in by the time the team needed the next pick, so the pick could use it.";
       else text += "The test's answer came in at week " + T + ", but you had picked the order before it did.";
       el.result.textContent = text.trim();
+      addRun(game, [test === "none" ? "None" : test === "all" ? "All three" : by[test].brief, order.map(function (id) { return by[id].brief; }).join(", "), cap(outcome.said), money(total), money(total - low)]);
+      if (rule) planDone = true; else ownDone = true;
+      if (!playedOnce) { el.plans.hidden = false; if (el.legend) el.legend.textContent = "1. What to test while the team builds."; }
       playedOnce = true; running = false; paused = false; busyOn(el.play, false);
       el.play.textContent = "Play again";
-      if (el.takeaway) el.takeaway.hidden = false;
+      holdTakeaway(game, ownDone && planDone);
       played(game);
     }
-    /* Play on until every job is live, or until a pick falls due that no plan makes. */
+    /* Where the run stops for a pick: the question and a button for each job left, in Play's place, focus on the first. */
+    function askNext() {
+      el.pauseList.textContent = "";
+      rest().forEach(function (id) {
+        var li = doc.createElement("li"), b = doc.createElement("button");
+        b.type = "button"; b.className = "setup pick"; b.setAttribute("data-next-pick", id); b.textContent = by[id].name;
+        b.addEventListener("click", function () {
+          order.push(id); pickedAt.push(wk); if (order.length === jobs.length - 1) { fill(); pickedAt.push(wk); }
+          el.pause.hidden = true; el.play.hidden = false; el.play.focus(); showState(); play();
+        });
+        li.appendChild(b); el.pauseList.appendChild(li);
+      });
+      el.pause.hidden = false;
+      var first = el.pauseList.querySelector("button"); if (first) first.focus();
+      el.play.hidden = true;
+    }
+    /* Play on until every job is live, or until the team needs a pick that no plan makes. */
     function step() {
       wk++;
-      if (test !== "none" && wk === T) report();
       if (!complete() && due() <= wk) {
         if (rule === "stop" || rule === "test") { var o = bestRest(known); order = order.concat(o); pickedAt.push(wk); }
-        else { draw(); paused = true; running = false; busyOn(el.play, false); el.play.textContent = "Play on"; showState(); return false; }
+        else { draw(); report(); paused = true; running = false; busyOn(el.play, false); el.play.textContent = "Play on"; showState(); askNext(); return false; }
       }
       draw();
+      if ((test !== "none" && wk === T) || order.some(function (id) { return plan()[id].live === wk; })) report();
       if (complete() && wk >= due()) { finish(); return false; }
       return true;
     }
     function play() {
       if (running) return;
-      if (paused) { if (!complete()) { el.note.textContent = "Pick the next job, then play on."; return; } paused = false; }
+      if (paused) { if (!complete()) return; paused = false; }
       else {
-        if (!order.length && rule !== "stop") { showState(); return; }
+        if (!order.length && rule !== "stop") { el.status.textContent = "Pick the job to build first, in step 2."; return; }
         clearTimeout(timer); wk = 0; started = true; draws(); pickedAt = order.map(function () { return 0; });
-        el.result.textContent = ""; el.report.textContent = "";
+        el.result.textContent = ""; el.report.textContent = ""; toBoard(game);
       }
       running = true; busyOn(el.play, true); showState();
       if (still()) { while (step()) {} return; }
       (function tick() { if (step()) timer = setTimeout(tick, 260); })();
     }
 
-    el.tests.forEach(function (b) {
-      b.addEventListener("click", function () {
-        test = b.getAttribute("data-test");
-        if (rule) order = rule === "est" || rule === "biggest" ? d.rules[rule].order.slice() : [];
+    el.radios.forEach(function (r) {
+      r.addEventListener("change", function () {
+        if (!r.checked) return;
+        test = r.value;
+        if (rule) order = rule === "est" || rule === "biggest" ? d.rules[rule].order.slice() : rule === "test" ? d.rules.test.order.slice() : [];
         rule = ""; reset();
       });
     });
     el.picks.forEach(function (b) {
       b.addEventListener("click", function () {
         var id = b.getAttribute("data-pick");
-        if (paused) {
-          if (order.indexOf(id) >= 0) return;
-          order.push(id); pickedAt.push(wk); if (order.length === jobs.length - 1) { fill(); pickedAt.push(wk); }
-          showState(); el.note.textContent = "Next, " + said(order.slice(order.indexOf(id))) + ". Play on."; return;
-        }
+        if (paused) return;
         if (rule) { test = d.rules[rule].test === "all" ? "none" : d.rules[rule].test; rule = ""; order = []; }
-        if (complete()) order = [id];
+        var fresh = complete();
+        if (fresh) order = [id];
         else if (order.indexOf(id) < 0) { order.push(id); if (order.length === jobs.length - 1) fill(); }
         reset();
+        if (fresh) el.status.textContent = "A new order: " + by[id].short + " first. Pick the second now, or play: the run stops when the team needs it.";
       });
     });
     el.rules.forEach(function (b) {
-      b.addEventListener("click", function () { rule = b.getAttribute("data-setup"); test = d.rules[rule].test; order = d.rules[rule].order.slice(); reset(); });
+      b.addEventListener("click", function () { rule = b.getAttribute("data-setup"); test = d.rules[rule].test; order = d.rules[rule].order.slice(); reset(); play(); });
     });
     el.play.addEventListener("click", play);
     game.classList.add("is-live");
-    if (el.takeaway) el.takeaway.hidden = true;
+    holdTakeaway(game, false);
     reset();
   }
 
   /* The ranking game: stores of three sizes, every one late on the same share of orders, ranked each week by their
-     late rate. In the last two setups one large store really is worse, and the funnel shows the range chance allows. */
+     late rate. From the first setup's second week, last week's five worst are ringed. In the next two setups one large
+     store really is worse, and the funnel shows the range chance allows; the trial runs eight weeks (spec J8). */
   function rankingGame(game) {
     var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
     var d; try { d = JSON.parse(dataEl.textContent); } catch (e) { return; }
     var size = [], group = [];
     d.sizes.forEach(function (g, gi) { for (var i = 0; i < g.stores; i++) { size.push(g.orders); group.push(gi); } });
-    var N = size.length, worse = N - 1, TOP = 0.4, current = "equal", week = 0, playedOnce = false;
-    var rate = null, late = null, worst = [], best = [], prevWorst = null, out = [];
-    var tr = { fix: [0, 0], rest: [0, 0] }, F = d.trial.stores;
+    var N = size.length, worse = N - 1, TOP = 0.4, current = "equal", week = 0, playedOnce = false, seen = {};
+    var rate = null, late = null, worst = [], best = [], prevWorst = null, out = [], rank = 0;
+    var tr = { fix: [0, 0], rest: [0, 0] }, F = d.trial.stores, W = d.trial.weeks;
     var el = {
-      dots: all(".rk-dot", game), week: game.querySelector("[data-week]"), small: game.querySelector("[data-small]"), best: game.querySelector("[data-best]"),
+      dots: all(".rk-dot", game), tally: game.querySelector("[data-tally]"), key: game.querySelector("[data-key]"),
       note: game.querySelector("[data-setup-note]"), result: game.querySelector("[data-result]"), play: game.querySelector("[data-play]"),
-      takeaway: game.querySelector("[data-takeaway]"), setupButtons: all("[data-setup]", game)
+      setupButtons: all("[data-setup]", game), move: game.querySelector("[data-next-move]"), next: game.querySelector("[data-next]"), done: game.querySelector("[data-next-done]")
     };
+    var keys = el.setupButtons.map(function (b) { return b.getAttribute("data-setup"); });
     var worldWorse = function () { return current === "worse" || current === "funnel"; };
     var inTrial = function (i) { return current === "trial" && i < F; };
     var pct = function (r) { return String(Math.round(r * 1000) / 10); };
     var ordinal = function (k) { var t = k % 100; return k + (t > 10 && t < 14 ? "th" : ["th", "st", "nd", "rd"][k % 10] || "th"); };
+    var word = function (k) { return ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][k] || String(k); };
+    var ringed = function () { return current === "equal" && !!prevWorst; };
 
     // One week: every order is late with the store's chance of lateness. Ties in the ranking break at random.
     function oneWeek() {
@@ -491,6 +636,7 @@
       worst = idx.slice(0, 5); best = idx.slice(-5);
       out = [];
       for (var j = 0; j < N; j++) { var f = d.funnel[group[j]], v = rate[j] * 100; if (v < f[0] || v > f[1]) out.push(j); }
+      rank = idx.indexOf(worse) + 1;
       return idx;
     }
     function byGroup(list) {
@@ -505,6 +651,7 @@
       var rs = list.map(function (i) { return rate[i]; }), hi = Math.max.apply(null, rs), lo = Math.min.apply(null, rs);
       return hi === lo ? pct(hi) + " percent" : pct(lo) + " to " + pct(hi) + " percent";
     }
+    function pooled(g) { return g[1] ? pct(g[0] / g[1]) : "0"; }
 
     function draw() {
       game.classList.toggle("shows-funnel", current === "funnel" && week > 0);
@@ -513,55 +660,63 @@
         dot.style.setProperty("--r", has ? Math.min(rate[i], TOP) / TOP : 0);
         dot.classList.toggle("is-shown", has);
         dot.classList.toggle("is-worst", has && worst.indexOf(i) >= 0);
-        dot.classList.toggle("was-worst", has && current === "next" && !!prevWorst && prevWorst.indexOf(i) >= 0);
+        dot.classList.toggle("was-worst", has && ringed() && prevWorst.indexOf(i) >= 0);
         dot.classList.toggle("is-worse", i === worse && worldWorse());
         dot.classList.toggle("is-out", has && current === "funnel" && out.indexOf(i) >= 0);
         dot.classList.toggle("is-trial", inTrial(i));
       });
-      el.week.textContent = week;
-      el.small.textContent = rate ? smallIn(worst) : 0;
-      el.best.textContent = rate ? smallIn(best) : 0;
+      var s = d.setups[current];
+      el.key.textContent = ringed() && s.key_again ? s.key_again : s.key;
+      // The tally, a line of short sentences (J8).
+      if (current === "trial") el.tally.textContent = "Week " + week + " of " + W + "." + (week ? " With the fix: " + pooled(tr.fix) + "%. Without: " + pooled(tr.rest) + "%." : "");
+      else el.tally.textContent = "Week " + week + "." + (rate ? " Five worst: " + smallIn(worst) + " small. Five best: " + smallIn(best) + " small." + (worldWorse() ? " Worse store: " + ordinal(rank) + "." : "") : "");
+    }
+    function playLabel() {
+      if (current === "trial") return week >= W ? "Play the trial again" : "Play week " + (week + 1) + " of " + W;
+      return playedOnce && week ? "Play another week" : "Play a week";
     }
     function reset() {
-      el.result.textContent = "";
-      if (current !== "next") prevWorst = null;
+      el.result.textContent = ""; el.move.hidden = true;
+      prevWorst = null;
       rate = null; week = 0; tr = { fix: [0, 0], rest: [0, 0] }; draw();
-      el.play.textContent = "Play a week";
+      el.play.textContent = playLabel();
     }
 
     function play() {
-      var picked = game.querySelector("input[name=ranking-guess]:checked"), text = "";
-      if (current === "next") {
-        if (!prevWorst) { oneWeek(); prevWorst = worst.slice(); }
-        else prevWorst = worst.slice();
-      }
-      var idx = oneWeek(); week++;
-      if (current === "equal") prevWorst = worst.slice();
-      draw();
-      if (!playedOnce && picked) text = "You guessed " + picked.value + ". ";
-      if (current === "next") {
-        var stay = worst.filter(function (i) { return prevWorst.indexOf(i) >= 0; }).length;
-        text += "Of last week's five worst, " + (stay === 0 ? "none is" : stay === 1 ? "1 is" : stay + " are") + " among the five worst again. ";
-      }
+      if (current === "trial" && week >= W) reset();
+      var picked = game.querySelector("input[name=ranking-guess]:checked"), text = "", stay = 0;
+      if (current === "equal" && rate) prevWorst = worst.slice();
+      var idx = oneWeek(); week++; toBoard(game);
+      if (ringed()) stay = worst.filter(function (i) { return prevWorst.indexOf(i) >= 0; }).length;
+      var also = "";
       if (current === "trial") {
         var fix = [0, 0], rest = [0, 0];
         for (var t = 0; t < N; t++) if (group[t] === 0) { var g = t < F ? fix : rest; g[0] += late[t]; g[1] += size[t]; }
         tr.fix[0] += fix[0]; tr.fix[1] += fix[1]; tr.rest[0] += rest[0]; tr.rest[1] += rest[1];
-        var n_ = worst.filter(function (i) { return i < F; }).length, others = d.sizes[0].stores - F;
-        var word = function (k) { return ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"][k] || String(k); };
-        text += "Week " + week + " of the trial. This week the " + word(F) + " stores with the fix were late on " + pct(fix[0] / fix[1]) + " percent of their orders, and the " + word(others) + " small stores without it on " + pct(rest[0] / rest[1]) + " percent. "
-          + "Of the five worst stores, " + (n_ === 0 ? "none has" : n_ === 1 ? "one has" : word(n_) + " have") + " the fix. "
-          + (week > 1 ? "Over the " + week + " weeks so far, " + pct(tr.fix[0] / tr.fix[1]) + " percent with the fix and " + pct(tr.rest[0] / tr.rest[1]) + " without. " : "");
+        var n_ = worst.filter(function (i) { return i < F; }).length;
+        text += "Week " + week + " of the trial. With the fix: " + pct(fix[0] / fix[1]) + " percent late this week" + (week > 1 ? ", " + pooled(tr.fix) + " over " + week + " weeks" : "") + ". "
+          + "Without: " + pct(rest[0] / rest[1]) + " percent" + (week > 1 ? " this week, " + pooled(tr.rest) + " over " + week + " weeks" : "") + ". "
+          + "Of the five worst stores, " + (n_ === 0 ? "none has" : n_ === 1 ? "one has" : word(n_) + " have") + " the fix. ";
+        if (week === 1) text += "Run this trial many times, and after one week the stores with the fix look better than those without in " + d.averages.trial_better_one + " runs in 100, and worse in " + d.averages.trial_worse_one + ". ";
+        if (week >= W) text += d.setups.trial.after + " After eight weeks, the stores with the fix look better in " + d.averages.trial_better_eight + " trials in 100.";
+        also = "Fix " + pooled(tr.fix) + "%, without " + pooled(tr.rest) + "%";
       } else {
+        if (ringed()) text += "Of last week's five worst, " + (stay === 0 ? "none is" : stay === 1 ? "1 is" : stay + " are") + " among the five worst again. ";
         text += "This week the five worst stores were " + byGroup(worst) + ", late on " + span(worst) + " of their orders. "
           + "The five best were " + byGroup(best) + ", late on " + span(best) + ". ";
+        // The guess loop closed, and one week weighed against many (J8).
+        if (current === "equal" && week === 1)
+          text += (!playedOnce && picked ? "You guessed " + picked.value + ". " : "") + "Over many weeks about " + Math.round(d.averages.small_worst) + " of the five worst are small, and about " + Math.round(d.averages.small_best) + " of the five best"
+            + (smallIn(worst) < 3 ? ": one week can mislead, so play another. " : ". ");
+        if (ringed()) also = stay + " of last week's five again";
       }
-      if (current === "worse" || current === "funnel") {
-        var k = idx.indexOf(worse) + 1, small = 0, usual = Math.round(size[worse] * d.late);
+      if (worldWorse()) {
+        var small = 0, usual = Math.round(size[worse] * d.late);
         late.forEach(function (n, i) { if (group[i] === 0) small += n; });
-        text += "The store that really is worse ranked " + ordinal(k) + ", late on " + pct(rate[worse]) + " percent"
-          + (k > 1 ? ", behind " + (k === 2 ? "1 store" : (k - 1) + " stores") + " that only had an unlucky week" : "") + ". "
+        text += "The store that really is worse ranked " + ordinal(rank) + ", late on " + pct(rate[worse]) + " percent"
+          + (rank > 1 ? ", behind " + (rank === 2 ? "1 store" : (rank - 1) + " stores") + " that only had an unlucky week" : "") + ". "
           + "Its " + late[worse].toLocaleString("en-US") + " late orders were about " + (late[worse] - usual).toLocaleString("en-US") + " more than a store its size usually has, while all " + d.sizes[0].stores + " small stores together had " + small + ". ";
+        also = "Worse store " + ordinal(rank);
       }
       if (current === "funnel") {
         var others = out.filter(function (i) { return i !== worse; }).length, found = out.indexOf(worse) >= 0;
@@ -569,26 +724,36 @@
           ? "Outside the funnel this week: " + (others ? "the store that really is worse, and " + (others === 1 ? "1 other store" : others + " other stores") + " by chance. " : "only the store that really is worse. ")
           : "This week the store that really is worse stayed inside its band" + (others ? ", and " + (others === 1 ? "1 other store" : others + " other stores") + " fell outside by chance" : "") + ". At its size that almost never happens: play another week. ";
       }
-      text += d.setups[current].after;
-      if (current === "trial") text += " Run this trial many times, and after one week the stores with the fix look better than those without in " + d.averages.trial_better_one + " runs in 100, and worse in " + d.averages.trial_worse_one + ". After eight weeks they look better in " + d.averages.trial_better_eight + ".";
+      if (current !== "trial") text += ringed() ? d.setups.equal.again : d.setups[current].after;
+      if (current === "equal" && week === 1) text += " Play another week to see where these five land.";
+      draw();
       el.result.textContent = text.trim();
-      playedOnce = true;
-      el.play.textContent = "Play another week";
-      if (el.takeaway) el.takeaway.hidden = false;
+      playedOnce = true; seen[current] = true;
+      el.play.textContent = playLabel();
+      addRun(game, [(keys.indexOf(current) + 1) + ". " + d.setups[current].label, String(week), String(smallIn(worst)), also]);
+      // The next setup, once this one has shown its point: the first after its second week, the trial after its last.
+      var i = keys.indexOf(current), nk = keys[i + 1], shown = current === "equal" ? week >= 2 : current === "trial" ? week >= W : true;
+      el.move.hidden = !shown; el.next.hidden = !nk; el.done.hidden = !!nk;
+      if (nk) el.next.textContent = "Next: " + (i + 2) + ". " + d.setups[nk].label;
+      holdTakeaway(game, seen.trial || Object.keys(seen).length >= 3);
       played(game);
     }
 
-    el.setupButtons.forEach(function (b) {
-      b.addEventListener("click", function () {
-        current = b.getAttribute("data-setup");
-        el.setupButtons.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
-        el.note.textContent = d.setups[current].note;
-        reset();
-      });
-    });
+    function choose(k) {
+      current = k;
+      el.setupButtons.forEach(function (x) { x.setAttribute("aria-pressed", x.getAttribute("data-setup") === k ? "true" : "false"); });
+      el.note.textContent = d.setups[current].note;
+      reset();
+    }
+    el.setupButtons.forEach(function (b) { b.addEventListener("click", function () { choose(b.getAttribute("data-setup")); }); });
     el.play.addEventListener("click", play);
+    // Next picks the next setup and plays its first week. Focus moves to Play, which stays in place (A9).
+    el.next.addEventListener("click", function () {
+      var nk = keys[keys.indexOf(current) + 1]; if (!nk) return;
+      el.play.focus(); choose(nk); play();
+    });
     game.classList.add("is-live");
-    if (el.takeaway) el.takeaway.hidden = true;
+    holdTakeaway(game, false);
     reset();
   }
 
