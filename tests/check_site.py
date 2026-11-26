@@ -291,13 +291,15 @@ def _one_edge(notes, where):
 
 
 # R10: a module's full path, opened: the column's inner width, the list's and each source's, any control inside it that
-# took the full path's Open and Close label, and where its heading ends and its first source starts.
+# took the full path's Open and Close label, and where its heading ends and what follows it starts: its If you read one
+# line (S23), or else its first source.
 JS_FULL_PATH = """() => { const sec = document.querySelector('.deeper'); if (!sec) return null;
   const d = sec.querySelector(':scope > details'); d.open = true;
   const sum = d.querySelector(':scope > summary'), ul = sec.querySelector('.deeper-list');
   const cs = getComputedStyle(sec), r = sec.getBoundingClientRect();
   const stray = [...d.querySelectorAll('summary')].filter(x => x !== sum).filter(x => /Open|Close/.test(getComputedStyle(x, '::after').content));
-  sum.scrollIntoView({block: 'center'}); const s = sum.getBoundingClientRect(), first = ul.firstElementChild.getBoundingClientRect();
+  sum.scrollIntoView({block: 'center'}); const s = sum.getBoundingClientRect(), one = sec.querySelector('.deeper-one'),
+        first = (one || ul.firstElementChild).getBoundingClientRect();  // If you read one (S23) is the first thing under the heading
   return {inner: r.width - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight), ul: ul.getBoundingClientRect().width,
           lis: [...ul.children].map(li => li.getBoundingClientRect().width), stray: stray.length,
           gap: first.top - s.bottom, left: r.left, width: r.width, bottom: s.bottom, sl: s.left, st: s.top, sw: s.width, sh: s.height}; }"""
