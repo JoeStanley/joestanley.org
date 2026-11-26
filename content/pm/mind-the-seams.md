@@ -26,7 +26,7 @@ steps:
     where: A magazine article from 1968. Free at melconway.com.
     links:
       - text: "How Do Committees Invent?"
-        url: http://www.melconway.com/Home/pdf/committees.pdf
+        url: https://www.melconway.com/Home/pdf/committees.pdf
     look: "His advice for living with his law: since the first design is rarely the best, \"flexibility of organization is important to effective design.\""
     trust: "An argument. It's the original."
     only: The law in its author's words, with the reasoning a one-line summary leaves out.
@@ -61,7 +61,7 @@ steps:
       - text: "Bounded Context"
         url: https://martinfowler.com/bliki/BoundedContext.html
     look: The word "meter," which meant different things to different parts of an electricity utility.
-    trust: "Experience. It's Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business."
+    trust: "Experience. Fowler is a software developer who's written about design for decades, and this is his retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business."
     only: A way to hear a boundary in how people talk.
   - id: do
     kind: do
@@ -101,6 +101,9 @@ check:
   - q: "**Beyond this module.** Your two pictures show your own company's teams and parts. Who shapes the product from outside both?"
     a: Vendors, partners, regulators and the open-source projects you build on. Their seams are yours too, and you can't reorganize them. Ask your tech lead which outside part you'd least like to lose.
 
+deeper_one:
+  title: "Team Topologies"
+  why: "When someone asks a team to own one more thing, its words, cognitive load above all, are the ones you'll reach for."
 deeper:
   - title: Team Topologies
     by: Matthew Skelton and Manuel Pais
@@ -129,7 +132,7 @@ deeper:
   - title: Halt and Catch Fire
     by: created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
     where: A TV series.
-    note: "A small company builds a portable PC, with a hardware chief, Gordon, and a software lead, Cameron, who want different machines. Her operating system has a personality and needs memory he won't give it, and the programmers take orders from both. In the ninth episode of season 1, when a cheaper copy of their machine turns up at a trade show, Gordon pulls her system out and swaps in MS-DOS: \"We had a problem. Now we have a product.\""
+    note: "A small company builds a portable PC, with a hardware chief, Gordon, and a software lead, Cameron, who want different machines. Her operating system has a personality and needs memory he won't give it, and the programmers take orders from both. In the ninth episode of season 1, when a rival unveils a faster, cheaper machine at a trade show, Gordon pulls her system out and swaps in MS-DOS: \"We had a problem. Now we have a product.\""
     only: A product shaped by the fight between the teams that built it. Then watch the software team walk out and found a company of its own.
 ---
 

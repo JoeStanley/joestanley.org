@@ -81,6 +81,9 @@ check:
   - q: "**Beyond this module.** You've found out a call was wrong, but it's your manager's call, or your team's. What now?"
     a: Say so in a way they can weigh, and if they still go the other way, commit to it. [Bring People With You](/pm/bring-people-with-you/) takes that up, with disagreeing and committing.
 
+deeper_one:
+  title: "The Fearless Organization"
+  why: "The people who see you're wrong before you do, and what it takes for them to tell you."
 deeper:
   - title: The Fearless Organization
     by: Amy C. Edmondson
@@ -105,7 +108,7 @@ deeper:
 
 Every plan rests on assumptions, and some of yours are probably wrong today: that technicians will trust a new alert, say, or that a sensor's readings mean what you think. You don't know which yet, and you won't find out by feel. As the writer [Kathryn Schulz puts it](https://www.ted.com/talks/kathryn_schulz_on_being_wrong), being wrong "feels like being right." So stop asking how to show you're right, and ask how you'd find out you're wrong.
 
-The cheapest way is to decide what wrong looks like before you start. [Change Safely](/pm/change-safely/) had you name a guardrail and the level at which you'd stop, before a rollout. Do the same for every bet. Before the new alert ships, write down the result you expect and by when, say technicians acting on most alerts within a month, and the result that would make you stop or change course. That's a stop rule. Once the bet is live you'll want to be right, so a line drawn afterward tends to move. A stop rule also catches the bet that never quite fails and never quite works, and drifts on for a year.
+The cheapest way is to decide what wrong looks like before you start. [Change Safely](/pm/change-safely/) had you name a guardrail and the level at which you'd stop, before a rollout. Do the same for every bet. Before the new alert ships, write down the result you expect and by when, say technicians acting on most alerts within a month, and the result that would make you stop or change course. That's a {{< pm/term "stop-rule" >}}. Once the bet is live you'll want to be right, so a line drawn afterward tends to move. A stop rule also catches the bet that never quite fails and never quite works, and drifts on for a year.
 
 Silence isn't proof that you're right. Low numbers can mean people stopped telling you. US colleges publish their counts of sexual assault on campus, under a law called the Clery Act. *Data Feminism*, on [Weigh the Evidence](/pm/weigh-the-evidence/)'s full path, tells what happened when students set those counts beside anonymous surveys: the truth was "closer to the reverse" of what the counts suggested. Many of the colleges with higher counts were the ones putting more into support for survivors, where survivors had more reason to come forward. So when technicians stop reporting false alarms, ask them why before you count it as good news.
 

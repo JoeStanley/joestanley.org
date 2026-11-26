@@ -385,4 +385,7 @@ run_bg "Start not pointing to what the course leaves out" S21 "sed -i 's|(/pm/th
 run_bg "the single document leaving Start's pointer on The Compass's page" G8 "sed -i '/(printf \"href=\\\\\"%s#\" .RelPermalink)/d' layouts/pm/all.html"
 run_bg "the model card off the AI thread" S22 "sed -i 's|So before you trust one, read its mistakes|So read its mistakes before you rely on it|' content/pm/cards/read-the-errors.md"
 run_bg "The Compass two pages over its three" P1 "python3 -c \"p='content/pm/the-compass.md'; open(p, 'a').write(('\\n\\n' + 'A sentence that runs the page long. ' * 40) * 12)\""
+run_bg "a full path without If you read one" S23 "sed -i '/^deeper_one:/,/^  why:/d' content/pm/mind-the-seams.md"
+run_bg "If you read one naming the story" S23 "sed -i '/^deeper_one:/{n;s/title: .*/title: \"The Goal\"/}' content/pm/find-the-constraint.md"
+run_bg "a story's credit without its years" S10 "sed -i 's/(NBC, 2016 to 2020)/(NBC)/' content/pm/answer-for-what-you-build.md"
 wait

@@ -90,6 +90,9 @@ check:
   - q: "**Beyond this module.** Your bathtub shows what piles up, and why. What can't a drawing tell you?"
     a: Where to act first. A drawing shows the structure, not which step holds the rest back, and finding that takes timing how long work waits at each one. [Find the Constraint](/pm/find-the-constraint/) has you do it.
 
+deeper_one:
+  title: "Thinking in Systems"
+  why: "It's by the author behind the [Stocks, Flows and Feedback](/pm/cards/stocks-flows-feedback/) card, and it's the place to start if systems thinking is new to you."
 deeper:
   - title: Thinking in Systems
     by: Donella Meadows, edited by Diana Wright

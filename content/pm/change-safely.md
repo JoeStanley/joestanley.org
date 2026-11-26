@@ -44,7 +44,7 @@ steps:
     links:
       - text: "DORA's software delivery performance metrics"
         url: https://dora.dev/guides/dora-metrics/
-    look: Which of the five measures show throughput and which show instability, and why smaller changes help both. If you read *Accelerate* on [Find the Constraint](/pm/find-the-constraint/)'s full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
+    look: Which of the five measures show throughput, meaning how fast changes get out, and which show instability, and why smaller changes help both. If you read *Accelerate* on [Find the Constraint](/pm/find-the-constraint/)'s full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
     trust: "A review of studies. DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade, and the guide sums up what it keeps finding. The answers are self-reported, and the evidence is in the yearly reports."
     only: The measures as DORA uses them today, so you can ask for your own team's numbers.
   - id: card-error-budgets
@@ -106,6 +106,9 @@ check:
   - q: "**Beyond this module.** Most of this module guards against honest mistakes. What about someone breaking your product on purpose?"
     a: Abuse and attack, where a feature works as designed for someone you never designed it for, like a bot that buys the best seats to resell. Adam Shostack's *Threat Modeling*, on the full path below, starts there.
 
+deeper_one:
+  title: "Trustworthy Online Controlled Experiments"
+  why: "It covers the two calls here you'll make most often: what an experiment answers to, and how fast a change reaches everyone."
 deeper:
   - title: Trustworthy Online Controlled Experiments
     by: Ron Kohavi, Diane Tang and Ya Xu

@@ -24,7 +24,7 @@ Set the vision as a destination, keep it current as engineers and customers teac
 ## Why a PM cares
 
 - **Product management isn't project management.** A project can be on time and on budget and still be the wrong product.
-- **You facilitate, but you aren't a facilitator.** You can't stay out of the content, since groups don't pool what they know on their own: they picked the best candidate 18 percent of the time when its facts were spread among them, 83 percent when everyone had them (Stasser and Titus, 1985).
+- **You facilitate, but you aren't a facilitator.** You can't stay out of the content, since groups don't pool what they know on their own: they picked the best candidate 18 percent of the time when its facts were spread among them, 83 percent when everyone had them ([Stasser and Titus, 1985](https://doi.org/10.1037/0022-3514.48.6.1467)).
 - **The vision needs a voice of its own.** People respond to the person in the work. A product made by averaging every request can be right in every detail and still say nothing.
 
 ## How to spot it

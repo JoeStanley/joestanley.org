@@ -334,6 +334,9 @@ def module_tab(art, state):
         elif "deeper" in cls:
             out.append("## " + inline(sec.find("h2")))
             out += note_of(sec) + [inline(sec.find(class_="deeper-hint"))]
+            one = sec.find(class_="deeper-one")   # If you read one (spec S23)
+            if one:
+                out.append(inline(one))
             items = []
             for li in sec.select("ul.deeper-list > li"):
                 paras = [inline(li.find(class_="meta-line"))]

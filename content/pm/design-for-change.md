@@ -44,7 +44,7 @@ steps:
       - text: "Reporting Database"
         url: https://martinfowler.com/bliki/ReportingDatabase.html
     look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
-    trust: "Experience. He's a software developer who's written about design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
+    trust: "Experience. Fowler, from [Mind the Seams](/pm/mind-the-seams/), has written about software design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
   - id: do
     kind: do
@@ -88,6 +88,9 @@ check:
   - q: "**Beyond this module.** Your list stops at what you build and the contracts and laws it must meet. What slow layer lives in your customers' heads?"
     a: Their habits, and what they've learned to do on your screens. A redesign that's quick for you can be slow for them. After your next change to a screen people use every day, read your support queue for a week.
 
+deeper_one:
+  title: "A Philosophy of Software Design"
+  why: "It gives you the words for why a feature that ships fast can make every later one slower."
 deeper:
   - title: Designing Data-Intensive Applications
     by: Martin Kleppmann and Chris Riccomini
@@ -114,7 +117,7 @@ deeper:
     trust: "An argument. It's the classic case for information hiding, keeping each decision likely to change inside one module, and he makes it from a single worked example."
     only: Why a system's boundaries go around the decisions likely to change. Engineers can draw them only as well as they know what's coming, and often you're the one who knows.
   - title: Yes Minister
-    by: written by Antony Jay and Jonathan Lynn (BBC, 1980)
+    by: written by Antony Jay and Jonathan Lynn (BBC, 1980 to 1984)
     where: A TV series.
     note: "Watch series 1, episode 4, \"Big Brother.\" A new minister wants safeguards on a national database. His predecessor drafted the same ones. He tells the new minister how the permanent secretary stalled them, one polite stage at a time, until an election took him out of office and the department wiped the slate clean."
     only: Pace layers in a government department. Ministers come and go while the civil service stays, so a change that has to pass through it moves at its speed.
@@ -142,7 +145,7 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 
 {{< pm/example >}}
 
-**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace the parts it would touch. Outside the 10 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
+**Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's unpublished workshop notes (February 2025): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace the parts it would touch. Outside the 10 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 
 ## Questions to bring to engineers
 

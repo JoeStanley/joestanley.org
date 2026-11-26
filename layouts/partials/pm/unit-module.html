@@ -129,6 +129,10 @@
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "go-deeper") }}
     <details>
       <summary><h2{{ if not $all }} id="go-deeper"{{ end }}>Go deeper: the full path</h2><span class="deeper-hint">Optional, and not counted in the time above.</span></summary>
+      {{- /* If you read one (spec S23): one line above the first source, inside the fold, in the reading type. */}}
+      {{- with $p.Params.deeper_one }}
+      <p class="deeper-one"><strong>If you read one:</strong> <cite>{{ .title | $p.RenderString }}</cite>. {{ .why | $p.RenderString }}</p>
+      {{- end }}
       <ul class="deeper-list">
         {{- range . }}
         {{- $slot := printf "deeper-%s" (urlize (lower .title)) }}
