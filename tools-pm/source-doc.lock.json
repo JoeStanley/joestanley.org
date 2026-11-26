@@ -21,10 +21,10 @@
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "c8375436d465881d811b72b53d99b495c2237526d4b2d1c9363432a053604718",
+   "sha256": "aa595b432ceb0418745b513e2774bc460b26c71b90165fbb3fdcc094363ba3db",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 221
+   "rev": 222
   },
   {
    "name": "0 Own Your Role",
@@ -77,18 +77,18 @@
   {
    "name": "6 Change Safely",
    "file": "6-change-safely.md",
-   "sha256": "f0777086ad3b86c301bcd3ab01b142242a66c2a00c0e027fd576253cf636be22",
+   "sha256": "e19b1059f8ac18aac77c3c2fd2bed6be118d298089534c97dd1e18ff2b83ff0b",
    "doc_tab": "9317d9d1-2129",
    "doc_node": "a29f117c-7f2e",
-   "rev": 67
+   "rev": 69
   },
   {
    "name": "7 Weigh the Evidence",
    "file": "7-weigh-the-evidence.md",
-   "sha256": "6f7e4177bf915c5975edfc9c5c81dbee62a780b0241a48575550ab8269b582fb",
+   "sha256": "f2789b56fdaf7875afcf6ae456d6e053c81e3b20408446073beabb8b64486c60",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 64
+   "rev": 65
   },
   {
    "name": "8 Decide and Set Direction",
@@ -125,18 +125,18 @@
   {
    "name": "The Compass",
    "file": "the-compass.md",
-   "sha256": "e3b2c1946c4c53490752b18a6f5e58acd36c9b1ca27e6ab96d52a19dfffade9d",
+   "sha256": "1d2f7847f11126398e3a34f22f77eb9b0e13e336d7c3d937931343aa09c80142",
    "doc_tab": "68f6f34d-b06c",
    "doc_node": "347f5a8a-09fe",
-   "rev": 2
+   "rev": 3
   },
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "8cc2a33ffc079c7ae0ae6973c0aa14ff244674cb8a11d21aa60d3e8a1406e981",
+   "sha256": "eca9bb3c22ba106306b884638c1afa85f3b41bb71991d1eac43fa4225f0a9ee7",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 15
+   "rev": 16
   },
   {
    "name": "Your voice pass",
