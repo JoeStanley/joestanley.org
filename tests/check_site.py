@@ -2735,6 +2735,13 @@ def rail_checks(ctx, base):
             mark = pg.evaluate("() => { const a = document.querySelector('nav.az a.is-here'), o = document.querySelector('nav.az a[href=\"#l-a\"]'); return [a ? a.textContent.trim() : '', a ? getComputedStyle(a).color : '', getComputedStyle(o).color]; }")
             if mark[0] != "S" or mark[1] == mark[2]:
                 fail("G6", f"{where}: with S's terms under the bar, S isn't the letter marked on the rail in its own color ({mark})")
+            # scrolling alone, no letter tapped: the letter whose terms are under the bar is the one marked
+            pg.evaluate("window.scrollTo(0, 0)"); pg.wait_for_timeout(200)
+            pg.evaluate("() => { const h = document.querySelector('#l-p'); window.scrollTo(0, h.getBoundingClientRect().top + window.scrollY - document.querySelector('[data-course-bar]').offsetHeight - 4); }")
+            pg.wait_for_timeout(300)
+            here = pg.evaluate("() => [...document.querySelectorAll('nav.az a.is-here')].map(a => a.textContent.trim())")
+            if here != ["P"]:
+                fail("G6", f"{where}: scrolled to P's terms, the rail marks {here}, not P alone")
             pg.click('nav.az a[href="#l-w"]'); pg.wait_for_timeout(300)
             lit = pg.evaluate("() => { const ink = getComputedStyle(document.querySelector('nav.az span')).color; const a0 = getComputedStyle(document.querySelector('nav.az a[href=\"#l-b\"]')).color; return [...document.querySelectorAll('nav.az a')].filter(a => getComputedStyle(a).color !== a0 || a.classList.contains('is-here')).map(a => a.textContent.trim()); }")
             if lit != ["W"]:
