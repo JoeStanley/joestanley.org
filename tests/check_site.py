@@ -3746,14 +3746,15 @@ def example_checks(out_dir):
     like", after the main exercise and its decision log line and before any optional exercise; under about 120
     words, then "What makes it good:" and three lines of one sentence each; left out of print, and in the single
     document as in the module. Where the Do is a step of the short path, a link down the page with no minutes of its
-    own, the example opens to a gate until that step is ticked. Until the rest are written, a built module with none is
-    noted, not failed."""
+    own, the example opens to a gate until that step is ticked. Every built module has one; Own Your Role's, whose Do
+    comes before the log starts, sits right after its main exercise."""
     from bs4 import BeautifulSoup
     checked("J7")
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
     count = lambda t: len(re.findall(r"[A-Za-z0-9$][A-Za-z0-9$,'’-]*", t))
     whole = BeautifulSoup(open(os.path.join(out_dir, "pm", "all", "index.html"), encoding="utf-8").read(), "html.parser")
-    without, gated = [], []
+    gated = []
+    first_log = next(x["num"] for x in mods if x["id"] == "know-who-its-for")
     for m in mods:
         if not m.get("page"):
             continue
@@ -3764,7 +3765,8 @@ def example_checks(out_dir):
         dos = [s_ for s_ in d_fm.get("steps") or [] if s_.get("kind") == "do"]
         placed = len(re.findall(r"\{\{<\s*pm/example\s*>\}\}", body))
         if not ex and not placed:
-            without.append(m["title"]); continue
+            fail("J7", f"{where}: a built module shows one example of its Do's main exercise, and it has none")
+            continue
         if not ex or placed != 1:
             fail("J7", f"{where}: an example: in the front matter and one {{{{< pm/example >}}}} in the Do go together, and it has {'no example:' if not ex else f'{placed} placed'}")
             continue
@@ -3788,8 +3790,10 @@ def example_checks(out_dir):
         i_ex = next((i for i, p_ in enumerate(paras) if re.fullmatch(r"\{\{<\s*pm/example\s*>\}\}", p_)), None)
         i_log = next((i for i, p_ in enumerate(paras) if re.match(r"\*\*(Start a decision log|For your decision log|Review your decision log)\.\*\*", p_)), None)
         i_opt = next((i for i, p_ in enumerate(paras) if p_.startswith("**Optional")), len(paras))
+        if i_log is None and m["num"] < first_log:
+            i_log = 0  # Own Your Role's Do comes before the log starts (J3): the example follows its main exercise
         if i_ex is None or i_log is None or not i_log < i_ex < i_opt or i_ex != i_log + 1:
-            fail("J7", f"{where}: its example sits right after the Do's decision log line, on a line of its own, and before any optional exercise")
+            fail("J7", f"{where}: its example sits right after the Do's decision log line (in Own Your Role, its main exercise), on a line of its own, and before any optional exercise")
         # on the built page and in the single document
         page = BeautifulSoup(open(os.path.join(out_dir, "pm", m["page"], "index.html"), encoding="utf-8").read(), "html.parser")
         art = whole.select_one(f'article[data-unit="{m["page"]}"]')
@@ -3828,8 +3832,6 @@ def example_checks(out_dir):
         # the example's gate waits on the Do's step, which G7 holds to its form
         if ex and dos:
             gated.append(f"/pm/{m['page']}/")
-    if without:
-        NOTE["J7"].append(f"{len(without)} built module{'s' if len(without) != 1 else ''} without an example yet, until the rest are written: {', '.join(without)}")
     if not gated:
         return
     # in a browser: before the Do is ticked, the line opens to its gate; the button ticks the step and shows the example;

@@ -74,6 +74,22 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Change:** instant pay by bank.
+
+    1. **Cohort:** 1 percent of buyers, between on-sales; then 10, 50, 100, each through a bigger on-sale.
+    2. **Goal:** carts checked out, from 62 percent.
+    3. **Guardrails,** overall and in social-app browsers, where redirects break: errors, not declines, 0.4 per thousand, stop at 1; money taken, no ticket: one stops it.
+    4. **Off switch:** payments on-call, 10 minutes from alert; in on-sales, automatic, in seconds.
+    5. **Error budget:** 1 per thousand: 43 minutes' worth at normal traffic. A 10-minute break at 1 percent: six seconds' worth; an on-sale minute, 45 times normal, at 100: the month's.
+
+    **Decision log:** reaches everyone, never switched off. 65 percent sure: untested at on-sale load. Know by June 10.
+  good:
+    - "Its breakdown and its hard line come from how this change breaks: bank redirects in social-app browsers, and money taken with no ticket, a stop at one."
+    - "It prices a break by when it lands as well as how wide, and lets that price set the off switch: automatic, in seconds, in on-sales."
+    - Its log says why it might fail, untested at on-sale load, and its ramp tests just that, each step through a bigger on-sale.
+
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
@@ -136,6 +152,8 @@ That's harder to say when the output varies, as a model's does. So decide what t
 Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
 
 **For your decision log.** Write whether you expect the rollout to reach everyone without being switched off, and how sure you are. You'll know when the last group has it.
+
+{{< pm/example >}}
 
 **Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
 

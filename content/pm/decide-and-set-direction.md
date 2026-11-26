@@ -63,6 +63,26 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Diagnosis:** families quit at business travelers' fare rules; half their support calls concern bags.
+
+    **Guiding policy:** families first, one price they can trust.
+
+    **Actions:** bags and seats in the fare; families seated together; fare rules behind "Details."
+
+    **Not this quarter:**
+
+    - Corporate travel policies for two accounts: nothing for families. Sales would argue for them: a real no, told in person Monday.
+    - Loyalty redesign: families pay no less. The product lead tells marketing.
+    - The expense export: business travelers only. Fence: built for one account, still its main user. Stops only if that account can do without; sales asks.
+
+    **Decision log:** no corporate policies. Expect both to ask again, neither to leave. 70 percent sure; one renews in May. Check June 30.
+  good:
+    - The first no names who would argue for it, sales, which makes it a choice and not a goal.
+    - "The export it would stop gets its fence checked first: who it was built for, who still uses it, and what would let it go."
+    - The log bets on what the no will cost, and checks after the one renewal that could prove it wrong.
+
 check:
   - q: Weigh the Evidence asked who's missing from your evidence before you lean on it. Here you decide on purpose, with what you have. When do you stop gathering and decide?
     against: weigh-the-evidence
@@ -120,5 +140,7 @@ Handing a decision out works only when the person deciding sees the situation as
 **Write a kernel and a not-doing list (25 minutes).** Write one sentence for the diagnosis, the main challenge facing your product area, and one for the guiding policy, your approach to it. Add two or three actions that carry it out together. Those three parts make Rumelt's {{< pm/term "kernel-of-a-strategy" "kernel of a strategy" >}}. Then list three things you won't do this quarter, whether someone asked for them or your team does them now, each with a sentence tying the no to your diagnosis. Beside each, write who it leaves waiting, and whether they'll hear it from you. Before you stop anything your team does now, check the fence, even if that takes a conversation after the 25 minutes. Test each line: would a reasonable colleague argue for the opposite? If not, it isn't a choice yet. And if the list isn't yours to set, bring it as a proposal to whoever sets it.
 
 **For your decision log.** Pick one line from your not-doing list. Write what you expect to happen because you said no, how sure you are, and the date you'll check.
+
+{{< pm/example >}}
 
 **Optional: take apart a stalled decision (10 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.

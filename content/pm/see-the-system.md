@@ -60,6 +60,25 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Stock:** drivers waiting for a background check, 2,400 now.
+
+    - **In:** about 900 a week finish their documents.
+    - **Out:** 750 a week cleared, and 50 give up. Up 100 a week.
+
+    Three months of vendor reports; give-ups guessed.
+
+    **Who sees it:** ops, in the vendor's Monday report, a week late. Drivers see "pending." Riders see fewer cars later.
+
+    **Last fix:** 100 more checks a week, paid for. A number, 12th of 12.
+
+    **Decision log:** a rule, 5th of 12: drivers moving cities, 150 of the 900, keep a clear check under a year old. Then 750 in, 800 out: down 50 a week, to 1,800 by March 1. 60 percent sure: some cities may require a new check. Look again then.
+  good:
+    - The flows in and out have counts and a source, so both the rise now and the fall ahead follow from the arithmetic.
+    - It says who sees the level and how late, out to the riders who only feel it.
+    - The change aims at a rule, higher on the list than the last fix, and its 60 percent says what could prove it wrong.
+
 check:
   - q: Your app clears more drivers' background checks each month than it did last year, yet the queue waiting for one keeps growing. What does that tell you?
     a: More is still coming in than going out. A stock rises whenever its inflow is larger than its outflow.
@@ -113,3 +132,5 @@ Where you draw the system's edge matters too, because it decides whose costs you
 **Reread one failure (10 minutes).** Take a missed date or a failed release on your team that got pinned on one cause. List three other things that had to be true for it to happen.
 
 **For your decision log.** Write the change you'd make to the stock you drew, what you expect its level to do, and how sure you are. Add the date you'll look again.
+
+{{< pm/example >}}

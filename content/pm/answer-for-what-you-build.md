@@ -90,6 +90,33 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Feature:** autoplay.
+
+    **Intended:** fewer taps; more watch time.
+
+    **Unintended:** teens up late; prepaid data spent.
+
+    **Easiest to overlook:** viewers with photosensitive epilepsy.
+
+    **Overlap:** prepaid teens. Adults use data saver to stop autoplay; teens' data saver is locked in parental controls.
+
+    **Focus on:** fewer taps, not watch time.
+
+    **Mitigate:**
+
+    - Flashing videos don't autoplay. Trust and safety.
+    - Off after 11 p.m. for teens. Teen team.
+
+    **To propose:** let teens turn on data saver, with a one-time prompt on mobile data. Settings team.
+
+    **Decision log:** teen data saver. Expect a fifth less mobile data per teen on a prepaid carrier, costing the app 2 percent of teens' watch time. 55 percent sure: many may tap no. Know by March 31.
+  good:
+    - It focuses on what viewers gain, fewer taps, not the watch time the app gains.
+    - "The overlap shows where an existing fix fails: data saver protects prepaid adults, but not prepaid teens, who can't turn it on."
+    - "Its log names who gains and who pays: less data for prepaid teens, 2 percent of teens' watch time for the app."
+
 check:
   - q: A change lifts hours watched on your video app by starting the next video without asking. Has it created value?
     a: Ask whether viewers are better off, or only up later than they meant to be. If they'd switch it off given a plain choice, those hours were taken from them, not created for them.
@@ -173,5 +200,7 @@ End with one change you'd propose. Outside the 25 minutes, show it to someone in
 **Write your lines first (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week.
 
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
+
+{{< pm/example >}}
 
 **Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?
