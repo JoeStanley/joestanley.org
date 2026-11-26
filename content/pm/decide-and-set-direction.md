@@ -88,7 +88,7 @@ check:
     against: weigh-the-evidence
     a: When more evidence wouldn't change the call, or when waiting costs more than being wrong. A two-way door can be decided on thin evidence and fixed later. A one-way door, such as a change to the loyalty points members have saved for years, earns the extra weeks.
   - q: A decision has stalled because five people each think they can say no. What do you change?
-    a: "Get one person named to decide, with everyone else an adviser and no veto but those the law gives. If naming them isn't your call, ask the group, \"Who decides this?\""
+    a: "Get one person named to decide, with everyone else an adviser and no vetoes except the ones the law gives. If naming them isn't your call, ask the group, \"Who decides this?\""
   - q: Your team's strategy reads "Delight travelers with a fast, reliable app," and nobody objects. What's wrong with it?
     a: Nobody would argue for the opposite, so it isn't a choice. It's a goal, with no diagnosis or guiding policy behind it.
   - q: "**Beyond this module.** You've said no and logged it. What would make you change your mind?"

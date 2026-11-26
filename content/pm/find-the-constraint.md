@@ -9,8 +9,8 @@ game: dice
 do_minutes: 30
 
 last_time:
-  - q: Drivers run short every Friday night, and each week the ride-hailing app raises the surge price a little more. What change would last longer?
-    a: One aimed higher than a number, such as a goal, a rule, or who sees the feedback. Meadows ranks numbers lowest of her twelve, because they rarely change how a system behaves.
+  - q: The ride-hailing app runs short of drivers every Friday night, and each week it raises the surge price a little more. What would last longer?
+    a: A change aimed higher than a number, such as showing drivers on Thursday where Friday will run short. Meadows ranks numbers lowest of her twelve.
   - q: Richard Cook says a major failure never has one root cause. Why not?
     a: It takes several small faults lining up, each of which looked harmless alone. Naming one cause says more about the need to blame than about how the failure happened.
 
@@ -78,10 +78,10 @@ example:
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
-  - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Plans take 40 days to go live, and a retro lists five causes. Where do you act first?
+  - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Workout plans take 40 days to go live, and a retro lists five causes. Where do you act first?
     against: see-the-system
     wins: find-the-constraint
-    a: "On the step where work waits longest: help anywhere else won't move the 40 days. Several causes explain a failure, but slow work has one constraint, and once it's helped, the constraint moves."
+    a: "On the step where work waits longest: help anywhere else won't move the 40 days. Several causes explain a failure, but slow work has one constraint, and once it's helped, look again, since the constraint moves."
   - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is [Goodhart's Law](/pm/cards/goodharts-law/).
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
@@ -123,7 +123,7 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 
 ## Do
 
-**Map one flow (30 minutes).** Pick a kind of change your team ships often. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from the first ask to live for everyone, and who does each one. For your last five such changes, estimate the calendar days spent waiting and being worked on at each step, on average. Ticket dates or memory will do. Mark the step with the longest wait as your candidate constraint. Outside the 30 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
+**Map one flow (30 minutes).** Pick a kind of change your team ships often. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from the first ask to live for everyone, and who does each one. For your last five such changes, estimate the calendar days each step spent waiting and the days it was worked on, on average. Ticket dates or memory will do. Mark the step with the longest wait as your candidate constraint. Outside the 30 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
 
 **For your decision log.** Name your candidate constraint, the help you'd give it, and what you expect delivery to do. Say how sure you are, and when you'll find out.
 

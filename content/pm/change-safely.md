@@ -143,23 +143,23 @@ Richard Cook, from [See the System](/pm/see-the-system/), gives part of the reas
 
 Before you change anything, know how good the service has to be, in words engineers can test: "When 50,000 fans try to buy in the first minute of an on-sale, checkout confirms 99 in 100 orders within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 
-That's harder to say when the output varies, as a model's does. So decide what the model judges and what stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can review the orders it holds back. The model sees patterns nobody could write down, and the rule keeps a fan's outcome predictable and easy to explain. Keep checking after launch: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
+That's harder to say when the output varies, as a model's does. So decide what the model judges and what stays a plain rule. On your ticketing app, a model can score how likely each buyer is to be a bot, a rule can say what happens at each score, and a person can review the orders it holds back. The model sees patterns nobody could write down, and the rule keeps what happens to a fan predictable and easy to explain. Keep checking after launch: a model's choices can shape the data it learns from next, and a change to one input can shift everything it does ([Sculley and colleagues, 2015](https://proceedings.neurips.cc/paper/2015/hash/86df7dcfd896fcaf2674f757a2463eba-Abstract.html)).
 
 [//]: # (short-path)
 
 ## Do
 
-**Plan one rollout (30 minutes).** Pick a change coming up on your product, such as fans reselling tickets to each other. Write a one-page plan that answers five things.
+**Plan one rollout (30 minutes).** Pick a change coming up on your product, such as letting fans resell tickets. Write a one-page plan that answers five things.
 
 1. The cohort: who gets it first, and how many.
 2. The goal measure you hope it moves.
-3. The {{< pm/term "guardrail-metric" "guardrail metrics" >}}, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop, or a hard line, where one case stops it. Break each down for the customers the change could hurt most, such as people on older phones or using a screen reader: a guardrail can hold on average while it fails them.
+3. The {{< pm/term "guardrail-metric" "guardrail metrics" >}}, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop, or a hard line, where one case stops it, such as a seat sold twice. Break each down for the customers the change could hurt most, such as people on older phones or using a screen reader: a guardrail can hold on average while it fails them.
 4. Who can switch it off with a {{< pm/term "feature-toggle" "feature toggle" >}}, and how fast.
 5. The error budget it might spend. No target yet? Note it, and ask later who sets one.
 
 Outside the 30 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
 
-**For your decision log.** Write whether you expect the rollout to reach all your users, never switched off, how sure you are, and why. You'll know when the last group has it.
+**For your decision log.** Write whether you expect the rollout to reach all your users without being switched off, how sure you are, and why. You'll know when the last group has it.
 
 {{< pm/example >}}
 

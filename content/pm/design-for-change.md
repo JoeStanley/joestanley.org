@@ -10,8 +10,8 @@ do_minutes: 30
 last_time:
   - q: Parents see grades in an app that copies them from the gradebook each night. What do you find out before promising they're current?
     a: Who reads the copy, how fresh they need it, and what breaks if it's a day old. Freshness has a price, so promise only what they need.
-  - q: The gradebook API has always listed students by surname, though its documentation never says so. What do you check before you change it?
-    a: Who calls it, and what would break. With enough callers, every behavior they can see gets depended on (Hyrum's Law), so count them and tell them first.
+  - q: Three teams read the gradebook's tables directly, and one breaks whenever a column changes. What would make that data a product for them?
+    a: "An owner, and a promise they can count on: how fresh it is, and which changes they hear about first."
 
 steps:
   - id: brand
@@ -115,7 +115,7 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 
 **List your product's layers (30 minutes).** Take one product or journey you own and list its parts from fastest-changing to slowest: wording, screens, business rules, APIs, the data model, core systems of record, the contracts and laws it must meet. Count roughly how often each changed in the last year. Then take the last request that ran long. Which layers did it touch, and which symptom of complexity showed?
 
-**For your decision log.** Write how long you expect the next request into the slowest layer your team changes to take, and how sure you are. You'll know when it ships.
+**For your decision log.** Pick the slowest layer your team changes, and write how long you expect the next request that touches it to take, and how sure you are. You'll know when it ships.
 
 {{< pm/example >}}
 

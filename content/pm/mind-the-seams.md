@@ -148,9 +148,9 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 ## Do
 
-**Draw the two pictures (30 minutes).** Sketch two pictures (lists will do) of your team and the teams it works with most. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then lay them side by side. Where do the boundaries line up, and where do they cross? Outside the 30 minutes, ask a tech lead to correct your second picture.
+**Draw the two pictures (30 minutes).** Sketch two pictures of your area, the part you and your nearest teams build. Lists will do. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, then lay them side by side. Where do the boundaries line up, and where do they cross? Outside the 30 minutes, ask a tech lead to correct your second picture.
 
-**For your decision log.** Pick the seam you'd fix first, where most customers or money wait, and count them. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
+**For your decision log.** Pick the seam you'd fix first, where most customers or money wait, and roughly how much waits. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 
 {{< pm/example >}}
 

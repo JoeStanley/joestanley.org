@@ -147,7 +147,7 @@ Value alone doesn't order the work, because waiting costs money too. What a fix 
 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 
-**Start a decision log.** Write down the call you'd make on this problem now, such as what to test first, what you expect to happen, how sure you are as a percentage and why not surer, and when you'll know. Keep the page: each module from here adds an entry of a few sentences.
+**Start a decision log.** Write down the call you'd make on this problem now, such as what to test first, what you expect to happen, how sure you are as a percentage and why not surer, and when you'll know. Keep the page: each module from here adds a few sentences.
 
 {{< pm/example >}}
 

@@ -55,7 +55,7 @@ steps:
       - text: "Theranos, whistleblowing and speaking truth to power"
         url: https://www.ted.com/talks/erika_cheung_theranos_whistleblowing_and_speaking_truth_to_power/transcript?language=en
     look: "What she's told when she raises her doubts, and the question she asks after: what happens when \"the vision is so compelling and the desire to believe is so strong that it starts to cloud your judgment about what reality is?\""
-    trust: "Experience. Cheung joined Theranos's lab as an entry-level associate, a recent graduate, and raised her concerns inside. It's her side of it, told years later."
+    trust: "Experience. Cheung joined Theranos's lab as a recent graduate and raised her concerns inside. It's her side of it, told years later."
     only: What the pull feels like from inside, told by someone who met it early in her career.
   - id: schneier
     kind: read
@@ -77,7 +77,7 @@ steps:
       - text: "Making your service more inclusive"
         url: https://www.gov.uk/service-manual/design/making-your-service-more-inclusive
     look: Why "Is this your first child?" is hard for some people to answer, and the fix, "Focus on what your service really needs to know." It's Schneier's point from the service side.
-    trust: "Experience. It's the UK government's guidance for its own services, which have to work for everyone, since people usually have no alternative to using them. Parts are written for a public service's legal duties."
+    trust: "Experience. It's the UK government's guidance for its own services, which have to work for everyone, since people usually have no alternative. Parts are for a public service's legal duties."
     only: A test for every field you ask people to fill in, and the common reasons people get shut out, from time and trust to the evidence they're asked for.
   - id: do
     kind: do
@@ -174,7 +174,7 @@ deeper:
 
 ## Why this matters
 
-This module runs longer than the others, on purpose: it ties together earlier threads and breaks new ground.
+This module runs longer than the others, on purpose: it ties together earlier threads, and covers new ground too.
 
 What you build reaches people you'll never meet. On a video-sharing app, small rules decide which video plays next, who can send a teenager a message, and what counts as a view.
 
@@ -200,7 +200,7 @@ The hardest place to hold fast may be inside, in a mission you believe in. Some 
 
 End with one change you'd propose. Outside the 30 minutes, show it to someone in support or in trust and safety, and ask what you missed.
 
-**Write your lines (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week. They're yours: no example shows them.
+**Write your lines (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week. The example leaves them out: your lines are yours to draw.
 
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
 

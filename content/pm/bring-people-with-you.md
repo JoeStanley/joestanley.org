@@ -8,8 +8,8 @@ one_thing: Send your most senior reader a short update on a day you've named, wi
 do_minutes: 30
 
 last_time:
-  - q: Every retro ends with a process tweak. What question is missing?
-    a: Whether the goal is right. A tweak changes the method, not the goal, which is single-loop learning.
+  - q: Your team is sure the launch will go well. What do you run before it starts, and how?
+    a: A premortem. Imagine it has failed, and have everyone write alone why, so doubting the plan becomes helping with it.
   - q: Complaints to support fell by half this quarter. Is that good news?
     a: Not on its own. Low numbers can mean people stopped telling you. Ask the support lead what changed, and who'd be the last to write in.
 
@@ -38,7 +38,7 @@ steps:
     links:
       - text: "Staying aligned with authority"
         url: https://staffeng.com/guides/staying-aligned-with-authority/
-    look: "His first two tactics: never surprise your manager, and don't let your sponsor surprise you, for which he suggests a weekly email or a Slack thread with your week's focus."
+    look: "His first two tactics: never surprise your manager, and don't let your sponsor surprise you, and for the second he suggests a weekly email or a Slack thread with your week's focus."
     trust: "Experience. It's a chapter of *Staff Engineer*, an engineering leader's book for staff engineers, so read it with your own role in mind."
     only: The case for updating upward as a habit, for people who lead without formal authority.
   - id: bezos-2016
@@ -103,10 +103,10 @@ example:
     - The log line gives a reason for its 80 percent, which the director's reply will test.
 
 check:
-  - q: Decide and Set Direction says to give your view last when the call is yours. SCR puts your recommendation in the opening lines. You decide which clinics join the waitlist next, and you're asking the managers' views. Which holds?
+  - q: Decide and Set Direction says to give your view last, so it doesn't sway the room. SCR puts your recommendation in the opening lines. You decide which clinics join the waitlist next, and you're asking the managers' views. Which holds?
     against: decide-and-set-direction
     wins: decide-and-set-direction
-    a: Speaking last. The call is yours and you need their views, so give the situation and your question, and your pick once they've answered. SCR is for someone else's call.
+    a: "Speaking last, since the call is yours and you need their views: give the situation and your question, and your pick once they've answered. SCR is for someone else's call."
   - q: Your update lists only wins. Which parts of the trust equation does it work against?
     a: Two. Self-orientation goes up, because it reads as being about you, and credibility goes down, because nobody believes nothing's wrong.
   - q: Your update opens with two paragraphs of background and ends on a decision you need. Your director reads three lines. What do you move?
@@ -114,7 +114,7 @@ check:
   - q: Your tech lead wanted the new booking screen to wait for a rewrite, and the call went the other way. What do you owe them, so they can disagree and commit?
     a: A real hearing before the call, their concern written into the decision record, and a date when you'll look again. Then committing isn't the same as giving up.
   - q: "**Beyond this module.** Whose trust will you need in a year that you haven't started to earn?"
-    a: Someone your work will soon depend on, such as a team you'll need next year or a leader two levels up. Name one, and ask your manager how they like to hear news.
+    a: Someone your work will soon depend on, such as a team you'll need next year or a leader two levels up. Name one, and ask your manager how that person likes to hear news.
 
 deeper_one:
   title: "Influence Without Authority"
@@ -124,7 +124,7 @@ deeper:
     by: David Maister, Charles Green and Robert Galford
     where: A book.
     note: "Read the chapters \"The Trust Equation\" and \"The Development of Trust.\""
-    trust: "Experience. It's where the card's model comes from, by three advisers to professional firms, and no peer-reviewed study tests it."
+    trust: "Experience. It's where the card's model comes from, written by three advisers to professional firms from their own practice. No peer-reviewed study has tested it."
     only: The trust equation from its authors, and the stages they see trust go through as it grows.
   - title: Influence Without Authority
     by: Allan Cohen and David Bradford
@@ -163,7 +163,7 @@ Bringing people along is harder when they don't agree, and the people you most n
 
 ## Do
 
-**Map your readers and send the first update (30 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day, a trigger or both, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader, often your sponsor (20 minutes). Open the update with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Once the retry is fixed, let's start the pilot on Thursday." Keep the update to five or six lines, and below the opening, one item that isn't on track, its line ending on your ask, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
+**Map your readers and send the first update (30 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader, often your sponsor (20 minutes). Open the update with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Once the retry is fixed, let's start the pilot on Thursday." Keep it to five or six lines. Below the opening, include one item that isn't on track, and end its line on your ask, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
 
 **For your decision log.** Write how you expect your senior reader to take the item that isn't on track, how sure you are, and why. You'll know by their reply.
 
