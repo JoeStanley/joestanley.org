@@ -289,7 +289,7 @@
 .cb-status { color: var(--muted); font-weight: var(--w-strong); }
 .cb-item.is-done .cb-status { color: var(--ink); }
 .cb-menu a[aria-current] { font-weight: var(--w-strong); text-decoration: underline; text-decoration-color: var(--orange); text-decoration-thickness: 3px; text-underline-offset: 0.45em; }
-/* A heading or a stop reached by its address lands below the bar, not under it (G2). */
+/* A heading or a step reached by its address lands below the bar, not under it (G2). */
 .has-course-bar main [id] { scroll-margin-top: calc(2.75rem + var(--sp-4)); }
 
 /* The foot of a unit (spec G5): one step onward by name, in the heading face, on a rule, at the left where the

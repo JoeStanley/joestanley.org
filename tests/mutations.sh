@@ -251,8 +251,8 @@ run_bg "the bar's list runs past a short window" G3 "sed -i 's/if (on) fit();//'
 run_bg "without scripts the bar's place goes nowhere useful" G4 "sed -i 's|#modules\"><span class=\"cb-label\">|\"><span class=\"cb-label\">|' layouts/partials/pm/course-bar.html"
 run_bg "the bar prints" G4 "sed -i 's/, .tick input, .course-bar { display: none !important; }/, .tick input { display: none !important; }/' assets/css/pm.css"
 run_bg "a module's foot with All modules back" G5 "sed -i 's|<nav class=\"unit-foot screen-only\" aria-label=\"Next\">|<nav class=\"unit-foot screen-only\" aria-label=\"Next\"><p><a href=\"/pm/#modules\">All modules</a></p>|' layouts/partials/pm/unit-foot.html"
-run_bg "a card's foot back to the module's top, not its stop" G5 "sed -i 's/{{ if \$stop }}#stop-{{ \$stop }}{{ end }}//' layouts/partials/pm/unit-foot.html"
-run_bg "stops without addresses" G5 "sed -i 's/{{ if not \$all }} id=\"stop-{{ add \$i 1 }}\"{{ end }}//' layouts/partials/pm/unit-module.html"
+run_bg "a card's foot back to the module's top, not its step" G5 "sed -i 's/{{ if \$step }}#step-{{ \$step }}{{ end }}//' layouts/partials/pm/unit-foot.html"
+run_bg "steps without addresses" G5 "sed -i 's/{{ if not \$all }} id=\"step-{{ add \$i 1 }}\"{{ end }}//' layouts/partials/pm/unit-module.html"
 run_bg "the foot's links without their underline" C5 "echo '.unit-foot a { text-decoration: none; }' >> assets/css/pm.css"
 # Job 48, Joe's four cards of 25 November 2026: the menu's label and its Menu button on a phone (R9), and the bar as a
 # band hung from the menu's line, its words quieter, one chevron on a phone and a fade once stuck (G1 to G4)
@@ -285,11 +285,16 @@ run_bg "without scripts the bar's place shows a chevron" G4 "sed -i 's|<span cla
 wait
 # Job 40's spread (25 November 2026): the foot trimmed to one step onward, the owner's pick in the session (G5), and
 # Start's Continue, from saved progress, in place of Next (G1); The Compass and the glossary mark their place (G2)
-run_bg "a card's foot with its other card back" G5 "sed -i 's|stop {{ \$stop }}{{ end }}</a></p>|stop {{ \$stop }}{{ end }}</a></p><p><a href=\"/pm/glossary/\">Its other card</a></p>|' layouts/partials/pm/unit-foot.html"
+run_bg "a card's foot with its other card back" G5 "sed -i 's|{{ \$mod.Title }}</a></p>|{{ \$mod.Title }}</a></p><p><a href=\"/pm/glossary/\">Its other card</a></p>|' layouts/partials/pm/unit-foot.html"
 run_bg "a module's foot steps back, not on" G5 "sed -i 's/{{ with index \$order (add \$i 1) }}/{{ with index \$order (sub \$i 1) }}/' layouts/partials/pm/unit-foot.html"
 run_bg "Start's bar without Continue" G1 "sed -i '/data-continue hidden>/d' layouts/partials/pm/course-bar.html"
 run_bg "Continue only for a module half done" G1 "sed -i 's/if (!to \&\& last >= 0) {/if (false) {/' assets/js/pm.js"
 run_bg "Continue beside Next, not in its place" G1 "sed -i 's/if (next) next.hidden = true;//' assets/js/pm.js"
 run_bg "Continue hidden on a phone" G1 "sed -i 's/^@media (max-width: 45.99rem) { .cb-steps > :not(.cb-continue) { display: none; } }$/@media (max-width: 45.99rem) { .cb-steps { display: none; } }/' assets/css/pm.css"
 run_bg "The Compass not marked as the place in the bar's list" G2 "sed -i 's/ data-label=\"{{ .Title }}\"{{ if eq \$p . }} aria-current=\"page\"{{ end }}/ data-label=\"{{ .Title }}\"/' layouts/partials/pm/course-bar.html"
+# The short path's items are its steps wherever a reader sees them, and a card's foot names its module alone (the owner,
+# 25 November 2026, on seeing "stop 3" in a card's foot, a word the site had never taught) (G5)
+run_bg "a card's foot names the stop's number again" G5 "sed -i 's|{{ \$mod.Title }}</a></p>|{{ \$mod.Title }}, stop {{ \$step }}</a></p>|' layouts/partials/pm/unit-foot.html"
+run_bg "the line above the short path says stops" G5 "sed -i 's/ steps. Tick each one off as you go./ stops. Tick each one off as you go./' assets/js/pm.js"
+run_bg "Start's list says stops" G5 "sed -i 's/total + \" steps done./total + \" stops done./' assets/js/pm.js"
 wait

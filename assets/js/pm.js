@@ -25,9 +25,9 @@
     if (!out || !boxes.length) return;
     var n = boxes.filter(function (b) { return b.checked; }).length;
     out.hidden = false;
-    out.textContent = n === 0 ? boxes.length + " stops. Tick each one off as you go."
-      : n === boxes.length ? "All " + n + " stops done."
-      : n + " of " + boxes.length + " stops done.";
+    out.textContent = n === 0 ? boxes.length + " steps. Tick each one off as you go."
+      : n === boxes.length ? "All " + n + " steps done."
+      : n + " of " + boxes.length + " steps done.";
   }
   function markMap() {
     all("[data-map-unit]").forEach(function (el) {
@@ -36,9 +36,9 @@
       var n = ids.filter(function (id) { return get("pm:" + unit + ":" + id) === "1"; }).length;
       var out = el.querySelector("[data-map-status]");
       if (!out || !total) return;
-      /* The course bar's list says it in a few words (G1): nothing until a stop is ticked. */
-      if (el.hasAttribute("data-map-short")) out.textContent = n === 0 ? "" : n >= total ? "Done" : n + " of " + total + " stops";
-      else out.textContent = n === 0 ? "Ready. Not started." : n >= total ? "Done." : "Started: " + n + " of " + total + " stops done.";
+      /* The course bar's list says it in a few words (G1): nothing until a step is ticked. */
+      if (el.hasAttribute("data-map-short")) out.textContent = n === 0 ? "" : n >= total ? "Done" : n + " of " + total + " steps";
+      else out.textContent = n === 0 ? "Ready. Not started." : n >= total ? "Done." : "Started: " + n + " of " + total + " steps done.";
       el.classList.toggle("is-done", n >= total);
     });
   }
