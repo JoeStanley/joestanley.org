@@ -90,16 +90,17 @@ example:
     **Readers:**
 
     - Director of clinic operations: Mondays.
-    - Twelve clinic managers: whenever their morning list changes.
-    - Hospital IT: whenever the feed or a release date changes.
+    - Manager and tech lead: Mondays, the same note.
+    - Twelve clinic managers: when a release changes their morning list.
+    - Hospital IT: when the feed or a release date changes.
 
-    **Monday, to the director:** "The waitlist is live at three clinics, as planned. Two more asked to join early. Let's say yes, for five by the 15th. Reminder texts: on track for May 2. The cardiology feed still drops overnight cancellations, so those slots stay empty: we need an hour of IT's lead this week."
+    **Monday, to the director:** "The waitlist is live at three clinics, as planned. Two more asked to join early. Let's say yes: five clinics by the 15th. Reminder texts: on track for May 2. The cardiology feed still drops overnight cancellations, so those slots stay empty. Can you get us an hour of IT's lead this week?"
 
-    **Decision log:** expect the director to find IT's hour rather than question the date. 70 percent sure: she asked about the date last week. Know by Tuesday's reply.
+    **Decision log:** expect the director to find IT's hour, not hold the two new clinics. 80 percent sure: cardiology isn't one of them. Know by Tuesday's reply.
   good:
-    - Each reader gets a day or a trigger, by whether they need the rhythm or only the news.
     - The update opens on what the director already accepts, then what changed, then the recommendation.
     - The item that isn't on track ends on what's needed, from whom and by when.
+    - The log line gives a reason for its 80 percent, which the director's reply will test.
 
 check:
   - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation in the opening lines. When does each hold?
@@ -163,5 +164,7 @@ Bringing people along is harder when they don't agree, and the people you most n
 **For your decision log.** Write how you expect your senior reader to take the item that isn't on track, and how sure you are. You'll know by their reply.
 
 {{< pm/example >}}
+
+
 
 **Optional: argue the other side (15 minutes).** Pick a call where you and a peer, such as a tech lead or a designer, disagree. Write their case well enough that they'd sign it. Then write yours as an SCR paragraph of under 100 words. Last, write what would let you commit if the call goes their way, and the date you'd look again.

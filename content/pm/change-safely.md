@@ -76,19 +76,19 @@ steps:
 
 example:
   body: |
-    **Change:** paying by bank transfer at checkout.
+    **Change:** bank transfer at checkout.
 
-    1. **Cohort:** 1 percent, on days without a big on-sale; then 10, 50 and 100 percent, a week each.
-    2. **Goal:** more carts checked out, from about 62 percent.
-    3. **Guardrails:** failed payments per thousand checkouts, now about 8; stop above 15, overall or for screen-reader users or phones over five years old. Same-day refund requests: stop if they double.
+    1. **Cohort:** a random 1 percent, off big on-sale days; then 10, 50 and 100 percent, a week each.
+    2. **Goal:** more carts checked out, from 62 percent.
+    3. **Guardrails,** each overall and for buyers in social apps' browsers: failed payments per thousand checkouts, now 8, stop above 15; money taken with no ticket, stop at the first.
     4. **Off switch:** payments on-call, by toggle, five minutes, any hour.
-    5. **Error budget:** checkout's 99.9 percent leaves 43 minutes a month; this may spend 10.
+    5. **Error budget:** checkout's 99.9 percent leaves 43 minutes a month; this may spend 10: five to notice, five to switch off.
 
-    **Decision log:** reaches everyone without a switch-off. 65 percent sure: the bank's test system has never seen an on-sale. Know by June 10.
+    **Decision log:** reaches everyone without a switch-off. 65 percent sure: the bank's never been tested at on-sale load. Know by June 10.
   good:
-    - Every guardrail has a level to stop at, checked for the groups it could fail as well as on average.
-    - The off switch names who, how fast and when.
-    - The cohorts grow in steps and keep the big on-sales out of the first ones.
+    - Every guardrail has a level to stop at, checked for the buyers this change could fail as well as on average.
+    - The goal and the guardrail start from today's numbers, so each stop level reads as a change.
+    - The cohorts grow in steps, and the first stays off big on-sale days.
 
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
@@ -154,6 +154,8 @@ Then, outside the 20 minutes, ask whoever's on call, "What do you fix by hand th
 **For your decision log.** Write whether you expect the rollout to reach everyone without being switched off, and how sure you are. You'll know when the last group has it.
 
 {{< pm/example >}}
+
+
 
 **Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
 

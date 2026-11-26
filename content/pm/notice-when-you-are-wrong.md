@@ -54,23 +54,22 @@ steps:
 
 example:
   body: |
-    **It's June, and the bearing alert failed.** Why, by how likely and how bad:
+    **It's September, and the bearing alert failed.** Why, by how likely and how bad:
 
     - Technicians tuned it out after a week of false alarms. High, high.
     - It fired too late to book a repair. Medium, high.
-    - Older pumps read hot all summer. Medium, medium.
-    - Plant managers took it as a check on their crews. Low, high.
-    - The threshold was set to look good in the demo. Medium, medium.
+    - Plant managers saw it as checking on crews. Low, high.
+    - Its threshold was tuned for the demo. Medium, medium.
 
-    **Top risk:** false alarms.
+    **Top risk, logged:** technicians tuning it out.
 
-    **Stop rule, agreed with the operations director:** watch the share of alerts marked "nothing found." Look on March 15. Over half, and it pauses at both pilot plants to be retuned.
+    **Stop rule, agreed with the operations director:** share of alerts closed "nothing found" or never opened. Look March 15, two weeks in. Over half: pause both pilot plants and retune.
 
-    **Log review:** 3 right, 2 wrong, 4 not known yet. Two dates passed without a look.
+    **Log review:** 3 right, 2 wrong, 4 not known; two dates passed unchecked. Sure and wrong on install time: missed old wiring, which the first site showed.
   good:
-    - Its reasons include the awkward ones, like the threshold set for the demo.
-    - Each reason is rated twice, for how likely and how bad, so the top risk isn't only the scariest.
-    - The stop rule has a signal, a date and a result, and someone who can stop the work agreed to it.
+    - Its reasons include the awkward ones, like the threshold tuned for the demo.
+    - The stop rule's signal counts alerts never opened, since a quiet plant can mean technicians stopped looking.
+    - The log review says what a sure call missed, and which signal would have shown it sooner.
 
 check:
   - q: The dashboard shows alerts at one plant taking twice as long to clear as anywhere else, and the planning doc now says, "That plant's technicians don't take the alerts seriously." Which rung is that sentence on, and what takes it back down?
@@ -124,5 +123,7 @@ Question the goal as well as the method. The thermostat on [See the System](/pm/
 **Review your decision log.** Read back the calls you've logged since [Know Who It's For](/pm/know-who-its-for/), and mark each one right, wrong or not known yet. Where a date has passed, did you look when you said you would? Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with its stop rule.
 
 {{< pm/example >}}
+
+
 
 **Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the ladder, and rewrite it as a sentence you could have said, starting from what you saw.

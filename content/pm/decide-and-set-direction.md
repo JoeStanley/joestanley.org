@@ -65,23 +65,23 @@ steps:
 
 example:
   body: |
-    **Diagnosis:** families quit at the fare-rules page; half their calls are about bags.
+    **Diagnosis:** families quit at fare rules written for business travelers; half their calls are about bags.
 
-    **Guiding policy:** families first, with one price that includes bags and seats.
+    **Guiding policy:** families first: one price with bags and seats in it.
 
-    **Actions:** one price for a family of four; families seated together; fare rules behind "Details."
+    **Actions:** one family price; families seated together; fare rules behind "Details."
 
     **Not this quarter:**
 
-    - Corporate travel policies: they serve business travelers. Sales would argue for them, so it's a real no; they hear it Monday.
-    - The loyalty redesign: it doesn't change what families pay. The lead tells marketing.
-    - Fare-alert emails. The fence: started in 2019 for business travelers; finance reads the clicks. Ask finance first.
+    - Corporate travel policies: for business travelers. Sales would argue for them, so it's a real no; sales hears Monday.
+    - Loyalty redesign: it doesn't change what families pay. The lead tells marketing.
+    - Stopping the expense export: business travelers only. The fence: built for one corporate account, still its main user. Sales asks it first.
 
     **Decision log:** no corporate policies. Expect two business accounts to ask again, none to leave. 70 percent sure: one renews in May. Check June 30.
   good:
     - Each no ties back to the diagnosis in a clause, so the list reads as one choice.
     - It names who each no leaves waiting, and who tells them.
-    - The one it would stop gets its fence checked first, and the test of a real choice is run on a line.
+    - The log bets on what the no will cost, and checks after the one renewal that could prove it wrong.
 
 check:
   - q: Weigh the Evidence asked who's missing from your evidence before you lean on it. Here you decide on purpose, with what you have. When do you stop gathering and decide?
@@ -142,5 +142,7 @@ Handing a decision out works only when the person deciding sees the situation as
 **For your decision log.** Pick one line from your not-doing list. Write what you expect to happen because you said no, how sure you are, and the date you'll check.
 
 {{< pm/example >}}
+
+
 
 **Optional: take apart a stalled decision (10 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.

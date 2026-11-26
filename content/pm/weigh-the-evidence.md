@@ -61,19 +61,19 @@ steps:
 
 example:
   body: |
-    **Decision:** two orders per trip, in the suburbs.
+    **Decision:** batch two orders a trip in the suburbs?
 
-    - **Number.** Pilot city: late orders flat, shoppers' hourly pay up 8 percent. Missing: shoppers who quit. Collected: app records, six weeks. Carries over if drives are as short.
-    - **Story.** A manager's call: batches crowd the pickup shelf. Missing: the other 40 stores. Collected: one call. Carries over where shelves are small.
-    - **Number.** Survey: 70 percent fine with a later window. Missing: the 96 percent who didn't reply. Collected: email. Carries over to people who reply.
+    - **Number.** Pilot city: late orders flat at 6 percent, shoppers' hourly pay up 8 percent. Missing: shoppers who quit. Collected: app logs, six weeks. Carries over if drives are as short.
+    - **Story.** A manager's call: batches crowd the pickup shelf. Missing: the other 29 managers. Collected: one call. Carries over where shelves are small.
+    - **Number.** Survey: 70 percent fine waiting longer. Missing: 96 percent never replied. Collected: email. Carries over if repliers are typical.
 
-    **Would change our mind:** frozen food arriving soft in over 1 in 50 batches.
+    **Would change our mind:** late orders 2 points above the unbatched suburbs.
 
-    **Decision log:** two suburbs, frozen food excluded. Expect late orders under 5 percent. 60 percent sure: drives are longer. Know by September 30.
+    **Decision log:** two suburbs batched, three not. Expect late orders within a point of theirs. 60 percent sure: drives are longer. Know by September 30.
   good:
     - Every piece, number or story, gets the same three questions, so neither gets waved through.
-    - "\"Missing\" names real people, like the shoppers who quit."
-    - What would change its mind is a count, set down before the result is in.
+    - "\"Missing\" names the people each piece can't hear from, like the shoppers who quit."
+    - The call compares batched suburbs with unbatched ones, and its doubt comes from what differs here.
 
 check:
   - q: Your grocery app's dashboard ranks twenty cities by on-time delivery, and the bottom three are called in for a review. What do you check first?
@@ -139,5 +139,7 @@ Your own hunch is evidence too. Gary Klein, a psychologist who studies how exper
 **For your decision log.** Write the call you'd make on that decision now, what you expect to happen, how sure you are, and when you'll know.
 
 {{< pm/example >}}
+
+
 
 **Optional: find the stories behind one number (10 minutes).** Pick a number on your dashboard that moved last month, such as the share of orders missing an item. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.

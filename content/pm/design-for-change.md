@@ -59,23 +59,23 @@ steps:
 
 example:
   body: |
-    **Journey:** handing in homework. Changes in the last year, fastest layer first:
+    **Journey:** handing in homework. Changes last year, fastest layer first:
 
     - **Wording:** about 30.
     - **Screens:** 8.
     - **Rules,** late penalties and resubmits: 4.
-    - **The gradebook API:** 1.
-    - **Data model,** one student per submission: none.
-    - **The district's student records:** none.
+    - **Gradebook API:** 1.
+    - **Data model:** 1, group projects.
+    - **District student records:** none.
     - **Contract and privacy law:** none.
 
-    **Last long request:** group projects, one file for a team. Asked in September, shipped in February. It reached the data model. Change amplification: the gradebook, the plagiarism check and parent emails each assumed one student.
+    **Last long request:** group projects, one file for a team. Asked in September for October, shipped in February. It ran from screens down to the data model. Change amplification: the gradebook, the plagiarism check and parent emails each assumed one student.
 
-    **Decision log:** the next request into the data model, resubmitting after grading, will take about 10 weeks. 50 percent sure: grading may read the old field in places nobody has listed. Know when it ships.
+    **Decision log:** the next request into the data model, the slowest layer the team changes, is resubmitting after grading: about 20 weeks, as group projects took. 50 percent sure: code nobody has listed may assume one grade. Know when it ships.
   good:
-    - Each layer has a count of changes, so the slow ones show themselves.
-    - The long request is traced to the slowest layer it touched, and the symptom is named in the module's words.
-    - The estimate starts from that layer, and its doubt names what nobody can see yet.
+    - "Its counts and its long request agree: the data model's one change all year took five months."
+    - The long request is traced from screens down to the slowest layer it touched, and the symptom is named in the module's words.
+    - The estimate comes from the last request into the same layer, and its doubt names what nobody can see yet.
 
 check:
   - q: Letting a student join two classes at once looks small on screen. Why might it take a quarter?
@@ -141,6 +141,8 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 **For your decision log.** Write how long you expect the next request that touches your slowest layer to take, and how sure you are. You'll know when it ships.
 
 {{< pm/example >}}
+
+
 
 **Optional: walk a likely change (10 minutes).** This walk comes from Ruth Malan's workshop notes (February 2025, p. 329): architects run an anticipated change across a design while it's still cheap to change. Pick a change you expect next year, such as letting students take a course pass or fail, and trace the parts it would touch. Outside the 10 minutes, ask a tech lead: "If we did this, which parts would have to change?" If most would, what boundary would have contained it?
 

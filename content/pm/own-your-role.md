@@ -63,16 +63,16 @@ example:
 
     **Tests:**
 
-    - Fewer searches end with nothing played: from about 1 in 5 to 1 in 8. Search logs, monthly.
-    - More songs saved from search are by artists the listener had never played. Play history, a monthly sample.
-    - Fewer "can't find it" complaints. Support tags, each quarter.
+    - Fewer lyric and hum searches end with nothing played: from about 1 in 3 to 1 in 5. Search logs, monthly.
+    - More saves from the songs suggested after it, by artists the listener had never played. Play history, monthly.
+    - More of those saves still played a month later. Play history.
 
-    **As the musicians:** a small artist gains only if "something new" isn't ranked by plays alone. The second test now counts artists outside the top thousand.
+    **As the musicians:** a small artist gains only if "something new" isn't ranked by plays alone. Test 2 now counts only artists outside the top 10,000.
 
-    **Two teammates:** design wrote "faster search," engineering "fewer empty results." Neither wrote discovery. Not settled: to the lead on Thursday.
+    **Later, two teammates:** design wrote "faster search," engineering "fewer empty results." Neither wrote discovery. Not settled: to the lead on Thursday.
   good:
-    - Each test is a change for listeners, with where you'd look for it.
-    - Reading it as the musicians changed one of the tests, which is what that reading is for.
+    - The sentence names who it's for and what changes for them, and each test checks a part of it, with where to look.
+    - Reading it as the musicians found who could lose, and changed a test to watch for them.
     - Where the teammates' sentences differ, it names the gap and when it goes to the lead.
 
 check:
@@ -140,5 +140,7 @@ Now with all this said, a word of caution: you champion the vision, but you're n
 **Finish the sentence (25 minutes).** Engineers often write the test before the code, and you can borrow the move. Teams building AI features do the same, and call their tests evaluations. Finish "We're building this in order to ..." for your slice of the work. Then write your tests: three things that would be true if you got there, each with how you'd check it. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? Outside the 25 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled, and bringing that to your team, or to whoever sets direction, is your job.
 
 {{< pm/example >}}
+
+
 
 **Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Then look back over last week. How much of it went to glue work, and what did that crowd out?

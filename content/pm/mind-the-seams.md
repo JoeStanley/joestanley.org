@@ -76,21 +76,19 @@ steps:
 
 example:
   body: |
-    **Who talks:** listings and trust, daily. Payments and support, weekly, by ticket. Shipping, mostly to the carrier.
+    **Who talks:** listings and trust (review), daily. Payments and support, weekly, by ticket. Shipping, mostly to the carrier.
 
-    **The parts, from memory:** listings, review, search. Checkout, payments, payouts. Shipping's labels read the order. Disputes live in support's ticket tool.
+    **Parts, from memory:** listings feed review, then search. Checkout writes the order; payouts and shipping's labels read it. Disputes live in support's ticket tool. Buyers see only the order page.
 
     **Lines up:** listings and review.
 
-    **Crosses:** a "not as described" dispute. Support opens it, payments freezes the payout, shipping makes the return label. Nothing records when the item is back, so refunds wait: about 300 open, the oldest 40 days.
+    **Crosses:** a "not as described" dispute. Support opens it, payments freezes the payout, shipping labels the return. Nothing tells payments the item is back, so refunds wait: 300 open, the oldest 40 days.
 
-    **For the tech lead:** do disputes touch the order at all?
-
-    **Decision log:** this seam first. Once someone owns "returned," expect refunds within a week of the return scan. 50 percent sure: scans can lag. Check July 1.
+    **Decision log:** this seam first: the most money waits there. Once someone owns "returned," expect refunds within a week of the scan. 50 percent sure: some returns go unscanned. Check July 1.
   good:
     - The first picture shows who actually talks, and how often, rather than the org chart.
     - The seam it picks is one journey, with where each team's part stops and what waits there.
-    - It marks what it drew from memory, as a question for the tech lead.
+    - It counts what waits at the seam, so the change it expects for buyers has a baseline.
 
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
@@ -152,6 +150,8 @@ A category is a boundary of meaning too, and people fall between categories the 
 **For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
 
 {{< pm/example >}}
+
+
 
 **Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 

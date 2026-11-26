@@ -92,27 +92,26 @@ steps:
 
 example:
   body: |
-    **Feature:** autoplay, the next video starting unasked.
+    **Feature:** autoplay.
 
-    **Intended, and worth keeping:** fewer taps through a series.
+    **Intended:** more watch time for the app; fewer taps through a series, worth keeping.
 
     **Unintended:** teens up late; flashing videos reaching people with photosensitive epilepsy; prepaid data spent.
 
-    **Where groups overlap:** teens on prepaid plans. Data saver turns autoplay off, but a parent manages a teen account's settings. Neither group shows it alone.
+    **Overlap:** teens on prepaid plans. Data saver stops autoplay, but only a parent can turn it on for a teen. Neither group shows it alone.
 
     **Mitigate:**
 
-    - Flashing videos don't autoplay. Trust and safety.
-    - Off after 11 p.m. for teens. The teen team.
-    - Teens can turn on data saver themselves. Settings.
+    - Flashing videos don't autoplay. Trust and safety has it.
+    - Off after 11 p.m. for teens. Teen team.
 
-    **To propose:** the last one.
+    **To propose:** teens on mobile data asked once: turn on data saver? Settings team.
 
-    **Decision log:** expect prepaid teens to use a fifth less data, for about 2 percent of teens' watch time. 60 percent sure: few may find the setting. Know by March 31.
+    **Decision log:** expect a fifth less mobile data per teen, costing the app about 2 percent of teens' watch time. 55 percent sure: many may tap no. Know by March 31.
   good:
-    - It names the people easiest to overlook by what the feature does to them.
+    - Every harm it mitigates has an owner, and the change it proposes is a plain choice, asked once.
     - The overlap is a harm neither group shows alone, found by asking who's in both.
-    - Every harm it mitigates has an owner, and the change says what it costs and for whom.
+    - "The log says who gains and who pays: teens save data, and the app gives up watch time."
 
 check:
   - q: A change lifts hours watched on your video app by starting the next video without asking. Has it created value?
@@ -199,5 +198,7 @@ End with one change you'd propose. Outside the 25 minutes, show it to someone in
 **For your decision log.** Write the change you'd propose, and what you expect it to cost or save, and for whom. Then write how sure you are, and when you'll know.
 
 {{< pm/example >}}
+
+
 
 **Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?
