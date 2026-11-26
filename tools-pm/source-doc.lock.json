@@ -69,10 +69,10 @@
   {
    "name": "5 Map the Domain",
    "file": "5-map-the-domain.md",
-   "sha256": "55ae44aa61c35fcb6fedb8339d955f7fe83e564641bd9e6a70a60f5c1e094536",
+   "sha256": "2b098aae370de2efa9a3506cbd16dabcb21d835e63f430ace46cad91ead29b1c",
    "doc_tab": "9a492fe6-943e",
    "doc_node": "e7771a8e-91c3",
-   "rev": 1
+   "rev": 2
   },
   {
    "name": "6 Design for Change",
