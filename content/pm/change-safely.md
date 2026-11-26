@@ -80,7 +80,7 @@ example:
 
     1. **Cohort:** 1 percent, between on-sales; then 10, 50, 100, each through a bigger on-sale.
     2. **Goal:** carts checked out, from 62 percent.
-    3. **Guardrails,** overall and in social apps' browsers, where redirects can break: failed payments with declines, 40 per thousand, stop at 60; money taken, no ticket: one stops it.
+    3. **Guardrails,** overall and in social-app browsers, where redirects can break: failed payments with declines, 40 per thousand, stop at 60; money taken, no ticket: one stops it.
     4. **Off switch:** payments on-call: 10 minutes alert to off; in on-sales, watched live, one.
     5. **Error budget:** 1 error per thousand checkouts, declines aside: 43 minutes' worth on average. A 10-minute break at 1 percent: six seconds' worth; one big on-sale minute at 100, the month's.
 
