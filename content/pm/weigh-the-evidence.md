@@ -59,6 +59,22 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Decision:** two orders per trip, in the suburbs.
+
+    - **Number.** Pilot city: late orders flat, shoppers' hourly pay up 8 percent. Missing: shoppers who quit. Collected: app records, six weeks. Carries over if drives are as short.
+    - **Story.** A manager's call: batches crowd the pickup shelf. Missing: the other 40 stores. Collected: one call. Carries over where shelves are small.
+    - **Number.** Survey: 70 percent fine with a later window. Missing: the 96 percent who didn't reply. Collected: email. Carries over to people who reply.
+
+    **Would change our mind:** frozen food arriving soft in over 1 in 50 batches.
+
+    **Decision log:** two suburbs, frozen food excluded. Expect late orders under 5 percent. 60 percent sure: drives are longer. Know by September 30.
+  good:
+    - Every piece, number or story, gets the same three questions, so neither gets waved through.
+    - "\"Missing\" names real people, like the shoppers who quit."
+    - What would change its mind is a count, set down before the result is in.
+
 check:
   - q: Your grocery app's dashboard ranks twenty cities by on-time delivery, and the bottom three are called in for a review. What do you check first?
     a: How many orders each city had. The smallest fill both ends of a ranking by chance alone, and they'll trade places next week. Compare each rate with the range its size allows, as the funnel did in the ranking game.
@@ -121,5 +137,7 @@ Your own hunch is evidence too. Gary Klein, a psychologist who studies how exper
 **Weigh the evidence for one decision (25 minutes).** Pick a decision in front of you, such as whether a grocery app should change how it batches orders. List every piece of evidence you're leaning on, one line each, and mark each one a story or a number. Next to each, answer three questions in a few words. Who's missing from it? How was it collected? And what would have to hold here for it to carry over? Then write one sentence on what would change your mind.
 
 **For your decision log.** Write the call you'd make on that decision now, what you expect to happen, how sure you are, and when you'll know.
+
+{{< pm/example >}}
 
 **Optional: find the stories behind one number (10 minutes).** Pick a number on your dashboard that moved last month, such as the share of orders missing an item. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.

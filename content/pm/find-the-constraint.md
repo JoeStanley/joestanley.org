@@ -57,6 +57,26 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Flow:** a new workout plan, the last five, in average days waiting and worked.
+
+    - **Draft,** writer: 3 waiting, 2 worked.
+    - **Coach review:** 9 waiting, 1 worked.
+    - **Filming,** studio: 14 waiting, 2 worked. The studio books one week a month.
+    - **Edit:** 2 waiting, 3 worked.
+    - **Publish,** app team: 4 waiting, half a day worked.
+
+    About 40 days in all, 8 of them work. Ticket dates and the studio calendar; publish from memory.
+
+    **Candidate constraint:** filming.
+
+    **Decision log:** if the studio books every two weeks, expect new plans live in about 33 days, not 40. 60 percent sure: five plans is a small sample, and one waited a month on its own. Find out after the next five, about May 15.
+  good:
+    - Each step's days are split into waiting and worked, so the waiting shows as most of the time.
+    - It says where each number came from, and which one is from memory.
+    - The log expects the whole flow to speed up, by a date, rather than the step's own number.
+
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
@@ -104,5 +124,7 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 **Map one flow (25 minutes).** Pick one kind of change your team ships again and again. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from request to live, and who does each one. For your last five such changes, estimate the days spent waiting and the days spent being worked on at each step. Ticket dates and approval timestamps are enough, and memory will do for a first pass. Mark the step with the longest wait as your candidate constraint. Outside the 25 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
 
 **For your decision log.** Name your candidate constraint and what you expect delivery to do if it gets help. Say how sure you are, and when you'll find out.
+
+{{< pm/example >}}
 
 **Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed up the whole flow or only that step.

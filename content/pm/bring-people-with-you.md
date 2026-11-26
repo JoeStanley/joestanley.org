@@ -85,6 +85,22 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Readers:**
+
+    - Director of clinic operations: Mondays.
+    - Twelve clinic managers: whenever their morning list changes.
+    - Hospital IT: whenever the feed or a release date changes.
+
+    **Monday, to the director:** "The waitlist is live at three clinics, as planned. Two more asked to join early. Let's say yes, for five by the 15th. Reminder texts: on track for May 2. The cardiology feed still drops overnight cancellations, so those slots stay empty: we need an hour of IT's lead this week."
+
+    **Decision log:** expect the director to find IT's hour rather than question the date. 70 percent sure: she asked about the date last week. Know by Tuesday's reply.
+  good:
+    - Each reader gets a day or a trigger, by whether they need the rhythm or only the news.
+    - The update opens on what the director already accepts, then what changed, then the recommendation.
+    - The item that isn't on track ends on what's needed, from whom and by when.
+
 check:
   - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation in the opening lines. When does each hold?
     against: decide-and-set-direction
@@ -145,5 +161,7 @@ Bringing people along is harder when they don't agree, and the people you most n
 **Map your readers and send the first update (25 minutes).** List everyone who decides about your work or depends on it, and next to each name write a fixed day or a trigger, depending on whether they need your rhythm or only your news (10 minutes). Then write your first fixed-day update and send it to your most senior reader (15 minutes). Open it with {{< pm/term "scr" "SCR" >}}: the situation your reader already accepts, the complication that changed it, and the resolution you recommend. It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises. For a late feed, it might read: "Every clinic's morning list comes from the scheduling feed. It's been late twice this week. Once the retry is fixed, let's start the pilot on Thursday." Keep the update to a few lines, include one item that isn't on track, and end that item's line on what you need, the {{< pm/term "stress-position" "stress position" >}} Gopen and Swan describe.
 
 **For your decision log.** Write how you expect your senior reader to take the item that isn't on track, and how sure you are. You'll know by their reply.
+
+{{< pm/example >}}
 
 **Optional: argue the other side (15 minutes).** Pick a call where you and a peer, such as a tech lead or a designer, disagree. Write their case well enough that they'd sign it. Then write yours as an SCR paragraph of under 100 words. Last, write what would let you commit if the call goes their way, and the date you'd look again.

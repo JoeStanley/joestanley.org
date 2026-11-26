@@ -74,6 +74,24 @@ steps:
     where: The Check, on this page, below.
     look: The answers you missed, and why you missed them.
 
+example:
+  body: |
+    **Who talks:** listings and trust, daily. Payments and support, weekly, by ticket. Shipping, mostly to the carrier.
+
+    **The parts, from memory:** listings, review, search. Checkout, payments, payouts. Shipping's labels read the order. Disputes live in support's ticket tool.
+
+    **Lines up:** listings and review.
+
+    **Crosses:** a "not as described" dispute. Support opens it, payments freezes the payout, shipping makes the return label. Nothing records when the item is back, so refunds wait: about 300 open, the oldest 40 days.
+
+    **For the tech lead:** do disputes touch the order at all?
+
+    **Decision log:** this seam first. Once someone owns "returned," expect refunds within a week of the return scan. 50 percent sure: scans can lag. Check July 1.
+  good:
+    - The first picture shows who actually talks, and how often, rather than the org chart.
+    - The seam it picks is one journey, with where each team's part stops and what waits there.
+    - It marks what it drew from memory, as a question for the tech lead.
+
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
     a: Not necessarily. It mirrors who actually talks to whom, and that often isn't what the chart shows.
@@ -132,6 +150,8 @@ A category is a boundary of meaning too, and people fall between categories the 
 **Draw the two pictures (25 minutes).** Sketch two pictures of your area. The first shows the teams and who actually talks to whom. The second shows the system's main parts and how they connect: services, data stores, and the screens or APIs customers touch. Draw the second from memory, and lay the two side by side. Where do the boundaries line up, and where do they cross? Outside the 25 minutes, ask a tech lead to correct your second picture.
 
 **For your decision log.** Pick the seam you'd fix first. Write what you expect to change for customers once someone owns it, how confident you are, and when you'll check.
+
+{{< pm/example >}}
 
 **Optional: walk one seam (10 minutes).** Pick a place where a customer's journey crosses from one team's part to another's. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 

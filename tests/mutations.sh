@@ -325,6 +325,10 @@ run_bg "an example with four lines on what makes it good" J7 "sed -i 's/^    - T
 run_bg "an example that prints" J7 "sed -i 's/<details class=\"example screen-only\"/<details class=\"example\"/' layouts/shortcodes/pm/example.html"
 run_bg "an example above the decision log line" J7 "sed -i '/^{{< pm\/example >}}$/d; s/^\*\*Start a decision log\.\*\*/{{< pm\/example >}}\n\n&/' content/pm/know-who-its-for.md"
 run_bg "an example run long" J7 "sed -i 's/Know by April 30\.$/Know by April 30, and look again then at what the tickets and the shoppers say, so the next call starts from what happened rather than from what was hoped./' content/pm/know-who-its-for.md"
+# Every built module has one, since the eleven were written on 26 November 2026, and Own Your Role's, whose Do comes
+# before the log starts, follows its main exercise
+run_bg "a built module without its example" J7 "sed -i '/^{{< pm\/example >}}$/d; s/^example:$/unused_example:/' content/pm/see-the-system.md"
+run_bg "Own Your Role's example below its optional exercise" J7 "sed -i '/^{{< pm\/example >}}$/d; s/^\*\*Optional: map your scope.*/&\n\n{{< pm\/example >}}/' content/pm/own-your-role.md"
 run_bg "a phone's What a good one looks like under 44 pixels" G7 "sed -i 's/^  .why > summary, .example > summary { display: flex;/  .why > summary { display: flex;/' assets/css/pm.css"
 run_bg "an example left out of its module's tab" X2 "sed -i 's/or \"walk-toggle\" in cls:/or \"walk-toggle\" in cls or \"example\" in cls:/' tools-pm/source-doc.py"
 # The pilot of the Do's step (J7): the example's gate until the Do is ticked, the example there without scripts
