@@ -57,7 +57,7 @@ Joe's picks of 22 November 2026, after the cold read of the whole. They hold unt
 
 ## The syllabus
 
-- Twelve modules, listed in `data/pm/modules.yaml`. Each is either built (a page under `content/pm/`) or a draft (one file under `drafts/pm/`, the module with its cards), never both (X1). A draft is not on the site. When you rebuild a module, delete its draft in the same change.
+- Thirteen modules, listed in `data/pm/modules.yaml`. Each is either built (a page under `content/pm/`) or a draft (one file under `drafts/pm/`, the module with its cards), never both (X1). A draft is not on the site. When you rebuild a module, delete its draft in the same change.
 - Module 3, Find the Constraint, is the pilot: rebuild the other modules in its pattern (`content/pm/find-the-constraint.md`, its cards in `content/pm/cards/`, `data/pm/`).
 - Open and check every source before a module is rebuilt. In a draft, mark what nobody has opened yet with a line that starts "To check:". No built unit may carry one (S7).
 - **Ruth Malan's deck**, her February 2025 workshop notes, which the older drafts cite as "deck p.", is in pm-sources too: the PDF, its text one file per page, a map of every deck reference in the drafts, and what a full read found for each module. Search it rather than reading it whole. Cite the works it points to, and the deck only for Malan's own insight (S8). Nothing from the deck comes here beyond a brief, credited quote.

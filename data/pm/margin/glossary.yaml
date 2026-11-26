@@ -57,6 +57,9 @@ data-informed: ""
 # Decision record
 decision-record: ""
 
+# Deprecation
+deprecation: ""
+
 # Discovery
 discovery: ""
 
@@ -89,6 +92,9 @@ guardrail-metric: ""
 
 # Heavyweight product manager
 heavyweight: ""
+
+# Hyrum's Law
+hyrums-law: ""
 
 # Interface
 interface: ""

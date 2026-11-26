@@ -1,8 +1,8 @@
 ---
 title: Access Patterns
 layout: card
-module: design-for-change
-weight: 20
+module: map-the-domain
+weight: 10
 figure: access-patterns
 figure_caption: Every question reaches the same data, each with its own need for freshness, and the freshest answers cost the most to keep.
 question: Who will ask this, how fast do they need the answer, and what would break if it were a day old?
@@ -23,7 +23,7 @@ An {{< pm/term "access-pattern" >}} is a question the data has to answer, and ho
 
 - **The questions are product knowledge.** On an insurance claims product, you know what the claimant, the adjuster and finance will ask, and how soon.
 - **Freshness has a price.** Fresher copies take more machinery to keep up, so before you ask for "real time," ask what decision the answer feeds.
-- **Late data forces a choice.** {{< pm/term "event-time" "Event time" >}} is when something happened, and processing time is when the system saw it. A sensor reading taken on Friday arrives on Monday, and someone has to decide which day it counts for.
+- **Late data forces a choice.** {{< pm/term "event-time" "Event time" >}} is when something happened, and processing time is when the system saw it. A weather station's reading from Friday arrives on Monday, and someone has to decide which day it counts for.
 
 ## How to spot it
 

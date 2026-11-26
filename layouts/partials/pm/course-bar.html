@@ -12,7 +12,7 @@
 {{- $i := -1 -}}
 {{- range $n, $s := $order }}{{ if eq $s.id $here }}{{ $i = $n }}{{ end }}{{ end -}}
 {{- $place := "" -}}
-{{- /* A module's place is its number, then its place in the order counted from 1, so Module 0 reads "1st of 12" (the
+{{- /* A module's place is its number, then its place in the order counted from 1, so Module 0 reads "1st of 13" (the
        owner, 26 November 2026). */ -}}
 {{- range $n, $m := site.Data.pm.modules }}{{ if eq $m.id $here }}
 {{- $k := add $n 1 }}{{ $suf := "th" }}

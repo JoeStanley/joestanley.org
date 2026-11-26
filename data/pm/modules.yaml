@@ -1,5 +1,7 @@
-# The twelve modules, in reading order. Map the Domain folded into Mind the Seams, Design for Change and Answer
+# The thirteen modules, in reading order. Map the Domain folded into Mind the Seams, Design for Change and Answer
 # for What You Build on 22 November 2026, and Know Who It's For took the place after Own Your Role (Joe's picks).
+# The fold was undone on Joe's pick of 25 November 2026: Map the Domain is back after Mind the Seams, with the data
+# Design for Change had carried, and the modules after it renumber from 6.
 # One entry per stop on the map (spec X1).
 # A module is either built or a draft, never both:
 #   page:  the content file under content/pm/, once the module is rebuilt for the site.
@@ -30,38 +32,43 @@
   title: Mind the Seams
   question: How does the way we're organized shape what we build, and what falls between the parts?
   page: mind-the-seams
-- id: design-for-change
+- id: map-the-domain
   num: 5
+  title: Map the Domain
+  question: What must your data answer, and what have you promised the teams that build on it?
+  page: map-the-domain
+- id: design-for-change
+  num: 6
   title: Design for Change
   question: What will change, how fast, and what should be easy to change?
   page: design-for-change
 - id: change-safely
-  num: 6
+  num: 7
   title: Change Safely
   question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
   page: change-safely
 - id: weigh-the-evidence
-  num: 7
+  num: 8
   title: Weigh the Evidence
   question: What do the numbers and the stories each tell you, and how much should either decide?
   page: weigh-the-evidence
 - id: decide-and-set-direction
-  num: 8
+  num: 9
   title: Decide and Set Direction
   question: Which decisions matter, whose are they, and what are we choosing not to do?
   page: decide-and-set-direction
 - id: answer-for-what-you-build
-  num: 9
+  num: 10
   title: Answer for What You Build
   question: Who benefits and who is harmed by what we build, and what's our share of the responsibility?
   page: answer-for-what-you-build
 - id: notice-when-you-are-wrong
-  num: 10
+  num: 11
   title: Notice When You Are Wrong
   question: How do you find out you're wrong, early enough to change course?
   page: notice-when-you-are-wrong
 - id: bring-people-with-you
-  num: 11
+  num: 12
   title: Bring People With You
   question: How do you earn the trust of the people around you, and bring them along when they don't agree?
   page: bring-people-with-you

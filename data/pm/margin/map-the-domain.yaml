@@ -1,0 +1,73 @@
+# Margin notes for Module 5, Map the Domain.
+# One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
+# On a wide screen, and in a module's print, a note shows in your hand in the margin beside its part. On a phone it
+# sits under the part's heading, typeset; in print on Start, a card or the glossary it sits there in your hand.
+# Wherever it sits in the text, "Sidenote:" goes above it, and a screen reader always reads that word first.
+# A note beside a source on the full path may run on past it. Markdown works for **bold** and [a link](https://example.org).
+# To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
+#   why-this-matters:
+#     - beside: "Two versions of the job"
+#       note: "Your note."
+# It sits level with the top of that paragraph; add  at: foot  to sit it level with the paragraph's foot.
+# Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
+# it keeps every note already written.
+
+# Beside the title
+top: ""
+
+# Last time
+last-time: ""
+
+# Why this matters
+why-this-matters: ""
+
+# The short path
+short-path: ""
+
+# Short path, step 1: Access Patterns
+step-card-access: ""
+
+# Short path, step 2: Martin Fowler, “Reporting Database”
+step-reporting: ""
+
+# Short path, step 3: Zhamak Dehghani, “How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh”
+step-dehghani: ""
+
+# Short path, step 4: An API Is a Promise
+step-card-promise: ""
+
+# Short path, step 5: Brandur Leach, “APIs as infrastructure: future-proofing Stripe with versioning”
+step-leach: ""
+
+# Short path, step 6: Map the questions and the promises
+step-do: ""
+
+# Short path, step 7: Check yourself
+step-check: ""
+
+# Do
+do: ""
+
+# Questions to bring to engineers
+questions-to-bring-to-engineers: ""
+
+# Check yourself
+check: ""
+
+# Go deeper: the full path
+go-deeper: ""
+
+# Full path: Designing Data-Intensive Applications, Martin Kleppmann and Chris Riccomini
+deeper-designing-data-intensive-applications: ""
+
+# Full path: Continuous API Management, Mehdi Medjaoui, Erik Wilde, Ronnie Mitra and Mike Amundsen
+deeper-continuous-api-management: ""
+
+# Full path: Domain-Driven Design, Eric Evans
+deeper-domain-driven-design: ""
+
+# Full path: Data Mesh, Zhamak Dehghani
+deeper-data-mesh: ""
+
+# Full path: Brazil, directed by Terry Gilliam, written by Gilliam, Tom Stoppard and Charles McKeown (Universal, 1985)
+deeper-brazil: ""
