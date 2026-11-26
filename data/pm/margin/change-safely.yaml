@@ -44,7 +44,7 @@ step-pair: ""
 # Short path, step 6: Read the Errors First
 step-card-read-the-errors: ""
 
-# Short path, step 7: Plan one rollout, and log it
+# Short path, step 7: Propose one rollout, and log it
 step-do: ""
 
 # Short path, step 8: Check yourself
@@ -53,8 +53,8 @@ step-check: ""
 # Do
 do: ""
 
-# Questions to bring to engineers
-questions-to-bring-to-engineers: ""
+# To bring to engineers
+to-bring-to-engineers: ""
 
 # Check yourself
 check: ""
