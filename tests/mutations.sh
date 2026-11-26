@@ -397,4 +397,11 @@ run_bg "The Compass two pages over its three" P1 "python3 -c \"p='content/pm/the
 run_bg "a full path without If you read one" S23 "sed -i '/^deeper_one:/,/^  why:/d' content/pm/mind-the-seams.md"
 run_bg "If you read one naming the story" S23 "sed -i '/^deeper_one:/{n;s/title: .*/title: \"The Goal\"/}' content/pm/find-the-constraint.md"
 run_bg "a story's credit without its years" S10 "sed -i 's/(NBC, 2016 to 2020)/(NBC)/' content/pm/answer-for-what-you-build.md"
+# Both ways with engineering (J9): the old heading, a list with nothing to bring, an engineer's ask inside the minutes,
+# a rollout prescribed rather than proposed, and a Do that no longer takes part
+run_bg "a list for engineers under its old heading" J9 "sed -i 's/^## To bring to engineers$/## Questions to bring to engineers/' content/pm/design-for-change.md"
+run_bg "a list for engineers with nothing to bring" J9 "sed -i '/^Bring your access patterns:/,+1d' content/pm/map-the-domain.md"
+run_bg "the engineer's ask moved inside the minutes" J9 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); s=s.replace(' Then give the engineers who', ' Give the engineers who', 1); s=s.replace('Outside the 30 minutes, talk to two people', 'Talk to two people', 1); open(p, 'w').write(s)\""
+run_bg "a rollout prescribed, not proposed" J9 "sed -i 's/share it with whoever leads on call for their feedback, as a proposal, not instructions, and ask/ask whoever.s on call/' content/pm/change-safely.md"
+run_bg "the advice exercise gone back to a look back" J9 "sed -i 's/Find a decision your engineers are still making/Pick a decision from last quarter that stalled/' content/pm/decide-and-set-direction.md"
 wait

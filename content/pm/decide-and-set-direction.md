@@ -103,7 +103,7 @@ deeper:
     url: https://hbr.org/1996/11/what-is-strategy
     where: A long article.
     note: "At hbr.org, which counts free articles and may ask you to subscribe. Read section III, on trade-offs, and section V, \"Rediscovering Strategy: The Failure to Choose,\" most closely."
-    trust: "An argument. It's a Harvard Business School professor's own short statement of his theory, drawn from company cases."
+    trust: "An argument. A Harvard Business School professor's own short statement of his theory, from company cases."
     only: "Straddling in full: Continental Lite copied Southwest while staying a full-service airline, and lost hundreds of millions of dollars."
   - title: Lean Software Development
     by: Mary and Tom Poppendieck
@@ -111,13 +111,13 @@ deeper:
     where: A book.
     note: "Free at pearsoncmg.com, in the publisher's sample. Read chapter 3, \"Decide as Late as Possible.\""
     trust: 'An argument. It''s the book that brought the {{< pm/term "last-responsible-moment" >}}, a term from lean construction, to software teams.'
-    only: "When to decide: hold off while waiting costs less than deciding wrong, and do the work that makes waiting possible. \"Procrastinating is not the same as making decisions at the last responsible moment,\" they add."
+    only: "When to decide: hold off while waiting costs less than deciding wrong, and do the work that makes waiting possible."
   - title: Warfighting (MCDP 1)
     by: U.S. Marine Corps (1997)
     url: https://www.marines.mil/News/Publications/MCPEL/Electronic-Library-Display/Article/899837/mcdp-1/
     where: A book.
     note: "Free at marines.mil. Read it whole. Chapter 4, \"The Conduct of War,\" holds commander's intent and mission tactics."
-    trust: "An argument. It's doctrine, an institution's experience written down, and its notes credit John Boyd for the loop and for implicit communication."
+    trust: "An argument. It's doctrine, an institution's experience written down, crediting John Boyd for the loop."
     only: "Commander's intent at its source. The task says what to do and the intent says why, and when the situation makes the task obsolete, \"the intent is more lasting and continues to guide our actions.\""
   - title: Ocean's Eleven
     by: directed by Steven Soderbergh, written by Ted Griffin (Warner Bros., 2001)
@@ -146,4 +146,4 @@ Handing a decision out works only when the person deciding sees the situation as
 
 {{< pm/example >}}
 
-**Optional: take apart a stalled decision (15 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.
+**Optional: give your advice on one decision (15 minutes).** Find a decision your engineers are still making, in a {{< pm/term "decision-record" "decision record" >}} or a design doc like the one you read in [Map the Domain](/pm/map-the-domain/), and write your advice as the {{< pm/term "advice-process" "advice process" >}} asks: what it changes for customers, and what you'd want the record to say. Outside the 15 minutes, send it to whoever's deciding. The call stays theirs.

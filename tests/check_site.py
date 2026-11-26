@@ -3786,6 +3786,55 @@ def practice_checks(out_dir):
         fail("J5", line[:200])
 
 
+# Both ways with engineering (spec J9). In each Do that hands its work to engineers, the first phrase sits after
+# "Outside the N minutes" in its own paragraph, so the colleague's time stays outside the reader's (S18).
+ENG_HEAD = "## To bring to engineers"
+ENG_LISTS = {"mind-the-seams", "map-the-domain", "design-for-change", "change-safely"}
+GIVE = {"own-your-role": ("an engineer on the work", "measure today"),
+        "know-who-its-for": ("engineers who'd build the fix", "price for a week"),
+        "notice-when-you-are-wrong": ("an engineer on the work", "measured today"),
+        "change-safely": ("leads on call", "proposal")}
+TAKE_PART = {"map-the-domain": ("design doc", "design review"),
+             "change-safely": ("incident write-up", "incident review"),
+             "decide-and-set-direction": ("advice process", "still making")}
+
+
+def both_ways_checks():
+    """J9: three Dos hand their work to engineers outside their minutes, Change Safely's reader proposes a rollout
+    for on call's feedback, the reader reads, reviews and advises on engineering's work, and every list for
+    engineers is headed "To bring to engineers" with one paragraph opening "Bring" above its questions."""
+    checked("J9")
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    headed = set()
+    for m in mods:
+        if not m.get("page"):
+            continue
+        where = f"Module {m['num']}, {m['title']}"
+        body = open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)[2]
+        do = re.split(r"\n## ", body.split("\n## Do\n", 1)[1])[0] if "\n## Do\n" in body else ""
+        if "## Questions to bring to engineers" in body:
+            fail("J9", f"{where}: its list for engineers is still headed \"Questions to bring to engineers\", not \"To bring to engineers\"")
+        if ENG_HEAD + "\n" in body:
+            headed.add(m["id"])
+            sec = re.split(r"\n## ", body.split(ENG_HEAD + "\n", 1)[1])[0]
+            paras = [p_.strip() for p_ in sec.split("\n\n") if p_.strip()]
+            if len(paras) != 2 or not paras[0].startswith("Bring ") or "\n" in paras[0] or not paras[1].startswith("- "):
+                fail("J9", f"{where}: \"To bring to engineers\" should open with one paragraph, starting \"Bring\", above its list of questions")
+        give = GIVE.get(m["id"])
+        if give:
+            para = next((p_ for p_ in do.split("\n\n") if give[0] in p_), "")
+            out = re.search(r"Outside the \d+ minutes", para)
+            if not para or not out or para.index(give[0]) < out.start():
+                fail("J9", f"{where}: its Do should hand its work to engineers outside its minutes, with \"{give[0]}\" after \"Outside the ... minutes\"")
+            if give[1] not in do:
+                fail("J9", f"{where}: its Do should say \"{give[1]}\"")
+        for w in TAKE_PART.get(m["id"], ()):
+            if w not in do:
+                fail("J9", f"{where}: its Do should take part in engineering's work, and doesn't say \"{w}\"")
+    for mid in sorted(ENG_LISTS - headed):
+        fail("J9", f"{mid}: its list for engineers should be headed \"To bring to engineers\"")
+
+
 EXAMPLE_LINE = "What a good one looks like"
 EXAMPLE_GOOD = "What makes it good:"
 EXAMPLE_WORDS = 120   # "under about 120 words" (the owner, 25 November 2026)
@@ -4924,6 +4973,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("J1", "J2", "J3", "J4", "J5"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("J9"):
+        try:
+            both_ways_checks()
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("J9", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("J7"):
         try:
             example_checks(out_dir)

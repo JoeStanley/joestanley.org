@@ -114,7 +114,7 @@ deeper:
   - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
     by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
     where: A journal article.
-    note: Read it whole. Kim Clark is the researcher behind the heavyweight product manager on [Own Your Role](/pm/own-your-role/)'s full path.
+    note: Read it whole. Clark is behind the heavyweight product manager on [Own Your Role](/pm/own-your-role/)'s full path.
     trust: "A study. A peer-reviewed classic, from one industry: the makers of the alignment equipment used to make chips."
     only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
   - title: Design and Reality
@@ -127,7 +127,7 @@ deeper:
     by: Mark Maier and Eberhardt Rechtin
     where: A textbook.
     note: "Read the chapter \"Heuristics as Tools,\" then the appendix of heuristics for system-level architecting."
-    trust: "Experience. Rechtin led the building of NASA's deep space tracking network, directed ARPA and founded a systems architecting program at the University of Southern California, and the book collects what that work taught."
+    trust: "Experience. Rechtin led the building of NASA's deep space tracking network and directed ARPA, and the book collects its lessons."
     only: "Rules of thumb for the joins between parts: architect across an interface, not only up to it, as Robert Spinrad put it; ask what's the worst that could come across it; and draw interfaces so each part can be built on its own, without slicing through parts that must talk all the time."
   - title: Halt and Catch Fire
     by: created by Christopher Cantwell and Christopher C. Rogers (AMC, 2014 to 2017)
@@ -156,7 +156,9 @@ A category is a boundary of meaning too, and people fall between categories the 
 
 **Optional: walk one seam (15 minutes).** Pick a place where a customer's journey crosses between two teams. Write what each side promises the other at that {{< pm/term "interface" >}}: what it sends, how fast, and what happens when it fails. Check that a word such as "approved" means the same thing on both sides.
 
-## Questions to bring to engineers
+## To bring to engineers
+
+Bring the customer's side of each seam: where people wait or drop between teams, and how many.
 
 - Which parts of our system are hardest to change, and why? Do our team boundaries follow them?
 - At this interface between teams, what does each side promise the other, and what happens when that breaks?

@@ -11,7 +11,7 @@ last_time:
   - q: Why can't "approved" mean one thing to every team on a marketplace?
     a: Different groups mean different things by it. Give each bounded context its own consistent model, and make the translation between contexts explicit, with someone who owns it.
   - q: What makes an internal platform worth choosing, and not only required?
-    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and it has to be good enough that those teams would pick it.
+    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and it's good enough that those teams would pick it.
 
 steps:
   - id: card-access
@@ -27,8 +27,8 @@ steps:
     links:
       - text: "Reporting Database"
         url: https://martinfowler.com/bliki/ReportingDatabase.html
-    look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
-    trust: "Experience. You met Fowler in [Mind the Seams](/pm/mind-the-seams/). He's open about his doubts: he's skeptical that near-real-time analytics is worth it."
+    look: Why reports get their own copy of the live system, and what keeping it fresh costs.
+    trust: "Experience. You met Fowler in [Mind the Seams](/pm/mind-the-seams/). He doubts that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
   - id: dehghani
     kind: read
@@ -50,7 +50,7 @@ steps:
     kind: read
     title: 'Brandur Leach, "APIs as infrastructure: future-proofing Stripe with versioning"'
     minutes: 15
-    where: A blog post from 2017. Free at stripe.com. You can skip the code.
+    where: A blog post from 2017. Free at stripe.com.
     links:
       - text: "APIs as infrastructure: future-proofing Stripe with versioning"
         url: https://stripe.com/blog/api-versioning
@@ -60,7 +60,7 @@ steps:
   - id: do
     kind: do
     title: Map the questions and the promises
-    where: The Do, on this page, below. A tech lead's answers, and a design doc's author's, can come later.
+    where: The Do, on this page, below. The tech lead, the doc's author and the design review can come later.
     look: Which question your design answers worst, and who would notice a wrong copy first.
   - id: check
     kind: check
@@ -114,7 +114,7 @@ deeper:
     by: Mehdi Medjaoui, Erik Wilde, Ronnie Mitra and Mike Amundsen
     where: A book.
     note: "Free at [f5.com](https://www.f5.com/content/dam/f5/corp/global/pdf/ebooks/continuous-api-mgmt-2e.pdf). NGINX, part of F5, sponsored it. Read chapters 3, \"The API as a Product,\" 5, \"Continuous API Improvement,\" and 7, \"The API Product Lifecycle.\""
-    trust: "Experience. Four consultants and authors on running APIs. Medjaoui created the apidays conferences, and Wilde wrote the Sunset header, the web's way of telling callers an API will be switched off."
+    trust: "Experience. Four consultants on running APIs. Wilde wrote the Sunset header, the web's way of telling callers an API will be switched off."
     only: Running an API as a product across its whole life, from a caller's first try to its retirement, with what to measure at each stage.
   - title: Domain-Driven Design
     by: Eric Evans
@@ -141,7 +141,7 @@ Some of what you build is for other teams: an API their products call, or a data
 
 The API's shape follows the questions people will ask of it. Each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because the questions come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds: a delivery firm wants this minute's road temperature, and an insurer is happy with last month's. Data that arrives late raises a choice too: count it when it happened, its {{< pm/term "event-time" "event time" >}}, or when it arrived, its processing time. Each question is {{< pm/term "operational-analytical" "operational or analytical" >}}: it answers requests as they happen, or it looks back across many records. Reports, caches and other teams work from copies of the {{< pm/term "system-of-record" "system of record" >}}. Each copy can fall behind or go wrong on its own, which is why two reports can disagree.
 
-Data other teams read can be run as a product. Zhamak Dehghani's case is that those teams are its customers, so it needs an owner and a promise about its quality, such as how fresh it is. An API is the same kind of promise, and a stricter one. Callers build on what it does, beyond what you documented, so retiring an old version is a product decision with a price on both sides.
+Zhamak Dehghani's case is that the teams who read your data are its customers, so it needs an owner and a promise about its quality, such as how fresh it is. An API is the same kind of promise, and a stricter one. Callers build on what it does, beyond what you documented, so retiring an old version is a product decision with a price on both sides.
 
 [//]: # (short-path)
 
@@ -151,13 +151,15 @@ Data other teams read can be run as a product. Zhamak Dehghani's case is that th
 
 **Trace one piece of data (15 minutes).** Pick one thing your data holds, such as a station's hourly rain. Find its system of record, where it's first written and where corrections land. List every copy you know of, in reports, caches or other teams' systems, and who depends on each. For the copy most likely to go wrong, ask who would notice first, and who would fix it.
 
-**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where its engineers wrote down what they chose and why. Read its summary and decisions for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take it to its author. If there's no doc, ask your tech lead why.
+**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where its engineers wrote down what they chose and why. Read its summary and decisions for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take it to its author, and ask to sit in on the next design review to listen. If there's no doc, ask your tech lead why.
 
 **For your decision log.** Pick a question a caller wants fresher than it gets today, or the one you marked worst. Write what you'd trade to make it fresher, what you expect it to change for them, how sure you are, and when you'll know.
 
 {{< pm/example >}}
 
-## Questions to bring to engineers
+## To bring to engineers
+
+Bring your access patterns: the questions callers ask, how fresh each must be, and what each caller counts on.
 
 - How long after a change does each copy of this data catch up?
 - Who calls this API, by version, and how would we know if one of them stopped?

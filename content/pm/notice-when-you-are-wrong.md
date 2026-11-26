@@ -22,7 +22,7 @@ steps:
     links:
       - text: "Racing Up the Ladder of Inference"
         url: https://www.edbatista.com/2014/02/racing-up-the-ladder-of-inference.html
-    look: "The simplest way back down: find the rung you're on, pause and drop a step. At a belief, say, you'd \"clarify the meaning we're imposing upon the data at hand.\" Judgments feel like facts because you climb so fast."
+    look: "The simplest way back down: find the rung you're on, pause and drop a step. At a belief, say, you'd \"clarify the meaning we're imposing upon the data at hand.\""
     trust: "Experience. Batista is an executive coach who taught for years at Stanford's business school. The ladder is Chris Argyris's, so this is a practitioner retelling it."
     only: Questions to ask yourself in a meeting before you act on a conclusion.
   - id: card-double-loop-learning
@@ -44,7 +44,7 @@ steps:
   - id: do
     kind: do
     title: Run a premortem, and review your log
-    where: The Do, on this page, below. Asking the people who'd see it break can come later.
+    where: The Do, on this page, below. Asking the engineers and the people who'd see it break can come later.
     look: The reasons you'd usually keep to yourself.
   - id: check
     kind: check
@@ -94,7 +94,7 @@ deeper:
   - title: "Overcoming Organizational Defenses: Facilitating Organizational Learning"
     by: Chris Argyris
     where: A book.
-    note: Read chapters 4 to 6. Schön, his partner in this work, wrote *The Reflective Practitioner*, on [Own Your Role](/pm/own-your-role/)'s full path.
+    note: Read chapters 4 to 6.
     trust: "An argument. Argyris developed these ideas, with Donald Schön, over decades of work inside companies, and he writes for managers from field cases and his own interventions."
     only: The ladder, the double loop and the left-hand column from their source, with the routines that keep a team from saying what it sees. Chapter 4 has a manager's left-hand column, chapter 5 ends on the ladder, and chapter 6 is double-loop learning.
   - title: Arrival
@@ -120,7 +120,7 @@ Question the goal as well as the method. The thermostat on [See the System](/pm/
 
 ## Do
 
-**Run a {{< pm/term "premortem" >}} on your own work (25 minutes).** It's Gary Klein's technique. Imagine your main initiative has failed, badly: say, a new alert that warns technicians before a machine breaks down. Write down every plausible reason it failed, especially the ones you'd usually keep to yourself. Asking what did go wrong, not what might, turns doubting the plan into helping with it. If you run it with your team, have everyone write alone first. Rate each low, medium or high for likelihood and for damage, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, the most damaging of the likely ones, write a stop rule: the signal you'll watch, the date you'll look, and the result that would make you stop or change course. Outside the 25 minutes, agree it with whoever can stop the work, and ask the people who'd see it break first, such as a field technician or the support lead: "If this failed, what would you bet the reason was?"
+**Run a {{< pm/term "premortem" >}} on your own work (25 minutes).** It's Gary Klein's technique. Imagine your main initiative has failed, badly: say, a new alert that warns technicians before a machine breaks down. Write down every plausible reason it failed, especially the ones you'd usually keep to yourself. Asking what did go wrong, not what might, turns doubting the plan into helping with it. If you run it with your team, have everyone write alone first. Rate each low, medium or high for likelihood and for damage, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, the most damaging of the likely ones, write a stop rule: the signal you'll watch, the date you'll look, and the result that would make you stop or change course. Outside the 25 minutes, agree it with whoever can stop the work. Ask an engineer on the work whether its signal is measured today, and give it to them to watch. Then ask the people who'd see it break first, such as a field technician or the support lead: "If this failed, what would you bet the reason was?"
 
 **Review your decision log (15 minutes).** Read back the calls you've logged since [Know Who It's For](/pm/know-who-its-for/), and mark each one right, wrong or not known yet. Where a date has passed, did you look when you said you would? Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with its stop rule. No log yet? Start one with it. Outside the 15 minutes, show it to your manager or a mentor: which call would they have made differently?
 

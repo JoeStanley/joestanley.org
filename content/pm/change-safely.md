@@ -4,7 +4,7 @@ layout: module
 module: change-safely
 question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
 setting: a ticketing app for concerts
-one_thing: Write a one-page rollout plan for your next change, and include how you'd switch it off.
+one_thing: Propose your next rollout on one page, with where you'd stop it, and ask whoever leads on call for their view.
 do_minutes: 30
 
 last_time:
@@ -44,8 +44,8 @@ steps:
     links:
       - text: "DORA's software delivery performance metrics"
         url: https://dora.dev/guides/dora-metrics/
-    look: Which of the five measures show throughput, meaning how fast changes get out, and which show instability, and why smaller changes help both. If you read *Accelerate* on [Find the Constraint](/pm/find-the-constraint/)'s full path, you've met four of them. DORA has since renamed one and added a fifth, rework rate.
-    trust: "A review of studies. DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade, and the guide sums up what it keeps finding. The answers are self-reported, and the evidence is in the yearly reports."
+    look: Which of the five measures show throughput, meaning how fast changes get out, and which show instability, and why smaller changes help both.
+    trust: "A review of studies. DORA, a research program Google Cloud now runs, has surveyed software teams every year for more than a decade. The answers are self-reported, and the evidence is in the yearly reports."
     only: The measures as DORA uses them today, so you can ask for your own team's numbers.
   - id: card-error-budgets
     kind: card
@@ -70,8 +70,8 @@ steps:
     look: Why you read a model's mistakes before you trust it, and how to tell what a change did.
   - id: do
     kind: do
-    title: Plan one rollout, and log it
-    where: The Do, on this page, below. Asking whoever's on call can come later.
+    title: Propose one rollout, and log it
+    where: The Do, on this page, below. Sharing it with whoever leads on call can come later.
     look: The level at which you'd stop, for the customers it could hurt most.
   - id: check
     kind: check
@@ -92,7 +92,7 @@ example:
     **Decision log:** reaches everyone, never switched off. 65 percent sure: untested at on-sale load. Know by June 10.
   good:
     - "Its breakdown and its hard line come from how this change breaks: bank redirects in social-app browsers, and money taken with no ticket, a stop at one."
-    - "It prices a break by when it lands as well as how wide, and lets that price set the off switch: automatic, in seconds, in on-sales."
+    - "It prices a break by when it lands as well as how wide, and lets that price make its case for the off switch: automatic, in seconds, in on-sales."
     - Its log says why it might fail, untested at on-sale load, and its ramp tests just that, each step through a bigger on-sale.
 
 check:
@@ -114,12 +114,12 @@ deeper:
     by: Ron Kohavi, Diane Tang and Ya Xu
     where: A book.
     note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion,\" then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk.\""
-    trust: "Experience. Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and a university press published their practical guide, written from inside large online businesses."
-    only: How to choose the measures an experiment answers to, guardrails among them, and how to combine the ones you want to move into one overall evaluation criterion. Then how to ramp a change from a few users to everyone without trading safety for speed.
+    trust: "Experience. Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and wrote their practical guide from inside large online businesses."
+    only: How to choose what an experiment answers to, guardrails among them, and fold the ones you want to move into one overall evaluation criterion. Then how to ramp a change to everyone without trading safety for speed.
   - title: Threat Modeling
     by: Adam Shostack
     where: A book.
-    note: "Read Part I, \"Getting Started.\" Threat modeling means thinking through what could go wrong with a system before it's built or changed. The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
+    note: "Read Part I, \"Getting Started.\" The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
     trust: "Experience. Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool."
     only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
   - title: AI Engineering
@@ -127,7 +127,7 @@ deeper:
     where: A book.
     note: "Read chapter 3, \"Evaluation Methodology,\" its sections \"Challenges of Evaluating Foundation Models,\" \"Exact Evaluation\" and \"AI as a Judge,\" then chapter 4, \"Evaluate AI Systems,\" its sections \"Evaluation Criteria\" and \"Design Your Evaluation Pipeline.\""
     trust: "Experience. Huyen taught machine learning systems design at Stanford and writes from real cases, many of them her own. She sticks to the fundamentals rather than any one tool."
-    only: "How to tell whether output that varies is good enough, and stays so: graded examples, models used as judges and where they fall short, and a pipeline that checks each part of the system."
+    only: "How to tell whether output that varies is good enough, and stays so: graded examples, models as judges and their limits, and checks on each part of the system."
   - title: Ford v Ferrari
     by: directed by James Mangold (20th Century Fox, 2019)
     where: A film.
@@ -137,7 +137,7 @@ deeper:
 
 ## Why this matters
 
-When a failure would be expensive, as on a ticketing app the morning a big tour goes on sale, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often. DORA also finds that speed and stability aren't a trade-off: its top performers do well on both.
+When a failure would be expensive, as on a ticketing app the morning a big tour goes on sale, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often.
 
 Richard Cook, from [See the System](/pm/see-the-system/), gives part of the reason: "Change introduces new forms of failure." So a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can tell ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
@@ -149,7 +149,7 @@ That's harder to say when the output varies, as a model's does. So decide what t
 
 ## Do
 
-**Plan one rollout (30 minutes).** Pick a change coming up on your product, such as letting fans resell tickets. Write a one-page plan that answers five things.
+**Propose one rollout (30 minutes).** Pick a change coming up on your product, such as letting fans resell tickets. Write a one-page proposal that answers five things. How much risk the change can take is yours to argue. The cohort and the off switch are engineering's to recommend, so write your view of them to start from.
 
 1. The cohort: who gets it first, and how many.
 2. The goal measure you hope it moves.
@@ -157,16 +157,18 @@ That's harder to say when the output varies, as a model's does. So decide what t
 4. Who can switch it off with a {{< pm/term "feature-toggle" "feature toggle" >}}, and how fast.
 5. The error budget it might spend. No target yet? Note it, and ask later who sets one.
 
-Outside the 30 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
+Outside the 30 minutes, share it with whoever leads on call for their feedback, as a proposal, not instructions, and ask, "What do you fix by hand that this could break?"
 
 **For your decision log.** Write whether you expect the rollout to reach all your users without being switched off, how sure you are, and why. You'll know when the last group has it.
 
 {{< pm/example >}}
 
-**Optional: write one quality as a test (15 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
+**Optional: read one incident write-up (15 minutes).** Find your team's latest postmortem, or post-incident review. If there's none, read "What happened" and "What went wrong" in Cloudflare's [account of its July 2019 outage](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/), where one rule change went everywhere at once. Note when customers were first hurt, when the team knew, and how long switching it off took. Does it name one root cause, or the several that [See the System](/pm/see-the-system/) told you to expect? Outside the 15 minutes, ask to sit in on the next incident review, and listen.
 
-## Questions to bring to engineers
+## To bring to engineers
 
-- Do we measure this quality today, and what's its 99th percentile?
+Bring the risk your next change can take: what must not get worse, for whom, and when a failure costs most, like an on-sale morning.
+
+- Do we measure the quality this change could hurt, and what's its 99th percentile?
 - What can go wrong, and what are we going to do about it?
 - If the model that spots bots in this release were quietly wrong next month, what would tell us?
