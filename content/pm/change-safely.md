@@ -78,17 +78,17 @@ example:
   body: |
     **Change:** pay by bank.
 
-    1. **Cohort:** 1 percent of buyers, between on-sales; then 10, 50, 100, each through an on-sale.
+    1. **Cohort:** 1 percent, between on-sales; then 10, 50, 100, each through a bigger on-sale.
     2. **Goal:** carts checked out, from 62 percent.
-    3. **Guardrails,** overall and in social apps' browsers, where bank redirects break: failed payments, declines included, 8 per thousand, stop at double; money taken with no ticket, stop at one.
-    4. **Off switch:** payments on-call, toggle, five minutes.
-    5. **Error budget:** 1 checkout error per thousand: 43 minutes' worth on average. A full break, off in 10 minutes: six seconds' worth at 1 percent; at 100, one on-sale minute can spend the month's.
+    3. **Guardrails,** overall and in social apps' browsers, where redirects can break: failed payments with declines, 40 per thousand, stop at 60; money taken, no ticket: one stops it.
+    4. **Off switch:** payments on-call: 10 minutes alert to off; in on-sales, watched live, one.
+    5. **Error budget:** 1 error per thousand checkouts, declines aside: 43 minutes' worth on average. A 10-minute break at 1 percent: six seconds' worth; one big on-sale minute at 100, the month's.
 
-    **Decision log:** reaches everyone, never switched off. 65 percent sure: provider untested at on-sale load. Know by June 10.
+    **Decision log:** reaches everyone, never switched off. 65 percent sure: untested at on-sale load. Know by June 10.
   good:
     - "Its guardrails, and the group it splits them by, come from how this change breaks: bank redirects in social apps' browsers, and money taken with no ticket, a hard line at one."
-    - "It prices a break by when it lands as well as how wide: seconds at 1 percent between on-sales, a month's budget in one on-sale minute at 100."
-    - "Its doubt, on-sale load, shapes the ramp: after the first, each step meets an on-sale before the next."
+    - "It prices a break by when it lands as well as how wide, and sets the off switch to match: one minute, watched live, in on-sales."
+    - Its log names why it might fail, on-sale load, and the ramp tests that doubt early, each step through a bigger on-sale than the last.
 
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
