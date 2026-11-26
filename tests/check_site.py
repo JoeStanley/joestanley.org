@@ -841,18 +841,20 @@ def course_bar_checks(out_dir):
             mod = page(mod_path)
             stops = mod.select("li.step")
             card_step = next((n for n, li in enumerate(stops, 1) if li.select_one(f'h3 a[href="{path}"]')), None)
-            back = foot.find("a", href=f"{mod_path}#stop-{card_step}")
-            if not card_step or not back or f"stop {card_step}" not in back.get_text(" ", strip=True):
-                fail("G5", f"{path}: the foot doesn't go back to its stop on {mod_path}'s short path")
+            back = foot.find("a", href=f"{mod_path}#step-{card_step}")
+            if not card_step or not back:
+                fail("G5", f"{path}: the foot doesn't go back to its step on {mod_path}'s short path")
+            elif back.get_text(" ", strip=True).replace("\u2019", "'") != mod.select_one("h1").get_text(" ", strip=True).replace("\u2019", "'"):
+                fail("G5", f"{path}: the foot's way back reads '{back.get_text(' ', strip=True)}', not its module's name alone")
             elif len(links) != 1:
-                fail("G5", f"{path}: the foot holds {[a.get('href') for a in links]}, not the way back to its stop alone")
+                fail("G5", f"{path}: the foot holds {[a.get('href') for a in links]}, not the way back to its step alone")
         if not links or links[0].find_parent("p", class_="uf-step") is None:
             fail("G5", f"{path}: the foot's step isn't set as its one named step (.uf-step)")
     # G5: every stop has an address of its own, on every module
     for m, _ in MODULES:
         stops = page(m).select("li.step")
-        if [li.get("id") for li in stops] != [f"stop-{n}" for n in range(1, len(stops) + 1)]:
-            fail("G5", f"{m}: its stops have no addresses of their own (#stop-1 and on)")
+        if [li.get("id") for li in stops] != [f"step-{n}" for n in range(1, len(stops) + 1)]:
+            fail("G5", f"{m}: its steps have no addresses of their own (#step-1 and on)")
     # Outside the syllabus, and in the single document, neither the bar nor the foot (G1)
     for path in [p for p in PAGES if p not in BAR_PAGES]:
         f_ = os.path.join(out_dir, path.strip("/"), "index.html")
@@ -1014,7 +1016,7 @@ def course_bar_browser_checks(out_dir):
                 big.close()
                 # G2: what an address lands on sits below the bar
                 ctx = b.new_context(viewport={"width": 390, "height": 844}); pg = ctx.new_page()
-                targets = ["#stop-3", "#do"] if path in dict(MODULES) else []
+                targets = ["#step-3", "#do"] if path in dict(MODULES) else []
                 for t in targets:
                     pg.goto(srv.base + path + t); pg.wait_for_load_state("load"); pg.wait_for_timeout(100)
                     gap = pg.evaluate("(t) => { const e = document.querySelector(t); const b = document.querySelector('.course-bar'); return e && b ? e.getBoundingClientRect().top - b.getBoundingClientRect().bottom : null; }", t)
@@ -1024,16 +1026,22 @@ def course_bar_browser_checks(out_dir):
                 if path in dict(MODULES):
                     pg.goto(srv.base + path); pg.wait_for_load_state("load")
                     pg.evaluate("localStorage.clear()"); pg.reload(); pg.wait_for_load_state("load")
+                    n = pg.locator(".step").count()
+                    said = pg.evaluate("() => document.querySelector('[data-progress]').textContent.trim()")
+                    if said != f"{n} steps. Tick each one off as you go.":
+                        fail("G5", f"{path}: above the short path, '{said}', not '{n} steps. Tick each one off as you go.'")
                     pg.locator(".step .tick").first.click()
                     status = pg.evaluate(f"() => document.querySelector('.cb-list [data-map-unit=\"{path.strip('/').split('/')[-1]}\"] [data-map-status]').textContent.trim()")
-                    n = pg.locator(".step").count()
-                    if status != f"1 of {n} stops":
-                        fail("G1", f"{path}: one stop ticked, the bar's list says '{status}', not '1 of {n} stops'")
+                    said = pg.evaluate("() => document.querySelector('[data-progress]').textContent.trim()")
+                    if status != f"1 of {n} steps":
+                        fail("G1", f"{path}: one step ticked, the bar's list says '{status}', not '1 of {n} steps'")
+                    if said != f"1 of {n} steps done.":
+                        fail("G5", f"{path}: one step ticked, above the short path, '{said}', not '1 of {n} steps done.'")
                     for k in range(1, n):
                         pg.locator(".step .tick").nth(k).click()
                     status = pg.evaluate(f"() => document.querySelector('.cb-list [data-map-unit=\"{path.strip('/').split('/')[-1]}\"] [data-map-status]').textContent.trim()")
                     if status != "Done":
-                        fail("G1", f"{path}: every stop ticked, the bar's list says '{status}', not 'Done'")
+                        fail("G1", f"{path}: every step ticked, the bar's list says '{status}', not 'Done'")
                     pg.evaluate("localStorage.clear()")
                 # G4: in print neither the bar nor the foot shows
                 pg.emulate_media(media="print")
@@ -1066,6 +1074,10 @@ def course_bar_browser_checks(out_dir):
                     c = pg.evaluate(JS_CONTINUE)
                     if c["steps"] != ["Continue"] or c["href"] != exp or c["sr"] != f"Continue: {label[exp]}":
                         fail("G1", f"/pm/ at {w}px, with {what} saved: the bar's steps are {c['steps']}, Continue to {c['href']} ('{c['sr']}'), not Continue alone to {exp} ('Continue: {label[exp]}')")
+                    if w == 390 and plan.get(built[2]) == "part":
+                        said = pg.evaluate("(u) => { const li = document.querySelector('main [data-map-unit=\"' + u + '\"]'); return [li.querySelector('[data-map-status]').textContent.trim(), +li.getAttribute('data-map-steps')]; }", built[2])
+                        if said[0] != f"Started: 1 of {said[1]} steps done.":
+                            fail("G5", f"/pm/ with one step of {built[2]} ticked: Start's list says '{said[0]}', not 'Started: 1 of {said[1]} steps done.'")
                     if w == 390 and (c["height"] > 44.5 or c["size"][0] < 43.5 or c["size"][1] < 43.5):
                         fail("G3", f"/pm/ at {w}px with Continue: the bar is {c['height']:.0f}px tall, Continue {c['size'][0]:.0f} by {c['size'][1]:.0f}; one line, and 44 by 44")
                 pg.evaluate("localStorage.clear()")

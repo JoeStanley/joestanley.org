@@ -1,15 +1,16 @@
 {{- /* The foot of a unit (spec G5): one step onward, named. On a module, the next unit by number and title; on a card,
-       back to its stop on its module's short path, where the stop is ticked and the next one waits. The course bar,
+       back to its module's short path, landing on its own step there, where it's ticked and the next one waits. It
+       names the module, not the step's number, which a ticked step no longer shows. The course bar,
        which stays with the reader to the page's end, holds the rest: every module, and from 46rem up previous and
        next (the owner, 25 November 2026, who found the foot cluttered once the bar stuck). Screen only. */ -}}
 {{- $p := . -}}
 {{- if eq $p.Layout "card" }}
 {{- $m := index (where site.Data.pm.modules "id" $p.Params.module) 0 -}}
 {{- $mod := site.GetPage (printf "/pm/%s" $m.page) -}}
-{{- $stop := 0 -}}
-{{- range $n, $s := $mod.Params.steps }}{{ with $s.card }}{{ if eq (site.GetPage (printf "/pm/%s" .)) $p }}{{ $stop = add $n 1 }}{{ end }}{{ end }}{{ end -}}
+{{- $step := 0 -}}
+{{- range $n, $s := $mod.Params.steps }}{{ with $s.card }}{{ if eq (site.GetPage (printf "/pm/%s" .)) $p }}{{ $step = add $n 1 }}{{ end }}{{ end }}{{ end -}}
 <nav class="unit-foot screen-only" aria-label="Back to the module">
-  <p class="uf-step"><span class="uf-label">Back to the short path</span> <a href="{{ $mod.RelPermalink }}{{ if $stop }}#stop-{{ $stop }}{{ end }}">{{ $mod.Title }}{{ if $stop }}, stop {{ $stop }}{{ end }}</a></p>
+  <p class="uf-step"><span class="uf-label">Back to the short path</span> <a href="{{ $mod.RelPermalink }}{{ if $step }}#step-{{ $step }}{{ end }}">{{ $mod.Title }}</a></p>
 </nav>
 {{- else }}
 {{- $order := partial "pm/course-order.html" . -}}

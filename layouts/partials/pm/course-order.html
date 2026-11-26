@@ -1,5 +1,5 @@
 {{- /* The course's order, for the course bar and the foot (spec G1, G5): Start, each built module on the map
-       (data/pm/modules.yaml), then the closing unit. Each stop is a dict: page, its id (a module's id, "start" or
+       (data/pm/modules.yaml), then the closing unit. Each is a dict: page, its id (a module's id, "start" or
        the closing page's name), num (a module's number, or ""), and label, as the bar and the foot name it. */ -}}
 {{- $out := slice -}}
 {{- with site.GetPage "/pm" }}{{ $out = $out | append (dict "page" . "id" "start" "num" "" "label" "Start") }}{{ end -}}
