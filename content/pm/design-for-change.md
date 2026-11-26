@@ -105,7 +105,7 @@ deeper:
 
 Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly and have a case for the work that makes likely changes cheap. [Mind the Seams](/pm/mind-the-seams/) asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
 
-Slow isn't the enemy, though. A school's record of grades moves slowly on purpose, because every transcript depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Data is often the slowest layer you own, because so much reads it, and the data a feature creates outlives the feature. [Map the Domain](/pm/map-the-domain/) traced its copies, and each copy is one more place a change has to reach. Some slow layers aren't yours at all, like your app on students' phones. A version they've installed can't be rolled back the way a server can, every fix waits on the app store's review and on each student updating, and old versions keep calling your APIs, so those have to keep answering them. Retiring an old version saves your team the upkeep and hands the bill to students who can't update, often those on the oldest or cheapest phones.
+Slow isn't the enemy, though. A school's record of grades moves slowly on purpose, because every transcript depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Data is often the slowest layer you own, because so much reads it, and the data a feature creates outlives the feature. [Map the Domain](/pm/map-the-domain/) traced its copies, and each copy is one more place a change has to reach. Some slow layers you only half own, like your app on students' phones. You can't roll back a version they've installed the way you'd roll back a server. Every fix to the app's own code waits on the app store's review and on each student updating, and old versions keep calling your APIs, so the APIs must keep answering them. Retiring an old version saves your team the upkeep and hands the bill to students who can't update, often those on the oldest or cheapest phones.
 
 There's a precise word for what makes a change costly: {{< pm/term "complexity" >}}. John Ousterhout uses it for anything in a system's structure that makes it hard to understand and change, and names three symptoms. Change amplification is a simple change that needs edits in many places. {{< pm/term "cognitive-load" "Cognitive load" >}} is how much you must know to make a change safely. And with unknown unknowns, nobody can tell in advance what a change will touch. With those words, you can say why a small request took a month without blaming anyone.
 
@@ -123,8 +123,8 @@ There's a precise word for what makes a change costly: {{< pm/term "complexity" 
 
 ## To bring to engineers
 
-Bring the changes you expect in the next year, and who's asking for each, so the design can make them cheap.
+Bring the changes you expect in the next year, who's asking for each and how likely it is, so the design can make the likely ones cheap.
 
 - Which of these layers is hardest to change, and why?
 - Where in our system is change amplification worst?
-- Is the pattern you're proposing earning its complexity, or would a plainer design do?
+- Given these changes, is the pattern you're proposing earning its complexity, or would a plainer design do?

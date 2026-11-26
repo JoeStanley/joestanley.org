@@ -35,13 +35,13 @@ steps:
       - text: "Clay Christensen's Milkshake Marketing"
         url: https://www.library.hbs.edu/working-knowledge/clay-christensens-milkshake-marketing
     look: "What watching the restaurant found that asking never did: 40 percent of the milkshakes went first thing in the morning, to commuters."
-    trust: "Experience. Harvard Business School's own short account, retelling a case from Christensen's research."
+    trust: "Experience. Harvard Business School's short account of a case from Christensen's research."
     only: What Christensen called the job a product is hired to do, in one case.
   - id: card-last-time
     kind: card
     card: cards/the-last-time
     minutes: 5
-    look: The two questions, what each brings back, and why the second shows you the price ceiling.
+    look: The two questions, what each brings back, and why the second shows the price ceiling.
   - id: waiting
     kind: play
     title: Play the waiting game
@@ -51,7 +51,7 @@ steps:
   - id: do
     kind: do
     title: Find the last time, and start your log
-    where: The Do, on this page, below. The conversations with people and engineers can come later.
+    where: The Do, on this page, below. The conversations with customers and engineers can come later.
     look: What people did about it, not what they say they'd want.
   - id: check
     kind: check
@@ -89,33 +89,33 @@ check:
 
 deeper_one:
   title: "The Mom Test"
-  why: "It's short, and it trains the skill you'll use most here: asking about what people did, so their answers can't flatter you."
+  why: "It's short, and it trains the skill you'll use most here: asking what people did, so their answers can't flatter you."
 deeper:
   - title: The Mom Test
     by: Rob Fitzpatrick
     where: A book.
-    note: "Read it whole: it's short. Chapter 1, \"The Mom Test,\" is the core, with questions such as \"Talk me through the last time that happened.\""
+    note: "Read it whole. Chapter 1, \"The Mom Test,\" is the core, with questions such as \"Talk me through the last time that happened.\""
     trust: "Experience. It's a founder's handbook for other founders, and its site says it's taught at Harvard, UCL and Seedcamp."
     only: Questions even your mother couldn't lie to you about, and how to tell a compliment from a commitment.
   - title: Continuous Discovery Habits
     by: Teresa Torres
     where: A book.
-    note: Read chapters 5 to 7, on interviewing every week, mapping what you hear and choosing which opportunity to work on.
+    note: Read chapters 5 to 7, on interviewing weekly, mapping what you hear and choosing an opportunity.
     trust: "Experience. It's the method Torres teaches the teams she coaches, step by step."
-    only: A weekly habit of talking to customers, and her opportunity solution tree, which ties what you hear to the outcome you're after.
+    only: A weekly habit of talking to customers, and her opportunity solution tree, which ties what you hear to your outcome.
   - title: Monetizing Innovation
     by: Madhavan Ramanujam and Georg Tacke
     where: A book.
     note: "Read chapter 4, \"Have the 'Willingness-to-Pay' Talk Early: You Can't Prioritize without It.\""
-    trust: "Experience. Both work at Simon-Kucher, a pricing consultancy, with cases from Porsche to LinkedIn. Expect them to champion their firm's way of working."
-    only: How to ask what a product is worth to its customers before anything is built.
+    trust: "Experience. Both work at Simon-Kucher, a pricing consultancy; the book's cases run from Porsche to LinkedIn. Expect them to champion their firm's way of working."
+    only: How to ask what a product is worth to customers before it's built.
   - title: Black Swan Farming using Cost of Delay
     by: Joshua Arnold and Özlem Yüce (2013)
     url: https://blackswanfarming.com/black-swan-farming-using-cost-of-delay/
     where: A paper.
     note: Free at blackswanfarming.com. Read it whole.
     trust: "Experience. The whole case, with its numbers, by the two who ran the change."
-    only: How Maersk Line put a price on waiting, one feature at a time, and what that changed about what it built first.
+    only: How Maersk Line put a price on waiting, one feature at a time, and what that changed about what came first.
   - title: Silicon Valley
     by: created by Mike Judge, John Altschuler and Dave Krinsky (HBO, 2014 to 2019)
     where: A TV series.
@@ -145,15 +145,17 @@ Value alone doesn't order the work, because waiting costs money too. What a fix 
 
 **Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three tickets, sales notes or recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Where they don't say, guess, and mark it as a guess. Then put a rough price on a week of waiting: how often it comes up in a week, times what it typically costs, with time at an hourly rate you name. Tickets give you a floor, since most people never write in. On a platform team, trace one request to the experience it shows up in, and name the person at the end by their role. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in their own support queue or forum.
 
-Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time. Then give the engineers who'd build the fix your price for a week, so they can weigh a quick fix against a better one themselves.
+Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time. Then give the engineers who'd build the fix your price on a week of waiting, its guesses marked, so you can weigh a quick fix against a better one together.
 
 **Start a decision log.** Write down the call you'd make on this problem now, such as what to test first, what you expect to happen, how sure you are as a percentage and why not surer, and when you'll know. Keep the page: each module from here adds a few sentences.
 
 {{< pm/example >}}
 
-## Questions to bring to designers and researchers
+## To bring to designers and researchers
 
-- What did people do about this the last time it happened, before our product did anything for them?
+Bring the last times you found, and your price on a week of waiting.
+
+- What did people do about this before our product did anything for them?
 - Who didn't we hear from, and why?
 - Whose work does this flow depend on, and have we watched them do it?
 - What would we have to see to stop believing this problem matters?

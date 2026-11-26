@@ -22,7 +22,7 @@ steps:
       - text: "Aristocracy, Democracy, and System Design"
         url: https://ptgmedia.pearsoncmg.com/images/0201835959/samplechapter/chap4.html
     look: Why he let 150 implementers write the specifications to save the schedule, and what it cost.
-    trust: "Experience. Brooks managed IBM's System/360 and its operating system in the 1960s, so you're hearing it from the man who made the call."
+    trust: "Experience. Brooks managed IBM's System/360 and its operating system in the 1960s, so it's from the man who made the call."
     only: A first-hand case of trading a product's conceptual integrity for the schedule, and getting neither.
   - id: vogels
     kind: read
@@ -43,7 +43,7 @@ steps:
     links:
       - text: "Being Glue"
         url: https://noidea.dog/glue
-    look: What glue work is, why it rarely gets anyone promoted, and the talk to have before your review.
+    look: What glue work is, why it rarely gets anyone promoted, and the conversation to have before your review.
     trust: "Experience. Reilly is a principal software engineer, telling a story from the kind of career she's watched and had."
     only: The cost of the work that holds a team together, for the person who does it.
   - id: do
@@ -83,7 +83,7 @@ check:
   - q: Half your last month went to onboarding two engineers, writing up every meeting and chasing the teams the playlists depend on. Your review is next month. What would Reilly have you do?
     a: Talk with your manager now, not after the review. Ask which of that work counts toward it, keep the glue the team really needs, and push back on doing more than your share of the rest.
   - q: "**Beyond this module.** What can't any course tell you about the job you have?"
-    a: What your company means by it. The same title covers very different work from one company to the next, so ask your manager and the leads you work with what they'd miss if you stopped doing it, and what they wish you'd start.
+    a: What your company means by it. The same title covers very different work from company to company, so ask your manager and the leads you work with what they'd miss if you stopped doing it, and what they wish you'd start.
 deeper_one:
   title: "Working Backwards"
   why: "It shows the press release written before anything is built, a habit you can try this week, as Amazon runs it."
@@ -103,7 +103,7 @@ deeper:
   - title: Working Backwards
     by: Colin Bryar and Bill Carr
     where: A book.
-    note: "Read chapter 5, \"Working Backwards: Start with the Desired Customer Experience,\" and chapter 3, \"Organizing: Separable, Single-Threaded Leadership.\" The authors' free article on the PR/FAQ, at workingbackwards.com, gives the template in brief, with a pitch for their course."
+    note: "Read chapter 5, \"Working Backwards: Start with the Desired Customer Experience,\" and chapter 3, \"Organizing: Separable, Single-Threaded Leadership.\" Their free article on the PR/FAQ, at workingbackwards.com, gives the template in brief, with a pitch for their course."
     trust: "Experience. Two former Amazon executives, with close to thirty years there between them, who now teach the method for a living, so expect them to champion it."
     only: How a press release and its FAQ get written, picked apart in a meeting and rewritten before anything is built, and the single-threaded leader, one owner for one initiative, the role at its fullest.
   - title: "Crafting a Job: Revisioning Employees as Active Crafters of Their Work"
@@ -140,7 +140,7 @@ Now with all this said, a word of caution: you champion the vision, but you're n
 
 ## Do
 
-**Finish the sentence (30 minutes).** Engineers often write the test before the code. Teams building AI features do the same, and call their tests evaluations. So can you. Finish "We're building this in order to ..." for the work you own. Then write your tests: three things that would be true if you got there, each with how you'd check it, and a target where you know today's number. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? If not, change a test to watch for them. Outside the 30 minutes, ask two teammates, one an engineer on the work, to finish the sentence without seeing yours. Then ask the engineer which of your tests they could measure today. Where the versions differ, the vision isn't settled: take that to your team or whoever sets direction.
+**Finish the sentence (30 minutes).** Engineers often write the test before the code. Teams building AI features do the same, and call their tests evaluations. So can you. Finish "We're building this in order to ..." for the work you own. Then write your tests: three things that would be true if you got there, each with how you'd check it, and a target where you know today's number. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? If not, change a test to watch for them. Outside the 30 minutes, ask two teammates, one an engineer on the work, to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled: take that to your team or whoever sets direction. Then ask the engineer which of your tests they could measure today, and what the rest would take.
 
 {{< pm/example >}}
 

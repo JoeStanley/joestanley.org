@@ -11,7 +11,7 @@ last_time:
   - q: Why can't "approved" mean one thing to every team on a marketplace?
     a: Different groups mean different things by it. Give each bounded context its own consistent model, and make the translation between contexts explicit, with someone who owns it.
   - q: What makes an internal platform worth choosing, and not only required?
-    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and it's good enough that those teams would pick it.
+    a: It's run as a product, for the teams that use it. In Bottcher's words, it's "a foundation of self-service APIs, tools, services, knowledge and support," and good enough that those teams would pick it.
 
 steps:
   - id: card-access
@@ -39,7 +39,7 @@ steps:
       - text: "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh"
         url: https://martinfowler.com/articles/data-monolith-to-mesh.html
     look: "Her case that the teams who read your data are its customers, and her line \"No one will use a product that they can't trust.\""
-    trust: "An argument. Dehghani wrote it as a consultant at Thoughtworks, from the data platforms she'd seen clients build, and data mesh as a whole is still debated."
+    trust: "An argument. Dehghani wrote it as a consultant at Thoughtworks, from data platforms she'd seen clients build, and data mesh as a whole is still debated."
     only: Data as a product at its source, in the part a PM needs most.
   - id: card-promise
     kind: card
@@ -55,12 +55,12 @@ steps:
       - text: "APIs as infrastructure: future-proofing Stripe with versioning"
         url: https://stripe.com/blog/api-versioning
     look: "Why Stripe compares itself to a power company that \"shouldn't change its voltage every two years,\" and how it keeps old versions working."
-    trust: "Experience. An engineer on Stripe's own API, making the case for his company's choices. Stripe now ships two major releases a year and monthly ones that break nothing, so read it as the scheme it ran in 2017."
+    trust: "Experience. An engineer on Stripe's own API, making the case for his company's choices. Stripe now ships two major releases a year and monthly ones that break nothing, so read it as its 2017 scheme."
     only: One company's account of what keeping its promise costs, concrete enough to follow without the code.
   - id: do
     kind: do
     title: Map the questions and the promises
-    where: The Do, on this page, below. The tech lead, the doc's author and the design review can come later.
+    where: The Do, on this page, below. Talking to your tech lead and the doc's author can come later.
     look: Which question your design answers worst, and who would notice a wrong copy first.
   - id: check
     kind: check
@@ -108,7 +108,7 @@ deeper:
     by: Martin Kleppmann and Chris Riccomini
     where: A book.
     note: Read the parts on operational against analytical systems and on systems of record and derived data, then the two chapters on batch and stream processing.
-    trust: "Experience. Kleppmann built large-scale data infrastructure at LinkedIn before he became a professor at Cambridge."
+    trust: "Experience. Kleppmann built large-scale data infrastructure at LinkedIn before becoming a professor at Cambridge."
     only: The whole picture of where data lives and how it moves, and what each choice trades away.
   - title: Continuous API Management
     by: Mehdi Medjaoui, Erik Wilde, Ronnie Mitra and Mike Amundsen
@@ -151,7 +151,7 @@ Zhamak Dehghani's case is that the teams who read your data are its customers, s
 
 **Trace one piece of data (15 minutes).** Pick one thing your data holds, such as a station's hourly rain. Find its system of record, where it's first written and where corrections land. List every copy you know of, in reports, caches or other teams' systems, and who depends on each. For the copy most likely to go wrong, ask who would notice first, and who would fix it.
 
-**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where its engineers wrote down what they chose and why. Read its summary and decisions for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take it to its author, and ask to sit in on the next design review to listen. If there's no doc, ask your tech lead why.
+**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where engineers wrote down what they chose and why. Read its summary and decisions for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take your question to the doc's author, and ask your tech lead if you can sit in on the next design review, to listen and answer questions about callers. If there's no doc, ask your tech lead where it was decided.
 
 **For your decision log.** Pick a question a caller wants fresher than it gets today, or the one you marked worst. Write what you'd trade to make it fresher, what you expect it to change for them, how sure you are, and when you'll know.
 
@@ -159,7 +159,7 @@ Zhamak Dehghani's case is that the teams who read your data are its customers, s
 
 ## To bring to engineers
 
-Bring your access patterns: the questions callers ask, how fresh each must be, and what each caller counts on.
+Bring the access patterns you wrote. You heard most of those questions first.
 
 - How long after a change does each copy of this data catch up?
 - Who calls this API, by version, and how would we know if one of them stopped?

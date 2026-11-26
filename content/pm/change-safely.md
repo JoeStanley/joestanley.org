@@ -4,7 +4,7 @@ layout: module
 module: change-safely
 question: How good does it have to be, and how do we change it quickly when mistakes are expensive?
 setting: a ticketing app for concerts
-one_thing: Propose your next rollout on one page, with where you'd stop it, and ask whoever leads on call for their view.
+one_thing: Propose your next rollout on one page, with the level where you'd stop it, and ask whoever leads on call for their view.
 do_minutes: 30
 
 last_time:
@@ -34,7 +34,7 @@ steps:
       - text: "Feature Toggles (aka Feature Flags)"
         url: https://martinfowler.com/articles/feature-toggles.html
     look: "How deploying a change differs from releasing it: one puts it into production switched off, the other turns it on for customers, a few at first. Then how an ops toggle switches it off fast."
-    trust: "Experience. Hodgson is a software delivery consultant who spent years at Thoughtworks, and he writes from his work with teams. He's frank that every toggle adds complexity."
+    trust: "Experience. Hodgson, a software delivery consultant long at Thoughtworks, writes from his work with teams. He's frank that every toggle adds complexity."
     only: The mechanics behind "released to 1 percent of customers," enough to ask your engineers sharp questions.
   - id: dora
     kind: read
@@ -71,7 +71,7 @@ steps:
   - id: do
     kind: do
     title: Propose one rollout, and log it
-    where: The Do, on this page, below. Sharing it with whoever leads on call can come later.
+    where: The Do, on this page, below. Showing it to your tech lead and whoever leads on call can come later.
     look: The level at which you'd stop, for the customers it could hurt most.
   - id: check
     kind: check
@@ -92,7 +92,7 @@ example:
     **Decision log:** reaches everyone, never switched off. 65 percent sure: untested at on-sale load. Know by June 10.
   good:
     - "Its breakdown and its hard line come from how this change breaks: bank redirects in social-app browsers, and money taken with no ticket, a stop at one."
-    - "It prices a break by when it lands as well as how wide, and lets that price make its case for the off switch: automatic, in seconds, in on-sales."
+    - "It prices a break by when it lands as well as how wide, and lets that price argue for the off switch: automatic, in seconds, in on-sales."
     - Its log says why it might fail, untested at on-sale load, and its ramp tests just that, each step through a bigger on-sale.
 
 check:
@@ -113,19 +113,19 @@ deeper:
   - title: Trustworthy Online Controlled Experiments
     by: Ron Kohavi, Diane Tang and Ya Xu
     where: A book.
-    note: "Read chapters 6 and 7, \"Organizational Metrics\" and \"Metrics for Experimentation and the Overall Evaluation Criterion,\" then chapter 15, \"Ramping Experiment Exposure: Trading Off Speed, Quality, and Risk.\""
+    note: Read chapters 6 and 7, on the measures an experiment answers to, then chapter 15, on ramping a change to everyone.
     trust: "Experience. Between them, the authors built experimentation at Microsoft, Google and LinkedIn, and wrote their practical guide from inside large online businesses."
-    only: How to choose what an experiment answers to, guardrails among them, and fold the ones you want to move into one overall evaluation criterion. Then how to ramp a change to everyone without trading safety for speed.
+    only: How to choose the measures an experiment answers to, guardrails among them, and fold those you want to move into one overall evaluation criterion. Then how to ramp a change to everyone without trading safety for speed.
   - title: Threat Modeling
     by: Adam Shostack
     where: A book.
-    note: "Read Part I, \"Getting Started.\" The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts it in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
+    note: "Read Part I, \"Getting Started.\" The [Threat Modeling Manifesto](https://www.threatmodelingmanifesto.org/), which Shostack wrote with other practitioners, puts threat modeling in four questions: \"What are we working on?\" \"What can go wrong?\" \"What are we going to do about it?\" and \"Did we do a good enough job?\""
     trust: "Experience. Shostack spent nearly a decade at Microsoft, where he led the design of its threat modeling tool."
     only: Those four questions worked through at length, with no security training needed, so you can start the conversation with a security engineer while the design can still move.
   - title: AI Engineering
     by: Chip Huyen
     where: A book.
-    note: "Read chapter 3, \"Evaluation Methodology,\" its sections \"Challenges of Evaluating Foundation Models,\" \"Exact Evaluation\" and \"AI as a Judge,\" then chapter 4, \"Evaluate AI Systems,\" its sections \"Evaluation Criteria\" and \"Design Your Evaluation Pipeline.\""
+    note: "Read chapters 3 and 4, \"Evaluation Methodology\" and \"Evaluate AI Systems.\""
     trust: "Experience. Huyen taught machine learning systems design at Stanford and writes from real cases, many of them her own. She sticks to the fundamentals rather than any one tool."
     only: "How to tell whether output that varies is good enough, and stays so: graded examples, models as judges and their limits, and checks on each part of the system."
   - title: Ford v Ferrari
@@ -149,7 +149,7 @@ That's harder to say when the output varies, as a model's does. So decide what t
 
 ## Do
 
-**Propose one rollout (30 minutes).** Pick a change coming up on your product, such as letting fans resell tickets. Write a one-page proposal that answers five things. How much risk the change can take is yours to argue. The cohort and the off switch are engineering's to recommend, so write your view of them to start from.
+**Propose one rollout (30 minutes).** Pick a change coming up on your product, such as letting fans resell tickets. Write a one-page proposal that answers five things. The call is yours. You set how much risk the change can take and who gets it first. Engineering proposes how fast it ramps and how it's switched off, within those limits, so give your view of those as a start.
 
 1. The cohort: who gets it first, and how many.
 2. The goal measure you hope it moves.
@@ -157,18 +157,18 @@ That's harder to say when the output varies, as a model's does. So decide what t
 4. Who can switch it off with a {{< pm/term "feature-toggle" "feature toggle" >}}, and how fast.
 5. The error budget it might spend. No target yet? Note it, and ask later who sets one.
 
-Outside the 30 minutes, share it with whoever leads on call for their feedback, as a proposal, not instructions, and ask, "What do you fix by hand that this could break?"
+Outside the 30 minutes, show it to your tech lead and whoever leads on call, and ask, "What do you fix by hand that this could break?" Then accept the plan they propose, or say which limit it misses.
 
 **For your decision log.** Write whether you expect the rollout to reach all your users without being switched off, how sure you are, and why. You'll know when the last group has it.
 
 {{< pm/example >}}
 
-**Optional: read one incident write-up (15 minutes).** Find your team's latest postmortem, or post-incident review. If there's none, read "What happened" and "What went wrong" in Cloudflare's [account of its July 2019 outage](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/), where one rule change went everywhere at once. Note when customers were first hurt, when the team knew, and how long switching it off took. Does it name one root cause, or the several that [See the System](/pm/see-the-system/) told you to expect? Outside the 15 minutes, ask to sit in on the next incident review, and listen.
+**Optional: read one incident write-up (15 minutes).** Find your team's latest postmortem, or post-incident review. If there's none, read "What happened" and "What went wrong" in Cloudflare's [account of its July 2019 outage](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/), where one rule change went everywhere at once. Note when customers were first hurt, when the team knew, and how long switching it off took. Does it name one root cause, or the several that [See the System](/pm/see-the-system/) told you to expect? Outside the 15 minutes, ask your tech lead if you can sit quietly in the next incident review.
 
 ## To bring to engineers
 
-Bring the risk your next change can take: what must not get worse, for whom, and when a failure costs most, like an on-sale morning.
+Bring what your next change must not make worse, and for whom. Say when a break would cost most, like an on-sale morning.
 
-- Do we measure the quality this change could hurt, and what's its 99th percentile?
+- How long do the slowest 1 in 100 fans wait today, in the queue or at checkout?
 - What can go wrong, and what are we going to do about it?
 - If the model that spots bots in this release were quietly wrong next month, what would tell us?

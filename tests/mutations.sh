@@ -402,6 +402,6 @@ run_bg "a story's credit without its years" S10 "sed -i 's/(NBC, 2016 to 2020)/(
 run_bg "a list for engineers under its old heading" J9 "sed -i 's/^## To bring to engineers$/## Questions to bring to engineers/' content/pm/design-for-change.md"
 run_bg "a list for engineers with nothing to bring" J9 "sed -i '/^Bring your access patterns:/,+1d' content/pm/map-the-domain.md"
 run_bg "the engineer's ask moved inside the minutes" J9 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); s=s.replace(' Then give the engineers who', ' Give the engineers who', 1); s=s.replace('Outside the 30 minutes, talk to two people', 'Talk to two people', 1); open(p, 'w').write(s)\""
-run_bg "a rollout prescribed, not proposed" J9 "sed -i 's/share it with whoever leads on call for their feedback, as a proposal, not instructions, and ask/ask whoever.s on call/' content/pm/change-safely.md"
+run_bg "a rollout prescribed, not proposed" J9 "sed -i 's/show it to your tech lead and whoever leads on call, and ask/ask whoever.s on call/' content/pm/change-safely.md"
 run_bg "the advice exercise gone back to a look back" J9 "sed -i 's/Find a decision your engineers are still making/Pick a decision from last quarter that stalled/' content/pm/decide-and-set-direction.md"
 wait

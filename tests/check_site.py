@@ -3788,10 +3788,10 @@ def practice_checks(out_dir):
 
 # Both ways with engineering (spec J9). In each Do that hands its work to engineers, the first phrase sits after
 # "Outside the N minutes" in its own paragraph, so the colleague's time stays outside the reader's (S18).
-ENG_HEAD = "## To bring to engineers"
-ENG_LISTS = {"mind-the-seams", "map-the-domain", "design-for-change", "change-safely"}
+ENG_HEAD = "## To bring to "
+ENG_LISTS = {"know-who-its-for", "mind-the-seams", "map-the-domain", "design-for-change", "change-safely"}
 GIVE = {"own-your-role": ("an engineer on the work", "measure today"),
-        "know-who-its-for": ("engineers who'd build the fix", "price for a week"),
+        "know-who-its-for": ("engineers who'd build the fix", "price on a week of waiting"),
         "notice-when-you-are-wrong": ("an engineer on the work", "measured today"),
         "change-safely": ("leads on call", "proposal")}
 TAKE_PART = {"map-the-domain": ("design doc", "design review"),
@@ -3812,14 +3812,14 @@ def both_ways_checks():
         where = f"Module {m['num']}, {m['title']}"
         body = open(os.path.join(ROOT, "content", "pm", m["page"] + ".md"), encoding="utf-8").read().split("---", 2)[2]
         do = re.split(r"\n## ", body.split("\n## Do\n", 1)[1])[0] if "\n## Do\n" in body else ""
-        if "## Questions to bring to engineers" in body:
-            fail("J9", f"{where}: its list for engineers is still headed \"Questions to bring to engineers\", not \"To bring to engineers\"")
-        if ENG_HEAD + "\n" in body:
+        if "## Questions to bring to" in body:
+            fail("J9", f"{where}: a list is still headed \"Questions to bring to ...\", not \"To bring to ...\"")
+        if "\n" + ENG_HEAD in body:
             headed.add(m["id"])
-            sec = re.split(r"\n## ", body.split(ENG_HEAD + "\n", 1)[1])[0]
+            sec = re.split(r"\n## ", body.split("\n" + ENG_HEAD, 1)[1].split("\n", 1)[1])[0]
             paras = [p_.strip() for p_ in sec.split("\n\n") if p_.strip()]
             if len(paras) != 2 or not paras[0].startswith("Bring ") or "\n" in paras[0] or not paras[1].startswith("- "):
-                fail("J9", f"{where}: \"To bring to engineers\" should open with one paragraph, starting \"Bring\", above its list of questions")
+                fail("J9", f"{where}: \"To bring to ...\" should open with one paragraph, starting \"Bring\", above its list of questions")
         give = GIVE.get(m["id"])
         if give:
             para = next((p_ for p_ in do.split("\n\n") if give[0] in p_), "")
@@ -3832,7 +3832,7 @@ def both_ways_checks():
             if w not in do:
                 fail("J9", f"{where}: its Do should take part in engineering's work, and doesn't say \"{w}\"")
     for mid in sorted(ENG_LISTS - headed):
-        fail("J9", f"{mid}: its list for engineers should be headed \"To bring to engineers\"")
+        fail("J9", f"{mid}: its list should be headed \"To bring to ...\", with one line of what to bring")
 
 
 EXAMPLE_LINE = "What a good one looks like"
