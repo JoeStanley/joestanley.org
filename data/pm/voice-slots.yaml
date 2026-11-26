@@ -201,13 +201,13 @@ moved:
   - what: moved
     words: "It's where bounded contexts and the core domain start. This one's target audience is architects, but I think the work required to navigate it as a PM pays for itself in time, especially as agentic workflows become more common."
     from: nowhere, cut with the fold of 22 November 2026
-    to: Map the Domain, the full path, Eric Evans's Domain-Driven Design, Why trust it, word for word after its tag, "Experience."
+    to: Map the Domain, the full path, Eric Evans's Domain-Driven Design, Why trust it, word for word, after the tag that opens it
     why: Evans is back on the full path you picked (card mtd-full-path), and your sentence with him, listed again as your own words (E3).
     when: 26 November 2026
   - what: moved
     words: "Dehghani set out data mesh at Thoughtworks, an approach in which each part of a business owns and serves its own analytical data. This is her case for it."
     from: nowhere, cut with the fold of 22 November 2026
-    to: Map the Domain, the full path, Zhamak Dehghani's Data Mesh, Why trust it, word for word after its tag, "An argument."
+    to: Map the Domain, the full path, Zhamak Dehghani's Data Mesh, Why trust it, word for word, after the tag that opens it
     why: Data Mesh is back on the full path you picked (card mtd-full-path).
     when: 26 November 2026
   - what: changed

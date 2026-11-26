@@ -61,7 +61,7 @@ RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until a PDF is published, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
 CLOSING_GRACE = 1   # until a PDF is published, The Compass may print on a fourth page: noted, not failed (the owner, 26 November 2026)
-PRINT_PAGES = 102   # a record: the check notes a change in the count, and does not fail on it
+PRINT_PAGES = 109   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -1476,7 +1476,12 @@ def course_bar_browser_checks(out_dir):
                     pg.keyboard.press(" ")
                     if pg.evaluate(JS_BAR)["expanded"] != "true":
                         fail("G2", f"{where}: Space on the bar's button doesn't open its list")
-                    pg.mouse.click(w // 2, h - 20)
+                    # a click outside: outside the bar and its open list, on a spot with nothing to tap under it, so the
+                    # click can't follow a link (thirteen modules make the list reach the window's foot on a phone)
+                    cx, cy = pg.evaluate("""([w, h]) => { for (let y = h - 20; y > 0; y -= 10) for (const x of [w / 2, 8, w - 8, w / 4, 3 * w / 4]) {
+                        const e = document.elementFromPoint(x, y); if (e && !e.closest('a, button, summary, label, input, nav, .course-bar, .cb-menu')) return [x, y]; }
+                        return [w / 2, h - 20]; }""", [w, h])
+                    pg.mouse.click(cx, cy)
                     if pg.evaluate(JS_BAR)["menu"]:
                         fail("G2", f"{where}: a click outside the bar leaves its list open")
                     ctx.close()

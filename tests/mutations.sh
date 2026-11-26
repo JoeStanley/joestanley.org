@@ -246,6 +246,9 @@ run_bg "Escape closes the list and drops focus" G2 "sed -i 's/if (!on \&\& refoc
 run_bg "the bar's place too small to tap on a phone" G2 "echo '.course-bar .cb-place { min-height: 2rem; }' >> assets/css/pm.css"
 run_bg "the bar's list fades in" G2 "echo '.cb-menu { transition: opacity 200ms ease-out; }' >> assets/css/pm.css"
 run_bg "an address lands under the bar" G2 "sed -i '/^.has-course-bar main \[id\] { scroll-margin-top/d' assets/css/pm.css"
+# The check clicks outside the bar on a spot with nothing to tap, outside the open list, which thirteen modules
+# stretch to a phone's foot (26 November 2026): a click there must still close the list.
+run_bg "a click outside the bar leaves its list open" G2 "sed -i 's/doc.addEventListener(\"click\", function (e) { if (!menu.hidden \&\& !bar.contains(e.target)) open(false); });//' assets/js/pm.js"
 run_bg "the bar on two lines on a phone" G3 "echo '.cb-here::after { content: \" and a longer place\"; }' >> assets/css/pm.css"
 run_bg "the bar's list runs past a short window" G3 "sed -i 's/if (on) fit();//' assets/js/pm.js; sed -i 's/ max-height: calc(100svh - 4rem); overflow-y: auto;//' assets/css/pm.css"
 run_bg "without scripts the bar's place goes nowhere useful" G4 "sed -i 's|#modules\"><span class=\"cb-label\">|\"><span class=\"cb-label\">|' layouts/partials/pm/course-bar.html"

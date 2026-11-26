@@ -4,7 +4,7 @@ layout: module
 module: map-the-domain
 question: What must your data answer, and what have you promised the teams that build on it?
 setting: a weather data API that farm apps, airlines and delivery firms build on
-one_thing: Write the five questions your data must answer, and what each team that calls it is counting on.
+one_thing: Write the five questions your data must answer, and what each team that uses it is counting on.
 do_minutes: 45
 
 last_time:
@@ -28,7 +28,7 @@ steps:
       - text: "Reporting Database"
         url: https://martinfowler.com/bliki/ReportingDatabase.html
     look: Why reports get a copy of their own, made from the live system, and what it costs to keep that copy fresh.
-    trust: "Experience. You met Fowler in [Mind the Seams](/pm/mind-the-seams/). He's written about software design for decades, and he's open about his doubts: he's skeptical that near-real-time analytics is worth it."
+    trust: "Experience. You met Fowler in [Mind the Seams](/pm/mind-the-seams/). He's open about his doubts: he's skeptical that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
   - id: dehghani
     kind: read
@@ -38,9 +38,9 @@ steps:
     links:
       - text: "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh"
         url: https://martinfowler.com/articles/data-monolith-to-mesh.html
-    look: "The teams who read your data are its customers, so it needs what a product needs: an owner, a promise about its quality, and a way to find it. \"No one will use a product that they can't trust.\""
+    look: "Her case that the teams who read your data are its customers, and her line \"No one will use a product that they can't trust.\""
     trust: "An argument. Dehghani wrote it as a consultant at Thoughtworks, from the data platforms she'd seen clients build, and data mesh as a whole is still debated."
-    only: Data as a product where the idea starts, and in the two parts a PM needs most.
+    only: Data as a product at its source, in the two parts a PM needs most.
   - id: card-promise
     kind: card
     card: cards/api-is-a-promise
@@ -54,8 +54,8 @@ steps:
     links:
       - text: "APIs as infrastructure: future-proofing Stripe with versioning"
         url: https://stripe.com/blog/api-versioning
-    look: "\"Just like a power company shouldn't change its voltage every two years,\" callers should be able to trust an API to stay put. Then how Stripe keeps old versions working for the accounts that still use them, and what that costs."
-    trust: "Experience. An engineer on Stripe's own API, making the case for his company's choices. Since 2024 Stripe ships two major releases a year and monthly ones that break nothing, so read it as the scheme it ran in 2017."
+    look: "Why Stripe compares itself to a power company that \"shouldn't change its voltage every two years,\" and how it keeps old versions working."
+    trust: "Experience. An engineer on Stripe's own API, making the case for his company's choices. Stripe now ships two major releases a year and monthly ones that break nothing, so read it as the scheme it ran in 2017."
     only: One company's account of what keeping its promise costs, concrete enough to follow without the code.
   - id: do
     kind: do
@@ -70,36 +70,39 @@ steps:
 
 example:
   body: |
-    **Questions** (who, how often, how fast, how fresh, kind):
+    **Operational** (who, how often, how fast, how fresh, what breaks):
 
-    - **Conditions now?** Phone apps, millions hourly, under a second, 10 minutes, operational.
-    - **Season's rain?** Farm apps, nightly, minutes, by morning, analytical.
-    - **Storm alert?** Airlines, polled every 5 minutes, seconds, a minute, operational. Worst: 5 minutes late.
-    - **Hail on June 3?** Insurers, per claim, hours, final, analytical. Revising it reopens claims.
-    - **Under the rate limit?** Gateway, every call, instant, exact, operational.
+    - **Ice ahead?** Delivery firms, constantly, under a second, a minute, a skid.
+    - **Storm alert?** Airlines, polled every 5 minutes, seconds, a minute, late diversions. Worst: 5 minutes stale.
+    - **Over the limit?** Gateway, every call, instant, seconds, false blocks.
 
-    **One reading:** record in the raw store. Copies: hourly totals, the model, insurers' history, airline caches. Farmers spot bad totals first. Ingest fixes them.
+    **Analytical:**
 
-    **Decision log:** push storm alerts, at a push service's cost. Airlines hear within a minute. 60 percent sure: two airlines can't take pushes. Check in March.
+    - **Season's rain?** Farm apps, nightly, minutes, by morning, reordering breaks charts (unwritten).
+    - **Hail on June 3?** Insurers, per claim, hours, final, reopened claims.
+
+    **Hourly rain:** record: the raw store. Copies: farm totals, forecast model, insurers' history, airline caches. Totals break most: farmers notice, the ingest team fixes them.
+
+    **Decision log:** a push service, a quarter's work, so airlines divert sooner. 60 percent: two airlines can't take pushes. Check in March.
   good:
-    - Every row fills the same fields, so the costly ones stand out, fresh to the minute or exact and final.
-    - It marks the one question the design answers worst, which is the one to raise first.
-    - The trace names the record, who would notice a wrong copy first and who would fix it.
+    - Every row fills the same fields, down to what a miss costs the caller, even where nothing was written down.
+    - It marks the question the design answers worst, and the log prices a fix for it, with a date to check.
+    - The trace names the record, the copy most likely to go wrong, who would notice and who would fix it.
 
 check:
   - q: A weather station records Friday's rain and loses its connection until Monday. Which day's total does the reading count in, and whose call is it?
-    a: By event time it's Friday's, and by processing time Monday's. A farm looking back at last week's rain wants Friday, so it's a product call as much as an engineering one. Say which you promise, when a day's total is final, and how you'll correct one you've already sent.
+    a: By event time it's Friday's, and by processing time Monday's. A farm checking last week's rain wants Friday, so it's a product call as much as an engineering one. Say which you promise, and when a day's total is final.
   - q: Your team changes the order of the hourly readings in a response, which the documentation never promised. A farm app breaks. Whose problem is it?
-    a: Yours as much as theirs. With enough callers, every behavior they can see gets depended on, which is Hyrum's Law, so a change that broke no written promise can still break a caller. Before the next one, count who calls it, tell them, and give them time to move. Then either promise the order in the documentation or stop callers being able to rely on it.
+    a: Yours as much as theirs. With enough callers, every behavior they can see gets depended on, which is Hyrum's Law. Next time, count who calls it and tell them first. Then either promise the order, or vary it on purpose so nobody relies on it.
   - q: In Know Who It's For, your customers paid for waiting. Here your callers pay for your changes. A farm app still calls version 1 of your forecast, and keeping it alive costs your team a week's work every month. When do you switch it off?
     against: know-who-its-for
-    a: Price both sides. Each week version 1 stays costs your team, and each week of notice you cut costs the farm app, which didn't choose to move. Give a date far enough out for them to plan, say what the new version gives them, and keep the date, since a date that slips teaches callers to wait. If the call isn't yours, list who still calls version 1, check what notice your terms promise paying callers, draft the notice and the date, and bring them to whoever owns the API.
+    a: Price both sides. Each week version 1 stays costs your team, and each week of notice you cut costs the farm app, which didn't choose to move. Set a date far enough out for them to plan, and keep it, since a date that slips teaches callers to wait. If the call isn't yours, list who still calls version 1, check what notice your terms promise, and bring a draft date to whoever owns the API.
   - q: "**Beyond this module.** Your table lists what your callers count on. What does your own API count on that you don't control?"
-    a: "The public weather services whose observations and models it starts from. In 2025 the US National Weather Service [cut weather balloon launches](https://weather.gov/media/notification/pdf_2025/scn25-36_suspension_of_raob_launches.pdf) at some of its sites for lack of staff. It says the balloons' data \"support weather modeling and forecasting.\" NOAA also [retired its database of billion-dollar disasters](https://www.nesdis.noaa.gov/about/documents-reports/notice-of-changes/2025-notice-of-changes/billion-dollar-weather-and-climate-disasters). Some launches have since come back. The same holds for a cloud region, a vendor's API or another team's schema. Your promise to your callers can't be stronger than the one you were given, so write down which of yours rests on whose, and what you'd tell your callers if it changed. [The Compass](/pm/the-compass/) asks the same of any call that touches data: what it creates, who depends on it, and what it would take to change."
+    a: "The public weather services its data starts from. In 2025 the US National Weather Service [cut weather balloon launches](https://weather.gov/media/notification/pdf_2025/scn25-36_suspension_of_raob_launches.pdf), whose data it says \"support weather modeling and forecasting,\" at some sites for lack of staff, and NOAA [retired its database of billion-dollar disasters](https://www.nesdis.noaa.gov/about/documents-reports/notice-of-changes/2025-notice-of-changes/billion-dollar-weather-and-climate-disasters). Some launches have since come back. The same holds for a cloud region or a vendor's API. Your promise can't be stronger than the ones you were given, so write down which of yours rests on whose. [The Compass](/pm/the-compass/) gathers the questions to carry to any call that touches data."
 
 deeper_one:
   title: "Designing Data-Intensive Applications"
-  why: "Where your data lives, how it moves and what each choice trades away, in the book many of your engineers will have read."
+  why: "It's the book many of your engineers will have read, so it gives you their words."
 deeper:
   - title: Designing Data-Intensive Applications
     by: Martin Kleppmann and Chris Riccomini
@@ -111,7 +114,7 @@ deeper:
     by: Mehdi Medjaoui, Erik Wilde, Ronnie Mitra and Mike Amundsen
     where: A book.
     note: "Free at [f5.com](https://www.f5.com/content/dam/f5/corp/global/pdf/ebooks/continuous-api-mgmt-2e.pdf). NGINX, part of F5, sponsored it. Read chapters 3, \"The API as a Product,\" 5, \"Continuous API Improvement,\" and 7, \"The API Product Lifecycle.\""
-    trust: "Experience. Four consultants and authors who work on how companies run their APIs. Medjaoui created the apidays conferences, and Wilde wrote the Sunset header, the web's way of telling callers when an API will be switched off."
+    trust: "Experience. Four consultants and authors on running APIs. Medjaoui created the apidays conferences, and Wilde wrote the Sunset header, the web's way of telling callers an API will be switched off."
     only: Running an API as a product across its whole life, from a caller's first try to its retirement, with what to measure at each stage.
   - title: Domain-Driven Design
     by: Eric Evans
@@ -134,30 +137,29 @@ deeper:
 
 ## Why this matters
 
-Some of what you build is for other teams: an API their products call, or a dataset their reports read. In [Mind the Seams](/pm/mind-the-seams/) you heard a boundary in how people talk. Here the boundary is written down, in an API's fields and a dataset's columns, and other teams build on it. Picture a weather data API. Farm apps call it for rain, airlines for storms, delivery firms for ice on the roads, and each of them has made promises of its own on top of yours.
+Some of what you build is for other teams: an API their products call, or a dataset their reports read. In [Mind the Seams](/pm/mind-the-seams/) you heard a boundary in how people talk. Here the boundary is written down, in an API's fields and a dataset's columns, and other teams build on it. Picture a weather data API: farm apps call it for rain, airlines for storms, delivery firms for ice on the roads, and each has made promises of its own on top of yours. To map the domain is to map what its data must answer, and what you've promised the teams who ask.
 
-The API's shape follows the questions people will ask of it. Each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because the questions come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds: a phone app wants this minute's temperature, and an insurer is happy with last month's. Reports, caches and other teams work from copies of the {{< pm/term "system-of-record" "system of record" >}}, for {{< pm/term "operational-analytical" "operational or analytical" >}} use, and each copy is one more place a wrong number can travel. That's why two reports can disagree. Some of what matters about people won't fit in a record's fields, and [Answer for What You Build](/pm/answer-for-what-you-build/) takes that up.
+The API's shape follows the questions people will ask of it. Each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because the questions come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds: a delivery firm wants this minute's road temperature, and an insurer is happy with last month's. Data that arrives late raises a choice too: count it when it happened, its {{< pm/term "event-time" "event time" >}}, or when it arrived, its processing time. Each question is {{< pm/term "operational-analytical" "operational or analytical" >}}: it answers requests as they happen, or it looks back across many records. Reports, caches and other teams work from copies of the {{< pm/term "system-of-record" "system of record" >}}. Each copy can fall behind or go wrong on its own, which is why two reports can disagree.
 
-Data other teams read can be run as a product. Zhamak Dehghani's case is that those teams are its customers, so it needs an owner and a promise about its quality, such as how fresh it is. An API is the same kind of promise, and a stricter one. Callers build on what it does, not only on what you wrote down, so a change costs every team that built on it, and retiring an old version is a product decision with a price on both sides.
+Data other teams read can be run as a product. Zhamak Dehghani's case is that those teams are its customers, so it needs an owner and a promise about its quality, such as how fresh it is. An API is the same kind of promise, and a stricter one. Callers build on what it does, beyond what you documented, so retiring an old version is a product decision with a price on both sides.
 
 [//]: # (short-path)
 
 ## Do
 
-**Write the access patterns (20 minutes).** Pick the API or dataset you work nearest, or one feature's data, such as the rate limit that caps how many calls one API key can make in a minute. Make a table of five questions its data has to answer, one row each, with columns for the question, who asks, how often, how fast (how long they'll wait for an answer), how fresh (how old the answer may be), and whether it's operational, keeping the service running, or analytical, looking back across many records. Where it matters, add what that caller is counting on, written down or not, and what breaks for them if the answer is late or wrong. Mark the row you think the design answers worst. Outside the 20 minutes, take it to your tech lead and ask: "Which of these does our design answer well, and which would be expensive?"
+**Write the access patterns (20 minutes).** Pick the API or dataset you work nearest, or one feature's data, such as the counts behind a rate limit. List five questions its data must answer, each with who asks, how often, how fast (how long they'll wait), how fresh (how old the answer may be), and whether it's operational or analytical. Then add what each caller counts on: what breaks for them if the answer is late or wrong, written down or not. Mark the row the design answers worst. Outside the 20 minutes, ask your tech lead: "Which of these does our design answer well, and which would be expensive?"
 
-**Trace one piece of data (10 minutes).** Pick one thing your data holds, such as one station's hourly rainfall. Find its system of record, the copy everyone treats as the truth. Then list every copy you know of, in reports, caches, other teams' systems or a partner's, and who depends on each. For each copy, ask: if it were wrong tomorrow, who would notice first, and who would fix it?
+**Trace one piece of data (10 minutes).** Pick one thing your data holds, such as a station's hourly rain. Find its system of record, where it's first written and where corrections land. List every copy you know of, in reports, caches or other teams' systems, and who depends on each. For the copy most likely to go wrong, ask who would notice first, and who would fix it.
 
-**Read one design doc (15 minutes).** Find the design doc or decision record for the API or dataset you traced: the page where its engineers wrote down what they chose and why. Read it for what it promises callers and what it trades away, and write down one question it leaves open for you. Outside the 15 minutes, take the question to its author.
+**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where its engineers wrote down what they chose and why. Read it for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take it to its author. If there's no doc, ask your tech lead why.
 
-**For your decision log.** Pick one question from your table that a caller wants fresher than it gets today. Write what you'd trade to make it fresher, what you expect it to change for them, how sure you are, and when you'll know.
+**For your decision log.** Pick a question a caller wants fresher than it gets today, or the one you marked worst. Write what you'd trade to make it fresher, what you expect it to change for them, how sure you are, and when you'll know.
 
 {{< pm/example >}}
 
 ## Questions to bring to engineers
 
 - How long after a change does each copy of this data catch up?
-- When data arrives late, does it count in the period it happened or the period we saw it?
 - Who calls this API, by version, and how would we know if one of them stopped?
 - What do our callers rely on that we never wrote down?
 - What's our freshness target for this data, how do we measure it, and who hears when we miss it?
