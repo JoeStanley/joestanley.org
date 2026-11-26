@@ -327,9 +327,10 @@ run_bg "an example above the decision log line" J7 "sed -i '/^{{< pm\/example >}
 run_bg "an example run long" J7 "sed -i 's/Know by April 30\.$/Know by April 30, and look again then at what the tickets and the shoppers say, so the next call starts from what happened rather than from what was hoped./' content/pm/know-who-its-for.md"
 run_bg "a phone's What a good one looks like under 44 pixels" G7 "sed -i 's/^  .why > summary, .example > summary { display: flex;/  .why > summary { display: flex;/' assets/css/pm.css"
 run_bg "an example left out of its module's tab" X2 "sed -i 's/or \"walk-toggle\" in cls:/or \"walk-toggle\" in cls or \"example\" in cls:/' tools-pm/source-doc.py"
-# The pilot of the Do's step (J7): the example out of the page until the Do is ticked, there without scripts
-run_bg "an example shown before the Do is ticked" J7 "sed -i 's/function show() { det.hidden = !box.checked; if (!box.checked) det.open = false; }/function show() {}/' assets/js/pm.js"
-run_bg "an example hidden from a reader without scripts" J7 "sed -i 's/<details class=\"example screen-only\"{{ with \$gate }}/<details hidden class=\"example screen-only\"{{ with \$gate }}/' layouts/shortcodes/pm/example.html"
+# The pilot of the Do's step (J7): the example's gate until the Do is ticked, the example there without scripts
+run_bg "an example that opens before the Do is ticked" J7 "sed -i 's/function show() { gate.hidden = box.checked; body.hidden = !box.checked; }/function show() { gate.hidden = true; body.hidden = false; }/' assets/js/pm.js"
+run_bg "a gate whose button ticks nothing" J7 "sed -i '/^      if (!box.checked) { box.checked = true; box.dispatchEvent(new Event(\"change\")); }$/d' assets/js/pm.js"
+run_bg "an example hidden from a reader without scripts" J7 "sed -i 's/<div class=\"example-body\" tabindex=\"-1\">/<div class=\"example-body\" tabindex=\"-1\" hidden>/' layouts/shortcodes/pm/example.html"
 run_bg "the Do's step leading nowhere" J7 "sed -i 's|<h3><a href=\"#do\">{{ .title }}</a></h3>|<h3>{{ .title }}</h3>|' layouts/partials/pm/unit-module.html"
 run_bg "the Do's minutes shown on its step too" J7 "sed -i 's/^    kind: do$/&\n    minutes: 30/' content/pm/know-who-its-for.md"
 wait

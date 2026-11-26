@@ -47,7 +47,7 @@
 .why > summary::-webkit-details-marker, .example > summary::-webkit-details-marker { display: none; }
 .why > summary::after, .example > summary::after { content: ""; display: inline-block; width: 0.4em; height: 0.4em; margin-left: 0.5em; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: translateY(-0.2em) rotate(45deg); }
 .why[open] > summary::after, .example[open] > summary::after { transform: translateY(0.05em) rotate(-135deg); }
-.why .notes, .example-body { margin-top: var(--sp-1); padding-left: var(--sp-3); border-left: 2px solid var(--rule); }
+.why .notes, .example-body, .example-gate { margin-top: var(--sp-1); padding-left: var(--sp-3); border-left: 2px solid var(--rule); }
 .example { margin: 0 0 var(--sp-4); }
 .example > summary { font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
 .example-body > :last-child { margin-bottom: 0; }

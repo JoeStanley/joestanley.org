@@ -5,13 +5,19 @@
 {{- $p := .Page -}}
 {{- $e := $p.Params.example -}}
 {{- if not $e }}{{ errorf "pm/example: %s places an example and has no example: in its front matter" $p.File.Path }}{{ end -}}
-{{- /* Where the module's Do is a step of its short path, the whole example waits for that step to be ticked (J7): the
-       script keeps it out of the page until then, with nothing in its place. Without the script it shows as it is. */ -}}
+{{- /* Where the module's Do is a step of its short path, the example waits for it to be ticked (J7): the script shows
+       the message and the button until then. Without the script they stay hidden and the line opens the example. */ -}}
 {{- $gate := "" -}}
 {{- range $p.Params.steps }}{{ if eq .kind "do" }}{{ $gate = printf "%s:%s" $p.File.ContentBaseName .id }}{{ end }}{{ end -}}
 <details class="example screen-only"{{ with $gate }} data-gate="{{ . }}"{{ end }}>
 <summary>What a good one looks like</summary>
-<div class="example-body">
+{{- with $gate }}
+<div class="example-gate" data-example-gate hidden>
+<p>Try yours first: an example is easier to copy than to judge.</p>
+<button type="button" class="btn quiet" data-example-ungate>I’ve done mine</button>
+</div>
+{{- end }}
+<div class="example-body" tabindex="-1">
 {{ $p.RenderString (dict "display" "block") $e.body }}
 <p class="example-good-label"><strong>What makes it good:</strong></p>
 <ul class="example-good">

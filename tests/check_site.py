@@ -3305,6 +3305,8 @@ def practice_checks(out_dir):
 EXAMPLE_LINE = "What a good one looks like"
 EXAMPLE_GOOD = "What makes it good:"
 EXAMPLE_WORDS = 120   # "under about 120 words" (the owner, 25 November 2026)
+EXAMPLE_GATE = "Try yours first: an example is easier to copy than to judge."
+EXAMPLE_UNGATE = "I've done mine"
 
 
 def example_checks(out_dir):
@@ -3312,8 +3314,8 @@ def example_checks(out_dir):
     like", after the main exercise and its decision log line and before any optional exercise; under about 120
     words, then "What makes it good:" and three lines of one sentence each; left out of print, and in the single
     document as in the module. Where the Do is a step of the short path, a link down the page with no minutes of its
-    own, the example stays out of the page until that step is ticked. Until the rest are written, a built module with
-    none is noted, not failed."""
+    own, the example opens to a gate until that step is ticked. Until the rest are written, a built module with none is
+    noted, not failed."""
     from bs4 import BeautifulSoup
     checked("J7")
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
@@ -3382,8 +3384,15 @@ def example_checks(out_dir):
             want = f"{m['page']}:{dos[0].get('id')}" if dos else None
             if d_.get("data-gate") != want:
                 fail("J7", f"{where}: on {what}, its example waits on {d_.get('data-gate')!r}, and should wait on {want!r}, the Do's step")
-            if d_.has_attr("hidden"):
+            gate = d_.select_one("[data-example-gate]")
+            body_ = d_.select_one(".example-body")
+            if d_.has_attr("hidden") or (body_ and body_.has_attr("hidden")):
                 fail("J7", f"{where}: on {what}, its example is hidden in the markup, so a reader without scripts never has it")
+            if want and (not gate or not gate.has_attr("hidden") or clean_text(gate.find("p").get_text() if gate.find("p") else "") != EXAMPLE_GATE
+                         or not gate.select_one("button[data-example-ungate]") or clean_text(gate.select_one("button").get_text()) != EXAMPLE_UNGATE):
+                fail("J7", f"{where}: on {what}, its example's gate isn't \"{EXAMPLE_GATE}\" and a button, \"{EXAMPLE_UNGATE}\", hidden until the script shows it")
+            if not want and gate:
+                fail("J7", f"{where}: on {what}, its example has a gate, and its Do isn't a step to tick")
         # the Do's step: a link down the page to the Do, with no minutes of its own
         if len(dos) > 1:
             fail("J7", f"{where}: {len(dos)} steps lead to the Do, and one should")
@@ -3401,40 +3410,48 @@ def example_checks(out_dir):
         NOTE["J7"].append(f"{len(without)} built module{'s' if len(without) != 1 else ''} without an example yet, until the rest are written: {', '.join(without)}")
     if not gated:
         return
-    # in a browser: out of the page until the Do is ticked, then there, folded; unticked, gone; without scripts, there
+    # in a browser: before the Do is ticked, the line opens to its gate; the button ticks the step and shows the example;
+    # once ticked, the line opens the example; unticked, the gate is back; without scripts, the example opens as it is
     from playwright.sync_api import sync_playwright
     chrome = os.environ.get("CHROME")
     srv = Server(out_dir)
-    state = """() => { const d = document.querySelector('details.example'), box = document.querySelector('[data-step="' + d.dataset.gate + '"] input');
-      return {shown: d.getClientRects().length > 0, open: d.open, ticked: box.checked}; }"""
+    state = """() => { const d = document.querySelector('details.example'), g = d.querySelector('[data-example-gate]'), b = d.querySelector('.example-body');
+      const box = document.querySelector('[data-step="' + d.dataset.gate + '"] input');
+      return {line: d.getClientRects().length > 0, open: d.open, gate: g.getClientRects().length > 0, body: b.getClientRects().length > 0, ticked: box.checked, focus: b.contains(document.activeElement)}; }"""
     try:
         with sync_playwright() as p:
             b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
             for url in gated:
                 ctx = b.new_context(viewport={"width": 390, "height": 844}); pg = ctx.new_page()
                 pg.goto(srv.base + url); pg.wait_for_load_state("load")
+                if not pg.evaluate(state)["line"]:
+                    fail("J7", f"{url}: the example's line should show before the Do is ticked")
+                pg.locator("details.example > summary").click()
                 r = pg.evaluate(state)
-                if r["shown"] or r["ticked"]:
-                    fail("J7", f"{url}: before the Do is ticked, the example should be out of the page: {r}")
-                key = pg.evaluate("() => document.querySelector('details.example').dataset.gate")
-                tick = pg.locator(f'[data-step="{key}"] .tick')
-                tick.click()
-                r = pg.evaluate(state)
-                if not (r["ticked"] and r["shown"] and not r["open"]):
-                    fail("J7", f"{url}: once the Do is ticked, the example should be there, folded: {r}")
-                pg.reload(); pg.wait_for_load_state("load")
-                r = pg.evaluate(state)
-                if not (r["ticked"] and r["shown"]):
-                    fail("J7", f"{url}: a Do ticked on an earlier visit should find its example there: {r}")
-                tick.click()
-                r = pg.evaluate(state)
-                if r["ticked"] or r["shown"]:
-                    fail("J7", f"{url}: unticking the Do should take the example away again: {r}")
+                if not (r["open"] and r["gate"] and not r["body"] and not r["ticked"]):
+                    fail("J7", f"{url}: before the Do is ticked, opening the example should show only its gate: {r}")
+                else:
+                    pg.locator("[data-example-ungate]").click()
+                    r = pg.evaluate(state)
+                    if not (r["ticked"] and r["body"] and not r["gate"] and r["focus"]):
+                        fail("J7", f"{url}: \"{EXAMPLE_UNGATE}\" should tick the Do's step, show the example and move focus to it: {r}")
+                    pg.reload(); pg.wait_for_load_state("load")
+                    pg.locator("details.example > summary").click()
+                    r = pg.evaluate(state)
+                    if not (r["body"] and not r["gate"]):
+                        fail("J7", f"{url}: once the Do is ticked, the example should open at once: {r}")
+                    key = pg.evaluate("() => document.querySelector('details.example').dataset.gate")
+                    pg.locator(f'[data-step="{key}"] .tick').click()
+                    r = pg.evaluate(state)
+                    if not (r["gate"] and not r["body"] and not r["ticked"]):
+                        fail("J7", f"{url}: unticking the Do should bring the gate back: {r}")
                 ctx.close()
                 ctx = b.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False); pg = ctx.new_page()
                 pg.goto(srv.base + url); pg.wait_for_load_state("load")
-                if not pg.evaluate("() => document.querySelector('details.example').getClientRects().length > 0"):
-                    fail("J7", f"{url}: without scripts the example should show as it is")
+                pg.locator("details.example > summary").click()
+                r = pg.evaluate("() => { const d = document.querySelector('details.example'); return {gate: d.querySelector('[data-example-gate]').getClientRects().length > 0, body: d.querySelector('.example-body').getClientRects().length > 0}; }")
+                if r["gate"] or not r["body"]:
+                    fail("J7", f"{url}: without scripts the example should open as it is, with no gate: {r}")
                 ctx.close()
             b.close()
     finally:
