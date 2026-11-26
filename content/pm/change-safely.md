@@ -76,18 +76,18 @@ steps:
 
 example:
   body: |
-    **Change:** pay by bank at checkout.
+    **Change:** pay by bank.
 
-    1. **Cohort:** 1 percent of buyers, no on-sales; then 10, 50, 100, each through an on-sale.
-    2. **Goal:** more carts checked out, from 62 percent.
-    3. **Guardrails,** overall and in social apps' browsers, where bank redirects break: failed payments, 8 per thousand, stop at double; money taken with no ticket, stop at one.
+    1. **Cohort:** 1 percent of buyers, between on-sales; then 10, 50, 100, each through an on-sale.
+    2. **Goal:** carts checked out, from 62 percent.
+    3. **Guardrails,** overall and in social apps' browsers, where bank redirects break: failed payments, declines included, 8 per thousand, stop at double; money taken with no ticket, stop at one.
     4. **Off switch:** payments on-call, toggle, five minutes.
-    5. **Error budget:** 99.9 percent of checkouts succeed: 43 minutes' worth a month. A full break at 100 percent spends 10: five to notice, five to switch off. At 1 percent, six seconds.
+    5. **Error budget:** 1 checkout error per thousand: 43 minutes' worth on average. A full break, off in 10 minutes: six seconds' worth at 1 percent; at 100, one on-sale minute can spend the month's.
 
     **Decision log:** reaches everyone, never switched off. 65 percent sure: provider untested at on-sale load. Know by June 10.
   good:
-    - "Its guardrails come from how this change breaks: bank redirects in social apps' browsers, and money taken with no ticket, a hard line at one."
-    - "What a break would spend shrinks with the cohort: six seconds of the 43 minutes at 1 percent."
+    - "Its guardrails, and the group it splits them by, come from how this change breaks: bank redirects in social apps' browsers, and money taken with no ticket, a hard line at one."
+    - "It prices a break by when it lands as well as how wide: seconds at 1 percent between on-sales, a month's budget in one on-sale minute at 100."
     - "Its doubt, on-sale load, shapes the ramp: after the first, each step meets an on-sale before the next."
 
 check:
