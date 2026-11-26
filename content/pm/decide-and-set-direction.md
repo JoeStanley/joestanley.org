@@ -65,22 +65,22 @@ steps:
 
 example:
   body: |
-    **Diagnosis:** families quit at business travelers' fare rules; half their calls are about bags.
+    **Diagnosis:** families quit at business travelers' fare rules; half their support calls concern bags.
 
-    **Guiding policy:** families first, with bags and seats in one price.
+    **Guiding policy:** families first, one price they can trust.
 
-    **Actions:** one family price; families seated together; fare rules behind "Details."
+    **Actions:** bags and seats in the fare; families seated together; fare rules behind "Details."
 
-    **Won't do this quarter:**
+    **Not this quarter:**
 
-    - Build corporate travel policies for two business accounts: nothing for families. Sales would argue for them: a real no, told in person Monday.
-    - Redesign loyalty: families pay the same. The lead tells marketing.
-    - Keep the expense export: business travelers only. Fence: built for one corporate account, still its main user. Sales asks that account first.
+    - Corporate travel policies for two accounts: nothing for families. Sales would argue for them: a real no, told in person Monday.
+    - Loyalty redesign: families pay no less. The product lead tells marketing.
+    - The expense export: business travelers only. Fence: built for one account, still its main user. Stops only if it can do without; sales asks.
 
-    **Decision log:** no corporate policies. Expect both accounts to ask again, neither to leave. 70 percent sure: one renews in May. Check June 30.
+    **Decision log:** no corporate policies. Expect both to ask again, neither to leave. 70 percent sure; one renews in May. Check June 30.
   good:
-    - Each no ties back to the diagnosis or the policy in a clause, so the list reads as one choice.
-    - "The no to something the team runs now checks the fence first: why it was built, and who still uses it."
+    - The first no names who would argue for it, sales, which makes it a choice and not a goal.
+    - "The export it would stop gets its fence checked first: who it was built for, who still uses it, and what would let it go."
     - The log bets on what the no will cost, and checks after the one renewal that could prove it wrong.
 
 check:

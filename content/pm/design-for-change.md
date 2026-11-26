@@ -59,22 +59,22 @@ steps:
 
 example:
   body: |
-    **Journey:** handing in homework. Changes last year, fastest first:
+    **Journey:** handing in homework. Changes last year:
 
     - **Wording:** about 30.
     - **Screens:** 8.
-    - **Rules,** late penalties and resubmits before grading: 4.
+    - **Rules,** late penalties and resubmitting before grading: 4.
     - **Gradebook API:** 1.
     - **Data model:** 1, group projects.
     - **District student records:** none.
     - **Contract and privacy law:** none.
 
-    **Last long request:** group projects. Asked in September for October, shipped in February. It touched screens, rules, the gradebook API and the data model. Change amplification: the gradebook, the plagiarism check and parent emails each assumed one student.
+    **Last long request:** group projects. Asked in September for October, shipped in February. Touched screens, rules, the gradebook API and, slowest, the data model. Change amplification, found late: the gradebook, the plagiarism check and parent emails each assumed one student.
 
-    **Decision log:** the next data-model request, the slowest layer the team changes, is keeping both grades on a resubmit: about five months, as group projects took. 50 percent sure: a changed grade may have to reach district records. Check in May.
+    **Decision log:** data model, the slowest layer the team changes. Next into it: keeping both grades on a resubmit after grading. About five months, as group projects took. 50 percent sure: a changed grade may have to reach district records. Check in May.
   good:
-    - It picks the slowest layer the team itself changes, so its estimate is one the team can check.
-    - The long request names every layer it touched, down to the slowest, and its symptom in the module's words.
+    - It logs the slowest layer the team itself changes, rather than a law it can't touch.
+    - "Its symptom comes with evidence: three places that each assumed one student."
     - The estimate comes from the last request into the same layer, and its doubt names the slower layer this one might reach.
 
 check:

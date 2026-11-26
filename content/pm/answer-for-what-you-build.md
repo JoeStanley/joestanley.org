@@ -96,9 +96,11 @@ example:
 
     **Intended:** fewer taps through a series; more watch time.
 
-    **Unintended:** teens up late; flashing videos reaching people with photosensitive epilepsy; prepaid data spent.
+    **Unintended:** teens up late; prepaid data spent.
 
-    **Overlap:** teens on prepaid plans. Data saver stops autoplay, but only a parent can turn it on for a teen.
+    **Easiest to overlook:** people with photosensitive epilepsy, shown flashing videos.
+
+    **Overlap:** teens on prepaid plans. Adults turn on data saver to stop autoplay; for teens, only a parent can.
 
     **Focus on:** fewer taps, not watch time.
 
@@ -107,12 +109,12 @@ example:
     - Flashing videos don't autoplay. Trust and safety.
     - Off after 11 p.m. for teens. Teen team.
 
-    **To propose:** let teens turn on data saver, asked once on mobile data. Settings team.
+    **To propose:** let teens turn on data saver, offered once on mobile data. Settings team.
 
-    **Decision log:** the data saver prompt. Expect a fifth less mobile data per teen, costing the app about 2 percent of teens' watch time. 55 percent sure: many may tap no. Know by March 31.
+    **Decision log:** the prompt. Expect a fifth less mobile data per teen, costing the app about 2 percent of teens' total watch time. 55 percent sure: many may tap no. Know by March 31.
   good:
     - It focuses on what viewers gain, fewer taps, not the watch time the app gains.
-    - The overlap is a harm neither group shows alone, found by asking who's in both.
+    - "The overlap shows where an existing fix fails: data saver protects prepaid adults, but not teens, who can't turn it on."
     - "The log says who gains and who pays: teens save data, and the app gives up watch time."
 
 check:
