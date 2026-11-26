@@ -76,18 +76,18 @@ steps:
 
 example:
   body: |
-    **Change:** pay by bank.
+    **Change:** instant pay by bank.
 
-    1. **Cohort:** 1 percent, between on-sales; then 10, 50, 100, each through a bigger on-sale.
+    1. **Cohort:** 1 percent of buyers, starting between on-sales; then 10, 50, 100, each through a bigger on-sale.
     2. **Goal:** carts checked out, from 62 percent.
-    3. **Guardrails,** overall and in social-app browsers, where redirects can break: failed payments with declines, 40 per thousand, stop at 60; money taken, no ticket: one stops it.
-    4. **Off switch:** payments on-call: 10 minutes alert to off; in on-sales, watched live, one.
-    5. **Error budget:** 1 error per thousand checkouts, declines aside: 43 minutes' worth on average. A 10-minute break at 1 percent: six seconds' worth; one big on-sale minute at 100, the month's.
+    3. **Guardrails,** overall and in social-app browsers, where redirects break: errors, declines aside, 0.4 per thousand, stop at 1; money taken, no ticket: one stops it.
+    4. **Off switch:** payments on-call, 10 minutes from alert; in on-sales, automatic, in seconds.
+    5. **Error budget:** 1 error per thousand: 43 minutes' worth on average. A 10-minute break at 1 percent: six seconds' worth; a big on-sale minute at 100, the month's.
 
     **Decision log:** reaches everyone, never switched off. 65 percent sure: untested at on-sale load. Know by June 10.
   good:
-    - "Its guardrails, and the group it splits them by, come from how this change breaks: bank redirects in social apps' browsers, and money taken with no ticket, a hard line at one."
-    - "It prices a break by when it lands as well as how wide, and sets the off switch to match: one minute, watched live, in on-sales."
+    - "Its breakdown and its hard line come from how this change breaks: bank redirects in social-app browsers, and money taken with no ticket, a stop at one."
+    - "It prices a break by when it lands as well as how wide, and lets that price set the off switch: automatic, in seconds, in on-sales."
     - Its log names why it might fail, on-sale load, and the ramp tests that doubt early, each step through a bigger on-sale than the last.
 
 check:
