@@ -18,7 +18,14 @@
 {{- /* The closing unit, after the last module and before the glossary (spec S21). */ -}}
 {{- with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}{{ $units = $units | append (partial "pm/unit-closing.html" (dict "p" . "all" true)) }}{{ end }}{{ end }}
 {{- with $gl }}{{ $units = $units | append (partial "pm/unit-glossary.html" (dict "p" . "all" true)) }}{{ end }}
+{{- /* A name in the text that links another unit (spec G8) lands on that unit here, as the unit list's links do:
+       each unit's address becomes its place in this document. Only the units' own pages: Start's address, /pm/,
+       is left alone, since nothing in the text links it, and the concept cards' page isn't in this document. */ -}}
+{{- $to := slice -}}
+{{- range $home.RegularPagesRecursive }}{{ if in (slice "module" "card" "closing" "glossary") .Layout }}{{ $to = $to | append (dict "from" (printf "href=\"%s\"" .RelPermalink) "to" (printf "href=\"%s\"" (partial "pm/href.html" (dict "p" . "all" true)))) }}{{ end }}{{ end -}}
 {{- range $units }}
-{{ replace (string .) $from "href=\"#g-" | safeHTML }}
+{{- $html := replace (string .) $from "href=\"#g-" }}
+{{- range $to }}{{ $html = replace $html .from .to }}{{ end }}
+{{ $html | safeHTML }}
 {{- end }}
 {{ end }}

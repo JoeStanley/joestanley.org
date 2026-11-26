@@ -75,7 +75,8 @@
           {{- else if or (eq .kind "do") (eq .kind "check") }}
           {{- /* The Do's and the Check's steps, the short path's last two (spec G7): links down the page, with no minutes
                  of their own, since the Do's exercises show them and the Check isn't timed. */}}
-          <h3><a href="#{{ .kind }}">{{ .title }}</a></h3>
+          {{- /* In the single document every module has a Do and a Check, so each step lands on its own unit's (G8). */}}
+          <h3><a href="#{{ if $all }}{{ $key }}-{{ end }}{{ .kind }}">{{ .title }}</a></h3>
           {{- else }}
           <h3>{{ .title | $p.RenderString }}</h3>
           {{- end }}
@@ -109,13 +110,14 @@
 
   {{ if gt (len $parts) 1 }}
   <section class="do prose">
-    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" ($p.RenderString (dict "display" "block") (index $parts 1))) | safeHTML }}
+    {{- $do := partial "pm/prose-slots.html" (dict "p" $p "unit" $key "html" ($p.RenderString (dict "display" "block") (index $parts 1))) }}
+    {{ if $all }}{{ $do = replace $do "<h2 id=\"do\"" (printf "<h2 id=\"%s-do\"" $key) }}{{ end }}{{ $do | safeHTML }}
   </section>
   {{ end }}
 
   {{ with $p.Params.check }}
   <section class="check" data-slot="check">
-    <h2{{ if not $all }} id="check"{{ end }}>Check yourself</h2>
+    <h2 id="{{ if $all }}{{ $key }}-{{ end }}check">Check yourself</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "check") }}
     <p class="hint">Answer in your head, then check.</p>
     {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}

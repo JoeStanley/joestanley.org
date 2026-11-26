@@ -45,7 +45,7 @@ run_bg "a line box that clips its text" A13 "echo '.meta-line { max-height: 1.5e
 run_bg "a stray gap in Firefox only" T8 "echo '@supports (-moz-appearance: none) { .hint { margin-bottom: 0.7rem; } }' >> assets/css/pm.css"
 
 run_bg "source reasons open, not folded" S4 "sed -i 's/<details class=\"why\">/<div class=\"why\">/; s/<\/details>/<\/div>/' layouts/partials/pm/source-notes.html"
-run_bg "glossary links leave the PDF for the site" P5 "sed -i 's/^{{ replace (string .).*/{{ . }}/' layouts/pm/all.html"
+run_bg "glossary links leave the PDF for the site" P5 "sed -i 's/^{{- \$html := replace (string .) .*/{{- \$html := string . }}/' layouts/pm/all.html"
 run_bg "PDF opens without its bookmarks" P6 "sed -i '/root.PageMode = /d' tools-pm/make-pdf.py"
 run_bg "glossary definition back in the margin" M1 "sed -i 's|^{{- /\*\*/ -}}|<span class=\"note\" aria-hidden=\"true\">{{ \$g.text }}</span>|' layouts/shortcodes/pm/term.html"
 run_bg "notes hidden from screen readers" M3 "sed -i 's/<aside class=\"note\"/<aside aria-hidden=\"true\" class=\"note\"/' layouts/partials/pm/margin.html"
@@ -363,4 +363,13 @@ run_bg "Used in lands on the unit's top" G6 "sed -i 's/{{ \$u.p.RelPermalink }}#
 run_bg "no address on a term's first use" G6 "sed -i '/if in \$h \$at/d' layouts/partials/pm/mark-uses.html"
 run_bg "an empty letter linked on the A to Z rail" G6 "sed -i 's/{{ if .keys }}<a href=\"#l-/{{ if true }}<a href=\"#l-/' layouts/partials/pm/unit-glossary.html"
 run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
+# G8, names that link (26 November 2026): the first mention in each part links its unit, once; questions for recall
+# link nothing; no unit links itself; the single document lands every link, and each module's Do and Check, in the page
+run_bg "a name in Where to go from here left unlinked" G8 "sed -i 's|\[See the System\](/pm/see-the-system/) drew it|See the System drew it|' content/pm/the-compass.md"
+run_bg "a name linked again in the same part" G8 "sed -i 's|Here two questions collide\. Know Who It\(.\)s For says|Here two questions collide. [Know Who It\1s For](/pm/know-who-its-for/) says|' content/pm/the-compass.md"
+run_bg "a Check question that links where to look" G8 "sed -i 's|^  - q: Decide and Set Direction asks you to decide on purpose|  - q: Remember how [Decide and Set Direction](/pm/decide-and-set-direction/) asks you to decide on purpose|' content/pm/notice-when-you-are-wrong.md"
+run_bg "Last time's line links the module before" G8 "sed -i 's|Two questions on {{ with \$prev }}{{ .title }}|Two questions on {{ with \$prev }}<a href=\"/pm/{{ .page }}/\">{{ .title }}</a>|' layouts/partials/pm/unit-module.html"
+run_bg "a module that links its own name" G8 "printf '\\nThat is the question [Find the Constraint](/pm/find-the-constraint/) asks.\\n' >> content/pm/find-the-constraint.md"
+run_bg "the single document links a unit's page" G8 "sed -i '/^{{- range \$to }}/d' layouts/pm/all.html"
+run_bg "the single document's Do step lands on the first module's Do" G8 "sed -i 's/#{{ if \$all }}{{ \$key }}-{{ end }}{{ .kind }}/#{{ .kind }}/' layouts/partials/pm/unit-module.html"
 wait

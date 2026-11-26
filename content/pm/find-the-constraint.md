@@ -64,9 +64,9 @@ check:
     against: see-the-system
     a: Each answers its own question. When something has gone wrong, look for the several causes that lined up. When work is slow, look for the one step that sets its pace, and once you've helped it, look at the whole flow again, since the constraint moves.
   - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations from this module.
-    a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is Goodhart's Law.
+    a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is [Goodhart's Law](/pm/cards/goodharts-law/).
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
-    a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. Mind the Seams looks at what falls between teams."
+    a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. [Mind the Seams](/pm/mind-the-seams/) looks at what falls between teams."
 
 deeper:
   - title: The Principles of Product Development Flow
@@ -81,7 +81,7 @@ deeper:
     where: A book.
     note: Read chapter 1, "Accelerate," and chapter 2, "Measuring Performance." Both are free in the publisher's excerpt.
     trust: "A review of studies. It rests on four years of survey research, from thousands of organizations. The answers are self-reported, and the teams all build software."
-    only: "Goodhart's Law in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
+    only: "[Goodhart's Law](/pm/cards/goodharts-law/) in practice: velocity used to judge a team gets gamed. Then why near-full utilization sends lead times toward infinity, and the four delivery measures the authors picked instead."
   - title: The Goal
     by: Eliyahu Goldratt and Jeff Cox
     where: A novel.
@@ -91,9 +91,9 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in See the System. Find it, since speeding up anywhere else won't help. That goes for a model, too. One that drafts new workouts in minutes helps only if drafting is where the work waits. If the wait is a coach checking each one, you get more drafts piled up in front of the coach.
+When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in [See the System](/pm/see-the-system/). Find it, since speeding up anywhere else won't help. That goes for a model, too. One that drafts new workouts in minutes helps only if drafting is where the work waits. If the wait is a coach checking each one, you get more drafts piled up in front of the coach.
 
-The danger while you work on it is Goodhart's Law. Once a number becomes a target, people find the cheapest way to hit it, so the constraint's number can hit its target while nothing more reaches users.
+The danger while you work on it is [Goodhart's Law](/pm/cards/goodharts-law/). Once a number becomes a target, people find the cheapest way to hit it, so the constraint's number can hit its target while nothing more reaches users.
 
 A number can mislead with nobody gaming it, too. An algorithm a US hospital used to pick patients for extra care took the cost of their care as a stand-in for how sick they were. Less had been spent on Black patients who were just as sick, so at any given score they were sicker than White patients, and too few of them were picked (Obermeyer and colleagues, 2019). Before you trust a stand-in, ask whether it tracks the real thing equally well for everyone.
 

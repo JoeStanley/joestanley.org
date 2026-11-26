@@ -72,7 +72,7 @@ check:
   - q: Your team's strategy reads "Delight travelers with a fast, reliable app," and nobody objects. What's wrong with it?
     a: Nobody would argue for the opposite, so it isn't a choice. It's a goal, with no diagnosis or guiding policy behind it.
   - q: "**Beyond this module.** You've said no and logged it. What would make you change your mind?"
-    a: A result you name now, before you want to be right. Notice When You Are Wrong calls it a stop rule, and has you review your decision log.
+    a: A result you name now, before you want to be right. [Notice When You Are Wrong](/pm/notice-when-you-are-wrong/) calls it a stop rule, and has you review your decision log.
 
 deeper:
   - title: What Is Strategy?
@@ -105,13 +105,13 @@ deeper:
 
 ## Why this matters
 
-A roadmap is a set of decisions, and on most teams many of them get made by default: by adding, by deferring, or by never deciding. Make them on purpose. {{< pm/term "cost-of-delay" "Cost of delay" >}}, from Know Who It's For, tells you what to do first. This module is about the rest: which decisions deserve care, such as the {{< pm/term "one-way-doors" "one-way doors" >}} that are hard to undo, and what you're choosing not to do at all. "The essence of strategy is choosing what not to do," as Michael Porter puts it. A travel app built both for business travelers who want every fare rule and for families who want one simple price serves neither well. Porter calls that {{< pm/term "straddling" >}}, and it's expensive.
+A roadmap is a set of decisions, and on most teams many of them get made by default: by adding, by deferring, or by never deciding. Make them on purpose. {{< pm/term "cost-of-delay" "Cost of delay" >}}, from [Know Who It's For](/pm/know-who-its-for/), tells you what to do first. This module is about the rest: which decisions deserve care, such as the {{< pm/term "one-way-doors" "one-way doors" >}} that are hard to undo, and what you're choosing not to do at all. "The essence of strategy is choosing what not to do," as Michael Porter puts it. A travel app built both for business travelers who want every fare rule and for families who want one simple price serves neither well. Porter calls that {{< pm/term "straddling" >}}, and it's expensive.
 
 Saying no to something your team already does has a catch. Find out first why it started and what leans on it. G. K. Chesterton made the point in 1929 with a fence across a road: don't clear it away until you can say why someone put it up.
 
-Then ask whose decision it is. A few need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide, and if that isn't your call, ask who decides. Input shapes a decision, but it isn't a veto. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room the way the first guess at the coins in a jar sways the next. And think of the people it lands on who'll never be in the room. Werner Ulrich, from See the System's full path, asks: "Who is witness to the interests of those affected but not involved?"
+Then ask whose decision it is. A few need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide, and if that isn't your call, ask who decides. Input shapes a decision, but it isn't a veto. If the call is yours, give your view last: Daniel Kahneman warns that a leader's opinion sways a room the way the first guess at the coins in a jar sways the next. And think of the people it lands on who'll never be in the room. Werner Ulrich, from [See the System](/pm/see-the-system/)'s full path, asks: "Who is witness to the interests of those affected but not involved?"
 
-Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot turned strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster, but Boyd put the weight on orientation, the picture you act from. A team that shares yours can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale, without stopping to ask. It's the "in order to" of Own Your Role, given with each task. And when you're the one handed a task, ask what it's in order to.
+Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot turned strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster, but Boyd put the weight on orientation, the picture you act from. A team that shares yours can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale, without stopping to ask. It's the "in order to" of [Own Your Role](/pm/own-your-role/), given with each task. And when you're the one handed a task, ask what it's in order to.
 
 [//]: # (short-path)
 
