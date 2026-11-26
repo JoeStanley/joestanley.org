@@ -46,6 +46,16 @@ steps:
     look: What glue work is, why it so rarely gets anyone promoted, and the conversation to have about it before your review.
     trust: "Experience. Reilly is a principal software engineer, telling a story from the kind of career she's watched and had."
     only: The cost of the work that holds a team together, for the person who does it.
+  - id: do
+    kind: do
+    title: Finish the sentence
+    where: The Do, on this page, below. Asking two teammates can come later.
+    look: Outcomes, changes for people, not features you ship.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: It's Thursday, and your week on the streaming app has gone to standup, two status reports and a meeting where you split the next sprint so each squad gets something. Your lead set the destination last quarter. Which versions of the job filled your week, and what's yours to add?

@@ -74,6 +74,16 @@ steps:
     look: Why readers give the most weight to what comes at the end of a sentence, the stress position.
     trust: "An argument. American Scientist published it, and a Penn State textbook on technical writing reprints it with its permission. It's about scientific papers, but its point about readers holds for any prose."
     only: A reason, not just a rule, for why some sentences are hard to read.
+  - id: do
+    kind: do
+    title: Map your readers, and send the first update
+    where: The Do, on this page, below.
+    look: One item that isn't on track, its line ending on what you need.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Decide and Set Direction says to give your view last when the call is yours, so it doesn't sway the room. SCR puts your recommendation in the opening lines. When does each hold?

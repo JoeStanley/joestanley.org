@@ -3,7 +3,7 @@
        unit, as words; and it stays in view as the page scrolls, the text fading under it once it sticks (pm.js).
        Without scripts its place is a plain link to Start's list of modules; pm.js swaps in the button, which opens
        the list with saved progress, and on Start shows Continue, from saved progress, in place of Next. A card's
-       place is its module; Start, The Compass, the concept cards and the glossary name themselves. Not in print. */ -}}
+       place is its module, with no Previous or Next; Start, The Compass, the concept cards and the glossary name themselves. Not in print. */ -}}
 {{- $p := . -}}
 {{- $home := site.GetPage "/pm" -}}
 {{- $order := partial "pm/course-order.html" . -}}
@@ -12,8 +12,18 @@
 {{- $i := -1 -}}
 {{- range $n, $s := $order }}{{ if eq $s.id $here }}{{ $i = $n }}{{ end }}{{ end -}}
 {{- $place := "" -}}
-{{- with index (where site.Data.pm.modules "id" $here) 0 }}{{ $place = printf "Module %v of %d" .num (len site.Data.pm.modules) }}{{ else }}{{ $place = cond (eq $here "start") "Start" $p.Title }}{{ end -}}
+{{- /* A module's place is its number, then its place in the order counted from 1, so Module 0 reads "1st of 12" (the
+       owner, 26 November 2026). */ -}}
+{{- range $n, $m := site.Data.pm.modules }}{{ if eq $m.id $here }}
+{{- $k := add $n 1 }}{{ $suf := "th" }}
+{{- if not (in (slice 11 12 13) (mod $k 100)) }}{{ with index (dict "1" "st" "2" "nd" "3" "rd") (string (mod $k 10)) }}{{ $suf = . }}{{ end }}{{ end }}
+{{- $place = printf "Module %v, %d%s of %d" $m.num $k $suf (len site.Data.pm.modules) }}
+{{- end }}{{ end -}}
+{{- if not $place }}{{ $place = cond (eq $here "start") "Start" $p.Title }}{{ end -}}
 {{- $isPage := not $p.Params.module | or (eq $p.Layout "module") -}}
+{{- /* A concept card keeps its module's place and list, and has no Previous or Next at any width: a card's Next went
+       to the next module mid-way through this one (the owner, 26 November 2026). */ -}}
+{{- if not $isPage }}{{ $i = -1 }}{{ end -}}
 <nav class="course-bar" aria-label="{{ $home.Title }}" data-course-bar>
   <div class="frame cb-row">
     <a class="cb-place" href="{{ $home.RelPermalink }}#modules"><span class="cb-label"><span class="cb-course">{{ $home.Title }},</span> <span class="cb-here">{{ $place }}</span></span></a>

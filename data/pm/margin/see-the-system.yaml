@@ -36,6 +36,12 @@ step-meadows-2: ""
 # Short path, step 4: Richard Cook, “How Complex Systems Fail”
 step-cook: ""
 
+# Short path, step 5: Draw one stock, and log a change
+step-do: ""
+
+# Short path, step 6: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

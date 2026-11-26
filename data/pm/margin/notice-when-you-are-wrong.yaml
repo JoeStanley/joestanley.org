@@ -35,6 +35,12 @@ step-card-double-loop-learning: ""
 # Short path, step 3: Amy Edmondson, “How Fearless Organizations Succeed”
 step-edmondson: ""
 
+# Short path, step 4: Run a premortem, and review your log
+step-do: ""
+
+# Short path, step 5: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

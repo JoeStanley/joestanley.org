@@ -63,6 +63,16 @@ steps:
     look: Why a feature that's useful 60 percent of the time can be a success or a failure, and the errors that neither the user nor the system notices.
     trust: "Experience. Google's People + AI Research team wrote it from dozens of the company's user research studies, which it doesn't publish."
     only: How good a feature built on a model has to be, asked from the user's side, and what it should do when it's wrong.
+  - id: do
+    kind: do
+    title: Plan one rollout, and log it
+    where: The Do, on this page, below. Asking whoever's on call can come later.
+    look: The level at which you'd stop, for the customers it could hurt most.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?

@@ -47,6 +47,12 @@ step-schneier: ""
 # Short path, step 7: GOV.UK Service Manual, “Making your service more inclusive”
 step-inclusive: ""
 
+# Short path, step 8: Scan one feature, and write your lines
+step-do: ""
+
+# Short path, step 9: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

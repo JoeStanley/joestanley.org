@@ -38,6 +38,12 @@ step-munro: ""
 # Short path, step 4: Nancy Cartwright, Brendan Kelters, Eileen Munro and John Pemberton, “Can I make this policy work here?”
 step-cartwright: ""
 
+# Short path, step 5: Weigh the evidence for one decision, and log your call
+step-do: ""
+
+# Short path, step 6: Check yourself
+step-check: ""
+
 # The ranking game
 ranking-game: ""
 

@@ -63,6 +63,16 @@ steps:
     look: The word "meter," which meant different things to different parts of an electricity utility.
     trust: "Experience. It's Fowler's retelling of a pattern from Eric Evans's domain-driven design, a way of building software around the language of the business."
     only: A way to hear a boundary in how people talk.
+  - id: do
+    kind: do
+    title: Draw the two pictures, and log a seam
+    where: The Do, on this page, below. A tech lead's corrections can come later.
+    look: Where the teams' boundaries and the system's cross.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: Does a system mirror the org chart of the organization that builds it?

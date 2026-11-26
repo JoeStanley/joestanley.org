@@ -41,6 +41,16 @@ steps:
     look: "What psychological safety isn't. People say what they see, and the bar stays high: \"It is not about becoming 'comfortable' at work.\""
     trust: "An argument. Edmondson is the Harvard Business School professor whose research on teams made the idea widely known, and this excerpt from her book draws on company cases."
     only: What lets bad news reach you, from the researcher behind the idea.
+  - id: do
+    kind: do
+    title: Run a premortem, and review your log
+    where: The Do, on this page, below. Asking the people who'd see it break can come later.
+    look: The reasons you'd usually keep to yourself.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: The dashboard shows alerts at one plant taking twice as long to clear as anywhere else, and the planning doc now says, "That plant's technicians don't take the alerts seriously." Which rung is that sentence on, and what takes it back down?

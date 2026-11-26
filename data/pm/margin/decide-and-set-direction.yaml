@@ -40,6 +40,12 @@ step-harmel-law: ""
 # Short path, step 4: Richard Rumelt, “The perils of bad strategy”
 step-rumelt: ""
 
+# Short path, step 5: Write a kernel and a not-doing list, and log one no
+step-do: ""
+
+# Short path, step 6: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

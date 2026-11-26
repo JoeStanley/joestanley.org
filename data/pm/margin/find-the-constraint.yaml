@@ -36,6 +36,12 @@ step-card-steps: ""
 # Short path, step 4: Goodhart’s Law
 step-card-goodhart: ""
 
+# Short path, step 5: Map one flow, and log your constraint
+step-do: ""
+
+# Short path, step 6: Check yourself
+step-check: ""
+
 # The dice game
 dice-game: ""
 

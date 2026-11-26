@@ -46,6 +46,16 @@ steps:
     card: cards/goodharts-law
     minutes: 5
     look: What a target on one step does to that step's number, and to the whole flow.
+  - id: do
+    kind: do
+    title: Map one flow, and log your constraint
+    where: The Do, on this page, below. Asking whoever tracks delivery can come later.
+    look: The step where work waits longest.
+  - id: check
+    kind: check
+    title: Check yourself
+    where: The Check, on this page, below.
+    look: The answers you missed, and why you missed them.
 
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?

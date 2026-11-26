@@ -38,6 +38,12 @@ step-vogels: ""
 # Short path, step 4: Tanya Reilly, “Being Glue”
 step-reilly: ""
 
+# Short path, step 5: Finish the sentence
+step-do: ""
+
+# Short path, step 6: Check yourself
+step-check: ""
+
 # Do
 do: ""
 

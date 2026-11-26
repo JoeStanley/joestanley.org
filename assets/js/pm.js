@@ -26,7 +26,7 @@
     if (!out || !boxes.length) return;
     var n = boxes.filter(function (b) { return b.checked; }).length;
     out.hidden = false;
-    out.textContent = n === 0 ? boxes.length + " steps. Tick each one off as you go."
+    out.textContent = n === 0 ? boxes.length + " steps. Tap a step's number to tick it off."
       : n === boxes.length ? "All " + n + " steps done."
       : n + " of " + boxes.length + " steps done.";
   }
@@ -47,10 +47,28 @@
     var box = li.querySelector("input[type=checkbox]"); if (!box) return;
     var key = "pm:" + li.getAttribute("data-step");
     box.checked = get(key) === "1";
-    box.addEventListener("change", function () { set(key, box.checked ? "1" : null); tally(li.closest("[data-unit]")); markMap(); });
+    box.addEventListener("change", function () { set(key, box.checked ? "1" : null); tally(li.closest("[data-unit]")); markMap(); onward(); });
   });
   all("[data-unit]").forEach(tally);
   markMap();
+
+  /* A game's way back goes to the first step still waiting after the game's own, coming round to the top if none
+     after it waits: "Next: Do" or "Next: Check" when that's the Do or the Check, straight to it, or else "Back to the
+     short path" to that step. With every step ticked, or without this script, it goes to the game's own step (G7). */
+  function onward() {
+    all("[data-back-from]").forEach(function (a) {
+      var unit = a.closest("[data-unit]") || doc, own = a.getAttribute("data-own") || a.getAttribute("href");
+      var steps = all("li[data-step]", unit), to = null, at = steps.findIndex(function (li) { return "#" + li.id === own; });
+      steps.slice(at + 1).concat(steps.slice(0, at + 1)).some(function (li) {
+        var b = li.querySelector("input[type=checkbox]"); if (b && !b.checked) { to = li; return true; } return false;
+      });
+      var link = to ? to.querySelector("h3 a") : null, down = link && /^#(do|check)$/.test(link.getAttribute("href"));
+      if (!a.hasAttribute("data-own")) a.setAttribute("data-own", own);
+      a.setAttribute("href", down ? link.getAttribute("href") : to ? "#" + to.id : own);
+      a.textContent = down ? "Next: " + (link.getAttribute("href") === "#do" ? "Do" : "Check") : "Back to the short path";
+    });
+  }
+  onward();
 
   /* The full path is folded on screen. Open it for printing, then put it back. */
   var reopened = [];
@@ -639,16 +657,20 @@
     var mods = all(".cb-list [data-map-unit]", bar).map(function (li) {
       var unit = li.getAttribute("data-map-unit"), ids = (li.getAttribute("data-map-ids") || "").split(" ").filter(Boolean);
       var n = ids.filter(function (id) { return get("pm:" + unit + ":" + id) === "1"; }).length;
-      return { a: li.querySelector("a"), n: n, done: ids.length > 0 && n >= ids.length };
+      /* It lands on the module's next unticked step (#step-N) once one is ticked, so a reader picks up where they
+         left off; a module not yet started opens at its top, where its Why comes first. */
+      var first = ids.findIndex(function (id) { return get("pm:" + unit + ":" + id) !== "1"; });
+      return { a: li.querySelector("a"), n: n, done: ids.length > 0 && n >= ids.length, step: n > 0 && first >= 0 ? first + 1 : 0 };
     });
     var to = null, last = -1;
-    mods.forEach(function (m, i) { if (m.done) last = i; if (!to && m.n > 0 && !m.done) to = m.a; });
+    var step = 0;
+    mods.forEach(function (m, i) { if (m.done) last = i; if (!to && m.n > 0 && !m.done) { to = m.a; step = m.step; } });
     if (!to && last >= 0) {
-      mods.slice(last + 1).concat(mods).some(function (m) { if (!m.done) { to = m.a; return true; } return false; });
+      mods.slice(last + 1).concat(mods).some(function (m) { if (!m.done) { to = m.a; step = m.step; return true; } return false; });
       if (!to) to = bar.querySelector(".cb-more a");
     }
     if (!to) return;
-    cont.setAttribute("href", to.getAttribute("href"));
+    cont.setAttribute("href", to.getAttribute("href") + (step ? "#step-" + step : ""));
     cont.querySelector("[data-continue-to]").textContent = ": " + to.getAttribute("data-label");
     cont.hidden = false;
     var next = bar.querySelector(".cb-next");
