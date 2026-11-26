@@ -59,6 +59,7 @@ GAME_GRACE = 3   # until a PDF is published, a module with a game (J5) may run i
 RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so: six on its full path (S11), and a game's
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until a PDF is published, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
+CLOSING_GRACE = 1   # until a PDF is published, The Compass may print on a fourth page: noted, not failed (the owner, 26 November 2026)
 PRINT_PAGES = 101   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
@@ -3255,7 +3256,7 @@ def unit_page_checks(pdf_path, n_pages):
         # a module's full path prints outside its three pages: it starts within them, and may take two more
         share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
         # the website first: a module's extra page is noted, not failed, and a module with a game may run further
-        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else 0
+        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else CLOSING_GRACE if kind == "closing" else 0
         why_ = "since it runs long on purpose" if _plain_title(title) in long_ else "since it carries a game"
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:
