@@ -60,37 +60,37 @@ slots:
     old: "A terrifyingly gripping narrative of the Chernobyl disaster, split in three main stages: the event, the brilliance and sacrifice needed to solve it, and the investigation after. And through it all, the structural incentives that not only led to the original problem, but informed all that followed."
     interim: "The disaster in three stages: the explosion, the brilliance and sacrifice it took to contain it, and the investigation after. Through all three run the structural incentives that caused it and shaped everything that followed."
   - id: brand-trust
-    unit: 5 Design for Change
+    unit: 6 Design for Change
     brief: "A \"Why trust it\" now opens with its kind of evidence (S17) and says only what's particular to the source. The cold read found \"whose message has resonated for decades at this point\" looser than the lines around it, and it says more about the idea's reach than about why to trust the chapter. Suggestion: raise it, as the interim does."
     old: "It's Brand's own, a chapter from his book whose message has resonated for decades at this point, refined through constructive feedback along the way."
     interim: "It's Brand's own, a chapter of his 1999 book, refined since through feedback."
   - id: scott-trust
-    unit: 5 Design for Change
+    unit: 6 Design for Change
     brief: "The cold read found \"an industry classic for a reason\" read as your full-path bar showing through, and Scott's isn't an industry book. Your closing clause, that even the smartest and wisest keep assuming a predictable world, is a view of your own, and a strong one. Suggestion: cut \"an industry classic,\" and move the closing clause to your margin beside the entry, where you can say it in your voice."
     old: "This is an industry classic for a reason. Scott was a political scientist and anthropologist at Yale. He builds his case from real schemes, from a planned capital city to collectivized farms, showing how in complex dynamics even the smartest and wisest continue to assume an overly predictable world."
     interim: "Scott was a political scientist and anthropologist at Yale, and he builds his case from real schemes, from a planned capital city to collectivized farms."
   - id: oceans-eleven
-    unit: 8 Decide and Set Direction
+    unit: 9 Decide and Set Direction
     brief: "Your model entry (VOICE.md). The cold read found \"get the money and the girl\" the line most likely to make a reader wince in a course that asks who's overlooked, since it makes Tess the prize, and named \"competence porn\" with it. Suggestion: raise the first, keeping the spoiler joke if you like and saying Danny's second aim another way, and move \"competence porn\" to your margin beside the entry, where a crude aside is the point. For now the site stops before the spoiler, and What you'll get opens on the specialists."
     old: "Because everyone knows the bigger picture, everyone can confidently adapt on the fly to (spoiler alert for a decades-old movie) get the money and the girl. [What you'll get:] To put it crudely, competence porn."
     interim: "Because everyone knows the bigger picture, everyone can confidently adapt on the fly when the job goes wrong."
   - id: eye-doctor
-    unit: 9 Answer for What You Build
+    unit: 10 Answer for What You Build
     brief: "The image needs the eye exam's \"Better, one or two?\" to land: the cold read's early-career reader had to work it out. Suggestion: raise it, as the interim does, or put the moment in your own words."
     old: "like getting fitted for a prescription at the eye doctor"
     interim: "like an eye exam's \"Better, one or two?\" asked again and again"
   - id: own-line
-    unit: 9 Answer for What You Build
+    unit: 10 Answer for What You Build
     brief: "The cold read found this disclaimer at odds with what surrounds it: the cases, and your margin note beside the paragraph on the pull from inside, take clear positions. Either own the stance, in your voice, or drop the disclaimer. Suggestion: drop it, and keep \"find your own line,\" as the interim does. It's an \"I\" sentence of yours, so it left data/pm/own-words.yaml while it waits."
     old: "I will not tell you here what's right or wrong per se. That's for you to work out, and to find your own line."
     interim: "Where your own line falls is for you to work out."
   - id: own-way
-    unit: 11 Bring People With You
+    unit: 12 Bring People With You
     brief: "This sentence does two jobs. It says practitioners, not research, back the two kinds of update, which you agreed on 22 November, and it says what follows is your own way of thinking, the one \"I\" in a paragraph of advice. Suggestion: keep the first job in the main text, as the interim does, and move \"my own way of thinking about it\" to your margin. It left data/pm/own-words.yaml while it waits."
     old: "Practitioners say the same about both, and what follows is my own way of thinking about it, though you'll see much the same advice in many places."
     interim: "That advice comes from practitioners, not research, and you'll find much the same in many places."
   - id: cadence
-    unit: 11 Bring People With You
+    unit: 12 Bring People With You
     brief: "Say what the reader should do: pick a rhythm, say what has happened and what comes next, and why the people inside the company want it. The cold read found this paragraph reading as a draft, and both outside readers asked who \"I\" is in a module that otherwise says \"you.\" Your own practice, your teams' sprints, is worth keeping as yours. Suggestion: raise the paragraph, as the interim does, and move your sprint sentence to your margin, where your note beside this paragraph already sits. Your \"I\" sentence left data/pm/own-words.yaml while it waits."
     old: "Many businesses operate off of a business work week or month, though I try to anchor my communications to the sprint schedule of my teams. Whatever rhythm you pick, say what has happened and what will happen next. People inside it, like your peers and your management chain especially, want to be brought along, both to learn and to avoid surprises."
     interim: "Many teams use the work week or the month, and sprints make a rhythm too. Whatever you pick, say what has happened and what will happen next. The people inside your company, your peers and your management chain above all, want to be brought along, both to learn and to avoid surprises."
@@ -192,3 +192,27 @@ moved:
     to: "the same place, which now reads: so the constraint's number can hit its target while nothing more reaches users"
     why: "The second cold read (job 35) found \"value delivery\" the one phrase in the module that reads as management-speak, and a reader noted a target doesn't improve, its number does. Your point stays: the number moves and the users get nothing more."
     when: 25 November 2026
+  - what: moved
+    words: "You often know these better than the engineers, because the questions come from customers, consumers, support, operations and finance, and you hear them first."
+    from: Design for Change, Why this matters, in its paragraph on data, reworded to fit there
+    to: Map the Domain, Why this matters, its second paragraph, back as you wrote it
+    why: Map the Domain returns after Mind the Seams with the data, by your pick of 25 November.
+    when: 26 November 2026
+  - what: moved
+    words: "It's where bounded contexts and the core domain start. This one's target audience is architects, but I think the work required to navigate it as a PM pays for itself in time, especially as agentic workflows become more common."
+    from: nowhere, cut with the fold of 22 November 2026
+    to: Map the Domain, the full path, Eric Evans's Domain-Driven Design, Why trust it, word for word, after the tag that opens it
+    why: Evans is back on the full path you picked (card mtd-full-path), and your sentence with him, listed again as your own words (E3).
+    when: 26 November 2026
+  - what: moved
+    words: "Dehghani set out data mesh at Thoughtworks, an approach in which each part of a business owns and serves its own analytical data. This is her case for it."
+    from: nowhere, cut with the fold of 22 November 2026
+    to: Map the Domain, the full path, Zhamak Dehghani's Data Mesh, Why trust it, word for word, after the tag that opens it
+    why: Data Mesh is back on the full path you picked (card mtd-full-path).
+    when: 26 November 2026
+  - what: changed
+    words: "A classic film. A fly falls into a teleprinter, an arrest warrant for Tuttle comes out as Buttle, and the state pursues and arrests the wrong man. The entire thing is a story of what happens when indifference leads to bureaucratic dystopia, reinforcing societal indifference."
+    from: nowhere, cut with the fold of 22 November 2026
+    to: "Map the Domain, the full path, Brazil, word for word but for \"A beetle\" in place of \"A fly\", and its credit now ends \"(Universal, 1985)\", its US distributor, as S10 asks"
+    why: You kept Brazil with the beetle (card mtd-story). Filmsite calls the insect a beetle.
+    when: 26 November 2026

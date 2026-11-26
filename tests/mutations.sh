@@ -118,7 +118,7 @@ run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"n
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
 wait
 run_bg "a module that pushes its full path past its three pages" P1 "python3 -c \"p='content/pm/own-your-role.md'; s=open(p).read(); open(p, 'w').write(s.replace('Now with all this said', 'A sentence that runs on to fill the page. ' * 160 + '\\n\\nNow with all this said', 1))\""
-run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/design-for-change.md'; s=open(p).read(); open(p, 'w').write(s.replace('Slow isn\\'t the enemy, though.', 'A sentence that runs on to fill the page. ' * 90 + 'Slow isn\\'t the enemy, though.', 1))\""
+run_bg "a module without a game whose own text runs a second page over, past its grace until launch" P1 "python3 -c \"p='content/pm/map-the-domain.md'; s=open(p).read(); open(p, 'w').write(s.replace('The API\\'s shape follows', 'A sentence that runs on to fill the page. ' * 90 + 'The API\\'s shape follows', 1))\""
 run_bg "a module with a game that runs past even a game's allowance" P1 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); open(p, 'w').write(s.replace('Start with what people do, not what they say', 'A sentence that runs on to fill the page. ' * 120 + 'Start with what people do, not what they say', 1))\""
 wait
 
@@ -237,7 +237,8 @@ run_bg "a module's allowance in print gone before a PDF is published" P1 "sed -i
 # Steps, then on every syllabus page once the owner spread them (G1 to G5); the bar's links are controls, not running
 # text (C5)
 run_bg "the bar scrolls away with the page" G1 "sed -i 's/^.course-bar { position: sticky;/.course-bar { position: relative;/' assets/css/pm.css"
-run_bg "the bar counts the wrong number of modules" G1 "sed -i 's/%v of %d\" .num (len site.Data.pm.modules)/%v of %d\" .num 11/' layouts/partials/pm/course-bar.html"
+# The count comes from the map, so it followed Map the Domain's return from twelve to thirteen (26 November 2026).
+run_bg "the bar counts twelve modules, not the map's" G1 "sed -i 's/\$suf (len site.Data.pm.modules) }}/\$suf 12 }}/' layouts/partials/pm/course-bar.html"
 run_bg "the bar's list without its progress" G1 "sed -i 's/ data-map-short{{ end }}>/{{ end }}>/; s/<span class=\"cb-status\" data-map-status><\/span>//' layouts/partials/pm/course-bar.html"
 run_bg "a syllabus page without the bar" G1 "sed -i 's/{{- \$bar := and \$pm (not \$all) }}/{{- \$bar := and \$pm (not \$all) (ne .Layout \"glossary\") }}/' layouts/_default/baseof.html"
 run_bg "the bar on the single document" G1 "sed -i 's/{{- \$bar := and \$pm (not \$all) }}/{{- \$bar := \$pm }}/' layouts/_default/baseof.html"
@@ -246,6 +247,9 @@ run_bg "Escape closes the list and drops focus" G2 "sed -i 's/if (!on \&\& refoc
 run_bg "the bar's place too small to tap on a phone" G2 "echo '.course-bar .cb-place { min-height: 2rem; }' >> assets/css/pm.css"
 run_bg "the bar's list fades in" G2 "echo '.cb-menu { transition: opacity 200ms ease-out; }' >> assets/css/pm.css"
 run_bg "an address lands under the bar" G2 "sed -i '/^.has-course-bar main \[id\] { scroll-margin-top/d' assets/css/pm.css"
+# The check clicks outside the bar on a spot with nothing to tap, outside the open list, which thirteen modules
+# stretch to a phone's foot (26 November 2026): a click there must still close the list.
+run_bg "a click outside the bar leaves its list open" G2 "sed -i 's/doc.addEventListener(\"click\", function (e) { if (!menu.hidden \&\& !bar.contains(e.target)) open(false); });//' assets/js/pm.js"
 run_bg "the bar on two lines on a phone" G3 "echo '.cb-here::after { content: \" and a longer place\"; }' >> assets/css/pm.css"
 run_bg "the bar's list runs past a short window" G3 "sed -i 's/if (on) fit();//' assets/js/pm.js; sed -i 's/ max-height: calc(100svh - 4rem); overflow-y: auto;//' assets/css/pm.css"
 run_bg "without scripts the bar's place goes nowhere useful" G4 "sed -i 's|#modules\"><span class=\"cb-label\">|\"><span class=\"cb-label\">|' layouts/partials/pm/course-bar.html"

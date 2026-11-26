@@ -8,7 +8,7 @@ parts:
     modules: [own-your-role, know-who-its-for]
   - title: How the system works
     line: Why things behave as they do, from the backlog to the org chart, before you change any of them.
-    modules: [see-the-system, find-the-constraint, mind-the-seams, design-for-change, change-safely]
+    modules: [see-the-system, find-the-constraint, mind-the-seams, map-the-domain, design-for-change, change-safely]
   - title: How you decide
     line: What to believe, what to choose, and what you answer for.
     modules: [weigh-the-evidence, decide-and-set-direction, answer-for-what-you-build]

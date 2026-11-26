@@ -63,6 +63,12 @@ bounded-context:
 event-time:
   term: Event time and processing time
   text: When something happened, and when the system saw it.
+hyrums-law:
+  term: Hyrum's Law
+  text: With enough callers, every behavior of an API they can see will be depended on by someone, whatever its documentation promises. Named for Hyrum Wright, who saw it as an engineer at Google.
+deprecation:
+  term: Deprecation
+  text: Announcing that part of an API or a dataset will be retired, and when, so its callers can move before a breaking change, one that stops their code working, removes it.
 pace-layers:
   term: Pace layers
   text: Parts of a building, a society or a product that change at different speeds, with the slow ones setting the terms for the fast. Stewart Brand's shearing layers are a building's version.

@@ -1,8 +1,8 @@
 ---
 title: On Product Judgment
-description: A self-directed syllabus for early-career product managers. Twelve questions, free reading, about 90 minutes each.
+description: A self-directed syllabus for early-career product managers. Thirteen questions, free reading, about 90 minutes each.
 outputs: ["HTML"]
-pilot_note: "Pilot draft. All twelve modules are built."
+pilot_note: "Pilot draft. All thirteen modules are built."
 ---
 
 > You don't become a good {{< pm/edit "Communist" "Product Manager" >}} by going to meetings or memorizing the [Manifesto](http://agilemanifesto.org). You do it on the streets. You do it with your fists. The rest is bullshit and you know it.
@@ -19,7 +19,7 @@ Instead, it's a set of lessons intended to strengthen your **product judgment**,
 
 ## How it works
 
-- **Twelve modules, each built on one question, then a closing page.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work. [Answer for What You Build](/pm/answer-for-what-you-build/) runs longer, on purpose. Reading each module's own page takes about 10 minutes more. At about a module a week, the whole course takes a quarter.
+- **Thirteen modules, each built on one question, then a closing page.** A module takes up to 90 minutes: up to an hour of reading, watching or playing, and about half an hour applying it to your own work. [Answer for What You Build](/pm/answer-for-what-you-build/) runs longer, on purpose. Reading each module's own page takes about 10 minutes more. At about a module a week, the whole course takes a quarter.
 - **From [Know Who It's For](/pm/know-who-its-for/) on, you'll keep a decision log:** one call a module, what you expect to happen, how sure you are as a percentage, and when you'll know. Intuition earns trust where a situation has patterns you can learn and you get clear feedback on your calls ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)). Product calls can take months to play out, so the log gives you some of that feedback. The closing page, [The Compass](/pm/the-compass/), has you look back over it, and names [what the course leaves out](/pm/the-compass/#what-the-course-leaves-out).
 - **Some exercises end with a question for a colleague.** That part sits outside the module's time. Where the answers can wait, save them up for a month, and ask each person theirs in one conversation.
 - **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
