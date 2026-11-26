@@ -1,14 +1,14 @@
 {
  "doc": "https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ",
- "synced": "25 November 2026",
+ "synced": "26 November 2026",
  "tabs": [
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "158b9dbd3def294c0b790e5b30175a0097f4e8484052bad4f81002136f9f6770",
+   "sha256": "8dccafbdeb0cc54ff42965cc920a4b9fb715a02e6cb3630ae35e2fad870f7f4c",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 51
+   "rev": 52
   },
   {
    "name": "ReadMe",
@@ -21,10 +21,10 @@
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "560abb83beb020672c9edbb040c6ddcf4ecf86add18f772e897a6f956139cea2",
+   "sha256": "106d886eb278907b6d734093ded2c00f82c27cfacf7d60aca1b03866ed73b4e4",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 219
+   "rev": 220
   },
   {
    "name": "0 Own Your Role",

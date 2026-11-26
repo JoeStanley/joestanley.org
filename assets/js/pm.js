@@ -5,7 +5,8 @@
    3. The games: the dice game, the waiting game and the ranking game.
    4. A line edit stays on its line.
    5. The Compass's two walks: two buttons pick which version of the call shows.
-   6. The course bar: its place opens the list of modules, with saved progress. */
+   6. The course bar: its place opens the list of modules, with saved progress.
+   A finished game round ticks its step, and "Go deeper" opens the full path (G7). */
 (function () {
   "use strict";
   var doc = document, body = doc.body;
@@ -58,6 +59,12 @@
     reopened.forEach(function (d) { d.open = true; });
   });
   window.addEventListener("afterprint", function () { reopened.forEach(function (d) { d.open = false; }); reopened = []; });
+  /* "Go deeper", in a module's line of links, opens the full path it lands on, as arriving at its address does (G7). */
+  function openDeeper() { var d = doc.querySelector(".deeper details"); if (d) d.open = true; }
+  all("[data-open-deeper]").forEach(function (a) { a.addEventListener("click", openDeeper); });
+  function deeperByHash() { if (location.hash === "#go-deeper") openDeeper(); }
+  window.addEventListener("hashchange", deeperByHash);
+  deeperByHash();
 
   /* ---- glossary terms: links to the glossary that open a modal dialog in place where dialogs are supported.
      The browser keeps focus inside the dialog and returns it to the term when the dialog closes. ---- */
@@ -126,6 +133,17 @@
   var money = function (n) { return "$" + Math.round(n).toLocaleString("en-US"); };
   /* While a run plays, Play is marked busy rather than disabled, so it keeps keyboard and screen reader focus. */
   var busyOn = function (btn, on) { if (on) btn.setAttribute("aria-disabled", "true"); else btn.removeAttribute("aria-disabled"); };
+
+  /* A finished round ticks the game's own step on the short path, as ticking it by hand would, and says so beside
+     the way back, so a reader landing on the step doesn't untick it by tapping it again (spec G7). */
+  function played(game) {
+    var a = game.id ? doc.querySelector('[data-step] h3 a[href="#' + game.id + '"]') : null;
+    var box = a ? a.closest("[data-step]").querySelector("input[type=checkbox]") : null;
+    if (!box) return;
+    if (!box.checked) { box.checked = true; box.dispatchEvent(new Event("change")); }
+    var back = doc.querySelector('[data-back-from="' + game.id + '"]'), said = back ? back.parentNode.querySelector("[data-ticked]") : null;
+    if (said) said.textContent = "Its step on the short path is ticked.";
+  }
 
   function diceGame(game) {
     var dataEl = game.querySelector("[data-game-setups]"); if (!dataEl) return;
@@ -199,6 +217,7 @@
       playedOnce = true;
       busy(false); el.play.textContent = "Play 20 rounds again";
       if (el.takeaway) el.takeaway.hidden = false;
+      played(game);
     }
 
     function play() {
@@ -347,6 +366,7 @@
       playedOnce = true; running = false; paused = false; busyOn(el.play, false);
       el.play.textContent = "Play again";
       if (el.takeaway) el.takeaway.hidden = false;
+      played(game);
     }
     /* Play on until every job is live, or until a pick falls due that no plan makes. */
     function step() {
@@ -520,6 +540,7 @@
       playedOnce = true;
       el.play.textContent = "Play another week";
       if (el.takeaway) el.takeaway.hidden = false;
+      played(game);
     }
 
     el.setupButtons.forEach(function (b) {

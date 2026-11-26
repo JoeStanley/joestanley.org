@@ -23,9 +23,29 @@
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
 
+  {{- /* On this page (spec G7): a line of links to the module's parts, on its own page and on screen only. */}}
+  {{ if not $all }}
+  <nav class="on-page screen-only" aria-label="On this page">
+    <span class="op-label" aria-hidden="true">On this page</span>
+    <ul class="op-list">
+      <li><a href="#why-this-matters">Why</a></li>
+      <li><a href="#short-path">Short path</a></li>
+      {{- if gt (len $parts) 1 }}
+      <li><a href="#do">Do</a></li>
+      {{- end }}
+      {{- with $p.Params.check }}
+      <li><a href="#check">Check</a></li>
+      {{- end }}
+      {{- with $p.Params.deeper }}
+      <li><a href="#go-deeper" data-open-deeper>Go deeper</a></li>
+      {{- end }}
+    </ul>
+  </nav>
+  {{ end }}
+
   {{ with $p.Params.last_time }}
   <section class="last-time" data-slot="last-time">
-    <h2>Last time</h2>
+    <h2{{ if not $all }} id="last-time"{{ end }}>Last time</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "last-time") }}
     <p class="hint">Two questions on {{ with $prev }}{{ .title }}{{ else }}the module before{{ end }}. Answer in your head, then check.{{ with $p.Params.last_time_note }} {{ . }}{{ end }}</p>
     {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}
@@ -37,7 +57,7 @@
   </section>
 
   <section class="path" data-slot="short-path">
-    <h2>The short path</h2>
+    <h2{{ if not $all }} id="short-path"{{ end }}>The short path</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "short-path") }}
     <p class="progress" data-progress hidden></p>
     <ol class="steps">
@@ -75,7 +95,13 @@
   </section>
 
   {{- /* A module may carry one game (spec J5): the dice game, the waiting game or the ranking game, in pm/<name>game.html. */}}
-  {{ with $p.Params.game }}{{ partial (printf "pm/%sgame.html" .) (dict "p" $p "unit" $key) }}{{ end }}
+  {{ with $p.Params.game }}{{ partial (printf "pm/%sgame.html" .) (dict "p" $p "unit" $key) }}
+  {{- /* A game's way back to its own step on the short path (spec G7), where its round ticked it. */}}
+  {{- $g := . }}
+  {{- if not $all }}{{ range $n, $s := $p.Params.steps }}{{ if eq $s.kind "play" }}
+  <p class="game-back screen-only"><span class="game-ticked" role="status" data-ticked></span> <a href="#step-{{ add $n 1 }}" data-back-from="{{ $g }}-game">Back to the short path</a></p>
+  {{- end }}{{ end }}{{ end }}
+  {{- end }}
 
   {{ if gt (len $parts) 1 }}
   <section class="do prose">
@@ -85,7 +111,7 @@
 
   {{ with $p.Params.check }}
   <section class="check" data-slot="check">
-    <h2>Check yourself</h2>
+    <h2{{ if not $all }} id="check"{{ end }}>Check yourself</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "check") }}
     <p class="hint">Answer in your head, then check.</p>
     {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}
@@ -96,7 +122,7 @@
   <section class="deeper" data-slot="go-deeper">
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "go-deeper") }}
     <details>
-      <summary><h2>Go deeper: the full path</h2><span class="deeper-hint">Optional, and not counted in the time above.</span></summary>
+      <summary><h2{{ if not $all }} id="go-deeper"{{ end }}>Go deeper: the full path</h2><span class="deeper-hint">Optional, and not counted in the time above.</span></summary>
       <ul class="deeper-list">
         {{- range . }}
         {{- $slot := printf "deeper-%s" (urlize (lower .title)) }}

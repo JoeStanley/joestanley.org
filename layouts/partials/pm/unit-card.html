@@ -6,7 +6,7 @@
 {{- with $m.page }}{{ $modPage = site.GetPage (printf "/pm/%s" .) }}{{ end -}}
 <article class="unit card" id="{{ $key }}" data-unit="{{ $key }}" data-module="{{ $p.Params.module }}">
   <header class="band unit-band"><div class="frame"><div class="unit-head reading" data-slot="top">
-    <p class="kicker"><span class="tag">Concept card</span> for Module {{ $m.num }}, {{ with $modPage }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ .Title }}</a>{{ else }}{{ $m.title }}{{ end }}</p>
+    <p class="kicker">{{ if $all }}<span class="tag">Concept card</span>{{ else }}{{ with site.GetPage "/pm/concept-cards" }}<a class="tag" href="{{ .RelPermalink }}">Concept card</a>{{ end }}{{ end }} for Module {{ $m.num }}, {{ with $modPage }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ .Title }}</a>{{ else }}{{ $m.title }}{{ end }}</p>
     <h1>{{ $p.Title | markdownify }}</h1>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
   </div></div></header>

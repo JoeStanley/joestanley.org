@@ -16,6 +16,17 @@
     <h2 id="modules">The modules</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "the-modules") }}
     {{- partial "pm/arc-list.html" (dict "p" $p "all" $all "start" true) }}
+    {{- /* Doors to what's looked up, not read through (spec G6): plain links, so a reader without scripts, who has no
+           bar's list, reaches both. The site's alone: the single document has its own list. */}}
+    {{- if not $all }}
+    <nav class="on-page start-more screen-only" aria-label="Look up">
+      <span class="op-label" aria-hidden="true">Look up</span>
+      <ul class="op-list">
+        {{- with site.GetPage "/pm/concept-cards" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+        {{- with site.GetPage "/pm/glossary" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
+      </ul>
+    </nav>
+    {{- end }}
   </section>
 </div></div>
 </article>

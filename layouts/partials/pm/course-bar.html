@@ -3,7 +3,7 @@
        unit, as words; and it stays in view as the page scrolls, the text fading under it once it sticks (pm.js).
        Without scripts its place is a plain link to Start's list of modules; pm.js swaps in the button, which opens
        the list with saved progress, and on Start shows Continue, from saved progress, in place of Next. A card's
-       place is its module; Start, The Compass and the glossary name themselves. Not in print. */ -}}
+       place is its module; Start, The Compass, the concept cards and the glossary name themselves. Not in print. */ -}}
 {{- $p := . -}}
 {{- $home := site.GetPage "/pm" -}}
 {{- $order := partial "pm/course-order.html" . -}}
@@ -42,6 +42,9 @@
           {{- with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}
           <li><a href="{{ .RelPermalink }}" data-label="{{ .Title }}"{{ if eq $p . }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
           {{- end }}{{ end }}
+          {{- with site.GetPage "/pm/concept-cards" }}
+          <li><a href="{{ .RelPermalink }}"{{ if eq $p . }} aria-current="page"{{ end }}>{{ .Title }}</a></li>
+          {{- end }}
           {{- with site.GetPage "/pm/glossary" }}
           <li><a href="{{ .RelPermalink }}"{{ if eq $p . }} aria-current="page"{{ end }}>Glossary</a></li>
           {{- end }}
