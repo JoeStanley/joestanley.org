@@ -50,19 +50,21 @@ steps:
     look: Which estimate is worth testing while the team builds, and when each pick falls due.
 example:
   body: |
-    **The problem:** unwanted swaps.
+    **Problem:** unwanted swaps.
 
-    - **Tuesday evening.** Oat milk swapped for dairy. She poured it out and bought her own: $5, and 20 minutes by her account.
-    - **Thursday.** Gluten-free bread swapped for regular. He can't eat gluten, so he took a refund and drove to the store: 45 minutes, a guess.
-    - **Saturday.** A cheaper brand of diapers. She kept them, and now watches each swap as it's picked: a guessed 10 minutes an order.
+    - **Tuesday.** Oat milk swapped for dairy. She poured it out, bought her own: $5, maybe 20 minutes.
+    - **Thursday.** "Wrong bread, refund pls." His profile says gluten-free, so a second trip: maybe 45 minutes.
+    - **Saturday.** Cheaper diapers, kept. She now watches swaps live: maybe 10 minutes an order.
 
-    **A week of waiting:** support tags about 400 a week, at a guessed $5 each, time included. Roughly $2,000, before anyone who quietly leaves.
+    **Shoppers:** their forum says waiting on answers is unpaid.
 
-    **Decision log:** this quarter, ask before every swap. Expect unwanted-swap tickets to halve. 60 percent sure. Know a month after launch.
+    **A week of waiting:** support tags 400 a week; most never write in. At about $10 each, time at $15 an hour: $4,000 to customers, before anyone who leaves.
+
+    **Decision log:** test first, in one city, on dietary swaps, two minutes to answer. Expect over half to answer. 60 percent sure: a wrong one costs a meal. Know by April 30.
   good:
-    - "Each line is one real time, with its day: what the person did, and what it cost them."
-    - "Costs are in dollars or minutes, guesses say so, and the week's price is rough on purpose: close enough to set beside another problem's."
-    - The call could turn out wrong, and the entry says how sure you are and when you'll know.
+    - "Each line is one specific time: its day, what the person did, and what it cost, with every guess marked."
+    - The week's price says where its count came from and whose cost it adds up, which is where most go wrong.
+    - The call expects one thing you can count, by a date, and says why you're only that sure.
 
 check:
   - q: A user says they'd pay $10 a month for a feature. What do you ask next, and why?
