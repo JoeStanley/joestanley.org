@@ -102,7 +102,7 @@ deeper:
 
 ## Why this matters
 
-Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap. Mind the Seams asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
+Ask how your product will change over time: which parts, how often, and at what cost. The slowest layer a request touches sets its {{< pm/term "cost-of-change" "cost of change" >}}, so the pain comes from fast parts tied to slow ones. Once you can see which is which, you'll estimate more honestly, and you'll have a case for the work that makes likely changes cheap. [Mind the Seams](/pm/mind-the-seams/) asked where the boundaries fall. For a system, David Parnas's answer is to draw them around the decisions likely to change, so each change stays inside one part.
 
 Slow isn't the enemy, though. A school's record of grades moves slowly on purpose, because every transcript depends on it. Each layer has its own right pace, which Stewart Brand calls {{< pm/term "pace-layers" "pace layering" >}}: "Fast learns, slow remembers." Some slow layers aren't yours. Students' phones change at their own pace, so retiring an old app version saves your team the upkeep and hands the bill to students who can't update, often those on the oldest or cheapest phones.
 

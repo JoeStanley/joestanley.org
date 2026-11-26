@@ -603,6 +603,144 @@ def start_checks(out_dir):
         fail("S19", "Start's invitation to write isn't a paragraph of its own after How it works' list")
 
 
+NAME_PARTS = "li.step, .deeper-list > li, details.recall > .answer, .answers li, .walk, details.example"
+NAME_SKIP = "script, style, nav, h1, .unit-head, .unit-foot, .note, .note-label, [data-voice], .sr, .step-body > h3, .step-links, .deeper-list > li > h3, summary, .walk-title, .last-time > .hint"
+
+
+def _closest(el, sel):
+    """The nearest element above el that matches a CSS selector, or None."""
+    import soupsieve
+    for p_ in el.parents:
+        if getattr(p_, "name", None) and p_.name != "[document]" and soupsieve.match(sel, p_):
+            return p_
+    return None
+
+
+def _unit_names(out_dir):
+    """Every unit a name can link (G8): its address on the site, its id in the single document, and a pattern for its
+    name, straight or typeset."""
+    from bs4 import BeautifulSoup
+    units = {}
+    for path in UNIT_PAGES:
+        title = (BeautifulSoup(open(os.path.join(out_dir, path.strip("/"), "index.html"), encoding="utf-8").read(), "html.parser")
+                 .select_one("article.unit h1"))
+        name = " ".join(title.get_text(" ", strip=True).split()).replace("’", "'")
+        units[path] = {"name": name, "id": path.rstrip("/").split("/")[-1],
+                       "re": re.compile(r"(?<![\w'’])" + re.escape(name).replace("'", "['’]") + r"(?![\w])")}
+    return units
+
+
+def _name_events(art, units, here):
+    """The names and the links to units in one unit's article, in reading order, each with its part (G8): a step, a
+    source, an answer, a walk, an example, or else the section of prose under the last heading."""
+    from bs4 import NavigableString, Tag
+    events, h2, quotes, straight = [], "top", defaultdict(int), defaultdict(int)
+    by_href = {p: p for p in units}
+    by_href.update({"#" + u["id"]: p for p, u in units.items()})
+    for el in art.descendants:
+        if isinstance(el, Tag):
+            if el.name == "h2" and not _closest(el, NAME_PARTS):
+                h2 = el.get_text(" ", strip=True)
+            if el.name == "a" and el.get("href") in by_href:
+                part = _closest(el, NAME_PARTS)
+                key = id(part) if part else h2
+                skip = _closest(el, NAME_SKIP)
+                question = (el.find_parent("summary") and el.find_parent("details", class_="recall")) or _closest(el, ".last-time > .hint")
+                if question:
+                    events.append(("question", key, by_href[el["href"]], el.get_text(" ", strip=True)))
+                elif not skip:
+                    events.append(("link", key, by_href[el["href"]], el.get_text(" ", strip=True)))
+            continue
+        if not isinstance(el, NavigableString) or el.find_parent("a") or _closest(el, NAME_SKIP):
+            continue
+        part = _closest(el, NAME_PARTS)
+        key = id(part) if part else h2
+        text = str(el)
+        for path, u in units.items():
+            for m in u["re"].finditer(text):
+                head = text[:m.start()]
+                curly = quotes[key] + head.count("“") - head.count("”")
+                plain = (straight[key] + head.count('"')) % 2
+                if curly <= 0 and not plain:   # words in quotation marks, curly or straight, aren't the course naming a unit
+                    events.append(("name", key, path, m.group(0)))
+        quotes[key] += text.count("“") - text.count("”")
+        straight[key] += text.count('"')
+    return events
+
+
+def name_link_checks(out_dir):
+    """G8 in the built pages: where a unit's words name another unit, the first mention in each part links it, and no
+    other does; no unit links itself; a question meant for recall links nothing; and the single document lands every
+    such link on the unit in the page, and each module's Do and Check steps on its own. Then a browser follows two."""
+    from bs4 import BeautifulSoup
+    checked("G8")
+    units = _unit_names(out_dir)
+    page = lambda path: BeautifulSoup(open(os.path.join(out_dir, path.strip("/"), "index.html"), encoding="utf-8").read(), "html.parser")
+    count = 0
+    for path in ["/pm/"] + UNIT_PAGES:
+        art = page(path).select_one("article.unit")
+        if not art:
+            fail("G8", f"{path} has no unit to read"); continue
+        first = {}
+        for kind, part, target, words in _name_events(art, units, path):
+            name = units[target]["name"]
+            if kind == "question":
+                fail("G8", f"{path} links {name} in a question meant for recall, which hands the reader the place to look")
+                continue
+            if target == path:
+                if kind == "link":
+                    fail("G8", f"{path} links its own name, {name}")
+                continue
+            seen = first.get((part, target))
+            if seen is None:
+                first[(part, target)] = kind
+                if kind == "name":
+                    fail("G8", f"{path} names {name} without linking it, the first time its part does (\"{words}\", in {part if isinstance(part, str) else 'a step, source, answer or walk'})")
+                else:
+                    count += 1
+            elif kind == "link":
+                fail("G8", f"{path} links {name} twice in one part: a name met again stays words")
+    if count < 60:
+        fail("G8", f"only {count} names link another unit across the syllabus, fewer than the walks found unlinked")
+    # G8: in the single document every link to a unit lands on the unit in the page, and each module's Do and Check
+    # steps land on that module's own Do and Check
+    whole = page("/pm/all/")
+    ids = {e.get("id") for e in whole.select("[id]")}
+    for a in whole.select("a[href]"):
+        h = a["href"]
+        if h.split("#")[0] in units:
+            fail("G8", f"the single document links {h}, the unit's page, where it should land on the unit in the page")
+        elif h.startswith("#") and h[1:] not in ids and "'" not in h:
+            fail("G8", f"the single document links {h}, which nothing in it carries")
+    for art in whole.select("article.unit.module"):
+        key = art.get("id")
+        for kind in ("do", "check"):
+            a = art.select_one(f"li.step-down a[href='#{key}-{kind}']")
+            if not a or not art.select_one(f"#{key}-{kind}"):
+                fail("G8", f"in the single document, {key}'s {kind.capitalize()} step doesn't land on its own {kind.capitalize()} (#{key}-{kind})")
+    # G8: in a browser, a name in The Compass shows its unit in the single document and focuses its title, and a
+    # module's Do step stays in that module
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            pg = b.new_page(viewport={"width": 1280, "height": 900})
+            pg.goto(srv.base + "/pm/all/#the-compass"); pg.wait_for_load_state("load")
+            pg.locator("#the-compass .walk a[href='#see-the-system']").first.click(); pg.wait_for_timeout(200)
+            got = pg.evaluate("() => ({cur: (document.querySelector('.unit.is-current') || {}).id, focus: document.activeElement && document.activeElement.closest('.unit') && document.activeElement.closest('.unit').id, h1: document.activeElement && document.activeElement.tagName})")
+            if got != {"cur": "see-the-system", "focus": "see-the-system", "h1": "H1"}:
+                fail("G8", f"in the single document, The Compass's link to See the System shows {got.get('cur')} with focus on {got.get('h1')} in {got.get('focus')}, not See the System's title")
+            pg.goto(srv.base + "/pm/all/#find-the-constraint"); pg.wait_for_load_state("load")
+            pg.locator("#find-the-constraint a[href='#find-the-constraint-do']").first.click(); pg.wait_for_timeout(200)
+            cur = pg.evaluate("() => (document.querySelector('.unit.is-current') || {}).id")
+            if cur != "find-the-constraint":
+                fail("G8", f"in the single document, Find the Constraint's Do step shows {cur}, not its own Do")
+            b.close()
+    finally:
+        srv.close()
+
+
 def thread_checks(out_dir):
     """S22: the AI and data threads run as lines in the course's own frames. Each line data/pm/threads.yaml lists is
     on its unit's built page, and The Compass asks the data thread's three questions."""
@@ -4670,6 +4808,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("G6", "G7"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("G8"):
+        try:
+            name_link_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("G8", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S22"):
         try:
             thread_checks(out_dir)
