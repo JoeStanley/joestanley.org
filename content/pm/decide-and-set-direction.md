@@ -75,7 +75,7 @@ example:
 
     - Corporate travel policies for two accounts: nothing for families. Sales would argue for them: a real no, told in person Monday.
     - Loyalty redesign: families pay no less. The product lead tells marketing.
-    - The expense export: business travelers only. Fence: built for one account, still its main user. Stops only if it can do without; sales asks.
+    - The expense export: business travelers only. Fence: built for one account, still its main user. Stops only if that account can do without; sales asks.
 
     **Decision log:** no corporate policies. Expect both to ask again, neither to leave. 70 percent sure; one renews in May. Check June 30.
   good:
