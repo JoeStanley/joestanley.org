@@ -5,7 +5,7 @@ module: decide-and-set-direction
 question: Which decisions matter, whose are they, and what are we choosing not to do?
 setting: a travel booking app
 one_thing: Write three things your team won't do this quarter, each with a one-sentence reason.
-do_minutes: 35
+do_minutes: 30
 
 last_time:
   - q: A number on your dashboard moved last month. Before you act on it, what do you go and read?
@@ -88,7 +88,7 @@ check:
     against: weigh-the-evidence
     a: When more evidence wouldn't change the call, or when waiting costs more than being wrong. A two-way door can be decided on thin evidence and fixed later. A one-way door, such as a change to the loyalty points members have saved for years, earns the extra weeks.
   - q: A decision has stalled because five people each think they can say no. What do you change?
-    a: "Get one person named to decide, with everyone else an adviser and nobody holding a veto. If naming them isn't your call, ask the group, \"Who decides this?\""
+    a: "Get one person named to decide, with everyone else an adviser and no veto but those the law gives. If naming them isn't your call, ask the group, \"Who decides this?\""
   - q: Your team's strategy reads "Delight travelers with a fast, reliable app," and nobody objects. What's wrong with it?
     a: Nobody would argue for the opposite, so it isn't a choice. It's a goal, with no diagnosis or guiding policy behind it.
   - q: "**Beyond this module.** You've said no and logged it. What would make you change your mind?"
@@ -134,16 +134,16 @@ Saying no to something your team already does has a catch. Find out first why it
 
 Then ask whose decision it is. A few need a view of the whole, and most are better made by the people doing the work. Either way, name one person to decide, and if that isn't your call, ask who decides. Input shapes a decision, but it isn't a veto. If the call is yours, give your view last: Daniel Kahneman warns, in [a 2010 interview alongside Gary Klein](https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/strategic-decisions-when-can-you-trust-your-gut), that a leader's opinion sways a room the way the first guess at the coins in a jar sways the next. And think of the people it lands on who'll never be in the room. Werner Ulrich, from [See the System](/pm/see-the-system/)'s full path, asks: "Who is witness to the interests of those affected but not involved?"
 
-Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot turned strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster, but Boyd put the weight on orientation, the picture you act from. A team that shares yours can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale, without stopping to ask. It's the "in order to" of [Own Your Role](/pm/own-your-role/), given with each task. And when you're the one handed a task, ask what it's in order to.
+Handing a decision out works only when the person deciding sees the situation as you do. John Boyd, a fighter pilot turned strategist, described every decision as a loop, his {{< pm/term "ooda-loop" "OODA loop" >}}: observe, orient, decide, act. It's often taught as a race to loop faster, but Boyd put the weight on orientation, the picture you act from. A team that shares yours can act on your {{< pm/term "commanders-intent" "intent" >}}, the why behind the task, when the task goes stale, without stopping to ask. It's [Own Your Role](/pm/own-your-role/)'s "in order to." And when you're the one handed a task, ask what it's in order to.
 
 [//]: # (short-path)
 
 ## Do
 
-**Write a kernel and a not-doing list (25 minutes).** Write one sentence for the diagnosis, the main challenge facing your product area, and one for the guiding policy, your approach to it. Add two or three actions that carry it out together. Those three parts make Rumelt's {{< pm/term "kernel-of-a-strategy" "kernel of a strategy" >}}. Then list three things you won't do this quarter, whether someone asked for them or your team does them now, each with a sentence tying the no to your diagnosis. Beside each, write who's waiting on it, and whether they'll hear it from you. List it now, but before you stop anything your team does, check the fence, even if that takes a conversation after the 25 minutes. Test each line: would a reasonable colleague argue for the opposite? If not, it isn't a choice yet. And if the list isn't yours to set, bring it as a proposal to whoever sets it.
+**Write a kernel and a not-doing list (30 minutes).** Write one sentence for the diagnosis, the main challenge facing your product area, and one for the guiding policy, your approach to it. Add two or three actions that carry it out together. Those three parts make Rumelt's {{< pm/term "kernel-of-a-strategy" "kernel of a strategy" >}}. Then list three things you won't do this quarter, whether someone asked for them or your team does them now, each with a sentence tying the no to your diagnosis. Beside each, write who's waiting on it, and whether they'll hear it from you. List it now, but before you stop anything your team does, check the fence, even if that takes a conversation after the 30 minutes. Test each line: would a reasonable colleague argue for the opposite? If not, it isn't a choice yet. And if the list isn't yours to set, bring it as a proposal to whoever sets it.
 
 **For your decision log.** Pick one line from your not-doing list. Write what you expect to happen because you said no, how sure you are, and the date you'll check.
 
 {{< pm/example >}}
 
-**Optional: take apart a stalled decision (10 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.
+**Optional: take apart a stalled decision (15 minutes).** Pick a decision from last quarter that stalled. Who had to be consulted, and who could say no? Was there one named decider, and a {{< pm/term "decision-record" "decision record" >}}? Write two lines on what the {{< pm/term "advice-process" "advice process" >}} would have changed.

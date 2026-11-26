@@ -6,7 +6,7 @@ question: Where is the work actually stuck, and are we measuring the right thing
 setting: a fitness app
 one_thing: Play the dice game below to get the key point, then identify where your team's work waits.
 game: dice
-do_minutes: 35
+do_minutes: 30
 
 last_time:
   - q: Drivers run short every Friday night, and each week the ride-hailing app raises the surge price a little more. What change would last longer?
@@ -78,9 +78,10 @@ example:
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
-  - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Which is it?
+  - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Plans take 40 days to go live, and a retro lists five causes. Where do you act first?
     against: see-the-system
-    a: Each answers its own question. When something has gone wrong, look for the several causes that lined up. When work is slow, look for the one step that sets its pace, and once you've helped it, look at the whole flow again, since the constraint moves.
+    wins: find-the-constraint
+    a: "On the step where work waits longest: help anywhere else won't move the 40 days. Several causes explain a failure, but slow work has one constraint, and once it's helped, the constraint moves."
   - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is [Goodhart's Law](/pm/cards/goodharts-law/).
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
@@ -122,10 +123,10 @@ A number can mislead with nobody gaming it, too. An algorithm a US hospital used
 
 ## Do
 
-**Map one flow (25 minutes).** Pick a kind of change your team ships often. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from the first ask to live for everyone, and who does each one. For your last five such changes, estimate the calendar days spent waiting and being worked on at each step, on average. Ticket dates will do, and memory for a first pass. Mark the step with the longest wait as your candidate constraint. Outside the 25 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
+**Map one flow (30 minutes).** Pick a kind of change your team ships often. On a fitness app, that might be a new workout plan, a price change or a tweak to sign-up. List every step from the first ask to live for everyone, and who does each one. For your last five such changes, estimate the calendar days spent waiting and being worked on at each step, on average. Ticket dates or memory will do. Mark the step with the longest wait as your candidate constraint. Outside the 30 minutes, ask whoever tracks delivery for your team: "Where does work wait longest, and what is it waiting for?"
 
-**For your decision log.** Name your candidate constraint and what you expect delivery to do if it gets help. Say how sure you are, and when you'll find out.
+**For your decision log.** Name your candidate constraint, the help you'd give it, and what you expect delivery to do. Say how sure you are, and when you'll find out.
 
 {{< pm/example >}}
 
-**Optional: test your measures (10 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed the whole flow or only that step.
+**Optional: test your measures (15 minutes).** Make a three-column table: each number your team is judged on, the step it measures, and whether improving it would speed the whole flow or only that step.

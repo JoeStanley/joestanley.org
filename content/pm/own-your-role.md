@@ -5,14 +5,14 @@ module: own-your-role
 question: How do you grow your role beyond what you were handed, and make the product's vision your own?
 setting: a music streaming app
 one_thing: Finish "We're building this in order to ..." for your work, then ask two teammates to finish it without seeing yours.
-do_minutes: 35
+do_minutes: 30
 
 steps:
   - id: card-champion
     kind: card
     card: cards/concept-champion
     minutes: 5
-    look: What the two look-alike jobs leave undone, and where the job starts instead, a destination.
+    look: What the two look-alike jobs leave undone.
   - id: brooks
     kind: read
     title: Fred Brooks, "Aristocracy, Democracy, and System Design"
@@ -140,8 +140,8 @@ Now with all this said, a word of caution: you champion the vision, but you're n
 
 ## Do
 
-**Finish the sentence (25 minutes).** Engineers often write the test before the code. Borrow the move. Teams building AI features do the same, and call their tests evaluations. Finish "We're building this in order to ..." for the work you own. Then write your tests: three things that would be true if you got there, each with how you'd check it, and a target if you have one. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? Outside the 25 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled: take that to your team, or to whoever sets direction.
+**Finish the sentence (30 minutes).** Engineers often write the test before the code. Borrow the move. Teams building AI features do the same, and call their tests evaluations. Finish "We're building this in order to ..." for the work you own. Then write your tests: three things that would be true if you got there, each with how you'd check it, and a target where you know today's number. Make each one an outcome, a change for people, not an output, a feature you ship. That's what teams mean by "outcomes over outputs." Now read it as someone your work touches but the sentence never names: on a music streaming app, say, the musicians whose songs it plays. Would they want you to get there? If not, change a test to watch for it. Outside the 30 minutes, ask two teammates to finish the sentence without seeing yours. Where the versions differ, the vision isn't settled: take that to your team or whoever sets direction.
 
 {{< pm/example >}}
 
-**Optional: map your scope (10 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Then look back over last week. How much of it went to glue work, and what did that crowd out?
+**Optional: map your scope (15 minutes).** List what you were handed, one thing you do that nobody asked for, and one gap at your edge that nobody seems to own. Then look back over last week. How much of it went to glue work, and what did that crowd out?

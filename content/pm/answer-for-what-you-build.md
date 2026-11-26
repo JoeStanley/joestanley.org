@@ -5,7 +5,7 @@ module: answer-for-what-you-build
 question: Who benefits and who is harmed by what we build, and what's our share of the responsibility?
 setting: a video-sharing app
 one_thing: Run a consequence scan on one feature you own, and write down one change you'd propose.
-do_minutes: 40
+do_minutes: 35
 
 last_time:
   - q: Your team still sends a weekly report nobody seems to read. Before you stop it, what do you find out?
@@ -192,13 +192,13 @@ The hardest place to hold fast may be inside, in a mission you believe in. Some 
 
 ## Do
 
-**Scan one feature you own (25 minutes).** Pick a feature, such as how the feed ranks videos or who can comment, and run a {{< pm/term "consequence-scanning" "consequence scan" >}} on it. On one page, answer the method's three questions in order:
+**Scan one feature you own (30 minutes).** Pick a feature, such as how the feed ranks videos or who can comment, and run a {{< pm/term "consequence-scanning" "consequence scan" >}} on it. In short notes, answer the method's three questions in order:
 
 1. What are the intended and unintended consequences? Name everyone affected, including the easiest to overlook, like the person in the background of someone else's video. Then look where groups overlap. A harm can be invisible in each group alone and plain for the people in both: the overlap Kimberlé Crenshaw called {{< pm/term "intersectional" >}}, as you saw in [Mind the Seams](/pm/mind-the-seams/).
 2. Which positive consequences do you want to focus on?
 3. Which do you want to mitigate? Beside each one, write who'd own the fix.
 
-End with one change you'd propose. Outside the 25 minutes, show it to someone in support or in trust and safety, and ask what you missed.
+End with one change you'd propose. Outside the 30 minutes, show it to someone in support or in trust and safety, and ask what you missed.
 
 **Write your lines (5 minutes).** Before anyone asks, write down two things you won't do for any mission, however much you believe in it, such as launching past a failing child-safety test, or keeping data you told users you'd delete. Beside them, write who outside your team you'd go to if you were asked to cross one. If you don't know who that is, ask your manager this week. They're yours: no example shows them.
 
@@ -206,4 +206,4 @@ End with one change you'd propose. Outside the 25 minutes, show it to someone in
 
 {{< pm/example >}}
 
-**Optional: list what the feature keeps (10 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?
+**Optional: list what the feature keeps (15 minutes).** List each data field it collects, next to the decision that uses it, and mark any field with no decision. Ask who the fields can't record as they are, such as someone whose name won't split into first and last, or a child with two mothers. Then pick one field. If a customer used their {{< pm/term "right-to-erasure" "right to erasure" >}}, could you find every copy, in the backups and at the companies you share it with?

@@ -3590,13 +3590,15 @@ def s14_checks(name, text):
                 s_ = re.match(r"\s+(?:Concept card\. )?(\d+) minutes\.", l)
                 if s_:
                     times.append(("a step", int(s_.group(1))))
-        for e_ in re.finditer(r"^\*\*[^*\n]*?\((\d+) minutes\)\.\*\*", text, re.M):
-            times.append(("an exercise", int(e_.group(1))))
-        for what, m in times:
+        optional = []
+        for e_ in re.finditer(r"^\*\*([^*\n]*?)\((\d+) minutes\)\.\*\*", text, re.M):
+            # an optional exercise shows its time and stays outside the module's total (S14, 26 November 2026)
+            (optional if e_.group(1).startswith("Optional") else times).append(("an exercise", int(e_.group(2))))
+        for what, m in times + optional:
             if not s14_on_mark(m):
                 fail("S14", f"{where}: {what} takes {m} minutes, and rounds to {s14_round(m)}")
         if total is not None and times and s14_round(sum(m for _, m in times)) != total:
-            fail("S14", f"{where}: the header says {total} minutes, and the steps and exercises add up to {sum(m for _, m in times)}, which rounds to {s14_round(sum(m for _, m in times))}")
+            fail("S14", f"{where}: the header says {total} minutes, and the steps and required exercises add up to {sum(m for _, m in times)}, which rounds to {s14_round(sum(m for _, m in times))}")
     # the time a source asks, on a full path or a card: not a story's running time
     for sec in _sections(text, {"Go deeper: the full path", "Go deeper"}):
         for entry in re.split(r"\n(?=- \*\*|\*\*)", sec):
@@ -3741,7 +3743,7 @@ def practice_checks(out_dir):
         if len(labels) != 1 or not re.match(re.escape(f"**{want}") + r"( \(\d+ minutes\))?\.\*\*", labels[0]):
             fail("J3", f"{where}: its Do should hold one line for the decision log, opening \"{want}.\" in bold")
         elif timed_log != (m["id"] in LOG_TIMED):
-            fail("J3", f"{where}: " + (f"its log review should show its minutes, \"{want} (10 minutes).\", since reading back a module's worth of calls takes real time" if m["id"] in LOG_TIMED else "its decision log line is a sentence or two and shows no time; only Notice When You Are Wrong's review does"))
+            fail("J3", f"{where}: " + (f"its log review should show its minutes, as \"{want} (15 minutes).\" does, since reading back a module's worth of calls takes real time" if m["id"] in LOG_TIMED else "its decision log line is a sentence or two and shows no time; only Notice When You Are Wrong's review does"))
         elif m["id"] in LOG_TIMED and not re.search(r"Outside the \d+ minutes, show it to your manager or a mentor", labels[0]):
             fail("J3", f"{where}: its log review should end, outside its minutes, by showing the log to a manager or a mentor")
         else:

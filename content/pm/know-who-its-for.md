@@ -78,7 +78,7 @@ example:
 
 check:
   - q: A user says they'd pay $10 a month for a feature. What do you ask next, and why?
-    a: "What they pay now, in money or time, for the workaround. As Teresa Torres puts it, \"What did you pay for that service?\" tells you more than any price for a service that doesn't exist yet."
+    a: What they pay now, in money or time, for the workaround. That tells you more than any price for a service that doesn't exist yet.
   - q: A change drops the substitution questions from checkout, so it's faster, and has shoppers photograph each swap in the aisle for the customer to confirm. Who pays for the speed, and how would you find out?
     a: The shoppers, in time, and unpaid unless the pay model counts it. You'd find out from the shoppers themselves, not from the customers, who only see the faster checkout.
   - q: Own Your Role asked you to make the vision your own. Yours says customers want one thing, and three interviews in a row describe doing another. When does the vision win, and when do the interviews?
@@ -143,7 +143,7 @@ Value alone doesn't order the work, because waiting costs money too. What a fix 
 
 ## Do
 
-**Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three tickets, sales notes or recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Where they don't say, guess, and mark it as a guess. Then put a rough price on a week of waiting: how often it comes up in a week, counting those who never write in, times what it typically costs, with time at an hourly rate you name. On a platform team, trace one request to the experience it shows up in, and name the person at the end by their role. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in their own support queue or forum.
+**Find the last time (30 minutes).** Pick one problem on your team's list. Read the last three tickets, sales notes or recordings where it shows up. For each, write when it happened, what the person did about it, and what it cost them in time or money. Where they don't say, guess, and mark it as a guess. Then put a rough price on a week of waiting: how often it comes up in a week, times what it typically costs, with time at an hourly rate you name. Tickets give you a floor, since most people never write in. On a platform team, trace one request to the experience it shows up in, and name the person at the end by their role. Where your product depends on people you don't employ, such as a grocery app's shoppers, read their side too, in their own support queue or forum.
 
 Outside the 30 minutes, talk to two people who had the problem recently. Start with "Tell me about the last time ..." and keep them on that one time.
 

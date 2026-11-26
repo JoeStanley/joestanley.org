@@ -5,7 +5,7 @@ module: map-the-domain
 question: What must your data answer, and what have you promised the teams that build on it?
 setting: a weather data API that farm apps, airlines and delivery firms build on
 one_thing: Write the five questions your data must answer, and what each team that uses it is counting on.
-do_minutes: 45
+do_minutes: 55
 
 last_time:
   - q: Why can't "approved" mean one thing to every team on a marketplace?
@@ -33,14 +33,14 @@ steps:
   - id: dehghani
     kind: read
     title: 'Zhamak Dehghani, "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh"'
-    minutes: 15
-    where: An article from 2019. Read its parts "Domain data as a product" and "Domain data cross-functional teams." Free at martinfowler.com.
+    minutes: 10
+    where: An article from 2019. Read its part "Domain data as a product." Free at martinfowler.com.
     links:
       - text: "How to Move Beyond a Monolithic Data Lake to a Distributed Data Mesh"
         url: https://martinfowler.com/articles/data-monolith-to-mesh.html
     look: "Her case that the teams who read your data are its customers, and her line \"No one will use a product that they can't trust.\""
     trust: "An argument. Dehghani wrote it as a consultant at Thoughtworks, from the data platforms she'd seen clients build, and data mesh as a whole is still debated."
-    only: Data as a product at its source, in the two parts a PM needs most.
+    only: Data as a product at its source, in the part a PM needs most.
   - id: card-promise
     kind: card
     card: cards/api-is-a-promise
@@ -147,11 +147,11 @@ Data other teams read can be run as a product. Zhamak Dehghani's case is that th
 
 ## Do
 
-**Write the access patterns (20 minutes).** Pick the API or dataset you work nearest, or one feature's data, such as the counts behind a rate limit. List five questions its data must answer, each with who asks, how often, how fast (how long they'll wait), how fresh (how old the answer may be), and whether it's operational or analytical. Then add what each caller counts on: what breaks for them if the answer is late or wrong, written down or not. Mark the row the design answers worst. Outside the 20 minutes, ask your tech lead: "Which of these does our design answer well, and which would be expensive?"
+**Write the access patterns (25 minutes).** Pick the API or dataset you work nearest, or one feature's data, such as the counts behind a rate limit. List three to five questions its data must answer, each with who asks, how often, how fast (how long they'll wait), how fresh (how old the answer may be), and whether it's operational or analytical. Then add what each caller counts on: what breaks for them if the answer is late or wrong, written down or not. Mark the row the design answers worst. Outside the 25 minutes, ask your tech lead: "Which of these does our design answer well, and which would be expensive?"
 
-**Trace one piece of data (10 minutes).** Pick one thing your data holds, such as a station's hourly rain. Find its system of record, where it's first written and where corrections land. List every copy you know of, in reports, caches or other teams' systems, and who depends on each. For the copy most likely to go wrong, ask who would notice first, and who would fix it.
+**Trace one piece of data (15 minutes).** Pick one thing your data holds, such as a station's hourly rain. Find its system of record, where it's first written and where corrections land. List every copy you know of, in reports, caches or other teams' systems, and who depends on each. For the copy most likely to go wrong, ask who would notice first, and who would fix it.
 
-**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where its engineers wrote down what they chose and why. Read it for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take it to its author. If there's no doc, ask your tech lead why.
+**Read one design doc (15 minutes).** Find the design doc or decision record behind that data, where its engineers wrote down what they chose and why. Read its summary and decisions for what it promises callers and what it trades away, and write down one question it leaves open. Outside the 15 minutes, take it to its author. If there's no doc, ask your tech lead why.
 
 **For your decision log.** Pick a question a caller wants fresher than it gets today, or the one you marked worst. Write what you'd trade to make it fresher, what you expect it to change for them, how sure you are, and when you'll know.
 

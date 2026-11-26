@@ -98,10 +98,9 @@ example:
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
-  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Your team wants to move the seat record to a new format in small daily steps, behind a toggle. Which wins?
+  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of which fan has which seat?
     against: design-for-change
-    wins: design-for-change
-    a: Design for Change. A toggle can't undo a seat sold twice, and every sale depends on that record. Move it slowly, old and new side by side until they agree, and keep small, frequent steps for the code around it.
+    a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and its contracts slowly, since every sale depends on them, and a toggle can't undo a seat sold twice.
   - q: On your ticketing app, a new seat map raises orders per visit in a test. Why might you still stop the test?
     a: A guardrail metric got worse, such as refunds, complaints about seats or page load time, overall or for one group of customers.
   - q: "**Beyond this module.** Most of this module guards against honest mistakes. What about someone breaking your product on purpose?"
@@ -150,21 +149,21 @@ That's harder to say when the output varies, as a model's does. So decide what t
 
 ## Do
 
-**Plan one rollout (20 minutes).** Pick a change coming up on your product, such as fans reselling tickets to each other. Write a one-page plan that answers five things.
+**Plan one rollout (30 minutes).** Pick a change coming up on your product, such as fans reselling tickets to each other. Write a one-page plan that answers five things.
 
 1. The cohort: who gets it first, and how many.
 2. The goal measure you hope it moves.
 3. The {{< pm/term "guardrail-metric" "guardrail metrics" >}}, which must not get worse, such as failed payments per thousand checkouts, and the level at which you'd stop, or a hard line, where one case stops it. Break each down for the customers the change could hurt most, such as people on older phones or using a screen reader: a guardrail can hold on average while it fails them.
 4. Who can switch it off with a {{< pm/term "feature-toggle" "feature toggle" >}}, and how fast.
-5. The error budget it might spend. No target yet? Ask who sets one.
+5. The error budget it might spend. No target yet? Note it, and ask later who sets one.
 
-Outside the 20 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
+Outside the 30 minutes, ask whoever's on call, "What do you fix by hand that this could break?"
 
-**For your decision log.** Write whether you expect the rollout to reach all your users, never switched off, and how sure you are. You'll know when the last group has it.
+**For your decision log.** Write whether you expect the rollout to reach all your users, never switched off, how sure you are, and why. You'll know when the last group has it.
 
 {{< pm/example >}}
 
-**Optional: write one quality as a test (10 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
+**Optional: write one quality as a test (15 minutes).** Pick a quality your users would notice if it slipped, such as how long a fan waits in the queue before choosing seats, and write it as engineers would: what triggers it, under which conditions, what responds, and how you'd measure the response. The Software Engineering Institute calls this a quality attribute scenario, and its [report on quality attribute workshops](https://www.sei.cmu.edu/library/quality-attribute-workshops-qaws-third-edition/) gives the full form, with a garage door that has to stop for a bicycle.
 
 ## Questions to bring to engineers
 

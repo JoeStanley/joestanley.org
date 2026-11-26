@@ -8,8 +8,8 @@ one_thing: In your next plan, write down one way it could be wrong and the early
 do_minutes: 40
 
 last_time:
-  - q: Autoplay lifts hours watched on a video app. Before you call it a win, who do you look for?
-    a: Whoever pays for it, such as the viewer up later than they meant to be. A product can earn by helping people or by making it hard for them to leave, and autoplay may be doing the second.
+  - q: A new alert cuts the plant's repair bills, and technicians now carry pagers overnight. Before you call it a win, who do you look for?
+    a: Whoever pays for it, such as the technicians woken at night. A product can cut a cost by designing it away or by passing it to people with less say, and the pagers may be doing the second.
   - q: Everyone on a launch could say "the business asked for it." What's your share?
     a: You're one of the many hands. If what you did was a cause, and you could have done otherwise, part of it is yours. Name who owns each harm you can foresee before it lands.
 
@@ -73,8 +73,8 @@ example:
 check:
   - q: The dashboard shows alerts at one plant taking twice as long to clear as anywhere else, and the planning doc now says, "That plant's technicians don't take the alerts seriously." Which rung is that sentence on, and what takes it back down?
     a: "The third rung, a belief. Go back down to the data: which alerts, on which shifts, and what else is different there. It may come down to two technicians covering a whole shift, through a week of false alarms."
-  - q: Technicians' time to clear alerts is flat. One lead coaches them to clear alerts faster. Another asks whether clearing fast is what keeps the machines running. Which lead could find that the goal is wrong?
-    a: The second. The first changes the method to hit the same goal. Only the second asks whether the goal is right.
+  - q: Technicians' time to clear alerts is flat, so a lead coaches them to clear alerts faster. A month later clearing is quicker, and breakdowns haven't fallen. What did the coaching never ask?
+    a: Whether clearing fast is what keeps the machines running. Coaching changed the method to hit the same goal. Asking whether the goal is right is the double loop.
   - q: Decide and Set Direction asks you to decide on purpose and keep to a not-doing list. Here you keep looking for how you're wrong. When do you hold a call, and when do you reopen it?
     against: decide-and-set-direction
     a: Hold it until a signal you named before the bet shows up, then reopen it. A bad day that isn't that signal is no reason to.
@@ -106,7 +106,7 @@ deeper:
 
 ## Why this matters
 
-Every plan rests on assumptions, and some of yours are probably wrong today: that technicians will trust a new alert, say, or that a sensor's readings mean what you think. You don't know which yet, and you won't find out by feel. As the writer [Kathryn Schulz puts it](https://www.ted.com/talks/kathryn_schulz_on_being_wrong), being wrong "feels like being right." So stop asking how to show you're right, and ask how you'd find out you're wrong.
+Every plan rests on assumptions, and some of yours are probably wrong today: that technicians will trust a new alert, say, or that a sensor's readings mean what you think. As the writer [Kathryn Schulz puts it](https://www.ted.com/talks/kathryn_schulz_on_being_wrong), being wrong "feels like being right." So stop asking how to show you're right, and ask how you'd find out you're wrong.
 
 The cheapest way is to decide what wrong looks like before you start. [Change Safely](/pm/change-safely/) had you name a guardrail and the level at which you'd stop, before a rollout. Do the same for every bet. Before the new alert ships, write down the result you expect and by when, say technicians acting on most alerts within a month, and the result that would make you stop or change course. That's a {{< pm/term "stop-rule" >}}. Once the bet is live you'll want to be right, so a line drawn afterward tends to move. A stop rule also catches the bet that never quite fails and never quite works, and drifts on for a year.
 
@@ -120,10 +120,10 @@ Question the goal as well as the method. The thermostat on [See the System](/pm/
 
 ## Do
 
-**Run a {{< pm/term "premortem" >}} on your own work (20 minutes).** It's Gary Klein's technique. Imagine your main initiative has failed, badly: say, a new alert that warns technicians before a machine breaks down. Write down every plausible reason it failed, especially those you'd usually keep to yourself. Asking what did go wrong, not what might, turns doubting the plan into helping with it. If you run it with your team, have everyone write alone first. Rate each low, medium or high for likelihood and for damage, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, the most damaging of the likely ones, write a stop rule: the signal you'll watch, the date you'll look, and the result that would make you stop or change course. Outside the 20 minutes, agree it with whoever can stop the work, and ask the people who'd see it break first, such as a field technician, and the support lead who'd hear from the customers it failed: "If this failed, what would you bet the reason was?"
+**Run a {{< pm/term "premortem" >}} on your own work (25 minutes).** It's Gary Klein's technique. Imagine your main initiative has failed, badly: say, a new alert that warns technicians before a machine breaks down. Write down every plausible reason it failed, especially those you'd usually keep to yourself. Asking what did go wrong, not what might, turns doubting the plan into helping with it. If you run it with your team, have everyone write alone first. Rate each low, medium or high for likelihood and for damage, as Simon Brown's [risk-storming](https://riskstorming.com/) does. For the top one, the most damaging of the likely ones, write a stop rule: the signal you'll watch, the date you'll look, and the result that would make you stop or change course. Outside the 25 minutes, agree it with whoever can stop the work, and ask the people who'd see it break first, such as a field technician or the support lead: "If this failed, what would you bet the reason was?"
 
-**Review your decision log (10 minutes).** Read back the calls you've logged since [Know Who It's For](/pm/know-who-its-for/), and mark each one right, wrong or not known yet. Where a date has passed, did you look when you said you would? Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with its stop rule. Outside the 10 minutes, show it to your manager or a mentor: which call would they have made differently?
+**Review your decision log (15 minutes).** Read back the calls you've logged since [Know Who It's For](/pm/know-who-its-for/), and mark each one right, wrong or not known yet. Where a date has passed, did you look when you said you would? Where you were sure and wrong, what did you miss, and what signal would have told you sooner? Then log this premortem's top risk, with its stop rule; if you haven't kept a log, start one with it. Outside the 15 minutes, show it to your manager or a mentor: which call would they have made differently?
 
 {{< pm/example >}}
 
-**Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (10 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the ladder, and rewrite it as a sentence you could have said, starting from what you saw.
+**Optional: write a {{< pm/term "left-hand-column" "left-hand column" >}} (15 minutes).** The exercise is Chris Argyris and Donald Schön's. Take a meeting where you held back a concern. Down the right of a page, write what was said, and down the left, what you thought but didn't say. Take one left-hand thought down the ladder, and rewrite it as a sentence you could have said, starting from what you saw.

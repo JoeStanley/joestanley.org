@@ -5,7 +5,7 @@ module: weigh-the-evidence
 question: What do the numbers and the stories each tell you, and how much should either decide?
 setting: a grocery delivery app
 one_thing: Take one decision in front of you, list the evidence you're leaning on, and write next to each piece who's missing from it.
-do_minutes: 35
+do_minutes: 30
 game: ranking
 
 last_time:
@@ -86,7 +86,7 @@ check:
   - q: Know Who It's For says interviews beat your vision on what the problem is. Three customers say late orders made them quit, and you're asked to speed up delivery in every city. Do the interviews settle it?
     against: know-who-its-for
     wins: weigh-the-evidence
-    a: Not this one. They show the problem is real for those three. A change for every city needs to know how many share it, so count who left after a late order first.
+    a: "Not this one. They show the problem is real for three people. A change for every city needs how many share it: compare how often customers leave after a late order with how often others do."
   - q: A competitor's case study says a feature lifted retention by 20 percent. What do you ask before you copy it?
     a: "Cartwright's question: how would it lead to that result here, step by step, and what would support or derail each step for your customers?"
   - q: "**Beyond this module.** You've weighed the evidence you have. What decides how much more to gather?"
@@ -131,7 +131,7 @@ deeper:
 
 ## Why this matters
 
-You'll meet both mistakes in the same week. On Monday, one vivid story from a customer turns your grocery app's roadmap. On Thursday, a dashboard settles an argument because it has decimals in it, though nobody can say who's in the data. Both feel responsible at the time. Adam Mosseri, then a designer at Facebook, put the aim in the title of [a 2010 talk](https://www.youtube.com/watch?v=bKZiXAFeBeY): be {{< pm/term "data-informed" >}}, not data-driven. Use the numbers and the stories for what each can tell you, and keep the decision yours.
+You'll meet both mistakes in the same week. On Monday, one vivid story from a customer turns your grocery app's roadmap. On Thursday, a dashboard settles an argument because it has decimals in it, though nobody can say who's in the data. Both feel responsible at the time. Adam Mosseri, then at Facebook, put the aim in the title of [a 2010 talk](https://www.youtube.com/watch?v=bKZiXAFeBeY): be {{< pm/term "data-informed" >}}, not data-driven. Use the numbers and the stories for what each can tell you, and keep the decision yours.
 
 Numbers tell you how much and how often, across many people, but only about what someone chose to measure. Forget that, and what's hard to measure gets left out, then called unimportant, then treated as if it isn't there: the {{< pm/term "mcnamara-fallacy" "McNamara fallacy" >}}, as Daniel Yankelovich named it in 1971. Set it beside [Goodhart's Law](/pm/cards/goodharts-law/) from [Find the Constraint](/pm/find-the-constraint/): there a number is gamed once it's a target, and here it's trusted because it can be counted. Stories tell you why, and what nobody thought to measure, but only about the people who told them, which is why [Know Who It's For](/pm/know-who-its-for/) asked whose problem you hear. An AI summary of your interviews chooses what to keep, too, so check it against your notes before you lean on it. When the numbers and the stories disagree, look into why before you pick a side.
 
@@ -143,10 +143,10 @@ Your own hunch is evidence too. Gary Klein, a psychologist who studies how exper
 
 ## Do
 
-**Weigh the evidence for one decision (25 minutes).** Pick a decision in front of you, such as whether a grocery app should change how it batches orders. List the evidence you're leaning on, one line a piece, and mark each a story, a number or a hunch. Next to each, answer three questions in a few words. Who's missing from it? How was it collected? And what would have to hold here for it to carry over? Then write one sentence on what would change your mind.
+**Weigh the evidence for one decision (30 minutes).** Pick a decision in front of you, such as whether a grocery app should change how it batches orders. List three to five pieces of evidence you lean on, one line each, and mark each a story, a number or a hunch. Next to each, answer three questions. Who's missing from it? How was it collected? And what would have to hold here for it to carry over? Then write one sentence on what would change your mind.
 
-**For your decision log.** Write the call you'd make on that decision now (a small test counts), what you expect to happen, how sure you are, and when you'll know.
+**For your decision log.** Write the call you'd make on that decision now (a small test with a comparison counts), what you expect to happen, how sure you are, and when you'll know.
 
 {{< pm/example >}}
 
-**Optional: find the stories behind one number (10 minutes).** Pick a number on your dashboard that moved last month, such as the share of orders missing an item. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.
+**Optional: find the stories behind one number (15 minutes).** Pick a number on your dashboard that moved last month, such as the share of orders missing an item. Find three cases behind the move and read them. Does what happened to those people match what the number says? If not, write down what it isn't measuring.

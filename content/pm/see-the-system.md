@@ -5,7 +5,7 @@ module: see-the-system
 question: What's the system, and why does it behave this way?
 setting: a ride-hailing app
 one_thing: Read the card, then draw one thing that piles up in your own work as a bathtub.
-do_minutes: 30
+do_minutes: 35
 
 last_time:
   - q: A customer says they'd use a new feature "all the time." What do you ask instead?
@@ -130,7 +130,7 @@ Where you draw the system's edge matters too, because it decides whose costs you
 
 ## Do
 
-**Draw one stock (20 minutes).** Pick one thing that piles up in your team's work. On a ride-hailing app it might be lost-item reports or disputed fares. Draw it as a bathtub, or note the level and what flows in and out. Three months of counts will do, or estimates if that's all you have. Note who sees the level, and how late they see it. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve. Was it aimed at a number, or at something higher up?
+**Draw one stock (25 minutes).** Pick one thing that piles up in your team's work. On a ride-hailing app it might be lost-item reports or disputed fares. Draw it as a bathtub, or note the level and what flows in and out. Weekly counts in and out over three months will do, or estimates. Note who sees the level, and how late. Then take the last attempt to shrink the pile and find it on Meadows's list of twelve, at the top of her essay. Was it aimed at a number, or at something higher up?
 
 **Reread one failure (10 minutes).** Take a missed date or a failed release on your team that got pinned on one cause. List three other things that had to be true for it to happen.
 
