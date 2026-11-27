@@ -277,6 +277,10 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
 .door-links a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; color: var(--ink); text-decoration: none; }
 .door-links a:hover { color: var(--orange); }
 .door-links svg { width: 1.45rem; height: 1.45rem; }
+/* Bluesky and LinkedIn turn into their own marks on hover and focus, at once (spec N5, D5); Email turns orange (C1). */
+.door-links .icon-mark { display: none; }
+.door-links a:hover .icon-line, .door-links a:focus-visible .icon-line { display: none; }
+.door-links a:hover .icon-mark, .door-links a:focus-visible .icon-mark { display: block; }
 /* Narrow screens: the photo sits above the name, so its ring lines up with the text's left edge rather than hanging past it. */
 @media (max-width: 63.99rem) { .door-photo { margin-left: calc(0.3rem + 0.35rem); } }
 

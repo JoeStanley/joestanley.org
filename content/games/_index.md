@@ -2,8 +2,8 @@
 title: Games
 ---
 
-I'm making tabletop roleplaying games through my studio, Mesmir. Its first setting is The Night Season, a horror of ordinary American life with something wrong under it. The strange takes root where people pass through or have stopped looking: the strip mall, the exurb, the highway between towns at night. Those who know fight a shadow war of small circles and shifting alliances. The world is weird, haunting and beautiful, and every ending in it costs something.
+I'm making tabletop roleplaying games through my studio, Mesmir. Its first setting is *The Night Season*, a modern-day horror RPG delving into the occult and strange hiding just under the surface of the mundane. It most frequently takes root where people pass through or have stopped looking: the dying strip mall, the city's underground systems, the highway between towns at night. Those who frequent this world must navigate a shadow war of shifting alliances between forces great and small, each with their own designs into which the players may fit.
 
-You play people who went looking for it, or were found by it. Together you work a truth out from rumor, through wrong turns and bad jokes, to evidence that fits together. The game master keeps a count of dread you hear rise but never see. Force can drive a thing off, but it ends for good only once you learn what undoes it.
+If you're thinking of a low fantasy Shadowrun, a less-Cthulhu call thereof, or Stephen King meets Game of Thrones, you're on the right track.
 
-I'm aiming to release it in March 2027.
+I'm planning a March 2027 release of the first adventure, *The Ghost House*.

@@ -220,16 +220,16 @@ run_bg "the long module no longer says it runs longer" S11 "sed -i '/^This modul
 run_bg "a seventh thing on the long module's full path" S11 "python3 -c \"p='content/pm/answer-for-what-you-build.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: An argument. Someone.\n    only: More of the same.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e, 1))\""
 run_bg "the long module running past even its longer allowance" P1 "for i in \$(seq 60); do printf 'A filler paragraph that says nothing and only takes up room on the printed page.\n\n' >> content/pm/answer-for-what-you-build.md; done"
 # Job 22, Joe's line on Start (23 November 2026): an invitation to write, with his address shown as text (S19)
-run_bg "Start's invitation to write gone" S19 "sed -i '/^If you disagree with any of this, let me know/d' content/pm/_index.md"
-run_bg "Start's address hidden under other words" S19 "sed -i 's|let me know at {{< pm/email >}}|[let me know](mailto:mail@joestanley.org)|' content/pm/_index.md"
-run_bg "Start's invitation folded into How it works' list" S19 "sed -i 's/^If you disagree with any of this, let me know/- If you disagree with any of this, let me know/' content/pm/_index.md"
+run_bg "Start's invitation to write gone" S19 "sed -i '/^This is largely a synthesis of the work of others/d' content/pm/_index.md"
+run_bg "Start's address hidden under other words" S19 "sed -i 's|Tell me why at {{< pm/email >}}|[Tell me why](mailto:mail@joestanley.org)|' content/pm/_index.md"
+run_bg "Start's invitation folded into How it works' list" S19 "sed -i 's/^This is largely a synthesis/- This is largely a synthesis/' content/pm/_index.md"
 # Job 29, the two ends (23 November 2026): the arc on Start (S20) and The Compass, the closing unit (S21)
 run_bg "a module left out of the arc" S20 "sed -i 's/modules: \\[own-your-role, know-who-its-for\\]/modules: [own-your-role]/' data/pm/arc.yaml"
 run_bg "the arc's part names gone from Start" S20 "sed -i '/^<p class=\"arc-part\"><strong id=\"arc-{{ \$where }}-{{ \$i }}\">/d' layouts/partials/pm/arc-list.html"
 run_bg "The Compass gone from Start's list" S20 "sed -i 's/{{- if \\\$start }}{{ with site.Data.pm.arc.closing }}/{{- if false }}{{ with site.Data.pm.arc.closing }}/' layouts/partials/pm/arc-list.html"
 run_bg "The Compass's framing not in a voice slot" S21 "sed -i '/pm\\/voice \"compass-framing\"/d' content/pm/the-compass.md"
 run_bg "The Compass's walk-through with no collision" S21 "sed -i '/^Here two questions collide/d' content/pm/the-compass.md"
-run_bg "Start's How it works without the closing page" S21 "sed -i 's/, then a close\\./\\./; s| The closing page, \\[The Compass\\](/pm/the-compass/), has you look back over it\\.||' content/pm/_index.md"
+run_bg "Start's How it works without the closing page" S21 "sed -i 's/, then a closing page\\./\\./; s| The closing page, \\[The Compass\\](/pm/the-compass/), has you look back over it, and names \\[what the course leaves out\\](/pm/the-compass/#what-the-course-leaves-out)\\.||' content/pm/_index.md"
 run_bg "The Compass's Do not reviewing the log" J3 "sed -i 's/^\\*\\*Review your decision log (20 minutes)\\.\\*\\*/**Look back (20 minutes).**/' content/pm/the-compass.md"
 run_bg "The Compass a page too long" P1 "python3 -c \"p='content/pm/the-compass.md'; s=open(p).read(); a=s.index('Real calls'); b=s.index('## Do'); open(p, 'w').write(s[:b] + s[a:b] + s[b:])\""
 run_bg "The Compass bookmarked without its kind" P6 "sed -i 's/u\\[\"label\"\\] = f\"In closing: {u\\[.title.\\]}\"/u[\"label\"] = u[\"title\"]/' tools-pm/make-pdf.py"
@@ -416,9 +416,11 @@ run_bg "the single document's Do step lands on the first module's Do" G8 "sed -i
 run_bg "The Compass without what the course leaves out" S21 "sed -i '/^### What the course leaves out/d' content/pm/the-compass.md"
 run_bg "a left-out area with no free place linked" S21 "sed -i 's|\[the W3C.s introduction to web accessibility\](https://www.w3.org/WAI/fundamentals/accessibility-intro/)|the W3C introduction|' content/pm/the-compass.md"
 run_bg "The Compass leaving regulation unnamed" S21 "sed -i 's|^- \*\*Regulation:\*\* for privacy|- **Rules:** for privacy|; s|UK law, though|UK rules, though|; s|the UK regulator.s guide|the UK watchdog guide|; s|ask your own lawyers early|ask early|' content/pm/the-compass.md"
-run_bg "Start's line for The Compass not saying where to go from here" S21 "sed -i 's/, and where to go from here in your learning journey\\./\\./' data/pm/arc.yaml"
-# (The mutation that left Start's pointer to a part of The Compass on the site's page went on 27 November 2026, with
-# the pointer: the owner cut that clause from Start, and no unit links a part of The Compass now.)
+run_bg "Start's line for The Compass not saying where to go from here" S21 "sed -i 's/, and where to go from here\\./\\./' data/pm/arc.yaml"
+# Start's pointer to what the course leaves out, cut in the owner's pass and back the same day, after all four blind
+# readers asked for it (27 November 2026)
+run_bg "Start not pointing to what the course leaves out" S21 "sed -i 's|(/pm/the-compass/#what-the-course-leaves-out)|(/pm/the-compass/)|' content/pm/_index.md"
+run_bg "the single document leaving Start's pointer on The Compass's page" G8 "sed -i '/(printf \"href=\\\\\"%s#\" .RelPermalink)/d' layouts/pm/all.html"
 run_bg "the model card off the AI thread" S22 "sed -i 's|So before you trust one, read its mistakes|So read its mistakes before you rely on it|' content/pm/cards/read-the-errors.md"
 run_bg "The Compass two pages over its three" P1 "python3 -c \"p='content/pm/the-compass.md'; open(p, 'a').write(('\\n\\n' + 'A sentence that runs the page long. ' * 40) * 12)\""
 run_bg "a full path without If you read one" S23 "sed -i '/^deeper_one:/,/^  why:/d' content/pm/mind-the-seams.md"
@@ -488,4 +490,8 @@ run_bg "Last time's line naming the module before without its code" G8 "sed -i '
 run_bg "a walk's module names lost when its words are rendered" G8 "sed -i '/MODNAMEHELD%dX\" \$i) \$h 1 }}{{ end }}/d' layouts/shortcodes/pm/walk.html"
 run_bg "a voice slot's interim words naming a module without its code" G8 "sed -i 's|in M10: Answer for What You Build\\.|in Answer for What You Build.|' data/pm/voice-slots.yaml"
 run_bg "a module's code that isn't its own" G8 "sed -i 's|<span aria-hidden=\"true\">M%v</span>|<span aria-hidden=\"true\">M1%v</span>|' layouts/shortcodes/pm/mod.html"
+# The front door's icons turn into the companies' own marks on hover and focus (N5, the owner, 27 November 2026)
+run_bg "LinkedIn's mark in a lookalike blue" N5 "sed -i 's/#0a66c2/#0077b5/' layouts/partials/icon.html"
+run_bg "the companies' marks never shown on hover" N5 "sed -i '/^.door-links a:hover .icon-mark/d' assets/css/base.css"
+run_bg "Bluesky's mark read aloud" N5 "sed -i 's/<svg class=\"icon-mark\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 320 286\">/<svg class=\"icon-mark\" focusable=\"false\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 320 286\">/' layouts/partials/icon.html"
 wait
