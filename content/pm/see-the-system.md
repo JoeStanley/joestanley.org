@@ -82,13 +82,13 @@ example:
 check:
   - q: Your app clears more drivers' background checks each month than it did last year, yet the queue waiting for one keeps growing. What does that tell you?
     a: More is still coming in than going out. A stock rises whenever its inflow is larger than its outflow.
-  - q: Own Your Role asked you to act where nobody assigned you. This module says the structure, not the people, drives what a system does. When does one person's push win, and when does the structure?
+  - q: "{{< pm/mod own-your-role words >}} asked you to act where nobody assigned you. This module says the structure, not the people, drives what a system does. When does one person's push win, and when does the structure?"
     against: own-your-role
     a: "Against the structure, a push wins for a while, then the system drifts back. So aim it at the structure itself: a goal, a rule, or who sees the feedback, all of which Meadows ranks above any number. That's where one person's push lasts."
   - q: A review of a failed release of the rider app names one person's skipped step as the root cause. Give two reasons from Cook to doubt it.
     a: A failure needs several faults to line up, so naming one explains little. And hindsight makes the danger look more obvious than it was at the time.
   - q: "**Beyond this module.** Your bathtub shows what piles up, and why. What can't a drawing tell you?"
-    a: Where to act first. A drawing shows the structure, not which step holds the rest back, and finding that takes timing how long work waits at each one. [Find the Constraint](/pm/find-the-constraint/) has you do it.
+    a: Where to act first. A drawing shows the structure, not which step holds the rest back, and finding that takes timing how long work waits at each one. {{< pm/mod find-the-constraint >}} has you do it.
 
 deeper_one:
   title: "Thinking in Systems"
@@ -124,7 +124,7 @@ deeper:
 
 When something keeps going wrong, the first move is usually to find who did it. It's the wrong first move, and seeing why is where product judgment starts. Look at the structure instead: what builds up, what fills and drains it, and what holds it in place. You've got two guides here. Donella Meadows, a systems scientist, ranks the places you can change a system, which she calls {{< pm/term "leverage-point" "leverage points" >}}. Richard Cook, a physician who studied accidents, argues a failure in a complex system never has just one cause.
 
-Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around a ride-hailing app's support queue, and the riders who gave up before they ever filed a ticket fall outside it: the ones [Know Who It's For](/pm/know-who-its-for/) said you most need to hear. In her essay "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
+Where you draw the system's edge matters too, because it decides whose costs you'll see. Draw it around a ride-hailing app's support queue, and the riders who gave up before they ever filed a ticket fall outside it: the ones {{< pm/mod know-who-its-for >}} said you most need to hear. In her essay "Dancing With Systems," Meadows lists "Expand the boundary of caring" among her lessons: your company can't succeed, she writes, "if your workers fail."
 
 [//]: # (short-path)
 

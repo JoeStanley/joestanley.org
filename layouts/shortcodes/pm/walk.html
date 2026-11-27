@@ -5,5 +5,16 @@
 {{- if not $w }}{{ errorf "pm/walk: no walk %q in %s's walks" $id .Page.File.Path }}{{ end -}}
 <div class="walk" data-walk="{{ $id }}">
 <h3 class="walk-title">{{ $w.label }}</h3>
-{{ .Inner | .Page.RenderString (dict "display" "block") }}
+{{- /* A module named inside a walk arrives here already written out by its own shortcode (pm/mod, spec G8), and the
+       Markdown renderer drops HTML it didn't make. So each name is held aside under a token while the walk's words
+       are rendered, and put back after. */ -}}
+{{- $inner := .Inner -}}
+{{- $held := slice -}}
+{{- range $i, $h := findRE `(?s)<a class="mod-name".*?</a>|<span class="mod-name">.*?</span>.*?</span>.*?</span>` $inner -}}
+  {{- $held = $held | append $h -}}
+  {{- $inner = replace $inner $h (printf "MODNAMEHELD%dX" $i) 1 -}}
+{{- end -}}
+{{- $html := $inner | .Page.RenderString (dict "display" "block") -}}
+{{- range $i, $h := $held }}{{ $html = replace $html (printf "MODNAMEHELD%dX" $i) $h 1 }}{{ end }}
+{{ $html | safeHTML }}
 </div>

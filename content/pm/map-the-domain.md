@@ -28,7 +28,7 @@ steps:
       - text: "Reporting Database"
         url: https://martinfowler.com/bliki/ReportingDatabase.html
     look: Why reports get their own copy of the live system, and what keeping it fresh costs.
-    trust: "Experience. You met Fowler in [Mind the Seams](/pm/mind-the-seams/). He doubts that near-real-time analytics is worth it."
+    trust: "Experience. You met Fowler in {{< pm/mod mind-the-seams >}}. He doubts that near-real-time analytics is worth it."
     only: Operational use against analytical use, and the price of freshness, on one page.
   - id: dehghani
     kind: read
@@ -94,7 +94,7 @@ check:
     a: By event time it's Friday's, and by processing time Monday's. A farm checking last week's rain wants Friday, so it's a product call as much as an engineering one. Say which you promise, and when a day's total is final.
   - q: Your team changes the order of the hourly readings in a response, which the documentation never promised. A farm app breaks. Whose problem is it?
     a: Yours as much as theirs. With enough callers, every behavior they can see gets depended on, which is Hyrum's Law. Next time, count who calls it and tell them first. Then either promise the order, or vary it on purpose so nobody relies on it.
-  - q: In Know Who It's For, your customers paid for waiting. Here your callers pay for your changes. A farm app still calls version 1 of your forecast, and keeping it alive costs your team a week's work every month. When do you switch it off?
+  - q: In {{< pm/mod know-who-its-for words >}}, your customers paid for waiting. Here your callers pay for your changes. A farm app still calls version 1 of your forecast, and keeping it alive costs your team a week's work every month. When do you switch it off?
     against: know-who-its-for
     a: Price both sides. Each week version 1 stays costs your team, and each week of notice you cut costs the farm app, which didn't choose to move. Set a date far enough out for them to plan, and keep it, since a date that slips teaches callers to wait. If the call isn't yours, list who still calls version 1, check what notice your terms promise, and bring a draft date to whoever owns the API.
   - q: "**Beyond this module.** Your table lists what your callers count on. What does your own API count on that you don't control?"
@@ -137,7 +137,7 @@ deeper:
 
 ## Why this matters
 
-Some of what you build is for other teams: an API their products call, or a dataset their reports read. In [Mind the Seams](/pm/mind-the-seams/) you heard a boundary in how people talk. Here the boundary is written down, in an API's fields and a dataset's columns, and other teams build on it. Picture a weather data API: farm apps call it for rain, airlines for storms, delivery firms for ice on the roads, and each has made promises of its own on top of yours. To map the domain is to map what its data must answer, and what you've promised the teams who ask.
+Some of what you build is for other teams: an API their products call, or a dataset their reports read. In {{< pm/mod mind-the-seams >}} you heard a boundary in how people talk. Here the boundary is written down, in an API's fields and a dataset's columns, and other teams build on it. Picture a weather data API: farm apps call it for rain, airlines for storms, delivery firms for ice on the roads, and each has made promises of its own on top of yours. To map the domain is to map what its data must answer, and what you've promised the teams who ask.
 
 The API's shape follows the questions people will ask of it. Each one, with who asks it, how often, how fast and how fresh, is an {{< pm/term "access-pattern" >}}. You often know these better than the engineers, because the questions come from customers, consumers, support, operations and finance, and you hear them first. Fresher answers cost more, so ask what decision each one feeds: a delivery firm wants this minute's road temperature, and an insurer is happy with last month's. Data that arrives late raises a choice too: count it when it happened, its {{< pm/term "event-time" "event time" >}}, or when it arrived, its processing time. Each question is {{< pm/term "operational-analytical" "operational or analytical" >}}: it answers requests as they happen, or it looks back across many records. Reports, caches and other teams work from copies of the {{< pm/term "system-of-record" "system of record" >}}. Each copy can fall behind or go wrong on its own, which is why two reports can disagree.
 

@@ -48,7 +48,7 @@
   <section class="last-time" data-slot="last-time">
     <h2{{ if not $all }} id="last-time"{{ end }}>Last time</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "last-time") }}
-    <p class="hint">Two questions on {{ with $prev }}{{ .title }}{{ else }}the module before{{ end }}. Answer in your head, then check.{{ with $p.Params.last_time_note }} {{ . }}{{ end }}</p>
+    <p class="hint">Two questions on {{ with $prev }}<span class="mod-name"><span aria-hidden="true">M{{ .num }}</span><span class="sr">Module {{ .num }}</span>: {{ .title }}</span>{{ else }}the module before{{ end }}. Answer in your head, then check.{{ with $p.Params.last_time_note }} {{ . }}{{ end }}</p>
     {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}
   </section>
   {{ end }}
