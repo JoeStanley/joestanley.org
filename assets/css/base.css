@@ -242,9 +242,6 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
    paragraph, small, with a pen line at its left. */
 .note { display: block; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); font: var(--w-regular) var(--fs-small)/var(--lh-text) "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; color: var(--ink); }
 .note b, .note strong { color: var(--ink); font-weight: var(--w-strong); }
-/* A note's box ends with its words, and a break inside a note is smaller than the room around one (spec M2). */
-.note p { margin-bottom: var(--sp-2); }
-.note > :last-child { margin-bottom: 0; }
 /* Wherever a note folds into the text, its word, "Sidenote:", opens its first line in the same hand, muted: a ruled,
    indented block is how the web sets a quotation, so one word says it's an aside, and it comes from the note's own
    voice, not the page's labels. It floats, so it opens the first line of a note of several paragraphs too. In the
@@ -258,6 +255,9 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
   .noted > p:not(:last-child) { margin-bottom: var(--sp-2); }
   .note + .note { margin-top: calc(-1 * var(--sp-3)); }
   li > .noted:last-child > .note, li > .note:last-child { margin-bottom: var(--sp-3); }
+  /* A folded note's box ends with its words, and a break inside it is smaller than the room around it. */
+  .note p { margin-bottom: var(--sp-2); }
+  .note > :last-child { margin-bottom: 0; }
 }
 /* A note beside one paragraph follows it in the text, so on a phone and in print it folds in under that paragraph;
    on a wide screen it sits level with it in the margin, at its top, or at its foot when placed lower (spec M1). */

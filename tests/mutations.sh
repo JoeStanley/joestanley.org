@@ -143,7 +143,7 @@ run_bg "a module's text back to nearly the page's width in print" M1 "sed -i 's/
 run_bg "a paragraph's note printed over the text" M1 "sed -i 's/  .module .reading .noted > .note { position: absolute; top: 0; right: calc(-1 \* (var(--margin) + var(--gutter)));/  .module .reading .noted > .note { position: absolute; top: 0; right: 0;/' assets/css/pm.css"
 run_bg "a paragraph's foot note pushed onto the next page" M1 "echo '@media print { .module .reading .noted { break-inside: auto; padding-bottom: 9in; } }' >> assets/css/pm.css"
 run_bg "a full-path note holding room open again" M1 "echo '.reading .deeper-list > li > .note { position: static !important; }' >> assets/css/pm.css"
-run_bg "stacked notes nearly touching in print" M2 "sed -i '/  .module .reading .note p { margin-bottom: var(--sp-2); }/d; /  .module .reading .note > :last-child { margin-bottom: 0; }/d' assets/css/pm.css; sed -i '/^.note p { margin-bottom: var(--sp-2); }/d; /^.note > :last-child { margin-bottom: 0; }/d' assets/css/base.css"
+run_bg "stacked notes nearly touching in print" M2 "sed -i '/  .module .reading .note p { margin-bottom: var(--sp-2); }/d; /  .module .reading .note > :last-child { margin-bottom: 0; }/d' assets/css/pm.css"
 run_bg "a full-path note running into the next one" M2 "sed -i 's/@supports (anchor-scope: --a)/@supports (anchor-scope: --a) and (not (display: block))/' assets/css/pm.css"
 run_bg "a highlight reaching past the printed page" P7 "sed -i '/  .hl-line { margin-right: 0; }/d' assets/css/base.css"
 wait
@@ -161,7 +161,7 @@ run_bg "a note folded in on a phone without its label" M1 "echo '@media (max-wid
 run_bg "a card's note printed typeset, not in the owner's hand" M1 "echo '@media print { .note { font-family: var(--ui) !important; } }' >> assets/css/pm.css"
 # A card prints in two columns; a note there that breaks between them leaves its label at the foot of the first
 # (27 November 2026, when the sample notes moved up a slot with the picture's gone and one landed on the break).
-run_bg "a card's note split between its two printed columns" M1 "sed -i 's/^  .card-body li, .card-body p, .card-body .note { break-inside: avoid; }/  .card-body li, .card-body p { break-inside: avoid; }/' assets/css/pm.css"
+run_bg "a card's note split between its two printed columns" M1 "echo '@media print { .card-body .note::after { content: \"\"; display: block; break-before: column; height: 1px; } }' >> assets/css/pm.css"
 run_bg "a note read aloud as a plain note again" M3 "sed -i 's/>Sidenote: </>Note: </g' layouts/partials/pm/margin.html layouts/partials/pm/prose-slots.html"
 run_bg "a step's note out of line with the margin" M1 "echo '@media (min-width: 64rem) { .reading .step > .note { margin-left: var(--sp-5) !important; } }' >> assets/css/pm.css"
 run_bg "a long note beside the full path's heading pushing the first source down" R10 "sed -i '/^    .deeper-list > li:has(> .note) { clear: none; }$/d' assets/css/pm.css"
