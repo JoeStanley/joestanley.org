@@ -4,7 +4,7 @@ layout: card
 module: own-your-role
 weight: 10
 figure: concept-champion
-figure_caption: "Planned from the last step, the work climbs in a straight line, on time, and can still fall short. Planned from a vision someone holds, it needs new investments: slow while they come online, steep if they land."
+figure_caption: "Planned forward from the last step, the work climbs in a straight line, on time, and can still fall short. Planned back from a vision someone holds, it needs new investments: slow while they come online, steep if they land."
 question: Can you finish "we're building this in order to ...," and would your team finish it the same way?
 deeper:
   title: Product Development in the World Auto Industry
