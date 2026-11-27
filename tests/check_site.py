@@ -802,6 +802,63 @@ def door_icon_checks(out_dir):
         srv.close()
 
 
+def readme_record_checks(out_dir):
+    """R11: the ReadMe's record. Each place under Experience and Education is a heading with its time as the next
+    paragraph, short; on the page the time stands in a rail at the column's left edge, level with its place, in the
+    label type, the rail's times lined up, the text clear of the rail, and nothing wider than the page on a phone."""
+    from bs4 import BeautifulSoup
+    checked("R11")
+    path = os.path.join(out_dir, "page", "readme", "index.html")
+    soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+    art = soup.select_one("article.page")
+    if not art or "cv" not in (art.get("class") or []):
+        fail("R11", "the ReadMe's article doesn't carry the class cv, so its record has no rail"); return
+    places = art.select(".prose h3")
+    if len(places) < 5:
+        fail("R11", f"the ReadMe's record has {len(places)} places as headings, and Experience and Education hold seven")
+    for h in places:
+        p_ = h.find_next_sibling()
+        when = " ".join(p_.get_text(" ").split()) if p_ is not None and p_.name == "p" else ""
+        if not when or len(when) > 20 or not re.search(r"\d{4}", when):
+            fail("R11", f"the ReadMe's {h.get_text(' ', strip=True)} isn't followed by its time as a short paragraph of its own: \"{when[:40]}\"")
+    # a line's baseline: an empty inline-block's bottom sits on it
+    JS = """() => { const base = e => { const s = document.createElement('span'); s.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+                                       e.insertBefore(s, e.firstChild); const y = s.getBoundingClientRect().bottom; s.remove(); return y; };
+      return [...document.querySelectorAll('article.cv .prose h3')].map(h => {
+      const d = h.nextElementSibling, t = d && d.nextElementSibling, r = e => e.getBoundingClientRect();
+      const fs = e => parseFloat(getComputedStyle(e).fontSize);
+      return {name: h.textContent.trim(), hTop: r(h).top, hLeft: r(h).left, dTop: r(d).top, dLeft: r(d).left, dRight: r(d).right,
+              dFirst: (() => { const g = document.createRange(); g.selectNodeContents(d); const rs = g.getClientRects(); return rs.length ? rs[0].top : r(d).top; })(),
+              hFirst: base(h), dLine: base(d),
+              dSize: fs(d), body: fs(document.querySelector('article.cv .prose > p:not(:empty)') || h), tLeft: t ? r(t).left : null}; }); }"""
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=os.environ.get("CHROME") or None)
+            for w in (1280, 390):
+                ctx = b.new_context(viewport={"width": w, "height": 900}); pg = ctx.new_page()
+                pg.goto(srv.base + "/page/readme/"); pg.wait_for_load_state("load")
+                rows = pg.evaluate(JS)
+                if pg.evaluate("() => document.documentElement.scrollWidth > window.innerWidth + 1"):
+                    fail("R11", f"the ReadMe scrolls sideways at {w}px")
+                lefts = {round(r["dLeft"]) for r in rows}
+                if len(lefts) > 1:
+                    fail("R11", f"at {w}px the ReadMe's times don't line up in one rail: {sorted(lefts)}")
+                for r in rows:
+                    if not r["dRight"] <= r["hLeft"] + 0.5:
+                        fail("R11", f"at {w}px {r['name']}'s time isn't in a rail to the left of its place"); continue
+                    if abs(r["dLine"] - r["hFirst"]) > 2:
+                        fail("R11", f"at {w}px {r['name']}'s time doesn't sit on its place's baseline ({abs(r['dLine'] - r['hFirst']):.0f}px off)")
+                    if r["dSize"] >= r["body"]:
+                        fail("R11", f"at {w}px {r['name']}'s time isn't in the label type, smaller than the text (W3)")
+                    if r["tLeft"] is not None and r["tLeft"] < r["dRight"] - 0.5:
+                        fail("R11", f"at {w}px what was done at {r['name']} runs under the rail")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
 def start_checks(out_dir):
     """S19: Start invites the reader to write to the owner, in a paragraph after How it works, its link's text
     the address itself, so a reader whose browser opens no mail app can still copy it."""
@@ -5531,6 +5588,11 @@ def main():
             icon_checks(out_dir)
         except Exception as e:  # a broken file must fail its rule, not stop the suite
             fail("N4", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("R11"):
+        try:
+            readme_record_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("R11", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("N5"):
         try:
             door_icon_checks(out_dir)

@@ -494,4 +494,8 @@ run_bg "a module's code that isn't its own" G8 "sed -i 's|<span aria-hidden=\"tr
 run_bg "LinkedIn's mark in a lookalike blue" N5 "sed -i 's/#0a66c2/#0077b5/' layouts/partials/icon.html"
 run_bg "the companies' marks never shown on hover" N5 "sed -i '/^.door-links a:hover .icon-mark/d' assets/css/base.css"
 run_bg "Bluesky's mark read aloud" N5 "sed -i 's/<svg class=\"icon-mark\" aria-hidden=\"true\" focusable=\"false\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 320 286\">/<svg class=\"icon-mark\" focusable=\"false\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" viewBox=\"0 0 320 286\">/' layouts/partials/icon.html"
+# The ReadMe's record: each place a heading, its time in a rail at the left, level with it (R11, the owner, 27 November 2026)
+run_bg "the ReadMe without its rail" R11 "sed -i '/^class: cv$/d' content/page/readme.md"
+run_bg "a ReadMe time run into its text" R11 "python3 -c \"p='content/page/readme.md'; s=open(p).read(); open(p, 'w').write(s.replace('2023+\\n\\nConfidential', '2023+\\nConfidential'))\""
+run_bg "the ReadMe's times off their places' baselines" R11 "echo '.cv .prose h3 + p { padding-top: 0.6rem !important; }' >> assets/css/base.css"
 wait

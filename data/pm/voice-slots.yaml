@@ -340,7 +340,7 @@ moved:
   - what: changed
     words: "If you're a senior product leader, I hope this material resonates enough that you share it with the target audience within your org."
     from: "Start, the opening, your paragraph on who the course is for"
-    to: "The same place, ending \"share it with the product managers in your org.\""
+    to: "The same place, ending \"share it with the early- and mid-career product managers in your org.\""
     why: "A reader found \"target audience within your org\" stiff."
     when: 27 November 2026
   - what: changed
@@ -352,7 +352,7 @@ moved:
   - what: changed
     words: "From M1: Know Who It's For and on, you'll keep a decision log: ... Intuition earns trust where a situation has patterns you can learn, which requires a feedback loop. However, product calls can take months to play out ... The closing page, The Compass, has you look back over it. It may feel silly, but this is one of the most important parts of the entire curriculum: making it real in a place you can safely fail."
     from: "Start, How it works, the decision log"
-    to: "The same place: \"Starting with M1: Know Who It's For\"; your \"It may feel silly\" sentence moved up to follow the log's description; the source named again, \"(Kahneman and Klein, 2009)\", with both its conditions, patterns you can learn and clear feedback on your calls; no \"However\"; and The Compass \"names what the course leaves out\" again, linked"
+    to: "The same place: \"Starting with M1: Know Who It's For\"; your \"It may feel silly\" sentence still last, now \"the log is one of the most important parts\"; the source named again, \"(Kahneman and Klein, 2009)\", with both its conditions, patterns you can learn and clear feedback on your calls; no \"However\"; and The Compass \"names what the course leaves out\" again, linked"
     why: "All four readers wanted the named study and the pointer to what the course leaves out back, and one found \"which requires a feedback loop\" ran the study's two conditions into one. All four kept your \"It may feel silly\" line; three named it the line that stuck."
     when: 27 November 2026
   - what: changed
@@ -382,8 +382,8 @@ moved:
   - what: changed
     words: "Having the right answer doesn't matter if you can't convince people of it. This comes in part from in-the-moment persuasion, and more from having already built a reputation for credibility. This part focuses on the latter."
     from: "Start, The modules, the line for How you learn and lead, and The Compass's list"
-    to: "\"Catching your own mistakes early, and earning the trust of the people you work with before you need it.\""
-    why: "Three readers found your line left out M11, which is about being wrong. The line from before your pass covers both modules, and \"before you need it\" keeps your point that credibility is built ahead of time."
+    to: "\"Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it.\""
+    why: "Three readers found your line left out M11, which is about being wrong. Your first sentence stays, the line every reader of it remembered, then the line from before your pass, which covers both modules, with \"before you need it\" for your point that credibility is built ahead of time."
     when: 27 November 2026
   - what: changed
     words: "and where to go from here in your learning journey."

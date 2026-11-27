@@ -281,6 +281,19 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
 .door-links .icon-mark { display: none; }
 .door-links a:hover .icon-line, .door-links a:focus-visible .icon-line { display: none; }
 .door-links a:hover .icon-mark, .door-links a:focus-visible .icon-mark { display: block; }
+/* The ReadMe's record (spec R11): Experience and Education, on a page whose front matter names the class cv. Each place is a
+   heading at the size of the text, as a step's title is; its time stands in a rail at the column's left edge, level
+   with the place, in the label type, as Start's module codes do, so the times read down the page as a timeline; what
+   was done there follows under the place, in the reading text. The place and its time float side by side, so the
+   Markdown stays a heading, a line and a paragraph, with no wrapper. On a phone the rail narrows and a range of years
+   stands one year over the other; from 46rem it holds a range on one line. */
+.cv { --rail: 3.25rem; --rail-gap: var(--sp-3); }
+@media (min-width: 46rem) { .cv { --rail: 6rem; --rail-gap: var(--sp-5); } }
+.cv .prose h3 { float: right; clear: both; width: calc(100% - var(--rail) - var(--rail-gap)); margin: var(--sp-2) 0 var(--sp-1); }
+.cv .prose h3 + p { float: left; clear: left; width: var(--rail); margin: var(--sp-2) 0 0; padding-top: var(--sp-1); font: var(--w-regular) var(--fs-small)/var(--lh-head) var(--ui); color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
+.cv .prose h2 + h3, .cv .prose h2 + h3 + p { margin-top: var(--sp-1); }
+.cv .prose :is(h3 + p + p, h3 + p + p + p, h3 + p + p + p + p) { clear: right; margin-left: calc(var(--rail) + var(--rail-gap)); }
+@media print { .cv .prose h3, .cv .prose h3 + p { break-after: avoid; } }
 /* Narrow screens: the photo sits above the name, so its ring lines up with the text's left edge rather than hanging past it. */
 @media (max-width: 63.99rem) { .door-photo { margin-left: calc(0.3rem + 0.35rem); } }
 

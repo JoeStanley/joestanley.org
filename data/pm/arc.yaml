@@ -13,7 +13,7 @@ parts:
     line: What to believe, what to choose, and what you answer for.
     modules: [weigh-the-evidence, decide-and-set-direction, answer-for-what-you-build]
   - title: How you learn and lead
-    line: Catching your own mistakes early, and earning the trust of the people you work with before you need it.
+    line: Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it.
     modules: [notice-when-you-are-wrong, bring-people-with-you]
 # The closing unit (spec S21): its page under content/pm/, and its line on Start.
 closing:

@@ -1,5 +1,6 @@
 ---
 title: 'ReadMe'
+class: cv
 draft: false
 ---
 ---
@@ -28,34 +29,41 @@ I love it.
 
 ## Experience
 
-**Capital One\
-2023+**\
+### Capital One
+2023+
+
 Confidential initiative, developing modern platforms deep in the company's tech stack to productively standardize and utilize tremendous amounts of data in a safe way.
 
-**The Federal Reserve\
-2016-2023**\
+### The Federal Reserve
+2016-2023
+
 Figuring out how we take the Fed to the cloud, think in products over projects, and invest in our workforce. Checking all the digital transformation boxes in order to deliver [FedNow](https://www.frbservices.org/financial-services/fednow/about.html).
 
-**The Commonwealth Institute for Fiscal Analysis\
-2014-2016**\
+### The Commonwealth Institute for Fiscal Analysis
+2014-2016
+
 Grew a team of policy analysts into end-to-end campaign owners. Scored legislative victories (e.g. expanded Medicaid, increased state public education spending) and improved how the media reported on state spending with a new budget explainer.
 
-**Tumblr\
-2012-2014**\
+### Tumblr
+2012-2014
+
 Ran the Support division, which served as the connective tissue between users, sales, engineering, and product. Involved in the acquisition by Yahoo, with mixed feelings in retrospect.
 
-**Mesmir\
-2010-2012**\
+### Mesmir
+2010-2012
+
 Independent consultant, helping non-profits and candidates for elected office figure out how to make digital work for them. If you can imagine it, I probably did it.
 
 ## Education
 
-**Master of Business Administration\
-2022**\
+### Master of Business Administration
+2022
+
 University of Virginia\
 Darden School of Business
 
-**Bachelor of Arts, Political Science\
-2009**\
+### Bachelor of Arts, Political Science
+2009
+
 Virginia Commonwealth University\
 College of Humanities and Sciences
