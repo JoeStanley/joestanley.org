@@ -34,8 +34,8 @@ settle:
     where: In every unit, starting from the open voice slots and your words that moved, below
     ask: "Two blind readers who compared versions of the course missed your first-person practice, and a voice editor found its warmth almost all in your lines. Each open slot below is a place it goes back, with a brief and the session's suggestion; then any of your words below that a session cut, moved or changed. Revise any other sentence you like as you go. Publishing fails while a slot is open."
   - what: The front door's line
-    where: On the front door, which has no tab here
-    ask: "A line naming the syllabus, yours to write (your pick of 25 November, over leaving the front door spare or being offered wordings). Today the front door doesn't name the course; the menu calls it On Judgment. Write it in a comment on this tab, or in the session."
+    where: In the Front door tab, right after About
+    ask: "A line naming the syllabus, yours to write (your pick of 25 November, over leaving the front door spare or being offered wordings). Today the front door doesn't name the course; the menu calls it On Judgment. Write it in that tab, where you'd like it to sit."
   - what: The spine, named on Start
     where: In Start, the voice slot what-judgment-is
     ask: "Say what product judgment is, since the course is named for it. Readers found the course's clearest account of the skill only at its end, in The Compass's question, \"Which question does the call in front of you need?\" and in where to draw the line. The slot's brief carries their suggestion."

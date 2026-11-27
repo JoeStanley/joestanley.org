@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """The working doc's tabs, made from the repository (spec X1 to X3).
 
-The owner reviews the syllabus in one working doc with a tab for each unit. The repository is the source and the
+The owner reviews the site in one working doc, with a tab for each unit of the syllabus and one for each of his own pages. The repository is the source and the
 doc mirrors it. This tool writes each tab as Markdown, so a session can put it in the doc, and keeps the record
 of what was last put there.
 
@@ -14,8 +14,8 @@ of what was last put there.
 "public" is a built site (hugo -d public). A built unit's tab is made from the built page, so it holds the words a
 reader meets, template wording included. A draft's tab is its file in drafts/pm/, under the title, state and
 question the map gives it. A voice slot (spec X4) shows its interim words in place, as the page does, and then its
-own block: the brief and the owner's old words. The second tab, after About, is the owner's ReadMe, made from its built
-page with its structure kept, so he can revise it there (spec X2). The last tab, "Your voice pass", lists every open slot and every
+own block: the brief and the owner's old words. The three tabs after About are the owner's own pages, the front door,
+his ReadMe and Games, each made from its built page with its structure kept, so he can revise them there (spec X2). The last tab, "Your voice pass", lists every open slot and every
 word of his that moved, with what his pass settles first (data/pm/voice-slots.yaml) and every margin slot still
 empty last (data/pm/margin/). Needs PyYAML and beautifulsoup4.
 """
@@ -426,21 +426,57 @@ def glossary_tab(art):
     return out
 
 
-# ---------- the owner's ReadMe (spec X2) ----------
-README_TAB = "ReadMe"
+# ---------- the owner's own pages (spec X2): the front door, the ReadMe and Games ----------
+DOOR_TAB, README_TAB, GAMES_TAB = "Front door", "ReadMe", "Games"
+OWN_TABS = (DOOR_TAB, README_TAB, GAMES_TAB)   # in this order, right after About; his words, not the syllabus's
 README_NOTE = ("*Your own words, as the site shows them at /page/readme/. Revise anything here, its structure too: "
                "a session carries your edits into the site as you made them.*")
+GAMES_NOTE = ("*Your own words, as the site shows them at /games/. Revise anything here, its structure too: "
+              "a session carries your edits into the site as you made them.*")
+DOOR_NOTE = ("*Your own words, as the site shows them on the front door, joestanley.org. Revise anything here, the line "
+             "under your name, your photo's description and the links too: a session carries your edits into the site as you made them.*")
 BREAK = "\ue000"   # a line break inside a paragraph, kept as Markdown's hard break so its lines stay lines
 
 
-def readme_tab(site):
-    """The ReadMe as its page shows it: his headings, paragraphs, lists, links and the struck word, line breaks kept."""
-    soup = BeautifulSoup(open(os.path.join(site, "page", "readme", "index.html"), encoding="utf-8").read(), "html.parser")
+def breaks(out):
+    return re.sub(" *" + BREAK + " *", "\\\\\n", "\n\n".join(out))
+
+
+def page_tab(site, path, note):
+    """One of his pages as it shows: his headings, paragraphs, lists, links and the struck word, line breaks kept."""
+    soup = BeautifulSoup(open(os.path.join(site, path, "index.html"), encoding="utf-8").read(), "html.parser")
     art = soup.select_one("main article.page")
     for br in art.find_all("br"):
         br.replace_with(BREAK)
-    out = ["# " + inline(art.find("h1")), README_NOTE] + blocks(art.select_one(".prose"))
-    return re.sub(" *" + BREAK + " *", "\\\\\n", "\n\n".join(out))
+    return breaks(["# " + inline(art.find("h1")), note] + blocks(art.select_one(".prose")))
+
+
+def readme_tab(site):
+    return page_tab(site, os.path.join("page", "readme"), README_NOTE)
+
+
+def games_tab(site):
+    return page_tab(site, "games", GAMES_NOTE)
+
+
+def door_tab(site):
+    """The front door: his name, the line under it, his paragraphs, his photo's description and the links under it."""
+    soup = BeautifulSoup(open(os.path.join(site, "index.html"), encoding="utf-8").read(), "html.parser")
+    door = soup.select_one("main .door")
+    for br in door.find_all("br"):
+        br.replace_with(BREAK)
+    out = ["# " + inline(door.find("h1")), DOOR_NOTE]
+    sub = door.find(class_="door-sub")
+    if sub:
+        out.append("**The line under your name:** " + inline(sub))
+    out += blocks(door.find(class_="door-text"))
+    photo = door.find("img")
+    if photo and photo.get("alt"):
+        out.append("**Your photo, as a screen reader describes it:** " + clean(photo["alt"]).strip())
+    links = [f"- [{clean(a.find(class_='sr').get_text()).strip()}]({a['href']})" for a in door.select(".door-links a")]
+    if links:
+        out.append("**The links under it:**\n" + "\n".join(links))
+    return breaks(out)
 
 
 # ---------- a draft file, as its tab ----------
@@ -476,11 +512,11 @@ def about_tab(mods, synced):
         state = "Built, and on the site." if m.get("page") else m["state"]
         rows.append(f"| {m['num']} {m['title']} | {state} | {src} |")
     return "\n\n".join([
-        "# On Product Judgment: Working Source",
+        "# joestanley.org: Working Source",
         f"Last put here from the repository on {synced}.",
-        "This doc mirrors the syllabus as it stands in the joestanley.org repository, and your ReadMe. The next tab, ReadMe, is your own words as the site shows them: revise anything there, its structure too, and a session carries your edits into the site as you made them, fixing only a house rule and telling you. Each tab after it is one unit: the Start page, each module with its concept cards, The Compass, which closes the course, and the glossary. What you read here is what the repository holds, word for word.",
+        "This doc mirrors the site as it stands in the joestanley.org repository: your own pages and the syllabus. The next three tabs, Front door, ReadMe and Games, are your own words as the site shows them: revise anything there, its structure too, and a session carries your edits into the site as you made them, fixing only a house rule and telling you. Each tab after them is one unit of the syllabus: the Start page, each module with its concept cards, The Compass, which closes the course, and the glossary. What you read here is what the repository holds, word for word.",
         "Comment on any line, or edit it. A Claude Code session carries your comments and edits into the repository, then puts the result back here, so the two stay the same. The checks in the repository fail if a tab falls out of step.",
-        "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| ReadMe | On the site, in your own words. | `content/page/readme.md` |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
+        "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| Front door | On the site, in your own words. | `content/_index.md`, with the line under your name, the photo's description and the links from `hugo.yaml` |\n| ReadMe | On the site, in your own words. | `content/page/readme.md` |\n| Games | On the site, in your own words. | `content/games/_index.md` |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
         + "\n".join(rows) + f"\n| {CLOSING_TAB} | Built, and on the site. | `content/pm/the-compass.md`, with the arc from `data/pm/arc.yaml` |\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
         f"The last tab, {VOICE_TAB}, is where your final pass starts: what it's asked to settle, every passage that waits for your voice, every word of yours a session cut, moved or changed, and every margin slot still empty. A passage that waits shows a block in its own tab too, where you read it.",
         "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes from before 20 November 2026, kept as history. Decisions for you now wait on the [Decisions page](https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq), and what comes next is in `PLAN.md` in the private pm-sources repository.",
@@ -528,7 +564,8 @@ def tabs(site, synced=None):
     arts = {a["data-unit"]: a for a in soup.select("main article.unit")}
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
     PENDING.clear()
-    out = [("About", about_tab(mods, synced or today())), (README_TAB, readme_tab(site)),
+    out = [("About", about_tab(mods, synced or today())), (DOOR_TAB, door_tab(site)), (README_TAB, readme_tab(site)),
+           (GAMES_TAB, games_tab(site)),
            ("Start", "\n\n".join(start_tab(arts["start"]) + flush()))]
     for m in mods:
         name = f"{m['num']} {m['title']}"
