@@ -12,23 +12,23 @@
   <rect class="fig-mark" x="258.5" y="35" width="35.8" height="18"/>
   <text class="fig-item" x="12" y="48">Is this bill a duplicate?</text>
   <text class="fig-label fig-on-mark" x="290" y="48" text-anchor="end">Now</text>
-  <path class="fig-axis fig-ramp-5" d="M15,58 L298,58"/>
+  <path class="fig-axis fig-ramp-5" d="M15,60 L295.25,60"/>
 
   <text class="fig-item" x="12" y="82">Which claims are mine today?</text>
   <text class="fig-item" x="290" y="82" text-anchor="end">A minute old</text>
-  <path class="fig-axis fig-ramp-4" d="M14,92 L298,92"/>
+  <path class="fig-axis fig-ramp-4" d="M14,94 L296.5,94"/>
 
   <text class="fig-item" x="12" y="116">Is my claim paid?</text>
   <text class="fig-item" x="290" y="116" text-anchor="end">An hour old</text>
-  <path class="fig-axis fig-ramp-3" d="M14,126 L298,126"/>
+  <path class="fig-axis fig-ramp-3" d="M14,128 L297.5,128"/>
 
   <text class="fig-item" x="12" y="150">What did we pay this week?</text>
   <text class="fig-item" x="290" y="150" text-anchor="end">A day old</text>
-  <path class="fig-axis fig-ramp-2" d="M13,160 L298,160"/>
+  <path class="fig-axis fig-ramp-2" d="M13,162 L298.25,162"/>
 
   <text class="fig-item" x="12" y="184">Is fraud rising this year?</text>
   <text class="fig-item" x="290" y="184" text-anchor="end">A month old</text>
-  <path class="fig-axis fig-ramp-1" d="M13,194 L298,194"/>
+  <path class="fig-axis fig-ramp-1" d="M13,196 L298.75,196"/>
 
   <text class="fig-note" x="12" y="218">A heavier line costs more to keep fresh</text>
 </svg>

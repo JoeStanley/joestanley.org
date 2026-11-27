@@ -1,6 +1,8 @@
-<svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 216" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-five-title">A pipe with a narrow neck, and the five focusing steps in a row.</title>
   <desc id="fig-five-desc">Work items crowd in front of the narrow part of a pipe, which is the constraint, and only a few get through. Below, five numbered steps run left to right, each with what it means: identify, find it; exploit, use it fully; subordinate, pace the rest to it; elevate, add capacity; repeat, find the next one.</desc>
+
+  <g transform="translate(0,-4)">
 
   <!-- the pipe -->
   <rect class="fig-mark" x="168" y="34" width="34" height="56"/>
@@ -36,6 +38,7 @@
     <text x="36" y="182">Identify</text><text x="108" y="182">Exploit</text><text x="180" y="182">Subordinate</text><text x="252" y="182">Elevate</text><text x="324" y="182">Repeat</text>
   </g>
   <g class="fig-note" text-anchor="middle">
-    <text x="36" y="197">find it</text><text x="108" y="197">use it</text><text x="108" y="211">fully</text><text x="180" y="197">pace the</text><text x="180" y="211">rest to it</text><text x="252" y="197">add</text><text x="252" y="211">capacity</text><text x="324" y="197">find the</text><text x="324" y="211">next one</text>
+    <text x="36" y="197">find it</text><text x="108" y="197">use it</text><text x="108" y="212">fully</text><text x="180" y="197">pace the</text><text x="180" y="212">rest to it</text><text x="252" y="197">add</text><text x="252" y="212">capacity</text><text x="324" y="197">find the</text><text x="324" y="212">next one</text>
+  </g>
   </g>
 </svg>

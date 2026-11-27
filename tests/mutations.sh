@@ -406,7 +406,7 @@ run_bg "the advice exercise gone back to a look back" J9 "sed -i 's/Find a decis
 wait
 
 # F1, F2: the pictures' one grammar (27 November 2026)
-run_bg "a picture's yellow as a disc, not a rectangle behind the thing" F1 "sed -i 's|<rect class=\"fig-mark\"[^/]*/>|<circle class=\"fig-mark\" cx=\"168\" cy=\"26\" r=\"12\"/>|' assets/figures/mission-excuse.svg"
+run_bg "a picture's yellow as a disc, not a rectangle behind the thing" F1 "sed -i 's|<rect class=\"fig-mark\"[^/]*/>|<circle class=\"fig-mark\" cx=\"178\" cy=\"18\" r=\"12\"/>|' assets/figures/mission-excuse.svg"
 run_bg "a picture with two unlike yellow moments" F1 "sed -i 's|<rect class=\"fig-pipe\" x=\"12\" y=\"42\" width=\"154\" height=\"46\" rx=\"6\"/>|<rect class=\"fig-mark\" x=\"12\" y=\"42\" width=\"154\" height=\"46\"/>|' assets/figures/coupling.svg"
 run_bg "a picture flooded with yellow" F1 "sed -i 's|<rect class=\"fig-mark\"[^/]*/>|<rect class=\"fig-mark\" x=\"180\" y=\"30\" width=\"166\" height=\"74\"/>|' assets/figures/riskiest-assumption.svg"
 run_bg "a picture with no key moment" F1 "sed -i '/class=\"fig-mark\"/d' assets/figures/stocks-flows.svg"
@@ -415,13 +415,13 @@ run_bg "a dot off the dot scale" F1 "sed -i 's|<circle cx=\"312\" cy=\"106\" r=\
 run_bg "a box with corners of its own" F1 "sed -i '0,/rx=\"6\"/s//rx=\"10\"/' assets/figures/api-promise.svg"
 run_bg "a picture that sets its own line weight" F1 "sed -i 's|<path class=\"fig-line\" d=\"M28,75 L150,75\"/>|<path class=\"fig-line\" stroke-width=\"7\" d=\"M28,75 L150,75\"/>|' assets/figures/coupling.svg"
 run_bg "a mark the grammar doesn't name" F1 "sed -i 's|<text class=\"fig-note\" x=\"12\" y=\"214\">|<text class=\"fig-shout\" x=\"12\" y=\"214\">|' assets/figures/many-hands.svg"
-run_bg "the weight ramp borrowed by another picture" F1 "sed -i 's|<path class=\"fig-line\" d=\"M168,44 L168,152\"/>|<path class=\"fig-line fig-ramp-5\" d=\"M168,44 L168,152\"/>|' assets/figures/mission-excuse.svg"
+run_bg "the weight ramp borrowed by another picture" F1 "sed -i 's|<path class=\"fig-line\" d=\"M178,36 L178,144\"/>|<path class=\"fig-line fig-ramp-5\" d=\"M178,36 L178,144\"/>|' assets/figures/mission-excuse.svg"
 run_bg "three highlights that aren't all behind words" F1 "sed -i '0,/<rect class=\"fig-mark\" x=\"\([0-9.]*\)\" y=\"80\" width=\"\([0-9.]*\)\" height=\"18\"\/>/s//<rect class=\"fig-mark\" x=\"\\1\" y=\"74\" width=\"\\2\" height=\"30\"\/>/' assets/figures/last-time.svg"
 run_bg "picture labels back under 12 pixels on a phone" F2 "sed -i 's/.fig-note { font-weight: 400; font-size: 12.5px;/.fig-note { font-weight: 400; font-size: 11px;/' assets/css/pm.css"
 run_bg "a picture held inside the panel's padding on a phone" F2 "sed -i 's/width: min(100% + 2 \* var(--sp-4), 30rem); max-width: none;/width: 100%; max-width: 30rem;/' assets/css/pm.css"
 run_bg "two labels on top of each other in a picture" F2 "sed -i 's|<text class=\"fig-note\" x=\"12\" y=\"33\">only the catalog changes</text>|<text class=\"fig-note\" x=\"12\" y=\"22\">only the catalog changes</text>|' assets/figures/coupling.svg"
 run_bg "a label running out of its picture" F2 "sed -i 's|<text class=\"fig-label\" x=\"312\" y=\"132\" text-anchor=\"middle\">A customer</text>|<text class=\"fig-label\" x=\"340\" y=\"132\" text-anchor=\"middle\">A customer</text>|' assets/figures/many-hands.svg"
-run_bg "words on a picture's yellow in the page's ink" F2 "sed -i 's|<text class=\"fig-label fig-on-mark\" x=\"168\" y=\"30\" text-anchor=\"middle\">Your line</text>|<text class=\"fig-label\" x=\"168\" y=\"30\" text-anchor=\"middle\">Your line</text>|' assets/figures/mission-excuse.svg"
+run_bg "words on a picture's yellow in the page's ink" F2 "sed -i 's|<text class=\"fig-label fig-on-mark\" x=\"178\" y=\"22\" text-anchor=\"middle\">Your line</text>|<text class=\"fig-label\" x=\"178\" y=\"22\" text-anchor=\"middle\">Your line</text>|' assets/figures/mission-excuse.svg"
 run_bg "words on a picture's yellow unreadable on a dark screen" F2 "sed -i 's/^.fig .fig-on-mark { fill: var(--mark-ink); }/.fig .fig-on-mark { fill: var(--ink); }/' assets/css/pm.css"
 run_bg "a picture color with no job named for dark screens" C7 "sed -i 's/ --fig-loss: #8a5340; }/ }/' assets/css/pm.css"
 run_bg "Conway's sentence dropped from his card" S16 "sed -i '/^> /d; /^>\$/d' content/pm/cards/conways-law.md"

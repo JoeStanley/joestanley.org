@@ -4,7 +4,7 @@ layout: card
 module: own-your-role
 weight: 10
 figure: concept-champion
-figure_caption: Plan each step from the last, and a product can run on time and still fall short of where it needs to be. A concept champion names the destination first, then works back from it.
+figure_caption: Plan each step from the last, and the work climbs in a straight line, on time, and can still fall short. Work back from the vision, and the plan finds the new investments it needs, slow while they come online and steep after.
 question: Can you finish "we're building this in order to ...," and would your team finish it the same way?
 deeper:
   title: Product Development in the World Auto Industry
@@ -19,7 +19,7 @@ deeper:
 
 Kim Clark's "concept" is what you'd call the vision. A product hangs together, what Fred Brooks calls {{< pm/term "conceptual-integrity" >}}, when someone champions it. Clark and colleagues studied 29 car projects in the 1980s. Most had a lightweight manager, who coordinates "but has little influence over the content of the project." The few with a {{< pm/term "heavyweight" >}}, "not only a coordinator but a concept champion," used far fewer engineering hours.
 
-Set the vision as a destination, keep it current as engineers and customers teach you, and work back from it. Plan only from where you are, one step from the last, and the work can run on time and still fall short of where the product needs to be.
+Set the vision as a destination, keep it current as engineers and customers teach you, and work back from it. Plan only from where you are, one step from the last, and the work can run on time and still fall short of where the product needs to be. Working back shows the new investments the ambition needs, and those take time to come online.
 
 ## Why a PM cares
 

@@ -1,15 +1,16 @@
 <svg class="fig" viewBox="0 0 360 240" role="img" aria-labelledby="fig-small-title fig-small-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-small-title">Twelve groups of 5, of 50 and of 500 people: the small groups land far from the real rate.</title>
-  <desc id="fig-small-desc">Three rows of dots on one scale, from nobody saying yes to everybody. Each dot is one group that was asked, and in the whole crowd half would say yes. In the first row each group is 5 people, and the twelve answers scatter from 1 in 5 to 4 in 5. Two groups sit at 4 in 5, and a highlighted label sits over them: 4 of 5 said yes, which looks like 80 percent. In the second row each group is 50 people, and the answers run from about 4 in 10 to 6 in 10. In the third row each group is 500, and all twelve sit close to half.</desc>
+  <desc id="fig-small-desc">Three rows of dots on one scale, from nobody saying yes to everybody. Each dot is one group that was asked, and in the whole crowd half would say yes. In the first row each group is 5 people, and the twelve answers scatter from 1 in 5 to 4 in 5. Two groups sit at 4 in 5, and a highlighted label points at them: 4 of 5 said yes, which looks like 80 percent. In the second row each group is 50 people, and the answers run from about 4 in 10 to 6 in 10. In the third row each group is 500, and all twelve sit close to half.</desc>
   <!-- One random draw, not a tidy average: Python's random.Random(1971), twelve groups of each size at a real rate of one half; groups of 50 are gathered into piles 6 points wide and groups of 500 into piles 4 points wide, each centred on one half. -->
 
   <text class="fig-label" x="12" y="18">Each dot</text>
   <text class="fig-note" x="12" y="33">one group asked</text>
   <text class="fig-label" x="232.0" y="18" text-anchor="middle">The real rate: half say yes</text>
   <path class="fig-guide" d="M232,26 L232,216"/>
-  <rect class="fig-mark" x="251.6" y="37" width="96.4" height="18"/>
-  <text class="fig-label fig-on-mark" x="344" y="50" text-anchor="end">4 of 5 said yes</text>
-  <text class="fig-note" x="348" y="107" text-anchor="end">looks like 80%</text>
+  <rect class="fig-mark" x="251.6" y="29" width="96.4" height="18"/>
+  <path class="fig-guide" d="M294.4,50 L294.4,69.5"/>
+  <text class="fig-label fig-on-mark" x="344" y="42" text-anchor="end">4 of 5 said yes</text>
+  <text class="fig-note" x="294.4" y="107" text-anchor="middle">looks like 80%</text>
   <text class="fig-label" x="12" y="86">Groups of 5</text>
   <path class="fig-axis" d="M128,90 L336,90"/>
   <g class="fig-ink">

@@ -26,8 +26,8 @@
   <text class="fig-note" x="22" y="94">fills it</text>
   <text class="fig-label" x="90" y="150" text-anchor="end">Stock</text>
   <text class="fig-note" x="90" y="165" text-anchor="end">the level</text>
-  <text class="fig-label" x="222" y="213" text-anchor="end">Outflow</text>
-  <text class="fig-note" x="222" y="228" text-anchor="end">drains it</text>
+  <text class="fig-label" x="214" y="213" text-anchor="end">Outflow</text>
+  <text class="fig-note" x="214" y="228" text-anchor="end">drains it</text>
   <rect class="fig-mark" x="179.8" y="41" width="68.5" height="18"/>
   <text class="fig-label fig-on-mark" x="214" y="54" text-anchor="middle">Feedback</text>
   <text class="fig-note" x="214" y="73" text-anchor="middle">information, not water</text>

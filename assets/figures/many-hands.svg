@@ -4,33 +4,33 @@
 
   <g transform="translate(0,-10)">
 
-  <path class="fig-axis" d="M94,26 C160,26 190,106 238,106"/>
-  <path class="fig-axis" d="M94,58 C160,58 195,106 238,106"/>
-  <path class="fig-axis" d="M94,90 C160,90 200,106 238,106"/>
-  <path class="fig-axis" d="M94,122 C160,122 200,106 238,106"/>
-  <path class="fig-axis" d="M94,154 C160,154 195,106 238,106"/>
-  <path class="fig-axis" d="M94,186 C160,186 190,106 238,106"/>
+  <path class="fig-axis" d="M97,26 C160,26 190,106 238,106"/>
+  <path class="fig-axis" d="M97,58 C160,58 195,106 238,106"/>
+  <path class="fig-axis" d="M97,90 C160,90 200,106 238,106"/>
+  <path class="fig-axis" d="M97,122 C160,122 200,106 238,106"/>
+  <path class="fig-axis" d="M97,154 C160,154 195,106 238,106"/>
+  <path class="fig-axis" d="M97,186 C160,186 190,106 238,106"/>
 
   <g class="fig-ink">
-    <circle cx="90" cy="26" r="5.5"/>
-    <circle cx="90" cy="58" r="5.5"/>
-    <circle cx="90" cy="90" r="5.5"/>
-    <circle cx="90" cy="122" r="5.5"/>
-    <circle cx="90" cy="154" r="5.5"/>
-    <circle cx="90" cy="186" r="5.5"/>
+    <circle cx="93" cy="26" r="5.5"/>
+    <circle cx="93" cy="58" r="5.5"/>
+    <circle cx="93" cy="90" r="5.5"/>
+    <circle cx="93" cy="122" r="5.5"/>
+    <circle cx="93" cy="154" r="5.5"/>
+    <circle cx="93" cy="186" r="5.5"/>
     <circle cx="312" cy="106" r="5.5"/>
   </g>
-  <text class="fig-item" x="78" y="30.5" text-anchor="end">A target</text>
-  <text class="fig-item" x="78" y="62.5" text-anchor="end">A review</text>
-  <text class="fig-item" x="78" y="94.5" text-anchor="end">A sign-off</text>
-  <text class="fig-item" x="78" y="126.5" text-anchor="end">A default</text>
-  <text class="fig-item" x="78" y="158.5" text-anchor="end">A call script</text>
-  <text class="fig-item" x="78" y="190.5" text-anchor="end">A deadline</text>
+  <text class="fig-item" x="81" y="30.5" text-anchor="end">A target</text>
+  <text class="fig-item" x="81" y="62.5" text-anchor="end">A review</text>
+  <text class="fig-item" x="81" y="94.5" text-anchor="end">A sign-off</text>
+  <text class="fig-item" x="81" y="126.5" text-anchor="end">A default</text>
+  <text class="fig-item" x="81" y="158.5" text-anchor="end">A call script</text>
+  <text class="fig-item" x="81" y="190.5" text-anchor="end">A deadline</text>
 
   <rect class="fig-mark" x="230" y="92" width="28" height="28"/>
   <text class="fig-label" x="244" y="83" text-anchor="middle">One harm</text>
   <circle class="fig-ink" cx="244" cy="106" r="5.5"/>
-  <path class="fig-axis" d="M252,106 L293,106"/>
+  <path class="fig-axis" d="M254,106 L293,106"/>
   <path class="fig-arrow-ink" d="M293,101 L302,106 L293,111 Z"/>
   <text class="fig-label" x="312" y="132" text-anchor="middle">A customer</text>
   <text class="fig-note" x="12" y="214">No one decided it, and every part was a cause</text>

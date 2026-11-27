@@ -12,8 +12,8 @@
   <text class="fig-label" x="132" y="74.5" text-anchor="middle">Bags</text>
   <text class="fig-label" x="88" y="144.5" text-anchor="middle">Payments</text>
 
-  <path class="fig-axis" d="M168,105 L181,105"/>
-  <path class="fig-arrow-ink" d="M181,100 L190,105 L181,110 Z"/>
+  <path class="fig-axis" d="M169,105 L182,105"/>
+  <path class="fig-arrow-ink" d="M182,100 L191,105 L182,110 Z"/>
 
   <text class="fig-label" x="196" y="18">What they build</text>
   <text class="fig-label" x="272" y="46" text-anchor="middle">The seam</text>

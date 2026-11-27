@@ -1,26 +1,23 @@
-<svg class="fig" viewBox="0 0 360 240" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-champ-title">Two plans from the same start: one made step by step falls short, one worked back from the vision gets there.</title>
-  <desc id="fig-champ-desc">The same drawing twice. Each starts from today, at the lower left, and each has the same level drawn across its top: where the product needs to be. In the first, planned step by step, each step is planned from the last. The work climbs in two small steps, on time, and ends well below that level. The gap is shaded: on time, still short. In the second, planned from the destination, the vision is named first: it sits on that level, highlighted. A dotted arrow runs back from the vision to today, and the work climbs in two larger steps that land on it.</desc>
+<svg class="fig" viewBox="0 0 360 232" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-champ-title">Two plans from the same start: a straight line that falls short, and a curve worked back from the vision that reaches it.</title>
+  <desc id="fig-champ-desc">Two lines over the same time, both starting from today at the lower left. The vision sits at the upper right, highlighted, and a dotted arrow runs back from it to today: worked back from it. The first line, planned step by step, climbs in a straight line and ends, on time, about halfway up. The gap between its end and the vision is shaded: still short. The second, planned from the destination, stays low at first, while new investments take time to come online, then climbs steeply and reaches the vision.</desc>
 
-  <text class="fig-label" x="12" y="18">Step by step</text>
-  <text class="fig-note" x="12" y="33">each step planned from the last</text>
-  <text class="fig-note" x="348" y="50" text-anchor="end">Where it needs to be</text>
-  <path class="fig-guide" d="M24,58 L348,58"/>
-  <rect class="fig-loss" x="301" y="58" width="10" height="24"/>
-  <path class="fig-line" d="M24,94 L118,94 L118,88 L212,88 L212,82 L306,82"/>
-  <circle class="fig-ink" cx="24" cy="94" r="5.5"/>
-  <text class="fig-item" x="12" y="112">Today</text>
-  <text class="fig-note" x="348" y="101" text-anchor="end">On time, still short</text>
+  <text class="fig-label" x="348" y="26" text-anchor="end">The vision</text>
+  <rect class="fig-mark" x="316" y="36" width="28" height="28"/>
+  <path class="fig-return" d="M312,48 C230,40 73.2,105.3 33,174.4"/>
+  <path class="fig-arrow" d="M28.5,182.2 L37.3,176.9 L28.7,171.9 Z"/>
+  <text class="fig-note" x="112" y="58" text-anchor="middle">Worked back from it</text>
 
-  <text class="fig-label" x="12" y="142">From the destination</text>
-  <text class="fig-note" x="12" y="157">named first, then worked back</text>
-  <path class="fig-guide" d="M24,180 L348,180"/>
-  <rect class="fig-mark" x="306" y="166" width="28" height="28"/>
-  <path class="fig-return" d="M302,172 C220,156 69,181.4 38,206.6"/>
-  <path class="fig-arrow" d="M31,212.3 L41.2,210.5 L34.8,202.7 Z"/>
-  <path class="fig-line" d="M24,216 L118,216 L118,198 L212,198 L212,180 L312,180"/>
-  <circle class="fig-ink" cx="24" cy="216" r="5.5"/>
-  <circle class="fig-ink" cx="320" cy="180" r="5.5"/>
-  <text class="fig-label" x="348" y="160" text-anchor="end">The vision</text>
-  <text class="fig-item" x="12" y="234">Today</text>
+  <rect class="fig-loss" x="325" y="64" width="10" height="56"/>
+  <path class="fig-axis" d="M24,190 L330,120"/>
+  <path class="fig-line" d="M24,190 C170,190 268,170 318,58"/>
+  <circle class="fig-ink" cx="24" cy="190" r="5.5"/>
+  <circle class="fig-ink" cx="330" cy="50" r="5.5"/>
+
+  <text class="fig-label" x="348" y="146" text-anchor="end">Step by step</text>
+  <text class="fig-note" x="348" y="161" text-anchor="end">on time, still short</text>
+
+  <text class="fig-item" x="12" y="209">Today</text>
+  <text class="fig-label" x="66" y="209">From the destination</text>
+  <text class="fig-note" x="66" y="224">new investments take time to come online</text>
 </svg>

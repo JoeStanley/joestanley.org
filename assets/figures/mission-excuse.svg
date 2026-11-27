@@ -1,19 +1,19 @@
-<svg class="fig" viewBox="0 0 360 182" role="img" aria-labelledby="fig-mission-title fig-mission-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 174" role="img" aria-labelledby="fig-mission-title fig-mission-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-mission-title">The cost comes now, for certain, and the vision someday, maybe, with your line between them.</title>
-  <desc id="fig-mission-desc">Three things in a row. On the left, the cost, which comes now and for certain. An arrow marked "for the mission" runs from it toward the right. On the right, one large circle with a dotted outline: the vision, which may come someday. Between them stands a heavy line, where the arrow stops. It is highlighted: your line, drawn before anyone asks.</desc>
+  <desc id="fig-mission-desc">Three things in a row. On the left, the cost, which comes now and for certain. An arrow marked "For the mission" runs from it toward the right. On the right, one large circle with a dotted outline: the vision, which may come someday. Between them stands a heavy line, where the arrow stops. It is highlighted: your line, drawn before anyone asks.</desc>
 
-  <text class="fig-label" x="12" y="68">The cost</text>
-  <text class="fig-note" x="12" y="83">now, for certain</text>
-  <path class="fig-axis" d="M12,98 L150,98"/>
-  <path class="fig-arrow-ink" d="M150,93 L159,98 L150,103 Z"/>
-  <text class="fig-note" x="12" y="118">For the mission</text>
+  <text class="fig-label" x="12" y="60">The cost</text>
+  <text class="fig-note" x="12" y="75">now, for certain</text>
+  <path class="fig-axis" d="M12,90 L160,90"/>
+  <path class="fig-arrow-ink" d="M160,85 L169,90 L160,95 Z"/>
+  <text class="fig-note" x="12" y="110">For the mission</text>
 
-  <rect class="fig-mark" x="137.1" y="17" width="61.9" height="18"/>
-  <text class="fig-label fig-on-mark" x="168" y="30" text-anchor="middle">Your line</text>
-  <path class="fig-line" d="M168,44 L168,152"/>
-  <text class="fig-note" x="168" y="174" text-anchor="middle">drawn before anyone asks</text>
+  <rect class="fig-mark" x="147.1" y="9" width="61.9" height="18"/>
+  <text class="fig-label fig-on-mark" x="178" y="22" text-anchor="middle">Your line</text>
+  <path class="fig-line" d="M178,36 L178,144"/>
+  <text class="fig-note" x="178" y="166" text-anchor="middle">drawn before anyone asks</text>
 
-  <circle class="fig-return" cx="282" cy="98" r="56"/>
-  <text class="fig-label" x="282" y="96" text-anchor="middle">The vision</text>
-  <text class="fig-note" x="282" y="111" text-anchor="middle">someday, maybe</text>
+  <circle class="fig-return" cx="292" cy="90" r="56"/>
+  <text class="fig-label" x="292" y="88" text-anchor="middle">The vision</text>
+  <text class="fig-note" x="292" y="103" text-anchor="middle">someday, maybe</text>
 </svg>
