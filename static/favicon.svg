@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+<title>Joe Stanley</title>
+<!-- The site's icon (spec N4): a white J on a disc of the site's orange. The J is Libre Franklin 800's own outline
+     (SIL Open Font License 1.1), 19 units high, placed so its top and its stem fall on whole pixels at 16.
+     tools/make-icons.py makes the other icon files from this one. -->
+<circle cx="16" cy="16" r="16" fill="#c84b00"/>
+<path fill="#ffffff" transform="translate(9.843 24.747) scale(0.02527)" d="M401.99 -202.65Q401.99 -86.8 345.82 -38.4Q289.65 10 178.7 10Q146.32 10 116.69 5.97Q87.05 1.94 57.04 -3.79Q42.1 -6.65 35.43 -15.12Q28.75 -23.59 29.75 -42.11L38.75 -144.7Q40.61 -168.09 60.55 -165.09Q73.1 -163.26 87.43 -159.44Q101.75 -155.61 120.64 -155.61Q159.29 -155.61 179.58 -177.16Q199.88 -198.71 199.88 -252.32V-720.93Q199.88 -742 218.23 -742H385.36Q401.99 -742 401.99 -722.51V-202.65Z"/>
+</svg>
