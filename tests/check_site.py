@@ -587,6 +587,125 @@ def arrival_checks(out_dir):
             fail("N3", f"{rel}: names an image for its preview, though only the front door and the ReadMe do")
 
 
+# N4: the icon's made files, each with its size in pixels and whether the disc sits on white (a home screen) or alone.
+ICON_TAB = (16, 32, 48)
+ICON_HOME = {"apple-touch-icon.png": 180, "icon-192.png": 192, "icon-512.png": 512}
+ICON_ROOM = 5      # units of white round the 32-unit drawing on a home screen, as tools/make-icons.py draws it
+ICON_LINKS = [("icon", "/favicon.svg"), ("icon", "/favicon.ico"), ("apple-touch-icon", "/apple-touch-icon.png"),
+              ("manifest", "/site.webmanifest")]
+
+
+def icon_checks(out_dir):
+    """N4: one icon. The drawing holds a disc in the stylesheet's orange and a white letter and nothing else; every
+    page links the icon files; each made file has its size and shows the drawing's colors where the drawing puts them."""
+    from bs4 import BeautifulSoup
+    from PIL import Image
+    checked("N4")
+    cfg = yaml.safe_load(open(os.path.join(ROOT, "hugo.yaml")))
+    css = open(os.path.join(ROOT, "assets", "css", "base.css"), encoding="utf-8").read()
+    orange = hex_to_rgb(re.search(r"--orange:\s*(#[0-9a-fA-F]{3,6})", css).group(1))   # the light value comes first
+    white = (255, 255, 255)
+
+    def near(a, b, tol):
+        return all(abs(x - y) <= tol for x, y in zip(a[:3], b))
+
+    # The drawing
+    src = os.path.join(ROOT, "static", "favicon.svg")
+    if not os.path.exists(src):
+        fail("N4", "static/favicon.svg, the icon's drawing, is missing")
+        return
+    svg = open(src, encoding="utf-8").read()
+    soup = BeautifulSoup(svg, "html.parser")
+    root = soup.select_one("svg")
+    shapes = [t for t in root.find_all(True) if t.name not in ("title", "desc")] if root else []
+    circles = [t for t in shapes if t.name == "circle"]
+    paths = [t for t in shapes if t.name == "path"]
+    if not root or root.get("viewbox", root.get("viewBox")) != "0 0 32 32":
+        fail("N4", "the drawing is not on the 32-unit square the made files are placed by")
+    if len(circles) != 1 or len(paths) != 1 or len(shapes) != 2:
+        fail("N4", f"the drawing holds {len(shapes)} shapes, not one disc and one letter")
+    else:
+        c = circles[0]
+        if (c.get("cx"), c.get("cy"), c.get("r")) != ("16", "16", "16"):
+            fail("N4", "the disc is not a true circle filling the drawing")
+        if hex_to_rgb(c.get("fill", "#000")) != orange:
+            fail("N4", f"the disc is {c.get('fill')}, not the stylesheet's orange")
+        if hex_to_rgb(paths[0].get("fill", "#000")) != white:
+            fail("N4", f"the letter is {paths[0].get('fill')}, not white")
+    for h in set(re.findall(r"#[0-9a-fA-F]{3,6}\b", re.sub(r"<!--.*?-->", "", svg, flags=re.S))):
+        if hex_to_rgb(h) not in (orange, white):
+            fail("N4", f"the drawing uses a third color, {h}")
+
+    # Every page's head, the 404 page's among them
+    files = glob.glob(os.path.join(out_dir, "**", "index.html"), recursive=True) + [os.path.join(out_dir, "404.html")]
+    for f in sorted(files):
+        if not os.path.exists(f):
+            continue
+        rel = "/" + os.path.relpath(f, out_dir).replace(os.sep, "/")
+        head = BeautifulSoup(open(f, encoding="utf-8").read(), "html.parser").select_one("head")
+        links = {(r, l.get("href")) for l in (head.select("link[rel][href]") if head else []) for r in l.get("rel", [])}
+        for want in ICON_LINKS:
+            if want not in links:
+                fail("N4", f"{rel}: its head does not link {want[1]}")
+    for _, href in ICON_LINKS:
+        if not os.path.exists(os.path.join(out_dir, href.lstrip("/"))):
+            fail("N4", f"{href} is not built")
+
+    # The made files: each frame's size, and the drawing's colors where the drawing puts them. In the drawing's own
+    # units the disc's centre is (16, 16); (16, 3) is disc above the letter, and (17.5, 14) is the letter's stem.
+    def look(im, name, home):
+        w = im.size[0]
+        room = ICON_ROOM if home else 0
+        at = lambda x, y: im.getpixel((min(w - 1, int((x + room) * w / (32 + 2 * room))), min(w - 1, int((y + room) * w / (32 + 2 * room)))))
+        tol = 12 if w <= 16 else 3          # the smallest frame's pixels are blends at its edges
+        if not near(at(16, 3), orange, tol):
+            fail("N4", f"{name}: no orange disc where the drawing has one, so it is out of step with the drawing")
+        if not near(at(17.5, 14), white, tol):
+            fail("N4", f"{name}: no white letter where the drawing has one, so it is out of step with the drawing")
+        corner = im.getpixel((0, 0))
+        if home and (im.mode != "RGB" or not near(corner, white, 0)):
+            fail("N4", f"{name}: the disc does not sit on solid white, as a home screen needs")
+        if not home and (im.mode != "RGBA" or corner[3] != 0):
+            fail("N4", f"{name}: the disc does not stand alone, with nothing behind it")
+        if not home:   # the letter stands about six tenths of the disc high
+            ys = [y for y in range(w) for x in range(w) if near(im.getpixel((x, y)), white, 40) and im.getpixel((x, y))[3] > 200]
+            tall = (max(ys) - min(ys) + 1) / w if ys else 0
+            if not 0.5 <= tall <= 0.68:
+                fail("N4", f"{name}: the letter stands {tall:.2f} of the disc high, not about six tenths")
+
+    ico = os.path.join(out_dir, "favicon.ico")
+    if os.path.exists(ico):
+        im = Image.open(ico)
+        sizes = sorted(s[0] for s in im.ico.sizes())
+        if sizes != sorted(ICON_TAB):
+            fail("N4", f"favicon.ico holds the sizes {sizes}, not {sorted(ICON_TAB)}")
+        for s_ in sizes:
+            look(im.ico.getimage((s_, s_)).convert("RGBA"), f"favicon.ico at {s_}", home=False)
+    for name, size in ICON_HOME.items():
+        f = os.path.join(out_dir, name)
+        if not os.path.exists(f):
+            fail("N4", f"{name} is not built")
+            continue
+        im = Image.open(f)
+        if im.size != (size, size):
+            fail("N4", f"{name} is {im.size[0]} by {im.size[1]} pixels, not {size} square")
+        else:
+            look(im, name, home=True)
+    man = os.path.join(out_dir, "site.webmanifest")
+    if os.path.exists(man):
+        try:
+            m = json.load(open(man, encoding="utf-8"))
+        except ValueError:
+            fail("N4", "site.webmanifest does not parse")
+            m = {}
+        if m and m.get("name") != cfg.get("title"):
+            fail("N4", "site.webmanifest does not carry the site's name")
+        named = {(i.get("src"), i.get("sizes")) for i in m.get("icons") or []}
+        for name, size in ICON_HOME.items():
+            if name.startswith("icon-") and (f"/{name}", f"{size}x{size}") not in named:
+                fail("N4", f"site.webmanifest does not name /{name} at {size}x{size}")
+
+
 def start_checks(out_dir):
     """S19: Start invites the reader to write to the owner, in a paragraph after How it works, its link's text
     the address itself, so a reader whose browser opens no mail app can still copy it."""
@@ -5137,6 +5256,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("N1", "N2", "N3"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("N4"):
+        try:
+            icon_checks(out_dir)
+        except Exception as e:  # a broken file must fail its rule, not stop the suite
+            fail("N4", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S19"):
         try:
             start_checks(out_dir)
