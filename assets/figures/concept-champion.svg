@@ -1,19 +1,21 @@
-<svg class="fig" viewBox="0 0 360 224" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-champ-title">Two plans from the same start: a straight line that falls short, and a curve worked back from the vision.</title>
-  <desc id="fig-champ-desc">Two lines over the same time, both starting from today at the lower left. The vision sits at the upper right, highlighted. The first line, planned step by step, climbs in a straight line and ends, on time, about halfway up. The gap between its end and the vision is shaded: still short. The second, planned from the destination, stays low at first, while new investments come online, crosses the straight line about halfway along, then climbs steeply. It is planned to reach the vision.</desc>
+<svg class="fig" viewBox="0 0 360 230" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-champ-title">Two plans from the same start: a straight line that falls short, and a curve planned back from a vision someone holds.</title>
+  <desc id="fig-champ-desc">Two lines over the same time, both starting from today at the lower left. The vision sits at the upper right, highlighted: someone has to hold it. The first line, planned from the last step, climbs in a straight line and ends, on time, about halfway up. The gap between its end and the vision is shaded: still short. The second, planned from the vision, stays low at first, while new investments come online, crosses the straight line about halfway along, then climbs steeply toward the vision, if the investments land.</desc>
 
-  <text class="fig-label" x="348" y="18" text-anchor="end">The vision</text>
-  <rect class="fig-mark" x="316" y="28" width="28" height="28"/>
-  <rect class="fig-loss" x="330" y="56" width="10" height="56"/>
-  <path class="fig-axis" d="M24,182 L330,112"/>
-  <path class="fig-line" d="M24,182 C130,182 235,142 330,42"/>
-  <circle class="fig-ink" cx="24" cy="182" r="5.5"/>
-  <circle class="fig-ink" cx="330" cy="42" r="5.5"/>
+  <text class="fig-label" x="312" y="28" text-anchor="end">The vision</text>
+  <text class="fig-note" x="312" y="43" text-anchor="end">someone has to hold it</text>
+  <rect class="fig-mark" x="320" y="18" width="28" height="28"/>
+  <rect class="fig-loss" x="334" y="46" width="14" height="56"/>
+  <path class="fig-axis" d="M24,172 L334,102"/>
+  <path class="fig-line" d="M24,172 C131,172 238,132 334,32"/>
+  <circle class="fig-ink" cx="24" cy="172" r="5.5"/>
+  <circle class="fig-ink" cx="334" cy="32" r="5.5"/>
 
-  <text class="fig-label" x="348" y="142" text-anchor="end">Step by step</text>
-  <text class="fig-note" x="348" y="157" text-anchor="end">on time, still short</text>
+  <text class="fig-label" x="348" y="143" text-anchor="end">From the last step</text>
+  <text class="fig-note" x="348" y="158" text-anchor="end">on time, still short</text>
 
-  <text class="fig-item" x="12" y="201">Today</text>
-  <text class="fig-label" x="96" y="201">From the destination</text>
-  <text class="fig-note" x="96" y="216">slow while new investments come online</text>
+  <text class="fig-item" x="12" y="191">Today</text>
+  <text class="fig-label" x="96" y="191">From the vision</text>
+  <text class="fig-note" x="96" y="206">slow while new investments come online,</text>
+  <text class="fig-note" x="96" y="221">steep if they land</text>
 </svg>

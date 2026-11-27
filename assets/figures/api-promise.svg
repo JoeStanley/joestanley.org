@@ -1,6 +1,6 @@
 <svg class="fig" viewBox="0 0 360 206" role="img" aria-labelledby="fig-promise-title fig-promise-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-promise-title">Callers build on what an API documents and on what it happens to do.</title>
-  <desc id="fig-promise-desc">A weather API documents two things, temperature in degrees Celsius and rain in millimeters, and all three of its callers, a farm app, an airline and a delivery firm, use them, on solid lines. It also does two things nobody promised: it returns readings in order, and it gives dates in UTC. Dotted lines show that the farm app counts on the order and the delivery firm on UTC dates. The order is marked: change it, and the farm app breaks.</desc>
+  <desc id="fig-promise-desc">A weather API documents two things, temperature in degrees Celsius and rain in millimeters, and all three of its callers, a farm app, an airline and a delivery firm, use them, on solid lines. It also does two things nobody promised: it returns readings in order, and it gives dates in UTC. Dotted lines show that the farm app counts on both. The order is marked: change it, and the farm app breaks.</desc>
 
   <text class="fig-label" x="87" y="18" text-anchor="middle">The API</text>
   <text class="fig-label" x="294" y="18" text-anchor="middle">Its callers</text>
@@ -17,10 +17,10 @@
   <text class="fig-item" x="24" y="158">Dates in UTC</text>
 
   <path class="fig-axis" d="M162,78 L240,54"/>
-  <path class="fig-axis" d="M162,78 L240,104"/>
+  <path class="fig-axis" d="M162,78 L240,97"/>
   <path class="fig-axis" d="M162,78 L240,148"/>
-  <path class="fig-return" d="M162,137 L240,110"/>
-  <path class="fig-return" d="M162,156 L240,116"/>
+  <path class="fig-return" d="M162,137 L240,104"/>
+  <path class="fig-return" d="M162,156 L240,111"/>
 
   <rect class="fig-pipe" x="240" y="40" width="108" height="28" rx="6"/>
   <rect class="fig-pipe" x="240" y="90" width="108" height="28" rx="6"/>
