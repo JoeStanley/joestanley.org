@@ -227,16 +227,20 @@
 .kind-icon { display: inline-block; width: 1.05em; height: 1.05em; margin-right: 0.4em; vertical-align: -0.14em; }
 
 /* Concept cards */
-.plate { margin: 0; padding: var(--sp-4); background: var(--panel); }
+/* A picture fills its panel at every width, and its own margin (12 of its 360 units) is the panel's padding at the
+   sides; the caption starts where the picture's words start, so the two share one left edge (spec F2). */
+.plate { margin: 0; padding: var(--sp-4) 0; background: var(--panel); }
 .plate::after { content: ""; display: block; clear: both; }
 /* A picture's caption sits under it at every width; in print, beside it. */
-.plate-caption { margin: var(--sp-3) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
+.plate-caption { margin: var(--sp-3) 0 0; padding: 0 calc(100% / 30); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
 /* A sentence in its author's words in the picture's place (spec S16): large, in the reading face, credited below. */
+.plate-quote { padding: var(--sp-4); }
+.plate-quote .plate-caption { padding: 0; }
 .plate-quote-text { margin: 0; padding: 0; border: 0; }
 .plate-quote-text p { margin: 0; font: var(--w-regular) var(--fs-head)/var(--lh-text) var(--text); text-wrap: pretty; }
-/* A picture is drawn 360 units wide and shown at most 30rem wide, centered. On a phone it runs the panel's full
-   width, through the panel's padding, so its words reach 12px (spec F2); its own margin stands in for the padding. */
-.fig { display: block; width: min(100% + 2 * var(--sp-4), 30rem); max-width: none; height: auto; margin: 0 0 0 max(-1 * var(--sp-4), (100% - 30rem) / 2); font-family: var(--ui); }
+/* A picture is drawn 360 units wide and fills its panel, so its words are 12px on a phone, the floor for words in a
+   chart (spec F2), and the size of the reading text on a wide screen. */
+.fig { display: block; width: 100%; max-width: none; height: auto; margin: 0; font-family: var(--ui); }
 /* Pictures share one grammar (spec F1), so every mark means the same thing on every card. Each class below is one
    mark with one job; a picture file uses these classes and sets no color, size or weight itself (C7, F1).
    Colors of a picture's own (spec C7) are named here, each with a value for dark screens, so the family can be read
@@ -440,7 +444,8 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
   .game { margin-left: 0; margin-right: 0; padding: var(--sp-5); border-radius: 0.4rem; }
 }
 @media (min-width: 64rem) {
-  .plate { padding: var(--sp-5); }
+  .plate { padding: var(--sp-5) 0; }
+  .plate-quote { padding: var(--sp-5); }
   /* A step's or a source's note comes after its description in the text (so on a phone the title stays with its time),
      but in the margin it sits level with the title, and takes no room in the column. */
   /* Where :has() is missing, a step's note stays in the column, under its step, as on a phone. */
@@ -471,7 +476,8 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
     .reading .deeper-list > li > .note { anchor-name: --deeper-note; top: max(anchor(--deeper-source top), calc(anchor(--deeper-note bottom, -100vh) + var(--sp-4))); }
   }
   /* A note inside a panel reaches past the panel's padding to the same margin as every other note. */
-  .reading .plate > .note, .reading .game .note { margin-right: calc(-1 * (var(--margin) + var(--gutter) + var(--sp-5))); }
+  .reading .plate > .note { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
+  .reading .game .note { margin-right: calc(-1 * (var(--margin) + var(--gutter) + var(--sp-5))); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -583,7 +589,7 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
   .card .plate { margin: var(--sp-3) 0 0; padding: var(--sp-3) 14pt; display: grid; grid-template-columns: 2.85in 1fr; column-gap: 20pt; align-items: center; }
   /* A tall picture gives up width before it costs the card its page (P1). */
   .card .plate .fig { grid-column: 1; grid-row: 1; width: auto; max-width: 100%; max-height: 1.6in; margin: 0; justify-self: center; }
-  .card .plate .plate-caption { grid-column: 2; grid-row: 1; margin: 0; font-size: var(--fs-body); }
+  .card .plate .plate-caption { grid-column: 2; grid-row: 1; margin: 0; padding: 0; font-size: var(--fs-body); }
   .card .plate > .note { grid-column: 1 / -1; grid-row: 2; margin: var(--sp-2) 0 0; }
   .card-body { columns: 2; column-gap: 22pt; margin-top: var(--sp-4); }
   .card-body h2 { margin-top: var(--sp-4); }

@@ -3711,8 +3711,8 @@ FIG_ONLY_IN = {"fig-ramp-1": "access-patterns.svg", "fig-ramp-2": "access-patter
 
 def picture_checks(out_dir):
     """F1 in each picture's source: only the grammar's marks, one key moment in yellow, one arrowhead, the dot and
-    corner scales. F2 in a browser, on every card at 390 pixels: the picture runs its panel's width, no word under 12
-    pixels, no text overlapping or running out, and words on the yellow in the highlighter's ink, readable in dark."""
+    corner scales. F2 in a browser, on every card: the picture fills its panel and its caption shares its left edge, at 390 and
+    1280 pixels; at 390, no word under 12 pixels, no text overlapping or running out, and words on the yellow in the highlighter's ink, readable in dark."""
     from bs4 import BeautifulSoup
     checked("F1", "F2")
     pm_css = re.sub(r"/\*.*?\*/", "", open(os.path.join(ROOT, "assets", "css", "pm.css"), encoding="utf-8").read(), flags=re.S)
@@ -3798,12 +3798,25 @@ def picture_checks(out_dir):
       const texts = [...svg.querySelectorAll('text')].map(t => { const b = t.getBoundingClientRect();
         return {s: t.textContent.trim(), x: b.left, y: b.top, w: b.width, h: b.height, px: parseFloat(getComputedStyle(t).fontSize) * sb.width / svg.viewBox.baseVal.width,
                 fill: fill(t), on: has(t, 'fig-on-mark'), num: has(t, 'fig-num')}; });
-      return {plate: plate.width, left: sb.left, top: sb.top, w: sb.width, h: sb.height, marks, texts}; }"""
+      const cap = svg.closest('figure').querySelector('.plate-caption'), cb = cap ? cap.getBoundingClientRect() : null;
+      return {plate: plate.width, left: sb.left, top: sb.top, w: sb.width, h: sb.height, marks, texts,
+              cap: cb ? cb.left + parseFloat(getComputedStyle(cap).paddingLeft) : null}; }"""
     chrome = os.environ.get("CHROME")
     srv = Server(out_dir)
     try:
         with sync_playwright() as p:
             b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            # at a wide screen too, the picture fills its panel and the caption starts where its words do
+            ctx = b.new_context(viewport={"width": 1280, "height": 900}); pg = ctx.new_page()
+            for html in cards:
+                card = os.path.basename(os.path.dirname(html))
+                pg.goto(f"{srv.base}/pm/cards/{card}/"); pg.wait_for_load_state("load")
+                d = pg.evaluate(probe)
+                if d and d["w"] < d["plate"] - 1:
+                    fail("F2", f"card {card}: at 1280 pixels the picture is {d['w']:.0f} pixels wide in a panel of {d['plate']:.0f}")
+                if d and d["cap"] is not None and abs(d["cap"] - (d["left"] + d["w"] / 30)) > 1.5:
+                    fail("F2", f"card {card}: at 1280 pixels the caption starts {d['cap'] - (d['left'] + d['w'] / 30):+.0f} pixels from where the picture's words start")
+            ctx.close()
             for scheme in ("light", "dark"):
                 ctx = b.new_context(viewport={"width": 390, "height": 900}, color_scheme=scheme); pg = ctx.new_page()
                 for html in cards:
@@ -3824,6 +3837,8 @@ def picture_checks(out_dir):
                         continue
                     if d["w"] < d["plate"] - 1:
                         fail("F2", f"card {card}: at 390 pixels the picture is {d['w']:.0f} pixels wide in a panel of {d['plate']:.0f}")
+                    if d["cap"] is not None and abs(d["cap"] - (d["left"] + d["w"] / 30)) > 1.5:
+                        fail("F2", f"card {card}: at 390 pixels the caption starts {d['cap'] - (d['left'] + d['w'] / 30):+.0f} pixels from where the picture's words start")
                     small = [t for t in d["texts"] if t["px"] < 12]
                     if small:
                         fail("F2", f"card {card}: \"{small[0]['s']}\" is set at {small[0]['px']:.1f} pixels on a phone, under 12")
