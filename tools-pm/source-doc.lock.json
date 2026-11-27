@@ -5,10 +5,10 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "4037e91c556b2c8c2e9cbb7594d0f0a51713337233ce36b71e4d4981d5b1d097",
+   "sha256": "774b99f5201cc9aa24c67cb590ed8a04ae5052e6fe68848770366456299b2f55",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 67
+   "rev": 68
   },
   {
    "name": "ReadMe",
@@ -149,10 +149,10 @@
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "e87271d02a02672dbf5f8ca4a29db96c521e9cfa15e697cb1544705e6d78b533",
+   "sha256": "a0addb620f3b8cdc9db75522c3c33b7f50744d17e8218638d0187f3450cdd50a",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 18
+   "rev": 20
   }
  ]
 }

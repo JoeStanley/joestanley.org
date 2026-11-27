@@ -30,8 +30,7 @@ HEAD = """# Margin notes for {title}.
 # Keep the slot names as they are. After a unit changes, run tools-pm/margin-slots.py to add new slots;
 # it keeps every note already written.
 """
-NAMES = {"top": "Beside the title", "intro": "The opening paragraphs", "picture": "The picture",
-         "question": "One question to carry"}
+NAMES = {"top": "Beside the title", "intro": "The opening paragraphs", "question": "One question to carry"}
 
 
 def label(el, slot):

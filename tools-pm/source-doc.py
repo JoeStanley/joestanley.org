@@ -16,7 +16,8 @@ reader meets, template wording included. A draft's tab is its file in drafts/pm/
 question the map gives it. A voice slot (spec X4) shows its interim words in place, as the page does, and then its
 own block: the brief and the owner's old words. The second tab, after About, is the owner's ReadMe, made from its built
 page with its structure kept, so he can revise it there (spec X2). The last tab, "Your voice pass", lists every open slot and every
-word of his that moved (data/pm/voice-slots.yaml). Needs PyYAML and beautifulsoup4.
+word of his that moved, with what his pass settles first (data/pm/voice-slots.yaml) and every margin slot still
+empty last (data/pm/margin/). Needs PyYAML and beautifulsoup4.
 """
 import copy, datetime, hashlib, json, os, re, sys
 
@@ -42,7 +43,47 @@ PENDING = []   # slots met in the text since the last block was written, so each
 
 def voice():
     v = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "voice-slots.yaml"), encoding="utf-8")) or {}
-    return {"slots": v.get("slots") or [], "moved": v.get("moved") or []}
+    return {"settle": v.get("settle") or [], "slots": v.get("slots") or [], "moved": v.get("moved") or []}
+
+
+# ---------- margin slots (spec M4), for the voice pass ----------
+MARGIN = os.path.join(ROOT, "data", "pm", "margin")
+SLOT_KEY = re.compile(r"^([a-z0-9][a-z0-9-]*):")
+
+
+def margin_slots(unit):
+    """A unit's margin slots in reading order, each (key, its part's name as the margin file gives it, holds a note)."""
+    path = os.path.join(MARGIN, unit + ".yaml")
+    if not os.path.exists(path):
+        return []
+    data = yaml.safe_load(open(path, encoding="utf-8")) or {}
+    out, name = [], None
+    for line in open(path, encoding="utf-8"):
+        if line.startswith("# ") and not line.startswith("#  "):
+            name = line[2:].strip()
+        m = SLOT_KEY.match(line)
+        if m and m.group(1) in data:
+            out.append((m.group(1), name or m.group(1), bool(data[m.group(1)])))
+            name = None
+    return out
+
+
+def margin_line(unit, name, card=False):
+    """One unit's empty margin slots, as the voice pass lists them: its name, how many are empty, and which. A card
+    whose every slot is empty says so in a word, since every card has the same parts, named once above the list."""
+    slots = margin_slots(unit)
+    empty = [(k, label) for k, label, held in slots if not held]
+    if not empty:
+        return None
+    if card and len(empty) == len(slots):
+        return f"**{name}**, all {len(slots)} empty."
+    parts = [label for k, label in empty]
+    if unit == "glossary":   # its terms by count, not 58 names in a row
+        terms = set((yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "glossary.yaml"), encoding="utf-8")) or {}).keys())
+        open_terms = [label for k, label in empty if k in terms]
+        if len(open_terms) == len([k for k, _, _ in slots if k in terms]):
+            parts = [label for k, label in empty if k not in terms] + [f"each of its {len(open_terms)} terms"]
+    return f"**{name}**, {len(empty)} of {len(slots)} empty: " + "; ".join(parts) + "."
 
 
 def slot_block(sid):
@@ -441,17 +482,24 @@ def about_tab(mods, synced):
         "Comment on any line, or edit it. A Claude Code session carries your comments and edits into the repository, then puts the result back here, so the two stay the same. The checks in the repository fail if a tab falls out of step.",
         "| Tab | Where it stands | Its source in the repository |\n| --- | --- | --- |\n| ReadMe | On the site, in your own words. | `content/page/readme.md` |\n| Start | Built, and on the site. | `content/pm/_index.md`, with the list of modules from `data/pm/modules.yaml` |\n"
         + "\n".join(rows) + f"\n| {CLOSING_TAB} | Built, and on the site. | `content/pm/the-compass.md`, with the arc from `data/pm/arc.yaml` |\n| Glossary | Built, and on the site. | `data/pm/glossary.yaml` |",
-        f"The last tab, {VOICE_TAB}, lists every passage that waits for your voice and every word of yours a session cut, moved or changed, so your final pass starts from one list. A passage that waits shows a block in its own tab too, where you read it.",
+        f"The last tab, {VOICE_TAB}, is where your final pass starts: what it's asked to settle, every passage that waits for your voice, every word of yours a session cut, moved or changed, and every margin slot still empty. A passage that waits shows a block in its own tab too, where you read it.",
         "The pictures on the cards are not shown here, only their captions. The Notes tabs at the end are working notes from before 20 November 2026, kept as history. Decisions for you now wait on the [Decisions page](https://claude.ai/artifact/QGLpeYcbz14tPBAPiQSYGq), and what comes next is in `PLAN.md` in the private pm-sources repository.",
     ])
 
 
-def voice_tab():
-    """The owner's voice pass in one list (spec X4): every open slot, then every word of his that moved."""
+def voice_tab(units=()):
+    """The owner's voice pass in one list (spec X4): what his pass settles, every open slot, every word of his that
+    moved, and every margin slot still empty, unit by unit. units: (unit key, its name here), in reading order."""
     v = voice()
     out = [f"# {VOICE_TAB}",
-           "Everything that waits for you in your final voice pass, in one place. A voice slot is a passage that needs your voice: the site shows its interim words for now, and its tab shows a block with what the passage must do. Below them, every passage of your words a session cut, moved or changed since you opened your words to agents on 22 November 2026, with where it went and why. Nothing here is written as you.",
-           "## Open voice slots"]
+           "Everything that waits for you in your final pass, in one place, in four parts: what your pass is asked to settle; each voice slot, a passage that needs your voice, where the site shows interim words for now and the passage's own tab shows a block with what it must do; every passage of your words a session cut, moved or changed since you opened your words to agents on 22 November 2026, with where it went and why; and every margin slot still empty. Nothing here is written as you. Once you've been through it, a session carries in everything you leave here, in the preview and on the Decisions page, as one job.",
+           "## What your pass settles",
+           "What your pass is asked to decide or write, the most pressing first. Each says where it is, and gives the pick of a session or its readers where there is one, for you to keep or overrule."]
+    for i, e in enumerate(v["settle"], 1):
+        out.append(f"{i}. **{clean(str(e.get('what', ''))).strip()}.** {clean(str(e.get('where', ''))).strip()}. {clean(str(e.get('ask', ''))).strip()}")
+    if not v["settle"]:
+        out.append("Nothing yet.")
+    out.append("## Open voice slots")
     for s_ in v["slots"]:
         out += [f"**In {s_.get('unit')}.**", slot_block(s_.get("id"))]
     if not v["slots"]:
@@ -462,6 +510,15 @@ def voice_tab():
     for e in v["moved"]:
         out.append(f"**{str(e.get('what', '')).capitalize()}, {e.get('when')}.** From {e.get('from')}. To {e.get('to')}. {e.get('why')}")
         out.append("> " + clean(e.get("words") or "").strip())
+    cards = [u for u, n in units if n.startswith("Card: ")]
+    lines = [l for l in (margin_line(u, n, u in cards) for u, n in units) if l]
+    held = sum(1 for u, _ in units for _, _, h in margin_slots(u) if h)
+    total = sum(len(margin_slots(u)) for u, _ in units)
+    card_parts = "; ".join(label for _, label, _ in margin_slots(cards[0])) if cards else ""
+    out += ["## Margin slots still empty",
+            f"Every part of every unit has a slot for a note in your margin, except a card's picture, since you'll never write notes for the visuals. {held} of {total} hold a note today. Below, unit by unit in reading order, the parts still empty, by the names their files in `data/pm/margin/` give them, each card after its module."
+            + (f" A card's parts are the same on every card: {card_parts}." if card_parts else "")]
+    out += lines or ["None: every slot holds a note."]
     return "\n\n".join(out)
 
 
@@ -488,7 +545,17 @@ def tabs(site, synced=None):
     if closing and closing in arts:
         out.append((CLOSING_TAB, "\n\n".join(closing_tab(arts[closing]) + flush())))
     out.append(("Glossary", "\n\n".join(glossary_tab(arts["glossary"]) + flush())))
-    out.append((VOICE_TAB, voice_tab()))
+    units = [("start", "Start")]
+    for m in mods:
+        if m.get("page"):
+            units.append((m["page"], f"{m['num']} {m['title']}"))
+            for a in arts.values():
+                if "card" in a["class"] and a.get("data-module") == m["id"]:
+                    units.append((a["data-unit"], "Card: " + " ".join(a.find("h1").get_text(" ", strip=True).split())))
+    if closing and closing in arts:
+        units.append((closing, CLOSING_TAB))
+    units.append(("glossary", "Glossary"))
+    out.append((VOICE_TAB, voice_tab(units)))
     return [(n, re.sub(r"\n{3,}", "\n\n", t.translate(QUOTES)).strip() + "\n") for n, t in out]
 
 

@@ -12,16 +12,15 @@
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
 
+  {{- /* The picture carries no margin slot: the owner writes no notes for the visuals (spec M4). */}}
   {{ with $p.Params.figure }}
-  <figure class="plate" data-slot="picture">
-    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "picture") }}
+  <figure class="plate">
     {{ (resources.Get (printf "figures/%s.svg" .)).Content | safeHTML }}
     {{ with $p.Params.figure_caption }}<figcaption class="plate-caption">{{ . }}</figcaption>{{ end }}
   </figure>
   {{ else }}{{ with $p.Params.figure_quote }}
   {{- /* A sentence in its author's words in the picture's place, credited under it (spec S16). */}}
-  <figure class="plate plate-quote" data-slot="picture">
-    {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "picture") }}
+  <figure class="plate plate-quote">
     <blockquote class="plate-quote-text"><p>{{ .text }}</p></blockquote>
     <figcaption class="plate-caption">{{ .by }}, {{ with .url }}<a href="{{ . }}">{{ end }}<cite>{{ .work }}</cite>{{ with .url }}</a>{{ end }}{{ with .year }} ({{ . }}){{ end }}</figcaption>
   </figure>

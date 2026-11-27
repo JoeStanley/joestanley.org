@@ -1,7 +1,13 @@
-# Voice slots, and the owner's words that moved (spec X4).
+# What the owner's pass settles, voice slots, and the owner's words that moved (spec X4).
 # Until Joe's final voice pass, sessions may cut, move or reword his words in the syllabus, and never write as him.
-# Where a passage needs his voice, a slot holds its place. The working doc's "Your voice pass" tab lists every open
-# slot and everything under moved:, so his pass starts from one list.
+# Where a passage needs his voice, a slot holds its place. The working doc's "Your voice pass" tab lists everything
+# under settle:, every open slot, everything under moved: and every empty margin slot, so his pass starts from one list.
+#
+# settle: one entry for each thing his pass is asked to decide or write, in order, the most pressing first.
+#   what:   a short name for it
+#   where:  where it is, as a phrase that starts "In" or "On" (a tab's name, a part of it, the preview)
+#   ask:    what's asked, the options, and the pick of a session or its readers where there is one
+# When his pass has settled one, delete the entry.
 #
 # slots: one entry a slot.
 #   id:       a short name, used in the unit: {{< pm/voice "id" >}}, in a sentence or as a paragraph of its own
@@ -19,6 +25,59 @@
 #   why:    the reason, in a line
 #   when:   the day
 # The list stays until his pass has been through it.
+
+settle:
+  - what: Mission Excuse's picture
+    where: In 10 Answer for What You Build, on the Mission Excuse card
+    ask: "Your alternative, which you said on 27 November you'd write out, since the cut-back picture still isn't intuitive in what to read and where, and its words all feel equally important. It stays as drawn until then, and the session that carries your pass in draws yours to the pictures' grammar (spec F1), keeping what you prescribe. What three rounds of readers found in the current one, for whatever you draw: read left to right it goes cost, line, vision, so the line seems to block the vision, the very frame the card warns about; the arrow could be the cost growing or the excuse pushing; the vision, the uncertain part, is the largest shape; \"For the mission,\" the excuse the card is named for, is its quietest words; and the card's own test, \"Would you still do this if the vision never came true?\" is nowhere in it."
+  - what: Your voice in the body text
+    where: In every unit, starting from the open voice slots and your words that moved, below
+    ask: "Two blind readers who compared versions of the course missed your first-person practice, and a voice editor found its warmth almost all in your lines. Each open slot below is a place it goes back, with a brief and the session's suggestion; then any of your words below that a session cut, moved or changed. Revise any other sentence you like as you go. Publishing fails while a slot is open."
+  - what: The front door's line
+    where: On the front door, which has no tab here
+    ask: "A line naming the syllabus, yours to write (your pick of 25 November, over leaving the front door spare or being offered wordings). Today the front door doesn't name the course; the menu calls it On Judgment. Write it in a comment on this tab, or in the session."
+  - what: The spine, named on Start
+    where: In Start, the voice slot what-judgment-is
+    ask: "Say what product judgment is, since the course is named for it. Readers found the course's clearest account of the skill only at its end, in The Compass's question, \"Which question does the call in front of you need?\" and in where to draw the line. The slot's brief carries their suggestion."
+  - what: The prophets paragraph
+    where: In 10 Answer for What You Build, Why this matters, the paragraph on the pull from inside
+    ask: "Keep it at full size, as you picked on 23 November after research, or trim its four quotes (Andreessen, Johnson, Rubenstein, Resnikoff) and keep the rest, the Mission Excuse card and Erika Cheung's talk included. Three readers found it reads like an op-ed and will date, and the target reader would stop there and miss the test left out \"just this once.\" The readers would trim it."
+  - what: The Compass's second walk
+    where: In The Compass, One call, walked through
+    ask: "Keep both walks, or give the platform as a paragraph of what differs. A reader on the site sees one, picked with a button, but print and this doc show both, and the two share about twelve sentence frames word for word. Readers offered a second fix: start the walk from Own Your Role's \"in order to,\" which never comes back after Decide and Set Direction."
+  - what: Meadows's evidence tag
+    where: "In 2 See the System, the short path, Meadows's \"Leverage Points,\" Why trust it"
+    ask: "Your line opens with the tag Experience. Three readers would tag it as an argument, since she calls her ranking tentative herself. The spec files a practitioner's account under Experience and an essay that makes a case under An argument. The line is on your words that moved, below."
+  - what: If you read one
+    where: On every module's full path, once it's opened
+    ask: "Each of the thirteen names one book or article for a reader with one evening, picked by a session with its reason. You kept the twelve on 26 November, Warfighting included; Map the Domain's pick, Designing Data-Intensive Applications, came the same day. Change any you like."
+  - what: Your own lines that readers flagged
+    where: In 0 Own Your Role, 5 Map the Domain and 12 Bring People With You
+    ask: "Readers stopped at these, each yours, so each waits for you. In Own Your Role, \"the incomparable Bernadette Peters,\" \"a bit composer, a bit conductor,\" \"Cultivate it, share it\" and \"Now with all this said.\" In Map the Domain, Brazil's last sentence, which two readers found circular (\"indifference ... reinforcing societal indifference\"), and your Evans line's \"especially as agentic workflows become more common,\" which one found unsupported. In Bring People With You, \"It's the variant I use of Barbara Minto's opening,\" where two readers stopped at an \"I\" with no one named and found the clause after it hard."
+  - what: Your margin notes
+    where: In every unit, the empty slots listed at the foot of this tab
+    ask: "Fill out the margin, looser and more tangential than the syllabus, as you like. A card's picture has no slot now, since you'll never write notes for the visuals. One of yours went in word for word for you to rewrite if you like: Decide and Set Direction's \"The best delivery teams work when the lines of accountability are clear but the expertise blurred.\""
+  - what: The Concept Champion's three new sentences
+    where: In 0 Own Your Role, on the Concept Champion card, The idea, the end of its second paragraph
+    ask: "They say your point on planning forward and back in the syllabus's voice, not as your experience. They start \"Plan only one step from the last,\" and end on the champion holding the destination until the new investments pay off. Keep them, or say the point as a margin note in your own words."
+  - what: The Riskiest Assumption's example
+    where: In 8 Weigh the Evidence, on the Riskiest Assumption card, its picture
+    ask: "Its five assumptions don't map one to one onto the card's five kinds: two are about whether people want it, and none is about harm. And demand is the one marked, though the card's first point says the riskiest isn't always demand. Three product leaders raised it, each as minor, after you approved its content on 26 November. A harm assumption can't sit honestly where the idea depends on it less, so the example needs your call: keep it, or name a different riskiest assumption to mark."
+  - what: The size of a picture's words on a desktop
+    where: On any card, in the preview at desktop width
+    ask: "A picture fills its panel at every width now, by your answer of 27 November, so on a desktop its words are the reading text's size, above a smaller caption. If that reads too loud as you walk the preview, a picture 432 pixels wide would set its words at the caption's size. It's a change to the look, so it waits for your word."
+  - what: Room above a full path's first source
+    where: On every module's full path, once it's opened
+    ask: "The \"If you read one\" line sits close to the first source's rule. More room is a change to the stylesheet, so it waits for your word, if you want it."
+  - what: The site's feel
+    where: In the preview
+    ask: "Walk the whole site in [the preview](https://claude.ai/artifact/KYgms1YdoUd7u2TrHisayW) at phone and desktop width and comment on any part. A session carries each comment in and answers it in its thread; one on the look waits for your word before it changes."
+  - what: Bring People With You's optional exercise
+    where: In 12 Bring People With You, the Do
+    ask: "It's \"argue the other side,\" which you said on 24 November you're skeptical of. Going back to \"one story at three sizes\" is a swap of one paragraph, kept word for word. Nothing changes unless you say so."
+  - what: Five sites a script couldn't open
+    where: Outside the pass, whenever you like
+    ask: "The link sweep of 26 November opened every outside link a reader can reach but those on five sites that refused a script: marines.mil, mckinsey.com, direct.mit.edu, dash.harvard.edu and ohchr.org. A click on each link there would confirm it."
 
 slots:
   - id: what-judgment-is
