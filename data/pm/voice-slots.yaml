@@ -316,19 +316,19 @@ moved:
   - what: changed
     words: "They are then able to bring the lessons learned from that experience to their work in unexpected ways."
     from: "Start, the opening, your new line on how good product managers got good"
-    to: "The same place, reading \"They can then bring the lessons from that experience to their work in unexpected ways.\""
+    to: "The same place, reading \"They can then bring the lessons from that experience to their work in unexpected ways\""
     why: "Economy was the one score all four blind readers marked down; the line says the same in fewer words. The rest of your new opening stands as you wrote it."
     when: 27 November 2026
   - what: changed
     words: "Put another way, it helps you develop an internal compass to navigate situations for which you have no map, by helping you identify the right questions to get answered before making a call on matters where there's rarely one right answer."
     from: "Start, the opening, the compass line"
-    to: "The same place, as two sentences: \"Put another way, it helps you develop an internal compass to navigate situations for which you have no map. It shows you which questions to get answered before you make a call, on matters where there's rarely one right answer.\""
+    to: "The same place, as two sentences: \"Put another way, it helps you develop an internal compass to navigate situations for which you have no map. It shows you which questions to get answered before you make a call, on matters where there's rarely one right answer\""
     why: "All four readers had to read the one sentence twice, and all four wanted its point about the right questions kept."
     when: 27 November 2026
   - what: changed
     words: "Yet, the main providers of these tools today (and the data centers they rely on) are financially precarious, subsidized, and ethically dubious. As a result, LLM considerations are woven throughout this curriculum without being tool specific."
     from: "Start, your margin note on LLMs"
-    to: "The same note, ending \"...ethically dubious. So LLM considerations run through this curriculum without tying it to any one tool.\""
+    to: "The same note, ending \"...ethically dubious. So LLM considerations run through this curriculum without tying it to any one tool\""
     why: "Your pick in the session: the opinion stays whole, and only the link to the last sentence is tightened, since a reader found \"As a result\" didn't follow."
     when: 27 November 2026
   - what: cut
@@ -340,7 +340,7 @@ moved:
   - what: changed
     words: "If you're a senior product leader, I hope this material resonates enough that you share it with the target audience within your org."
     from: "Start, the opening, your paragraph on who the course is for"
-    to: "The same place, ending \"share it with the early- and mid-career product managers in your org.\""
+    to: "The same place, ending \"share it with the early- and mid-career product managers in your org\""
     why: "A reader found \"target audience within your org\" stiff."
     when: 27 November 2026
   - what: changed
@@ -358,36 +358,36 @@ moved:
   - what: changed
     words: "and will create capacity in their schedule to help. It also gives you an excuse to deepen professional relationships, if you need one."
     from: "Start, How it works, a question for a colleague"
-    to: "The same place: \"a few\" colleagues, \"on tasks that touch their work\", \"Most people welcome a product manager who wants to become a better working partner, and it gives you an excuse to deepen those relationships, if you need one.\" Then the line from before your pass is back: \"Where the answers can wait, save them up for a month and ask each person theirs in one conversation.\""
+    to: "The same place: \"a few\" colleagues, \"on tasks that touch their work\", \"Most people welcome a product manager who wants to become a better working partner, and it gives you an excuse to deepen those relationships, if you need one.\" Then the line from before your pass is back: \"Where the answers can wait, save them up for a month and ask each person theirs in one conversation\""
     why: "All four readers found \"will create capacity in their schedule\" an overpromise, and all four wanted the tip on saving asks for one conversation back."
     when: 27 November 2026
   - what: changed
     words: "If you disagree with any of this, let me know at mail@joestanley.org. This is largely a synthesis of the work of others that has guided me. The curation is me trying to pay it forward. Where it can be strengthened, I want to strengthen it. The same ask goes for a broken link, or a part that lost you."
     from: "Start, your invitation to write"
-    to: "The same place, reading \"This is largely a synthesis of the work of others that has guided me, and the curation is me trying to pay it forward. If you disagree with any of this, good. Tell me why at mail@joestanley.org. The same goes for a broken link, or a part that lost you.\""
+    to: "The same place, reading \"This is largely a synthesis of the work of others that has guided me, and the curation is me trying to pay it forward. If you disagree with any of this, good. Tell me why at mail@joestanley.org. The same goes for a broken link, or a part that lost you\""
     why: "Readers prized both your synthesis line and the old \"good. Tell me why\"; with the second back, \"Where it can be strengthened\" said the same thing again."
     when: 27 November 2026
   - what: changed
     words: "Our role requires change, which means we first need to understand why things are the way they are if we have any hope of changing them for the better."
     from: "Start, The modules, the line for How the system works, and The Compass's list"
-    to: "The line from before your pass: \"Why things behave as they do, from the backlog to the org chart, before you change any of them.\""
+    to: "The line from before your pass: \"Why things behave as they do, from the backlog to the org chart, before you change any of them\""
     why: "Three of the four readers wanted the earlier line, which shows the part's range and already says to understand before you change; you asked for reversions where nothing was lost."
     when: 27 November 2026
   - what: changed
     words: "Once we understand how and why to change things, we need to decide what to change. And, most importantly, to accept responsibility for the implications of those decisions in an intentional way."
     from: "Start, The modules, the line for How you decide, and The Compass's list"
-    to: "The line from before your pass: \"What to believe, what to choose, and what you answer for.\""
+    to: "The line from before your pass: \"What to believe, what to choose, and what you answer for\""
     why: "All four readers preferred it, clearly: it maps onto the part's three modules one for one."
     when: 27 November 2026
   - what: changed
     words: "Having the right answer doesn't matter if you can't convince people of it. This comes in part from in-the-moment persuasion, and more from having already built a reputation for credibility. This part focuses on the latter."
     from: "Start, The modules, the line for How you learn and lead, and The Compass's list"
-    to: "\"Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it.\""
+    to: "\"Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it\""
     why: "Three readers found your line left out M11, which is about being wrong. Your first sentence stays, the line every reader of it remembered, then the line from before your pass, which covers both modules, with \"before you need it\" for your point that credibility is built ahead of time."
     when: 27 November 2026
   - what: changed
     words: "and where to go from here in your learning journey."
     from: "Start, The modules, the line for In closing"
-    to: "\"...and where to go from here.\""
+    to: "\"...and where to go from here\""
     why: "All four readers read \"learning journey\" as filler; \"where to go from here\" stays."
     when: 27 November 2026
