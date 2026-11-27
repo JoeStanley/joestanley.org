@@ -8,7 +8,7 @@
   <path class="fig-axis" d="M12,30 L12,192 L348,192"/>
   <text class="fig-label" x="150" y="24" text-anchor="middle">Becomes a target</text>
 
-  <path class="fig-axis" d="M12,154 C40,154 58,142 84,144 S128,150 150,144 C210,146 280,148 340,152"/>
+  <path class="fig-axis" d="M12,154 C40,154 58,142 84,144 S128,150 150,144 C161,141 205,146 340,152"/>
   <path class="fig-line" d="M15,144 C40,144 58,132 84,134 S128,140 150,134 C205,122 270,76 340,50"/>
 
   <text class="fig-label" x="338" y="40" text-anchor="end">The number</text>

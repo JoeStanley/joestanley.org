@@ -1,9 +1,9 @@
 <svg class="fig" viewBox="0 0 360 240" role="img" aria-labelledby="fig-err-title fig-err-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-err-title">A sample of a bot score's calls, both ways, and its mistakes sorted by kind.</title>
-  <desc id="fig-err-desc">A bot score's calls on ticket orders: a sample of 50 each way, which is not their real mix. On the left, two grids of 50 squares. Of 50 orders it held back, 15 are shaded: its mistakes. Of 50 it let through, 4 are shaded. On the right, the 19 mistakes sorted into kinds, as bars: fans who bought for a group, 9; bots it let through, 4; fans on a shared network, 4; something else, 2. Under the longest bar, highlighted: test for this first.</desc>
+  <desc id="fig-err-desc">Checking a bot score on ticket orders: 50 of each call, though far more orders get through than are held. On the left, two grids of 50 squares. Of 50 orders it held back, 15 are shaded: its mistakes. Of 50 it let through, 4 are shaded. On the right, the 19 mistakes sorted into kinds, as bars: fans who bought for a group, 9; bots it let through, 4, which may cost more; fans on a shared network, 4; something else, 2. Under the longest bar, highlighted: test for this first.</desc>
 
-  <text class="fig-label" x="12" y="18">A bot score’s calls on ticket orders</text>
-  <text class="fig-note" x="12" y="33">a sample of 50 each way, not their real mix</text>
+  <text class="fig-label" x="12" y="18">Checking a bot score on ticket orders</text>
+  <text class="fig-note" x="12" y="33">50 of each, though far more get through</text>
   <text class="fig-label" x="12" y="58">Held back</text>
   <text class="fig-note" x="12" y="73">15 of 50 were mistakes</text>
   <text class="fig-label" x="12" y="158">Let through</text>
@@ -20,11 +20,12 @@
   <text class="fig-item" x="164" y="80">Fans who bought for a group</text>
   <rect class="fig-loss" x="164" y="86" width="117" height="12"/>
   <text class="fig-label" x="288" y="96.5">9</text>
-  <rect class="fig-mark" x="160" y="102" width="111" height="18"/>
-  <text class="fig-label fig-on-mark" x="164" y="115">Test for this first</text>
+  <rect class="fig-mark" x="160" y="104" width="111" height="18"/>
+  <text class="fig-label fig-on-mark" x="164" y="117">Test for this first</text>
   <text class="fig-item" x="164" y="140">Bots it let through</text>
   <rect class="fig-loss" x="164" y="146" width="52" height="12"/>
   <text class="fig-label" x="223" y="156.5">4</text>
+  <text class="fig-note" x="241" y="156.5">may cost more</text>
   <text class="fig-item" x="164" y="176">Fans on a shared network</text>
   <rect class="fig-loss" x="164" y="182" width="52" height="12"/>
   <text class="fig-label" x="223" y="192.5">4</text>

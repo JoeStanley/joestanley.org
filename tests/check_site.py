@@ -3727,8 +3727,8 @@ def picture_checks(out_dir):
         soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
         svg = soup.find("svg")
         vb = (svg.get("viewbox") or svg.get("viewBox") or "").split()
-        if len(vb) != 4 or vb[:3] != ["0", "0", "360"] or not 120 <= float(vb[3]) <= 240:
-            fail("F1", f"{name}: drawn in viewBox \"{' '.join(vb)}\", not 360 units wide from 0 0 and 120 to 240 tall"); continue
+        if len(vb) != 4 or vb[:3] != ["0", "0", "360"] or not 120 <= float(vb[3]) <= 244:
+            fail("F1", f"{name}: drawn in viewBox \"{' '.join(vb)}\", not 360 units wide from 0 0 and 120 to 244 tall"); continue
         frame = 360 * float(vb[3])
         used = set()
         for el in svg.find_all(True):

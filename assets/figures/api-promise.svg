@@ -20,7 +20,7 @@
   <path class="fig-axis" d="M162,78 L240,104"/>
   <path class="fig-axis" d="M162,78 L240,148"/>
   <path class="fig-return" d="M162,137 L240,110"/>
-  <path class="fig-return" d="M162,156 L240,156"/>
+  <path class="fig-return" d="M162,156 L240,116"/>
 
   <rect class="fig-pipe" x="240" y="40" width="108" height="28" rx="6"/>
   <rect class="fig-pipe" x="240" y="90" width="108" height="28" rx="6"/>

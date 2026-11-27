@@ -1,19 +1,19 @@
 <svg class="fig" viewBox="0 0 360 132" role="img" aria-labelledby="fig-trust-title fig-trust-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-trust-title">The trust equation as a fraction: three parts on top, self-orientation below.</title>
-  <desc id="fig-trust-desc">Trust equals a fraction. On top, added together: credibility, what you say; reliability, what you do; and intimacy, how safe it is to be vulnerable with you. Below the line, highlighted: self-orientation, how much your focus is on yourself. The more of it, the less trust all three add up to.</desc>
+  <desc id="fig-trust-desc">Trust equals a fraction. On top, added together: credibility, what you say; reliability, what you do; and intimacy, how safe it is to be vulnerable with you. Below the line, highlighted: self-orientation, your focus on yourself: more of it, less trust. The more of it, the less trust all three add up to.</desc>
 
   <g transform="translate(0,-7)">
 
   <text class="fig-label" x="12" y="86.5">Trust =</text>
   <g class="fig-note" text-anchor="middle">
-    <text x="114" y="40">what you say</text><text x="207" y="40">what you do</text><text x="297" y="25">safe to be</text><text x="297" y="40">vulnerable</text>
+    <text x="117" y="40">what you say</text><text x="211" y="40">what you do</text><text x="299" y="25">safe to be</text><text x="299" y="40">vulnerable</text>
   </g>
   <g class="fig-label" text-anchor="middle">
-    <text x="114" y="62">Credibility</text><text x="161" y="62">+</text><text x="207" y="62">Reliability</text><text x="254" y="62">+</text><text x="297" y="62">Intimacy</text>
+    <text x="117" y="62">Credibility</text><text x="164.5" y="62">+</text><text x="211" y="62">Reliability</text><text x="257.5" y="62">+</text><text x="299" y="62">Intimacy</text>
   </g>
   <path class="fig-line" d="M72,82 L338,82"/>
   <rect class="fig-mark" x="151.7" y="96.5" width="106.6" height="18"/>
   <text class="fig-label fig-on-mark" x="205" y="109.5" text-anchor="middle">Self-orientation</text>
-  <text class="fig-note" x="205" y="130" text-anchor="middle">how much your focus is on yourself</text>
+  <text class="fig-note" x="205" y="130" text-anchor="middle">focus on yourself: more of it, less trust</text>
   </g>
 </svg>

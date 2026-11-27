@@ -14,14 +14,14 @@
   <text class="fig-item" x="24" y="93">“Yes, probably.”</text>
 
   <rect class="fig-pipe" x="186" y="68" width="162" height="100" rx="6"/>
-  <rect class="fig-mark" x="243" y="80" width="86.4" height="18"/>
-  <rect class="fig-mark" x="243" y="109" width="95.8" height="18"/>
-  <rect class="fig-mark" x="243" y="138" width="68.9" height="18"/>
+  <rect class="fig-mark" x="240" y="80" width="86.4" height="18"/>
+  <rect class="fig-mark" x="240" y="109" width="95.8" height="18"/>
+  <rect class="fig-mark" x="240" y="138" width="68.9" height="18"/>
   <g class="fig-note">
     <text x="198" y="93">When</text><text x="198" y="122">Used</text><text x="198" y="151">Cost</text>
   </g>
   <g class="fig-label fig-on-mark">
-    <text x="247" y="93">last Tuesday</text><text x="247" y="122">a spreadsheet</text><text x="247" y="151">two hours</text>
+    <text x="244" y="93">last Tuesday</text><text x="244" y="122">a spreadsheet</text><text x="244" y="151">two hours</text>
   </g>
 
   <text class="fig-label" x="93" y="188" text-anchor="middle">A forecast</text>

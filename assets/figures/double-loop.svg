@@ -6,25 +6,25 @@
 
   <!-- the goal, the action and the result -->
   <rect class="fig-mark" x="40" y="50" width="28" height="28"/>
-  <path class="fig-axis" d="M64,64 L159,64"/>
-  <path class="fig-arrow-ink" d="M159,59 L168,64 L159,69 Z"/>
-  <path class="fig-axis" d="M190,64 L279,64"/>
+  <path class="fig-axis" d="M64,64 L156,64"/>
+  <path class="fig-arrow-ink" d="M156,59 L165,64 L156,69 Z"/>
+  <path class="fig-axis" d="M187,64 L279,64"/>
   <path class="fig-arrow-ink" d="M279,59 L288,64 L279,69 Z"/>
   <g class="fig-ink">
     <circle cx="54" cy="64" r="5.5"/>
-    <circle cx="180" cy="64" r="5.5"/>
+    <circle cx="177" cy="64" r="5.5"/>
     <circle cx="300" cy="64" r="5.5"/>
   </g>
   <g class="fig-label" text-anchor="middle">
-    <text x="54" y="26">Goal</text><text x="180" y="26">Action</text><text x="300" y="26">Result</text>
+    <text x="54" y="26">Goal</text><text x="177" y="26">Action</text><text x="300" y="26">Result</text>
   </g>
   <g class="fig-note" text-anchor="middle">
-    <text x="54" y="41">68 degrees</text><text x="180" y="41">heat on</text><text x="300" y="41">how warm it is</text>
+    <text x="54" y="41">68 degrees</text><text x="177" y="41">heat on</text><text x="300" y="41">how warm it is</text>
   </g>
 
   <!-- the single loop, back to the action -->
-  <path class="fig-return" d="M296,77 C288,110 198,106.4 187.5,84.2"/>
-  <path class="fig-arrow" d="M184.4,75.7 L192.2,82.4 L182.8,86 Z"/>
+  <path class="fig-return" d="M296,77 C288,110 195,106.4 184.5,84.2"/>
+  <path class="fig-arrow" d="M181.4,75.7 L189.2,82.4 L179.8,86 Z"/>
   <text class="fig-label" x="240" y="119" text-anchor="middle">Single loop</text>
   <text class="fig-note" x="240" y="134" text-anchor="middle">fix the action</text>
 

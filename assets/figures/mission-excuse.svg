@@ -6,7 +6,7 @@
   <text class="fig-note" x="12" y="75">now, for certain</text>
   <path class="fig-axis" d="M12,90 L160,90"/>
   <path class="fig-arrow-ink" d="M160,85 L169,90 L160,95 Z"/>
-  <text class="fig-note" x="12" y="110">For the mission</text>
+  <text class="fig-note" x="12" y="110">“For the mission”</text>
 
   <rect class="fig-mark" x="147.1" y="9" width="61.9" height="18"/>
   <text class="fig-label fig-on-mark" x="178" y="22" text-anchor="middle">Your line</text>

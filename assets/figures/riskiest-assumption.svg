@@ -5,7 +5,7 @@
   <path class="fig-axis" d="M12,26 L12,178 L348,178"/>
   <path class="fig-guide" d="M180,30 L180,174 M16,104 L344,104"/>
   <text class="fig-note" x="12" y="18">The idea depends on it more</text>
-  <text class="fig-note" x="18" y="170">Less</text>
+  <text class="fig-note" x="18" y="170">Depends on it less</text>
   <text class="fig-note" x="12" y="196">You have evidence</text>
   <text class="fig-note" x="348" y="196" text-anchor="end">It’s a guess</text>
 
@@ -22,8 +22,8 @@
   <rect class="fig-mark" x="235.9" y="78" width="90.1" height="18"/>
   <text class="fig-label fig-on-mark" x="322" y="91" text-anchor="end">Test this first</text>
 
-  <text class="fig-item" x="72" y="47">Two pickups stay</text>
-  <text class="fig-item" x="72" y="62">on time</text>
+  <text class="fig-item" x="72" y="44">Two pickups stay</text>
+  <text class="fig-item" x="72" y="59">on time</text>
   <text class="fig-item" x="46" y="80">The fee covers</text>
   <text class="fig-item" x="46" y="95">the second stop</text>
   <text class="fig-item" x="92" y="127">People find it</text>
