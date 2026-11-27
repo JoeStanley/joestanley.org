@@ -1,6 +1,6 @@
 <svg class="fig" viewBox="0 0 360 242" role="img" aria-labelledby="fig-err-title fig-err-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-err-title">A sample of a bot score's calls, both ways, and its mistakes sorted by kind.</title>
-  <desc id="fig-err-desc">Checking a bot score on ticket orders, from a sample of 50 orders each way. On the left, two grids of 50 squares. Of 50 orders it held back, 15 are shaded: its mistakes. Of 50 it let through, 4 are shaded. On the right, the mistakes by kind. The 15 fans it held back, as bars: 9 bought for a group, with a highlighted label, biggest of these; 4 were on a shared network; 2 were something else. Then the 4 bots it let through, with no bar: fewer, but they may cost more.</desc>
+  <desc id="fig-err-desc">Checking a bot score on ticket orders, from a sample of 50 orders each way. On the left, two grids of 50 squares. Of 50 orders it held back, 15 are shaded: its mistakes. Of 50 it let through, 4 are shaded. On the right, the mistakes by kind. The 15 fans it held back, as bars: 9 bought for a group, with a highlighted label, biggest of these; 4 were on a shared network; 2 were something else. Then the 4 bots it let through, with no bar: fewer here, but they may cost more.</desc>
 
   <text class="fig-label" x="12" y="18">Checking a bot score on ticket orders</text>
   <text class="fig-note" x="12" y="33">a sample: 50 orders each way</text>
@@ -25,9 +25,9 @@
   <text class="fig-item" x="164" y="136">On a shared network</text>
   <rect class="fig-loss" x="164" y="141" width="40" height="12"/>
   <text class="fig-label" x="211" y="151.5">4</text>
-  <text class="fig-item" x="164" y="168">Something else</text>
-  <rect class="fig-loss" x="164" y="173" width="20" height="12"/>
-  <text class="fig-label" x="191" y="183.5">2</text>
-  <text class="fig-label" x="164" y="206">Bots it let through: 4</text>
-  <text class="fig-note" x="164" y="221">fewer, but may cost more</text>
+  <text class="fig-item" x="164" y="174">Something else</text>
+  <rect class="fig-loss" x="164" y="179" width="20" height="12"/>
+  <text class="fig-label" x="191" y="189.5">2</text>
+  <text class="fig-label" x="164" y="212">Bots it let through: 4</text>
+  <text class="fig-note" x="164" y="227">fewer here, but may cost more</text>
 </svg>
