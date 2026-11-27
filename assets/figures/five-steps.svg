@@ -1,4 +1,4 @@
-<svg class="fig" viewBox="0 0 360 216" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 203" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-five-title">A pipe with a narrow neck, and the five focusing steps in a row.</title>
   <desc id="fig-five-desc">Work items crowd in front of the narrow part of a pipe, which is the constraint, and only a few get through. Below, five numbered steps run left to right, each with what it means: identify, find it; exploit, use it fully; subordinate, pace the rest to it; elevate, add capacity; repeat, find the next one.</desc>
 
@@ -16,29 +16,29 @@
     <circle cx="224" cy="62" r="4"/><circle cx="262" cy="54" r="4"/><circle cx="300" cy="68" r="4"/><circle cx="334" cy="60" r="4"/>
   </g>
   <text class="fig-label" x="185" y="22" text-anchor="middle">The constraint</text>
-  <text class="fig-note" x="72" y="108" text-anchor="middle">Work waits here</text>
-  <text class="fig-note" x="290" y="108" text-anchor="middle">Little gets through</text>
+  <text class="fig-note" x="72" y="106" text-anchor="middle">Work waits here</text>
+  <text class="fig-note" x="290" y="106" text-anchor="middle">Little gets through</text>
 
   <!-- the five steps -->
-  <path class="fig-axis" d="M54,148 L80,148"/>
-  <path class="fig-arrow-ink" d="M80,143 L89,148 L80,153 Z"/>
-  <path class="fig-axis" d="M126,148 L152,148"/>
-  <path class="fig-arrow-ink" d="M152,143 L161,148 L152,153 Z"/>
-  <path class="fig-axis" d="M198,148 L224,148"/>
-  <path class="fig-arrow-ink" d="M224,143 L233,148 L224,153 Z"/>
-  <path class="fig-axis" d="M270,148 L296,148"/>
-  <path class="fig-arrow-ink" d="M296,143 L305,148 L296,153 Z"/>
+  <path class="fig-axis" d="M54,136 L80,136"/>
+  <path class="fig-arrow-ink" d="M80,131 L89,136 L80,141 Z"/>
+  <path class="fig-axis" d="M126,136 L152,136"/>
+  <path class="fig-arrow-ink" d="M152,131 L161,136 L152,141 Z"/>
+  <path class="fig-axis" d="M198,136 L224,136"/>
+  <path class="fig-arrow-ink" d="M224,131 L233,136 L224,141 Z"/>
+  <path class="fig-axis" d="M270,136 L296,136"/>
+  <path class="fig-arrow-ink" d="M296,131 L305,136 L296,141 Z"/>
   <g class="fig-stops">
-    <circle cx="36" cy="148" r="14"/><circle cx="108" cy="148" r="14"/><circle cx="180" cy="148" r="14"/><circle cx="252" cy="148" r="14"/><circle cx="324" cy="148" r="14"/>
+    <circle cx="36" cy="136" r="14"/><circle cx="108" cy="136" r="14"/><circle cx="180" cy="136" r="14"/><circle cx="252" cy="136" r="14"/><circle cx="324" cy="136" r="14"/>
   </g>
   <g class="fig-num" text-anchor="middle">
-    <text x="36" y="153.8">1</text><text x="108" y="153.8">2</text><text x="180" y="153.8">3</text><text x="252" y="153.8">4</text><text x="324" y="153.8">5</text>
+    <text x="36" y="141.8">1</text><text x="108" y="141.8">2</text><text x="180" y="141.8">3</text><text x="252" y="141.8">4</text><text x="324" y="141.8">5</text>
   </g>
   <g class="fig-label" text-anchor="middle">
-    <text x="36" y="182">Identify</text><text x="108" y="182">Exploit</text><text x="180" y="182">Subordinate</text><text x="252" y="182">Elevate</text><text x="324" y="182">Repeat</text>
+    <text x="36" y="170">Identify</text><text x="108" y="170">Exploit</text><text x="180" y="170">Subordinate</text><text x="252" y="170">Elevate</text><text x="324" y="170">Repeat</text>
   </g>
   <g class="fig-note" text-anchor="middle">
-    <text x="36" y="197">find it</text><text x="108" y="197">use it</text><text x="108" y="212">fully</text><text x="180" y="197">pace the</text><text x="180" y="212">rest to it</text><text x="252" y="197">add</text><text x="252" y="212">capacity</text><text x="324" y="197">find the</text><text x="324" y="212">next one</text>
+    <text x="36" y="185">find it</text><text x="108" y="185">use it</text><text x="108" y="200">fully</text><text x="180" y="185">pace the</text><text x="180" y="200">rest to it</text><text x="252" y="185">add</text><text x="252" y="200">capacity</text><text x="324" y="185">find the</text><text x="324" y="200">next one</text>
   </g>
   </g>
 </svg>
