@@ -93,7 +93,7 @@ example:
 check:
   - q: Does a system mirror the org chart of the organization that builds it?
     a: Not necessarily. It mirrors who actually talks to whom, and that often isn't what the chart shows.
-  - q: Own Your Role asked you to grow the role toward value nobody assigned, like a gap at your edge. Here, a handoff between teams needs someone who owns it. Should that be you?
+  - q: "{{< pm/mod own-your-role words >}} asked you to grow the role toward value nobody assigned, like a gap at your edge. Here, a handoff between teams needs someone who owns it. Should that be you?"
     against: own-your-role
     a: For a while, so customers don't fall through it while you show the gap is real. Then get it an owner who'll still be there when you move on, since a seam held by one person's goodwill opens again when they leave.
   - q: Every team on the marketplace hits its target, and buyers still see a gap. Where do you look?
@@ -114,7 +114,7 @@ deeper:
   - title: "Architectural Innovation: The Reconfiguration of Existing Product Technologies and the Failure of Established Firms"
     by: Rebecca Henderson and Kim Clark (Administrative Science Quarterly, 1990)
     where: A journal article.
-    note: Read it whole. Clark's research is behind the heavyweight product manager on [Own Your Role](/pm/own-your-role/)'s full path.
+    note: Read it whole. Clark's research is behind the heavyweight product manager on {{< pm/mod own-your-role >}}'s full path.
     trust: "A study. A peer-reviewed classic, from one industry: the makers of the alignment equipment used to make chips."
     only: Evidence that a product's architecture gets built into a firm's communication channels, which helps explain why established firms stumbled when that architecture had to change.
   - title: Design and Reality
@@ -138,7 +138,7 @@ deeper:
 
 ## Why this matters
 
-Much of the friction you fight as a PM looks like people being slow: the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. The longest wait you mapped in [Find the Constraint](/pm/find-the-constraint/) may well sit at one of them. Every team can do its part well and the product still fail, because the trouble sits between them. So treat the organization as a system you can read and help design, not as fixed scenery.
+Much of the friction you fight as a PM looks like people being slow: the handoff, the work waiting on another team. Usually it's where the boundaries between teams sit, and how teams work across them. The longest wait you mapped in {{< pm/mod find-the-constraint >}} may well sit at one of them. Every team can do its part well and the product still fail, because the trouble sits between them. So treat the organization as a system you can read and help design, not as fixed scenery.
 
 Some seams run through words. When two teams use one word for two things, the bug ships between them. On a secondhand marketplace, "approved" can mean to one team that a listing passed review, and to another that the seller can be paid. An area inside which each word has one agreed meaning is a {{< pm/term "bounded-context" >}}, and where one ends, someone has to translate, owned or not.
 

@@ -81,7 +81,7 @@ check:
     a: What they pay now, in money or time, for the workaround. That tells you more than any price for a service that doesn't exist yet.
   - q: A change drops the substitution questions from checkout, so it's faster, and has shoppers photograph each swap in the aisle for the customer to confirm. Who pays for the speed, and how would you find out?
     a: The shoppers, in time, and unpaid unless the pay model counts it. You'd find out from the shoppers themselves, not from the customers, who only see the faster checkout.
-  - q: Own Your Role asked you to make the vision your own. Yours says customers want one thing, and three interviews in a row describe doing another. When does the vision win, and when do the interviews?
+  - q: "{{< pm/mod own-your-role words >}} asked you to make the vision your own. Yours says customers want one thing, and three interviews in a row describe doing another. When does the vision win, and when do the interviews?"
     against: own-your-role
     a: The interviews win on what the problem is, since they're evidence of what people did. The vision wins on where you're going, as long as its "in order to" still names a problem those people have. When it doesn't, rewrite the sentence.
   - q: "**Beyond this module.** This module shows you how to learn about a problem. What does judging it well take that no course can give you?"
@@ -125,7 +125,7 @@ deeper:
 
 ## Why this matters
 
-[Own Your Role](/pm/own-your-role/) had you finish "We're building this in order to ...," a sentence that names someone the work is for. Does that person really have the problem, and what's it worth to them? Finding out is what teams call {{< pm/term "discovery" >}}. When enough people like them keep using and paying for what you build, you'll hear that called product-market fit.
+{{< pm/mod own-your-role >}} had you finish "We're building this in order to ...," a sentence that names someone the work is for. Does that person really have the problem, and what's it worth to them? Finding out is what teams call {{< pm/term "discovery" >}}. When enough people like them keep using and paying for what you build, you'll hear that called product-market fit.
 
 Start with what people do, not what they say they'd want. People are poor forecasters of their own behavior and good witnesses to their last week. Ask a woman what matters most when she buys jeans and she'll say the fit, but her last pair came from Amazon, on sale, from a brand she knew. Ask an AI model to play your customer and you get a forecast too, with no last week behind it. Your data shows what people did, but not why. So ask about the last time it happened, what they did about it, and what it cost them. That cost caps what a fix is worth to them. And the people you hear from aren't a fair sample: your keenest users speak up, while the ones who left, or never came, are the ones you most need to hear.
 

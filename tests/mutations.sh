@@ -187,7 +187,7 @@ run_bg "the log's review shown to nobody" J3 "sed -i 's/ Outside the 15 minutes,
 run_bg "only two collisions pick a winner" J2 "sed -i '/^    wins: find-the-constraint$/d' content/pm/find-the-constraint.md"
 run_bg "a collision's winner from neither side" J2 "sed -i 's/^    wins: weigh-the-evidence$/    wins: see-the-system/' content/pm/weigh-the-evidence.md"
 run_bg "the decision log's line after the optional exercise" J3 "python3 -c 'p=\"content/pm/find-the-constraint.md\"; s=open(p).read(); l=[x for x in s.split(chr(10)) if x.startswith(\"**For your decision log.**\")][0]; s=s.replace(l+chr(10)+chr(10), \"\", 1).rstrip()+chr(10)+chr(10)+l+chr(10); open(p, \"w\").write(s)'"
-run_bg "a module that names no earlier one" J4 "sed -i 's| The longest wait you mapped in \\[Find the Constraint\\](/pm/find-the-constraint/) may well sit at one of them\\.||' content/pm/mind-the-seams.md"
+run_bg "a module that names no earlier one" J4 "sed -i 's| The longest wait you mapped in {{< pm/mod find-the-constraint >}} may well sit at one of them\\.||' content/pm/mind-the-seams.md"
 run_bg "a game that doesn't say what it leaves out" J5 "sed -i '/<p class=\"limits\">/d' layouts/partials/pm/rankinggame.html"
 run_bg "an average the waiting game's jobs don't give" J5 "sed -i 's/^    average: 570000$/    average: 507000/' data/pm/waitgame.yaml"
 run_bg "a narrow estimate said to move the waiting game's order" J5 "sed -i 's/^moves: \\[swaps\\]$/moves: [fix, swaps]/' data/pm/waitgame.yaml"
@@ -404,10 +404,10 @@ run_bg "an empty letter linked on the A to Z rail" G6 "sed -i 's/{{ if .keys }}<
 run_bg "the rail marking no letter as the list scrolls" G6 "sed -i 's/m\[0\].classList.toggle(\"is-here\", m\[0\] === cur);/m[0].classList.toggle(\"is-here\", false);/' assets/js/pm.js"
 # G8, names that link (26 November 2026): the first mention in each part links its unit, once; questions for recall
 # link nothing; no unit links itself; the single document lands every link, and each module's Do and Check, in the page
-run_bg "a name in Where to go from here left unlinked" G8 "sed -i 's|\[See the System\](/pm/see-the-system/) drew it|See the System drew it|' content/pm/the-compass.md"
-run_bg "a name linked again in the same part" G8 "sed -i 's|Here two questions collide\. Know Who It\(.\)s For says|Here two questions collide. [Know Who It\1s For](/pm/know-who-its-for/) says|' content/pm/the-compass.md"
-run_bg "a Check question that links where to look" G8 "sed -i 's|^  - q: Decide and Set Direction asks you to decide on purpose|  - q: Remember how [Decide and Set Direction](/pm/decide-and-set-direction/) asks you to decide on purpose|' content/pm/notice-when-you-are-wrong.md"
-run_bg "Last time's line links the module before" G8 "sed -i 's|Two questions on {{ with \$prev }}{{ .title }}|Two questions on {{ with \$prev }}<a href=\"/pm/{{ .page }}/\">{{ .title }}</a>|' layouts/partials/pm/unit-module.html"
+run_bg "a name in Where to go from here left unlinked" G8 "sed -i 's|{{< pm/mod see-the-system >}} drew it|{{< pm/mod see-the-system words >}} drew it|' content/pm/the-compass.md"
+run_bg "a name linked again in the same part" G8 "sed -i 's|Here two questions collide\\. {{< pm/mod know-who-its-for words >}} says|Here two questions collide. {{< pm/mod know-who-its-for >}} says|' content/pm/the-compass.md"
+run_bg "a Check question that links where to look" G8 "sed -i 's|^  - q: \\\"{{< pm/mod decide-and-set-direction words >}} asks you to decide on purpose|  - q: \\\"Remember how {{< pm/mod decide-and-set-direction >}} asks you to decide on purpose|' content/pm/notice-when-you-are-wrong.md"
+run_bg "Last time's line links the module before" G8 "sed -i 's|Two questions on {{ with \$prev }}<span class=\"mod-name\">|Two questions on {{ with \$prev }}<a href=\"/pm/{{ .page }}/\">link</a> <span class=\"mod-name\">|' layouts/partials/pm/unit-module.html"
 run_bg "a module that links its own name" G8 "printf '\\nThat is the question [Find the Constraint](/pm/find-the-constraint/) asks.\\n' >> content/pm/find-the-constraint.md"
 run_bg "the single document links a unit's page" G8 "sed -i '/^{{- range \$to }}/d' layouts/pm/all.html"
 run_bg "the single document's Do step lands on the first module's Do" G8 "sed -i 's/#{{ if \$all }}{{ \$key }}-{{ end }}{{ .kind }}/#{{ .kind }}/' layouts/partials/pm/unit-module.html"
@@ -473,7 +473,7 @@ run_bg "the question narrowed beside its progress" S20 "echo '.mod-question { fl
 run_bg "Start's progress printing" S20 "echo '@media print { .mod-status { display: block !important; } }' >> assets/css/pm.css"
 run_bg "a list of modules with no name" S20 "sed -i 's| aria-labelledby=\"arc-{{ \$where }}-{{ \$i }}\"||' layouts/partials/pm/arc-list.html"
 run_bg "a module named on Start without its code" G8 "sed -i 's|{{< pm/mod \"know-who-its-for\" >}}|[Know Who It\x27s For](/pm/know-who-its-for/)|' content/pm/_index.md"
-run_bg "a module's code not read out as Module" G8 "sed -i 's|<span class=\"sr\">Module {{ \$m.num }}</span>||' layouts/shortcodes/pm/mod.html"
+run_bg "a module's code not read out as Module" G8 "sed -i 's|<span class=\"sr\">Module %v</span>||; s|\$m.num \$m.num (\$m.title|\$m.num (\$m.title|' layouts/shortcodes/pm/mod.html"
 run_bg "a note beside a bullet Start no longer has" M4 "sed -i 's|beside: \"Thirteen modules, each built on one question\"|beside: \"Fourteen modules, each built on one question\"|' data/pm/margin/start.yaml"
 run_bg "a note beside an opening paragraph Start no longer has" M4 "sed -i 's|beside: \"Instead, it.s a set of lessons\"|beside: \"Instead, it is a set of lectures\"|' data/pm/margin/start.yaml"
 # Notes where there's no margin (27 November 2026): the owner's hand, his word run in and muted, tied to their paragraph (M1)
@@ -481,4 +481,11 @@ run_bg "a note folded in on a phone in the interface's face" M1 "echo '@media sc
 run_bg "a folded note's word back on its own line" M1 "echo '.note-label { display: block; float: none; }' >> assets/css/base.css"
 run_bg "a folded note's word in the label type, bold" M1 "sed -i 's/^.note-label { float: left; margin-right: 0.3em; font: inherit; color: var(--muted); }/.note-label { float: left; margin-right: 0.3em; font: var(--w-strong) var(--fs-small)\\/var(--lh-text) var(--ui); color: var(--ink); }/' assets/css/base.css"
 run_bg "a folded note nearer the next paragraph than its own" M1 "sed -i 's/^  .note { margin: var(--sp-2) 0 var(--sp-5); }/  .note { margin: var(--sp-5) 0 var(--sp-1); }/; s/^  .noted > p:not(:last-child) { margin-bottom: var(--sp-2); }//' assets/css/base.css"
+# Job 52, a module's code before its name everywhere (27 November 2026): linked or not, in every unit (G8)
+run_bg "a module named in a module's text without its code" G8 "sed -i 's|{{< pm/mod see-the-system >}}|[See the System](/pm/see-the-system/)|' content/pm/find-the-constraint.md"
+run_bg "a recall question naming a module without its code" G8 "sed -i 's|{{< pm/mod see-the-system words >}}|See the System|' content/pm/find-the-constraint.md"
+run_bg "Last time's line naming the module before without its code" G8 "sed -i 's|<span class=\"mod-name\"><span aria-hidden=\"true\">M{{ .num }}</span><span class=\"sr\">Module {{ .num }}</span>: {{ .title }}</span>|{{ .title }}|' layouts/partials/pm/unit-module.html"
+run_bg "a walk's module names lost when its words are rendered" G8 "sed -i '/MODNAMEHELD%dX\" \$i) \$h 1 }}{{ end }}/d' layouts/shortcodes/pm/walk.html"
+run_bg "a voice slot's interim words naming a module without its code" G8 "sed -i 's|in M10: Answer for What You Build\\.|in Answer for What You Build.|' data/pm/voice-slots.yaml"
+run_bg "a module's code that isn't its own" G8 "sed -i 's|<span aria-hidden=\"true\">M%v</span>|<span aria-hidden=\"true\">M1%v</span>|' layouts/shortcodes/pm/mod.html"
 wait

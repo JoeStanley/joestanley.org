@@ -78,14 +78,14 @@ example:
 check:
   - q: In the dice game every station averages 3.5 a round. Why does the line finish fewer than 3.5 a round?
     a: A station can only pass on what has reached it. A low roll starves everyone further down, and a high roll later is wasted when nothing's waiting. Bad luck gets passed on and good luck doesn't.
-  - q: See the System said a failure never has one cause. Here, one step holds the whole flow back. Workout plans take 40 days to go live, and a retro lists five causes. Where do you act first?
+  - q: "{{< pm/mod see-the-system words >}} said a failure never has one cause. Here, one step holds the whole flow back. Workout plans take 40 days to go live, and a retro lists five causes. Where do you act first?"
     against: see-the-system
     wins: find-the-constraint
     a: "On the step where work waits longest: help anywhere else won't move the 40 days. Several causes explain a failure, but slow work has one constraint, and once it's helped, look again, since the constraint moves."
   - q: Your fitness app's team hits its target for workouts reviewed per day, yet new ones reach users no faster. Give two explanations.
     a: Review may not be the constraint, so its gains wait in a queue further on. Or the target has changed what counts as a completed review, which is [Goodhart's Law](/pm/cards/goodharts-law/).
   - q: "**Beyond this module.** Your map shows where work waits inside your team. Where else could the constraint be?"
-    a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. [Mind the Seams](/pm/mind-the-seams/) looks at what falls between teams."
+    a: "Outside it: at a handoff to another team, in an approval, or in a rule nobody remembers making. {{< pm/mod mind-the-seams >}} looks at what falls between teams."
 
 deeper_one:
   title: "Accelerate: The Science of Lean Software and DevOps"
@@ -113,7 +113,7 @@ deeper:
 
 ## Why this matters
 
-When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in [See the System](/pm/see-the-system/). Find it, since speeding up anywhere else won't help. That goes for a model, too. One that drafts new workouts in minutes helps only if drafting is where the work waits. If the wait is a coach checking each one, you get more drafts piled up in front of the coach.
+When delivery is slow, as when a fitness app's new workouts take months to reach anyone, most teams ask every step to go faster and to report its own numbers. It rarely works. Only one step, what Eliyahu Goldratt called the {{< pm/term "constraint" >}}, holds the whole flow back, and work piles up in front of it, a stock like the one you drew in {{< pm/mod see-the-system >}}. Find it, since speeding up anywhere else won't help. That goes for a model, too. One that drafts new workouts in minutes helps only if drafting is where the work waits. If the wait is a coach checking each one, you get more drafts piled up in front of the coach.
 
 The danger while you work on it is [Goodhart's Law](/pm/cards/goodharts-law/). Once a number becomes a target, people find the cheapest way to hit it, so the constraint's number can hit its target while nothing more reaches users.
 

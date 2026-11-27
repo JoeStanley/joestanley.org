@@ -98,7 +98,7 @@ example:
 check:
   - q: Your team has error budget left this month. What does that let you do, and what happens once it's spent?
     a: You can keep releasing, because the budget is room you've already agreed to spend. Once it's spent, releases slow or stop until reliability recovers.
-  - q: Design for Change said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of which fan has which seat?
+  - q: "{{< pm/mod design-for-change words >}} said the records everything depends on, like a school's grades, move slowly on purpose. This module says small, frequent releases are safer than big, rare ones. Which holds for your record of which fan has which seat?"
     against: design-for-change
     a: Both, at different layers. Ship the code around the seat record in small steps, behind a toggle. Change its data and its contracts slowly, since every sale depends on them, and a toggle can't undo a seat sold twice.
   - q: On your ticketing app, a new seat map raises orders per visit in a test. Why might you still stop the test?
@@ -139,7 +139,7 @@ deeper:
 
 When a failure would be expensive, as on a ticketing app the morning a big tour goes on sale, the usual answer is more sign-offs and bigger, rarer releases. That feels careful. DORA, a research program on software delivery, points the other way. In its [research on change approval](https://dora.dev/capabilities/streamlining-change-approval/), teams that needed a change board or a senior manager to approve changes were far more likely to be low performers, and it found no sign that the approvals made changes fail less often.
 
-Richard Cook, from [See the System](/pm/see-the-system/), gives part of the reason: "Change introduces new forms of failure." So a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can tell ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
+Richard Cook, from {{< pm/mod see-the-system >}}, gives part of the reason: "Change introduces new forms of failure." So a big, rare release brings many of them at once. A small one brings few, and you find them while the change is fresh. Where nobody can tell ahead of time what a change will do, run what Dave Snowden and Mary Boone call "experiments that are safe to fail" (*Harvard Business Review*, 2007).
 
 Before you change anything, know how good the service has to be, in words engineers can test: "When 50,000 fans try to buy in the first minute of an on-sale, checkout confirms 99 in 100 orders within 3 seconds." An average hides the customers who wait, so when someone quotes you one, ask for the 99th {{< pm/term "percentile" >}}.
 
@@ -163,7 +163,7 @@ Outside the 30 minutes, show it to your tech lead and whoever leads on call, and
 
 {{< pm/example >}}
 
-**Optional: read one incident write-up (15 minutes).** Find your team's latest postmortem, or post-incident review. If there's none, read "What happened" and "What went wrong" in Cloudflare's [account of its July 2019 outage](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/), where one rule change went everywhere at once. Note when customers were first hurt, when the team knew, and how long switching it off took. Does it name one root cause, or the several that [See the System](/pm/see-the-system/) told you to expect? Outside the 15 minutes, ask your tech lead if you can sit quietly in the next incident review.
+**Optional: read one incident write-up (15 minutes).** Find your team's latest postmortem, or post-incident review. If there's none, read "What happened" and "What went wrong" in Cloudflare's [account of its July 2019 outage](https://blog.cloudflare.com/details-of-the-cloudflare-outage-on-july-2-2019/), where one rule change went everywhere at once. Note when customers were first hurt, when the team knew, and how long switching it off took. Does it name one root cause, or the several that {{< pm/mod see-the-system >}} told you to expect? Outside the 15 minutes, ask your tech lead if you can sit quietly in the next incident review.
 
 ## To bring to engineers
 

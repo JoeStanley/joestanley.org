@@ -870,22 +870,46 @@ def name_link_checks(out_dir):
                 fail("G8", f"{path} links {name} twice in one part: a name met again stays words")
     if count < 60:
         fail("G8", f"only {count} names link another unit across the syllabus, fewer than the walks found unlinked")
-    # G8: on Start, its pilot, a module named in running text carries its code inside the link, read out as "Module n"
+    # G8: wherever a unit's words name a module, the name carries its code, read out as "Module n", linked or not.
+    # The lists and labels that name a module their own way are left: the marker of Start's and The Compass's lists is
+    # the code already, and the bar, a header and a foot say "Module 3".
     mods_ = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
-    code = {f"/pm/{m['page']}/": (m["num"], m["title"]) for m in mods_ if m.get("page")}
-    prose = page("/pm/").select_one('article.unit [data-slot="intro"]')
-    named = 0
-    for a in prose.find_all("a") if prose else []:
-        if a.get("href") not in code or _closest(a, ".note"):
-            continue   # his margin notes are his (G8)
-        n, title = code[a["href"]]
-        named += 1
-        sr, vis = a.find(class_="sr"), a.find(attrs={"aria-hidden": "true"})
-        words = " ".join(a.get_text(" ", strip=True).replace("’", "'").split())
-        if not sr or not vis or sr.get_text(strip=True) != f"Module {n}" or vis.get_text(strip=True) != f"M{n}" or not words.endswith(f": {title}"):
-            fail("G8", f"Start names {title} in running text without its code before it, M{n}, read out as Module {n}: \"{words}\"")
-    if not named:
-        fail("G8", "Start names no module in its running text, so the code before a name has no pilot")
+    num = {m["title"]: m["num"] for m in mods_ if m.get("page")}
+    home = {m["title"]: f"/pm/{m['page']}/" for m in mods_ if m.get("page")}
+    mod_re = re.compile(r"(?<![\w'’])(" + "|".join(re.escape(t).replace("'", "['’]") for t in sorted(num, key=len, reverse=True)) + r")(?![\w])")
+    CODE_SKIP = "script, style, nav, h1, .unit-head, .unit-foot, .note, .sr, .step-body > h3, .step-links, .deeper-list > li > h3, .walk-title, ol.modules, .gloss-used"
+    from bs4 import NavigableString
+    coded = 0
+    for path in ["/pm/"] + UNIT_PAGES:
+        art = page(path).select_one("article.unit")
+        for el in art.descendants if art else []:
+            if not isinstance(el, NavigableString) or _closest(el, CODE_SKIP):
+                continue
+            text = str(el)
+            for m in mod_re.finditer(text):
+                head = text[:m.start()]
+                if head.count("“") > head.count("”") or head.count('"') % 2:
+                    continue   # words in quotation marks aren't the course naming a unit
+                title = m.group(1).replace("’", "'")
+                n = num[title]
+                if _closest(el, "[data-voice]"):   # a voice slot's interim words: the code as plain words
+                    if not head.endswith(f"M{n}: "):
+                        fail("G8", f"{path} names {title} in a voice slot's interim words without its code, M{n}")
+                    continue
+                box = _closest(el, ".mod-name")
+                if not box:
+                    fail("G8", f"{path} names {title} without its code before it, M{n}: \"{text[max(0, m.start() - 30):m.end()].strip()}\"")
+                    continue
+                sr, vis = box.find(class_="sr"), box.find(attrs={"aria-hidden": "true"})
+                words = " ".join(box.get_text(" ", strip=True).replace("’", "'").split())
+                if not sr or not vis or sr.get_text(strip=True) != f"Module {n}" or vis.get_text(strip=True) != f"M{n}" or not words.endswith(f": {title}"):
+                    fail("G8", f"{path} names {title} with the wrong code, or one a screen reader doesn't hear as Module {n}: \"{words}\"")
+                elif box.name == "a" and box.get("href") != home[title]:
+                    fail("G8", f"{path} links {title}'s name to {box.get('href')}, not its own page")
+                else:
+                    coded += 1
+    if coded < 100:
+        fail("G8", f"only {coded} module names carry their code across the syllabus, fewer than the text names")
     # G8: in the single document every link to a unit lands on the unit in the page, and each module's Do and Check
     # steps land on that module's own Do and Check
     whole = page("/pm/all/")
@@ -3383,8 +3407,16 @@ def sources_checks(ctx, base):
     c.close()
 
 
+def _named(md):
+    """A source string with each module it names by shortcode (G8) written out as a reader sees it: "M3: Find the
+    Constraint"."""
+    mods_ = {m["id"]: m for m in yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))}
+    return re.sub(r'\{\{<\s*pm/mod\s+"?([\w-]+)"?(?:\s+words)?\s*>\}\}',
+                  lambda v: f"M{mods_[v.group(1)]['num']}: {mods_[v.group(1)]['title']}" if v.group(1) in mods_ else v.group(0), str(md))
+
+
 def _plain(md):
-    t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", str(md))
+    t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", _named(md))
     return " ".join(re.sub(r"[*_`]", "", t).split())
 
 
@@ -4215,7 +4247,7 @@ def practice_checks(out_dir):
                 fail("J2", f"{where}: a Check question is set against {a}, which isn't on the map")
             elif num[a] >= n:
                 fail("J2", f"{where}: a Check question is set against {title[a]}, which doesn't come earlier on the map")
-            elif title[a] not in str(c.get("q", "")):
+            elif title[a] not in _named(c.get("q", "")):
                 fail("J2", f"{where}: the question set against {title[a]} doesn't name it by its title")
             if c.get("wins") is not None:
                 wins_count += 1
@@ -4245,7 +4277,7 @@ def practice_checks(out_dir):
             if i_log > i_opt or not timed or i_log < max(timed):
                 fail("J3", f"{where}: the decision log's line should follow the Do's timed exercises and come before any optional one")
         # J4: an earlier module named by its title in Why this matters or the Do
-        if not any(title[o] in why + do for o in num if num[o] < n):
+        if not any(title[o] in _named(why + do) for o in num if num[o] < n):
             fail("J4", f"{where}: neither its Why this matters nor its Do names an earlier module by its title")
         # J5: the module's game
         if d.get("game"):
