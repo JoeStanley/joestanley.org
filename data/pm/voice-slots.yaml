@@ -36,9 +36,6 @@ settle:
   - what: The front door's line
     where: In the Front door tab, right after About
     ask: "A line naming the syllabus, yours to write (your pick of 25 November, over leaving the front door spare or being offered wordings). Today the front door doesn't name the course; the menu calls it On Judgment. Write it in that tab, where you'd like it to sit."
-  - what: The spine, named on Start
-    where: In Start, the voice slot what-judgment-is
-    ask: "Say what product judgment is, since the course is named for it. Readers found the course's clearest account of the skill only at its end, in The Compass's question, \"Which question does the call in front of you need?\" and in where to draw the line. The slot's brief carries their suggestion."
   - what: The prophets paragraph
     where: In 10 Answer for What You Build, Why this matters, the paragraph on the pull from inside
     ask: "Keep it at full size, as you picked on 23 November after research, or trim its four quotes (Andreessen, Johnson, Rubenstein, Resnikoff) and keep the rest, the Mission Excuse card and Erika Cheung's talk included. Three readers found it reads like an op-ed and will date, and the target reader would stop there and miss the test left out \"just this once.\" The readers would trim it."
@@ -80,15 +77,6 @@ settle:
     ask: "The link sweep of 26 November opened every outside link a reader can reach but those on five sites that refused a script: marines.mil, mckinsey.com, direct.mit.edu, dash.harvard.edu and ohchr.org. A click on each link there would confirm it."
 
 slots:
-  - id: what-judgment-is
-    unit: Start
-    brief: "Say what you mean by product judgment, in a sentence or two after the compass line, since the course is named for it and no page defines it (card v1-start). Your comment on Start of 20 November 2026 is the first draft, below, and the site shows it as one sentence for now. Suggestion: keep it, in your voice, or put it your own way. The second cold read (25 November 2026) found the course's clearest account of the skill only at its end: The Compass's question, \"Which question does the call in front of you need?\" and its last section, where to draw the line. Its readers would name that here, so the reader knows from the start what they're practicing."
-    old: "a blend of lived experience, industry best practices, and situation context that turns into intuition"
-    interim: "Judgment is a blend of lived experience, industry best practices and the context of the situation, turned into intuition."
-  - id: why-now
-    unit: Start
-    brief: "Say why judgment matters more now (card v1-start). The course's thesis, as job 25 put it: as AI makes building cheap, knowing what's worth building becomes the constraint. It's an opinion, so it's yours to say, and the site shows nothing here until you do. Your caution on card v1-ai may belong in it: agentic workflows will last, but at what price and sophistication is open, so the lasting skill is placing non-deterministic logic well beside deterministic systems."
-    interim: ""
   - id: shopper-incentive
     unit: 1 Know Who It's For
     brief: "Say in your own voice what you believe a grocery app's incentive is with the shoppers who pick and deliver its orders, and why it should matter to a PM designing their side of the flow. The paragraph before it gives only what the sources support: waiting time, mostly unpaid, and a pool of waiting workers (New York's study), shifts below minimum wage (an MIT audit), and Dubal's argument, as hers. No source opened says a company wants workers to need the work, or that low prices were paid for by investors with the cost on shoppers, so that view is yours to state. Your words from the session are below. Suggestion: raise them into the main text here, in your voice."
@@ -275,3 +263,51 @@ moved:
     to: "Map the Domain, the full path, Brazil, word for word but for \"A beetle\" in place of \"A fly\", and its credit now ends \"(Universal, 1985)\", its US distributor, as S10 asks"
     why: You kept Brazil with the beetle (card mtd-story). Filmsite calls the insect a beetle.
     when: 26 November 2026
+  - what: changed
+    words: "One last call-out: This series is intended for early- to mid-career product managers, using a mix of industry examples."
+    from: Start, the opening, your suggested paragraph on who the course is for
+    to: "The same place, reading \"This curriculum is intended for early- to mid-career product managers, and draws its examples from a mix of industries,\" with \"share it\" for \"share this\" in its last sentence"
+    why: Curriculum is your word for it everywhere else on the page, and "using" read as the managers using the examples.
+    when: 27 November 2026
+  - what: moved
+    words: "M10: Answer for What You Build runs longer on purpose, as the ethics of product management is generally under-taught."
+    from: Start, How it works, the first bullet
+    to: Start, a margin note beside that bullet, word for word
+    why: Your comment of 27 November, since it's an aside.
+    when: 27 November 2026
+  - what: changed
+    words: "It may feel silly, but this is one of the most important parts of the entire curriculum - making it real in a place you can safely fail."
+    from: Start, How it works, the decision log
+    to: The same place, with a colon where the dash was
+    why: The house rule on dashes (T3).
+    when: 27 November 2026
+  - what: changed
+    words: "Ideally, tell some of your engineering and business colleagues you're doing these modules in advance, and may come to them for feedback on tasks that intersect with their disciplines along the way. Most people welcome a product manager that wants to become a better working partner, and will create capacity in their schedule to help, and it gives you an excuse to deepen professional relationships if you need one."
+    from: Start, How it works, a question for a colleague
+    to: "The same place, reading \"Ideally, tell some of your engineering and business colleagues in advance that you're doing these modules, and that you may come to them along the way for feedback on tasks that intersect with their disciplines. Most people welcome a product manager who wants to become a better working partner, and will create capacity in their schedule to help. It also gives you an excuse to deepen professional relationships, if you need one,\" its long sentence now two"
+    why: "\"In advance\" and \"along the way\" sit beside the verbs they belong to, \"that\" is \"who\", and the long sentence is two."
+    when: 27 November 2026
+  - what: changed
+    words: "The exceptions to this are one story per module, usually movies or shows, which convey the module concepts in some way. While fictional, a single compelling story is more memorable than a stack of research."
+    from: Start, How it works, every source says why to trust it
+    to: "The same place, reading \"The exception to this is one story per module, usually a movie or a show, which conveys the module's concepts in some way. While fictional or dramatized, a single compelling story is more memorable than a stack of research,\" in the singular"
+    why: One story takes the singular. Chernobyl, Ford v Ferrari and The Big Short dramatize what happened, so "fictional" alone wasn't true of all thirteen.
+    when: 27 November 2026
+  - what: changed
+    words: "This is largely a synthesis of the work of others that has guided me - the curation is me trying to paying it forward."
+    from: Start, your invitation to write
+    to: "The same place, reading \"This is largely a synthesis of the work of others that has guided me. The curation is me trying to pay it forward,\" as two sentences"
+    why: The house rule on dashes (T3), and a typo.
+    when: 27 November 2026
+  - what: changed
+    words: "Once we understand how and why to change things, we need to decide on how. And most importantly, accepting responsibility for the implications of those decisions in an intentional way."
+    from: Start, The modules, the line for How you decide
+    to: "The same place, and The Compass's list, reading \"Once we understand how and why to change things, we need to decide what to change. And, most importantly, to accept responsibility for the implications of those decisions in an intentional way,\" as you picked"
+    why: "Your pick in the session, over the line with its typos alone, since \"decide on how\" repeated the \"how\" before it."
+    when: 27 November 2026
+  - what: changed
+    words: "This focuses on the latter. / In Closing."
+    from: Start, The modules, the line for How you learn and lead, and the closing unit's label
+    to: "The same places, which read \"This part focuses on the latter\" and \"In closing\" now"
+    why: Two sentences in a row opened with "This" meaning different things, and the other parts' names are set in sentence case.
+    when: 27 November 2026

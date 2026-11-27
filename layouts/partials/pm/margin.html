@@ -3,10 +3,10 @@
        so the checks and tools-pm/margin-slots.py can list every slot. Call with p (the page), unit and slot.
        A slot holds one note, or a list of notes; a note in a list that names a paragraph (beside) is placed by
        pm/prose-slots.html, beside that paragraph, and the rest print here.
-       Wide screens, and a module in print: in the owner's hand, in the margin beside the part. Phones: under the
-       part's heading, in the typeset face, with a pen line at its left. Start, a card or the glossary in print: the
-       same, in the owner's hand. Wherever it folds in, its label, "Sidenote:", shows on its own line above it; in the
-       margin only a screen reader meets the label. */ -}}
+       Wide screens, and a module in print: in the owner's hand, in the margin beside the part. Where there's no margin
+       (a phone, a tablet, and Start, a card or the glossary in print): in the text under the part's heading, in the
+       same hand, with a pen line at its left, its word, "Sidenote:", opening its first line; in the margin only a
+       screen reader meets the word. */ -}}
 {{- $notes := dict -}}
 {{- with site.Data.pm.margin }}{{ with index . $.unit }}{{ $notes = . }}{{ end }}{{ end -}}
 {{- with index $notes .slot -}}

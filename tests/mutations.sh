@@ -143,7 +143,7 @@ run_bg "a module's text back to nearly the page's width in print" M1 "sed -i 's/
 run_bg "a paragraph's note printed over the text" M1 "sed -i 's/  .module .reading .noted > .note { position: absolute; top: 0; right: calc(-1 \* (var(--margin) + var(--gutter)));/  .module .reading .noted > .note { position: absolute; top: 0; right: 0;/' assets/css/pm.css"
 run_bg "a paragraph's foot note pushed onto the next page" M1 "echo '@media print { .module .reading .noted { break-inside: auto; padding-bottom: 9in; } }' >> assets/css/pm.css"
 run_bg "a full-path note holding room open again" M1 "echo '.reading .deeper-list > li > .note { position: static !important; }' >> assets/css/pm.css"
-run_bg "stacked notes nearly touching in print" M2 "sed -i '/  .module .reading .note p { margin-bottom: var(--sp-2); }/d; /  .module .reading .note > :last-child { margin-bottom: 0; }/d' assets/css/pm.css"
+run_bg "stacked notes nearly touching in print" M2 "sed -i '/  .module .reading .note p { margin-bottom: var(--sp-2); }/d; /  .module .reading .note > :last-child { margin-bottom: 0; }/d' assets/css/pm.css; sed -i '/^.note p { margin-bottom: var(--sp-2); }/d; /^.note > :last-child { margin-bottom: 0; }/d' assets/css/base.css"
 run_bg "a full-path note running into the next one" M2 "sed -i 's/@supports (anchor-scope: --a)/@supports (anchor-scope: --a) and (not (display: block))/' assets/css/pm.css"
 run_bg "a highlight reaching past the printed page" P7 "sed -i '/  .hl-line { margin-right: 0; }/d' assets/css/base.css"
 wait
@@ -158,7 +158,7 @@ run_bg "the full path's label back at the right of the column" R10 "sed -i 's/di
 run_bg "the full path's label orange at rest" C1 "sed -i 's/text-align: left; font: var(--w-strong) var(--fs-small)\/var(--lh-text) var(--ui); color: var(--ink);/text-align: left; font: var(--w-strong) var(--fs-small)\/var(--lh-text) var(--ui); color: var(--orange);/' assets/css/pm.css"
 run_bg "the bar's place staying ink on hover" G1 "sed -i '/^.cb-open:hover, .cb-place:hover .cb-course { color: var(--orange); }$/d' assets/css/pm.css"
 run_bg "a note folded in on a phone without its label" M1 "echo '@media (max-width: 63.99rem) { .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }' >> assets/css/base.css"
-run_bg "a card's note printed typeset, not in the owner's hand" M1 "sed -i '/^  .note { font-family: \"Shantell Sans\", var(--ui); font-variation-settings: \"INFM\" 100; }$/d' assets/css/pm.css"
+run_bg "a card's note printed typeset, not in the owner's hand" M1 "echo '@media print { .note { font-family: var(--ui) !important; } }' >> assets/css/pm.css"
 # A card prints in two columns; a note there that breaks between them leaves its label at the foot of the first
 # (27 November 2026, when the sample notes moved up a slot with the picture's gone and one landed on the break).
 run_bg "a card's note split between its two printed columns" M1 "sed -i 's/^  .card-body li, .card-body p, .card-body .note { break-inside: avoid; }/  .card-body li, .card-body p { break-inside: avoid; }/' assets/css/pm.css"
@@ -220,19 +220,19 @@ run_bg "the long module no longer says it runs longer" S11 "sed -i '/^This modul
 run_bg "a seventh thing on the long module's full path" S11 "python3 -c \"p='content/pm/answer-for-what-you-build.md'; s=open(p).read(); e='  - title: Another Book\n    by: Someone\n    where: A book.\n    trust: An argument. Someone.\n    only: More of the same.\n'; open(p, 'w').write(s.replace('deeper:\n', 'deeper:\n' + e, 1))\""
 run_bg "the long module running past even its longer allowance" P1 "for i in \$(seq 60); do printf 'A filler paragraph that says nothing and only takes up room on the printed page.\n\n' >> content/pm/answer-for-what-you-build.md; done"
 # Job 22, Joe's line on Start (23 November 2026): an invitation to write, with his address shown as text (S19)
-run_bg "Start's invitation to write gone" S19 "sed -i '/^If you disagree with any of this, good/d' content/pm/_index.md"
-run_bg "Start's address hidden under other words" S19 "sed -i 's/\[mail@joestanley.org\](mailto:/[write to me](mailto:/' content/pm/_index.md"
-run_bg "Start's invitation folded into How it works' list" S19 "sed -i 's/^If you disagree with any of this, good/- If you disagree with any of this, good/' content/pm/_index.md"
+run_bg "Start's invitation to write gone" S19 "sed -i '/^If you disagree with any of this, let me know/d' content/pm/_index.md"
+run_bg "Start's address hidden under other words" S19 "sed -i 's|let me know at {{< pm/email >}}|[let me know](mailto:mail@joestanley.org)|' content/pm/_index.md"
+run_bg "Start's invitation folded into How it works' list" S19 "sed -i 's/^If you disagree with any of this, let me know/- If you disagree with any of this, let me know/' content/pm/_index.md"
 # Job 29, the two ends (23 November 2026): the arc on Start (S20) and The Compass, the closing unit (S21)
 run_bg "a module left out of the arc" S20 "sed -i 's/modules: \\[own-your-role, know-who-its-for\\]/modules: [own-your-role]/' data/pm/arc.yaml"
-run_bg "the arc's part names gone from Start" S20 "sed -i '/^<p class=\"arc-part\"><strong>{{ .title }}/d' layouts/partials/pm/arc-list.html"
+run_bg "the arc's part names gone from Start" S20 "sed -i '/^<p class=\"arc-part\"><strong id=\"arc-{{ \$where }}-{{ \$i }}\">/d' layouts/partials/pm/arc-list.html"
 run_bg "The Compass gone from Start's list" S20 "sed -i 's/{{- if \\\$start }}{{ with site.Data.pm.arc.closing }}/{{- if false }}{{ with site.Data.pm.arc.closing }}/' layouts/partials/pm/arc-list.html"
 run_bg "The Compass's framing not in a voice slot" S21 "sed -i '/pm\\/voice \"compass-framing\"/d' content/pm/the-compass.md"
 run_bg "The Compass's walk-through with no collision" S21 "sed -i '/^Here two questions collide/d' content/pm/the-compass.md"
-run_bg "Start's How it works without the closing page" S21 "sed -i 's/, then a closing page\\./\\./; s| The closing page, \\[The Compass\\](/pm/the-compass/), has you look back over it, and names \\[what the course leaves out\\](/pm/the-compass/#what-the-course-leaves-out)\\.||' content/pm/_index.md"
+run_bg "Start's How it works without the closing page" S21 "sed -i 's/, then a close\\./\\./; s| The closing page, \\[The Compass\\](/pm/the-compass/), has you look back over it\\.||' content/pm/_index.md"
 run_bg "The Compass's Do not reviewing the log" J3 "sed -i 's/^\\*\\*Review your decision log (20 minutes)\\.\\*\\*/**Look back (20 minutes).**/' content/pm/the-compass.md"
 run_bg "The Compass a page too long" P1 "python3 -c \"p='content/pm/the-compass.md'; s=open(p).read(); a=s.index('Real calls'); b=s.index('## Do'); open(p, 'w').write(s[:b] + s[a:b] + s[b:])\""
-run_bg "The Compass bookmarked without its kind" P6 "sed -i 's/u\\[\"label\"\\] = f\"To close: {u\\[.title.\\]}\"/u[\"label\"] = u[\"title\"]/' tools-pm/make-pdf.py"
+run_bg "The Compass bookmarked without its kind" P6 "sed -i 's/u\\[\"label\"\\] = f\"In closing: {u\\[.title.\\]}\"/u[\"label\"] = u[\"title\"]/' tools-pm/make-pdf.py"
 run_bg "The Compass without a tab" X2 "sed -i 's/    if closing and closing in arts:/    if False:/' tools-pm/source-doc.py"
 run_bg "The Compass not on the checks' list" X1 "sed -i 's/ + \\[CLOSING\\]$//' tests/check_site.py"
 run_bg "The Compass's call walked once, the platform gone" S21 "python3 -c \"p='content/pm/the-compass.md'; s=open(p).read(); a=s.index('{{< pm/walk \\\"platform\\\" >}}'); b=s.index('{{< /pm/walk >}}', a) + 16; open(p, 'w').write(s[:a] + s[b:])\""
@@ -331,7 +331,7 @@ run_bg "The Compass not marked as the place in the bar's list" G2 "sed -i 's/ da
 # 25 November 2026, on seeing "stop 3" in a card's foot, a word the site had never taught) (G5)
 run_bg "a card's foot names the stop's number again" G5 "sed -i 's|{{ \$mod.Title }}</a></p>|{{ \$mod.Title }}, stop {{ \$step }}</a></p>|' layouts/partials/pm/unit-foot.html"
 run_bg "the line above the short path says stops" G5 "sed -i 's/ steps. Tap a step/ stops. Tap a step/' assets/js/pm.js"
-run_bg "Start's list says stops" G5 "sed -i 's/total + \" steps done./total + \" stops done./' assets/js/pm.js"
+run_bg "Start's list says stops" G5 "sed -i 's/n + \" of \" + total + \" steps done\";/n + \" of \" + total + \" stops done\";/' assets/js/pm.js"
 # Job 40's doors and the ways around inside a module (the owner's picks of 25 November 2026, from job 36's review):
 # the concept cards' page, the pop-up's way to the glossary, where a term is used and the entry landed on (G6); a
 # module's line of links, its headings' addresses, a game's way back and its tick, and a phone's targets (G7)
@@ -412,12 +412,13 @@ run_bg "a module that links its own name" G8 "printf '\\nThat is the question [F
 run_bg "the single document links a unit's page" G8 "sed -i '/^{{- range \$to }}/d' layouts/pm/all.html"
 run_bg "the single document's Do step lands on the first module's Do" G8 "sed -i 's/#{{ if \$all }}{{ \$key }}-{{ end }}{{ .kind }}/#{{ .kind }}/' layouts/partials/pm/unit-module.html"
 # Job 44, two cards and what the course leaves out (26 November 2026): The Compass names what the course leaves out,
-# each with a free place to start, linked, and Start points there (S21); the model card is on the AI thread (S22)
+# each with a free place to start, linked, and Start's line for it says where to go from here (S21); the model card is on the AI thread (S22)
 run_bg "The Compass without what the course leaves out" S21 "sed -i '/^### What the course leaves out/d' content/pm/the-compass.md"
 run_bg "a left-out area with no free place linked" S21 "sed -i 's|\[the W3C.s introduction to web accessibility\](https://www.w3.org/WAI/fundamentals/accessibility-intro/)|the W3C introduction|' content/pm/the-compass.md"
 run_bg "The Compass leaving regulation unnamed" S21 "sed -i 's|^- \*\*Regulation:\*\* for privacy|- **Rules:** for privacy|; s|UK law, though|UK rules, though|; s|the UK regulator.s guide|the UK watchdog guide|; s|ask your own lawyers early|ask early|' content/pm/the-compass.md"
-run_bg "Start not pointing to what the course leaves out" S21 "sed -i 's|(/pm/the-compass/#what-the-course-leaves-out)|(/pm/the-compass/)|' content/pm/_index.md"
-run_bg "the single document leaving Start's pointer on The Compass's page" G8 "sed -i '/(printf \"href=\\\\\"%s#\" .RelPermalink)/d' layouts/pm/all.html"
+run_bg "Start's line for The Compass not saying where to go from here" S21 "sed -i 's/, and where to go from here in your learning journey\\./\\./' data/pm/arc.yaml"
+# (The mutation that left Start's pointer to a part of The Compass on the site's page went on 27 November 2026, with
+# the pointer: the owner cut that clause from Start, and no unit links a part of The Compass now.)
 run_bg "the model card off the AI thread" S22 "sed -i 's|So before you trust one, read its mistakes|So read its mistakes before you rely on it|' content/pm/cards/read-the-errors.md"
 run_bg "The Compass two pages over its three" P1 "python3 -c \"p='content/pm/the-compass.md'; open(p, 'a').write(('\\n\\n' + 'A sentence that runs the page long. ' * 40) * 12)\""
 run_bg "a full path without If you read one" S23 "sed -i '/^deeper_one:/,/^  why:/d' content/pm/mind-the-seams.md"
@@ -455,4 +456,29 @@ run_bg "a picture color with no job named for dark screens" C7 "sed -i 's/ --fig
 run_bg "Conway's sentence dropped from his card" S16 "sed -i '/^> /d; /^>\$/d' content/pm/cards/conways-law.md"
 run_bg "a card's quoted sentence left uncredited" S16 "sed -i '/^> Melvin Conway, /d' content/pm/cards/conways-law.md"
 run_bg "a card's quoted sentence reworded" S16 "sed -i 's/are constrained to produce designs which are copies/tend to produce designs which are copies/' content/pm/cards/conways-law.md"
+wait
+# Joe's pass on Start, the pilot of his holistic pass (27 November 2026): the address kept from harvesters (S19); the
+# list's codes and its progress right after a title (S20); a module's code before its name in running text (G8);
+# and his notes beside one bullet and one opening paragraph (M4)
+run_bg "the footer's address back as plain text" S19 "sed -i 's|{{ if hasPrefix .url \"mailto:\" }}{{ partial \"email.html\" \"href\" }}{{ else }}href=\"{{ .url }}\"{{ end }}|href=\"{{ .url }}\"|' layouts/partials/footer.html"
+run_bg "Start's address without its hidden decoy" S19 "sed -i 's|<span hidden>not.</span>||' layouts/partials/email.html"
+run_bg "Start's address written out as a plain link" S19 "sed -i 's|{{< pm/email >}}|[mail@joestanley.org](mailto:mail@joestanley.org)|' content/pm/_index.md"
+run_bg "Ready back on every module" S20 "sed -i 's|{{ if not \$page }}Not built yet{{ end }}</p>|{{ if not \$page }}Not built yet{{ else }}Ready{{ end }}</p>|' layouts/partials/pm/arc-list.html"
+run_bg "Start's markers back to bare numbers" S20 "sed -i 's|aria-hidden=\"true\">M{{ \$m.num }}</span>|aria-hidden=\"true\">{{ \$m.num }}</span>|' layouts/partials/pm/arc-list.html"
+run_bg "progress pushed to the far end of the title's line" S20 "echo '.mod-body { justify-content: space-between; }' >> assets/css/pm.css"
+run_bg "progress shown under the question" S20 "echo '.mod-status { order: 3; }' >> assets/css/pm.css"
+run_bg "an unstarted module says Not started" S20 "sed -i 's|else out.textContent = n === 0 ? \"\" :|else out.textContent = n === 0 ? \"Not started\" :|' assets/js/pm.js"
+run_bg "a module's code at the reading size" S20 "echo '.mod-num { font-size: 1.5rem; white-space: normal; }' >> assets/css/pm.css"
+run_bg "the question narrowed beside its progress" S20 "echo '.mod-question { flex-basis: 70%; }' >> assets/css/pm.css"
+run_bg "Start's progress printing" S20 "echo '@media print { .mod-status { display: block !important; } }' >> assets/css/pm.css"
+run_bg "a list of modules with no name" S20 "sed -i 's| aria-labelledby=\"arc-{{ \$where }}-{{ \$i }}\"||' layouts/partials/pm/arc-list.html"
+run_bg "a module named on Start without its code" G8 "sed -i 's|{{< pm/mod \"know-who-its-for\" >}}|[Know Who It\x27s For](/pm/know-who-its-for/)|' content/pm/_index.md"
+run_bg "a module's code not read out as Module" G8 "sed -i 's|<span class=\"sr\">Module {{ \$m.num }}</span>||' layouts/shortcodes/pm/mod.html"
+run_bg "a note beside a bullet Start no longer has" M4 "sed -i 's|beside: \"Thirteen modules, each built on one question\"|beside: \"Fourteen modules, each built on one question\"|' data/pm/margin/start.yaml"
+run_bg "a note beside an opening paragraph Start no longer has" M4 "sed -i 's|beside: \"Instead, it.s a set of lessons\"|beside: \"Instead, it is a set of lectures\"|' data/pm/margin/start.yaml"
+# Notes where there's no margin (27 November 2026): the owner's hand, his word run in and muted, tied to their paragraph (M1)
+run_bg "a note folded in on a phone in the interface's face" M1 "echo '@media screen and (max-width: 63.99rem) { .note { font-family: var(--ui) !important; } }' >> assets/css/base.css"
+run_bg "a folded note's word back on its own line" M1 "echo '.note-label { display: block; float: none; }' >> assets/css/base.css"
+run_bg "a folded note's word in the label type, bold" M1 "sed -i 's/^.note-label { float: left; margin-right: 0.3em; font: inherit; color: var(--muted); }/.note-label { float: left; margin-right: 0.3em; font: var(--w-strong) var(--fs-small)\\/var(--lh-text) var(--ui); color: var(--ink); }/' assets/css/base.css"
+run_bg "a folded note nearer the next paragraph than its own" M1 "sed -i 's/^  .note { margin: var(--sp-2) 0 var(--sp-5); }/  .note { margin: var(--sp-5) 0 var(--sp-1); }/; s/^  .noted > p:not(:last-child) { margin-bottom: var(--sp-2); }//' assets/css/base.css"
 wait

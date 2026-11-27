@@ -23,8 +23,9 @@
        is left alone, since nothing in the text links it, and the concept cards' page isn't in this document. */ -}}
 {{- $to := slice -}}
 {{- range $home.RegularPagesRecursive }}{{ if in (slice "module" "card" "closing" "glossary") .Layout }}{{ $to = $to | append (dict "from" (printf "href=\"%s\"" .RelPermalink) "to" (printf "href=\"%s\"" (partial "pm/href.html" (dict "p" . "all" true)))) }}{{ end }}{{ end -}}
-{{- /* A link to a part of the closing unit, such as Start's to what The Compass says the course leaves out (S21), lands
-       on that part here: the closing unit is the only one of its kind, so its headings keep their ids in this document. */ -}}
+{{- /* A link to a part of the closing unit lands on that part here: the closing unit is the only one of its kind, so
+       its headings keep their ids in this document. None does today: Start's, to what The Compass says the course
+       leaves out, went with the owner's edit of 27 November 2026. */ -}}
 {{- with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}{{ $to = $to | append (dict "from" (printf "href=\"%s#" .RelPermalink) "to" "href=\"#") }}{{ end }}{{ end -}}
 {{- range $units }}
 {{- $html := replace (string .) $from "href=\"#g-" }}

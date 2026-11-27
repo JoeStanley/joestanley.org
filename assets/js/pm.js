@@ -39,7 +39,8 @@
       if (!out || !total) return;
       /* The course bar's list says it in a few words (G1): nothing until a step is ticked. */
       if (el.hasAttribute("data-map-short")) out.textContent = n === 0 ? "" : n >= total ? "Done" : n + " of " + total + " steps";
-      else out.textContent = n === 0 ? "Ready. Not started." : n >= total ? "Done." : "Started: " + n + " of " + total + " steps done.";
+      /* Start's list, right after the module's title (S20): nothing until a step is ticked, then the count, then Done. */
+      else out.textContent = n === 0 ? "" : n >= total ? "Done" : n + " of " + total + " steps done";
       el.classList.toggle("is-done", n >= total);
     });
   }

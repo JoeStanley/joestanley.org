@@ -195,6 +195,9 @@ h3, h4 { margin: 0; font-size: var(--fs-body); font-weight: var(--w-head); line-
 .prose p, .prose ul, .prose ol, .prose blockquote { margin: 0 0 var(--sp-4); }
 .prose ul, .prose ol { padding-left: 1.3rem; }
 .prose li { margin: var(--sp-2) 0; }
+/* A bullet that holds paragraphs, so a second one can follow or a margin note sit beside it (M4): spaced as a plain bullet is. */
+.prose li > p, .prose li > .noted > p { margin-bottom: var(--sp-2); }
+.prose li > :last-child, .prose li > .noted:last-child > p { margin-bottom: 0; }
 .prose li::marker { color: var(--muted); font-family: var(--ui); }
 .prose hr { border: 0; border-top: 1px solid var(--rule); margin: var(--sp-6) 0; }
 .prose blockquote { padding-left: var(--sp-4); border-left: 3px solid var(--rule); font-style: italic; }
@@ -233,15 +236,29 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
    edge on every line, as unhighlighted text does. */
 .hl-line { display: block; margin-inline: -0.22em; }
 
-/* Margin notes: the owner's own notes beside the text (spec M1 to M4). On a phone and in print a note sits under
-   its part's heading, in small type, with a grey line at its left so it reads as an aside; on a wide screen it moves
-   to the margin, in the owner's hand. */
-.note { display: block; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
+/* Margin notes: the owner's own notes beside the text (spec M1 to M4), in his hand: Shantell Sans is drawn from
+   Shantell Martin's handwriting but built for reading. On a wide screen a note sits in the margin. Where there's no
+   margin, on a phone, a tablet or a full-width page in print, it folds into the text after its part's heading or its
+   paragraph, small, with a pen line at its left. */
+.note { display: block; margin: var(--sp-2) 0 var(--sp-3); padding-left: var(--sp-3); border-left: 2px solid var(--link-line); font: var(--w-regular) var(--fs-small)/var(--lh-text) "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; color: var(--ink); }
 .note b, .note strong { color: var(--ink); font-weight: var(--w-strong); }
-/* Wherever a note folds into the text, "Sidenote:" sits on its own line above it, in the label type, so a reader who
-   can't see a margin still knows it's an aside in the owner's voice. In the margin only a screen reader meets it, as
-   it does every note (spec M1, M3; the owner's word, 21 November 2026). */
-.note-label { display: block; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--ink); }
+/* A note's box ends with its words, and a break inside a note is smaller than the room around one (spec M2). */
+.note p { margin-bottom: var(--sp-2); }
+.note > :last-child { margin-bottom: 0; }
+/* Wherever a note folds into the text, its word, "Sidenote:", opens its first line in the same hand, muted: a ruled,
+   indented block is how the web sets a quotation, so one word says it's an aside, and it comes from the note's own
+   voice, not the page's labels. It floats, so it opens the first line of a note of several paragraphs too. In the
+   margin only a screen reader meets it, as it does every note (spec M1, M3; the owner's word, 21 November 2026, and
+   its place, 27 November 2026). */
+.note-label { float: left; margin-right: 0.3em; font: inherit; color: var(--muted); }
+/* Folded in on a screen, a note sits nearer its own paragraph than the next, so it reads as that paragraph's aside,
+   and two notes in a row sit as close as two paragraphs do. */
+@media screen and (max-width: 63.99rem) {
+  .note { margin: var(--sp-2) 0 var(--sp-5); }
+  .noted > p:not(:last-child) { margin-bottom: var(--sp-2); }
+  .note + .note { margin-top: calc(-1 * var(--sp-3)); }
+  li > .noted:last-child > .note, li > .note:last-child { margin-bottom: var(--sp-3); }
+}
 /* A note beside one paragraph follows it in the text, so on a phone and in print it folds in under that paragraph;
    on a wide screen it sits level with it in the margin, at its top, or at its foot when placed lower (spec M1). */
 .noted { position: relative; }
@@ -277,8 +294,7 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
   :root { --pad: 2.5rem; }
   .band { padding-top: var(--sp-7); }
   .reading { padding-right: calc(var(--margin) + var(--gutter)); }
-  /* The margin holds the owner's own notes, and nothing else, in a hand: Shantell Sans is drawn from Shantell
-     Martin's handwriting but built for reading. */
+  /* The margin holds the owner's own notes, and nothing else. */
   .reading .note {
     float: right; clear: right;
     padding-left: 0; border-left: 0;

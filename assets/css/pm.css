@@ -288,15 +288,20 @@
 
 /* Start page: the modules, spaced, not ruled; numerals are light, in the muted ink. */
 .modules { list-style: none; margin: var(--sp-4) 0 0; padding: 0; }
-.mod { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0 var(--sp-2); padding: 0 0 var(--sp-5); }
-.mod-num { font: var(--w-regular) var(--fs-body)/var(--lh-head) var(--ui); color: var(--muted); font-variant-numeric: lining-nums tabular-nums; }
-.mod-question { margin: var(--sp-1) 0 0; font-style: italic; }
-.mod-status { margin: var(--sp-1) 0 0; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.mod { display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0 var(--sp-2); align-items: baseline; padding: 0 0 var(--sp-5); }
+/* The marker is a module's code, M0 to M12, in the small label type, so three characters keep to their column (S20). */
+.mod-num { font: var(--w-regular) var(--fs-small)/var(--lh-head) var(--ui); color: var(--muted); font-variant-numeric: lining-nums tabular-nums; white-space: nowrap; }
+/* Progress sits right after the title it describes, on its baseline, and wraps under it where it doesn't fit;
+   the question keeps the full measure below. Until a step is ticked there's nothing to show (S20). */
+.mod-body { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: var(--sp-3); }
+.mod-question { flex-basis: 100%; margin: var(--sp-1) 0 0; font-style: italic; }
+.mod-status { margin: 0; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
+.mod-status:empty { display: none; }
 /* The arc's parts (S20): each part's name and line in the same small label type as a module's status, closer to its
    own modules than to the part above, so no new look comes with them (the owner, 23 November 2026). */
 .arc-part { margin: var(--sp-4) 0 0; font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); color: var(--muted); }
-.arc-part strong { font-weight: var(--w-strong); }
-.modules + .arc-part { margin-top: 0; }
+.arc-part strong { font-weight: var(--w-strong); color: var(--ink); }
+.modules + .arc-part { margin-top: var(--sp-3); }
 .arc-part + .modules { margin-top: var(--sp-2); }
 .mod.is-pending .mod-num, .mod.is-pending h3, .mod.is-pending .mod-question { color: var(--muted); }
 .mod.is-done .mod-status { color: var(--ink); }
@@ -361,7 +366,9 @@
 .op-label { color: var(--muted); }
 .op-list { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); margin: 0; padding: 0; list-style: none; }
 .op-list a, .game-back a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-.start-more { margin: var(--sp-5) 0 0; }
+.mod-closing { padding-bottom: var(--sp-3); }
+.start-more { margin: var(--sp-3) 0 0; }
+.start-more .op-label { font-weight: var(--w-strong); color: var(--ink); }
 .game-back { margin: var(--sp-3) 0 0; font: var(--w-strong) var(--fs-small)/var(--lh-text) var(--ui); }
 
 /* The doors (spec G6): the pop-up's way to the glossary, where each term is used, the entry a link lands on, marked
@@ -601,7 +608,8 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
   .card-deeper h2 { margin-top: var(--sp-4); }
 
   .modules { margin-top: var(--sp-2); columns: 2; column-gap: 26pt; }
-  .mod { break-inside: avoid; grid-template-columns: 20pt minmax(0, 1fr); }
+  .mod { break-inside: avoid; grid-template-columns: 22pt minmax(0, 1fr); }
+  .mod-status { display: none; }
   .arc-part { break-after: avoid; }
   .walk-toggle { display: none !important; }
   .walk[hidden] { display: block !important; }

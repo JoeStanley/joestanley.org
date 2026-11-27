@@ -1,0 +1,25 @@
+{{- /* The owner's email address, written so a harvester's pattern doesn't find it and a reader loses nothing
+       (spec S19, the owner, 27 November 2026). Call with the string "href" for a mailto link's whole href attribute, or
+       "text" for the address as words. Every character is a numeric character reference, which a browser reads as the
+       letter it stands for; and the words carry a decoy a browser never shows, speaks or copies (the hidden
+       attribute), so a harvester that strips the tags reads an address that doesn't exist. Nothing needs a script.
+       The address is the one hugo.yaml's Email link holds. */ -}}
+{{- $mail := "" -}}
+{{- range site.Params.links }}{{ if hasPrefix .url "mailto:" }}{{ $mail = .url }}{{ end }}{{ end -}}
+{{- if not $mail }}{{ errorf "email: hugo.yaml's links hold no mailto: address" }}{{ end -}}
+{{- $addr := strings.TrimPrefix "mailto:" $mail -}}
+{{- $parts := split $addr "@" -}}
+{{- $out := "" -}}
+{{- if eq . "href" -}}
+  {{- $hex := printf "%x" $mail -}}
+  {{- range seq 0 2 (sub (len $hex) 2) }}{{ $out = printf "%s&#x%s;" $out (substr $hex . 2) }}{{ end -}}
+  {{- $out = printf `href="%s"` $out | safeHTMLAttr -}}
+{{- else -}}
+  {{- $hex := printf "%x" (index $parts 0) -}}
+  {{- range seq 0 2 (sub (len $hex) 2) }}{{ $out = printf "%s&#x%s;" $out (substr $hex . 2) }}{{ end -}}
+  {{- $out = printf "%s&#x40;<span hidden>not.</span>" $out -}}
+  {{- $hex = printf "%x" (index $parts 1) -}}
+  {{- range seq 0 2 (sub (len $hex) 2) }}{{ $out = printf "%s&#x%s;" $out (substr $hex . 2) }}{{ end -}}
+  {{- $out = $out | safeHTML -}}
+{{- end -}}
+{{- return $out -}}

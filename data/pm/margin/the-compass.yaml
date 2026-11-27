@@ -1,8 +1,8 @@
 # Margin notes for the closing unit, The Compass.
 # One slot per part of the page, in reading order. Write a note between the quotes; leave "" for none.
-# On a wide screen, and in a module's print, a note shows in your hand in the margin beside its part. On a phone it
-# sits under the part's heading, typeset; in print on Start, a card or the glossary it sits there in your hand.
-# Wherever it sits in the text, "Sidenote:" goes above it, and a screen reader always reads that word first.
+# On a wide screen, and in a module's print, a note shows in your hand in the margin beside its part. On a phone,
+# and in print on Start, a card or the glossary, it sits in the text under its part's heading, in your hand too.
+# Wherever it sits in the text, it opens with "Sidenote:", and a screen reader always reads that word first.
 # A note beside a source on the full path may run on past it. Markdown works for **bold** and [a link](https://example.org).
 # To put a note beside one paragraph of a part, give the slot a list, and name the paragraph by a few of its words:
 #   why-this-matters:

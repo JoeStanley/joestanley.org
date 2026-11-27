@@ -1,0 +1,12 @@
+{{- /* A module named in running text, by its code and title: "M10: Answer for What You Build" (spec G8).
+       First argument: the module's id in data/pm/modules.yaml. A title alone doesn't read as a title in the middle
+       of a sentence, so the code in front of it says it's a name (the owner, 27 November 2026). The code is the
+       marker Start's list gives the module. A screen reader hears "Module 10", as it does in that list. The whole
+       is one link to the module's page, as a name that links always is. */ -}}
+{{- $id := .Get 0 -}}
+{{- $m := index (where site.Data.pm.modules "id" $id) 0 -}}
+{{- if not $m }}{{ errorf "pm/mod: no module %q in data/pm/modules.yaml (used in %s)" $id .Page.File.Path }}{{ end -}}
+{{- $page := site.GetPage (printf "/pm/%s" $m.page) -}}
+{{- if not $page }}{{ errorf "pm/mod: module %q has no built page (used in %s)" $id .Page.File.Path }}{{ end -}}
+<a class="mod-name" href="{{ $page.RelPermalink }}"><span aria-hidden="true">M{{ $m.num }}</span><span class="sr">Module {{ $m.num }}</span>: {{ $m.title | markdownify }}</a>
+{{- /**/ -}}

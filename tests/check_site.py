@@ -61,7 +61,8 @@ RUNS_LONG = {"answer-for-what-you-build"}   # runs longer on purpose and says so
                                             # allowance in print (P1) (the owner, 23 November 2026)
 GLOSSARY_GRACE = None   # until a PDF is published, the glossary may run past its three pages: noted, not failed (the owner, 22 November 2026)
 CLOSING_GRACE = 1   # until a PDF is published, The Compass may print on a fourth page: noted, not failed (the owner, 26 November 2026)
-PRINT_PAGES = 109   # a record: the check notes a change in the count, and does not fail on it
+START_GRACE = 1   # until a PDF is published, Start may print on a third page: noted, not failed (the owner, 27 November 2026)
+PRINT_PAGES = 110   # a record: the check notes a change in the count, and does not fail on it
 FAIL = defaultdict(list)     # rule id -> list of messages
 NOTE = defaultdict(list)     # rule id -> informational messages
 CHECKED = set()
@@ -183,7 +184,14 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
             hidden: !!n.closest('[aria-hidden="true"]'), lead: (n.firstElementChild && n.firstElementChild.matches('.note-label')) ? n.firstElementChild.textContent : '',
             label: (() => { const l = n.firstElementChild; if (!l || !l.matches('.note-label')) return null; const lr = l.getBoundingClientRect(); const ls = getComputedStyle(l);
               const rest = document.createRange(); rest.setStartAfter(l); rest.setEnd(n, n.childNodes.length); const rr = [...rest.getClientRects()].filter(x => x.width && x.height);
-              return {shown: lr.width > 2 && lr.height > 2 && ls.clipPath === 'none' && ls.visibility !== 'hidden', own: !rr.length || lr.bottom <= Math.min(...rr.map(x => x.top)) + 1}; })(),
+              return {shown: lr.width > 2 && lr.height > 2 && ls.clipPath === 'none' && ls.visibility !== 'hidden', own: !rr.length || lr.bottom <= Math.min(...rr.map(x => x.top)) + 1,
+                      runin: rr.length > 0 && Math.abs(lr.top - Math.min(...rr.map(x => x.top))) < lr.height / 2 && lr.left <= Math.min(...rr.map(x => x.left)) + 1,
+                      face: ls.fontFamily.split(',')[0].replace(/["']/g, '').trim().toLowerCase(), weight: +ls.fontWeight,
+                      quiet: (() => { const t = document.createElement('span'); t.style.color = 'var(--muted)'; n.appendChild(t); const c = getComputedStyle(t).color; t.remove(); return ls.color === c; })()}; })(),
+            frags: n.getClientRects().length,
+            gapAbove: (n.parentElement.matches('.noted') && prev && prev.tagName === 'P') ? r.top - prev.getBoundingClientRect().bottom : null,
+            gapBelow: (() => { const host = n.parentElement.matches('.noted') ? n.parentElement : n; let nx = host.nextElementSibling; if (!nx && host.parentElement.tagName === 'LI') nx = host.parentElement.nextElementSibling;
+              return nx && nx.getClientRects().length ? nx.getBoundingClientRect().top - r.bottom : null; })(),
             para: n.parentElement.matches('.noted') && prev && prev.tagName === 'P' ? [prev.getBoundingClientRect().top, prev.getBoundingClientRect().bottom] : null,
             after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (!next && prev && prev.tagName === 'P' && n.parentElement.matches('.noted')) ? 'PARAGRAPH' : '',
             kind: (n.closest('.unit') || {className: ''}).className,
@@ -242,10 +250,15 @@ def margin_checks(ctx, fix_base, axe_src):
                     else:
                         if n["right"] > n["colRight"] + 1 or n["left"] < n["colLeft"] - 1:
                             fail("R3", f"{where}: {tag} does not fold into the text")
-                        if n["face"] == "shantell sans" or n["border"] < 1:
-                            fail("M1", f"{where}: {tag} folds in without the typeset face and pen line")
-                        if not (n["label"] and n["label"]["shown"] and n["label"]["own"]):
-                            fail("M1", f"{where}: {tag} folds in without its label, \"Sidenote:\", on its own line above it")
+                        if n["face"] != "shantell sans" or n["border"] < 1:
+                            fail("M1", f"{where}: {tag} folds in without the owner's hand and the pen line")
+                        lab = n["label"]
+                        if not (lab and lab["shown"] and lab["runin"]):
+                            fail("M1", f"{where}: {tag} folds in without its word, \"Sidenote:\", opening its first line")
+                        elif lab["face"] != "shantell sans" or lab["weight"] > 450 or not lab["quiet"]:
+                            fail("M1", f"{where}: {tag}'s word, \"Sidenote:\", isn't in the note's own hand, regular and muted ({lab['face']}, {lab['weight']})")
+                        if n["gapAbove"] is not None and n["gapBelow"] is not None and not n["gapAbove"] < n["gapBelow"]:
+                            fail("M1", f"{where}: {tag} sits {n['gapAbove']:.0f}px under its own paragraph and {n['gapBelow']:.0f}px above what follows, so it reads as the next one's")
                         if n["right"] - n["left"] < 0.6 * (n["colRight"] - n["colLeft"]):
                             fail("M1", f"{where}: {tag} folds in only {n['right'] - n['left']:.0f}px wide, in a {n['colRight'] - n['colLeft']:.0f}px column")
                 if w >= 1024:
@@ -390,8 +403,10 @@ def print_margin_checks(ctx, fix_base):
                 fail("M1", f"{where}: {tag} does not fold into the text")
             if n["face"] != "shantell sans" or n["border"] < 1:
                 fail("M1", f"{where}: {tag} folds in without the owner's hand and the pen line")
-            if not (n["label"] and n["label"]["shown"] and n["label"]["own"]):
-                fail("M1", f"{where}: {tag} folds in without its label, \"Sidenote:\", on its own line above it")
+            if n["frags"] > 1:
+                fail("M1", f"{where}: {tag} breaks between two printed columns")
+            elif not (n["label"] and n["label"]["shown"] and n["label"]["runin"]):
+                fail("M1", f"{where}: {tag} folds in without its word, \"Sidenote:\", opening its first line")
     _one_edge(margin, where)
     margin.sort(key=lambda n: n["top"])
     for a_, b_ in zip(margin, margin[1:]):
@@ -727,10 +742,28 @@ def start_checks(out_dir):
     if not found:
         fail("S19", f"Start doesn't invite the reader to write: nothing in its opening links {addr}")
         return
-    if not any(a.get_text(strip=True) == addr for a in found):
+    # what a reader sees, hears and copies: the link's words without what the hidden attribute keeps from them
+    def shown(a):
+        c = BeautifulSoup(str(a), "html.parser")
+        for h in c.find_all(attrs={"hidden": True}):
+            h.extract()
+        return c.get_text(strip=True)
+    if not any(shown(a) == addr for a in found):
         fail("S19", f"Start links {addr} under other words, so a reader whose browser opens no mail app can't copy it")
         return
-    a = next(a for a in found if a.get_text(strip=True) == addr)
+    a = next(a for a in found if shown(a) == addr)
+    # not harvested: no built page holds the address as plain text, and Start's words carry a hidden decoy inside it
+    plain = sorted(os.path.relpath(f, out_dir) for f in glob.glob(os.path.join(out_dir, "**", "*.html"), recursive=True)
+                   if addr in open(f, encoding="utf-8").read())
+    if plain:
+        fail("S19", f"{len(plain)} built page{'' if len(plain) == 1 else 's'} hold the address as plain text, where a harvester's pattern finds it: {', '.join(plain[:4])}")
+    decoy = a.find(attrs={"hidden": True})
+    if not decoy or not decoy.get_text(strip=True) or a.get_text(strip=True) == addr:
+        fail("S19", "Start's address carries no hidden decoy, so a harvester that strips the tags reads the real one")
+    for rel in ("index.html", os.path.join("pm", "index.html")):
+        doc = BeautifulSoup(open(os.path.join(out_dir, rel), encoding="utf-8").read(), "html.parser")
+        if not doc.find("a", href=mail):
+            fail("S19", f"{rel} no longer links the address at all: a reader must still reach it")
     p = a.find_parent("p")
     if how not in a.find_all_previous("h2"):
         fail("S19", "Start's invitation to write comes before \"How it works\", not after it")
@@ -837,6 +870,22 @@ def name_link_checks(out_dir):
                 fail("G8", f"{path} links {name} twice in one part: a name met again stays words")
     if count < 60:
         fail("G8", f"only {count} names link another unit across the syllabus, fewer than the walks found unlinked")
+    # G8: on Start, its pilot, a module named in running text carries its code inside the link, read out as "Module n"
+    mods_ = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    code = {f"/pm/{m['page']}/": (m["num"], m["title"]) for m in mods_ if m.get("page")}
+    prose = page("/pm/").select_one('article.unit [data-slot="intro"]')
+    named = 0
+    for a in prose.find_all("a") if prose else []:
+        if a.get("href") not in code or _closest(a, ".note"):
+            continue   # his margin notes are his (G8)
+        n, title = code[a["href"]]
+        named += 1
+        sr, vis = a.find(class_="sr"), a.find(attrs={"aria-hidden": "true"})
+        words = " ".join(a.get_text(" ", strip=True).replace("’", "'").split())
+        if not sr or not vis or sr.get_text(strip=True) != f"Module {n}" or vis.get_text(strip=True) != f"M{n}" or not words.endswith(f": {title}"):
+            fail("G8", f"Start names {title} in running text without its code before it, M{n}, read out as Module {n}: \"{words}\"")
+    if not named:
+        fail("G8", "Start names no module in its running text, so the code before a name has no pilot")
     # G8: in the single document every link to a unit lands on the unit in the page, and each module's Do and Check
     # steps land on that module's own Do and Check
     whole = page("/pm/all/")
@@ -1685,8 +1734,8 @@ def course_bar_browser_checks(out_dir):
                         fail("G1", f"/pm/ at {w}px, with {what} saved: the bar's steps are {c['steps']}, Continue to {c['href']} ('{c['sr']}'), not Continue alone to {exp} ('Continue: {label[exp.split('#')[0]]}')")
                     if w == 390 and plan.get(built[2]) == "part":
                         said = pg.evaluate("(u) => { const li = document.querySelector('main [data-map-unit=\"' + u + '\"]'); return [li.querySelector('[data-map-status]').textContent.trim(), +li.getAttribute('data-map-steps')]; }", built[2])
-                        if said[0] != f"Started: 1 of {said[1]} steps done.":
-                            fail("G5", f"/pm/ with one step of {built[2]} ticked: Start's list says '{said[0]}', not 'Started: 1 of {said[1]} steps done.'")
+                        if said[0] != f"1 of {said[1]} steps done":
+                            fail("G5", f"/pm/ with one step of {built[2]} ticked: Start's list says '{said[0]}', not '1 of {said[1]} steps done'")
                     if w == 390 and (c["height"] > 44.5 or c["size"][0] < 43.5 or c["size"][1] < 43.5):
                         fail("G3", f"/pm/ at {w}px with Continue: the bar is {c['height']:.0f}px tall, Continue {c['size'][0]:.0f} by {c['size'][1]:.0f}; one line, and 44 by 44")
                 pg.evaluate("localStorage.clear()")
@@ -1866,7 +1915,7 @@ def site_menu_checks(out_dir):
 
 def arc_checks(out_dir):
     """S20: the arc's four parts on Start, each name and line above its modules, every module in one part in reading
-    order, The Compass last under "To close". S21: The Compass, made from a module's parts, closes the course."""
+    order, The Compass last under "In closing". S21: The Compass, made from a module's parts, closes the course."""
     from bs4 import BeautifulSoup
     checked("S20", "S21")
     mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
@@ -1930,6 +1979,32 @@ def arc_checks(out_dir):
             fail("S20", "Start's last entry should be The Compass alone, unnumbered and linked")
     if wrap.find("span", class_="mod-num", string=re.compile(r"\d")) is None:
         fail("S20", "Start's modules lost their numbers")
+    # S20: each module's marker is its code, and its progress has its place right after its title, empty on the page
+    num = {m["title"]: m["num"] for m in mods}
+    for li in wrap.select("ol.modules > li.mod"):
+        h3, st, q, mark = li.find("h3"), li.find(class_="mod-status"), li.find(class_="mod-question"), li.find(class_="mod-num")
+        a = h3.find("a") if h3 else None
+        name = norm(a.get_text(" ")) if a else ""
+        if name not in num:
+            continue   # the closing unit: no code, no progress
+        if norm(mark.get_text()) != f"M{num[name]}":
+            fail("S20", f"Start marks {name} \"{norm(mark.get_text())}\", not its code, M{num[name]}")
+        if not st or not st.has_attr("data-map-status") or norm(st.get_text()):
+            fail("S20", f"Start's entry for {name} should carry its progress empty until a step is ticked: \"{norm(st.get_text()) if st else 'none'}\"")
+            continue
+        kids = [c for c in li.find(class_="mod-body").find_all(recursive=False)]
+        if [kids.index(x) for x in (h3, st, q)] != [0, 1, 2]:
+            fail("S20", f"Start's entry for {name} isn't title, progress, question in the page's order (A6)")
+        if not st.get("id") or a.get("aria-describedby") != st.get("id"):
+            fail("S20", f"Start's link to {name} isn't described by its progress")
+    if re.search(r"\bReady\b", wrap.get_text(" ")):
+        fail("S20", "Start's list says \"Ready\": a module that hasn't been started says nothing")
+    for ol in wrap.select("ol.modules"):
+        lab = ol.get("aria-labelledby")
+        named = start.find(id=lab) if lab else None
+        prev = ol.find_previous_sibling("p", class_="arc-part")
+        if not named or not prev or named not in prev.find_all("strong"):
+            fail("S20", "a list of modules on Start isn't named by its part")
     for el in wrap.find_all("p", class_="arc-part"):
         if el.find_parent("li"):
             fail("S20", "a part's name sits inside a module's entry, not above its modules")
@@ -2047,8 +2122,75 @@ def arc_checks(out_dir):
     ul = how.find_next("ul") if how else None
     if not ul or "closing page" not in norm(ul.get_text(" ")) or "The Compass" not in norm(ul.get_text(" ")):
         fail("S21", "Start's \"How it works\" doesn't name the closing page, The Compass")
-    elif not ul.find("a", href=re.compile(rf"/pm/{page}/#{LEAVES_OUT_ID}$")):
-        fail("S21", f"Start's \"How it works\" doesn't point to what The Compass says the course leaves out (#{LEAVES_OUT_ID})")
+    # Start's line for the closing unit says what it holds, down to the section that names what the course leaves out
+    if not last_h2 or "where to go from here" not in norm(closing.get("line", "")).lower():
+        fail("S21", "Start's line for The Compass doesn't say it tells you where to go from here, the section that names what the course leaves out")
+
+
+def start_list_browser_checks(out_dir):
+    """S20 in a browser: a module's code keeps to its column, and its progress says nothing, then the count, then
+    Done, right after the title it describes or wrapped under it, above a question that keeps the full measure;
+    under wider text spacing too (A13); and it never prints."""
+    mods = yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "modules.yaml"), encoding="utf-8"))
+    built = [m["page"] for m in mods if m.get("page")]
+    JS = """() => [...document.querySelectorAll('main li.mod[data-map-unit]')].map(li => {
+      const r = e => e.getBoundingClientRect(); const a = li.querySelector('h3 a'), st = li.querySelector('.mod-status'),
+            q = li.querySelector('.mod-question'), num = li.querySelector('.mod-num'), body = li.querySelector('.mod-body');
+      const on = st.getClientRects().length > 0, s = on ? r(st) : null, cs = getComputedStyle(st);
+      return {unit: li.dataset.mapUnit, steps: +li.dataset.mapSteps, text: st.textContent.trim(), on,
+              aLeft: r(a).left, aRight: r(a).right, aBottom: r(a).bottom, sLeft: s && s.left, sTop: s && s.top, sBottom: s && s.bottom, sRight: s && s.right,
+              qTop: r(q).top, qLeft: r(q).left, qWidth: r(q).width, bodyLeft: r(body).left, bodyRight: r(body).right, bodyWidth: r(body).width,
+              numRight: r(num).right, numLines: Math.round(r(num).height / parseFloat(getComputedStyle(num).lineHeight)),
+              color: cs.color, ink: getComputedStyle(a).color}; })"""
+    SPACING = "* { line-height: 1.5 !important; letter-spacing: 0.12em !important; word-spacing: 0.16em !important; } p { margin-bottom: 2em !important; }"
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=os.environ.get("CHROME") or None)
+            for w, spaced in ((1280, False), (390, False), (320, True)):
+                ctx = b.new_context(viewport={"width": w, "height": 900}); pg = ctx.new_page()
+                pg.goto(srv.base + "/pm/"); pg.wait_for_load_state("load")
+                pg.evaluate(JS_SAVE, {built[0]: "done", built[2]: "part"}); pg.reload(); pg.wait_for_load_state("load"); pg.evaluate("document.fonts.ready")
+                if spaced:
+                    pg.add_style_tag(content=SPACING)
+                where = f"/pm/ at {w}px" + (" with wider text spacing" if spaced else "")
+                for r in pg.evaluate(JS):
+                    want = "Done" if r["unit"] == built[0] else f"1 of {r['steps']} steps done" if r["unit"] == built[2] else ""
+                    if r["text"] != want:
+                        fail("S20", f"{where}: {r['unit']}'s progress reads '{r['text']}', not '{want}'")
+                    if r["numRight"] > r["bodyLeft"] + 0.5 or r["numLines"] > 1:
+                        fail("S20", f"{where}: {r['unit']}'s code doesn't keep to its column on one line")
+                    if abs(r["qLeft"] - r["bodyLeft"]) > 0.5 or r["qWidth"] < r["bodyWidth"] - 0.5:
+                        fail("S20", f"{where}: {r['unit']}'s question doesn't keep the full measure under its title")
+                    if not want:
+                        if r["on"]:
+                            fail("S20", f"{where}: {r['unit']} hasn't been started, and its empty progress still takes room")
+                        continue
+                    if not r["on"]:
+                        fail("S20", f"{where}: {r['unit']}'s progress doesn't show"); continue
+                    beside = r["sLeft"] >= r["aRight"] - 0.5 and r["sTop"] < r["aBottom"]
+                    under = r["sTop"] >= r["aBottom"] - 6 and abs(r["sLeft"] - r["aLeft"]) <= 1
+                    if not (beside or under) or (w == 1280 and not beside):
+                        fail("S20", f"{where}: {r['unit']}'s progress isn't right after its title" + ("" if w == 1280 else ", or wrapped under it"))
+                    if beside and r["sLeft"] - r["aRight"] > 24:
+                        fail("S20", f"{where}: {r['unit']}'s progress sits {r['sLeft'] - r['aRight']:.0f}px from the title it describes")
+                    if r["sBottom"] > r["qTop"] + 0.5 or r["sRight"] > r["bodyRight"] + 0.5:
+                        fail("S20", f"{where}: {r['unit']}'s progress runs into its question or out of its entry")
+                    if want == "Done" and r["color"] != r["ink"]:
+                        fail("S20", f"{where}: a finished module's Done isn't in ink")
+                if w == 1280:
+                    pg.emulate_media(media="print")
+                    if pg.evaluate("() => [...document.querySelectorAll('main .mod-status')].some(e => e.getClientRects().length > 0)"):
+                        fail("S20", "Start's progress prints")
+                ctx.close()
+            ctx = b.new_context(viewport={"width": 1280, "height": 900}, java_script_enabled=False); pg = ctx.new_page()
+            pg.goto(srv.base + "/pm/"); pg.wait_for_load_state("load")
+            if pg.evaluate("() => [...document.querySelectorAll('main li.mod[data-map-unit] .mod-status')].some(e => e.getClientRects().length > 0)"):
+                fail("S20", "without scripts Start's built modules show a progress line, which nothing will ever fill")
+            ctx.close()
+            b.close()
+    finally:
+        srv.close()
 
 
 def check_static():
@@ -3350,7 +3492,7 @@ def _expected_outline(out_dir):
         elif kind == "card":
             u["label"] = f"Card: {h1}"
         elif kind == "closing":
-            u["label"] = f"To close: {h1}"
+            u["label"] = f"In closing: {h1}"
         else:
             u["label"] = h1
         if kind == "glossary":
@@ -3393,7 +3535,7 @@ def unit_page_checks(pdf_path, n_pages):
         with pdf.open_outline() as ol:
             for top in ol.root:
                 kind = ("start" if top.title.startswith("Start:") else "module" if top.title.startswith("Module ")
-                        else "closing" if top.title.startswith("To close:") else "glossary")
+                        else "closing" if top.title.startswith("In closing:") else "glossary")
                 deeper = next((first_page(k) for k in top.children if k.title.startswith("Go deeper: the full path")), None)
                 units.append((first_page(top), kind, top.title, deeper))
                 units += [(first_page(k), "card", k.title, None) for k in top.children if k.title.startswith("Card: ")]
@@ -3408,7 +3550,7 @@ def unit_page_checks(pdf_path, n_pages):
         # a module's full path prints outside its three pages: it starts within them, and may take two more
         share = UNIT_SHARE[kind] + (DEEPER_PAGES if kind == "module" and deeper is not None else 0)
         # the website first: a module's extra page is noted, not failed, and a module with a game may run further
-        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else CLOSING_GRACE if kind == "closing" else 0
+        grace = (GAME_GRACE if _plain_title(title) in with_game | long_ else MODULE_GRACE) if kind == "module" else CLOSING_GRACE if kind == "closing" else START_GRACE if kind == "start" else 0
         why_ = "since it runs long on purpose" if _plain_title(title) in long_ else "since it carries a game"
         said = f"'{title}' prints on {n} pages; a {kind} gets {UNIT_SHARE[kind]}{f', and {DEEPER_PAGES} more for its full path' if share > UNIT_SHARE[kind] else ''}"
         if n < 1:
@@ -5080,7 +5222,8 @@ def page_checks(base, out_dir, tokens, update_baseline, fix_base=None):
             # P4: what prints must not be hidden from assistive technology, or the tagged PDF leaves it out
             checked("P4")
             for t in pg.evaluate("""() => [...document.querySelectorAll('[aria-hidden="true"]')].filter(el => !el.closest('svg') && el.getClientRects().length
-                  && el.textContent.replace(/[\\d\\s.,:;]/g, '').length).map(el => el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 40) + '"')"""):
+                  && el.textContent.replace(/[\\d\\s.,:;]/g, '').length
+                  && !(/^M\\d+$/.test(el.textContent.trim()) && [...(el.closest('li, a') || el.parentElement).querySelectorAll('.sr')].some(s => s.textContent.trim().replace(/:$/, '') === 'Module ' + el.textContent.trim().slice(1)))).map(el => el.tagName + '.' + el.className + ' "' + el.textContent.trim().slice(0, 40) + '"')"""):
                 fail("P4", f"prints but is hidden from assistive technology, so the PDF leaves it untagged: {t}")
             c.close()
         if run_for("P7"):
@@ -5284,6 +5427,11 @@ def main():
         except Exception as e:  # a broken page must fail its rules, not stop the suite
             for r in ("S20", "S21"):
                 fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("S20"):
+        try:
+            start_list_browser_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("S20", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("R9"):
         try:
             site_menu_checks(out_dir)

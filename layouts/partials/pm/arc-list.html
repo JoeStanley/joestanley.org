@@ -1,12 +1,15 @@
 {{- /* The modules, part by part along the course's arc (spec S20, data/pm/arc.yaml): each part's name and line in the
-       small label type, then its modules as Start has always listed them. On Start each built module shows its
-       status, which the script turns into progress, and the closing unit ends the list; The Compass lists the
-       questions alone. Call with p (the page), all (the single document) and start (true on Start). */ -}}
+       small label type, then its modules, each marked by its code, M0 to M12 (S20). On Start each built module
+       has a place for its progress, right after its title, which stays empty until the script has a ticked step
+       to report, and the closing unit ends the list; The Compass lists the questions alone. Each list is named
+       by its part, for a reader who moves by lists. Call with p (the page), all (the single document) and
+       start (true on Start). */ -}}
 {{- $all := .all -}}{{- $start := .start -}}
 {{- $mods := site.Data.pm.modules -}}
-{{- range site.Data.pm.arc.parts }}
-<p class="arc-part"><strong>{{ .title }}.</strong> {{ .line }}</p>
-<ol class="modules">
+{{- $where := cond $start "start" "compass" -}}
+{{- range $i, $part := site.Data.pm.arc.parts }}
+<p class="arc-part"><strong id="arc-{{ $where }}-{{ $i }}">{{ .title }}.</strong> {{ .line }}</p>
+<ol class="modules" aria-labelledby="arc-{{ $where }}-{{ $i }}">
   {{- range .modules }}
   {{- $m := index (where $mods "id" .) 0 }}
   {{- $page := "" }}
@@ -15,13 +18,13 @@
   {{- with $page }}{{ range .Params.steps }}{{ $ids = $ids | append .id }}{{ end }}{{ end }}
   <li class="mod{{ if not $page }} is-pending{{ end }}"
       {{- if $start }}{{ with $page }} data-map-unit="{{ .File.ContentBaseName }}" data-map-steps="{{ len $ids }}" data-map-ids="{{ delimit $ids " " }}"{{ end }}{{ end }}>
-    <span class="mod-num" aria-hidden="true">{{ $m.num }}</span>
+    <span class="mod-num" aria-hidden="true">M{{ $m.num }}</span>
     <div class="mod-body">
-      <h3><span class="sr">Module {{ $m.num }}: </span>{{ with $page }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}">{{ $m.title }}</a>{{ else }}{{ $m.title }}{{ end }}</h3>
-      <p class="mod-question">{{ $m.question }}</p>
+      <h3><span class="sr">Module {{ $m.num }}: </span>{{ with $page }}<a href="{{ partial "pm/href.html" (dict "p" . "all" $all) }}"{{ if $start }} aria-describedby="mod-status-{{ $m.id }}"{{ end }}>{{ $m.title }}</a>{{ else }}{{ $m.title }}{{ end }}</h3>
       {{- if $start }}
-      <p class="mod-status">{{ with $page }}<span data-map-status>Ready</span>{{ else }}Not built yet{{ end }}</p>
+      <p class="mod-status" id="mod-status-{{ $m.id }}"{{ with $page }} data-map-status{{ end }}>{{ if not $page }}Not built yet{{ end }}</p>
       {{- end }}
+      <p class="mod-question">{{ $m.question }}</p>
     </div>
   </li>
   {{- end }}
@@ -29,8 +32,8 @@
 {{- end }}
 {{- if $start }}{{ with site.Data.pm.arc.closing }}{{ with site.GetPage (printf "/pm/%s" .page) }}
 {{- $c := . }}
-<p class="arc-part"><strong>{{ site.Data.pm.arc.closing.label }}.</strong> {{ site.Data.pm.arc.closing.line }}</p>
-<ol class="modules">
+<p class="arc-part"><strong id="arc-{{ $where }}-closing">{{ site.Data.pm.arc.closing.label }}.</strong> {{ site.Data.pm.arc.closing.line }}</p>
+<ol class="modules" aria-labelledby="arc-{{ $where }}-closing">
   <li class="mod mod-closing">
     <span class="mod-num" aria-hidden="true"></span>
     <div class="mod-body">
