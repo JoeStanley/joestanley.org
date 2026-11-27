@@ -1,16 +1,16 @@
 <svg class="fig" viewBox="0 0 360 192" role="img" aria-labelledby="fig-agency-title fig-agency-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-agency-title">Teams on paths of their own, inside one direction.</title>
-  <desc id="fig-agency-desc">One large arrow, the direction everyone holds to. Inside it four paths wander, each its own way and all toward the same end. Across one highlighted band they run straight and level, side by side: the few things that have to fit. Before it and after it, each wanders again: everything else is each team’s call.</desc>
+  <desc id="fig-agency-desc">One large arrow, the direction everyone holds to. Inside it four paths wander, each its own way and all toward the same end. Across one highlighted band they run straight and level, side by side: the few things that always have to fit. Before it and after it, each wanders again: everything else is each team’s call.</desc>
 
   <g transform="translate(0,-20)">
 
   <path class="fig-pipe" d="M18,58 L262,58 L262,32 L346,100 L262,168 L262,142 L18,142 Z"/>
   <rect class="fig-mark" x="178" y="70" width="24" height="60"/>
 
-  <path class="fig-axis" d="M36,70 C60,62 84,80 110,72 C134,65 156,79 178,79 L202,79 C214,79 226,70 244,70 S270,74 288,74"/>
-  <path class="fig-axis" d="M36,92 C60,98 84,84 110,90 C134,95 156,93 178,93 L202,93 C214,93 226,89 244,89 S270,92 288,92"/>
-  <path class="fig-axis" d="M36,110 C60,102 84,116 110,108 C134,101 156,107 178,107 L202,107 C214,107 226,112 244,112 S270,110 288,110"/>
-  <path class="fig-axis" d="M36,130 C60,138 84,122 110,128 C134,133 156,121 178,121 L202,121 C214,121 226,131 244,131 S270,128 288,128"/>
+  <path class="fig-axis" d="M36,70 C58,58 84,84 110,72 C132,62 156,79 178,79 L202,79 C214,79 226,70 244,70 S270,74 288,74"/>
+  <path class="fig-axis" d="M36,92 C58,102 84,82 110,90 C132,97 156,93 178,93 L202,93 C214,93 226,89 244,89 S270,92 288,92"/>
+  <path class="fig-axis" d="M36,110 C58,100 84,120 110,110 C132,102 156,107 178,107 L202,107 C214,107 226,112 244,112 S270,110 288,110"/>
+  <path class="fig-axis" d="M36,130 C58,140 84,120 110,128 C132,135 156,121 178,121 L202,121 C214,121 226,131 244,131 S270,128 288,128"/>
   <path class="fig-arrow-ink" d="M288,69 L297,74 L288,79 Z"/>
   <path class="fig-arrow-ink" d="M288,87 L297,92 L288,97 Z"/>
   <path class="fig-arrow-ink" d="M288,105 L297,110 L288,115 Z"/>
@@ -18,7 +18,7 @@
 
   <text class="fig-label" x="140" y="46" text-anchor="middle">One direction everyone holds to</text>
   <path class="fig-guide" d="M190,134 L190,172"/>
-  <text class="fig-label" x="190" y="188" text-anchor="middle">The few things that have to fit</text>
+  <text class="fig-label" x="190" y="188" text-anchor="middle">The few things that always have to fit</text>
   <text class="fig-note" x="190" y="203" text-anchor="middle">everything else is each team’s call</text>
   </g>
 </svg>

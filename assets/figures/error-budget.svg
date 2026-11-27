@@ -25,5 +25,5 @@
   <rect class="fig-loss" x="325" y="156.75" width="10" height="32.5"/>
   <rect class="fig-loss" x="335" y="156.75" width="12.25" height="32.5"/>
 
-  <text class="fig-note" x="12" y="210">Not to scale: 99.9% leaves about 43 minutes a month</text>
+  <text class="fig-note" x="12" y="210">Not to scale: a 99.9% target leaves 43 minutes a month</text>
 </svg>

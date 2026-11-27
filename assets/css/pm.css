@@ -266,10 +266,8 @@
 .fig-line { stroke: var(--ink); stroke-width: 4; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 .fig-return { stroke: var(--muted); stroke-width: 2; stroke-dasharray: 2 6; stroke-linecap: round; fill: none; }
 .fig-guide { stroke: var(--muted); stroke-width: 1; fill: none; stroke-linecap: round; }
-/* A second series beside a heavy one, not measured or not wanted any more (Goodhart's Law alone). */
-.fig-wanted { stroke: var(--muted); stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 1 7; }
 /* A declared ramp, where weight is the data: the heavier the line, the more of it (Access Patterns alone). */
-.fig-ramp-5 { stroke-width: 7; } .fig-ramp-4 { stroke-width: 5; } .fig-ramp-3 { stroke-width: 3.5; } .fig-ramp-2 { stroke-width: 2.25; } .fig-ramp-1 { stroke-width: 1.25; }
+.fig-ramp-5 { stroke-width: 8; } .fig-ramp-4 { stroke-width: 5.5; } .fig-ramp-3 { stroke-width: 3.5; } .fig-ramp-2 { stroke-width: 2; } .fig-ramp-1 { stroke-width: 1; }
 /* One arrowhead, in its shaft's color: ink on a solid line, grey on a dotted one. */
 .fig-arrow { fill: var(--muted); }
 .fig-arrow-ink { fill: var(--ink); }
@@ -583,7 +581,8 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
 
   /* A card is one page: picture beside its caption, the rest in two columns. */
   .card .plate { margin: var(--sp-3) 0 0; padding: var(--sp-3) 14pt; display: grid; grid-template-columns: 2.85in 1fr; column-gap: 20pt; align-items: center; }
-  .card .plate .fig { grid-column: 1; grid-row: 1; width: 100%; margin: 0; }
+  /* A tall picture gives up width before it costs the card its page (P1). */
+  .card .plate .fig { grid-column: 1; grid-row: 1; width: auto; max-width: 100%; max-height: 1.6in; margin: 0; justify-self: center; }
   .card .plate .plate-caption { grid-column: 2; grid-row: 1; margin: 0; font-size: var(--fs-body); }
   .card .plate > .note { grid-column: 1 / -1; grid-row: 2; margin: var(--sp-2) 0 0; }
   .card-body { columns: 2; column-gap: 22pt; margin-top: var(--sp-4); }

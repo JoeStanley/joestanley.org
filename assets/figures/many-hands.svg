@@ -1,6 +1,6 @@
 <svg class="fig" viewBox="0 0 360 212" role="img" aria-labelledby="fig-hands-title fig-hands-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-hands-title">Many small parts, one harm that no one decided.</title>
-  <desc id="fig-hands-desc">Six small parts of a product, each with someone's reason behind it: a target, a review, a sign-off, a default, a script, a deadline. A line runs from each, and the six meet at one highlighted point: one harm, which reaches a customer. No one decided it, and every part was a cause.</desc>
+  <desc id="fig-hands-desc">Six small parts of a product, each with someone's reason behind it: a target, a review, a sign-off, a default, a call script, a deadline. A line runs from each, and the six meet at one highlighted point: one harm, which reaches a customer. No one decided it, and every part was a cause.</desc>
 
   <g transform="translate(0,-10)">
 
@@ -24,7 +24,7 @@
   <text class="fig-item" x="78" y="62.5" text-anchor="end">A review</text>
   <text class="fig-item" x="78" y="94.5" text-anchor="end">A sign-off</text>
   <text class="fig-item" x="78" y="126.5" text-anchor="end">A default</text>
-  <text class="fig-item" x="78" y="158.5" text-anchor="end">A script</text>
+  <text class="fig-item" x="78" y="158.5" text-anchor="end">A call script</text>
   <text class="fig-item" x="78" y="190.5" text-anchor="end">A deadline</text>
 
   <rect class="fig-mark" x="230" y="92" width="28" height="28"/>

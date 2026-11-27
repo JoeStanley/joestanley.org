@@ -4,16 +4,16 @@
 
   <path class="fig-axis" d="M12,26 L12,178 L348,178"/>
   <path class="fig-guide" d="M180,30 L180,174 M16,104 L344,104"/>
-  <text class="fig-note" x="12" y="18">The idea depends on it</text>
-  <text class="fig-note" x="18" y="170">It matters less</text>
+  <text class="fig-note" x="12" y="18">The idea depends on it more</text>
+  <text class="fig-note" x="18" y="170">Less</text>
   <text class="fig-note" x="12" y="196">You have evidence</text>
   <text class="fig-note" x="348" y="196" text-anchor="end">It’s a guess</text>
 
   <g class="fig-ink">
     <circle cx="334" cy="43" r="5.5"/>
-    <circle cx="28" cy="43" r="5.5"/>
-    <circle cx="28" cy="81" r="5.5"/>
-    <circle cx="28" cy="125" r="5.5"/>
+    <circle cx="60" cy="50" r="5.5"/>
+    <circle cx="34" cy="86" r="5.5"/>
+    <circle cx="80" cy="130" r="5.5"/>
     <circle cx="244" cy="133" r="5.5"/>
   </g>
   <text class="fig-label" x="322" y="40" text-anchor="end">People want</text>
@@ -22,12 +22,12 @@
   <rect class="fig-mark" x="235.9" y="78" width="90.1" height="18"/>
   <text class="fig-label fig-on-mark" x="322" y="91" text-anchor="end">Test this first</text>
 
-  <text class="fig-item" x="40" y="40">Two pickups stay</text>
-  <text class="fig-item" x="40" y="55">on time</text>
-  <text class="fig-item" x="40" y="78">The fee covers</text>
-  <text class="fig-item" x="40" y="93">the second stop</text>
-  <text class="fig-item" x="40" y="122">People find it</text>
-  <text class="fig-item" x="40" y="137">at checkout</text>
+  <text class="fig-item" x="72" y="47">Two pickups stay</text>
+  <text class="fig-item" x="72" y="62">on time</text>
+  <text class="fig-item" x="46" y="83">The fee covers</text>
+  <text class="fig-item" x="46" y="98">the second stop</text>
+  <text class="fig-item" x="92" y="127">People find it</text>
+  <text class="fig-item" x="92" y="142">at checkout</text>
   <text class="fig-item" x="256" y="130">People want</text>
   <text class="fig-item" x="256" y="145">one receipt</text>
 </svg>

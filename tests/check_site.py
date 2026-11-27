@@ -2151,6 +2151,21 @@ def kind_checks(out_dir):
                 fail("S16", f"card {name}: the quote isn't credited under it, with its author and work")
         elif not plate.select_one("svg[role=img]"):
             fail("S16", f"card {name}: its picture is missing")
+        # a card that quotes its idea's first sentence does so first under "The idea", word for word and credited
+        quoted = QUOTED_FIRST.get(name)
+        idea = soup.find("h2", string=re.compile(r"^\s*The idea\s*$"))
+        first = idea.find_next_sibling() if idea else None
+        if quoted:
+            if not first or first.name != "blockquote" or clean_text(quoted["text"]) not in clean_text(first.get_text()):
+                fail("S16", f"card {name}: {quoted['by']}'s sentence isn't quoted word for word as the first thing under \"The idea\"")
+            elif quoted["by"] not in first.get_text() or quoted["year"] not in first.get_text() or not first.find("a", href=quoted["url"]):
+                fail("S16", f"card {name}: the quoted sentence isn't credited with its author, its work linked, and its year")
+        elif soup.select_one("article.card .card-body blockquote"):
+            fail("S16", f"card {name}: quotes a sentence in a block that S16 doesn't know of; name it in QUOTED_FIRST")
+
+
+QUOTED_FIRST = {"conways-law": {"by": "Melvin Conway", "year": "1968", "url": "https://www.melconway.com/Home/Committees_Paper.html",
+                                 "text": "The basic thesis of this article is that organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."}}
 
 
 def clean_text(s):
@@ -3688,9 +3703,9 @@ LOG_RE = r"\*\*(Start a decision log|For your decision log|Review your decision 
 
 # ---------- F1, F2: the pictures' one grammar, and reading them on a phone ----------
 FIG_CLASSES = {"fig", "fig-pipe", "fig-mark", "fig-on-mark", "fig-ink", "fig-water", "fig-loss", "fig-cell", "fig-label", "fig-item",
-               "fig-note", "fig-axis", "fig-line", "fig-return", "fig-guide", "fig-wanted", "fig-ramp-1", "fig-ramp-2", "fig-ramp-3",
+               "fig-note", "fig-axis", "fig-line", "fig-return", "fig-guide", "fig-ramp-1", "fig-ramp-2", "fig-ramp-3",
                "fig-ramp-4", "fig-ramp-5", "fig-arrow", "fig-arrow-ink", "fig-stops", "fig-num"}
-FIG_ONLY_IN = {"fig-wanted": "goodhart.svg", "fig-ramp-1": "access-patterns.svg", "fig-ramp-2": "access-patterns.svg",
+FIG_ONLY_IN = {"fig-ramp-1": "access-patterns.svg", "fig-ramp-2": "access-patterns.svg",
                "fig-ramp-3": "access-patterns.svg", "fig-ramp-4": "access-patterns.svg", "fig-ramp-5": "access-patterns.svg"}
 
 
