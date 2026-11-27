@@ -9,7 +9,7 @@
     <div class="door-text">{{ .Content }}</div>
     <ul class="door-links">
       {{- range site.Params.links }}
-      <li><a href="{{ .url }}" title="{{ .name }}">{{ with .icon }}{{ partial "icon.html" . }}{{ end }}<span class="sr">{{ .name }}</span></a></li>
+      <li><a {{ if hasPrefix .url "mailto:" }}{{ partial "email.html" "href" }}{{ else }}href="{{ .url }}"{{ end }} title="{{ .name }}">{{ with .icon }}{{ partial "icon.html" . }}{{ end }}<span class="sr">{{ .name }}</span></a></li>
       {{- end }}
     </ul>
   </div>

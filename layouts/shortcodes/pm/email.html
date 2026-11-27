@@ -1,0 +1,4 @@
+{{- /* The owner's address in running text, as a link whose words are the address itself (spec S19), written as
+       partials/email.html says, so it isn't harvested. */ -}}
+<a {{ partial "email.html" "href" }}>{{ partial "email.html" "text" }}</a>
+{{- /**/ -}}

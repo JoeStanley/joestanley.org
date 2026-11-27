@@ -184,3 +184,6 @@ last-responsible-moment:
 stop-rule:
   term: Stop rule
   text: The result that would make you stop or change course, written before a bet goes live, with the signal you'll watch and the date you'll look. A line drawn afterward tends to move to fit what you hoped.
+product-judgment:
+  term: Product judgment
+  text: A blend of lived experience, industry best practices and the context of the situation, turned into intuition when making general product decisions. Coupled with product-specific expertise, it becomes what many in the field call "product sense."

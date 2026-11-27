@@ -119,6 +119,8 @@ def inline(el, strip=True):
         cls = c.get("class") or []
         if c.name in ("script", "style", "svg") or "note" in cls or "note-label" in cls:
             continue   # a note goes in its own line; its label, "Sidenote:", is the page's, not the owner's words
+        if c.has_attr("hidden"):
+            continue   # never shown, spoken or copied: the decoy inside the owner's address (spec S19)
         if c.get("data-voice"):   # a voice slot (spec X4): its interim words here, its block after the paragraph
             PENDING.append(c["data-voice"])
         if "sr" in cls:   # screen-reader words: keep the ones that finish a label, drop the rest
@@ -204,7 +206,16 @@ def listing(el, depth=0):
         mark = f"{i}." if el.name == "ol" else "-"
         own = BeautifulSoup(str(li), "html.parser").find("li")
         subs = [x.extract() for x in own.find_all(["ul", "ol"], recursive=False)]
-        lines.append("  " * depth + f"{mark} {inline(own)}")
+        if own.find(["p", "div"], recursive=False):
+            # a bullet that holds paragraphs, and maybe a margin note beside one (spec M4): the first paragraph on
+            # the bullet's line, each one after it, and each note after its paragraph, under it as part of the bullet
+            paras = blocks(own)
+            pad = "  " * depth + "  "
+            lines.append("  " * depth + f"{mark} " + f"\n\n{pad}".join(paras))
+            if len(paras) > 1 and i < len(el.find_all("li", recursive=False)):
+                lines.append("")
+        else:
+            lines.append("  " * depth + f"{mark} {inline(own)}")
         for s in subs:
             lines.append(listing(s, depth + 1))
     return "\n".join(lines)
@@ -248,7 +259,8 @@ def start_tab(art):
 
 
 def module_items(ol):
-    """A list of modules as Start and The Compass show them: number, title, question and, on Start, its status."""
+    """A list of modules as Start and The Compass show them: code, title and question. A built module's progress is
+    the reader's own, empty on the page (spec S20); a module not built yet says so."""
     items = []
     for li in ol.find_all("li", recursive=False):
         num = clean(li.find(class_="mod-num").get_text()).strip()
@@ -256,8 +268,8 @@ def module_items(ol):
         for sr in h3.find_all(class_="sr"):
             sr.extract()
         status = li.find(class_="mod-status")
-        items.append(f"- **{(num + ' ') if num else ''}{inline(h3)}.** {inline(li.find(class_='mod-question'))}"
-                     + (f" *{inline(status)}.*" if status else ""))
+        items.append(f"- **{(num + ': ') if num else ''}{inline(h3)}.** {inline(li.find(class_='mod-question'))}"
+                     + (f" *{inline(status)}.*" if status and inline(status) else ""))
     return "\n".join(items)
 
 

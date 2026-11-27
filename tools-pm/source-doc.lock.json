@@ -37,10 +37,10 @@
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "a47cb5a4ed5543e7595f98a896e3bdd1667a4ffbd4496a9f33e5b8fe5c076e87",
+   "sha256": "01aed73f4516d4e612d555529d6af7eb65b2a7baf7c00098695e6706315d79ad",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 233
+   "rev": 2025
   },
   {
    "name": "0 Own Your Role",
@@ -149,26 +149,26 @@
   {
    "name": "The Compass",
    "file": "the-compass.md",
-   "sha256": "1d3d8a66edea1a5878dcdcc3972918192d5006195eb1148c80cf154c1393ec31",
+   "sha256": "ddfb1b925a6796b07cf1950ff53909242c8b3077891599448954e3955ffee573",
    "doc_tab": "68f6f34d-b06c",
    "doc_node": "347f5a8a-09fe",
-   "rev": 15
+   "rev": 32
   },
   {
    "name": "Glossary",
    "file": "glossary.md",
-   "sha256": "68dd272ef25f58a2bb172c2e73df07449a03cf03f787ba16bfde89da5310b198",
+   "sha256": "e3a62d5b573779e00642844f9f4a1fedcec2196fef812dd04071d31ce9772a4a",
    "doc_tab": "da54defd-09ca",
    "doc_node": "aa868378-161d",
-   "rev": 18
+   "rev": 19
   },
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "63303ff35f149dd39c027a0786d3461b83739a982bc72ad93e1cc03aa80fd8de",
+   "sha256": "34535e245f60738932137e256c5a50fa47c3c7c6aa11c2c4987af37ede89dfed",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 22
+   "rev": 26
   }
  ]
 }

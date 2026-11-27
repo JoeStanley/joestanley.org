@@ -9,7 +9,7 @@
 
   <div class="prose" data-slot="intro">
     {{- partial "pm/margin.html" (dict "p" $p "unit" "start" "slot" "intro") }}
-    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" "start" "html" $p.Content) | safeHTML }}
+    {{ partial "pm/prose-slots.html" (dict "p" $p "unit" "start" "lead" "intro" "html" $p.Content) | safeHTML }}
   </div>
 
   <section class="modules-wrap" data-slot="the-modules">
@@ -20,7 +20,7 @@
            bar's list, reaches both. The site's alone: the single document has its own list. */}}
     {{- if not $all }}
     <nav class="on-page start-more screen-only" aria-label="Look up">
-      <span class="op-label" aria-hidden="true">Look up</span>
+      <span class="op-label" aria-hidden="true">Look up.</span>
       <ul class="op-list">
         {{- with site.GetPage "/pm/concept-cards" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
         {{- with site.GetPage "/pm/glossary" }}<li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>{{ end }}
