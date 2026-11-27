@@ -1,31 +1,31 @@
 <svg class="fig" viewBox="0 0 360 210" role="img" aria-labelledby="fig-last-title fig-last-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-last-title">Two questions to a customer, and what each one brings back.</title>
-  <desc id="fig-last-desc">Two questions, side by side, each with a box for what it brings back. On the left, "Would you use it?" brings back "Yes, probably." and nothing else: a forecast, a guess about themselves. On the right, "Tell me about the last time ..." fills the same box with three highlighted facts: when, last Tuesday; what they did, a spreadsheet; what it cost, two hours. That is evidence: what they really did.</desc>
+  <desc id="fig-last-desc">Two questions, side by side, each with a box for what it brings back. On the left, "Would you use it?" brings back "Yes, probably." and nothing else: a forecast, a guess about themselves. On the right, "Tell me about the last time ..." fills the same box with three highlighted facts: when, last Tuesday; what they used, a spreadsheet; what it cost, two hours. That is evidence: what they really did.</desc>
 
   <g class="fig-label" text-anchor="middle">
-    <text x="88" y="18">“Would you</text><text x="88" y="33">use it?”</text>
-    <text x="272" y="18">“Tell me about</text><text x="272" y="33">the last time ...”</text>
+    <text x="93" y="18">“Would you</text><text x="93" y="33">use it?”</text>
+    <text x="267" y="18">“Tell me about</text><text x="267" y="33">the last time ...”</text>
   </g>
-  <path class="fig-axis" d="M88,42 L88,54 M272,42 L272,54"/>
-  <path class="fig-arrow-ink" d="M83,54 L88,63 L93,54 Z"/>
-  <path class="fig-arrow-ink" d="M267,54 L272,63 L277,54 Z"/>
+  <path class="fig-axis" d="M93,42 L93,54 M267,42 L267,54"/>
+  <path class="fig-arrow-ink" d="M88,54 L93,63 L98,54 Z"/>
+  <path class="fig-arrow-ink" d="M262,54 L267,63 L272,54 Z"/>
 
-  <rect class="fig-pipe" x="12" y="68" width="152" height="100" rx="6"/>
+  <rect class="fig-pipe" x="12" y="68" width="162" height="100" rx="6"/>
   <text class="fig-item" x="24" y="93">“Yes, probably.”</text>
 
-  <rect class="fig-pipe" x="196" y="68" width="152" height="100" rx="6"/>
-  <rect class="fig-mark" x="243" y="80" width="89" height="18"/>
-  <rect class="fig-mark" x="243" y="109" width="97" height="18"/>
-  <rect class="fig-mark" x="243" y="138" width="71" height="18"/>
+  <rect class="fig-pipe" x="186" y="68" width="162" height="100" rx="6"/>
+  <rect class="fig-mark" x="243" y="80" width="86.4" height="18"/>
+  <rect class="fig-mark" x="243" y="109" width="95.8" height="18"/>
+  <rect class="fig-mark" x="243" y="138" width="68.9" height="18"/>
   <g class="fig-note">
-    <text x="206" y="93">When</text><text x="206" y="122">Did</text><text x="206" y="151">Cost</text>
+    <text x="198" y="93">When</text><text x="198" y="122">Used</text><text x="198" y="151">Cost</text>
   </g>
   <g class="fig-label fig-on-mark">
     <text x="247" y="93">last Tuesday</text><text x="247" y="122">a spreadsheet</text><text x="247" y="151">two hours</text>
   </g>
 
-  <text class="fig-label" x="88" y="188" text-anchor="middle">A forecast</text>
-  <text class="fig-note" x="88" y="203" text-anchor="middle">a guess about themselves</text>
-  <text class="fig-label" x="272" y="188" text-anchor="middle">Evidence</text>
-  <text class="fig-note" x="272" y="203" text-anchor="middle">what they really did</text>
+  <text class="fig-label" x="93" y="188" text-anchor="middle">A forecast</text>
+  <text class="fig-note" x="93" y="203" text-anchor="middle">a guess about themselves</text>
+  <text class="fig-label" x="267" y="188" text-anchor="middle">Evidence</text>
+  <text class="fig-note" x="267" y="203" text-anchor="middle">what they really did</text>
 </svg>

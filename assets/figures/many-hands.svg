@@ -1,13 +1,15 @@
-<svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-hands-title fig-hands-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-hands-title">Many small parts, one harm, and no one's hand on all of it.</title>
-  <desc id="fig-hands-desc">Six small parts of a product, each with someone's reason behind it: a target, a review, a sign-off, a default, a script, a deadline. A line runs from each, and the six meet at one highlighted point: one harm, which reaches a customer. No one's hand is on all of it.</desc>
+<svg class="fig" viewBox="0 0 360 212" role="img" aria-labelledby="fig-hands-title fig-hands-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-hands-title">Many small parts, one harm that no one decided.</title>
+  <desc id="fig-hands-desc">Six small parts of a product, each with someone's reason behind it: a target, a review, a sign-off, a default, a script, a deadline. A line runs from each, and the six meet at one highlighted point: one harm, which reaches a customer. No one decided it, and every part was a cause.</desc>
 
-  <path class="fig-axis" d="M94,26 C160,26 190,106 230,106"/>
-  <path class="fig-axis" d="M94,58 C160,58 195,106 230,106"/>
-  <path class="fig-axis" d="M94,90 C160,90 200,106 230,106"/>
-  <path class="fig-axis" d="M94,122 C160,122 200,106 230,106"/>
-  <path class="fig-axis" d="M94,154 C160,154 195,106 230,106"/>
-  <path class="fig-axis" d="M94,186 C160,186 190,106 230,106"/>
+  <g transform="translate(0,-10)">
+
+  <path class="fig-axis" d="M94,26 C160,26 190,106 238,106"/>
+  <path class="fig-axis" d="M94,58 C160,58 195,106 238,106"/>
+  <path class="fig-axis" d="M94,90 C160,90 200,106 238,106"/>
+  <path class="fig-axis" d="M94,122 C160,122 200,106 238,106"/>
+  <path class="fig-axis" d="M94,154 C160,154 195,106 238,106"/>
+  <path class="fig-axis" d="M94,186 C160,186 190,106 238,106"/>
 
   <g class="fig-ink">
     <circle cx="90" cy="26" r="5.5"/>
@@ -27,8 +29,10 @@
 
   <rect class="fig-mark" x="230" y="92" width="28" height="28"/>
   <text class="fig-label" x="244" y="83" text-anchor="middle">One harm</text>
-  <path class="fig-axis" d="M260,106 L293,106"/>
+  <circle class="fig-ink" cx="244" cy="106" r="5.5"/>
+  <path class="fig-axis" d="M252,106 L293,106"/>
   <path class="fig-arrow-ink" d="M293,101 L302,106 L293,111 Z"/>
   <text class="fig-label" x="312" y="132" text-anchor="middle">A customer</text>
-  <text class="fig-note" x="12" y="214">No one's hand is on all of it</text>
+  <text class="fig-note" x="12" y="214">No one decided it, and every part was a cause</text>
+  </g>
 </svg>

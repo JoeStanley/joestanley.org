@@ -4,7 +4,7 @@ layout: card
 module: weigh-the-evidence
 weight: 10
 figure: small-numbers
-figure_caption: Twelve samples each of 5, 50 and 500 people, from a crowd where half would say yes. The small samples land far from half, and only the large ones settle near it.
+figure_caption: Twelve groups each of 5, 50 and 500 people, from a crowd where half would say yes. The groups of 5 scatter from 1 in 5 to 4 in 5, and only the large ones settle near half.
 question: How many people is this based on, and would you believe it if it said the opposite?
 deeper:
   title: Biographical

@@ -1,31 +1,41 @@
-<svg class="fig" viewBox="0 0 360 194" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-five-title fig-five-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-five-title">A pipe with a narrow neck, and the five focusing steps in a row.</title>
-  <desc id="fig-five-desc">Work items crowd in front of the narrow part of a pipe, which is the constraint, and only a few get through. Below, five numbered steps run left to right: identify, exploit, subordinate, elevate, repeat.</desc>
+  <desc id="fig-five-desc">Work items crowd in front of the narrow part of a pipe, which is the constraint, and only a few get through. Below, five numbered steps run left to right, each with what it means: identify, find it; exploit, use it fully; subordinate, pace the rest to it; elevate, add capacity; repeat, find the next one.</desc>
 
   <!-- the pipe -->
   <rect class="fig-mark" x="168" y="34" width="34" height="56"/>
-  <path class="fig-pipe" d="M14,34 L128,34 C150,34 152,52 172,52 L198,52 C218,52 220,34 242,34 L346,34 L346,90 L242,90 C220,90 218,72 198,72 L172,72 C152,72 150,90 128,90 L14,90 Z"/>
+  <path class="fig-pipe" d="M12,34 L128,34 C150,34 152,52 172,52 L198,52 C218,52 220,34 242,34 L348,34 L348,90 L242,90 C220,90 218,72 198,72 L172,72 C152,72 150,90 128,90 L12,90 Z"/>
   <g class="fig-ink">
-    <circle cx="26" cy="46" r="4"/><circle cx="38" cy="46" r="4"/><circle cx="50" cy="46" r="4"/><circle cx="62" cy="46" r="4"/><circle cx="74" cy="46" r="4"/><circle cx="86" cy="46" r="4"/><circle cx="98" cy="46" r="4"/><circle cx="110" cy="46" r="4"/><circle cx="122" cy="46" r="4"/>
-    <circle cx="26" cy="58" r="4"/><circle cx="38" cy="58" r="4"/><circle cx="50" cy="58" r="4"/><circle cx="62" cy="58" r="4"/><circle cx="74" cy="58" r="4"/><circle cx="86" cy="58" r="4"/><circle cx="98" cy="58" r="4"/><circle cx="110" cy="58" r="4"/><circle cx="122" cy="58" r="4"/><circle cx="134" cy="58" r="4"/>
-    <circle cx="26" cy="70" r="4"/><circle cx="38" cy="70" r="4"/><circle cx="50" cy="70" r="4"/><circle cx="62" cy="70" r="4"/><circle cx="74" cy="70" r="4"/><circle cx="86" cy="70" r="4"/><circle cx="98" cy="70" r="4"/><circle cx="110" cy="70" r="4"/><circle cx="122" cy="70" r="4"/><circle cx="134" cy="66" r="4"/>
+    <circle cx="26" cy="44" r="4"/><circle cx="38" cy="44" r="4"/><circle cx="50" cy="44" r="4"/><circle cx="62" cy="44" r="4"/><circle cx="74" cy="44" r="4"/><circle cx="86" cy="44" r="4"/><circle cx="98" cy="44" r="4"/><circle cx="110" cy="44" r="4"/><circle cx="122" cy="44" r="4"/>
+    <circle cx="26" cy="56" r="4"/><circle cx="38" cy="56" r="4"/><circle cx="50" cy="56" r="4"/><circle cx="62" cy="56" r="4"/><circle cx="74" cy="56" r="4"/><circle cx="86" cy="56" r="4"/><circle cx="98" cy="56" r="4"/><circle cx="110" cy="56" r="4"/><circle cx="122" cy="56" r="4"/><circle cx="134" cy="56" r="4"/>
+    <circle cx="26" cy="68" r="4"/><circle cx="38" cy="68" r="4"/><circle cx="50" cy="68" r="4"/><circle cx="62" cy="68" r="4"/><circle cx="74" cy="68" r="4"/><circle cx="86" cy="68" r="4"/><circle cx="98" cy="68" r="4"/><circle cx="110" cy="68" r="4"/><circle cx="122" cy="68" r="4"/><circle cx="136" cy="67" r="4"/>
     <circle cx="26" cy="80" r="4"/><circle cx="38" cy="80" r="4"/><circle cx="50" cy="80" r="4"/><circle cx="62" cy="80" r="4"/><circle cx="74" cy="80" r="4"/><circle cx="86" cy="80" r="4"/><circle cx="98" cy="80" r="4"/><circle cx="110" cy="80" r="4"/>
     <circle cx="148" cy="62" r="4"/><circle cx="160" cy="62" r="4"/><circle cx="178" cy="62" r="4"/><circle cx="192" cy="62" r="4"/>
-    <circle cx="224" cy="62" r="4"/><circle cx="262" cy="54" r="4"/><circle cx="300" cy="70" r="4"/><circle cx="334" cy="60" r="4"/>
+    <circle cx="224" cy="62" r="4"/><circle cx="262" cy="54" r="4"/><circle cx="300" cy="68" r="4"/><circle cx="334" cy="60" r="4"/>
   </g>
   <text class="fig-label" x="185" y="22" text-anchor="middle">The constraint</text>
   <text class="fig-note" x="72" y="108" text-anchor="middle">Work waits here</text>
   <text class="fig-note" x="290" y="108" text-anchor="middle">Little gets through</text>
 
   <!-- the five steps -->
-  <path class="fig-line" d="M38,148 L322,148"/>
+  <path class="fig-axis" d="M54,148 L80,148"/>
+  <path class="fig-arrow-ink" d="M80,143 L89,148 L80,153 Z"/>
+  <path class="fig-axis" d="M126,148 L152,148"/>
+  <path class="fig-arrow-ink" d="M152,143 L161,148 L152,153 Z"/>
+  <path class="fig-axis" d="M198,148 L224,148"/>
+  <path class="fig-arrow-ink" d="M224,143 L233,148 L224,153 Z"/>
+  <path class="fig-axis" d="M270,148 L296,148"/>
+  <path class="fig-arrow-ink" d="M296,143 L305,148 L296,153 Z"/>
   <g class="fig-stops">
-    <circle cx="38" cy="148" r="14"/><circle cx="109" cy="148" r="14"/><circle cx="180" cy="148" r="14"/><circle cx="251" cy="148" r="14"/><circle cx="322" cy="148" r="14"/>
+    <circle cx="36" cy="148" r="14"/><circle cx="108" cy="148" r="14"/><circle cx="180" cy="148" r="14"/><circle cx="252" cy="148" r="14"/><circle cx="324" cy="148" r="14"/>
   </g>
   <g class="fig-num" text-anchor="middle">
-    <text x="38" y="153.8">1</text><text x="109" y="153.8">2</text><text x="180" y="153.8">3</text><text x="251" y="153.8">4</text><text x="322" y="153.8">5</text>
+    <text x="36" y="153.8">1</text><text x="108" y="153.8">2</text><text x="180" y="153.8">3</text><text x="252" y="153.8">4</text><text x="324" y="153.8">5</text>
   </g>
   <g class="fig-label" text-anchor="middle">
-    <text x="38" y="182">Identify</text><text x="109" y="182">Exploit</text><text x="180" y="182">Subordinate</text><text x="251" y="182">Elevate</text><text x="322" y="182">Repeat</text>
+    <text x="36" y="182">Identify</text><text x="108" y="182">Exploit</text><text x="180" y="182">Subordinate</text><text x="252" y="182">Elevate</text><text x="324" y="182">Repeat</text>
+  </g>
+  <g class="fig-note" text-anchor="middle">
+    <text x="36" y="197">find it</text><text x="108" y="197">use it</text><text x="108" y="211">fully</text><text x="180" y="197">pace the</text><text x="180" y="211">rest to it</text><text x="252" y="197">add</text><text x="252" y="211">capacity</text><text x="324" y="197">find the</text><text x="324" y="211">next one</text>
   </g>
 </svg>

@@ -1,6 +1,6 @@
 <svg class="fig" viewBox="0 0 360 226" role="img" aria-labelledby="fig-access-title fig-access-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-access-title">Five questions reach one body of data, each needing its answer at a different freshness.</title>
-  <desc id="fig-access-desc">Five questions on an insurance claims product, each joined to the same data by a line. From top to bottom the answers may be older and the lines get lighter: "Is my claim paid?" needs its answer now, highlighted; "Which claims are mine today?" within a minute; "Is this bill a duplicate?" within the hour; "What did we pay this week?" by tomorrow; "Is fraud rising this year?" within the month. A heavier line costs more to keep fresh.</desc>
+  <title id="fig-access-title">Five questions reach one body of data, each needing an answer no older than a different age.</title>
+  <desc id="fig-access-desc">Five questions on an insurance claims product, each joined to the same data by a line. From top to bottom the answers may be older and the lines get lighter: "Is my claim paid?" needs its answer now, highlighted; "Which claims are mine today?" a minute old at most; "Is this bill a duplicate?" an hour old; "What did we pay this week?" a day old; "Is fraud rising this year?" a month old. A heavier line costs more to keep fresh.</desc>
 
   <text class="fig-label" x="12" y="18">The questions</text>
   <text class="fig-label" x="290" y="18" text-anchor="end">How fresh</text>
@@ -9,25 +9,25 @@
   <text class="fig-label" x="324" y="117" text-anchor="middle">The</text>
   <text class="fig-label" x="324" y="132" text-anchor="middle">data</text>
 
-  <rect class="fig-mark" x="259" y="35" width="35" height="17"/>
+  <rect class="fig-mark" x="258.5" y="35" width="35.8" height="18"/>
   <text class="fig-item" x="12" y="48">Is my claim paid?</text>
   <text class="fig-label fig-on-mark" x="290" y="48" text-anchor="end">Now</text>
   <path class="fig-axis fig-ramp-5" d="M15,58 L298,58"/>
 
   <text class="fig-item" x="12" y="82">Which claims are mine today?</text>
-  <text class="fig-label" x="290" y="82" text-anchor="end">A minute</text>
+  <text class="fig-item" x="290" y="82" text-anchor="end">A minute old</text>
   <path class="fig-axis fig-ramp-4" d="M14,92 L298,92"/>
 
   <text class="fig-item" x="12" y="116">Is this bill a duplicate?</text>
-  <text class="fig-label" x="290" y="116" text-anchor="end">An hour</text>
+  <text class="fig-item" x="290" y="116" text-anchor="end">An hour old</text>
   <path class="fig-axis fig-ramp-3" d="M14,126 L298,126"/>
 
   <text class="fig-item" x="12" y="150">What did we pay this week?</text>
-  <text class="fig-label" x="290" y="150" text-anchor="end">A day</text>
+  <text class="fig-item" x="290" y="150" text-anchor="end">A day old</text>
   <path class="fig-axis fig-ramp-2" d="M13,160 L298,160"/>
 
   <text class="fig-item" x="12" y="184">Is fraud rising this year?</text>
-  <text class="fig-label" x="290" y="184" text-anchor="end">A month</text>
+  <text class="fig-item" x="290" y="184" text-anchor="end">A month old</text>
   <path class="fig-axis fig-ramp-1" d="M13,194 L298,194"/>
 
   <text class="fig-note" x="12" y="218">A heavier line costs more to keep fresh</text>

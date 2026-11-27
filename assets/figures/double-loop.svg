@@ -1,17 +1,19 @@
-<svg class="fig" viewBox="0 0 360 212" role="img" aria-labelledby="fig-loops-title fig-loops-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 204" role="img" aria-labelledby="fig-loops-title fig-loops-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-loops-title">Two loops back from one result: a small one to the action, a larger one to the goal.</title>
   <desc id="fig-loops-desc">A thermostat, drawn as three points in a row: a goal, 68 degrees; an action, heat on; and a result, how warm it is. Arrows run from goal to action to result. Two dotted arrows run back from the result. The small one, the single loop, goes back to the action: fix the action. The large one, the double loop, goes back to the goal, which is highlighted: is this the right goal?</desc>
 
+  <g transform="translate(0,-8)">
+
   <!-- the goal, the action and the result -->
   <rect class="fig-mark" x="40" y="50" width="28" height="28"/>
-  <path class="fig-axis" d="M62,64 L159,64"/>
+  <path class="fig-axis" d="M64,64 L159,64"/>
   <path class="fig-arrow-ink" d="M159,59 L168,64 L159,69 Z"/>
-  <path class="fig-axis" d="M188,64 L279,64"/>
+  <path class="fig-axis" d="M190,64 L279,64"/>
   <path class="fig-arrow-ink" d="M279,59 L288,64 L279,69 Z"/>
-  <g class="fig-stops">
-    <circle cx="54" cy="64" r="7"/>
-    <circle cx="180" cy="64" r="7"/>
-    <circle cx="300" cy="64" r="7"/>
+  <g class="fig-ink">
+    <circle cx="54" cy="64" r="5.5"/>
+    <circle cx="180" cy="64" r="5.5"/>
+    <circle cx="300" cy="64" r="5.5"/>
   </g>
   <g class="fig-label" text-anchor="middle">
     <text x="54" y="26">Goal</text><text x="180" y="26">Action</text><text x="300" y="26">Result</text>
@@ -21,14 +23,15 @@
   </g>
 
   <!-- the single loop, back to the action -->
-  <path class="fig-return" d="M296,77 C288,116 198,112.4 187.5,84.2"/>
+  <path class="fig-return" d="M296,77 C288,110 198,106.4 187.5,84.2"/>
   <path class="fig-arrow" d="M184.4,75.7 L192.2,82.4 L182.8,86 Z"/>
   <text class="fig-label" x="240" y="119" text-anchor="middle">Single loop</text>
   <text class="fig-note" x="240" y="134" text-anchor="middle">fix the action</text>
 
   <!-- the double loop, back to the goal -->
-  <path class="fig-return" d="M305,77 C316,198 70,196.5 56.6,85.3"/>
-  <path class="fig-arrow" d="M55.5,76.4 L61.6,84.7 L51.6,85.9 Z"/>
+  <path class="fig-return" d="M305,77 C316,198 70,202 56.6,90.9"/>
+  <path class="fig-arrow" d="M55.5,82 L61.6,90.3 L51.6,91.5 Z"/>
   <text class="fig-label" x="184" y="188" text-anchor="middle">Double loop</text>
   <text class="fig-note" x="184" y="203" text-anchor="middle">is this the right goal?</text>
+  </g>
 </svg>

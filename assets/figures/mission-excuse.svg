@@ -1,27 +1,30 @@
-<svg class="fig" viewBox="0 0 360 180" role="img" aria-labelledby="fig-mission-title fig-mission-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-mission-title">The costs come now, for certain, and the vision someday, maybe.</title>
-  <desc id="fig-mission-desc">On the left, three costs, solid because they are paid now and for certain: a skipped test, a hidden result, a user who gets hurt. On the right, one large circle with a dotted outline, the vision, which may come someday. An arrow from the costs, marked "for the mission," runs toward the vision and stops at a heavy line between them. The line is highlighted: your line, drawn before anyone asks.</desc>
+<svg class="fig" viewBox="0 0 360 164" role="img" aria-labelledby="fig-mission-title fig-mission-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-mission-title">The costs come now, for certain, and the vision someday, maybe: your line says which costs it can't buy.</title>
+  <desc id="fig-mission-desc">On the left, four costs in a list, solid because they come now and for certain: a lost weekend, a rushed launch, a hidden result, a user who gets hurt. On the right, one large circle with a dotted outline, the vision, which may come someday. An arrow marked "for the mission" runs from the first two costs to the vision. A heavy line cuts the list in two, under the second cost, and it is highlighted: your line, drawn before anyone asks. Below it sit the hidden result and the user who gets hurt, and no arrow runs from them.</desc>
 
-  <text class="fig-label" x="12" y="28">Now, for certain</text>
+  <text class="fig-label" x="12" y="18">Now, for certain</text>
   <g class="fig-ink">
-    <circle cx="18" cy="58" r="5.5"/>
-    <circle cx="18" cy="88" r="5.5"/>
-    <circle cx="18" cy="118" r="5.5"/>
+    <circle cx="18" cy="42" r="5.5"/>
+    <circle cx="18" cy="68" r="5.5"/>
+    <circle cx="18" cy="122" r="5.5"/>
+    <circle cx="18" cy="148" r="5.5"/>
   </g>
-  <text class="fig-item" x="32" y="62.5">A skipped test</text>
-  <text class="fig-item" x="32" y="92.5">A hidden result</text>
-  <text class="fig-item" x="32" y="122.5">A user who gets hurt</text>
+  <text class="fig-item" x="32" y="46.5">A lost weekend</text>
+  <text class="fig-item" x="32" y="72.5">A rushed launch</text>
+  <text class="fig-item" x="32" y="126.5">A hidden result</text>
+  <text class="fig-item" x="32" y="152.5">A user who gets hurt</text>
 
-  <path class="fig-axis" d="M140,88 L198,88"/>
-  <path class="fig-arrow-ink" d="M198,83 L207,88 L198,93 Z"/>
-  <text class="fig-note" x="204" y="78" text-anchor="end">for the mission</text>
+  <path class="fig-axis" d="M140,55 L239,55"/>
+  <path class="fig-arrow-ink" d="M239,50 L248,55 L239,60 Z"/>
+  <text class="fig-note" x="190" y="46" text-anchor="middle">for the mission</text>
 
-  <rect class="fig-mark" x="180" y="15" width="68" height="18"/>
-  <text class="fig-label fig-on-mark" x="214" y="28" text-anchor="middle">Your line</text>
-  <path class="fig-line" d="M214,42 L214,146"/>
-  <text class="fig-note" x="214" y="168" text-anchor="middle">drawn before anyone asks</text>
+  <path class="fig-line" d="M12,95 L146,95"/>
+  <rect class="fig-mark" x="154" y="86" width="61.9" height="18"/>
+  <text class="fig-label fig-on-mark" x="158" y="99">Your line</text>
+  <text class="fig-note" x="158" y="120">drawn before</text>
+  <text class="fig-note" x="158" y="135">anyone asks</text>
 
-  <circle class="fig-return" cx="290" cy="88" r="54"/>
-  <text class="fig-label" x="290" y="86" text-anchor="middle">The vision</text>
-  <text class="fig-note" x="290" y="101" text-anchor="middle">someday, maybe</text>
+  <circle class="fig-return" cx="292" cy="92" r="56"/>
+  <text class="fig-label" x="292" y="90" text-anchor="middle">The vision</text>
+  <text class="fig-note" x="292" y="105" text-anchor="middle">someday, maybe</text>
 </svg>

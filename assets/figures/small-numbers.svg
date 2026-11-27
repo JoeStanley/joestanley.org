@@ -1,30 +1,31 @@
-<svg class="fig" viewBox="0 0 360 236" role="img" aria-labelledby="fig-small-title fig-small-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-small-title">Twelve samples each of 5, 50 and 500 people: the small ones land far from the real rate.</title>
-  <desc id="fig-small-desc">Three rows of dots on one scale, from nobody saying yes to everybody. Each dot is one sample, and in the whole crowd half would say yes. In the first row each sample asked 5 people, and the twelve answers spread from 1 in 5 to 4 in 5. Two of them, highlighted, say 4 of 5 said yes. In the second row each sample asked 50 people, and the answers sit between about 4 in 10 and 6 in 10. In the third row each sample asked 500, and all twelve pile up close to half.</desc>
+<svg class="fig" viewBox="0 0 360 240" role="img" aria-labelledby="fig-small-title fig-small-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-small-title">Twelve groups each of 5, 50 and 500 people: the small groups land far from the real rate.</title>
+  <desc id="fig-small-desc">Three rows of dots on one scale, from nobody saying yes to everybody. Each dot is one group that was asked, and in the whole crowd half would say yes. In the first row each group is 5 people, and the twelve answers scatter from 1 in 5 to 4 in 5. Two of them are highlighted: 4 of 5 said yes, which looks like 80 percent. In the second row each group is 50 people, and the answers run from about 4 in 10 to 6 in 10. In the third row each group is 500, and all twelve sit close to half.</desc>
+  <!-- One random draw, not a tidy average: Python's random.Random(1971), twelve groups of each size at a real rate of one half. -->
 
   <text class="fig-label" x="12" y="18">People asked</text>
-  <text class="fig-note" x="12" y="33">each dot is one sample</text>
-  <text class="fig-label" x="237.0" y="18" text-anchor="middle">The real rate: half say yes</text>
-  <path class="fig-guide" d="M237.0,26 L237.0,210"/>
-  <rect class="fig-mark" x="291.0" y="56.400000000000006" width="18" height="26.6"/>
-  <text class="fig-label" x="12" y="74">5 people</text>
-  <path class="fig-axis" d="M132,78 L342,78"/>
+  <text class="fig-note" x="12" y="33">each dot is one group</text>
+  <text class="fig-label" x="225.0" y="18" text-anchor="middle">The real rate: half say yes</text>
+  <path class="fig-guide" d="M225.0,26 L225.0,212"/>
+  <rect class="fig-mark" x="279.0" y="60.2" width="18" height="22.8"/>
+  <text class="fig-label" x="12" y="78">5 people</text>
+  <path class="fig-axis" d="M120,82 L330,82"/>
   <g class="fig-ink">
-    <circle cx="174.0" cy="73.2" r="4"/><circle cx="174.0" cy="64.6" r="4"/><circle cx="216.0" cy="73.2" r="4"/><circle cx="216.0" cy="64.6" r="4"/><circle cx="216.0" cy="56.0" r="4"/><circle cx="216.0" cy="47.4" r="4"/><circle cx="258.0" cy="73.2" r="4"/><circle cx="258.0" cy="64.6" r="4"/><circle cx="258.0" cy="56.0" r="4"/><circle cx="258.0" cy="47.4" r="4"/><circle cx="300.0" cy="73.2" r="4"/><circle cx="300.0" cy="64.6" r="4"/>
+    <circle cx="162.0" cy="77.2" r="4"/><circle cx="162.0" cy="68.6" r="4"/><circle cx="162.0" cy="60.0" r="4"/><circle cx="162.0" cy="51.4" r="4"/><circle cx="204.0" cy="77.2" r="4"/><circle cx="204.0" cy="68.6" r="4"/><circle cx="246.0" cy="77.2" r="4"/><circle cx="246.0" cy="68.6" r="4"/><circle cx="246.0" cy="60.0" r="4"/><circle cx="246.0" cy="51.4" r="4"/><circle cx="288.0" cy="77.2" r="4"/><circle cx="288.0" cy="68.6" r="4"/>
   </g>
-  <text class="fig-label" x="12" y="124">50 people</text>
-  <path class="fig-axis" d="M132,128 L342,128"/>
+  <text class="fig-label" x="12" y="130">50 people</text>
+  <path class="fig-axis" d="M120,134 L330,134"/>
   <g class="fig-ink">
-    <circle cx="211.8" cy="123.2" r="4"/><circle cx="224.4" cy="123.2" r="4"/><circle cx="224.4" cy="114.6" r="4"/><circle cx="224.4" cy="106.0" r="4"/><circle cx="237.0" cy="123.2" r="4"/><circle cx="237.0" cy="114.6" r="4"/><circle cx="237.0" cy="106.0" r="4"/><circle cx="237.0" cy="97.4" r="4"/><circle cx="249.6" cy="123.2" r="4"/><circle cx="249.6" cy="114.6" r="4"/><circle cx="249.6" cy="106.0" r="4"/><circle cx="262.2" cy="123.2" r="4"/>
+    <circle cx="199.8" cy="129.2" r="4"/><circle cx="208.2" cy="129.2" r="4"/><circle cx="208.2" cy="120.6" r="4"/><circle cx="216.6" cy="129.2" r="4"/><circle cx="216.6" cy="120.6" r="4"/><circle cx="225.0" cy="129.2" r="4"/><circle cx="225.0" cy="120.6" r="4"/><circle cx="233.4" cy="129.2" r="4"/><circle cx="233.4" cy="120.6" r="4"/><circle cx="233.4" cy="112.0" r="4"/><circle cx="233.4" cy="103.4" r="4"/><circle cx="250.2" cy="129.2" r="4"/>
   </g>
-  <text class="fig-label" x="12" y="206">500 people</text>
-  <path class="fig-axis" d="M132,210 L342,210"/>
+  <text class="fig-label" x="12" y="208">500 people</text>
+  <path class="fig-axis" d="M120,212 L330,212"/>
   <g class="fig-ink">
-    <circle cx="228.4" cy="205.2" r="4"/><circle cx="228.4" cy="196.6" r="4"/><circle cx="237.0" cy="205.2" r="4"/><circle cx="237.0" cy="196.6" r="4"/><circle cx="237.0" cy="188.0" r="4"/><circle cx="237.0" cy="179.4" r="4"/><circle cx="237.0" cy="170.8" r="4"/><circle cx="237.0" cy="162.2" r="4"/><circle cx="237.0" cy="153.6" r="4"/><circle cx="237.0" cy="145.0" r="4"/><circle cx="245.6" cy="205.2" r="4"/><circle cx="245.6" cy="196.6" r="4"/>
+    <circle cx="216.6" cy="207.2" r="4"/><circle cx="216.6" cy="198.6" r="4"/><circle cx="216.6" cy="190.0" r="4"/><circle cx="216.6" cy="181.4" r="4"/><circle cx="225.0" cy="207.2" r="4"/><circle cx="225.0" cy="198.6" r="4"/><circle cx="225.0" cy="190.0" r="4"/><circle cx="225.0" cy="181.4" r="4"/><circle cx="225.0" cy="172.8" r="4"/><circle cx="225.0" cy="164.2" r="4"/><circle cx="225.0" cy="155.6" r="4"/><circle cx="233.4" cy="207.2" r="4"/>
   </g>
-  <text class="fig-label" x="348" y="96" text-anchor="end">4 of 5 said yes</text>
-  <text class="fig-note" x="132" y="228">0%</text>
-  <text class="fig-note" x="237.0" y="228" text-anchor="middle">50%</text>
-  <text class="fig-note" x="348" y="228" text-anchor="end">100%</text>
-  <text class="fig-note" x="12" y="228">Said yes</text>
+  <text class="fig-label" x="348" y="38" text-anchor="end">4 of 5 said yes</text>
+  <text class="fig-note" x="348" y="52" text-anchor="end">looks like 80%</text>
+  <text class="fig-note" x="120" y="232" text-anchor="middle">None</text>
+  <text class="fig-note" x="225.0" y="232" text-anchor="middle">Half said yes</text>
+  <text class="fig-note" x="330" y="232" text-anchor="middle">All</text>
 </svg>

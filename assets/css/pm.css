@@ -269,7 +269,7 @@
 /* A second series beside a heavy one, not measured or not wanted any more (Goodhart's Law alone). */
 .fig-wanted { stroke: var(--muted); stroke-width: 3; fill: none; stroke-linecap: round; stroke-dasharray: 1 7; }
 /* A declared ramp, where weight is the data: the heavier the line, the more of it (Access Patterns alone). */
-.fig-ramp-5 { stroke-width: 6; } .fig-ramp-4 { stroke-width: 4.5; } .fig-ramp-3 { stroke-width: 3.25; } .fig-ramp-2 { stroke-width: 2.25; } .fig-ramp-1 { stroke-width: 1.5; }
+.fig-ramp-5 { stroke-width: 7; } .fig-ramp-4 { stroke-width: 5; } .fig-ramp-3 { stroke-width: 3.5; } .fig-ramp-2 { stroke-width: 2.25; } .fig-ramp-1 { stroke-width: 1.25; }
 /* One arrowhead, in its shaft's color: ink on a solid line, grey on a dotted one. */
 .fig-arrow { fill: var(--muted); }
 .fig-arrow-ink { fill: var(--ink); }

@@ -3712,8 +3712,8 @@ def picture_checks(out_dir):
         soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
         svg = soup.find("svg")
         vb = (svg.get("viewbox") or svg.get("viewBox") or "").split()
-        if len(vb) != 4 or vb[:3] != ["0", "0", "360"] or not 140 <= float(vb[3]) <= 240:
-            fail("F1", f"{name}: drawn in viewBox \"{' '.join(vb)}\", not 360 units wide from 0 0 and 140 to 240 tall"); continue
+        if len(vb) != 4 or vb[:3] != ["0", "0", "360"] or not 120 <= float(vb[3]) <= 240:
+            fail("F1", f"{name}: drawn in viewBox \"{' '.join(vb)}\", not 360 units wide from 0 0 and 120 to 240 tall"); continue
         frame = 360 * float(vb[3])
         used = set()
         for el in svg.find_all(True):
@@ -3742,13 +3742,13 @@ def picture_checks(out_dir):
         for c in svg.find_all("circle"):
             k, rad = cls(c), float(c.get("r"))
             if "fig-stops" in k:
-                ok = rad in (7, 14)
+                ok = rad == 14
             elif "fig-ink" in k:
                 ok = rad in (4, 5.5)
             else:
                 ok = "fig-return" in k   # an outline, not a dot
             if not ok:
-                fail("F1", f"{name}: a circle of radius {c.get('r')} is not on the dot scale (4 counted, 5.5 named, 7 ringed, 14 numbered)")
+                fail("F1", f"{name}: a circle of radius {c.get('r')} is not on the dot scale (4 counted, 5.5 named, 14 numbered)")
         marks = [m for m in svg.find_all(True) if "fig-mark" in (m.get("class") or [])]
         if not 1 <= len(marks) <= 3:
             fail("F1", f"{name}: {len(marks)} yellow marks; a picture has one key moment, of up to three like marks")
@@ -3758,6 +3758,8 @@ def picture_checks(out_dir):
             area = sum(float(m["width"]) * float(m["height"]) for m in marks)
             if area > 0.08 * frame:
                 fail("F1", f"{name}: the yellow covers {area / frame:.1%} of the picture, more than 8%")
+            if len(marks) > 1 and any(m["height"] != "18" for m in marks):
+                fail("F1", f"{name}: more than one yellow mark, and they aren't all highlighters behind words, 18 units high")
             if len({m["height"] for m in marks}) > 1:
                 fail("F1", f"{name}: its yellow marks differ in height, so they aren't like marks of one moment")
         for a in svg.find_all("path"):

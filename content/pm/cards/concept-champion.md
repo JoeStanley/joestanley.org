@@ -4,7 +4,7 @@ layout: card
 module: own-your-role
 weight: 10
 figure: concept-champion
-figure_caption: A coordinator keeps every piece on time. A concept champion does that too, and names the destination first, then works back from it.
+figure_caption: Plan each step from the last, and a product can run on time and still fall short of where it needs to be. A concept champion names the destination first, then works back from it.
 question: Can you finish "we're building this in order to ...," and would your team finish it the same way?
 deeper:
   title: Product Development in the World Auto Industry

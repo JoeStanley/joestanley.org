@@ -1,20 +1,26 @@
-<svg class="fig" viewBox="0 0 360 226" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-champ-title">The same plan twice: once kept on time, once worked back from a vision.</title>
-  <desc id="fig-champ-desc">The same three pieces of work, drawn twice as a small schedule. In the first row, a coordinator keeps every piece on time, and a note where the plan ends asks: toward what? In the second row, a concept champion runs the same schedule, and where the plan ends stands the vision, highlighted. A dotted path runs back from the vision to the start of the work: name the destination, then work back from it.</desc>
+<svg class="fig" viewBox="0 0 360 240" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-champ-title">Two plans from the same start: one made step by step falls short, one worked back from the vision gets there.</title>
+  <desc id="fig-champ-desc">The same drawing twice. Each starts from today, at the lower left, and each has a level marked at the upper right: where the product needs to be. In the first, a coordinator plans each step from the last. The work climbs in three small steps, on time, and ends well below that level, with a dotted gap above it: it falls short. In the second, a concept champion names the destination first: the vision, highlighted, sits at that level. A dotted arrow runs back from the vision to today, and the work climbs in three larger steps that reach it.</desc>
 
   <text class="fig-label" x="12" y="18">A coordinator</text>
-  <text class="fig-note" x="12" y="33">keeps every piece on time</text>
-  <path class="fig-line" d="M24,54 L112,54 M94,68 L192,68 M174,82 L270,82"/>
-  <text class="fig-note" x="348" y="72.5" text-anchor="end">toward what?</text>
+  <text class="fig-note" x="12" y="33">plans each step from the last</text>
+  <text class="fig-note" x="348" y="50" text-anchor="end">where it needs to be</text>
+  <path class="fig-guide" d="M290,58 L348,58"/>
+  <path class="fig-return" d="M300,78 L300,62"/>
+  <path class="fig-line" d="M24,100 L118,100 L118,92 L212,92 L212,84 L300,84"/>
+  <circle class="fig-ink" cx="24" cy="100" r="5.5"/>
+  <text class="fig-note" x="12" y="118">today</text>
+  <text class="fig-note" x="348" y="103" text-anchor="end">falls short</text>
 
-  <text class="fig-label" x="12" y="120">A concept champion</text>
-  <text class="fig-note" x="12" y="135">names the destination, then works back</text>
-  <path class="fig-line" d="M24,158 L112,158 M94,172 L192,172 M174,186 L270,186"/>
-  <rect class="fig-mark" x="306" y="158" width="28" height="28"/>
-  <circle class="fig-ink" cx="320" cy="172" r="5.5"/>
-  <text class="fig-label" x="348" y="151" text-anchor="end">The vision</text>
-
-  <path class="fig-return" d="M320,190 C320,204 310,206 296,206 L40,206 C30,206 24,202 24,192 L24,177"/>
-  <path class="fig-arrow" d="M19,177 L24,168 L29,177 Z"/>
-  <text class="fig-note" x="170" y="221" text-anchor="middle">work back from it</text>
+  <text class="fig-label" x="12" y="140">A concept champion</text>
+  <text class="fig-note" x="12" y="155">names the destination, then works back</text>
+  <path class="fig-guide" d="M290,180 L348,180"/>
+  <rect class="fig-mark" x="306" y="166" width="28" height="28"/>
+  <path class="fig-return" d="M302,174 C220,158 69,185.4 38,210.6"/>
+  <path class="fig-arrow" d="M31,216.3 L41.2,214.5 L34.8,206.7 Z"/>
+  <path class="fig-line" d="M24,222 L118,222 L118,208 L212,208 L212,194 L300,194 L300,180"/>
+  <circle class="fig-ink" cx="24" cy="222" r="5.5"/>
+  <circle class="fig-ink" cx="320" cy="180" r="5.5"/>
+  <text class="fig-label" x="348" y="160" text-anchor="end">The vision</text>
+  <text class="fig-note" x="12" y="236">today</text>
 </svg>
