@@ -1,26 +1,19 @@
-<svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-mission-title fig-mission-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-mission-title">The costs come now, for certain, and the vision someday, maybe.</title>
-  <desc id="fig-mission-desc">On the left, three small costs, paid now and for certain: a skipped test, a hidden result, a user who pays. On the right, one large highlighted circle, the vision, which may come someday. An arrow from the costs, marked "For the mission," runs toward the vision and stops at a heavy line between them: your line, drawn before anyone asks.</desc>
+<svg class="fig" viewBox="0 0 360 174" role="img" aria-labelledby="fig-mission-title fig-mission-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-mission-title">The cost to others comes now, for certain, and the vision someday, maybe, with your line between them.</title>
+  <desc id="fig-mission-desc">Three things in a row. On the left, the cost to others, which comes now and for certain. An arrow marked "For the mission" runs from it toward the right. On the right, one large circle with a dotted outline: the vision, which may come someday. Between them stands a heavy line, where the arrow stops. It is highlighted: your line, drawn before anyone asks.</desc>
 
-  <text class="fig-label" x="24" y="58">Now, for certain</text>
-  <g class="fig-stops">
-    <circle cx="30" cy="86" r="5"/>
-    <circle cx="30" cy="118" r="5"/>
-    <circle cx="30" cy="150" r="5"/>
-  </g>
-  <text class="fig-note" x="42" y="90">A skipped test</text>
-  <text class="fig-note" x="42" y="122">A hidden result</text>
-  <text class="fig-note" x="42" y="154">A user who pays</text>
+  <text class="fig-label" x="12" y="60">The cost to others</text>
+  <text class="fig-note" x="12" y="75">now, for certain</text>
+  <path class="fig-axis" d="M12,90 L160,90"/>
+  <path class="fig-arrow-ink" d="M160,85 L169,90 L160,95 Z"/>
+  <text class="fig-note" x="12" y="110">“For the mission”</text>
 
-  <path class="fig-axis" d="M140,118 L198,118"/>
-  <path class="fig-arrow" d="M196,113 L205,118 L196,123 Z"/>
-  <text class="fig-note" x="168" y="106" text-anchor="middle">For the mission</text>
+  <rect class="fig-mark" x="147.1" y="9" width="61.9" height="18"/>
+  <text class="fig-label fig-on-mark" x="178" y="22" text-anchor="middle">Your line</text>
+  <path class="fig-line" d="M178,36 L178,144"/>
+  <text class="fig-note" x="178" y="166" text-anchor="middle">drawn before anyone asks</text>
 
-  <text class="fig-label" x="214" y="28" text-anchor="middle">Your line</text>
-  <text class="fig-note" x="214" y="43" text-anchor="middle">drawn before anyone asks</text>
-  <path class="fig-line" d="M214,58 L214,178"/>
-
-  <circle class="fig-mark" cx="292" cy="118" r="48"/>
-  <text class="fig-label" x="292" y="192" text-anchor="middle">The vision</text>
-  <text class="fig-note" x="292" y="207" text-anchor="middle">someday, maybe</text>
+  <circle class="fig-return" cx="292" cy="90" r="56"/>
+  <text class="fig-label" x="292" y="88" text-anchor="middle">The vision</text>
+  <text class="fig-note" x="292" y="103" text-anchor="middle">someday, maybe</text>
 </svg>

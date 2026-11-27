@@ -154,7 +154,6 @@ wait
 # picture slot (S16), the hour in words in a module's header (S14), and a step that reads on in the one before (S2)
 run_bg "a film shown with the article icon" S15 "sed -i 's/(?:classic )?(?:film|/(?:classic )?(?:flim|/' layouts/partials/pm/kind-icon.html"
 run_bg "the kind's words shown to the eye beside the icon" S15 "sed -i 's/<p class=\"meta-line kind-line sr\">/<p class=\"meta-line kind-line\">/' layouts/partials/pm/unit-module.html"
-run_bg "a card's quoted sentence left uncredited" S16 "sed -i '/<figcaption class=\"plate-caption\">{{ .by }}/d' layouts/partials/pm/unit-card.html"
 run_bg "the header's hour back in digits" S14 "sed -i 's/{{- else if eq \$h 1 }}an hour/{{- else if eq \$h 1 }}1 hour/' layouts/partials/pm/duration.html"
 run_bg "a step that reads on in a step that isn't the one before it" S2 "sed -i 's/    continues: meadows-1/    continues: card-stocks/' content/pm/see-the-system.md"
 run_bg "a comma back outside a closing quotation mark" T9 "sed -i 's/\"Leverage Points,\" first half/\"Leverage Points\", first half/' content/pm/see-the-system.md"
@@ -404,4 +403,29 @@ run_bg "a list for engineers with nothing to bring" J9 "sed -i '/^Bring your acc
 run_bg "the engineer's ask moved inside the minutes" J9 "python3 -c \"p='content/pm/know-who-its-for.md'; s=open(p).read(); s=s.replace(' Then give the engineers who', ' Give the engineers who', 1); s=s.replace('Outside the 30 minutes, talk to two people', 'Talk to two people', 1); open(p, 'w').write(s)\""
 run_bg "a rollout prescribed, not proposed" J9 "sed -i 's/show it to your tech lead and whoever leads on call, and ask/ask whoever.s on call/' content/pm/change-safely.md"
 run_bg "the advice exercise gone back to a look back" J9 "sed -i 's/Find a decision your engineers are still making/Pick a decision from last quarter that stalled/' content/pm/decide-and-set-direction.md"
+wait
+
+# F1, F2: the pictures' one grammar (27 November 2026)
+run_bg "a picture's yellow as a disc, not a rectangle behind the thing" F1 "sed -i 's|<rect class=\"fig-mark\"[^/]*/>|<circle class=\"fig-mark\" cx=\"178\" cy=\"18\" r=\"12\"/>|' assets/figures/mission-excuse.svg"
+run_bg "a picture with two unlike yellow moments" F1 "sed -i 's|<rect class=\"fig-pipe\" x=\"12\" y=\"42\" width=\"154\" height=\"46\" rx=\"6\"/>|<rect class=\"fig-mark\" x=\"12\" y=\"42\" width=\"154\" height=\"46\"/>|' assets/figures/coupling.svg"
+run_bg "a picture flooded with yellow" F1 "sed -i 's|<rect class=\"fig-mark\"[^/]*/>|<rect class=\"fig-mark\" x=\"180\" y=\"30\" width=\"166\" height=\"74\"/>|' assets/figures/riskiest-assumption.svg"
+run_bg "a picture with no key moment" F1 "sed -i '/class=\"fig-mark\"/d' assets/figures/stocks-flows.svg"
+run_bg "an arrowhead of its own size" F1 "sed -i 's|M293,101 L302,106 L293,111 Z|M291,99 L303,106 L291,113 Z|' assets/figures/many-hands.svg"
+run_bg "a dot off the dot scale" F1 "sed -i 's|<circle cx=\"312\" cy=\"106\" r=\"5.5\"/>|<circle cx=\"312\" cy=\"106\" r=\"9\"/>|' assets/figures/many-hands.svg"
+run_bg "a box with corners of its own" F1 "sed -i '0,/rx=\"6\"/s//rx=\"10\"/' assets/figures/api-promise.svg"
+run_bg "a picture that sets its own line weight" F1 "sed -i 's|<path class=\"fig-line\" d=\"M28,75 L150,75\"/>|<path class=\"fig-line\" stroke-width=\"7\" d=\"M28,75 L150,75\"/>|' assets/figures/coupling.svg"
+run_bg "a mark the grammar doesn't name" F1 "sed -i 's|<text class=\"fig-note\" x=\"12\" y=\"214\">|<text class=\"fig-shout\" x=\"12\" y=\"214\">|' assets/figures/many-hands.svg"
+run_bg "the weight ramp borrowed by another picture" F1 "sed -i 's|<path class=\"fig-line\" d=\"M178,36 L178,144\"/>|<path class=\"fig-line fig-ramp-5\" d=\"M178,36 L178,144\"/>|' assets/figures/mission-excuse.svg"
+run_bg "three highlights that aren't all behind words" F1 "sed -i '0,/<rect class=\"fig-mark\" x=\"\([0-9.]*\)\" y=\"80\" width=\"\([0-9.]*\)\" height=\"18\"\/>/s//<rect class=\"fig-mark\" x=\"\\1\" y=\"74\" width=\"\\2\" height=\"30\"\/>/' assets/figures/last-time.svg"
+run_bg "picture labels back under 12 pixels on a phone" F2 "sed -i 's/.fig-note { font-weight: 400; font-size: 12.5px;/.fig-note { font-weight: 400; font-size: 11px;/' assets/css/pm.css"
+run_bg "a picture held inside the panel's padding, short of its sides" F2 "sed -i 's/^.fig { display: block; width: 100%; max-width: none;/.fig { display: block; width: 88%; max-width: 30rem;/' assets/css/pm.css"
+run_bg "a caption that starts off the picture's left edge" F2 "sed -i 's|padding: 0 calc(100% / 30); font:|padding: 0 var(--sp-5); font:|' assets/css/pm.css"
+run_bg "two labels on top of each other in a picture" F2 "sed -i 's|<text class=\"fig-note\" x=\"12\" y=\"33\">only the catalog changes</text>|<text class=\"fig-note\" x=\"12\" y=\"22\">only the catalog changes</text>|' assets/figures/coupling.svg"
+run_bg "a label running out of its picture" F2 "sed -i 's|<text class=\"fig-label\" x=\"312\" y=\"132\" text-anchor=\"middle\">A customer</text>|<text class=\"fig-label\" x=\"340\" y=\"132\" text-anchor=\"middle\">A customer</text>|' assets/figures/many-hands.svg"
+run_bg "words on a picture's yellow in the page's ink" F2 "sed -i 's|<text class=\"fig-label fig-on-mark\" x=\"178\" y=\"22\" text-anchor=\"middle\">Your line</text>|<text class=\"fig-label\" x=\"178\" y=\"22\" text-anchor=\"middle\">Your line</text>|' assets/figures/mission-excuse.svg"
+run_bg "words on a picture's yellow unreadable on a dark screen" F2 "sed -i 's/^.fig .fig-on-mark { fill: var(--mark-ink); }/.fig .fig-on-mark { fill: var(--ink); }/' assets/css/pm.css"
+run_bg "a picture color with no job named for dark screens" C7 "sed -i 's/ --fig-loss: #8a5340; }/ }/' assets/css/pm.css"
+run_bg "Conway's sentence dropped from his card" S16 "sed -i '/^> /d; /^>\$/d' content/pm/cards/conways-law.md"
+run_bg "a card's quoted sentence left uncredited" S16 "sed -i '/^> Melvin Conway, /d' content/pm/cards/conways-law.md"
+run_bg "a card's quoted sentence reworded" S16 "sed -i 's/are constrained to produce designs which are copies/tend to produce designs which are copies/' content/pm/cards/conways-law.md"
 wait

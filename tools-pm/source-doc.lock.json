@@ -1,14 +1,14 @@
 {
  "doc": "https://claude.ai/artifact/66JD4LSrrxJ3W9Mnbv5UjJ",
- "synced": "26 November 2026",
+ "synced": "27 November 2026",
  "tabs": [
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "38e85f5bb8e4391db07d9c2bdbaa632e2597094b75b3ea0a4f0d7af42572e31d",
+   "sha256": "4037e91c556b2c8c2e9cbb7594d0f0a51713337233ce36b71e4d4981d5b1d097",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 66
+   "rev": 67
   },
   {
    "name": "ReadMe",
@@ -29,10 +29,10 @@
   {
    "name": "0 Own Your Role",
    "file": "0-own-your-role.md",
-   "sha256": "423749a1708c96aeffd7cf847f9c7fee5f8a3e0cde058619a855f9902f524b82",
+   "sha256": "be6021f8f1af02292581df58e321e48923cdeff29a1c6f81f9dc208d317a6807",
    "doc_tab": "3f4c7860-02a9",
    "doc_node": "902db076-43ba",
-   "rev": 1990
+   "rev": 1992
   },
   {
    "name": "1 Know Who It's For",
@@ -61,10 +61,10 @@
   {
    "name": "4 Mind the Seams",
    "file": "4-mind-the-seams.md",
-   "sha256": "99539f041211f39157f901a1ef74e1164d59563ea61b84e59444bba3ab393aa1",
+   "sha256": "5263cbc270887e609f8e2d677df87e8452c4b809ea6e7862708990007198ba2e",
    "doc_tab": "6c310fdc-d2b3",
    "doc_node": "fa220045-fce2",
-   "rev": 443
+   "rev": 445
   },
   {
    "name": "5 Map the Domain",
@@ -93,10 +93,10 @@
   {
    "name": "8 Weigh the Evidence",
    "file": "8-weigh-the-evidence.md",
-   "sha256": "9f4b1e8cc51fd51b6aec08bfde3bd2a927020e9ce39154b0dce0c1881847370f",
+   "sha256": "fbf0853a33d2985a390b59f3ef44cb8da003870831722f6da57f7963621945a7",
    "doc_tab": "2cf80565-2815",
    "doc_node": "17e3a736-635f",
-   "rev": 94
+   "rev": 95
   },
   {
    "name": "9 Decide and Set Direction",
@@ -109,10 +109,10 @@
   {
    "name": "10 Answer for What You Build",
    "file": "10-answer-for-what-you-build.md",
-   "sha256": "11652185fec0afa68897dbdd0fa0f01d66e9b0296e60c94c1b5fc683758e16bc",
+   "sha256": "2792b870d070f4f979e188d8b7a549bf1eb2db997840679bbca71266c35aa74b",
    "doc_tab": "51620bc6-cff0",
    "doc_node": "c90f54a8-2faf",
-   "rev": 491
+   "rev": 492
   },
   {
    "name": "11 Notice When You Are Wrong",

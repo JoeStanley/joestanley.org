@@ -2151,6 +2151,21 @@ def kind_checks(out_dir):
                 fail("S16", f"card {name}: the quote isn't credited under it, with its author and work")
         elif not plate.select_one("svg[role=img]"):
             fail("S16", f"card {name}: its picture is missing")
+        # a card that quotes its idea's first sentence does so first under "The idea", word for word and credited
+        quoted = QUOTED_FIRST.get(name)
+        idea = soup.find("h2", string=re.compile(r"^\s*The idea\s*$"))
+        first = idea.find_next_sibling() if idea else None
+        if quoted:
+            if not first or first.name != "blockquote" or clean_text(quoted["text"]) not in clean_text(first.get_text()):
+                fail("S16", f"card {name}: {quoted['by']}'s sentence isn't quoted word for word as the first thing under \"The idea\"")
+            elif quoted["by"] not in first.get_text() or quoted["year"] not in first.get_text() or not first.find("a", href=quoted["url"]):
+                fail("S16", f"card {name}: the quoted sentence isn't credited with its author, its work linked, and its year")
+        elif soup.select_one("article.card .card-body blockquote"):
+            fail("S16", f"card {name}: quotes a sentence in a block that S16 doesn't know of; name it in QUOTED_FIRST")
+
+
+QUOTED_FIRST = {"conways-law": {"by": "Melvin Conway", "year": "1968", "url": "https://www.melconway.com/Home/Committees_Paper.html",
+                                 "text": "The basic thesis of this article is that organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."}}
 
 
 def clean_text(s):
@@ -3686,6 +3701,163 @@ LOG_TIMED = {"notice-when-you-are-wrong"}  # the one log line with its minutes (
 LOG_RE = r"\*\*(Start a decision log|For your decision log|Review your decision log)( \(\d+ minutes\))?\.\*\*"
 
 
+# ---------- F1, F2: the pictures' one grammar, and reading them on a phone ----------
+FIG_CLASSES = {"fig", "fig-pipe", "fig-mark", "fig-on-mark", "fig-ink", "fig-water", "fig-loss", "fig-cell", "fig-label", "fig-item",
+               "fig-note", "fig-axis", "fig-line", "fig-return", "fig-guide", "fig-ramp-1", "fig-ramp-2", "fig-ramp-3",
+               "fig-ramp-4", "fig-ramp-5", "fig-arrow", "fig-arrow-ink", "fig-stops", "fig-num"}
+FIG_ONLY_IN = {"fig-ramp-1": "access-patterns.svg", "fig-ramp-2": "access-patterns.svg",
+               "fig-ramp-3": "access-patterns.svg", "fig-ramp-4": "access-patterns.svg", "fig-ramp-5": "access-patterns.svg"}
+
+
+def picture_checks(out_dir):
+    """F1 in each picture's source: only the grammar's marks, one key moment in yellow, one arrowhead, the dot and
+    corner scales. F2 in a browser, on every card: the picture fills its panel and its caption shares its left edge, at 390 and
+    1280 pixels; at 390, no word under 12 pixels, no text overlapping or running out, and words on the yellow in the highlighter's ink, readable in dark."""
+    from bs4 import BeautifulSoup
+    checked("F1", "F2")
+    pm_css = re.sub(r"/\*.*?\*/", "", open(os.path.join(ROOT, "assets", "css", "pm.css"), encoding="utf-8").read(), flags=re.S)
+    for c in sorted(FIG_CLASSES):
+        if not re.search(r"\." + re.escape(c) + r"(?![\w-])", pm_css):
+            fail("F1", f"pm.css names no mark .{c}")
+    files = sorted(glob.glob(os.path.join(ROOT, "assets", "figures", "*.svg")))
+    if not files:
+        fail("F1", "no picture files found")
+    for path in files:
+        name = os.path.basename(path)
+        soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+        svg = soup.find("svg")
+        vb = (svg.get("viewbox") or svg.get("viewBox") or "").split()
+        if len(vb) != 4 or vb[:3] != ["0", "0", "360"] or not 120 <= float(vb[3]) <= 244:
+            fail("F1", f"{name}: drawn in viewBox \"{' '.join(vb)}\", not 360 units wide from 0 0 and 120 to 244 tall"); continue
+        frame = 360 * float(vb[3])
+        used = set()
+        for el in svg.find_all(True):
+            used.update(el.get("class") or [])
+            own = [a for a in ("font-size", "font-weight", "font-family", "stroke-width", "stroke-dasharray", "opacity") if el.get(a) is not None]
+            if own:
+                fail("F1", f"{name}: a <{el.name}> sets its own {own[0]}; pictures use the marks pm.css names")
+        for c in sorted(used - FIG_CLASSES):
+            fail("F1", f"{name}: uses .{c}, which is not one of the pictures' marks")
+        for c in sorted(used & set(FIG_ONLY_IN)):
+            if FIG_ONLY_IN[c] != name:
+                fail("F1", f"{name}: uses .{c}, which belongs to {FIG_ONLY_IN[c]} alone")
+
+        def cls(el):   # an element's marks, its own and its group's
+            out = set(el.get("class") or [])
+            for par in el.parents:
+                if par.name == "g":
+                    out.update(par.get("class") or [])
+            return out
+        for t in svg.find_all("text"):
+            if not cls(t) & {"fig-label", "fig-item", "fig-note", "fig-num"}:
+                fail("F1", f"{name}: \"{t.get_text()[:30]}\" has no rank (label, item or note)")
+        for r in svg.find_all("rect"):
+            if r.get("rx") not in (None, "6"):
+                fail("F1", f"{name}: a box's corners are rounded by {r.get('rx')}, not 6")
+        for c in svg.find_all("circle"):
+            k, rad = cls(c), float(c.get("r"))
+            if "fig-stops" in k:
+                ok = rad == 14
+            elif "fig-ink" in k:
+                ok = rad in (4, 5.5)
+            else:
+                ok = "fig-return" in k   # an outline, not a dot
+            if not ok:
+                fail("F1", f"{name}: a circle of radius {c.get('r')} is not on the dot scale (4 counted, 5.5 named, 14 numbered)")
+        marks = [m for m in svg.find_all(True) if "fig-mark" in (m.get("class") or [])]
+        if not 1 <= len(marks) <= 3:
+            fail("F1", f"{name}: {len(marks)} yellow marks; a picture has one key moment, of up to three like marks")
+        if any(m.name != "rect" for m in marks):
+            fail("F1", f"{name}: the yellow is a <{[m.name for m in marks if m.name != 'rect'][0]}>, not a rectangle behind the thing")
+        else:
+            area = sum(float(m["width"]) * float(m["height"]) for m in marks)
+            if area > 0.08 * frame:
+                fail("F1", f"{name}: the yellow covers {area / frame:.1%} of the picture, more than 8%")
+            if len(marks) > 1 and any(m["height"] != "18" for m in marks):
+                fail("F1", f"{name}: more than one yellow mark, and they aren't all highlighters behind words, 18 units high")
+            if len({m["height"] for m in marks}) > 1:
+                fail("F1", f"{name}: its yellow marks differ in height, so they aren't like marks of one moment")
+        for a in svg.find_all("path"):
+            k = set(a.get("class") or [])
+            if not k & {"fig-arrow", "fig-arrow-ink"}:
+                continue
+            pts = [tuple(map(float, q)) for q in re.findall(r"(-?[\d.]+),(-?[\d.]+)", a.get("d") or "")]
+            sides = sorted(((pts[i][0] - pts[j][0]) ** 2 + (pts[i][1] - pts[j][1]) ** 2) ** 0.5 for i, j in ((0, 1), (1, 2), (0, 2))) if len(pts) == 3 else []
+            if not sides or abs(sides[0] - 10) > 0.35 or abs(sides[1] - 10.296) > 0.35 or abs(sides[2] - 10.296) > 0.35:
+                fail("F1", f"{name}: an arrowhead ({a.get('d')}) is not the one triangle, 10 across and 9 long")
+            shaft = {"fig-arrow": {"fig-return"}, "fig-arrow-ink": {"fig-axis", "fig-line"}}[(k & {"fig-arrow", "fig-arrow-ink"}).pop()]
+            if not used & shaft:
+                fail("F1", f"{name}: an arrowhead has no shaft of its color (grey on a dotted line, ink on a solid one)")
+
+    # F2, in a browser
+    cards = sorted(glob.glob(os.path.join(out_dir, "pm", "cards", "*", "index.html")))
+    probe = """() => { const svg = document.querySelector('figure.plate svg.fig'); if (!svg) return null;
+      const plate = svg.closest('figure').getBoundingClientRect(), sb = svg.getBoundingClientRect(), fill = e => getComputedStyle(e).fill;
+      const has = (t, c) => t.classList.contains(c) || t.parentNode.classList.contains(c);
+      const marks = [...svg.querySelectorAll('.fig-mark')].map(m => { const b = m.getBoundingClientRect(); return {x: b.left, y: b.top, w: b.width, h: b.height, fill: fill(m)}; });
+      const texts = [...svg.querySelectorAll('text')].map(t => { const b = t.getBoundingClientRect();
+        return {s: t.textContent.trim(), x: b.left, y: b.top, w: b.width, h: b.height, px: parseFloat(getComputedStyle(t).fontSize) * sb.width / svg.viewBox.baseVal.width,
+                fill: fill(t), on: has(t, 'fig-on-mark'), num: has(t, 'fig-num')}; });
+      const cap = svg.closest('figure').querySelector('.plate-caption'), cb = cap ? cap.getBoundingClientRect() : null;
+      return {plate: plate.width, left: sb.left, top: sb.top, w: sb.width, h: sb.height, marks, texts,
+              cap: cb ? cb.left + parseFloat(getComputedStyle(cap).paddingLeft) : null}; }"""
+    chrome = os.environ.get("CHROME")
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as p:
+            b = p.chromium.launch(executable_path=chrome) if chrome else p.chromium.launch()
+            # at a wide screen too, the picture fills its panel and the caption starts where its words do
+            ctx = b.new_context(viewport={"width": 1280, "height": 900}); pg = ctx.new_page()
+            for html in cards:
+                card = os.path.basename(os.path.dirname(html))
+                pg.goto(f"{srv.base}/pm/cards/{card}/"); pg.wait_for_load_state("load")
+                d = pg.evaluate(probe)
+                if d and d["w"] < d["plate"] - 1:
+                    fail("F2", f"card {card}: at 1280 pixels the picture is {d['w']:.0f} pixels wide in a panel of {d['plate']:.0f}")
+                if d and d["cap"] is not None and abs(d["cap"] - (d["left"] + d["w"] / 30)) > 1.5:
+                    fail("F2", f"card {card}: at 1280 pixels the caption starts {d['cap'] - (d['left'] + d['w'] / 30):+.0f} pixels from where the picture's words start")
+            ctx.close()
+            for scheme in ("light", "dark"):
+                ctx = b.new_context(viewport={"width": 390, "height": 900}, color_scheme=scheme); pg = ctx.new_page()
+                for html in cards:
+                    card = os.path.basename(os.path.dirname(html))
+                    pg.goto(f"{srv.base}/pm/cards/{card}/"); pg.wait_for_load_state("load")
+                    pg.evaluate("document.fonts.ready")
+                    d = pg.evaluate(probe)
+                    if not d:
+                        continue   # a card that opens with a quotation (S16)
+                    on_mark = lambda t: any(m["x"] <= t["x"] + t["w"] / 2 <= m["x"] + m["w"] and m["y"] <= t["y"] + t["h"] / 2 <= m["y"] + m["h"] for m in d["marks"])
+                    if scheme == "dark":
+                        for t in d["texts"]:
+                            if t["on"] and d["marks"]:
+                                fg, bg = [tuple(int(float(v)) for v in re.findall(r"[\d.]+", c)[:3]) for c in (t["fill"], d["marks"][0]["fill"])]
+                                ratio = contrast(fg, bg)
+                                if ratio < 4.5:
+                                    fail("F2", f"card {card}: \"{t['s']}\" on the yellow reads at {ratio:.1f} to 1 on a dark screen, under 4.5")
+                        continue
+                    if d["w"] < d["plate"] - 1:
+                        fail("F2", f"card {card}: at 390 pixels the picture is {d['w']:.0f} pixels wide in a panel of {d['plate']:.0f}")
+                    if d["cap"] is not None and abs(d["cap"] - (d["left"] + d["w"] / 30)) > 1.5:
+                        fail("F2", f"card {card}: at 390 pixels the caption starts {d['cap'] - (d['left'] + d['w'] / 30):+.0f} pixels from where the picture's words start")
+                    small = [t for t in d["texts"] if t["px"] < 12]
+                    if small:
+                        fail("F2", f"card {card}: \"{small[0]['s']}\" is set at {small[0]['px']:.1f} pixels on a phone, under 12")
+                    for i, a in enumerate(d["texts"]):
+                        if a["x"] < d["left"] - 0.5 or a["x"] + a["w"] > d["left"] + d["w"] + 0.5 or a["y"] < d["top"] - 0.5 or a["y"] + a["h"] > d["top"] + d["h"] + 0.5:
+                            fail("F2", f"card {card}: \"{a['s']}\" runs out of the picture")
+                        if on_mark(a) != a["on"] and not a["num"]:
+                            fail("F2", f"card {card}: \"{a['s']}\" {'sits on the yellow without' if not a['on'] else 'takes the highlighter ink off'} the yellow")
+                        for o in d["texts"][i + 1:]:
+                            # the middle of each line box, where the letters are: a line box is taller than its letters
+                            if (a["x"] < o["x"] + o["w"] + 2 and o["x"] < a["x"] + a["w"] + 2
+                                    and a["y"] + a["h"] * 0.22 < o["y"] + o["h"] * 0.80 and o["y"] + o["h"] * 0.22 < a["y"] + a["h"] * 0.80):
+                                fail("F2", f"card {card}: \"{a['s']}\" and \"{o['s']}\" overlap in the picture")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
 def practice_checks(out_dir):
     """J1 to J5: every Check ends with one question beyond the module; from Module 1 one question collides with an
     earlier module, names it and carries against:; each Do from Module 1 has its line for the decision log, after the
@@ -4978,6 +5150,12 @@ def main():
             both_ways_checks()
         except Exception as e:  # a broken page must fail its rule, not stop the suite
             fail("J9", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("F1", "F2"):
+        try:
+            picture_checks(out_dir)
+        except Exception as e:  # a broken picture must fail its rules, not stop the suite
+            for r in ("F1", "F2"):
+                fail(r, f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("J7"):
         try:
             example_checks(out_dir)

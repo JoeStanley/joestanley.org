@@ -1,20 +1,22 @@
-<svg class="fig" viewBox="0 0 360 200" role="img" aria-labelledby="fig-coupling-title fig-coupling-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 216" role="img" aria-labelledby="fig-coupling-title fig-coupling-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-coupling-title">Two systems, coupled for one change and not for another.</title>
-  <desc id="fig-coupling-desc">A phone company's plan catalog and its billing system sit side by side. A price change lands inside the plan catalog alone, so only the catalog changes. A new kind of charge runs as one line through both systems, so both have to change together: for that change, they're coupled.</desc>
+  <desc id="fig-coupling-desc">The same two systems, a plan catalog and billing, drawn twice. In the first row, a price change: a heavy line stays inside the plan catalog, so only the catalog changes. In the second row, a new kind of charge: the same heavy line runs through both systems, and the gap between them is highlighted. Both have to change, so for this change they're coupled.</desc>
 
-  <text class="fig-label" x="100" y="18" text-anchor="middle">A price change</text>
-  <text class="fig-note" x="100" y="32" text-anchor="middle">Only the catalog changes</text>
-  <path class="fig-axis" d="M100,40 L100,58"/>
-  <path class="fig-arrow" d="M94,56 L100,66 L106,56 Z"/>
+  <text class="fig-label" x="12" y="18">A price change</text>
+  <text class="fig-note" x="12" y="33">only the catalog changes</text>
+  <rect class="fig-pipe" x="12" y="42" width="154" height="46" rx="6"/>
+  <rect class="fig-pipe" x="194" y="42" width="154" height="46" rx="6"/>
+  <text class="fig-label" x="89" y="60" text-anchor="middle">Plan catalog</text>
+  <text class="fig-label" x="271" y="60" text-anchor="middle">Billing</text>
+  <path class="fig-line" d="M28,75 L150,75"/>
 
-  <rect class="fig-pipe" x="34" y="66" width="132" height="76" rx="8"/>
-  <rect class="fig-pipe" x="194" y="66" width="132" height="76" rx="8"/>
-  <text class="fig-label" x="100" y="92" text-anchor="middle">Plan catalog</text>
-  <text class="fig-label" x="260" y="92" text-anchor="middle">Billing</text>
-
-  <rect class="fig-mark" x="166" y="113" width="28" height="16"/>
-  <path class="fig-line" d="M14,121 L346,121"/>
-
-  <text class="fig-label" x="180" y="164" text-anchor="middle">A new kind of charge</text>
-  <text class="fig-note" x="180" y="180" text-anchor="middle">Both have to change, so for this change they're coupled</text>
+  <text class="fig-label" x="12" y="122">A new kind of charge</text>
+  <text class="fig-note" x="12" y="137">both have to change</text>
+  <rect class="fig-pipe" x="12" y="146" width="154" height="46" rx="6"/>
+  <rect class="fig-pipe" x="194" y="146" width="154" height="46" rx="6"/>
+  <text class="fig-label" x="89" y="164" text-anchor="middle">Plan catalog</text>
+  <text class="fig-label" x="271" y="164" text-anchor="middle">Billing</text>
+  <rect class="fig-mark" x="166.75" y="169" width="26.5" height="20"/>
+  <path class="fig-line" d="M28,179 L332,179"/>
+  <text class="fig-label" x="180" y="208" text-anchor="middle">Coupled, for this change</text>
 </svg>

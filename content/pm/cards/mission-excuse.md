@@ -4,7 +4,7 @@ layout: card
 module: answer-for-what-you-build
 weight: 20
 figure: mission-excuse
-figure_caption: Costs paid now, for certain, on one side. A vision that may come someday on the other. Your line between them.
+figure_caption: The cost to others comes now, for certain. The vision comes someday, maybe. Your line says how far that cost may go, and you draw it before anyone asks.
 question: Would you still do this if the vision never came true?
 deeper:
   title: "Transformational Leadership, Corporate Cultism and the Spirituality Paradigm"

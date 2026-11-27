@@ -1,31 +1,33 @@
-<svg class="fig" viewBox="0 0 360 200" role="img" aria-labelledby="fig-risk-title fig-risk-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 204" role="img" aria-labelledby="fig-risk-title fig-risk-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-risk-title">Five things that have to be true for a new feature, placed by how much it depends on each and how much you know.</title>
-  <desc id="fig-risk-desc">A grocery app wants to let people order from two stores in one delivery. Five things have to be true, each a dot on a square map. Up the side, how much the idea depends on it; along the bottom, how little you know about it. That shoppers can collect from two stores and stay on time, and that the app can show both stores' shelves, matter a lot, but there's evidence for both. That people find the option at checkout is known and matters less. That people will pay a second fee is a guess that matters less. That people want two stores in one order at all is both: the idea depends on it, and it's a guess. It sits alone in the top right corner, marked to test first.</desc>
+  <desc id="fig-risk-desc">A grid with two axes. Up means the idea depends on it more; right means you have less evidence and more of a guess. Five assumptions about letting people order from two stores in one delivery are placed on it. Two pickups stay on time, and the fee covers the second stop, sit top left: the idea depends on them, and there is evidence. People find it at checkout sits bottom left. People want one receipt sits bottom right: a guess, but it matters less. One sits at the far top right, where the idea depends on it most and you know least: people want two stores in one order. It is marked "Test this first," highlighted.</desc>
 
-  <rect class="fig-mark" x="190" y="30" width="150" height="72"/>
-  <text class="fig-label" x="334" y="96" text-anchor="end">Test this first</text>
-  <path class="fig-axis" d="M40,24 L40,176 L346,176"/>
-  <path class="fig-wanted" d="M190,34 L190,172 M44,103 L340,103"/>
-  <text class="fig-note" x="44" y="18">The idea depends on it</text>
-  <text class="fig-note" x="44" y="192">You have evidence</text>
-  <text class="fig-note" x="346" y="192" text-anchor="end">It's a guess</text>
+  <path class="fig-axis" d="M12,26 L12,178 L348,178"/>
+  <path class="fig-guide" d="M180,30 L180,174 M16,104 L344,104"/>
+  <text class="fig-note" x="12" y="18">The idea depends on it more</text>
+  <text class="fig-note" x="18" y="170">Depends on it less</text>
+  <text class="fig-note" x="12" y="196">You have evidence</text>
+  <text class="fig-note" x="348" y="196" text-anchor="end">It’s a guess</text>
 
   <g class="fig-ink">
-    <circle cx="206" cy="48" r="5.5"/>
-    <circle cx="70" cy="44" r="5.5"/>
-    <circle cx="70" cy="80" r="5.5"/>
-    <circle cx="70" cy="140" r="5.5"/>
-    <circle cx="250" cy="132" r="5.5"/>
+    <circle cx="334" cy="43" r="5.5"/>
+    <circle cx="60" cy="46" r="5.5"/>
+    <circle cx="34" cy="82" r="5.5"/>
+    <circle cx="80" cy="130" r="5.5"/>
+    <circle cx="244" cy="133" r="5.5"/>
   </g>
-  <text class="fig-label" x="216" y="45">People want two</text>
-  <text class="fig-label" x="216" y="59">stores in one order</text>
-  <text class="fig-note" x="80" y="41">Two pickups stay</text>
-  <text class="fig-note" x="80" y="54">on time</text>
-  <text class="fig-note" x="80" y="77">The app can show</text>
-  <text class="fig-note" x="80" y="90">both stores' shelves</text>
-  <text class="fig-note" x="80" y="137">People find it</text>
-  <text class="fig-note" x="80" y="150">at checkout</text>
-  <text class="fig-note" x="44" y="170">It matters less</text>
-  <text class="fig-note" x="260" y="129">People pay a</text>
-  <text class="fig-note" x="260" y="142">second fee</text>
+  <text class="fig-label" x="322" y="40" text-anchor="end">People want</text>
+  <text class="fig-label" x="322" y="55" text-anchor="end">two stores in</text>
+  <text class="fig-label" x="322" y="70" text-anchor="end">one order</text>
+  <rect class="fig-mark" x="235.9" y="78" width="90.1" height="18"/>
+  <text class="fig-label fig-on-mark" x="322" y="91" text-anchor="end">Test this first</text>
+
+  <text class="fig-item" x="72" y="40">Two pickups stay</text>
+  <text class="fig-item" x="72" y="55">on time</text>
+  <text class="fig-item" x="46" y="76">The fee covers</text>
+  <text class="fig-item" x="46" y="91">the second stop</text>
+  <text class="fig-item" x="92" y="127">People find it</text>
+  <text class="fig-item" x="92" y="142">at checkout</text>
+  <text class="fig-item" x="256" y="130">People want</text>
+  <text class="fig-item" x="256" y="145">one receipt</text>
 </svg>

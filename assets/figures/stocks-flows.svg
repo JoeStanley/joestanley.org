@@ -1,6 +1,8 @@
 <svg class="fig" viewBox="0 0 360 236" role="img" aria-labelledby="fig-stock-title fig-stock-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-stock-title">A bathtub with a tap and a drain, and an arrow from the water level back to the tap.</title>
-  <desc id="fig-stock-desc">Water runs from a tap into a tub, which is the inflow. The water standing in the tub is the stock. Water leaves through a drain, which is the outflow. A dotted arrow runs from the water level back to the tap. It is feedback: it carries information, not water, and the level changes the flow.</desc>
+  <desc id="fig-stock-desc">A bathtub, half full. The water in it is the stock: the level. A tap above it is the inflow, which fills it. A drain below it is the outflow, which drains it. A dotted arrow runs from the water level back to the tap, and its name is highlighted: feedback. It carries information, not water: the level changes how far someone opens the tap.</desc>
+
+  <g transform="translate(8,0)">
 
   <!-- the tub and the water in it -->
   <path class="fig-pipe" d="M96,98 L104,98 L104,180 Q104,190 114,190 L262,190 Q272,190 272,180 L272,98 L280,98"/>
@@ -10,7 +12,7 @@
   <!-- the tap and the drain -->
   <path class="fig-line" d="M22,58 L120,58 Q132,58 132,70 L132,76"/>
   <path class="fig-line" d="M84,58 L84,44 M73,44 L95,44"/>
-  <path class="fig-line" d="M236,191 L236,198"/>
+  <path class="fig-line" d="M236,191 L236,196"/>
   <g class="fig-ink">
     <circle cx="132" cy="89" r="4"/><circle cx="132" cy="103" r="4"/><circle cx="132" cy="117" r="4"/>
     <circle cx="236" cy="209" r="4"/><circle cx="236" cy="223" r="4"/>
@@ -18,14 +20,16 @@
 
   <!-- feedback: from the level back to the tap -->
   <path class="fig-return" d="M279,128 C338,122 346,30 250,20 C190,14 126,12 97,32.5"/>
-  <path class="fig-arrow" d="M88,39 L100.4,37.5 L93.4,27.7 Z"/>
+  <path class="fig-arrow" d="M89.6,37.7 L94.1,28.4 L99.9,36.6 Z"/>
 
-  <text class="fig-label" x="22" y="78">Inflow</text>
-  <text class="fig-note" x="22" y="92">fills it</text>
-  <text class="fig-label" x="88" y="150" text-anchor="end">Stock</text>
-  <text class="fig-note" x="88" y="164" text-anchor="end">the level</text>
-  <text class="fig-label" x="250" y="213">Outflow</text>
-  <text class="fig-note" x="250" y="227">drains it</text>
-  <text class="fig-label" x="214" y="54" text-anchor="middle">Feedback</text>
-  <text class="fig-note" x="214" y="68" text-anchor="middle">information, not water</text>
+  <text class="fig-label" x="22" y="79">Inflow</text>
+  <text class="fig-note" x="22" y="94">fills it</text>
+  <text class="fig-label" x="90" y="150" text-anchor="end">Stock</text>
+  <text class="fig-note" x="90" y="165" text-anchor="end">the level</text>
+  <text class="fig-label" x="214" y="213" text-anchor="end">Outflow</text>
+  <text class="fig-note" x="214" y="228" text-anchor="end">drains it</text>
+  <rect class="fig-mark" x="179.8" y="41" width="68.5" height="18"/>
+  <text class="fig-label fig-on-mark" x="214" y="54" text-anchor="middle">Feedback</text>
+  <text class="fig-note" x="214" y="73" text-anchor="middle">information, not water</text>
+  </g>
 </svg>

@@ -3,12 +3,8 @@ title: Conway's Law
 layout: card
 module: mind-the-seams
 weight: 10
-figure_quote:
-  text: "The basic thesis of this article is that organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."
-  by: Melvin Conway
-  work: How Do Committees Invent?
-  url: https://www.melconway.com/Home/Committees_Paper.html
-  year: 1968
+figure: conways-law
+figure_caption: The product takes the shape of who talks to whom. Where two teams rarely talk, it has a seam, and customers feel it.
 question: Where does a boundary between teams in your area cut through something a customer experiences as one thing?
 deeper:
   title: "The Mirroring Hypothesis: Theory, Evidence, and Exceptions"
@@ -20,6 +16,10 @@ deeper:
 ---
 
 ## The idea
+
+> "The basic thesis of this article is that organizations which design systems (in the broad sense used here) are constrained to produce designs which are copies of the communication structures of these organizations."
+>
+> Melvin Conway, [*How Do Committees Invent?*](https://www.melconway.com/Home/Committees_Paper.html) (1968)
 
 The word in Conway's sentence that matters is communication: the system follows who actually talks to whom, and that isn't always what the org chart says. The software architect Ruth Malan puts it in one line: "if the architecture of the system and the architecture of the organization are at odds, the architecture of the organization wins" (unpublished workshop notes, February 2025).
 
