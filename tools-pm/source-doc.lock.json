@@ -5,10 +5,18 @@
   {
    "name": "About",
    "file": "about.md",
-   "sha256": "774b99f5201cc9aa24c67cb590ed8a04ae5052e6fe68848770366456299b2f55",
+   "sha256": "832afaaa29426fa00b188e80e11f33055eeaf3e7f9746605422a012c1ae17f54",
    "doc_tab": "52ba3afa-33df",
    "doc_node": "5c3722f2-411b",
-   "rev": 68
+   "rev": 69
+  },
+  {
+   "name": "Front door",
+   "file": "front-door.md",
+   "sha256": "4e400f6314d7bd3ed89c86ac656036a546a0fba905a3fc88ce827efa75b4c478",
+   "doc_tab": "f8991593-5bf6",
+   "doc_node": "410bd37a-83c0",
+   "rev": 1
   },
   {
    "name": "ReadMe",
@@ -16,6 +24,14 @@
    "sha256": "0fd7b748f3b042e4b58416b60bed24a4d89cdde114c6f559e7857fab458e6c86",
    "doc_tab": "dc76aa06-0f74",
    "doc_node": "3dbd03dd-83cd",
+   "rev": 1
+  },
+  {
+   "name": "Games",
+   "file": "games.md",
+   "sha256": "237e5f8ea6ddce35798d199aa3d80517951bc71a79fd8d857b91eb5ce66f0dea",
+   "doc_tab": "96b32546-2926",
+   "doc_node": "e729c9f1-525b",
    "rev": 1
   },
   {
@@ -149,10 +165,10 @@
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "a0addb620f3b8cdc9db75522c3c33b7f50744d17e8218638d0187f3450cdd50a",
+   "sha256": "63303ff35f149dd39c027a0786d3461b83739a982bc72ad93e1cc03aa80fd8de",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 20
+   "rev": 22
   }
  ]
 }

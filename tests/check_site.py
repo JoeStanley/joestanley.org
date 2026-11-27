@@ -4471,23 +4471,35 @@ def source_checks(out_dir):
             fail("X2", f"{name}: the page says \"{w}\" and the tab does not")
         if len(missing) > 4:
             fail("X2", f"{name}: and {len(missing) - 4} more passages are on the page and not in the tab")
-    # X2: the ReadMe's tab, after About, holds every word of its page, so the owner can revise it there
-    readme = os.path.join(out_dir, "page", "readme", "index.html")
+    # X2: his own pages' tabs, right after About in their order, each hold every word of its page, so he can revise it there
     names = [n_ for n_, _ in tabs]
-    if sd.README_TAB not in by_name:
-        fail("X2", "the ReadMe has no tab")
-    elif names.index(sd.README_TAB) != 1 or names[0] != "About":
-        fail("X2", f"the ReadMe's tab is number {names.index(sd.README_TAB) + 1} of the doc's, and it's the second, right after About")
-    if sd.README_TAB in by_name and os.path.exists(readme):
-        art = BeautifulSoup(open(readme, encoding="utf-8").read(), "html.parser").select_one("main article")
-        have = norm(by_name[sd.README_TAB])
+    own_pages = {sd.DOOR_TAB: ("index.html", "main .door"), sd.README_TAB: (os.path.join("page", "readme", "index.html"), "main article"),
+                 sd.GAMES_TAB: (os.path.join("games", "index.html"), "main article")}
+    for tab in sd.OWN_TABS:
+        if tab not in by_name:
+            fail("X2", f"the owner's page {tab} has no tab"); continue
+        if names[0] != "About" or names.index(tab) != 1 + sd.OWN_TABS.index(tab):
+            fail("X2", f"the tab {tab} is number {names.index(tab) + 1} of the doc's, and the owner's pages come right after About: {', '.join(sd.OWN_TABS)}")
+        path, sel = own_pages[tab]
+        if not os.path.exists(os.path.join(out_dir, path)):
+            fail("X2", f"{tab}: its page {path} wasn't built"); continue
+        art = BeautifulSoup(open(os.path.join(out_dir, path), encoding="utf-8").read(), "html.parser").select_one(sel)
+        have = norm(by_name[tab])
         missing = [str(n_).strip()[:60] for n_ in art.find_all(string=True) if len(norm(str(n_)).split()) >= 2 and norm(str(n_)) not in have]
+        for img in art.find_all("img"):   # a photo's description is his words too
+            if len(norm(img.get("alt") or "").split()) >= 2 and norm(img["alt"]) not in have:
+                missing.append(img["alt"][:60])
         for w in missing[:4]:
-            fail("X2", f"{sd.README_TAB}: the page says \"{w}\" and the tab does not")
+            fail("X2", f"{tab}: the page says \"{w}\" and the tab does not")
         if len(missing) > 4:
-            fail("X2", f"{sd.README_TAB}: and {len(missing) - 4} more passages are on the page and not in the tab")
-        if len(art.find_all("br")) != by_name[sd.README_TAB].count("\\\n"):
-            fail("X2", f"{sd.README_TAB}: the page breaks {len(art.find_all('br'))} lines inside its paragraphs and the tab {by_name[sd.README_TAB].count(chr(92) + chr(10))}, so the owner wouldn't see its lines as they stand")
+            fail("X2", f"{tab}: and {len(missing) - 4} more passages are on the page and not in the tab")
+        if len(art.find_all("br")) != by_name[tab].count("\\\n"):
+            fail("X2", f"{tab}: the page breaks {len(art.find_all('br'))} lines inside its paragraphs and the tab {by_name[tab].count(chr(92) + chr(10))}, so the owner wouldn't see its lines as they stand")
+        if tab == sd.DOOR_TAB:   # the links under the photo, each by its name and address
+            for a in art.select(".door-links a"):
+                name_ = " ".join(a.get_text().split())
+                if f"[{name_}]({a.get('href')})" not in by_name[tab]:
+                    fail("X2", f"{tab}: the link {name_} under the photo isn't in the tab with its address")
     # X3: the doc is in step with the repository
     lock = {t_["name"]: t_ for t_ in lock_all.get("tabs", [])}
     if not lock:
@@ -4510,7 +4522,7 @@ def source_checks(out_dir):
             fail("E3", f"data/pm/own-words.yaml lists a sentence for {o.get('unit')}, which has no tab")
     retired = [l.strip().lower() for l in open(os.path.join(TESTS, "retired-settings.txt"), encoding="utf-8") if l.strip() and not l.startswith("#")]
     for name, text in tabs:
-        if name in ("About", sd.README_TAB, sd.VOICE_TAB):   # the ReadMe is the owner's own words, not the syllabus's (X2)
+        if name in ("About", sd.VOICE_TAB) + sd.OWN_TABS:   # his own pages are his words, not the syllabus's (X2)
             continue
         low = text.lower()
         for phrase in retired:

@@ -93,10 +93,17 @@ run_bg "a module with no source" X1 "sed -i '/^  page: decide-and-set-direction$
 run_bg "a draft left behind after its module is built" X1 "mkdir -p drafts/pm; cp content/pm/see-the-system.md drafts/pm/see-the-system.md; sed -i 's/^  page: see-the-system$/  page: see-the-system\n  draft: see-the-system\n  state: Left behind./' data/pm/modules.yaml"
 run_bg "the tab drops what to look for" X2 "sed -i 's/paras += look(b) + reasons(b) + note_of(li)/paras += reasons(b) + note_of(li)/' tools-pm/source-doc.py"
 run_bg "a word changed without reaching the working doc" X3 "sed -i 's/Nothing is sent anywhere./Nothing leaves your browser./' content/pm/_index.md"
-run_bg "the ReadMe's tab drops its later sections" X2 "sed -i 's/README_NOTE\] + blocks(art.select_one(\".prose\"))/README_NOTE] + blocks(art.select_one(\".prose\"))[:5]/' tools-pm/source-doc.py"
+run_bg "an owner's page's tab drops its later sections" X2 "sed -i 's/note\] + blocks(art.select_one(\".prose\")))$/note] + blocks(art.select_one(\".prose\"))[:5])/' tools-pm/source-doc.py"
 run_bg "the ReadMe's tab runs its lines together" X2 "sed -i 's/br.replace_with(BREAK)/br.replace_with(\" \")/' tools-pm/source-doc.py"
-run_bg "the ReadMe's tab before About" X2 "sed -i 's/out = \[(\"About\", about_tab(mods, synced or today())), (README_TAB, readme_tab(site)),/out = [(README_TAB, readme_tab(site)), (\"About\", about_tab(mods, synced or today())),/' tools-pm/source-doc.py"
+run_bg "the owner's pages' tabs before About" X2 "sed -i 's/out = \[(\"About\", about_tab(mods, synced or today())), (DOOR_TAB, door_tab(site)),/out = [(DOOR_TAB, door_tab(site)), (\"About\", about_tab(mods, synced or today())),/' tools-pm/source-doc.py"
+# The front door and Games have tabs too (27 November 2026): in order after About, every word, the photo's description and each link.
+run_bg "the front door's tab and the ReadMe's out of order" X2 "sed -i 's/(DOOR_TAB, door_tab(site)), (README_TAB, readme_tab(site)),/(README_TAB, readme_tab(site)), (DOOR_TAB, door_tab(site)),/' tools-pm/source-doc.py"
+run_bg "Games without a tab" X2 "sed -i 's/^           (GAMES_TAB, games_tab(site)),$/          /' tools-pm/source-doc.py"
+run_bg "the front door's paragraphs left off its tab" X2 "sed -i 's/^    out += blocks(door.find(class_=\"door-text\"))$/    pass/' tools-pm/source-doc.py"
+run_bg "the photo's description left off the front door's tab" X2 "sed -i 's/if photo and photo.get(\"alt\"):/if False:/' tools-pm/source-doc.py"
+run_bg "a link under the photo left off the front door's tab" X2 "sed -i 's/for a in door.select(\".door-links a\")\]/for a in door.select(\".door-links a\")][1:]/' tools-pm/source-doc.py"
 run_bg "a word of the ReadMe changed without reaching the working doc" X3 "sed -i 's/and avoiding exercise./and avoiding the gym./' content/page/readme.md"
+run_bg "a word of the Games page changed without reaching the working doc" X3 "sed -i 's/I.m aiming to release it in March 2027./I.m aiming to release it in April 2027./' content/games/_index.md"
 # X4: a voice slot on Start, placed as a paragraph of its own, added first in the list whatever slots are open. The
 # mutations below each place it, then break one thing.
 SLOT="sed -i 's/^slots:.*$/slots:\\n  - id: t\\n    unit: Start\\n    brief: Say what judgment is, in your own words.\\n    interim: Judgment is what you bring when the map runs out./' data/pm/voice-slots.yaml; printf '\\n{{< pm/voice \\\"t\\\" \\\"paragraph\\\" >}}\\n' >> content/pm/_index.md"
