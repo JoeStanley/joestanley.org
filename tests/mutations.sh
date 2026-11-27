@@ -152,6 +152,9 @@ run_bg "the full path's label orange at rest" C1 "sed -i 's/text-align: left; fo
 run_bg "the bar's place staying ink on hover" G1 "sed -i '/^.cb-open:hover, .cb-place:hover .cb-course { color: var(--orange); }$/d' assets/css/pm.css"
 run_bg "a note folded in on a phone without its label" M1 "echo '@media (max-width: 63.99rem) { .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } }' >> assets/css/base.css"
 run_bg "a card's note printed typeset, not in the owner's hand" M1 "sed -i '/^  .note { font-family: \"Shantell Sans\", var(--ui); font-variation-settings: \"INFM\" 100; }$/d' assets/css/pm.css"
+# A card prints in two columns; a note there that breaks between them leaves its label at the foot of the first
+# (27 November 2026, when the sample notes moved up a slot with the picture's gone and one landed on the break).
+run_bg "a card's note split between its two printed columns" M1 "sed -i 's/^  .card-body li, .card-body p, .card-body .note { break-inside: avoid; }/  .card-body li, .card-body p { break-inside: avoid; }/' assets/css/pm.css"
 run_bg "a note read aloud as a plain note again" M3 "sed -i 's/>Sidenote: </>Note: </g' layouts/partials/pm/margin.html layouts/partials/pm/prose-slots.html"
 run_bg "a step's note out of line with the margin" M1 "echo '@media (min-width: 64rem) { .reading .step > .note { margin-left: var(--sp-5) !important; } }' >> assets/css/pm.css"
 run_bg "a long note beside the full path's heading pushing the first source down" R10 "sed -i '/^    .deeper-list > li:has(> .note) { clear: none; }$/d' assets/css/pm.css"

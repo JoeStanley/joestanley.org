@@ -40,7 +40,7 @@ settle:
     where: In Start, the voice slot what-judgment-is
     ask: "Say what product judgment is, since the course is named for it. Readers found the course's clearest account of the skill only at its end, in The Compass's question, \"Which question does the call in front of you need?\" and in where to draw the line. The slot's brief carries their suggestion."
   - what: The prophets paragraph
-    where: "In 10 Answer for What You Build, Why this matters, the paragraph that starts \"The hardest place to hold fast\""
+    where: In 10 Answer for What You Build, Why this matters, the paragraph on the pull from inside
     ask: "Keep it at full size, as you picked on 23 November after research, or trim its four quotes (Andreessen, Johnson, Rubenstein, Resnikoff) and keep the rest, the Mission Excuse card and Erika Cheung's talk included. Three readers found it reads like an op-ed and will date, and the target reader would stop there and miss the test left out \"just this once.\" The readers would trim it."
   - what: The Compass's second walk
     where: In The Compass, One call, walked through
@@ -59,7 +59,7 @@ settle:
     ask: "Fill out the margin, looser and more tangential than the syllabus, as you like. A card's picture has no slot now, since you'll never write notes for the visuals. One of yours went in word for word for you to rewrite if you like: Decide and Set Direction's \"The best delivery teams work when the lines of accountability are clear but the expertise blurred.\""
   - what: The Concept Champion's three new sentences
     where: In 0 Own Your Role, on the Concept Champion card, The idea, the end of its second paragraph
-    ask: "They say your point on planning forward and back in the syllabus's voice, not as your experience: \"Plan only one step from the last, and the work can run on time and still fall short.\" and the two after it. Keep them, or say the point as a margin note in your own words."
+    ask: "They say your point on planning forward and back in the syllabus's voice, not as your experience. They start \"Plan only one step from the last,\" and end on the champion holding the destination until the new investments pay off. Keep them, or say the point as a margin note in your own words."
   - what: The Riskiest Assumption's example
     where: In 8 Weigh the Evidence, on the Riskiest Assumption card, its picture
     ask: "Its five assumptions don't map one to one onto the card's five kinds: two are about whether people want it, and none is about harm. And demand is the one marked, though the card's first point says the riskiest isn't always demand. Three product leaders raised it, each as minor, after you approved its content on 26 November. A harm assumption can't sit honestly where the idea depends on it less, so the example needs your call: keep it, or name a different riskiest assumption to mark."
@@ -70,8 +70,8 @@ settle:
     where: On every module's full path, once it's opened
     ask: "The \"If you read one\" line sits close to the first source's rule. More room is a change to the stylesheet, so it waits for your word, if you want it."
   - what: The site's feel
-    where: In the preview, https://claude.ai/artifact/KYgms1YdoUd7u2TrHisayW
-    ask: "Walk the whole site at phone and desktop width and comment on any part. A session carries each comment in and answers it in its thread; one on the look waits for your word before it changes."
+    where: In the preview
+    ask: "Walk the whole site in [the preview](https://claude.ai/artifact/KYgms1YdoUd7u2TrHisayW) at phone and desktop width and comment on any part. A session carries each comment in and answers it in its thread; one on the look waits for your word before it changes."
   - what: Bring People With You's optional exercise
     where: In 12 Bring People With You, the Do
     ask: "It's \"argue the other side,\" which you said on 24 November you're skeptical of. Going back to \"one story at three sizes\" is a swap of one paragraph, kept word for word. Nothing changes unless you say so."

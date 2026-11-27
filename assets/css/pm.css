@@ -592,7 +592,7 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
   .card-body { columns: 2; column-gap: 22pt; margin-top: var(--sp-4); }
   .card-body h2 { margin-top: var(--sp-4); }
   .card-body ul, .card-body ol { padding-left: 13pt; }
-  .card-body li, .card-body p { break-inside: avoid; }
+  .card-body li, .card-body p, .card-body .note { break-inside: avoid; }
   .carry { margin: var(--sp-4) 0 0; break-inside: avoid; }
   /* Go deeper sits as close to the question as the card's other headings sit to their text, which the print at full
      size needs for a long card to keep to its page (P2, P7). */
