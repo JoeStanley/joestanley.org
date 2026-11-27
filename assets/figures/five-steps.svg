@@ -18,14 +18,14 @@
   <text class="fig-note" x="290" y="108" text-anchor="middle">Little gets through</text>
 
   <!-- the five steps -->
-  <path class="fig-line" d="M36,148 L324,148"/>
+  <path class="fig-line" d="M38,148 L322,148"/>
   <g class="fig-stops">
-    <circle cx="36" cy="148" r="14"/><circle cx="108" cy="148" r="14"/><circle cx="180" cy="148" r="14"/><circle cx="252" cy="148" r="14"/><circle cx="324" cy="148" r="14"/>
+    <circle cx="38" cy="148" r="14"/><circle cx="109" cy="148" r="14"/><circle cx="180" cy="148" r="14"/><circle cx="251" cy="148" r="14"/><circle cx="322" cy="148" r="14"/>
   </g>
   <g class="fig-num" text-anchor="middle">
-    <text x="36" y="153.8">1</text><text x="108" y="153.8">2</text><text x="180" y="153.8">3</text><text x="252" y="153.8">4</text><text x="324" y="153.8">5</text>
+    <text x="38" y="153.8">1</text><text x="109" y="153.8">2</text><text x="180" y="153.8">3</text><text x="251" y="153.8">4</text><text x="322" y="153.8">5</text>
   </g>
   <g class="fig-label" text-anchor="middle">
-    <text x="36" y="181">Identify</text><text x="108" y="181">Exploit</text><text x="180" y="181">Subordinate</text><text x="252" y="181">Elevate</text><text x="324" y="181">Repeat</text>
+    <text x="38" y="182">Identify</text><text x="109" y="182">Exploit</text><text x="180" y="182">Subordinate</text><text x="251" y="182">Elevate</text><text x="322" y="182">Repeat</text>
   </g>
 </svg>

@@ -4,7 +4,7 @@ layout: card
 module: weigh-the-evidence
 weight: 10
 figure: small-numbers
-figure_caption: A cadet's scores bounce around their average. After a praised peak the next score usually dips, and after a scolded low it usually rises, whatever the instructor said.
+figure_caption: Twelve samples each of 5, 50 and 500 people, from a crowd where half would say yes. The small samples land far from half, and only the large ones settle near it.
 question: How many people is this based on, and would you believe it if it said the opposite?
 deeper:
   title: Biographical

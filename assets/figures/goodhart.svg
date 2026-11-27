@@ -7,9 +7,9 @@
   <text class="fig-label" x="150" y="24" text-anchor="middle">Becomes a target</text>
 
   <path class="fig-wanted" d="M36,152 C80,150 110,147 150,144 C210,146 280,154 340,168"/>
-  <path class="fig-number" d="M36,142 C80,140 110,137 150,134 C205,122 270,76 340,50"/>
+  <path class="fig-line" d="M36,142 C80,140 110,137 150,134 C205,122 270,76 340,50"/>
 
-  <text class="fig-label fig-label-line" x="338" y="40" text-anchor="end">The number</text>
+  <text class="fig-label" x="338" y="40" text-anchor="end">The number</text>
   <text class="fig-label" x="338" y="186" text-anchor="end">What you wanted</text>
   <text class="fig-note" x="90" y="122" text-anchor="middle">Moving together</text>
   <text class="fig-note" x="346" y="210" text-anchor="end">Time</text>

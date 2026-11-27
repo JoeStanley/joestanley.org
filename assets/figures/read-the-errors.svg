@@ -1,129 +1,31 @@
-<svg class="fig" viewBox="0 0 360 194" role="img" aria-labelledby="fig-err-title fig-err-desc" xmlns="http://www.w3.org/2000/svg">
+<svg class="fig" viewBox="0 0 360 196" role="img" aria-labelledby="fig-err-title fig-err-desc" xmlns="http://www.w3.org/2000/svg">
   <title id="fig-err-title">A sample of a bot score's calls, both ways, and its mistakes sorted by kind.</title>
-  <desc id="fig-err-desc">On a ticketing app, a model scores each order for how likely it is to be a bot. Read a sample of its calls both ways: of 50 orders it held back, 35 were bots and 15 were real fans held by mistake; of 50 it let through, 46 were fans and 4 were bots it missed. Sorted by what went wrong, its 19 mistakes fall into four kinds: 9 fans who bought for a group on one card, 4 bots it let through, 4 fans who shared a network, such as a campus, and 2 others. The biggest kind is marked. Test for the biggest or the costliest kind first.</desc>
+  <desc id="fig-err-desc">On the left, two grids of 50 squares, a sample of orders. Of 50 the bot score held back, 15 are shaded: its mistakes. Of 50 it let through, 4 are shaded. On the right, the 19 mistakes sorted into kinds, as bars: fans who bought for a group, 9, highlighted and marked "Test this first"; bots it let through, 4; fans on a shared network, 4; something else, 2.</desc>
 
-  <text class="fig-label" x="20" y="18">50 orders it held back</text>
-  <g class="fig-ink">
-    <rect x="20.0" y="26.0" width="8" height="8"/>
-    <rect x="30.6" y="26.0" width="8" height="8"/>
-    <rect x="41.2" y="26.0" width="8" height="8"/>
-    <rect x="51.8" y="26.0" width="8" height="8"/>
-    <rect x="62.4" y="26.0" width="8" height="8"/>
-    <rect x="73.0" y="26.0" width="8" height="8"/>
-    <rect x="83.6" y="26.0" width="8" height="8"/>
-    <rect x="94.2" y="26.0" width="8" height="8"/>
-    <rect x="104.8" y="26.0" width="8" height="8"/>
-    <rect x="115.4" y="26.0" width="8" height="8"/>
-    <rect x="20.0" y="36.6" width="8" height="8"/>
-    <rect x="30.6" y="36.6" width="8" height="8"/>
-    <rect x="41.2" y="36.6" width="8" height="8"/>
-    <rect x="51.8" y="36.6" width="8" height="8"/>
-    <rect x="62.4" y="36.6" width="8" height="8"/>
-    <rect x="73.0" y="36.6" width="8" height="8"/>
-    <rect x="83.6" y="36.6" width="8" height="8"/>
-    <rect x="94.2" y="36.6" width="8" height="8"/>
-    <rect x="104.8" y="36.6" width="8" height="8"/>
-    <rect x="115.4" y="36.6" width="8" height="8"/>
-    <rect x="20.0" y="47.2" width="8" height="8"/>
-    <rect x="30.6" y="47.2" width="8" height="8"/>
-    <rect x="41.2" y="47.2" width="8" height="8"/>
-    <rect x="51.8" y="47.2" width="8" height="8"/>
-    <rect x="62.4" y="47.2" width="8" height="8"/>
-    <rect x="73.0" y="47.2" width="8" height="8"/>
-    <rect x="83.6" y="47.2" width="8" height="8"/>
-    <rect x="94.2" y="47.2" width="8" height="8"/>
-    <rect x="104.8" y="47.2" width="8" height="8"/>
-    <rect x="115.4" y="47.2" width="8" height="8"/>
-    <rect x="20.0" y="57.8" width="8" height="8"/>
-    <rect x="30.6" y="57.8" width="8" height="8"/>
-    <rect x="41.2" y="57.8" width="8" height="8"/>
-    <rect x="51.8" y="57.8" width="8" height="8"/>
-    <rect x="62.4" y="57.8" width="8" height="8"/>
-    <rect x="20.0" y="110.0" width="8" height="8"/>
-    <rect x="30.6" y="110.0" width="8" height="8"/>
-    <rect x="41.2" y="110.0" width="8" height="8"/>
-    <rect x="51.8" y="110.0" width="8" height="8"/>
-    <rect x="62.4" y="110.0" width="8" height="8"/>
-    <rect x="73.0" y="110.0" width="8" height="8"/>
-    <rect x="83.6" y="110.0" width="8" height="8"/>
-    <rect x="94.2" y="110.0" width="8" height="8"/>
-    <rect x="104.8" y="110.0" width="8" height="8"/>
-    <rect x="115.4" y="110.0" width="8" height="8"/>
-    <rect x="20.0" y="120.6" width="8" height="8"/>
-    <rect x="30.6" y="120.6" width="8" height="8"/>
-    <rect x="41.2" y="120.6" width="8" height="8"/>
-    <rect x="51.8" y="120.6" width="8" height="8"/>
-    <rect x="62.4" y="120.6" width="8" height="8"/>
-    <rect x="73.0" y="120.6" width="8" height="8"/>
-    <rect x="83.6" y="120.6" width="8" height="8"/>
-    <rect x="94.2" y="120.6" width="8" height="8"/>
-    <rect x="104.8" y="120.6" width="8" height="8"/>
-    <rect x="115.4" y="120.6" width="8" height="8"/>
-    <rect x="20.0" y="131.2" width="8" height="8"/>
-    <rect x="30.6" y="131.2" width="8" height="8"/>
-    <rect x="41.2" y="131.2" width="8" height="8"/>
-    <rect x="51.8" y="131.2" width="8" height="8"/>
-    <rect x="62.4" y="131.2" width="8" height="8"/>
-    <rect x="73.0" y="131.2" width="8" height="8"/>
-    <rect x="83.6" y="131.2" width="8" height="8"/>
-    <rect x="94.2" y="131.2" width="8" height="8"/>
-    <rect x="104.8" y="131.2" width="8" height="8"/>
-    <rect x="115.4" y="131.2" width="8" height="8"/>
-    <rect x="20.0" y="141.8" width="8" height="8"/>
-    <rect x="30.6" y="141.8" width="8" height="8"/>
-    <rect x="41.2" y="141.8" width="8" height="8"/>
-    <rect x="51.8" y="141.8" width="8" height="8"/>
-    <rect x="62.4" y="141.8" width="8" height="8"/>
-    <rect x="73.0" y="141.8" width="8" height="8"/>
-    <rect x="83.6" y="141.8" width="8" height="8"/>
-    <rect x="94.2" y="141.8" width="8" height="8"/>
-    <rect x="104.8" y="141.8" width="8" height="8"/>
-    <rect x="115.4" y="141.8" width="8" height="8"/>
-    <rect x="20.0" y="152.4" width="8" height="8"/>
-    <rect x="30.6" y="152.4" width="8" height="8"/>
-    <rect x="41.2" y="152.4" width="8" height="8"/>
-    <rect x="51.8" y="152.4" width="8" height="8"/>
-    <rect x="62.4" y="152.4" width="8" height="8"/>
-    <rect x="73.0" y="152.4" width="8" height="8"/>
+  <text class="fig-label" x="12" y="18">50 it held back</text>
+  <text class="fig-label" x="12" y="104">50 it let through</text>
+  <g class="fig-cell">
+    <rect x="12.0" y="26.0" width="8" height="8"/><rect x="22.6" y="26.0" width="8" height="8"/><rect x="33.2" y="26.0" width="8" height="8"/><rect x="43.8" y="26.0" width="8" height="8"/><rect x="54.4" y="26.0" width="8" height="8"/><rect x="65.0" y="26.0" width="8" height="8"/><rect x="75.6" y="26.0" width="8" height="8"/><rect x="86.2" y="26.0" width="8" height="8"/><rect x="96.8" y="26.0" width="8" height="8"/><rect x="107.4" y="26.0" width="8" height="8"/><rect x="12.0" y="36.6" width="8" height="8"/><rect x="22.6" y="36.6" width="8" height="8"/><rect x="33.2" y="36.6" width="8" height="8"/><rect x="43.8" y="36.6" width="8" height="8"/><rect x="54.4" y="36.6" width="8" height="8"/><rect x="65.0" y="36.6" width="8" height="8"/><rect x="75.6" y="36.6" width="8" height="8"/><rect x="86.2" y="36.6" width="8" height="8"/><rect x="96.8" y="36.6" width="8" height="8"/><rect x="107.4" y="36.6" width="8" height="8"/><rect x="12.0" y="47.2" width="8" height="8"/><rect x="22.6" y="47.2" width="8" height="8"/><rect x="33.2" y="47.2" width="8" height="8"/><rect x="43.8" y="47.2" width="8" height="8"/><rect x="54.4" y="47.2" width="8" height="8"/><rect x="65.0" y="47.2" width="8" height="8"/><rect x="75.6" y="47.2" width="8" height="8"/><rect x="86.2" y="47.2" width="8" height="8"/><rect x="96.8" y="47.2" width="8" height="8"/><rect x="107.4" y="47.2" width="8" height="8"/><rect x="12.0" y="57.8" width="8" height="8"/><rect x="22.6" y="57.8" width="8" height="8"/><rect x="33.2" y="57.8" width="8" height="8"/><rect x="43.8" y="57.8" width="8" height="8"/><rect x="54.4" y="57.8" width="8" height="8"/>
+    <rect x="12.0" y="112.0" width="8" height="8"/><rect x="22.6" y="112.0" width="8" height="8"/><rect x="33.2" y="112.0" width="8" height="8"/><rect x="43.8" y="112.0" width="8" height="8"/><rect x="54.4" y="112.0" width="8" height="8"/><rect x="65.0" y="112.0" width="8" height="8"/><rect x="75.6" y="112.0" width="8" height="8"/><rect x="86.2" y="112.0" width="8" height="8"/><rect x="96.8" y="112.0" width="8" height="8"/><rect x="107.4" y="112.0" width="8" height="8"/><rect x="12.0" y="122.6" width="8" height="8"/><rect x="22.6" y="122.6" width="8" height="8"/><rect x="33.2" y="122.6" width="8" height="8"/><rect x="43.8" y="122.6" width="8" height="8"/><rect x="54.4" y="122.6" width="8" height="8"/><rect x="65.0" y="122.6" width="8" height="8"/><rect x="75.6" y="122.6" width="8" height="8"/><rect x="86.2" y="122.6" width="8" height="8"/><rect x="96.8" y="122.6" width="8" height="8"/><rect x="107.4" y="122.6" width="8" height="8"/><rect x="12.0" y="133.2" width="8" height="8"/><rect x="22.6" y="133.2" width="8" height="8"/><rect x="33.2" y="133.2" width="8" height="8"/><rect x="43.8" y="133.2" width="8" height="8"/><rect x="54.4" y="133.2" width="8" height="8"/><rect x="65.0" y="133.2" width="8" height="8"/><rect x="75.6" y="133.2" width="8" height="8"/><rect x="86.2" y="133.2" width="8" height="8"/><rect x="96.8" y="133.2" width="8" height="8"/><rect x="107.4" y="133.2" width="8" height="8"/><rect x="12.0" y="143.8" width="8" height="8"/><rect x="22.6" y="143.8" width="8" height="8"/><rect x="33.2" y="143.8" width="8" height="8"/><rect x="43.8" y="143.8" width="8" height="8"/><rect x="54.4" y="143.8" width="8" height="8"/><rect x="65.0" y="143.8" width="8" height="8"/><rect x="75.6" y="143.8" width="8" height="8"/><rect x="86.2" y="143.8" width="8" height="8"/><rect x="96.8" y="143.8" width="8" height="8"/><rect x="107.4" y="143.8" width="8" height="8"/><rect x="12.0" y="154.4" width="8" height="8"/><rect x="22.6" y="154.4" width="8" height="8"/><rect x="33.2" y="154.4" width="8" height="8"/><rect x="43.8" y="154.4" width="8" height="8"/><rect x="54.4" y="154.4" width="8" height="8"/><rect x="65.0" y="154.4" width="8" height="8"/>
   </g>
-  <g class="fig-pipe">
-    <rect x="73.0" y="57.8" width="8" height="8"/>
-    <rect x="83.6" y="57.8" width="8" height="8"/>
-    <rect x="94.2" y="57.8" width="8" height="8"/>
-    <rect x="104.8" y="57.8" width="8" height="8"/>
-    <rect x="115.4" y="57.8" width="8" height="8"/>
-    <rect x="20.0" y="68.4" width="8" height="8"/>
-    <rect x="30.6" y="68.4" width="8" height="8"/>
-    <rect x="41.2" y="68.4" width="8" height="8"/>
-    <rect x="51.8" y="68.4" width="8" height="8"/>
-    <rect x="62.4" y="68.4" width="8" height="8"/>
-    <rect x="73.0" y="68.4" width="8" height="8"/>
-    <rect x="83.6" y="68.4" width="8" height="8"/>
-    <rect x="94.2" y="68.4" width="8" height="8"/>
-    <rect x="104.8" y="68.4" width="8" height="8"/>
-    <rect x="115.4" y="68.4" width="8" height="8"/>
-    <rect x="83.6" y="152.4" width="8" height="8"/>
-    <rect x="94.2" y="152.4" width="8" height="8"/>
-    <rect x="104.8" y="152.4" width="8" height="8"/>
-    <rect x="115.4" y="152.4" width="8" height="8"/>
+  <g class="fig-loss">
+    <rect x="65.0" y="57.8" width="8" height="8"/><rect x="75.6" y="57.8" width="8" height="8"/><rect x="86.2" y="57.8" width="8" height="8"/><rect x="96.8" y="57.8" width="8" height="8"/><rect x="107.4" y="57.8" width="8" height="8"/><rect x="12.0" y="68.4" width="8" height="8"/><rect x="22.6" y="68.4" width="8" height="8"/><rect x="33.2" y="68.4" width="8" height="8"/><rect x="43.8" y="68.4" width="8" height="8"/><rect x="54.4" y="68.4" width="8" height="8"/><rect x="65.0" y="68.4" width="8" height="8"/><rect x="75.6" y="68.4" width="8" height="8"/><rect x="86.2" y="68.4" width="8" height="8"/><rect x="96.8" y="68.4" width="8" height="8"/><rect x="107.4" y="68.4" width="8" height="8"/>
+    <rect x="75.6" y="154.4" width="8" height="8"/><rect x="86.2" y="154.4" width="8" height="8"/><rect x="96.8" y="154.4" width="8" height="8"/><rect x="107.4" y="154.4" width="8" height="8"/>
   </g>
-  <text class="fig-label" x="20" y="102">50 orders it let through</text>
-  <text class="fig-note" x="20" y="178">Open: its mistakes</text>
-
-  <text class="fig-label" x="166" y="18">Its 19 mistakes, sorted</text>
-  <text class="fig-note" x="166" y="36">Fans who bought for a group</text>
-  <rect class="fig-pipe" x="166" y="41" width="144" height="13"/>
-  <rect class="fig-mark" x="166.75" y="41.75" width="142.5" height="11.5"/>
-  <text class="fig-label" x="316" y="51.5">9</text>
-  <text class="fig-note" x="166" y="70">Bots it let through</text>
-  <rect class="fig-pipe" x="166" y="75" width="64" height="13"/>
-  <text class="fig-label" x="236" y="85.5">4</text>
-  <text class="fig-note" x="166" y="104">Fans on a shared network</text>
-  <rect class="fig-pipe" x="166" y="109" width="64" height="13"/>
-  <text class="fig-label" x="236" y="119.5">4</text>
-  <text class="fig-note" x="166" y="138">Something else</text>
-  <rect class="fig-pipe" x="166" y="143" width="32" height="13"/>
-  <text class="fig-label" x="204" y="153.5">2</text>
-  <text class="fig-label" x="166" y="174">Test for the biggest or</text>
-  <text class="fig-label" x="166" y="188">costliest kind first</text>
+  <text class="fig-note" x="12" y="186">Shaded: its mistakes</text>
+  <text class="fig-label" x="150" y="18">Its 19 mistakes, sorted</text>
+  <text class="fig-item" x="150" y="38">Fans who bought for a group</text>
+  <rect class="fig-pipe" x="150" y="43" width="144" height="18"/>
+  <rect class="fig-mark" x="150.75" y="43.75" width="142.5" height="16.5"/>
+  <text class="fig-label fig-on-mark" x="156" y="56.5">Test this first</text>
+  <text class="fig-label" x="301" y="56.5">9</text>
+  <text class="fig-item" x="150" y="76">Bots it let through</text>
+  <rect class="fig-loss" x="150" y="81" width="64" height="18"/>
+  <text class="fig-label" x="221" y="94.5">4</text>
+  <text class="fig-item" x="150" y="114">Fans on a shared network</text>
+  <rect class="fig-loss" x="150" y="119" width="64" height="18"/>
+  <text class="fig-label" x="221" y="132.5">4</text>
+  <text class="fig-item" x="150" y="152">Something else</text>
+  <rect class="fig-loss" x="150" y="157" width="32" height="18"/>
+  <text class="fig-label" x="189" y="170.5">2</text>
 </svg>

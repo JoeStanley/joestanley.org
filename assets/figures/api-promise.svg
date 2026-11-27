@@ -3,31 +3,31 @@
   <desc id="fig-promise-desc">A weather API documents two things, temperature in degrees Celsius and rain in millimeters, and all three of its callers, a farm app, an airline and a delivery firm, use them, on solid lines. It also does two things nobody promised: it returns readings in order, and it gives dates in UTC. Dotted lines show that the farm app counts on the order and the delivery firm on UTC dates. The order is marked: change it, and the farm app breaks.</desc>
 
   <text class="fig-label" x="95" y="18" text-anchor="middle">The API</text>
-  <text class="fig-label" x="295" y="18" text-anchor="middle">Its callers</text>
+  <text class="fig-label" x="294" y="18" text-anchor="middle">Its callers</text>
 
-  <rect class="fig-pipe" x="20" y="30" width="150" height="144" rx="8"/>
+  <rect class="fig-pipe" x="20" y="30" width="150" height="144" rx="6"/>
   <text class="fig-label" x="32" y="52">Documented</text>
   <text class="fig-note" x="32" y="70">Temperature, in °C</text>
   <text class="fig-note" x="32" y="86">Rain, in mm</text>
 
   <path class="fig-return" d="M30,102 L160,102"/>
   <text class="fig-label" x="32" y="122">Never promised</text>
-  <rect class="fig-mark" x="28" y="129" width="106" height="15"/>
-  <text class="fig-label" x="32" y="140">Readings in order</text>
+  <rect class="fig-mark" x="28" y="127" width="128" height="18"/>
+  <text class="fig-label fig-on-mark" x="32" y="140">Readings in order</text>
   <text class="fig-note" x="32" y="158">Dates in UTC</text>
 
-  <path class="fig-axis" d="M170,78 L250,54"/>
-  <path class="fig-axis" d="M170,78 L250,104"/>
-  <path class="fig-axis" d="M170,78 L250,148"/>
-  <path class="fig-return" d="M170,137 L250,62"/>
-  <path class="fig-return" d="M170,155 L250,158"/>
+  <path class="fig-axis" d="M170,78 L240,54"/>
+  <path class="fig-axis" d="M170,78 L240,104"/>
+  <path class="fig-axis" d="M170,78 L240,148"/>
+  <path class="fig-return" d="M170,137 L240,62"/>
+  <path class="fig-return" d="M170,155 L240,158"/>
 
-  <rect class="fig-pipe" x="250" y="40" width="96" height="28" rx="6"/>
-  <rect class="fig-pipe" x="250" y="90" width="96" height="28" rx="6"/>
-  <rect class="fig-pipe" x="250" y="140" width="96" height="28" rx="6"/>
-  <text class="fig-label" x="298" y="58" text-anchor="middle">Farm app</text>
-  <text class="fig-label" x="298" y="108" text-anchor="middle">Airline</text>
-  <text class="fig-label" x="298" y="158" text-anchor="middle">Delivery firm</text>
+  <rect class="fig-pipe" x="240" y="40" width="108" height="28" rx="6"/>
+  <rect class="fig-pipe" x="240" y="90" width="108" height="28" rx="6"/>
+  <rect class="fig-pipe" x="240" y="140" width="108" height="28" rx="6"/>
+  <text class="fig-label" x="294" y="58" text-anchor="middle">Farm app</text>
+  <text class="fig-label" x="294" y="108" text-anchor="middle">Airline</text>
+  <text class="fig-label" x="294" y="158" text-anchor="middle">Delivery firm</text>
 
-  <text class="fig-note" x="346" y="198" text-anchor="end">Change the order, and the farm app breaks</text>
+  <text class="fig-note" x="12" y="198">Change the order, and the farm app breaks</text>
 </svg>
