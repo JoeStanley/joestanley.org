@@ -50,6 +50,9 @@ run_bg "PDF opens without its bookmarks" P6 "sed -i '/root.PageMode = /d' tools-
 run_bg "glossary definition back in the margin" M1 "sed -i 's|^{{- /\*\*/ -}}|<span class=\"note\" aria-hidden=\"true\">{{ \$g.text }}</span>|' layouts/shortcodes/pm/term.html"
 run_bg "notes hidden from screen readers" M3 "sed -i 's/<aside class=\"note\"/<aside aria-hidden=\"true\" class=\"note\"/' layouts/partials/pm/margin.html"
 run_bg "a slot file that lost a part" M4 "sed -i '/^step-forte:/d' data/pm/margin/find-the-constraint.yaml"
+# A card's picture carries no slot (27 November 2026): put the slot back on the picture and in every card's file,
+# so the files still list every part of the page and only the rule against a picture's slot can catch it.
+run_bg "a card's picture given a margin slot again" M4 "sed -i 's|<figure class=\"plate\">|<figure class=\"plate\" data-slot=\"picture\">|' layouts/partials/pm/unit-card.html; for f in \$(grep -l 'the concept card' data/pm/margin/*.yaml); do sed -i 's/^top: \"\"\$/top: \"\"\\npicture: \"\"/' \$f; done"
 run_bg "notes left in the column on wide screens" R3 "sed -i 's/    float: right; clear: right;/    float: none;/' assets/css/base.css"
 run_bg "pale highlight back on glossary terms" C3 "echo '.term { background: var(--mark-soft); }' >> assets/css/pm.css"
 run_bg "printed links without underline" C5 "echo '@media print { a { text-decoration: none; } }' >> assets/css/pm.css"
@@ -103,6 +106,11 @@ run_bg "a voice slot's brief shown on the page" X4 "$SLOT; sed -i 's/{{ with \\\
 run_bg "the tab drops a voice slot's block" X4 "$SLOT; sed -i 's/    out = \\[slot_block(sid) for sid in PENDING\\]/    out = []/' tools-pm/source-doc.py"
 run_bg "a voice slot as a paragraph, placed without saying so" X4 "$SLOT; sed -i 's/ \\\"paragraph\\\" >}}/ >}}/' content/pm/_index.md"
 run_bg "a word of the owner's moved and not listed for his pass" X4 "sed -i 's/^  - what: moved$/  - what: shifted/' data/pm/voice-slots.yaml"
+# The voice pass's tab starts from what his pass settles and ends with every empty margin slot (27 November 2026).
+run_bg "what the owner's pass settles left off his tab" X4 "sed -i 's/    for i, e in enumerate(v\\[\"settle\"\\], 1):/    for i, e in enumerate([], 1):/' tools-pm/source-doc.py"
+run_bg "a thing for the owner's pass with nothing asked" X4 "sed -i '0,/^    ask: /{/^    ask: /d}' data/pm/voice-slots.yaml"
+run_bg "Start's empty margin slots left off the voice pass" X4 "sed -i 's/for u, n in units) if l\\]/for u, n in units[1:]) if l]/' tools-pm/source-doc.py"
+run_bg "a module's empty margin slot left off the voice pass" X4 "sed -i 's/    parts = \\[label for k, label in empty\\]/    parts = [label for k, label in empty][1:]/' tools-pm/source-doc.py"
 run_bg "link easing ignores reduced motion" D5 "sed -i '/@media (prefers-reduced-motion: reduce) { a, .recall/d' assets/css/base.css"
 wait
 

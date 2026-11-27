@@ -475,8 +475,7 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
     .deeper-list > li > h3 { anchor-name: --deeper-source; }
     .reading .deeper-list > li > .note { anchor-name: --deeper-note; top: max(anchor(--deeper-source top), calc(anchor(--deeper-note bottom, -100vh) + var(--sp-4))); }
   }
-  /* A note inside a panel reaches past the panel's padding to the same margin as every other note. */
-  .reading .plate > .note { margin-right: calc(-1 * (var(--margin) + var(--gutter))); }
+  /* A note inside a game's panel reaches past the panel's padding to the same margin as every other note. */
   .reading .game .note { margin-right: calc(-1 * (var(--margin) + var(--gutter) + var(--sp-5))); }
 }
 
@@ -590,7 +589,6 @@ a.term:target { text-decoration-style: solid; text-decoration-color: var(--orang
   /* A tall picture gives up width before it costs the card its page (P1). */
   .card .plate .fig { grid-column: 1; grid-row: 1; width: auto; max-width: 100%; max-height: 1.61in; margin: 0; justify-self: center; }
   .card .plate .plate-caption { grid-column: 2; grid-row: 1; margin: 0; padding: 0; font-size: var(--fs-body); }
-  .card .plate > .note { grid-column: 1 / -1; grid-row: 2; margin: var(--sp-2) 0 0; }
   .card-body { columns: 2; column-gap: 22pt; margin-top: var(--sp-4); }
   .card-body h2 { margin-top: var(--sp-4); }
   .card-body ul, .card-body ol { padding-left: 13pt; }

@@ -2133,7 +2133,7 @@ def kind_checks(out_dir):
         name = os.path.splitext(os.path.basename(path))[0]
         html = os.path.join(out_dir, "pm", "cards", name, "index.html")
         soup = BeautifulSoup(open(html, encoding="utf-8").read(), "html.parser")
-        plate = soup.select_one("article.card figure.plate[data-slot=picture]")
+        plate = soup.select_one("article.card figure.plate")
         q = fm.get("figure_quote")
         if bool(fm.get("figure")) == bool(q):
             fail("S16", f"card {name}: opens with {'both a picture and a quote' if q else 'neither a picture nor a quote'}")
@@ -2217,8 +2217,12 @@ def slot_checks(out_dir):
                             fail("M4", f"{rel}: a note in slot {k} sits beside the paragraph that holds \"{n['beside']}\", and no paragraph of that part holds it now")
             elif v is not None and not isinstance(v, str):
                 fail("M4", f"{rel}: slot {k} holds {type(v).__name__}, not text; put the note in quotes")
-        # Each unit's parts each carry a slot: sections, steps, sources, the game, the picture, the question, terms.
-        for el in art.select("section:not(.print-only), li.step, .deeper-list > li, figure, p.carry, .gloss-list > div"):
+        # Each unit's parts each carry a slot: sections, steps, sources, the game, the question, terms. A card's
+        # picture carries none, since the owner writes no notes for the visuals (27 November 2026).
+        for el in art.select("figure.plate"):
+            if el.has_attr("data-slot") or el.select("[data-slot], aside.note"):
+                fail("M4", f"{unit}: the picture carries a margin slot, and the owner writes no margin notes for the visuals")
+        for el in art.select("section:not(.print-only), li.step, .deeper-list > li, figure:not(.plate), p.carry, .gloss-list > div"):
             if not el.has_attr("data-slot") and not el.find("h2", attrs={"data-slot": True}) and el.name == "section" and el.find("h2"):
                 fail("M4", f"{unit}: the part '{' '.join(el.find('h2').get_text().split())}' has no slot")
             elif el.name != "section" and not el.has_attr("data-slot"):
@@ -3633,7 +3637,8 @@ def s14_checks(name, text):
 def voice_checks(sd, soup, mods, tab_of, by_name):
     """X4: every voice slot in data/pm/voice-slots.yaml is placed in its unit and shows its block in its tab, every
     placed slot is in the file, no brief or old words reach a page, no wordless slot stands as a paragraph, the moved
-    list says what, from, to, why and when, and with --live no slot is open."""
+    list says what, from, to, why and when, the voice pass's tab lists what the pass settles first, in order, and
+    every empty margin slot last, unit by unit, and with --live no slot is open."""
     v = sd.voice()
     slots = {s_.get("id"): s_ for s_ in v["slots"]}
     norm = lambda t: " ".join(re.findall(r"[a-z0-9']+", (t or "").translate(sd.QUOTES).lower()))
@@ -3686,6 +3691,60 @@ def voice_checks(sd, soup, mods, tab_of, by_name):
             fail("X4", f"data/pm/voice-slots.yaml: moved entry {i + 1} says what happened as \"{e.get('what')}\", and it's cut, moved or changed")
         if e.get("words") and " ".join(sd.clean(e["words"]).split()) not in " ".join(by_name.get(sd.VOICE_TAB, "").split()):
             fail("X4", f"the tab {sd.VOICE_TAB} doesn't list moved entry {i + 1}: \"{e['words'][:50]}...\"")
+    # The tab's four parts, in order: what the pass settles, the open slots, the words that moved, the empty margin slots
+    vt = by_name.get(sd.VOICE_TAB, "")
+    heads = ["## What your pass settles", "## Open voice slots", "## Your words that moved", "## Margin slots still empty"]
+    at = [vt.find(h) for h in heads]
+    if -1 in at or at != sorted(at):
+        fail("X4", f"the tab {sd.VOICE_TAB} doesn't hold its four parts in order: {'; '.join(h[3:] for h in heads)}")
+    pos = 0
+    for i, e in enumerate(v["settle"]):
+        missing = [k for k in ("what", "where", "ask") if not e.get(k)]
+        if missing:
+            fail("X4", f"data/pm/voice-slots.yaml: settle entry {i + 1} has no {', '.join(missing)}")
+        if e.get("where") and not re.match(r"(In|On|Outside) ", str(e["where"])):
+            fail("X4", f"data/pm/voice-slots.yaml: settle entry {i + 1} says where it is as \"{str(e['where'])[:40]}\", and that starts \"In\" or \"On\"")
+        mark = f"{i + 1}. **{sd.clean(str(e.get('what', ''))).strip()}.**"
+        p = vt.find(mark, pos)
+        if p < 0:
+            fail("X4", f"the tab {sd.VOICE_TAB} doesn't list, in its order, what the pass settles: {e.get('what')}")
+        else:
+            pos = p
+    # Every empty margin slot of every part on the page (M4), unit by unit, so his notes start from the same list
+    listed = {}
+    for para in vt[max(at[3], 0):].split("\n\n") if at[3] >= 0 else []:
+        m = re.match(r"\*\*(.+?)\*\*, (.*)", para, re.S)
+        if m:
+            listed[m.group(1)] = " ".join(m.group(2).split())
+    terms = set((yaml.safe_load(open(os.path.join(ROOT, "data", "pm", "glossary.yaml"), encoding="utf-8")) or {}).keys())
+    for art in soup.select("main article.unit"):
+        unit = art["data-unit"]
+        card = "card" in art["class"]
+        name = "Card: " + " ".join(art.find("h1").get_text(" ", strip=True).split()).translate(sd.QUOTES) if card else tab_of.get(unit)
+        f = os.path.join(ROOT, "data", "pm", "margin", unit + ".yaml")
+        data = (yaml.safe_load(open(f, encoding="utf-8")) or {}) if os.path.exists(f) else {}
+        parts = [el["data-slot"] for el in art.select("[data-slot]")]
+        empty = [k for k in parts if not data.get(k)]
+        if not empty:
+            continue
+        line = listed.get(name)
+        if line is None:
+            fail("X4", f"the tab {sd.VOICE_TAB} doesn't list the empty margin slots of {name}"); continue
+        if card and len(empty) == len(parts):
+            if f"all {len(parts)} empty" not in line:
+                fail("X4", f"the tab {sd.VOICE_TAB} lists {name} without its {len(parts)} empty margin slots")
+            continue
+        if f"{len(empty)} of {len(parts)} empty" not in line:
+            fail("X4", f"the tab {sd.VOICE_TAB} doesn't say {len(empty)} of {name}'s {len(parts)} margin slots are empty")
+        labels = {k: " ".join(lab.translate(sd.QUOTES).split()) for k, lab, _ in sd.margin_slots(unit)}
+        open_terms = [k for k in empty if k in terms]
+        if unit == "glossary" and open_terms and len(open_terms) == len([k for k in parts if k in terms]):
+            if f"each of its {len(open_terms)} terms" not in line:
+                fail("X4", f"the tab {sd.VOICE_TAB} doesn't say the glossary's {len(open_terms)} terms have empty margin slots")
+            empty = [k for k in empty if k not in terms]
+        for k in empty:
+            if labels.get(k, k) not in line:
+                fail("X4", f"the tab {sd.VOICE_TAB} leaves out the empty margin slot {labels.get(k, k)} of {name}")
     if LIVE:
         for sid, s_ in slots.items():
             fail("X4", f"the voice slot {sid} in {s_.get('unit')} is still open, and nothing that waits for the owner's voice is published")
