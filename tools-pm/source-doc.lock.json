@@ -13,34 +13,34 @@
   {
    "name": "Front door",
    "file": "front-door.md",
-   "sha256": "4e400f6314d7bd3ed89c86ac656036a546a0fba905a3fc88ce827efa75b4c478",
+   "sha256": "28da45dd940096ace3b8be3e382baabfc3ec87fc09d215769a982567192ef6b4",
    "doc_tab": "f8991593-5bf6",
    "doc_node": "410bd37a-83c0",
-   "rev": 1
+   "rev": 78
   },
   {
    "name": "ReadMe",
    "file": "readme.md",
-   "sha256": "0fd7b748f3b042e4b58416b60bed24a4d89cdde114c6f559e7857fab458e6c86",
+   "sha256": "384485da5d24ee844ba7ef63256557eed28a18457f49621fa6ee47fc8f100daf",
    "doc_tab": "dc76aa06-0f74",
    "doc_node": "3dbd03dd-83cd",
-   "rev": 1
+   "rev": 1162
   },
   {
    "name": "Games",
    "file": "games.md",
-   "sha256": "237e5f8ea6ddce35798d199aa3d80517951bc71a79fd8d857b91eb5ce66f0dea",
+   "sha256": "4fe43bb3391f8f6f8a0cad9bf1910832b6d33f037d9779366cea47fb04e966ba",
    "doc_tab": "96b32546-2926",
    "doc_node": "e729c9f1-525b",
-   "rev": 1
+   "rev": 469
   },
   {
    "name": "Start",
    "file": "start.md",
-   "sha256": "01aed73f4516d4e612d555529d6af7eb65b2a7baf7c00098695e6706315d79ad",
+   "sha256": "da3737c8930093f40325fc63ae39ecba8276b1626c000a0839db0891dd3f523f",
    "doc_tab": "93d76462-d6e3",
    "doc_node": "d8917504-66e5",
-   "rev": 2025
+   "rev": 2651
   },
   {
    "name": "0 Own Your Role",
@@ -149,10 +149,10 @@
   {
    "name": "The Compass",
    "file": "the-compass.md",
-   "sha256": "b6a991bf724f30559918b7d5fb16cee78043f9ff34635124ffa3bd67775d61ab",
+   "sha256": "5bf5f0fc50e93b4e5dde6ba74fa71bdba967ada92f0e0ee55f2498e167854bf5",
    "doc_tab": "68f6f34d-b06c",
    "doc_node": "347f5a8a-09fe",
-   "rev": 69
+   "rev": 72
   },
   {
    "name": "Glossary",
@@ -165,10 +165,10 @@
   {
    "name": "Your voice pass",
    "file": "your-voice-pass.md",
-   "sha256": "c84a735618b49fe09e8bf1c37ae85debed8393009cd9fa14d5de888cb311419c",
+   "sha256": "8d35b94cf35ae3fa603780c19b60c3e45bf4697af4acfbd09d218522f9bc4872",
    "doc_tab": "6c468916-be7e",
    "doc_node": "eefb1be7-d9cf",
-   "rev": 27
+   "rev": 28
   }
  ]
 }

@@ -18,7 +18,7 @@ top: ""
 # The opening paragraphs
 intro:
   - beside: "Instead, it's a set of lessons"
-    note: "As LLM usage sweeps the field, building (the traditional bottleneck) has become faster, making knowing what to build the growing constraint. Yet, the main providers of these tools today (and the data centers they rely on) are financially precarious, subsidized, and ethically dubious. As a result, LLM considerations are woven throughout this curriculum without being tool specific."
+    note: "As LLM usage sweeps the field, building (the traditional bottleneck) has become faster, making knowing what to build the growing constraint. Yet, the main providers of these tools today (and the data centers they rely on) are financially precarious, subsidized, and ethically dubious. So LLM considerations run through this curriculum without tying it to any one tool."
 
 # How it works
 how-it-works:

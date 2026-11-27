@@ -7,16 +7,16 @@ parts:
     line: What the job is, and whose problem you're solving.
     modules: [own-your-role, know-who-its-for]
   - title: How the system works
-    line: Our role requires change, which means we first need to understand why things are the way they are if we have any hope of changing them for the better.
+    line: Why things behave as they do, from the backlog to the org chart, before you change any of them.
     modules: [see-the-system, find-the-constraint, mind-the-seams, map-the-domain, design-for-change, change-safely]
   - title: How you decide
-    line: Once we understand how and why to change things, we need to decide what to change. And, most importantly, to accept responsibility for the implications of those decisions in an intentional way.
+    line: What to believe, what to choose, and what you answer for.
     modules: [weigh-the-evidence, decide-and-set-direction, answer-for-what-you-build]
   - title: How you learn and lead
-    line: Having the right answer doesn't matter if you can't convince people of it. This comes in part from in-the-moment persuasion, and more from having already built a reputation for credibility. This part focuses on the latter.
+    line: Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it.
     modules: [notice-when-you-are-wrong, bring-people-with-you]
 # The closing unit (spec S21): its page under content/pm/, and its line on Start.
 closing:
   label: In closing
   page: the-compass
-  line: Every question in one place, one call walked through several of them, and where to go from here in your learning journey.
+  line: Every question in one place, one call walked through several of them, and where to go from here.

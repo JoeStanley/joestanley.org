@@ -721,6 +721,144 @@ def icon_checks(out_dir):
                 fail("N4", f"site.webmanifest does not name /{name} at {size}x{size}")
 
 
+DOOR_MARKS = {   # spec N5: each company's own mark, as the company draws it, by its fill and the start of its path
+    "bluesky": ("#1185fe", "M69.364 19.146c36.687 27.806"),
+    "linkedin": ("#0a66c2", "m25.9 0h-23.8c-1.2 0-2.1 0.9-2.1 2v24"),
+}
+
+
+def door_icon_checks(out_dir):
+    """N5: the front door's Bluesky and LinkedIn links carry the companies' own marks, hidden from a screen reader,
+    shown in place of the outline at once on hover and keyboard focus; Email has no mark and turns orange."""
+    from bs4 import BeautifulSoup
+    checked("N5")
+    soup = BeautifulSoup(open(os.path.join(out_dir, "index.html"), encoding="utf-8").read(), "html.parser")
+    links = soup.select(".door-links a")
+    if not links:
+        fail("N5", "the front door has no icon links"); return
+    for a in links:
+        href = a.get("href") or ""
+        kind = "bluesky" if "bsky.app" in href else "linkedin" if "linkedin.com" in href else None
+        mark = a.select_one("svg.icon-mark")
+        if kind is None:
+            if mark is not None:
+                fail("N5", "the Email link carries a company's mark")
+            continue
+        line = a.select_one("svg.icon-line")
+        if line is None or mark is None:
+            fail("N5", f"the {kind} link lacks its outline or its company's mark"); continue
+        if any(s.get("aria-hidden") != "true" for s in (line, mark)):
+            fail("N5", f"the {kind} link's drawings aren't hidden from a screen reader, so its name would be heard twice")
+        fill, d = DOOR_MARKS[kind]
+        if not any((p_.get("fill") or "").lower() == fill and (p_.get("d") or "").startswith(d) for p_ in mark.find_all("path")):
+            fail("N5", f"the {kind} mark isn't the company's own, in {fill}")
+        if kind == "linkedin" and not mark.find("rect", attrs={"fill": "#fff"}):
+            fail("N5", "LinkedIn's mark has no white behind its \"in\"")
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=os.environ.get("CHROME") or None)
+            ctx = b.new_context(viewport={"width": 1280, "height": 900}, reduced_motion="reduce"); pg = ctx.new_page()
+            pg.goto(srv.base + "/"); pg.wait_for_load_state("load")
+            shown = """(a) => { const on = s => s && getComputedStyle(s).display !== 'none' && s.getBoundingClientRect().width > 0;
+                         return {line: on(a.querySelector('.icon-line')), mark: on(a.querySelector('.icon-mark')), color: getComputedStyle(a).color}; }"""
+            orange = pg.evaluate("() => getComputedStyle(document.documentElement).getPropertyValue('--orange').trim()")
+            kinds = []
+            for a in pg.query_selector_all(".door-links a"):
+                href = a.get_attribute("href") or ""
+                kinds.append("bluesky" if "bsky.app" in href else "linkedin" if "linkedin.com" in href else "email")
+            for i, kind in enumerate(kinds):
+                a = pg.query_selector_all(".door-links a")[i]
+                pg.mouse.move(2, 2)
+                rest = a.evaluate(shown)
+                if kind != "email" and (rest["mark"] or not rest["line"]):
+                    fail("N5", f"at rest the {kind} link shows its company's mark, not its outline")
+                a.hover()
+                got = a.evaluate(shown)
+                if kind == "email":
+                    if got["color"] == rest["color"]:
+                        fail("N5", "the Email link doesn't change color on hover")
+                elif not got["mark"] or got["line"]:
+                    fail("N5", f"on hover the {kind} link doesn't show its company's mark in place of its outline")
+            # keyboard focus: tab from the top of a fresh page to each link
+            pg.goto(srv.base + "/"); pg.wait_for_load_state("load"); pg.mouse.move(2, 2)
+            seen = set()
+            for _ in range(40):
+                pg.keyboard.press("Tab")
+                st = pg.evaluate("""(sh) => { const a = document.activeElement; if (!a || !a.closest('.door-links')) return null;
+                                     const f = new Function('return ' + sh)(); return Object.assign({href: a.getAttribute('href') || ''}, f(a)); }""", shown)
+                if not st:
+                    continue
+                kind = "bluesky" if "bsky.app" in st["href"] else "linkedin" if "linkedin.com" in st["href"] else "email"
+                seen.add(kind)
+                if kind != "email" and (not st["mark"] or st["line"]):
+                    fail("N5", f"on keyboard focus the {kind} link doesn't show its company's mark in place of its outline")
+                if seen >= set(kinds):
+                    break
+            if seen < set(kinds):
+                fail("N5", f"the Tab key never reached the front door's {', '.join(sorted(set(kinds) - seen))} link")
+            ctx.close(); b.close()
+    finally:
+        srv.close()
+
+
+def readme_record_checks(out_dir):
+    """R11: the ReadMe's record. Each place under Experience and Education is a heading with its time as the next
+    paragraph, short; on the page the time stands in a rail at the column's left edge, level with its place, in the
+    label type, the rail's times lined up, the text clear of the rail, and nothing wider than the page on a phone."""
+    from bs4 import BeautifulSoup
+    checked("R11")
+    path = os.path.join(out_dir, "page", "readme", "index.html")
+    soup = BeautifulSoup(open(path, encoding="utf-8").read(), "html.parser")
+    art = soup.select_one("article.page")
+    if not art or "cv" not in (art.get("class") or []):
+        fail("R11", "the ReadMe's article doesn't carry the class cv, so its record has no rail"); return
+    places = art.select(".prose h3")
+    if len(places) < 5:
+        fail("R11", f"the ReadMe's record has {len(places)} places as headings, and Experience and Education hold seven")
+    for h in places:
+        p_ = h.find_next_sibling()
+        when = " ".join(p_.get_text(" ").split()) if p_ is not None and p_.name == "p" else ""
+        if not when or len(when) > 20 or not re.search(r"\d{4}", when):
+            fail("R11", f"the ReadMe's {h.get_text(' ', strip=True)} isn't followed by its time as a short paragraph of its own: \"{when[:40]}\"")
+    # a line's baseline: an empty inline-block's bottom sits on it
+    JS = """() => { const base = e => { const s = document.createElement('span'); s.style.cssText = 'display:inline-block;width:0;height:0;vertical-align:baseline';
+                                       e.insertBefore(s, e.firstChild); const y = s.getBoundingClientRect().bottom; s.remove(); return y; };
+      return [...document.querySelectorAll('article.cv .prose h3')].map(h => {
+      const d = h.nextElementSibling, t = d && d.nextElementSibling, r = e => e.getBoundingClientRect();
+      const fs = e => parseFloat(getComputedStyle(e).fontSize);
+      return {name: h.textContent.trim(), hTop: r(h).top, hLeft: r(h).left, dTop: r(d).top, dLeft: r(d).left, dRight: r(d).right,
+              dFirst: (() => { const g = document.createRange(); g.selectNodeContents(d); const rs = g.getClientRects(); return rs.length ? rs[0].top : r(d).top; })(),
+              hFirst: base(h), dLine: base(d),
+              dSize: fs(d), body: fs(document.querySelector('article.cv .prose > p:not(:empty)') || h), tLeft: t ? r(t).left : null}; }); }"""
+    srv = Server(out_dir)
+    try:
+        with sync_playwright() as pw:
+            b = pw.chromium.launch(executable_path=os.environ.get("CHROME") or None)
+            for w in (1280, 390):
+                ctx = b.new_context(viewport={"width": w, "height": 900}); pg = ctx.new_page()
+                pg.goto(srv.base + "/page/readme/"); pg.wait_for_load_state("load")
+                rows = pg.evaluate(JS)
+                if pg.evaluate("() => document.documentElement.scrollWidth > window.innerWidth + 1"):
+                    fail("R11", f"the ReadMe scrolls sideways at {w}px")
+                lefts = {round(r["dLeft"]) for r in rows}
+                if len(lefts) > 1:
+                    fail("R11", f"at {w}px the ReadMe's times don't line up in one rail: {sorted(lefts)}")
+                for r in rows:
+                    if not r["dRight"] <= r["hLeft"] + 0.5:
+                        fail("R11", f"at {w}px {r['name']}'s time isn't in a rail to the left of its place"); continue
+                    if abs(r["dLine"] - r["hFirst"]) > 2:
+                        fail("R11", f"at {w}px {r['name']}'s time doesn't sit on its place's baseline ({abs(r['dLine'] - r['hFirst']):.0f}px off)")
+                    if r["dSize"] >= r["body"]:
+                        fail("R11", f"at {w}px {r['name']}'s time isn't in the label type, smaller than the text (W3)")
+                    if r["tLeft"] is not None and r["tLeft"] < r["dRight"] - 0.5:
+                        fail("R11", f"at {w}px what was done at {r['name']} runs under the rail")
+                ctx.close()
+            b.close()
+    finally:
+        srv.close()
+
+
 def start_checks(out_dir):
     """S19: Start invites the reader to write to the owner, in a paragraph after How it works, its link's text
     the address itself, so a reader whose browser opens no mail app can still copy it."""
@@ -2146,6 +2284,8 @@ def arc_checks(out_dir):
     ul = how.find_next("ul") if how else None
     if not ul or "closing page" not in norm(ul.get_text(" ")) or "The Compass" not in norm(ul.get_text(" ")):
         fail("S21", "Start's \"How it works\" doesn't name the closing page, The Compass")
+    elif not ul.find("a", href=re.compile(rf"/pm/{page}/#{LEAVES_OUT_ID}$")):
+        fail("S21", f"Start's \"How it works\" doesn't point to what The Compass says the course leaves out (#{LEAVES_OUT_ID})")
     # Start's line for the closing unit says what it holds, down to the section that names what the course leaves out
     if not last_h2 or "where to go from here" not in norm(closing.get("line", "")).lower():
         fail("S21", "Start's line for The Compass doesn't say it tells you where to go from here, the section that names what the course leaves out")
@@ -5448,6 +5588,16 @@ def main():
             icon_checks(out_dir)
         except Exception as e:  # a broken file must fail its rule, not stop the suite
             fail("N4", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("R11"):
+        try:
+            readme_record_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("R11", f"check could not finish: {str(e).splitlines()[0][:160]}")
+    if run_for("N5"):
+        try:
+            door_icon_checks(out_dir)
+        except Exception as e:  # a broken page must fail its rule, not stop the suite
+            fail("N5", f"check could not finish: {str(e).splitlines()[0][:160]}")
     if run_for("S19"):
         try:
             start_checks(out_dir)
