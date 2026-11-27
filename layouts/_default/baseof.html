@@ -49,6 +49,12 @@
 {{- end }}
 {{ with $css | fingerprint }}<link rel="stylesheet" href="{{ .RelPermalink }}">{{ end }}
 {{- end }}
+{{- /* The site's icon (spec N4): the drawing for browsers that take one, favicon.ico for those that don't,
+       the home-screen icon, and the manifest that names the two larger sizes. tools/make-icons.py makes them. */}}
+<link rel="icon" href="{{ "/favicon.ico" | relURL }}" sizes="32x32">
+<link rel="icon" href="{{ "/favicon.svg" | relURL }}" type="image/svg+xml">
+<link rel="apple-touch-icon" href="{{ "/apple-touch-icon.png" | relURL }}">
+<link rel="manifest" href="{{ "/site.webmanifest" | relURL }}">
 </head>
 {{- /* The course bar (spec G1): under the header on every syllabus page but the single document. */}}
 {{- $bar := and $pm (not $all) }}

@@ -235,6 +235,15 @@ run_bg "a missing page that points to the ReadMe" N2 "sed -i 's|<a href=\"{{ \"/
 run_bg "the photo in every page's preview" N3 "sed -i 's/{{- if or .IsHome (eq .RelPermalink \"\/page\/readme\/\") }}/{{- if true }}/' layouts/_default/baseof.html"
 run_bg "no summary card for other sites" N3 "sed -i '/twitter:card/d' layouts/_default/baseof.html"
 run_bg "a preview's address off the site" N3 "sed -i 's/<meta property=\"og:url\" content=\"{{ .Permalink }}\">/<meta property=\"og:url\" content=\"{{ .RelPermalink }}\">/' layouts/_default/baseof.html"
+# Job 21, the site's icon (27 November 2026): the drawing, the links in every head, and the files made from it (N4).
+run_bg "a page that links no home-screen icon" N4 "sed -i '/rel=\"apple-touch-icon\"/d' layouts/_default/baseof.html"
+run_bg "the icon's drawing left out of the head" N4 "sed -i '/favicon.svg/d' layouts/_default/baseof.html"
+run_bg "the icon's disc in another orange" N4 "sed -i 's/fill=\"#c84b00\"/fill=\"#e2571a\"/' static/favicon.svg"
+run_bg "a third shape in the icon's drawing" N4 "sed -i 's|</svg>|<rect x=\"2\" y=\"2\" width=\"4\" height=\"4\" fill=\"#ffffff\"/></svg>|' static/favicon.svg"
+run_bg "the site's orange changed and the made icons left as they were" N4 "sed -i '0,/--orange: #c84b00;/s//--orange: #b34300;/' assets/css/base.css; sed -i 's/fill=\"#c84b00\"/fill=\"#b34300\"/' static/favicon.svg"
+run_bg "the home-screen icon missing" N4 "rm static/apple-touch-icon.png"
+run_bg "the home-screen icon with nothing behind the disc" N4 "python3 -c \"from PIL import Image; i = Image.open('static/apple-touch-icon.png').convert('RGBA'); i.putpixel((0, 0), (0, 0, 0, 0)); i.save('static/apple-touch-icon.png')\""
+run_bg "a manifest that names a file that isn't there" N4 "sed -i 's|/icon-512.png|/icon-1024.png|' static/site.webmanifest"
 run_bg "Writing back in the menu" R9 "sed -i 's/^    - identifier: games$/    - identifier: writing\\n      name: Writing\\n      url: \\/writing\\/\\n      weight: 30\\n    - identifier: games/' hugo.yaml"
 run_bg "a module's allowance in print gone before a PDF is published" P1 "sed -i 's/^MODULE_GRACE = 1 /MODULE_GRACE = 0 /' tests/check_site.py"
 # Job 40, the course bar and the foot (25 November 2026): first on Find the Constraint and its card The Five Focusing
