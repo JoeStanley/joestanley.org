@@ -21,7 +21,7 @@ This curriculum is intended for early- to mid-career product managers, and draws
 
 ## How it works
 
-- **Thirteen modules, each built on one question, then a closing page.** A module takes up to 90 minutes: roughly an hour of reading, watching or playing, and the rest applying it to your own work. Reading the module's own page, writing its log line and answering its questions adds about 20 minutes, so plan on about two hours a week. At a module a week, the whole course takes a quarter.
+- **Thirteen modules, each built on one question, then a closing page.** A module takes up to 90 minutes: roughly an hour of reading, watching, or playing, and the rest applying it to your own work. Reading the module's own page, writing its log line, and answering its questions adds about 20 minutes, so plan on about two hours a week. At a module a week, the whole course takes a quarter.
 
 - **Starting with {{< pm/mod "know-who-its-for" >}}, you'll keep a decision log:** one call a module, what you expect to happen, how sure you are as a percentage, and when you'll know. Intuition earns trust where a situation has patterns you can learn and you get clear feedback on your calls ([Kahneman and Klein, 2009](https://doi.org/10.1037/a0016755)). Product calls can take months to play out, so where you can, log one you'll know about within the quarter. The closing page, [The Compass](/pm/the-compass/), has you look back over it, and names [what the course leaves out](/pm/the-compass/#what-the-course-leaves-out). It may feel silly, but the log is one of the most important parts of the entire curriculum: making it real in a place you can safely fail.
 
@@ -29,7 +29,7 @@ This curriculum is intended for early- to mid-career product managers, and draws
 
 - **Every module has a short path that's free to read.** Books are on the full path, which is optional. Take it when a question keeps coming up in your work.
 
-- **Every source says why to trust it,** starting with its kind of evidence: a study, a review of studies, experience or an argument. It says what you'll get from it, too, so you can decide what's worth your time.
+- **Every source says why to trust it,** starting with its kind of evidence: a study, a review of studies, experience, or an argument. It says what you'll get from it, too, so you can decide what's worth your time.
 
   The exception to this is one story per module, usually a movie or a show, which conveys the module's concepts in some way. While fictional or dramatized, a single compelling story is more memorable than a stack of research.
 

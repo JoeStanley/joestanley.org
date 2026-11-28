@@ -364,6 +364,18 @@
    links are; and a game's way back to its step. Each is a target a thumb can find on a phone. */
 .on-page { display: flex; flex-wrap: wrap; align-items: center; gap: 0 var(--sp-4); margin: 0 0 var(--sp-5); font: var(--w-regular) var(--fs-small)/var(--lh-text) var(--ui); }
 .op-label { color: var(--muted); }
+/* On a module the line sits in the header, under the time, its label in the weight of the module's number; from 64rem
+   it's a short list in the margin column, which is always empty beside a module's header, its label level with the
+   module's number and in the same type (spec G7; the owner, 28 November 2026, his pick of a design reviewer's three). */
+.unit-head .on-page { margin: var(--sp-1) 0 0; }
+.unit-head .op-label { font-weight: var(--w-strong); }
+@media screen and (min-width: 64rem) {
+  .unit-head { position: relative; }
+  .unit-head .on-page { position: absolute; top: 0; right: 0; display: block; width: var(--margin); margin: 0; line-height: var(--lh-text); }
+  .unit-head .op-label { display: block; margin-bottom: var(--sp-2); }
+  .unit-head .op-list { display: block; }
+  .unit-head .op-list a { min-height: 0; padding: var(--sp-1) 0; }
+}
 .op-list { display: flex; flex-wrap: wrap; gap: 0 var(--sp-4); margin: 0; padding: 0; list-style: none; }
 .op-list a, .game-back a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .mod-closing { padding-bottom: var(--sp-3); }

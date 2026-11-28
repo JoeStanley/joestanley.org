@@ -188,7 +188,14 @@ def blocks(el):
             out.append(f"*Margin note: {inline(c)}*")
         elif c.name == "details" and "recall" in cls:
             out.append(inline(c.find("summary")))
-            out.append("**Answer:** " + inline(c.find(class_="answer")))
+            ans = c.find(class_="answer")
+            note = ans.find(class_="note")   # the owner's note for this answer, shown once it's revealed (spec M4)
+            if note:
+                note.find(class_="note-label").decompose()
+                out.append("**Answer:** " + inline(ans.find("p")))
+                out.append(f"*Margin note: {inline(note)}*")
+            else:
+                out.append("**Answer:** " + inline(ans))
         elif c.name == "details" and "example" in cls:   # What a good one looks like (spec J7): folded on the site, whole here
             out.append(f"**{inline(c.find('summary'))}**")
             out.append("\n>\n".join("> " + b.replace("\n", "\n> ") for b in blocks(c.find(class_="example-body"))))

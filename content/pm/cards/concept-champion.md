@@ -8,7 +8,7 @@ figure_caption: "Planned forward from the last step, the work climbs in a straig
 question: Can you finish "we're building this in order to ...," and would your team finish it the same way?
 deeper:
   title: Product Development in the World Auto Industry
-  by: Kim Clark, Bruce Chew and Takahiro Fujimoto (1987)
+  by: Kim Clark, Bruce Chew, and Takahiro Fujimoto (1987)
   url: https://www.brookings.edu/wp-content/uploads/1987/12/1987c_bpea_clark_chew_fujimoto_meyer_scherer.pdf
   where: A paper. Read pages 751 to 756, about 10 minutes. Free at brookings.edu.
   trust: "A study. It's small and from one industry: only 4 of the 29 projects had a heavyweight, most of them Japanese."
@@ -19,7 +19,7 @@ deeper:
 
 Kim Clark's "concept" is what you'd call the vision. A product hangs together, what Fred Brooks calls {{< pm/term "conceptual-integrity" >}}, when someone champions it. Clark and colleagues studied 29 car projects in the 1980s. Most had a lightweight manager, who coordinates "but has little influence over the content of the project." The few with a {{< pm/term "heavyweight" >}}, "not only a coordinator but a concept champion," used far fewer engineering hours.
 
-Set the vision as a destination, keep it current as engineers and customers teach you, and work back from it. The danger in planning forward from where you are is that it bakes in incrementalism, as you're extrapolating from what can be done today. In contrast, working back from the vision starts by asking what must be true, regardless of your existing assets. As a result, it shows the new investments the ambition needs. They often take time to pay off, and the champion holds the destination until they do.
+Set the vision as a destination, keep it current as you learn, and work back from it. Planning forward bakes in incrementalism: you extrapolate from what's possible today. Working back asks what must be true, whatever your existing assets, so it shows the new investments the ambition needs. They often take time to pay off, and the champion holds the destination until then.
 
 ## Why a PM cares
 
@@ -30,7 +30,7 @@ Set the vision as a destination, keep it current as engineers and customers teac
 ## How to spot it
 
 - You can say who asked for each roadmap item, but not what the product is for.
-- Time, budget and scope are all on track, and nobody can say what changed for users.
+- Time, budget, and scope are all on track, and nobody can say what changed for users.
 - Your week is status updates and meetings.
 
 ## What it does not say

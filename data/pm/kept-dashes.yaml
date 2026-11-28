@@ -1,0 +1,13 @@
+# The em dashes the owner typed himself and asked to keep (spec T3; the owner, 27 November 2026: "Keep this em dash.
+# The absence of them everywhere is as clear a signal as their presence everywhere."). The site holds no other.
+# Each entry names where it is and gives a few words on each side of the dash, as they stand in the source.
+# A session never adds one of its own: it lists one here only when the owner typed it, and takes the entry out
+# when his sentence goes.
+- where: Start, his margin note beside the first bullet of How it works
+  text: "One heads up — ["
+- where: 0 Own Your Role, Why this matters, the paragraph that opens "Early in your career"
+  text: "the bigger problem — that's your room"
+- where: 0 Own Your Role, Why this matters, the paragraph on Mozart in the Jungle
+  text: "in your own life — which have"
+- where: 0 Own Your Role, Check yourself, the first answer
+  text: "Ask yourself — did it need"

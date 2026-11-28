@@ -192,8 +192,8 @@ JS_NOTES = """() => { const col = document.querySelector('.unit-body.reading, .r
             gapAbove: (n.parentElement.matches('.noted') && prev && prev.tagName === 'P') ? r.top - prev.getBoundingClientRect().bottom : null,
             gapBelow: (() => { const host = n.parentElement.matches('.noted') ? n.parentElement : n; let nx = host.nextElementSibling; if (!nx && host.parentElement.tagName === 'LI') nx = host.parentElement.nextElementSibling;
               return nx && nx.getClientRects().length ? nx.getBoundingClientRect().top - r.bottom : null; })(),
-            para: n.parentElement.matches('.noted') && prev && prev.tagName === 'P' ? [prev.getBoundingClientRect().top, prev.getBoundingClientRect().bottom] : null,
-            after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (!next && prev && prev.tagName === 'P' && n.parentElement.matches('.noted')) ? 'PARAGRAPH' : '',
+            para: (() => { const p = n.parentElement.matches('.noted') ? n.parentElement.querySelector(':scope > p') : null; return p ? [p.getBoundingClientRect().top, p.getBoundingClientRect().bottom] : null; })(),
+            after: prev ? prev.tagName : (n.parentElement.matches('.noted') ? 'NOTED-FIRST' : 'FIRST'), before: (next && next.matches('[data-slot]')) ? 'SLOT' : (!next && n.parentElement.matches('li[data-slot]')) ? 'DESCRIPTION' : (n.parentElement.matches('.noted') && n.parentElement.querySelector(':scope > p') && [...n.parentElement.children].every(c => c.tagName === 'P' || c.matches('.note'))) ? 'PARAGRAPH' : '',
             kind: (n.closest('.unit') || {className: ''}).className,
             brk: Math.max(0, ...[...n.querySelectorAll(':scope > p')].slice(0, -1).map(p => parseFloat(getComputedStyle(p).marginBottom)))}; }); }"""
 
@@ -447,6 +447,10 @@ def pdf_note_checks(pdf_path, out_dir):
             sr.decompose()
         t = toks(n.get_text(" "))
         head, tail = t[:4], t[-4:]
+        if n.find_parent(class_="answer"):   # a note for one answer of the Check prints with its answer, at the back (M4)
+            if not any(found(head, m + b_) and found(tail, m + b_) or found(head, b_) and found(tail, b_) for m, b_ in pages):
+                fail("M4", f"PDF: the answer's note '{' '.join(n.get_text(' ').split()[:6])} ...' doesn't print with its answer at the back")
+            continue
         on = [i for i, (m, _) in enumerate(pages) if found(head, m) and found(tail, m)]
         label = " ".join(n.get_text(" ").split()[:6])
         if not on:
@@ -780,6 +784,16 @@ def door_icon_checks(out_dir):
                         fail("N5", "the Email link doesn't change color on hover")
                 elif not got["mark"] or got["line"]:
                     fail("N5", f"on hover the {kind} link doesn't show its company's mark in place of its outline")
+            # the outline and the mark ease across each other, as a link's color does, and not at all with reduced motion
+            for reduce, want in (("no-preference", True), ("reduce", False)):
+                c2 = b.new_context(viewport={"width": 1280, "height": 900}, reduced_motion=reduce); p2 = c2.new_page()
+                p2.goto(srv.base + "/"); p2.wait_for_load_state("load")
+                tr = p2.evaluate("""() => [...document.querySelectorAll('.door-links .icon-mark, .door-links .icon-line')].map(e => { const s = getComputedStyle(e);
+                    const props = s.transitionProperty.split(',').map(x => x.trim()), durs = s.transitionDuration.split(',').map(x => parseFloat(x));
+                    return props.some((p_, i) => (p_ === 'opacity' || p_ === 'all') && (durs[i % durs.length] || 0) >= 0.1 && (durs[i % durs.length] || 0) <= 0.3); })""")
+                if tr and all(tr) != want:
+                    fail("N5", "the companies' marks " + ("swap at once on hover, with no fade in or out" if want else "still fade with reduced motion requested"))
+                c2.close()
             # keyboard focus: tab from the top of a fresh page to each link
             pg.goto(srv.base + "/"); pg.wait_for_load_state("load"); pg.mouse.move(2, 2)
             seen = set()
@@ -1546,11 +1560,11 @@ def doors_checks(out_dir):
     # G7: a module's line of links, under its header, to parts that each have an address
     for m, _ in MODULES:
         soup = page(m)
-        body = soup.select_one("main .unit-body")
+        head = soup.select_one("main .unit-head")
         nav = soup.select("main nav.on-page")
-        first = next((c for c in body.children if getattr(c, "name", None)), None) if body else None
-        if len(nav) != 1 or nav[0] is not first:
-            fail("G7", f"{m}: no line of links ('On this page') first in the module's body")
+        after = nav[0].find_previous_sibling() if len(nav) == 1 else None
+        if len(nav) != 1 or not head or nav[0].parent is not head or after is None or "meta" not in (after.get("class") or []):
+            fail("G7", f"{m}: no links to the page's parts ('On this page') in the module's header, right under its time")
             continue
         nav = nav[0]
         if nav.get("aria-label") != "On this page" or "screen-only" not in (nav.get("class") or []) or flat(nav.select_one(".op-label")) != "On this page":
@@ -1680,6 +1694,20 @@ def doors_browser_checks(out_dir):
                     fail("G7", f"{mod}: '{w}' lands its heading under the bar ({gap})")
             if not pg.evaluate("() => document.querySelector('.deeper details').open"):
                 fail("G7", f"{mod}: 'Go deeper' doesn't open the full path it lands on")
+            # G7: on a wide screen the links are a list in the margin column, its label level with the module's number
+            wide = b.new_context(viewport={"width": 1280, "height": 900}); wp = wide.new_page()
+            wp.goto(srv.base + mod); wp.wait_for_load_state("load")
+            g = wp.evaluate("""() => { const box = s => { const e = document.querySelector(s); const r = document.createRange(); r.selectNodeContents(e); return r.getClientRects()[0]; };
+                const k = box('.unit-head .kicker .tag'), l = box('.unit-head .op-label'), q = document.querySelector('.unit-head .question').getBoundingClientRect();
+                const ks = getComputedStyle(document.querySelector('.unit-head .kicker .tag')), ls = getComputedStyle(document.querySelector('.unit-head .op-label'));
+                const tops = [...document.querySelectorAll('.unit-head .op-list a')].map(a => a.getBoundingClientRect().top);
+                return {dy: Math.abs(k.top - l.top), left: l.left, colRight: q.right, same: ks.fontSize === ls.fontSize && ks.fontWeight === ls.fontWeight && ks.fontFamily === ls.fontFamily,
+                        stacked: tops.every((t, i) => i === 0 || t > tops[i - 1] + 4), over: document.documentElement.scrollWidth > innerWidth + 1}; }""")
+            if g["dy"] > 1 or not g["same"]:
+                fail("G7", f"{mod}: at 1280px 'On this page' isn't level with the module's number, in its type ({g['dy']:.1f}px off)")
+            if g["left"] < g["colRight"] or not g["stacked"] or g["over"]:
+                fail("G7", f"{mod}: at 1280px the links to the page's parts aren't a list in the margin column")
+            wide.close()
             # G7: a phone's targets: the line's links, a card's way to its module and each "Why this source"
             pg.goto(srv.base + mod); pg.wait_for_load_state("load")
             hs = pg.evaluate("() => [...document.querySelectorAll('nav.on-page a, .game-back a, details.why > summary')].filter(e => e.getClientRects().length).map(e => [e.textContent.trim().slice(0, 20), e.getBoundingClientRect().height])")
@@ -2190,7 +2218,7 @@ def arc_checks(out_dir):
         fm = open(os.path.join(ROOT, "content", "pm", f"{page}.md"), encoding="utf-8").read().split("---", 2)[1]
         mins = int((yaml.safe_load(fm) or {}).get("do_minutes") or 0)
         t = norm(head.find(class_="meta").get_text())
-        if not re.fullmatch(r"About (\d+ minutes|an hour.*|\d.*hours?)\.", t):
+        if not re.fullmatch(r"Takes about (\d+ minutes|an hour.*|\d.*hours?)\.", t):
             fail("S21", f"{where}'s time reads \"{t}\"")
         if mins and str(mins) not in t and "hour" not in t:
             fail("S21", f"{where}'s time, \"{t}\", isn't its Do's {mins} minutes")
@@ -2404,12 +2432,28 @@ def check_static():
         t3_paths.append(voice)
     else:
         NOTE["T3"].append(f"VOICE.md not scanned: pm-sources isn't at {PM_SOURCES}, as on GitHub; a working session scans it")
+    # ... except the ones the owner typed and asked to keep, each listed with the words on either side of it
+    kept_path = os.path.join(ROOT, "data", "pm", "kept-dashes.yaml")
+    kept_list = (yaml.safe_load(open(kept_path, encoding="utf-8")) or []) if os.path.isfile(kept_path) else []
+    kept_dashes = []
+    for k in kept_list:
+        txt = k.get("text") if isinstance(k, dict) else None
+        if not (isinstance(txt, str) and txt.count("\u2014") == 1 and k.get("where") and len(txt.replace("\u2014", "").split()) >= 3):
+            fail("T3", f"data/pm/kept-dashes.yaml: each entry says where: and gives text: with one em dash and words on each side of it ({str(k)[:60]})")
+            continue
+        kept_dashes.append(txt)
+        found = sum(open(p, encoding="utf-8").read().count(txt) for pattern in ["content/**/*.md", "data/pm/margin/*.yaml"]
+                    for p in glob.glob(os.path.join(ROOT, pattern), recursive=True))
+        if found != 1:
+            fail("T3", f"data/pm/kept-dashes.yaml: \"{txt}\" is in the site's words {found} times, and a kept em dash stands once")
     for path in t3_paths:
         if os.path.isfile(path):
             try:
                 text = open(path, encoding="utf-8").read()
             except UnicodeDecodeError:
                 continue
+            for k in kept_dashes:
+                text = text.replace(k, "")
             if "\u2014" in text:
                 where = "pm-sources/" + os.path.relpath(path, PM_SOURCES) if path == voice else os.path.relpath(path, ROOT)
                 fail("T3", f"em dash in {where}")
@@ -2636,6 +2680,9 @@ def slot_checks(out_dir):
                         continue
                     if n.get("beside"):
                         want = " ".join(n["beside"].translate(QUOTE_FOLD).split())
+                        if k == "check" and not any(d.find_parent("details", class_="recall") and "answer" in (d.get("class") or []) and d.find("aside", class_="note")
+                                                    for d in art.select('div.noted[data-beside="check"]') if want in " ".join(d.get_text(" ").translate(QUOTE_FOLD).split())):
+                            fail("M4", f"{rel}: the note for the answer that holds \"{n['beside']}\" isn't inside that folded answer, so it would show before the answer does")
                         hits = [d for d in art.select(f'div.noted[data-beside="{k}"]')
                                 if d.find("p") and want in " ".join(d.find("p").get_text().translate(QUOTE_FOLD).split())]
                         if not hits:
@@ -2726,6 +2773,8 @@ JS_MARGIN = """() => {
   for (const el of document.querySelectorAll('.reading *')) {
     const s = getComputedStyle(el); if (s.display === 'none' || s.visibility === 'hidden') continue;
     const r = el.getBoundingClientRect(); if (!r.width || !r.height) continue;
+    // a module's links to its own parts sit beside its header, where no note does (G7)
+    if (el.closest('.unit-head nav.on-page')) continue;
     if (r.left >= right - 1 && !el.parentElement.closest('.note')) inMargin.push({cls: typeof el.className === 'string' ? el.className : '', tag: el.tagName, left: r.left, top: r.top, bottom: r.bottom, right: r.right, hidden: el.getAttribute('aria-hidden'), owner: el.matches('aside.note[data-note]')});
   }
   return {right, inMargin};
@@ -4026,15 +4075,15 @@ def s14_checks(name, text):
     lines = text.split("\n")
     times = []
     if re.match(r"\d+ ", name):
-        head = next((l for l in lines if l.startswith("About ")), None)
+        head = next((l for l in lines if l.startswith("Takes about ")), None)
         total = None
         if head is None:
             fail("S14", f"{where}: the header gives no total")
         else:
-            h_ = re.fullmatch(r"About (.+?)\.", head.strip())
+            h_ = re.fullmatch(r"Takes about (.+?)\.", head.strip())
             total = s14_header_minutes(h_.group(1)) if h_ else None
             if total is None:
-                fail("S14", f"{where}: the header reads \"{head.strip()[:60]}\", and gives one total with the hour in words, such as \"About an hour and 15 minutes.\", with no reading and doing split")
+                fail("S14", f"{where}: the header reads \"{head.strip()[:60]}\", and gives one total with the hour in words, such as \"Takes about an hour and 15 minutes.\", with no reading and doing split")
             elif not s14_on_mark(total):
                 fail("S14", f"{where}: the header's total, {head.strip()}, isn't rounded the owner's way")
         for sec in _sections(text, {"The short path"}):
@@ -4501,7 +4550,7 @@ def both_ways_checks():
 
 EXAMPLE_LINE = "What a good one looks like"
 EXAMPLE_GOOD = "What makes it good:"
-EXAMPLE_WORDS = 120   # "under about 120 words" (the owner, 25 November 2026)
+EXAMPLE_WORDS = 135   # "under about 120 words" (the owner, 25 November 2026), with room for whole sentences (28 November)
 EXAMPLE_GATE = "Try yours first: an example is easier to copy than to judge."
 EXAMPLE_UNGATE = "I've done mine"
 

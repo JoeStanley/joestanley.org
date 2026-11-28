@@ -20,29 +20,29 @@
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
     <p class="question">{{ $p.Params.question }}</p>
     <p class="meta">Takes about {{ partial "pm/duration.html" (add $readMin $doMin) }}.</p>
+    {{- /* On this page (spec G7): links to the module's parts, on its own page and on screen only: in the header under the time, and from 64rem a short list in the margin column, level with the module's number. */}}
+    {{ if not $all }}
+    <nav class="on-page screen-only" aria-label="On this page">
+      <span class="op-label" aria-hidden="true">On this page</span>
+      <ul class="op-list">
+        <li><a href="#why-this-matters">Why</a></li>
+        <li><a href="#short-path">Short path</a></li>
+        {{- if gt (len $parts) 1 }}
+        <li><a href="#do">Do</a></li>
+        {{- end }}
+        {{- with $p.Params.check }}
+        <li><a href="#check">Check</a></li>
+        {{- end }}
+        {{- with $p.Params.deeper }}
+        <li><a href="#go-deeper" data-open-deeper>Go deeper</a></li>
+        {{- end }}
+      </ul>
+    </nav>
+    {{ end }}
     {{ with $p.Params.one_thing }}<p class="one-thing"><span class="one-thing-label">If you only do one thing<span class="sr">:</span></span> <span class="hl-line"><mark class="hl-v{{ add 1 (mod (int $m.num) 3) }}">{{ . | $p.RenderString }}</mark></span></p>{{ end }}
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
 
-  {{- /* On this page (spec G7): a line of links to the module's parts, on its own page and on screen only. */}}
-  {{ if not $all }}
-  <nav class="on-page screen-only" aria-label="On this page">
-    <span class="op-label" aria-hidden="true">On this page</span>
-    <ul class="op-list">
-      <li><a href="#why-this-matters">Why</a></li>
-      <li><a href="#short-path">Short path</a></li>
-      {{- if gt (len $parts) 1 }}
-      <li><a href="#do">Do</a></li>
-      {{- end }}
-      {{- with $p.Params.check }}
-      <li><a href="#check">Check</a></li>
-      {{- end }}
-      {{- with $p.Params.deeper }}
-      <li><a href="#go-deeper" data-open-deeper>Go deeper</a></li>
-      {{- end }}
-    </ul>
-  </nav>
-  {{ end }}
 
   {{ with $p.Params.last_time }}
   <section class="last-time" data-slot="last-time">

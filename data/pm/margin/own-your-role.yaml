@@ -23,10 +23,10 @@ why-this-matters:
   - beside: "You'll do plenty of both"
     note: "The product vision is not only the end experience. It's also the people, process, and technology that make it. You're shaping a way of how people work together, spending hundreds to millions of hours, to create something that will touch the lives of people you'll likely never meet. There's a profound privilege and responsibility there.\n\nDon't shrink from it."
   - beside: "The vision has to be yours, too"
-    note: "Played by the incomparable Bernadette Peters"
-  - beside: "The vision has to be yours, too"
     at: "foot"
     note: "I work in enterprise-tier financial platform design, some of the most standardized and invisible stuff imaginable. If I can find ways for my own voice to come through in the work, anyone reading this can."
+  - beside: "The vision has to be yours, too"
+    note: "Played by the incomparable Bernadette Peters"
   - beside: "Now with all this said"
     at: "foot"
     note: "Do it well, and you'll make a symphony."
@@ -56,7 +56,6 @@ step-check: ""
 do: ""
 
 # Check yourself
-# A note here that names an answer by a few of its words (beside) shows with that answer, once the reader reveals it.
 check:
   - beside: "Its conceptual integrity, one set of design ideas"
     note: "You'll be surprised how often the right answer to urgency is to slow down and clarify, not go faster. You're likely behind in the first place due to a lack of conceptual integrity."
@@ -76,5 +75,5 @@ deeper-working-backwards: ""
 # Full path: Crafting a Job: Revisioning Employees as Active Crafters of Their Work, Amy Wrzesniewski and Jane Dutton (Academy of Management Review, 2001)
 deeper-crafting-a-job-revisioning-employees-as-active-crafters-of-their-work: ""
 
-# Full path: Mozart in the Jungle, developed by Roman Coppola, Jason Schwartzman, Alex Timbers and Paul Weitz (Amazon Prime Video, 2014 to 2018)
+# Full path: Mozart in the Jungle, developed by Roman Coppola, Jason Schwartzman, Alex Timbers, and Paul Weitz (Amazon Prime Video, 2014 to 2018)
 deeper-mozart-in-the-jungle: ""
