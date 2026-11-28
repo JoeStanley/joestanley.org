@@ -19,7 +19,7 @@ deeper:
 
 Kim Clark's "concept" is what you'd call the vision. A product hangs together, what Fred Brooks calls {{< pm/term "conceptual-integrity" >}}, when someone champions it. Clark and colleagues studied 29 car projects in the 1980s. Most had a lightweight manager, who coordinates "but has little influence over the content of the project." The few with a {{< pm/term "heavyweight" >}}, "not only a coordinator but a concept champion," used far fewer engineering hours.
 
-Set the vision as a destination, keep it current as engineers and customers teach you, and work back from it. Plan only one step from the last, and the work can run on time and still fall short. Working back shows the new investments the ambition needs. They take time to pay off, and the champion holds the destination until they do.
+Set the vision as a destination, keep it current as engineers and customers teach you, and work back from it. The danger in planning forward from where you are is that it bakes in incrementalism, as you're extrapolating from what can be done today. In contrast, working back from the vision starts by asking what must be true, regardless of your existing assets. As a result, it shows the new investments the ambition needs. They often take time to pay off, and the champion holds the destination until they do.
 
 ## Why a PM cares
 

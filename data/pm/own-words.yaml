@@ -5,7 +5,9 @@
 # Each entry names the unit's tab, as the working doc shows it, and the sentence.
 
 - unit: 0 Own Your Role
-  text: "I'm not exaggerating when I tell you it's what the entirety of human existence is about, in one way or another."
+  text: "I expect you can feel it in the products you use (or don't) in your own life — which have a sense of personality, and which feel lifeless even if useful?"
+- unit: 0 Own Your Role
+  text: "It's been my experience people will generally prefer the imperfect product with a point of view over the perfect one without."
 - unit: 12 Bring People With You
   text: "It's the variant I use of Barbara Minto's opening, which ends instead on the question the complication raises."
 - unit: 5 Map the Domain

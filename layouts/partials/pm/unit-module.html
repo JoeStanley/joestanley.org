@@ -19,7 +19,7 @@
     <h1>{{ $p.Title | markdownify }}</h1>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
     <p class="question">{{ $p.Params.question }}</p>
-    <p class="meta">About {{ partial "pm/duration.html" (add $readMin $doMin) }}.</p>
+    <p class="meta">Takes about {{ partial "pm/duration.html" (add $readMin $doMin) }}.</p>
     {{ with $p.Params.one_thing }}<p class="one-thing"><span class="one-thing-label">If you only do one thing<span class="sr">:</span></span> <span class="hl-line"><mark class="hl-v{{ add 1 (mod (int $m.num) 3) }}">{{ . | $p.RenderString }}</mark></span></p>{{ end }}
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
@@ -121,7 +121,7 @@
     <h2 id="{{ if $all }}{{ $key }}-{{ end }}check">Check yourself</h2>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "check") }}
     <p class="hint">Answer in your head, then check.</p>
-    {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p) }}{{ end }}
+    {{ range . }}{{ partial "pm/recall.html" (dict "q" .q "a" .a "p" $p "unit" $key "slot" "check") }}{{ end }}
   </section>
   {{ end }}
 
@@ -166,7 +166,7 @@
     {{ end }}
     {{ with $p.Params.check }}
     <p class="answers-label">Check yourself</p>
-    <ol>{{ range . }}<li>{{ .a | $p.RenderString }}</li>{{ end }}</ol>
+    <ol>{{ range . }}<li>{{ .a | $p.RenderString }}{{ with partial "pm/answer-note.html" (dict "a" .a "p" $p "unit" $key "slot" "check") }} <span class="answer-note">Sidenote: {{ . | $p.RenderString }}</span>{{ end }}</li>{{ end }}</ol>
     {{ end }}
   </section>
 

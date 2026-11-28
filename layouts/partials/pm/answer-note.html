@@ -1,0 +1,13 @@
+{{- /* The owner's note for one answer of the Check, if he wrote one (spec M5): a note in the part's slot that names
+       the answer by a few of its words (beside). Call with a (the answer), p, unit and slot; returns the note's
+       words, or nothing. */ -}}
+{{- $out := "" -}}
+{{- $norm := dict "’" "'" "‘" "'" "“" "\"" "”" "\"" -}}
+{{- $plain := .a | .p.RenderString | plainify | htmlUnescape -}}{{- range $k, $v := $norm }}{{ $plain = replace $plain $k $v }}{{ end -}}
+{{- with site.Data.pm.margin }}{{ with index . $.unit }}{{ with index . $.slot }}{{ if reflect.IsSlice . -}}
+  {{- range . }}{{ if and .beside .note (not $out) -}}
+    {{- $want := .beside -}}{{- range $k, $v := $norm }}{{ $want = replace $want $k $v }}{{ end -}}
+    {{- if in $plain $want }}{{ $out = .note }}{{ end -}}
+  {{- end }}{{ end -}}
+{{- end }}{{ end }}{{ end }}{{ end -}}
+{{- return $out -}}

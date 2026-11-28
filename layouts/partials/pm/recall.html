@@ -1,5 +1,12 @@
-{{- /* One recall question. The answer stays folded until the reader asks for it. */ -}}
+{{- /* One recall question. The answer stays folded until the reader asks for it. Where the owner wrote a note for
+       an answer of the Check (spec M5), it sits with the answer, so it shows only once the answer does. */ -}}
+{{- $note := "" -}}
+{{- if .unit }}{{ $note = partial "pm/answer-note.html" (dict "a" .a "p" .p "unit" .unit "slot" .slot) }}{{ end -}}
 <details class="recall">
   <summary>{{ .q | .p.RenderString }}</summary>
+  {{ if $note -}}
+  <div class="answer noted" data-beside="{{ .slot }}"><p>{{ .a | .p.RenderString }}</p><aside class="note" data-note="{{ .slot }}"><span class="note-label">Sidenote: </span>{{ $note | .p.RenderString }}</aside></div>
+  {{- else -}}
   <div class="answer">{{ .a | .p.RenderString }}</div>
+  {{- end }}
 </details>
