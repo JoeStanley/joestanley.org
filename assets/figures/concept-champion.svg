@@ -1,23 +1,20 @@
-<svg class="fig" viewBox="0 0 360 222" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
-  <title id="fig-champ-title">Two plans from the same start: a straight line that falls short, and a curve planned back from a vision the champion holds.</title>
-  <desc id="fig-champ-desc">Two lines over the same time, both starting from today at the lower left. The vision sits at the upper right, highlighted: the champion holds it. The first line, planned forward, climbs in a straight line and ends, on time, about halfway up. The gap between its end and the vision is shaded: still short. The second, planned back from the vision, stays low at first, while new investments come online, crosses the straight line about two thirds of the way along, then climbs steeply toward the vision, if the investments pay off.</desc>
+<svg class="fig" viewBox="0 0 360 192" role="img" aria-labelledby="fig-champ-title fig-champ-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="fig-champ-title">Two plans from the same start: one planned forward, heading short of the vision, and one planned back from it, heading for it.</title>
+  <desc id="fig-champ-desc">Two lines over the same time, both starting from today at the lower left. The vision sits at the upper right, highlighted. Both lines stop a little before the vision's time, each ending in an arrowhead: the work goes on. The first line, planned forward, climbs in a straight line and is heading for a point about halfway up, well short of the vision. The second, planned back from the vision, stays low at first, crosses the straight line about two thirds of the way along, then climbs steeply, heading for the vision.</desc>
 
   <g transform="translate(0,-8)">
-  <text class="fig-label" x="312" y="28" text-anchor="end">The vision</text>
-  <text class="fig-note" x="312" y="43" text-anchor="end">the champion holds it</text>
+  <text class="fig-label" x="312" y="36" text-anchor="end">The vision</text>
   <rect class="fig-mark" x="320" y="18" width="28" height="28"/>
-  <rect class="fig-loss" x="334" y="46" width="14" height="56"/>
-  <path class="fig-axis" d="M24,172 L334,102"/>
-  <path class="fig-line" d="M24,172 C160,172 250,136 334,32"/>
+  <path class="fig-axis" d="M24,172 L292.2,111.4"/>
+  <path class="fig-arrow-ink" d="M292.3,116.5 L300,109.7 L290.1,106.8 Z"/>
+  <path class="fig-line" d="M24,172 C139.2,172 221.4,146.2 294.9,75.1"/>
+  <path class="fig-arrow-ink" d="M297.3,79.9 L300.1,70 L290.2,72.8 Z"/>
   <circle class="fig-ink" cx="24" cy="172" r="5.5"/>
   <circle class="fig-ink" cx="334" cy="32" r="5.5"/>
 
-  <text class="fig-label" x="348" y="143" text-anchor="end">Planned forward</text>
-  <text class="fig-note" x="348" y="158" text-anchor="end">on time, still short</text>
+  <text class="fig-label" x="348" y="134" text-anchor="end">Planned forward</text>
 
   <text class="fig-item" x="12" y="191">Today</text>
   <text class="fig-label" x="96" y="191">Planned back from the vision</text>
-  <text class="fig-note" x="96" y="206">slow while new investments come online,</text>
-  <text class="fig-note" x="96" y="221">steep if they pay off</text>
   </g>
 </svg>

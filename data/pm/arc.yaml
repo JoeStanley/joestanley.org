@@ -13,10 +13,10 @@ parts:
     line: What to believe, what to choose, and what you answer for.
     modules: [weigh-the-evidence, decide-and-set-direction, answer-for-what-you-build]
   - title: How you learn and lead
-    line: Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it.
+    line: Having the right answer doesn't matter if you can't convince people of it. How to catch your own mistakes early, and earn the trust of the people you work with before you need it.
     modules: [notice-when-you-are-wrong, bring-people-with-you]
 # The closing unit (spec S21): its page under content/pm/, and its line on Start.
 closing:
   label: In closing
   page: the-compass
-  line: Every question in one place, one call walked through several of them, and where to go from here.
+  line: Every question in one place, one last situation examined through several of them, and where to go from here.

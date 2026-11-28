@@ -127,7 +127,7 @@ run_bg "borrow or buy back on a built full path" S13 "sed -i 's/^    where: A bo
 run_bg "a page count on a built full path" S13 "sed -i 's/^    where: A book\.$/    where: A book of about 240 pages./' content/pm/see-the-system.md"
 run_bg "a full-path entry that hides its kind" S12 "sed -i 's/^    where: A journal article\.$/    where: Free online./' content/pm/own-your-role.md"
 run_bg "a step's time off the owner's marks" S14 "sed -i 's/^    minutes: 20$/    minutes: 13/' content/pm/find-the-constraint.md"
-run_bg "the header split into reading and doing again" S14 "sed -i 's|About {{ partial \"pm/duration.html\" (add \$readMin \$doMin) }}.|About {{ add \$readMin \$doMin }} minutes: {{ \$readMin }} reading, {{ \$doMin }} doing.|' layouts/partials/pm/unit-module.html"
+run_bg "the header split into reading and doing again" S14 "sed -i 's|Takes about {{ partial \"pm/duration.html\" (add \$readMin \$doMin) }}.|Takes about {{ add \$readMin \$doMin }} minutes: {{ \$readMin }} reading, {{ \$doMin }} doing.|' layouts/partials/pm/unit-module.html"
 run_bg "a note naming words its paragraph lost" M4 "sed -i 's/beside: \"Two versions of the job look real\"/beside: \"Three versions of the job\"/' data/pm/margin/own-your-role.yaml"
 run_bg "a paragraph's note put before it" M3 "sed -i 's|(printf \`<div class=\"noted\" data-beside=\"%s\">%s%s</div>\` \$id . \$aside)|(printf \`<div class=\"noted\" data-beside=\"%s\">%s%s</div>\` \$id \$aside .)|' layouts/partials/pm/prose-slots.html"
 run_bg "a paragraph's note left floating below it" M1 "sed -i '/\.reading \.noted > \.note { position: absolute/d' assets/css/base.css"
@@ -498,4 +498,15 @@ run_bg "Bluesky's mark read aloud" N5 "sed -i 's/<svg class=\"icon-mark\" aria-h
 run_bg "the ReadMe without its rail" R11 "sed -i '/^class: cv$/d' content/page/readme.md"
 run_bg "a ReadMe time run into its text" R11 "python3 -c \"p='content/page/readme.md'; s=open(p).read(); open(p, 'w').write(s.replace('2023+\\n\\nConfidential', '2023+\\nConfidential'))\""
 run_bg "the ReadMe's times off their places' baselines" R11 "echo '.cv .prose h3 + p { padding-top: 0.6rem !important; }' >> assets/css/base.css"
+wait
+# The owner's pass on Own Your Role (28 November 2026): the em dashes he typed are kept and listed, and no other (T3);
+# a note for one answer of the Check shows only with its answer (M4); a header's time is a sentence (S14); the front
+# door's marks fade in and out (N5); "On this page" sits in the header, and in the margin level with the module's number (G7)
+run_bg "an em dash nobody listed" T3 "printf '\\nA plain \\xe2\\x80\\x94 dash.\\n' >> content/pm/see-the-system.md"
+run_bg "a kept em dash whose sentence has gone" T3 "sed -i 's/One heads up \\xe2\\x80\\x94 \\[/One heads up: [/' data/pm/margin/start.yaml"
+run_bg "an answer's note shown before its answer" M4 "sed -i 's/<div class=\"answer noted\" data-beside=\"{{ .slot }}\"><p>{{ .a | .p.RenderString }}<\\/p>\\(<aside.*<\\/aside>\\)<\\/div>/\\1<div class=\"answer\">{{ .a | .p.RenderString }}<\\/div>/' layouts/partials/pm/recall.html"
+run_bg "a header's time as a fragment again" S14 "sed -i 's/Takes about {{ partial \"pm\\/duration.html\" (add/About {{ partial \"pm\\/duration.html\" (add/' layouts/partials/pm/unit-module.html"
+run_bg "the companies' marks swapped at once, with no fade" N5 "sed -i '/^.door-links .icon-line, .door-links .icon-mark { transition/d' assets/css/base.css"
+run_bg "On this page back under the header" G7 "sed -i 's/<nav class=\"on-page screen-only\" aria-label=\"On this page\">/<\\/div><\\/div><div><div><nav class=\"on-page screen-only\" aria-label=\"On this page\">/' layouts/partials/pm/unit-module.html"
+run_bg "On this page lower than the module's number" G7 "sed -i 's/  .unit-head .on-page { position: absolute; top: 0; right: 0;/  .unit-head .on-page { position: absolute; top: 3rem; right: 0;/' assets/css/pm.css"
 wait

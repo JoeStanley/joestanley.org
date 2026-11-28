@@ -2,7 +2,7 @@
        owner's note for it right after the heading (spec M4). A note in the slot's list that names one of the
        section's paragraphs by a few of its words (beside) goes right after that paragraph, the two wrapped
        together so that on a wide screen the note sits level with it, at its top or, with at: foot, its foot
-       (spec M1, M3). A unit whose opening has a slot of its own and no heading, as Start's does, names it as lead,
+       (spec M1, M3); two notes may sit beside one paragraph, one at its top and one at its foot. A unit whose opening has a slot of its own and no heading, as Start's does, names it as lead,
        and a note there that names one of the opening's paragraphs sits beside it the same way; a bullet whose
        list is loose holds paragraphs, so a note can sit beside one bullet.
        Call with p, unit and html, and lead where the opening has a slot; returns the html. */ -}}
@@ -29,7 +29,13 @@
         {{- $plain := . | plainify | htmlUnescape -}}{{- range $k, $v := $norm }}{{ $plain = replace $plain $k $v }}{{ end -}}
         {{- if and (not $done) (in $plain $want) -}}
           {{- $aside := printf `<aside class="note%s" data-note="%s"><span class="note-label">Sidenote: </span>%s</aside>` (cond (eq $n.at "foot") " note-foot" "") $id ($n.note | $.p.RenderString) -}}
-          {{- $html = replace $html . (printf `<div class="noted" data-beside="%s">%s%s</div>` $id . $aside) -}}
+          {{- /* A second note beside the same paragraph joins the first in its wrapper, ahead of it. */ -}}
+          {{- $held := printf `%s<aside class="note` . -}}
+          {{- if in $html $held -}}
+            {{- $html = replace $html $held (printf `%s%s<aside class="note` . $aside) 1 -}}
+          {{- else -}}
+            {{- $html = replace $html . (printf `<div class="noted" data-beside="%s">%s%s</div>` $id . $aside) -}}
+          {{- end -}}
           {{- $done = true -}}
         {{- end -}}
       {{- end -}}

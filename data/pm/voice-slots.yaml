@@ -49,14 +49,11 @@ settle:
     where: On every module's full path, once it's opened
     ask: "Each of the thirteen names one book or article for a reader with one evening, picked by a session with its reason. You kept the twelve on 26 November, Warfighting included; Map the Domain's pick, Designing Data-Intensive Applications, came the same day. Change any you like."
   - what: Your own lines that readers flagged
-    where: In 0 Own Your Role, 5 Map the Domain and 12 Bring People With You
-    ask: "Readers stopped at these, each yours, so each waits for you. In Own Your Role, \"the incomparable Bernadette Peters,\" \"a bit composer, a bit conductor,\" \"Cultivate it, share it\" and \"Now with all this said.\" In Map the Domain, Brazil's last sentence, which two readers found circular (\"indifference ... reinforcing societal indifference\"), and your Evans line's \"especially as agentic workflows become more common,\" which one found unsupported. In Bring People With You, \"It's the variant I use of Barbara Minto's opening,\" where two readers stopped at an \"I\" with no one named and found the clause after it hard."
+    where: In 5 Map the Domain and 12 Bring People With You
+    ask: "Readers stopped at these, each yours, so each waits for you. In Map the Domain, Brazil's last sentence, which two readers found circular (\"indifference ... reinforcing societal indifference\"), and your Evans line's \"especially as agentic workflows become more common,\" which one found unsupported. In Bring People With You, \"It's the variant I use of Barbara Minto's opening,\" where two readers stopped at an \"I\" with no one named and found the clause after it hard."
   - what: Your margin notes
     where: In every unit, the empty slots listed at the foot of this tab
     ask: "Fill out the margin, looser and more tangential than the syllabus, as you like. A card's picture has no slot now, since you'll never write notes for the visuals. One of yours went in word for word for you to rewrite if you like: Decide and Set Direction's \"The best delivery teams work when the lines of accountability are clear but the expertise blurred.\""
-  - what: The Concept Champion's three new sentences
-    where: In 0 Own Your Role, on the Concept Champion card, The idea, the end of its second paragraph
-    ask: "They say your point on planning forward and back in the syllabus's voice, not as your experience. They start \"Plan only one step from the last,\" and end on the champion holding the destination until the new investments pay off. Keep them, or say the point as a margin note in your own words."
   - what: The Riskiest Assumption's example
     where: In 8 Weigh the Evidence, on the Riskiest Assumption card, its picture
     ask: "Its five assumptions don't map one to one onto the card's five kinds: two are about whether people want it, and none is about harm. And demand is the one marked, though the card's first point says the riskiest isn't always demand. Three product leaders raised it, each as minor, after you approved its content on 26 November. A harm assumption can't sit honestly where the idea depends on it less, so the example needs your call: keep it, or name a different riskiest assumption to mark."
@@ -82,21 +79,6 @@ slots:
     brief: "Say in your own voice what you believe a grocery app's incentive is with the shoppers who pick and deliver its orders, and why it should matter to a PM designing their side of the flow. The paragraph before it gives only what the sources support: waiting time, mostly unpaid, and a pool of waiting workers (New York's study), shifts below minimum wage (an MIT audit), and Dubal's argument, as hers. No source opened says a company wants workers to need the work, or that low prices were paid for by investors with the cost on shoppers, so that view is yours to state. Your words from the session are below. Suggestion: raise them into the main text here, in your voice."
     old: "Their jobs are usually brutal, the companies subsidized by VC money are putting most of their cost on this marginalized group, and it creates an incentive for the company to preserve the conditions that create an ample, desperate workforce."
     interim: "Who gains from that, and who pays for it? You'll come back to that question in M10: Answer for What You Build."
-  - id: human-existence
-    unit: 0 Own Your Role
-    brief: "Say what this sentence must carry for the reader: that the person in the work is why it matters. The cold read found your voice at full volume here, in a main text that's otherwise a notch below, and readers felt you arrive and leave. Suggestion: move it to your margin, beside this paragraph, where your register is the point, and let the main text end on how one mind reaches another. For now the site keeps your words as they were: without them the paragraph runs shorter, and your note at its foot would meet the note above it."
-    old: "I'm not exaggerating when I tell you it's what the entirety of human existence is about, in one way or another."
-    interim: "I'm not exaggerating when I tell you it's what the entirety of human existence is about, in one way or another."
-  - id: symphony
-    unit: 0 Own Your Role
-    brief: "The paragraph before it already lands the point, that the people you work with aren't resources. A one-line close after it reads as a moral, a habit VOICE.md asks the syllabus to spend sparingly, and the cold read named it among your looser lines. Suggestion: cut it, or move it to your margin. For now the site leaves it out."
-    old: "And if you work together, you'll play a symphony."
-    interim: ""
-  - id: rule-zero
-    unit: 0 Own Your Role
-    brief: "Pay Rule Zero off. The cold read found the analogy set up and never paid off: the text jumped from the table bending its rules to \"Module Zero lays out what it means to be an actual product manager.\" The step it missed is that a job description serves the product's intent, and you may reshape the job when following it would cost the product what it's for. That step is also what the next paragraph, on growing the role, now stands on. Suggestion: say it in your voice, keeping why the module is numbered zero, as the interim does."
-    old: "In the same way, Module Zero lays out what it means to be an actual product manager."
-    interim: "A job description works the same way. It's there to serve the product's intent, and where following its letter would cost the product what it's for, you may reshape the job. That's why this module is numbered zero: it's about the frame you work in, before the work itself."
   - id: compass-framing
     unit: The Compass
     brief: "Open the closing page in your voice, in a few lines: what you hope the reader carries out of the course, and why a compass and not a map. Start promises \"an internal compass to navigate situations for which you have no map,\" and your margin note in Decide and Set Direction reads \"Compasses over Maps.\" The interim only says what the page holds. Suggestion: write it as you wrote Start's opening, first person and all."
@@ -214,12 +196,6 @@ moved:
     from: "Answer for What You Build, Why this matters, your margin note beside \"So ask two things\""
     to: "the same section, word for word, beside the new paragraph on the pull from inside, \"The hardest place to hold fast may be inside,\" which now follows \"hold fast\""
     why: "The new paragraph, your direction of 23 November, is about the same justification, so your note now sits beside it."
-    when: 23 November 2026
-  - what: moved
-    words: "In the same way, Module Zero lays out what it means to be an actual product manager."
-    from: Own Your Role, Why this matters, the paragraph after Rule Zero
-    to: "the voice slot rule-zero, in the same place, as your old words. The site shows interim words that pay the analogy off: a job description serves the product's intent, and you may reshape the job"
-    why: The cold read found Rule Zero set up and never paid off, and the rebuild (card v1-module-0) needs the step it missed.
     when: 23 November 2026
   - what: changed
     words: "First, think about the milestones and outcomes you'd want to tell people about: when a new feature goes into testing, when it goes live, when the full release is ready, and when a date someone planned around moves. People outside your company, like customers or key partners, are likely the most interested in these, though they may come irregularly, with long gaps in between."
@@ -391,3 +367,81 @@ moved:
     to: "\"...and where to go from here\""
     why: "All four readers read \"learning journey\" as filler; \"where to go from here\" stays."
     when: 27 November 2026
+  - what: changed
+    words: "then ask two teammates (ideally from different job families) to finish it without seeing yours."
+    from: "Own Your Role, If you only do one thing"
+    to: "\"then ask two teammates, ideally in different roles, to finish it without seeing yours.\""
+    why: "All four blind readers wanted the idea, and two read \"job families\" as HR's word for it."
+    when: 28 November 2026
+  - what: changed
+    words: "and talk with your manager about it if you find more and more of your time going toward it."
+    from: "Own Your Role, Why this matters, glue work"
+    to: "a sentence of its own: \"Talk with your manager about how it counts before your review, not after, and sooner if you find more and more of your time going toward it.\""
+    why: "All four readers wanted \"before your review, not after\" back: it gives a time, and the Check's third answer rests on it. Yours is added to it, not swapped for it."
+    when: 28 November 2026
+  - what: changed
+    words: "you're running the room and repeating back what everyone wants."
+    from: "Own Your Role, Why this matters, the two versions of the job"
+    to: "\"you're running the room and averaging what everyone wants.\""
+    why: "All four readers asked for \"average\" back: repeating back reads as good listening, and the card's third point is the product \"made by averaging every request.\" Your \"project manager\" and \"facilitator\" stay."
+    when: 28 November 2026
+  - what: changed
+    words: "But even in this context, you'll likely have some degree of flexibility in solving your piece of the bigger problem - that's your room to craft a vision."
+    from: "Own Your Role, Why this matters, the paragraph that opens \"Early in your career\""
+    to: "the same place, word for word, with the two sentences your edit cut back after it: what making the vision your own means (finishing \"We're building this in order to ...\" for your slice), and \"Where nobody has named a destination, draft one.\""
+    why: "The one loss all four readers called clear. Without them the body never introduces the sentence the Do, the card and M9 all turn on, so \"M9 comes back to this sentence\" pointed at nothing, and a reader with no named destination had no move."
+    when: 28 November 2026
+  - what: changed
+    words: "Guide them, make hard choices when necessary, but above all, respect and work with them."
+    from: "Own Your Role, Why this matters, the word of caution"
+    to: "the same place, word for word, followed again by \"M9: Decide and Set Direction gives you one habit for it: when the call is yours, give your view last.\""
+    why: "All four readers wanted the habit back: it's something to try, and your sentence says why. Your symphony line is the margin note beside it, as you asked, which closes that slot."
+    when: 28 November 2026
+  - what: changed
+    words: "A best practice in engineering is to write the test before the code."
+    from: "Own Your Role, the Do"
+    to: "\"Engineers often write the test before the code.\""
+    why: "Three readers marked \"a best practice\" as office-speak, and none preferred it. Your \"meaningfully differ\" stays."
+    when: 28 November 2026
+  - what: changed
+    words: "List what you were handed in your job responsibilities (a specific example),"
+    from: "Own Your Role, the Do, the optional exercise"
+    to: "\"List one specific thing you were handed in your job responsibilities,\""
+    why: "All four readers were unsure what the parenthesis asked them to write. This says it in the sentence."
+    when: 28 November 2026
+  - what: changed
+    words: "It's Thursday. In terms of time, your week on the streaming app has gone to ..."
+    from: "Own Your Role, Check yourself, the first question"
+    to: "\"It's Thursday, and your week on the streaming app has gone to ...\" with your Oxford comma"
+    why: "All four readers marked \"In terms of time\" as filler."
+    when: 28 November 2026
+  - what: changed
+    words: "Both of the imposters. The standup and the status reports are a form of running the project,"
+    from: "Own Your Role, Check yourself, the first answer"
+    to: "\"Both of the imposters. The standup and the status reports are running the project,\" and step 1 of the short path now asks what \"the two imposter jobs\" leave undone, where it said look-alike"
+    why: "\"A form of\" read as a hedge to three readers. \"Imposters\" broke the name the page had given the two jobs, so the page now takes your word in both places: the two check readers wanted its bite kept. Your question, \"did it need to be you,\" was the line all four kept, and it stays with the sentence after it."
+    when: 28 November 2026
+  - what: changed
+    words: "the orchestra's president, is sure / The expectations of Product management / your three dashes, typed as hyphens"
+    from: "Own Your Role, Why this matters and Check yourself"
+    to: "\"the orchestra's president is sure\"; \"product management\"; each dash set as an em dash, kept, as you asked on Start"
+    why: "Typos and a house rule. The three em dashes are listed in data/pm/kept-dashes.yaml (spec T3)."
+    when: 28 November 2026
+  - what: changed
+    words: "Having the right answer doesn't matter if you can't convince people of it. Catching your own mistakes early, and earning the trust of the people you work with before you need it."
+    from: "Start, The modules, the line for How you learn and lead, and The Compass's list"
+    to: "\"... How to catch your own mistakes early, and earn the trust of the people you work with before you need it.\""
+    why: "Your comment: its tense read as inconsistent with the other parts' lines, which open \"What\" and \"Why.\""
+    when: 28 November 2026
+  - what: changed
+    words: "a list of three with no comma before its \"and\" or \"or\": eight of them"
+    from: "Start, Own Your Role and the Concept Champion card"
+    to: "the same lists with the comma: \"reading, watching, or playing\"; \"writing its log line, and answering its questions\"; \"experience, or an argument\"; \"writing up every meeting, and chasing the teams\"; \"picked apart in a meeting, and rewritten\"; \"Alex Timbers, and Paul Weitz\"; \"Time, budget, and scope\"; \"Bruce Chew, and Takahiro Fujimoto\""
+    why: "Your voice guidance on this tab: you use the Oxford comma. The other units follow as a job of their own."
+    when: 28 November 2026
+  - what: changed
+    words: "The danger in planning forward from where you are is that it bakes in incrementalism, as you're extrapolating from what can be done today. In contrast, working back from the vision starts by asking what must be true, regardless of your existing assets. As a result, it shows the new investments the ambition needs. They often take time to pay off, and the champion holds the destination until they do."
+    from: "Own Your Role, the Concept Champion card, The idea"
+    to: "\"Planning forward bakes in incrementalism: you extrapolate from what's possible today. Working back asks what must be true, whatever your existing assets, so it shows the new investments the ambition needs. They often take time to pay off, and the champion holds the destination until then.\" The sentence before it now reads \"keep it current as you learn.\""
+    why: "A card prints on one page (spec P1), and your paragraph put this one a line over. All four blind readers preferred your paragraph to the one before it, and one found it wordy for a card, so it keeps every point of yours in fewer words. If you'd rather keep your wording, say what else on the card should give."
+    when: 28 November 2026

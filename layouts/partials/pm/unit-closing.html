@@ -11,7 +11,7 @@
     <h1>{{ $p.Title | markdownify }}</h1>
     {{- partial "pm/margin.html" (dict "p" $p "unit" $key "slot" "top") }}
     <p class="question">{{ $p.Params.question }}</p>
-    <p class="meta">About {{ partial "pm/duration.html" ($p.Params.do_minutes | default 0) }}.</p>
+    <p class="meta">Takes about {{ partial "pm/duration.html" ($p.Params.do_minutes | default 0) }}.</p>
   </div></div></header>
   <div class="frame"><div class="unit-body reading">
 

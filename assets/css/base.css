@@ -254,6 +254,9 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
   .note { margin: var(--sp-2) 0 var(--sp-5); }
   .noted > p:not(:last-child) { margin-bottom: var(--sp-2); }
   .note + .note { margin-top: calc(-1 * var(--sp-3)); }
+  /* Two notes beside one paragraph: the second follows the first as a paragraph follows a paragraph. */
+  .noted > .note + .note { margin-top: 0; }
+  @supports selector(:has(+ *)) { .noted > .note:has(+ .note) { margin-bottom: var(--sp-3); } }
   li > .noted:last-child > .note, li > .note:last-child { margin-bottom: var(--sp-3); }
   /* A folded note's box ends with its words, and a break inside it is smaller than the room around it. */
   .note p { margin-bottom: var(--sp-2); }
@@ -276,11 +279,18 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
 /* Icon links: 44px targets, ink by default, orange on hover and focus. */
 .door-links a { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; color: var(--ink); text-decoration: none; }
 .door-links a:hover { color: var(--orange); }
-.door-links svg { width: 1.45rem; height: 1.45rem; }
-/* Bluesky and LinkedIn turn into their own marks on hover and focus, at once (spec N5, D5); Email turns orange (C1). */
-.door-links .icon-mark { display: none; }
-.door-links a:hover .icon-line, .door-links a:focus-visible .icon-line { display: none; }
-.door-links a:hover .icon-mark, .door-links a:focus-visible .icon-mark { display: block; }
+.door-links svg { grid-area: 1 / 1; width: 1.45rem; height: 1.45rem; }
+/* Bluesky and LinkedIn turn into their own marks on hover and focus (spec N5); Email turns orange (C1). The outline
+   and the mark share one place and fade across each other, in and out, as a link's color eases (C5); where a
+   browser can't ease an element in from nothing, and with reduced motion requested (D5), the swap is instant. */
+.door-links .icon-line, .door-links .icon-mark { transition: opacity 180ms ease-out, display 180ms allow-discrete; }
+.door-links .icon-mark { display: none; opacity: 0; }
+.door-links a:hover .icon-line, .door-links a:focus-visible .icon-line { display: none; opacity: 0; }
+.door-links a:hover .icon-mark, .door-links a:focus-visible .icon-mark { display: block; opacity: 1; }
+@starting-style {
+  .door-links .icon-line { opacity: 0; }
+  .door-links a:hover .icon-mark, .door-links a:focus-visible .icon-mark { opacity: 0; }
+}
 /* The ReadMe's record (spec R11): Experience and Education, on a page whose front matter names the class cv. Each place is a
    heading at the size of the text, as a step's title is; its time stands in a rail at the column's left edge, level
    with the place, in the label type, as Start's module codes do, so the times read down the page as a timeline; what
@@ -320,7 +330,10 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
     font-family: "Shantell Sans", var(--ui); font-variation-settings: "INFM" 100; color: var(--ink);
   }
   .reading .noted > .note { position: absolute; top: 0; right: calc(-1 * (var(--margin) + var(--gutter))); margin: 0; }
-  .reading .noted > .note-foot { top: auto; bottom: 0; }
+  /* A note for one answer of the Check (M4) sits level with the answer's first line, inside its tinted box's padding. */
+  .reading .answer.noted > .note { top: var(--sp-3); }
+  /* A note at a paragraph's foot ends on the paragraph's last line: its smaller type would otherwise sit a little low. */
+  .reading .noted > .note-foot { top: auto; bottom: 0.3rem; }
   .reading .note .note-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   /* The front door: the photo sits in the margin column, beside the name; narrow screens keep it above. */
   .door-inner { display: grid; grid-template-columns: minmax(0, var(--measure)) var(--margin); column-gap: var(--gutter); align-items: center; }
@@ -331,7 +344,7 @@ mark.hl-v3 { background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.o
 
 /* Links ease to orange, in CSS alone. With reduced motion requested the change is instant (spec D5). */
 a, .recall summary::after, .why > summary { transition: color 180ms ease-out, text-decoration-color 180ms ease-out, text-decoration-thickness 180ms ease-out; }
-@media (prefers-reduced-motion: reduce) { a, .recall summary::after, .why > summary, .nav-open { transition: none; } }
+@media (prefers-reduced-motion: reduce) { a, .recall summary::after, .why > summary, .nav-open, .door-links .icon-line, .door-links .icon-mark { transition: none; } }
 
 /* Print: the same steps on a smaller unit and a paper scale of four sizes. Always light. */
 @media print {
